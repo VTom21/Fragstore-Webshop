@@ -1,0 +1,100 @@
+:root {
+    --yellow_regular: #FFFF00;
+    --black-regular: #000000;
+    --red-regular: #FF0000;
+    --white-regular: #FFFFFF;
+}
+
+
+body {
+    background-color: var(--black-regular);
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    padding: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-bottom: 30px;
+}
+
+.stat_item h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--white-regular);
+    letter-spacing: 2px;
+}
+
+.score_value {
+    color: var(--red-regular);
+}
+
+.life_value {
+    color: var(--yellow_regular);
+}
+
+.level_value {
+    color: var(--red-regular);
+}
+
+.game_canvas {
+    display: block;
+    margin: 0 auto;
+    background-color: var(--black-regular);
+}
+
+.content {
+    margin-top: 40px;
+}
+
+#title {
+    color: var(--yellow_regular);
+    font-size: 72px;
+    font-weight: bold;
+    font-family: 'Arial Black', Arial, sans-serif;
+    margin-bottom: 30px;
+    letter-spacing: 4px;
+}
+
+.start_text {
+    color: var(--white-regular);
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    animation: blink 1s step-start infinite;
+}
+
+.start_text span {
+    color: var(--yellow_regular);
+    font-weight: bold;
+    padding: 2px 8px;
+    border: 2px solid var(--yellow_regular);
+    margin: 0 5px;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .stat_item h1 {
+        font-size: 18px;
+    }
+
+    #title {
+        font-size: 48px;
+    }
+
+    .start_text {
+        font-size: 16px;
+    }
+}

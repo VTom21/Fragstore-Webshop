@@ -1,0 +1,264 @@
+    :root {
+        --teal: #00bfff;
+        --orange: rgb(235, 235, 85);
+        --white: #f9f9f9;
+        --bg-dark: #10141a;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        height: 100%;
+        font-family: 'Montserrat', sans-serif;
+        background: radial-gradient(ellipse at bottom, #184a4a 0%, #4a4a21 100%);
+        overflow: hidden;
+        color: var(--white);
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(130deg, rgba(0, 191, 165, .05), rgba(255, 140, 0, .05));
+        pointer-events: none;
+        animation: pulse 14s ease-in-out infinite alternate;
+        z-index: 0;
+    }
+
+    @keyframes pulse {
+        0% {
+            opacity: .25;
+            transform: scale(1);
+        }
+
+        100% {
+            opacity: .55;
+            transform: scale(1.04);
+        }
+    }
+
+    .container {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 20px;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, .05);
+        border-radius: 1.3rem;
+        backdrop-filter: blur(18px);
+        box-shadow: 0 0 55px rgba(0, 0, 0, .45);
+        border: 1.2px solid rgba(255, 255, 255, .06);
+        padding: 3rem 2.8rem;
+        max-width: 420px;
+        width: 100%;
+        color: var(--white);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(25px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .title {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.6rem;
+        text-align: center;
+        margin-bottom: 2.2rem;
+    }
+
+    .title .frag {
+        color: var(--teal);
+    }
+
+    .title .store {
+        color: var(--orange);
+    }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 2.1rem;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 1.25rem 1rem .6rem 1rem;
+        font-size: 1.05rem;
+        border: none;
+        border-bottom: 2.5px solid rgba(255, 255, 255, .18);
+        border-radius: 6px;
+        background: transparent;
+        color: var(--white);
+        transition: border-color .25s ease, box-shadow .3s ease, transform .25s ease;
+        outline: none;
+    }
+
+    .form-control::placeholder {
+        color: transparent;
+    }
+
+    label {
+        position: absolute;
+        top: 1.18rem;
+        left: 1rem;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, .55);
+        pointer-events: none;
+        transition: all .25s ease;
+        user-select: none;
+        font-weight: 600;
+    }
+
+    .form-control:focus,
+    .form-control:not(:placeholder-shown) {
+        border-color: var(--orange);
+        box-shadow: 0 0 7px rgba(255, 140, 0, .5);
+        transform: scale(1.03);
+    }
+
+    .form-control:focus+label,
+    .form-control:not(:placeholder-shown)+label {
+        top: .25rem;
+        font-size: .8rem;
+        color: var(--teal);
+    }
+
+    .form-group::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2.5px;
+        width: 0;
+        background: var(--orange);
+        transition: width .25s ease;
+        border-radius: 3px;
+    }
+
+    .form-control:focus~.form-group::after,
+    .form-control:focus+label~.form-group::after {
+        width: 100%;
+    }
+
+    .clear-btn {
+        position: absolute;
+        right: .7rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: rgba(255, 255, 255, .4);
+        font-size: 1rem;
+        cursor: pointer;
+        padding: 0;
+        display: none;
+        user-select: none;
+        transition: color .2s ease;
+    }
+
+    .form-control:not(:placeholder-shown)~.clear-btn {
+        display: block;
+    }
+
+    .clear-btn:hover {
+        color: var(--orange);
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 1.05rem;
+        font-weight: 700;
+        border: none;
+        background: var(--teal);
+        color: #000;
+        border-radius: 14px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background .3s ease;
+    }
+
+    .btn-login:hover {
+        background: #00a98f;
+    }
+
+    .small-text {
+        margin-top: 1.1rem;
+        font-size: .92rem;
+        text-align: center;
+    }
+
+    .small-text a {
+        color: var(--orange);
+        text-decoration: underline;
+        transition: color .25s ease;
+    }
+
+    .small-text a:hover {
+        color: var(--teal);
+    }
+
+    .glow-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .glow-particles::before,
+    .glow-particles::after {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(0, 191, 165, .09) 0%, transparent 75%), radial-gradient(circle, rgba(255, 140, 0, .07) 0%, transparent 75%);
+        animation: moveParticles 28s linear infinite;
+    }
+
+    .glow-particles::after {
+        animation-delay: -14s;
+    }
+
+    @keyframes moveParticles {
+        0% {
+            transform: translate(-48%, -52%) rotate(0deg);
+        }
+
+        100% {
+            transform: translate(-48%, -52%) rotate(360deg);
+        }
+    }
+
+    @media (max-width:480px) {
+        .title {
+            font-size: 2.2rem;
+        }
+    }
+
+    .alert {
+        background: rgba(0, 0, 0, .25);
+        border: 1px solid rgba(255, 255, 255, .2);
+        padding: .75rem 1rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        text-align: center;
+    }

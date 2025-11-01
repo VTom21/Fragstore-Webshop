@@ -1,0 +1,271 @@
+:root {
+  --blue: #00bfff;
+  --yellow: #9e9e9c;
+  --white: #f9f9f9;
+  --bg-dark: #0e1217;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background: radial-gradient(ellipse at bottom, #274c6e 0%, #23241f 100%);
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(130deg, rgba(0, 191, 255, 0.05), rgba(255, 230, 0, 0.05));
+  pointer-events: none;
+  animation: pulse 12s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 1rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.5rem;
+  max-width: 420px;
+  width: 100%;
+  color: var(--white);
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title .frag {
+  color: var(--blue);
+}
+
+.title .store {
+  color: var(--yellow);
+}
+
+/* Advanced Input Styling */
+.form-group {
+  position: relative;
+  margin-bottom: 1.8rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 1.2rem 1rem 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  background: transparent;
+  color: var(--white);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: transparent;
+  /* Hide placeholder text */
+}
+
+/* Floating label */
+label {
+  position: absolute;
+  top: 1.15rem;
+  left: 1rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  user-select: none;
+  font-weight: 500;
+}
+
+/* When input is focused or has text */
+.form-control:focus,
+.form-control:not(:placeholder-shown) {
+  border-color: var(--yellow);
+  box-shadow: 0 0 8px var(--blue);
+  transform: scale(1.02);
+}
+
+.form-control:focus+label,
+.form-control:not(:placeholder-shown)+label {
+  top: 0.2rem;
+  font-size: 0.75rem;
+  color: yellow;
+}
+
+/* alert */
+
+.alert {
+  background: rgba(0, 0, 0, .25);
+  border: 1px solid rgba(255, 255, 255, .2);
+  padding: .75rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  text-align: center
+}
+
+/* Underline animation */
+.form-group::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--yellow);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.form-control:focus~.form-group::after,
+.form-control:focus+label~.form-group::after {
+  width: 100%;
+}
+
+/* Clear button */
+.clear-btn {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0;
+  display: none;
+  user-select: none;
+}
+
+.form-control:not(:placeholder-shown)~.clear-btn {
+  display: block;
+}
+
+.clear-btn:hover {
+  color: var(--yellow);
+}
+
+/* Button */
+.btn-login {
+  width: 100%;
+  padding: 0.9rem;
+  font-weight: bold;
+  border: none;
+  background: var(--blue);
+  color: #000;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-login:hover {
+  background: #009acf;
+}
+
+.small-text {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.small-text a {
+  color: var(--yellow);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.small-text a:hover {
+  color: var(--blue);
+}
+
+.glow-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glow-particles::before,
+.glow-particles::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 191, 255, 0.1) 0%, transparent 70%),
+    radial-gradient(circle, rgba(255, 230, 0, 0.08) 0%, transparent 70%);
+  animation: moveParticles 30s linear infinite;
+}
+
+.glow-particles::after {
+  animation-delay: -15s;
+}
+
+@keyframes moveParticles {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+}
