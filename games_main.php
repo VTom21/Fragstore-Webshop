@@ -46,8 +46,8 @@
 
         <div class="modal-backdrop" ng-show="rankingOpen">
             <div class="modal">
-                <h2>Game Rankings</h2>
-                <canvas id="myChart" style="width:100%;max-width:1500px;height:500px;"></canvas>
+                <h2>Game Rankings</h2><br>
+                <canvas id="myChart"></canvas>
                 <p>Total games: {{ numberOfGames }}</p>
                 <p>Total Genres: {{ numberOfGenres }}</p>
                 <p>Total Platforms: {{ numberOfPlatforms }}</p><br>

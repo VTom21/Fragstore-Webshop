@@ -6,6 +6,19 @@ body {
     text-align: center;
 }
 
+canvas {
+    width: 600px !important;
+    height: 400px !important;
+}
+
+#myChart {
+    width: 100% !important;
+    position: relative;
+    max-width: 700px !important;
+    height: 600px !important;
+}
+
+
 #pagination_count {
     font-size: 1rem;
     display: grid;
@@ -397,10 +410,10 @@ input[type="range"]::-webkit-slider-thumb {
     color: #f0f0f0;
     padding: 24px;
     border-radius: 12px;
-    width: 320px;
+    width: 370px;
     box-shadow: 0 4px 20px rgba(0, 247, 255, 0.3);
     overflow-y: auto;
-    height: 80vh;
+    height: 75vh;
 }
 
 .filter-columns {

@@ -146,6 +146,8 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
                 }]
             },
             options: {
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     title: {
                         display: true,
@@ -155,6 +157,7 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
             }
         });
     }
+
 
     // Name sorting
     $scope.updateSortOrder = function (which) {
