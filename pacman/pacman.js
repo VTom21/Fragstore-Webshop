@@ -1,6 +1,6 @@
 //importing all necessary js files
 
-import { Munch, Intro } from './sfx.js';
+import { Munch, Intro, Death } from './sfx.js';
 
 //base variables
 let canva = document.querySelector(".game_canvas");
@@ -17,6 +17,7 @@ let pacman_speed = 8;
 let ghost_speed_multiplier = 8;
 let nextDirection = null;
 let score_multiplier = 10;
+let run_state = true; //boolean to check if game is running
 
 
 //constant variables for map
@@ -263,9 +264,19 @@ function update() {
     if (!isGameRunning) {
         return;
     }
-    Controls();
-    display();
+    if (run_state) { //if game is running
+        Controls();
+        display();
+    }
     setTimeout(update, 40); // equivalent of 25 FPS
+}
+
+function Pause() {
+    run_state = false; //pauses the game
+}
+
+function Continue() {
+    run_state = true; //continues the game
 }
 
 //we reset most basic values: velocities, new ghost directions at start, invulnerability
@@ -381,6 +392,11 @@ function Controls() {
     for (let ghost of ghosts.values()) {
 
         if (Collision(ghost, pacman) && !invulnerable) {
+            Pause();
+            Death();
+            setTimeout(() => {
+                Continue();
+            }, 2000)
             lives -= 1;
             lifeUI.innerHTML = lives;
 

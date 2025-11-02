@@ -2,7 +2,7 @@
 
 let munch = new Audio("sfx/munch.wav");
 let intro = new Audio("sfx/intro.wav");
-
+let death = new Audio("sfx/death.wav");
 
 let can_munch = true;
 
@@ -25,5 +25,10 @@ export function Munch() {
 export function Intro() {
     intro.play();
     return intro;
+}
+
+export function Death() {
+    death.play();
+    return death;
 }
 
