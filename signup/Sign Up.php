@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } elseif (strlen($password) < 8) {
     $message = 'Password must be at least 8 characters.';
   } else {
-    try { //if all values are correct, it pushes the hash value fo the pass into the database alongside the username and e-mail
+    try { //if all values are correct, it pushes the hash value to the pass into the database alongside the username and e-mail
       $hash = password_hash($password, PASSWORD_DEFAULT);
       $stmt = $pdo->prepare("INSERT INTO users (email, username, password_hash) VALUES (?, ?, ?)"); //prepared placeholders with temporary ? values
       $stmt->execute([$email, $username, $hash]);

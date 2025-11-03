@@ -76,7 +76,7 @@ body {
 
 .hearts{
     display: none;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 #heart1,#heart2,#heart3{
     display: block;

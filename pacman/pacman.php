@@ -16,7 +16,7 @@
         </div>
 
         <div class="stat_item">
-            <h1>Life: <span class="life_value">3</span></h1>
+            <h1>Life: <span class="life_value">4</span></h1>
         </div>
 
         <div class="stat_item">
@@ -27,6 +27,7 @@
             <img id="heart1" src="../pacman/assets/pacman/pacmanRight.png" alt="">
             <img id="heart2"src="../pacman/assets/pacman/pacmanRight.png" alt="">
             <img id="heart3"src="../pacman/assets/pacman/pacmanRight.png" alt="">
+            <img id="heart4"src="../pacman/assets/pacman/pacmanRight.png" alt="">
         </div>
     </div>
 

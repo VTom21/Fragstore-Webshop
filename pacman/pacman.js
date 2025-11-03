@@ -11,16 +11,20 @@ const canva_width = columns * tile_size;
 const canva_height = rows * tile_size;
 let context; // Possible values => 2d, webgl, webgl2 (3d), webgpu 
 let score = 0;
-let lives = 3;
+let lives = 4;
 let level = 1;
 let pacman_speed = 8;
-let ghost_speed_multiplier = 6;
+let ghost_speed_multiplier = 8;
 let nextDirection = null;
 let score_multiplier = 10;
 let run_state = true; //boolean to check if game is running
 let hearts = document.querySelector(".hearts")
 
-
+const ghostBox = {
+    x: 14 * tile_size, // center tile (adjust for your map)
+    y: 14 * tile_size
+  };
+  
 
 //constant variables for map
 
@@ -53,7 +57,7 @@ let pacman_down_img, pacman_up_img, pacman_left_img, pacman_right_img;
 let wall_img, cherry_img;
 
 
-const image_paths = ["assets/ghosts/blueGhost.png", "assets/ghosts/redGhost.png", "assets/ghosts/orangeGhost.png", "assets/ghosts/pinkGhost.png", "assets/pacman/pacmanDown.png", "assets/pacman/pacmanUp.png", "assets/pacman/pacmanLeft.png", "assets/pacman/pacmanRight.png", "assets/wall.png", "assets/cherry.png"]
+const image_paths = ["assets/ghosts/blueGhost.png", "custom_assets/ghosts/greenGhost.png", "custom_assets/ghosts/brownGhost.png", "custom_assets/ghosts/blackGhost.png", "assets/pacman/pacmanDown.png", "assets/pacman/pacmanUp.png", "assets/pacman/pacmanLeft.png", "assets/pacman/pacmanRight.png", "assets/wall.png", "assets/cherry.png"]
 
 
 //Preload every images here from the array above
@@ -163,7 +167,7 @@ function load_images() {
 const map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 1, 1],
+    [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1],
     [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 2, 1, 1, 1, 2, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1],
@@ -284,13 +288,17 @@ function Continue() {
 
 //we reset most basic values: velocities, new ghost directions at start, invulnerability
 function Reset() {
+    
     pacman.reset();
     pacman.VelocityX = 0;
     pacman.VelocityY = 0;
 
     for (let ghost of ghosts.values()) {
+        ghost.x = ghostBox.x;
+        ghost.y = ghostBox.y;
         const newDirection = directions[Math.floor(Math.random() * 4)];
         ghost.Refresh_Direction(newDirection);
+        
     }
 
     invulnerable = true; // pac man is invulnerable for 1 second after being hit, prevents multiple life loss at once
@@ -440,7 +448,7 @@ function Controls() {
             let targetY = pacman.y;
 
             //offset for Pinky
-            const offset = 128;
+            const offset = 32;
 
             //delta distance values between pac man and ghost
 
@@ -469,13 +477,11 @@ function Controls() {
                     }
                     break;
 
-                case blue_ghost_img: //Inky's (blue) job is to follow and try to way more get ahead of pac man than Pinky
-                    targetX = pacman.x + dx;
-                    targetY = pacman.y + dy;
+                case blue_ghost_img: //Inky's (blue) job is the same as Blinky's
                     break;
 
                 case orange_ghost_img: //Clyde's (orange) job is to chase pac man if it's far away according to the ghost's radius (256px)
-                    if (distance <= 256) { // but if it gets close to Clyde, it runs away (thats why targetX is 0, and targetY is set to canvas height -> bottom left corner )
+                    if (distance <= 64) { // but if it gets close to Clyde, it runs away (thats why targetX is 0, and targetY is set to canvas height -> bottom left corner )
                         targetX = 0;
                         targetY = canva_height;
                     }
@@ -553,6 +559,8 @@ function Controls() {
     if (pellets.size === 0) {
         window.alert("You have won!"); //if no pellets are left, you have won: lives, score reset, level increases
         score_multiplier += 10;
+        level++;
+        levelUI.innerText = level;
         load_map();
         reset_game_stats(false);
         Reset();
@@ -581,7 +589,7 @@ function Collision(a, b) {
 
 
 function reset_game_stats(fullReset = false) {
-    lives = 3;
+    lives = 4;
     lifeUI.innerText = lives;
 
     if (fullReset) {
@@ -627,9 +635,6 @@ class Generate {
         this.direction = direction; // assign new direction
         this.Velocity_Refresh();
 
-        //moves entity on this specific direction 
-        this.x += this.VelocityX;
-        this.y += this.VelocityY;
 
         //if entity hits a wall, step back and keep previous direction
         for (let wall of walls.values()) {
