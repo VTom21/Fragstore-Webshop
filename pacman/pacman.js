@@ -14,10 +14,12 @@ let score = 0;
 let lives = 3;
 let level = 1;
 let pacman_speed = 8;
-let ghost_speed_multiplier = 8;
+let ghost_speed_multiplier = 6;
 let nextDirection = null;
 let score_multiplier = 10;
 let run_state = true; //boolean to check if game is running
+let hearts = document.querySelector(".hearts")
+
 
 
 //constant variables for map
@@ -92,6 +94,7 @@ document.body.addEventListener("keyup", handleStart); //When player releases the
 
 function Load() {
     document.querySelector(".content").style.display = "none";
+    hearts.style.display = "grid";
     lifeUI.innerHTML = lives;
     canva.width = canva_width;
     canva.height = canva_height;
@@ -268,7 +271,7 @@ function update() {
         Controls();
         display();
     }
-    setTimeout(update, 40); // equivalent of 25 FPS
+    setTimeout(update, 40); // equivalent of 30 FPS
 }
 
 function Pause() {
@@ -388,6 +391,7 @@ function Controls() {
         }
     }
 
+    
     //pac man & ghost collision check -> if vulnerable and collides -> minus life, if life is 0 its game over and resets game
     for (let ghost of ghosts.values()) {
 
@@ -398,7 +402,10 @@ function Controls() {
                 Continue();
             }, 2000)
             lives -= 1;
+
             lifeUI.innerHTML = lives;
+           
+            hearts.removeChild(hearts.lastElementChild); 
 
             if (lives == 0) {
                 window.alert("Game Over!");

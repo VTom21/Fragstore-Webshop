@@ -10,14 +10,14 @@ body {
     background-color: var(--black-regular);
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
 }
 
 .stats {
     display: flex;
     justify-content: center;
     gap: 100px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .stat_item h1 {
@@ -72,6 +72,14 @@ body {
     padding: 2px 8px;
     border: 2px solid var(--yellow_regular);
     margin: 0 5px;
+}
+
+.hearts{
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+}
+#heart1,#heart2,#heart3{
+    display: block;
 }
 
 @keyframes blink {
