@@ -40,6 +40,7 @@ const TILE_ORANGE_GHOST = 5;
 const TILE_PINK_GHOST = 6;
 const PELLET = 2;
 const CHERRY = 8;
+const GHOST_GATE = 9;
 
 // UI variables
 
@@ -70,7 +71,7 @@ const image_paths = [
   "assets/pacman/pacmanLeft.png",
   "assets/pacman/pacmanRight.png",
   "assets/wall.png",
-  "custom_assets/foods/orange.png",
+  "custom_assets/foods/apple.png",
 ];
 
 //Preload every images here from the array above
@@ -149,6 +150,8 @@ function Load() {
   }
 }
 
+
+
 //image load function
 
 function load_images() {
@@ -189,7 +192,7 @@ const map = [
   [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1],
   [1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1],
-  [0, 0, 0, 0, 1, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 1, 0, 0, 0, 0],
+  [0, 0, 0, 0, 1, 2, 2, 1, 2, 2, 2, 1, 9, 9, 9, 9, 1, 2, 2, 2, 1, 2, 2, 1, 0, 0, 0, 0],
   [1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 3, 6, 5, 4, 1, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1],
   [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
   [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1],
@@ -210,6 +213,7 @@ const walls = new Set();
 const ghosts = new Set();
 const cherries = new Set();
 const pellets = new Set();
+const gates = new Set();
 let pacman;
 
 // Loading the map
@@ -220,6 +224,7 @@ function load_map() {
   ghosts.clear();
   cherries.clear();
   pellets.clear();
+  gates.clear();
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < columns; col++) {
@@ -233,6 +238,12 @@ function load_map() {
       switch (tile) {
         case TILE_EMPTY:
           break;
+        case GHOST_GATE:
+            const gate = new Generate(null, x, y + tile_size / 2, tile_size, 4); 
+            gate.color = "rgb(50, 50, 255)"; 
+            gates.add(gate); 
+            break;
+
         case WALL_TILE:
           const tile_ = new Generate(wall_img, x, y, tile_size, tile_size);
           walls.add(tile_);
@@ -536,6 +547,8 @@ function Controls() {
           break;
 
         case blue_ghost_img: //Inky's (blue) job is the same as Blinky's
+            targetX = dx + pacman.x;  
+            targetY = dy + pacman.y;  
           break;
 
         case orange_ghost_img: //Clyde's (orange) job is to chase pac man if it's far away according to the ghost's radius (64px)
