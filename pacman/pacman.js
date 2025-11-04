@@ -70,7 +70,7 @@ const image_paths = [
   "assets/pacman/pacmanLeft.png",
   "assets/pacman/pacmanRight.png",
   "assets/wall.png",
-  "assets/cherry.png",
+  "custom_assets/foods/orange.png",
 ];
 
 //Preload every images here from the array above
