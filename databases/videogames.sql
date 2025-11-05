@@ -27,6 +27,9 @@ SET time_zone = "+00:00";
 -- Tábla szerkezet ehhez a táblához `datas`
 --
 
+CREATE database if not exists videogames;
+use videogames;
+
 CREATE TABLE `datas` (
   `id` int(11) NOT NULL,
   `game_pic` varchar(255) DEFAULT NULL,

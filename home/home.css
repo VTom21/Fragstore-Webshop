@@ -1,58 +1,59 @@
-/* Globális beállítások */
-:root {
-    --primary-color: #007bff; /* Kék */
-    --secondary-color: #6c757d; /* Szürke */
-    --background-color: #f8f9fa; /* Világosszürke háttér */
-    --dark-background: #343a40; /* Sötét háttér */
-    --light-text: #ffffff; /* Fehér szöveg */
-    --dark-text: #212529; /* Sötét szöveg */
-    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    --border-radius: 8px;
-    --transition-speed: 0.3s;
-}
-
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Fontos a reszponzivitáshoz */
-    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --accent: #ec4899;
+    --bg-dark: #0f172a;
+    --bg-card: #1e293b;
+    --bg-hover: #334155;
+    --text-light: #f1f5f9;
+    --text-gray: #94a3b8;
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--dark-text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
     line-height: 1.6;
 }
 
 a {
     text-decoration: none;
-    color: var(--dark-text);
-    transition: color var(--transition-speed);
+    color: var(--text-light);
+    transition: all 0.3s ease;
 }
 
-a:hover {
-    color: var(--primary-color);
-}
-
-/* --- Header & Navigáció --- */
+/* Header - Original Layout */
 header {
-    display: flex; /* Flexbox a precízebb igazításhoz */
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: var(--light-text);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 20px rgba(99, 102, 241, 0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
 }
 
 #logo {
-    width: 40px; /* Példa méret */
-    height: 40px;
-    background-color: var(--primary-color); /* Helyőrző szín */
-    border-radius: var(--border-radius);
+    width: 50px;
+    height: 45px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
 }
 
 .navbar {
@@ -64,6 +65,7 @@ header {
     font-weight: bold;
     padding: 5px 0;
     position: relative;
+    color: var(--text-gray);
 }
 
 .navbar a::after {
@@ -73,8 +75,12 @@ header {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--primary-color);
-    transition: width var(--transition-speed) ease-in-out;
+    background: var(--gradient-1);
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: var(--text-light);
 }
 
 .navbar a:hover::after {
@@ -86,67 +92,94 @@ header {
     gap: 15px;
 }
 
-#sigin a,
-#register a {
+#sigin,
+#register {
     display: block;
     padding: 8px 15px;
-    border-radius: var(--border-radius);
+    border-radius: 8px;
     font-weight: bold;
     text-align: center;
-    transition: background-color var(--transition-speed), color var(--transition-speed);
+    transition: all 0.3s ease;
 }
 
 #sigin {
-    background-color: transparent;
-    border: 1px solid var(--primary-color);
+    background: transparent;
+    border: 2px solid var(--primary);
 }
 
 #sigin a {
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 #sigin:hover {
-    background-color: var(--primary-color);
+    background: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
 }
 
 #sigin:hover a {
-    color: var(--light-text);
+    color: var(--text-light);
 }
 
 #register {
-    background-color: var(--primary-color);
-    border: 1px solid var(--primary-color);
+    background: var(--gradient-1);
+    border: 2px solid transparent;
 }
 
 #register a {
-    color: var(--light-text);
+    color: var(--text-light);
 }
 
 #register:hover {
-    background-color: #0056b3; /* Sötétebb kék hover */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(99, 102, 241, 0.5);
 }
 
-/* --- Hős szekció (Showcase) --- */
+/* Hero Section - Original Layout */
 .show {
     padding: 10vh 30px;
     text-align: center;
-    background-color: var(--dark-background);
-    color: var(--light-text);
-    border-bottom: none;
-    box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.2);
+    background: var(--bg-dark);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.show::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 .show h1 {
     font-size: 3em;
     margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .show h2 {
     font-size: 1.5em;
-    color: var(--secondary-color);
+    color: var(--text-gray);
+    position: relative;
+    z-index: 1;
 }
 
-/* --- Fő tartalom és Intro szekció --- */
+/* Main Content - Original Layout */
 main {
     padding: 30px 50px;
 }
@@ -155,28 +188,51 @@ main {
     margin-bottom: 40px;
 }
 
+/* Slides - Original Layout */
 .slide1,
 .slide2 {
     display: grid;
-    grid-template-columns: 1fr 2fr; /* Jobban osztott arány */
+    grid-template-columns: 1fr 2fr;
     gap: 40px;
     margin: 40px 0;
-    min-height: 300px; 
+    min-height: 300px;
     align-items: center;
-    background-color: var(--light-text);
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
+    background: var(--bg-card);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     padding: 20px;
-    transition: transform 0.4s ease;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
 .slide2 {
     grid-template-columns: 2fr 1fr;
 }
 
-.slide1:hover, .slide2:hover {
+.slide1::before,
+.slide2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-1);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.slide1:hover,
+.slide2:hover {
     transform: translateY(-5px);
-    box-shadow: var(--hover-shadow);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
+}
+
+.slide1:hover::before,
+.slide2:hover::before {
+    opacity: 0.05;
 }
 
 .slide1 img,
@@ -184,31 +240,38 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: var(--border-radius);
-    max-height: 260px; 
+    border-radius: 8px;
+    max-height: 260px;
+    position: relative;
+    z-index: 1;
 }
 
 .introbox {
     border: none;
     padding: 0;
     height: auto;
+    position: relative;
+    z-index: 1;
 }
 
 .introbox h3 {
     font-size: 1.8em;
-    color: var(--primary-color);
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 10px;
 }
 
 .introbox p {
     font-size: 1em;
-    color: var(--dark-text);
+    color: var(--text-gray);
+    line-height: 1.8;
 }
 
-
-/* --- Termékkártyák szekció --- */
+/* Product Cards Section - Original Layout */
 .product-cards {
-    padding: 0; 
+    padding: 0;
 }
 
 .section {
@@ -217,44 +280,76 @@ main {
 
 .section-title {
     font-size: 2em;
-    color: var(--dark-text);
-    border-bottom: 3px solid var(--primary-color);
+    color: var(--text-light);
+    border-bottom: 3px solid transparent;
+    border-image: var(--gradient-1);
+    border-image-slice: 1;
     display: inline-block;
     padding-bottom: 5px;
     margin-bottom: 25px;
+    position: relative;
 }
 
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-1);
+}
+
+/* Card Grid - Original Layout */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Reszponzív oszlopok! */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-bottom: 20px;
 }
 
 .card {
-    background-color: var(--light-text);
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    transition: all var(--transition-speed);
+    background: var(--bg-card);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
     overflow: hidden;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
-    box-shadow: var(--hover-shadow);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
     transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.5);
 }
 
-/* Helyőrző kártyák (eGift Cards) */
+.card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Gift Card Placeholders - Original Layout */
 .card-placeholder {
-    height: 180px; 
-    background-color: #e9ecef; 
-    border: 1px dashed var(--secondary-color);
+    height: 180px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+    border: 1px dashed var(--primary);
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--secondary-color);
+    color: var(--text-gray);
     font-weight: bold;
     font-size: 1.2em;
 }
@@ -262,30 +357,30 @@ main {
 .card-placeholder::before,
 .card-placeholder::after {
     content: 'KÁRTYA';
-    position: static; 
+    position: static;
     transform: none;
     background: none;
     opacity: 0.5;
 }
 
-/* Játékkártyák */
+/* Game Cards - Original Layout */
 .game-card {
     padding: 0;
     border: none;
-    background-color: var(--light-text);
+    background: var(--bg-card);
 }
 
 .image-placeholder {
     width: 100%;
-    height: 180px; 
-    background-color: #ced4da;
+    height: 180px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     margin-bottom: 10px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border-radius: 8px 8px 0 0;
 }
 
 .image-placeholder::before,
@@ -298,15 +393,13 @@ main {
     width: auto;
     height: auto;
     background: none;
-    color: #495057;
+    color: rgba(255, 255, 255, 0.3);
     font-size: 0.9em;
     opacity: 0.7;
 }
 
-/* Egyedi hover effekt a game-card-ra: price kiemelés */
 .game-card:hover .price {
-    color: #dc3545; /* Piros ár a hoveren */
-    transform: scale(1.1);
+    color: var(--accent);
     display: inline-block;
 }
 
@@ -314,91 +407,117 @@ main {
     padding: 0 10px;
     font-size: 1.1em;
     margin: 5px 0 0 0;
+    font-weight: 600;
 }
 
 .game-card .price {
     padding: 0 10px;
     font-size: 1.2em;
-    color: var(--primary-color);
+    color: var(--primary);
     margin: 5px 0;
-    transition: transform var(--transition-speed), color var(--transition-speed);
+    transition: all 0.3s ease;
+    font-weight: bold;
 }
 
 .game-card .body-text {
     padding: 0 10px 10px 10px;
     font-size: 0.85em;
-    color: var(--secondary-color);
+    color: var(--text-gray);
     margin: 0;
 }
 
-
-/* --- Műfaj szekció --- */
+/* Genre Section - Original 4 Column Layout */
 .genre-section {
     text-align: center;
 }
 
 .genre-grid {
-    /* Módosítva 4 oszlopra, ahogy kérted */
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 30px; 
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
     margin-bottom: 20px;
 }
 
 .genre-card {
     text-align: center;
     padding: 20px 10px;
-    border: 1px solid #ddd;
-    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    background-color: var(--light-text);
-    transition: all var(--transition-speed);
+    background: var(--bg-card);
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.genre-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .genre-card:hover {
-    background-color: var(--primary-color);
-    color: var(--light-text);
-    box-shadow: var(--hover-shadow);
     transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
 }
 
-.genre-card:hover .icon-placeholder {
-    color: var(--light-text);
+.genre-card:hover::before {
+    opacity: 1;
 }
 
-.genre-card:hover .number {
-    color: var(--light-text);
+.genre-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.genre-card:hover .icon-placeholder,
+.genre-card:hover .number,
+.genre-card:hover .body-text {
+    color: var(--text-light);
 }
 
 .icon-placeholder {
     font-size: 2.5em;
     margin-bottom: 10px;
-    transition: color var(--transition-speed);
+    transition: all 0.3s ease;
+}
+
+.genre-card:hover .icon-placeholder {
+    transform: scale(1.15);
 }
 
 .genre-card .number {
     font-size: 2em;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--primary);
     margin-bottom: 5px;
-    transition: color var(--transition-speed);
+    transition: color 0.3s ease;
 }
 
 .genre-card .body-text {
     font-size: 0.9em;
     font-weight: bold;
+    color: var(--text-gray);
+    transition: color 0.3s ease;
 }
 
-/* "Show all" link stílus */
+/* Show All Link - Original Layout */
 .show-all {
     display: block;
     text-align: center;
     margin-top: 25px;
-    color: var(--primary-color); 
+    color: var(--primary);
     text-decoration: underline;
     font-size: 1.1em;
     padding: 10px 0;
-    border-top: 1px solid #dee2e6;
-    transition: color var(--transition-speed);
+    border-top: 1px solid rgba(99, 102, 241, 0.2);
+    transition: all 0.3s ease;
 }
 
 .centered-show-all {
@@ -408,29 +527,20 @@ main {
 }
 
 .show-all:hover {
-    color: #0056b3;
+    color: var(--text-light);
+    transform: translateY(-2px);
 }
 
-/* --- Footer --- */
-footer {
-    padding: 20px 0;
-    background-color: var(--dark-background);
-    color: var(--secondary-color);
-    text-align: center;
-    border-top: none;
-    font-size: 0.9em;
-}
+/* Footer - Original Layout */
 
-/* --- Média lekérdezések (Reszponzivitás) --- */
 
-/* Kisebb asztali gépek és nagyobb tabletek */
+/* Media Queries - Original Breakpoints */
 @media (max-width: 1200px) {
     .card-grid {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
 }
 
-/* Tabletek */
 @media (max-width: 992px) {
     header {
         padding: 15px 20px;
@@ -446,13 +556,13 @@ footer {
 
     .slide1,
     .slide2 {
-        grid-template-columns: 1fr; /* Egy oszlop a slide-oknál */
+        grid-template-columns: 1fr;
         height: auto;
         margin: 20px 0;
     }
 
     .slide2 img {
-        order: -1; /* Kép felülre kerül a slide2-ben is */
+        order: -1;
     }
 
     .card-grid {
@@ -460,17 +570,15 @@ footer {
         gap: 20px;
     }
 
-    /* Műfaj grid: 3 kártya soronként tableten */
     .genre-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
 }
 
-/* Mobiltelefonok */
 @media (max-width: 768px) {
     header {
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
         justify-content: center;
         text-align: center;
     }
@@ -480,7 +588,7 @@ footer {
         justify-content: center;
         margin: 10px 0;
         gap: 10px;
-        order: 2; 
+        order: 2;
     }
 
     #stuff {
@@ -508,7 +616,7 @@ footer {
     }
 
     .genre-grid {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
 }
