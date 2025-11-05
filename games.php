@@ -17,7 +17,7 @@ try {
     $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Count total games (rows)
-    $countStmt = $pdo->query("SELECT COUNT(*) AS total FROM datas");
+    $countStmt = $pdo->query("SELECT MAX(id) AS total FROM datas");
     $countResult = $countStmt->fetch(PDO::FETCH_ASSOC);
 
 

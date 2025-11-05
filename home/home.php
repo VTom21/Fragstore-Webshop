@@ -5,24 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>GameVerse - Modern Gaming Store</title>
+    <link rel="icon" type="image/x-icon" href="/icons/array.png">
+    <title>Fragstore - Home</title>
 </head>
 <body>
     <header>
         <img id="logo" src="../icons/array.png"></img>
         <div class="navbar">
             <a href="#games">Games</a>
-            <a href="#sbar">Sbar</a>
-            <a href="#genre">Genre</a>
+            <a href="#sbar">Gift Cards</a>
+            <a href="#genre">Genres</a>
             <a href="#contact">Contact</a>
-            <a href="#upcoming">Upcoming games</a>
+            <a href="#upcoming">About Us</a>
         </div>
         <div id="stuff">
             <div id="sigin">
-                <a href="">Sign in</a>
+                <a href="">Log in</a>
             </div>
             <div id="register">
-                <a href="">Register</a>
+                <a href="">Sign up</a>
             </div>
         </div>
     </header>
@@ -271,7 +272,7 @@
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" style="border-color:rgb(88, 86, 86);" />
             <div class="sm:flex sm:items-center sm:justify-between">
-                <span class="text-sm sm:text-center copyright_text">© 2025 <a href="https://flowbite.com/" class="hover:underline">BitBuy™</a>. All Rights Reserved.
+                <span class="text-sm sm:text-center copyright_text">© 2025 <a href="https://flowbite.com/" class="hover:underline">Fragstore™</a>. All Rights Reserved.
                 </span>
                 <div class="flex mt-4 sm:justify-center sm:mt-0">
                     <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
@@ -308,5 +309,13 @@
             </div>
         </div>
     </footer>
+    <button class="up-btn" ng-click="onScroll()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#37e6ec73" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+        </svg>
+    </button>
+
+    <script src="home.js"></script>
 </body>
 </html>

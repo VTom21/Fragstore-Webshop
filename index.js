@@ -52,7 +52,6 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
 
     $http.get('games.php')
         .then(function (response) {
-            console.log('Response data:', response.data);
 
             //in separate variables, we store all games, games after filtering, number of games, genres and platforms
 
