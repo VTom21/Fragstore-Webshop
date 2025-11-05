@@ -12,18 +12,18 @@
     <header>
         <img id="logo" src="../icons/array.png"></img>
         <div class="navbar">
-            <a href="#games">Games</a>
-            <a href="#sbar">Gift Cards</a>
+            <a href="#game">Games</a>
+            <a href="#giftcard">Gift Cards</a>
             <a href="#genre">Genres</a>
-            <a href="#contact">Contact</a>
-            <a href="#upcoming">About Us</a>
+            <a href="../contact_us/contactus.php">Contact</a>
+            <a href="#intro">About Us</a>
         </div>
         <div id="stuff">
             <div id="sigin">
-                <a href="">Log in</a>
+                <a href="../login/Log In.php">Log in</a>
             </div>
             <div id="register">
-                <a href="">Sign up</a>
+                <a href="../signup/Sign Up.php">Sign up</a>
             </div>
         </div>
     </header>
@@ -81,7 +81,7 @@
             </div>
         </section>
 
-        <section class="product-cards">
+        <section id="giftcard" class="product-cards">
             <section class="section">
                 <h2 class="section-title">eGift Cards</h2>
                 <div class="card-grid gift-cards-grid">
@@ -93,7 +93,7 @@
                 <a href="#" class="show-all">Show all</a>
             </section>
 
-            <section class="section">
+            <section id="game" class="section">
                 <h2 class="section-title">Top Games</h2>
                 <div class="card-grid">
                     <div class="card game-card">
@@ -156,7 +156,7 @@
             </section>
         </section>
 
-        <section class="section genre-section">
+        <section id="genre" class="section genre-section">
             <h2 class="section-title">Genre</h2>
             <div class="card-grid genre-grid">
                 <div class="card genre-card">
