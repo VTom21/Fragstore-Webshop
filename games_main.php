@@ -82,7 +82,6 @@
 
                 </div>
 
-                <!-- PLATFORMS COLUMN -->
                 <div class="filter-group">
                     <strong>Platforms:</strong>
                     <div class="checkbox-list">

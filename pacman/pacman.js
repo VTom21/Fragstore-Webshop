@@ -23,6 +23,7 @@ let hearts = document.querySelector(".hearts");
 let chased = false;
 let chaseTimeout = null;
 let chaseInterval = null;
+let pop_ups = [];
 
 const ghostBox = {
   x: 15 * tile_size,
@@ -71,7 +72,7 @@ const image_paths = [
   "assets/pacman/pacmanLeft.png",
   "assets/pacman/pacmanRight.png",
   "assets/wall.png",
-  "custom_assets/foods/apple.png",
+  "custom_assets/foods/strawberry.png",
 ];
 
 //Preload every images here from the array above
@@ -149,6 +150,17 @@ function Load() {
     ghost.Refresh_Direction(new_direction);
   }
 }
+
+function Popup(x, y, points) {
+  pop_ups.push({
+    x,
+    y,
+    text: `+${points}`,
+    alpha: 1,   
+    dy: -0.5      
+  });
+}
+
 
 
 
@@ -376,6 +388,23 @@ function display() {
   pellets.forEach((value) => {
     context.fillRect(value.x, value.y, value.width, value.height); // Remember: pellets dont have a separate image to draw out -> using base rectangle form filled with white -> fillRect, fillStyle
   });
+
+  for (let i = pop_ups.length - 1; i >= 0; i--) {
+    const p = pop_ups[i];
+    context.globalAlpha = p.alpha;
+    context.fillStyle = "yellow";
+    context.font = "20px Arial";
+    context.fillText(p.text, p.x, p.y);
+    context.globalAlpha = 1;
+  
+    // animate
+    p.y += p.dy;
+    p.alpha -= 0.02;
+  
+    if (p.alpha <= 0) pop_ups.splice(i, 1); // remove when faded
+  }
+
+
 }
 
 //controls function
@@ -388,6 +417,7 @@ function Controls() {
       chased = true;
       Frightened();
       Chase();
+      Popup(pacman.x,pacman.y, 200);
       break;
     }
   }
@@ -688,6 +718,7 @@ function Chase() {
         Ghost_Eat();
         ghost.x = ghostBox.x;
         ghost.y = ghostBox.y;
+        Popup(pacman.x,pacman.y, 100);
         score += 100;
       }
     }
