@@ -1,196 +1,514 @@
-*{
-    margin: 0%;
-    padding: 0%;
+/* Globális beállítások */
+:root {
+    --primary-color: #007bff; /* Kék */
+    --secondary-color: #6c757d; /* Szürke */
+    --background-color: #f8f9fa; /* Világosszürke háttér */
+    --dark-background: #343a40; /* Sötét háttér */
+    --light-text: #ffffff; /* Fehér szöveg */
+    --dark-text: #212529; /* Sötét szöveg */
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
 }
 
-header{
-    display: grid;
-    grid-template-columns: 4fr 4fr 2fr;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 0.5px black solid;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Fontos a reszponzivitáshoz */
+    font-family: sans-serif;
 }
 
-.navbar{
+body {
+    background-color: var(--background-color);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark-text);
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Header & Navigáció --- */
+header {
+    display: flex; /* Flexbox a precízebb igazításhoz */
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--light-text);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#logo {
+    width: 40px; /* Példa méret */
+    height: 40px;
+    background-color: var(--primary-color); /* Helyőrző szín */
+    border-radius: var(--border-radius);
+}
+
+.navbar {
+    display: flex;
+    gap: 25px;
+}
+
+.navbar a {
+    font-weight: bold;
+    padding: 5px 0;
+    position: relative;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width var(--transition-speed) ease-in-out;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+#stuff {
     display: flex;
     gap: 15px;
-    float: right;
 }
 
-#stuff{
-    display: flex;
-    gap: 10px;
-    float: right;
-}
-
-#sigin{
-    background-color: rgba(1, 1, 1, 0,4);
-    padding: 5px;
-    border: 0.5px black solid;
-    border-radius: 5px;
-}
-
-#register{
-    background-color: rgba(0, 0, 0, 0,4);
-    padding: 5px;
-    border: 0.5px black solid;
-    border-radius: 5px;
-}
-
-.show{
-    padding-top: 15vh;
-    padding-bottom: 15vh;
+#sigin a,
+#register a {
+    display: block;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    font-weight: bold;
     text-align: center;
-    border-bottom: 0.5px solid black;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
-main{
-    padding-left: 30px;
-    padding-right: 30px;
+#sigin {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
 }
 
-.slide1{
+#sigin a {
+    color: var(--primary-color);
+}
+
+#sigin:hover {
+    background-color: var(--primary-color);
+}
+
+#sigin:hover a {
+    color: var(--light-text);
+}
+
+#register {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+#register a {
+    color: var(--light-text);
+}
+
+#register:hover {
+    background-color: #0056b3; /* Sötétebb kék hover */
+}
+
+/* --- Hős szekció (Showcase) --- */
+.show {
+    padding: 10vh 30px;
+    text-align: center;
+    background-color: var(--dark-background);
+    color: var(--light-text);
+    border-bottom: none;
+    box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.show h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.show h2 {
+    font-size: 1.5em;
+    color: var(--secondary-color);
+}
+
+/* --- Fő tartalom és Intro szekció --- */
+main {
+    padding: 30px 50px;
+}
+
+#intro {
+    margin-bottom: 40px;
+}
+
+.slide1,
+.slide2 {
     display: grid;
-    grid-template-columns: 4fr 8fr;
-    gap: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    height: 300px;
+    grid-template-columns: 1fr 2fr; /* Jobban osztott arány */
+    gap: 40px;
+    margin: 40px 0;
+    min-height: 300px; 
+    align-items: center;
+    background-color: var(--light-text);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 20px;
+    transition: transform 0.4s ease;
 }
 
-.slide2{
-    display: grid;
-    grid-template-columns: 8fr 4fr;
-    gap: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    height: 300px;
+.slide2 {
+    grid-template-columns: 2fr 1fr;
 }
 
-.introbox{
-    border: black solid 0.5px;
+.slide1:hover, .slide2:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+.slide1 img,
+.slide2 img {
+    width: 100%;
     height: 100%;
-    padding: 10px;
-    text-align: justify;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    max-height: 260px; 
 }
 
-.product-cards{
-    padding-left: 50px;
-    padding-right: 50px;
+.introbox {
+    border: none;
+    padding: 0;
+    height: auto;
+}
+
+.introbox h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.introbox p {
+    font-size: 1em;
+    color: var(--dark-text);
+}
+
+
+/* --- Termékkártyák szekció --- */
+.product-cards {
+    padding: 0; 
+}
+
+.section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 2em;
+    color: var(--dark-text);
+    border-bottom: 3px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
 }
 
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 20px;
-    margin-bottom: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Reszponzív oszlopok! */
+    gap: 30px;
+    margin-bottom: 20px;
 }
 
 .card {
-    background-color: #fff;
+    background-color: var(--light-text);
     border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-speed);
+    overflow: hidden;
 }
 
+.card:hover {
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-5px);
+}
+
+/* Helyőrző kártyák (eGift Cards) */
 .card-placeholder {
     height: 180px; 
-    background-color: #e0e0e0; 
-    border: none;
+    background-color: #e9ecef; 
+    border: 1px dashed var(--secondary-color);
     position: relative;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .card-placeholder::before,
 .card-placeholder::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80px; 
-    height: 1px;
-    background: #c0c0c0; 
+    content: 'KÁRTYA';
+    position: static; 
+    transform: none;
+    background: none;
+    opacity: 0.5;
 }
 
-.card-placeholder::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.card-placeholder::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-}
-
+/* Játékkártyák */
 .game-card {
     padding: 0;
     border: none;
-    background-color: transparent;
+    background-color: var(--light-text);
 }
 
 .image-placeholder {
     width: 100%;
-    height: 160px; 
-    background-color: #e0e0e0;
-    margin-bottom: 5px;
+    height: 180px; 
+    background-color: #ced4da;
+    margin-bottom: 10px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
 .image-placeholder::before,
 .image-placeholder::after {
-    content: '';
+    content: 'JÁTÉK KÉP';
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 60px; 
-    height: 1px;
-    background: #c0c0c0;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    background: none;
+    color: #495057;
+    font-size: 0.9em;
+    opacity: 0.7;
 }
 
-.image-placeholder::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.image-placeholder::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
+/* Egyedi hover effekt a game-card-ra: price kiemelés */
+.game-card:hover .price {
+    color: #dc3545; /* Piros ár a hoveren */
+    transform: scale(1.1);
+    display: inline-block;
 }
 
 .game-card .title {
-    font-size: 1em;
-    font-weight: bold;
+    padding: 0 10px;
+    font-size: 1.1em;
     margin: 5px 0 0 0;
-    color: #333;
 }
 
 .game-card .price {
-    font-size: 1em;
-    font-weight: bold;
-    color: #333;
-    margin: 2px 0;
+    padding: 0 10px;
+    font-size: 1.2em;
+    color: var(--primary-color);
+    margin: 5px 0;
+    transition: transform var(--transition-speed), color var(--transition-speed);
 }
 
 .game-card .body-text {
+    padding: 0 10px 10px 10px;
+    font-size: 0.85em;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+
+/* --- Műfaj szekció --- */
+.genre-section {
+    text-align: center;
+}
+
+.genre-grid {
+    /* Módosítva 4 oszlopra, ahogy kérted */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px; 
+    margin-bottom: 20px;
+}
+
+.genre-card {
+    text-align: center;
+    padding: 20px 10px;
+    border: 1px solid #ddd;
+    box-shadow: var(--card-shadow);
+    cursor: pointer;
+    background-color: var(--light-text);
+    transition: all var(--transition-speed);
+}
+
+.genre-card:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-5px);
+}
+
+.genre-card:hover .icon-placeholder {
+    color: var(--light-text);
+}
+
+.genre-card:hover .number {
+    color: var(--light-text);
+}
+
+.icon-placeholder {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    transition: color var(--transition-speed);
+}
+
+.genre-card .number {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    transition: color var(--transition-speed);
+}
+
+.genre-card .body-text {
     font-size: 0.9em;
-    color: #666;
-    margin: 2px 0 0 0;
+    font-weight: bold;
 }
 
 /* "Show all" link stílus */
 .show-all {
     display: block;
     text-align: center;
-    margin-top: 15px;
-    color: #666; 
-    text-decoration: none;
-    font-size: 0.9em;
+    margin-top: 25px;
+    color: var(--primary-color); 
+    text-decoration: underline;
+    font-size: 1.1em;
     padding: 10px 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #dee2e6;
+    transition: color var(--transition-speed);
 }
 
-footer{
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-bottom: 50px;
+.centered-show-all {
+    width: 100%;
+    border-top: none;
+    margin-bottom: 50px;
+}
+
+.show-all:hover {
+    color: #0056b3;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 20px 0;
+    background-color: var(--dark-background);
+    color: var(--secondary-color);
     text-align: center;
-    border-top: 0.5px black solid;
-    border-bottom: 0.5px black solid;
+    border-top: none;
+    font-size: 0.9em;
+}
+
+/* --- Média lekérdezések (Reszponzivitás) --- */
+
+/* Kisebb asztali gépek és nagyobb tabletek */
+@media (max-width: 1200px) {
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+/* Tabletek */
+@media (max-width: 992px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    .navbar {
+        gap: 15px;
+    }
+
+    main {
+        padding: 20px 20px;
+    }
+
+    .slide1,
+    .slide2 {
+        grid-template-columns: 1fr; /* Egy oszlop a slide-oknál */
+        height: auto;
+        margin: 20px 0;
+    }
+
+    .slide2 img {
+        order: -1; /* Kép felülre kerül a slide2-ben is */
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+    }
+
+    /* Műfaj grid: 3 kártya soronként tableten */
+    .genre-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Mobiltelefonok */
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap; 
+        justify-content: center;
+        text-align: center;
+    }
+
+    .navbar {
+        width: 100%;
+        justify-content: center;
+        margin: 10px 0;
+        gap: 10px;
+        order: 2; 
+    }
+
+    #stuff {
+        width: 100%;
+        justify-content: space-around;
+        order: 3;
+        margin-top: 10px;
+    }
+
+    #logo {
+        margin-bottom: 10px;
+        order: 1;
+    }
+
+    .show h1 {
+        font-size: 2.5em;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .genre-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px;
+    }
 }
