@@ -211,7 +211,7 @@ const map = [
   [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1],
   [1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1],
-  [0, 0, 0, 0, 1, 2, 2, 1, 2, 2, 2, 1, 9, 9, 9, 9, 1, 2, 2, 2, 1, 2, 2, 1, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 2, 2, 1, 2, 2, 2, 1, 9, 9, 9, 9, 1, 2, 2, 2, 1, 2, 2, 0, 0, 0, 0, 0],
   [1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 3, 6, 5, 4, 1, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1],
   [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
   [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1],
@@ -468,6 +468,8 @@ function Controls() {
   pacman.x += pacman.VelocityX;
   pacman.y += pacman.VelocityY;
 
+  Edges(pacman);
+
   //if pac man hits a wall, collision happen, so movement to that direction wont happen
   let collision = false;
   for (let wall of walls.values()) {
@@ -537,6 +539,7 @@ function Controls() {
 
     ghost.x += ghost.VelocityX;
     ghost.y += ghost.VelocityY;
+    Edges(ghost);
 
     //if a ghost collides with wall, steps back
     let hitWall = false;
@@ -816,6 +819,16 @@ function Unfreeze() {
   // Restore movement by recalculating velocity based on their last direction
   for (let ghost of ghosts.values()) {
       ghost.Velocity_Refresh(); 
+  }
+}
+
+function Edges(entity){
+  if (entity.x + entity.width < 0) {
+    entity.x = canva_width - entity.width;
+  }
+
+  else if (entity.x > canva_width) {
+    entity.x = 0;
   }
 }
 
