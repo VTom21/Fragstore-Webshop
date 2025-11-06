@@ -21,6 +21,7 @@ let score_multiplier = 10;
 let run_state = true; //boolean to check if game is running
 let hearts = document.querySelector(".hearts");
 let chased = false;
+let freezed = false;
 let chaseTimeout = null;
 let chaseInterval = null;
 let pop_ups = [];
@@ -42,6 +43,7 @@ const TILE_PINK_GHOST = 6;
 const PELLET = 2;
 const CHERRY = 8;
 const GHOST_GATE = 9;
+const FREEZ_ORB = 10;
 
 // UI variables
 
@@ -58,7 +60,7 @@ let vulnerability_period = 1000; // 1000 milliseconds = 1 second
 
 let blue_ghost_img, red_ghost_img, orange_ghost_img, pink_ghost_img;
 let pacman_down_img, pacman_up_img, pacman_left_img, pacman_right_img;
-let wall_img, cherry_img;
+let wall_img, cherry_img, freez_img;
 
 let scared_ghost_img;
 
@@ -73,6 +75,7 @@ const image_paths = [
   "assets/pacman/pacmanRight.png",
   "assets/wall.png",
   "custom_assets/foods/strawberry.png",
+  "custom_assets/foods/orange.png"
 ];
 
 //Preload every images here from the array above
@@ -182,6 +185,7 @@ function load_images() {
   pacman_right_img = images[7];
   wall_img = images[8];
   cherry_img = images[9];
+  freez_img = images[10];
 
   scared_ghost_img = new Image();
   scared_ghost_img.src = "assets/ghosts/scaredGhost.png";
@@ -209,7 +213,7 @@ const map = [
   [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
   [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-  [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 10, 1, 1, 1],
   [1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1],
   [1, 8, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 8, 1],
   [1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1],
@@ -226,6 +230,7 @@ const ghosts = new Set();
 const cherries = new Set();
 const pellets = new Set();
 const gates = new Set();
+const freezes = new Set();
 let pacman;
 
 // Loading the map
@@ -237,6 +242,7 @@ function load_map() {
   cherries.clear();
   pellets.clear();
   gates.clear();
+  freezes.clear();
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < columns; col++) {
@@ -315,6 +321,10 @@ function load_map() {
           const cherry = new Generate(cherry_img, x, y, tile_size, tile_size);
           cherries.add(cherry);
           break;
+        case FREEZ_ORB:
+          const freez = new  Generate(freez_img, x, y, tile_size, tile_size);
+          freezes.add(freez);
+          break;
       }
     }
   }
@@ -384,6 +394,10 @@ function display() {
     context.drawImage(value.img, value.x, value.y, value.width, value.height);
   });
 
+  freezes.forEach((value) => {
+    context.drawImage(value.img, value.x, value.y, value.width, value.height);
+  });
+
   context.fillStyle = "white";
   pellets.forEach((value) => {
     context.fillRect(value.x, value.y, value.width, value.height); // Remember: pellets dont have a separate image to draw out -> using base rectangle form filled with white -> fillRect, fillStyle
@@ -419,6 +433,14 @@ function Controls() {
       Chase();
       Popup(pacman.x,pacman.y, 200);
       break;
+    }
+  }
+
+  for (let freez of freezes.values()) {
+    if(Collision(pacman, freez)){
+      freezes.delete(freez);
+      freezed = true;
+      Freezed();
     }
   }
 
@@ -758,6 +780,13 @@ function reset_hearts() {
         heart.src = "../pacman/assets/pacman/pacmanRight.png";
         heart.id= `heart${i}`;
         hearts.appendChild(heart);
+    }
+}
+
+function Freezed() {
+    for (let ghost of ghost.values()) {
+      ghost.VelocityX = null;
+      ghost.VelocityY = null;
     }
 }
 
