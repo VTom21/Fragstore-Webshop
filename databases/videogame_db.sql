@@ -22,7 +22,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+CREATE database if not exists videogame_db;
+Use videogame_db;
 
 
 CREATE TABLE `genre` (
