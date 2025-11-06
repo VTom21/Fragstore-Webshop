@@ -45,6 +45,20 @@ body {
     background-color: var(--black-regular);
 }
 
+.gameoverbox{
+    display: none;
+    width: 25vw;
+    text-align: center;
+    align-items: center;
+    padding-top: 13vh;
+    padding-bottom: 13vh;
+    top: 35vh;
+    left: 37.5vw;
+    background-color: #212122;
+    color: white;
+    position: absolute;
+}
+
 .content {
     margin-top: 40px;
 }

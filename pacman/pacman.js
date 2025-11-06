@@ -51,6 +51,7 @@ const FREEZE_ORB = 10;
 const scoreUI = document.querySelector(".score_value");
 const lifeUI = document.querySelector(".life_value");
 const levelUI = document.querySelector(".level_value");
+const gameoverUI = document.querySelector(".gameoverbox");
 
 //Invulnerability of Pac man after being hit once by a ghost -> by default pac man is vulnerable
 
@@ -526,8 +527,8 @@ function Controls() {
       hearts.removeChild(hearts.lastElementChild);
 
       if (lives == 0) {
-        window.alert("Game Over!");
-        window.location.reload();
+        gameoverUI.style.display = "inline";
+        setInterval(window.location.reload(),5000)  
       }
       Reset();
     }
