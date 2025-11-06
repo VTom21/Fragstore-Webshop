@@ -26,6 +26,7 @@ let chaseTimeout = null;
 let chaseInterval = null;
 let pop_ups = [];
 let freezeTimeout = null;
+const gameoverUI = document.querySelector(".gameoverbox");
 
 const ghostBox = {
   x: 15 * tile_size,
@@ -358,6 +359,9 @@ function Continue() {
 
 //we reset most basic values: velocities, new ghost directions at start, invulnerability
 function Reset() {
+  setTimeout(() => {
+    gameoverUI.style.display = "none";
+  }, 3000);
   pacman.reset();
   pacman.VelocityX = 0;
   pacman.VelocityY = 0;
@@ -527,7 +531,6 @@ function Controls() {
 
       if (lives == 0) {
   // show game over screen
-  const gameoverUI = document.querySelector(".gameoverbox");
   gameoverUI.style.display = "block";
 
   // stop gameplay immediately
@@ -706,8 +709,9 @@ function Controls() {
   }
   pellets.delete(pelletEaten); // removes the pellet from the map
 
-  if (pellets.size === 0) {
-    window.alert("You have won!"); //if no pellets are left, you have won: lives, score reset, level increases
+  if (pellets.size === 0) { //if no pellets are left, you have won: lives, score reset, level increases
+    gameoverUI.style.display = "block"; 
+    gameoverUI.innerHTML = "You Win!";
     score_multiplier += 10;
     level++;
     levelUI.innerText = level;
