@@ -43,7 +43,7 @@ const TILE_PINK_GHOST = 6;
 const PELLET = 2;
 const CHERRY = 8;
 const GHOST_GATE = 9;
-const FREEZ_ORB = 10;
+const FREEZE_ORB = 10;
 
 // UI variables
 
@@ -60,7 +60,7 @@ let vulnerability_period = 1000; // 1000 milliseconds = 1 second
 
 let blue_ghost_img, red_ghost_img, orange_ghost_img, pink_ghost_img;
 let pacman_down_img, pacman_up_img, pacman_left_img, pacman_right_img;
-let wall_img, cherry_img, freez_img;
+let wall_img, cherry_img, freeze_img;
 
 let scared_ghost_img;
 
@@ -185,7 +185,7 @@ function load_images() {
   pacman_right_img = images[7];
   wall_img = images[8];
   cherry_img = images[9];
-  freez_img = images[10];
+  freeze_img = images[10];
 
   scared_ghost_img = new Image();
   scared_ghost_img.src = "assets/ghosts/scaredGhost.png";
@@ -321,8 +321,8 @@ function load_map() {
           const cherry = new Generate(cherry_img, x, y, tile_size, tile_size);
           cherries.add(cherry);
           break;
-        case FREEZ_ORB:
-          const freez = new  Generate(freez_img, x, y, tile_size, tile_size);
+        case FREEZE_ORB:
+          const freez = new  Generate(freeze_img, x, y, tile_size, tile_size);
           freezes.add(freez);
           break;
       }
@@ -436,11 +436,11 @@ function Controls() {
     }
   }
 
-  for (let freez of freezes.values()) {
-    if(Collision(pacman, freez)){
-      freezes.delete(freez);
+  for (let freeze of freezes.values()) {
+    if(Collision(pacman, freeze)){
+      freezes.delete(freeze);
       freezed = true;
-      Freezed();
+      Freeze();
     }
   }
 
@@ -783,10 +783,10 @@ function reset_hearts() {
     }
 }
 
-function Freezed() {
-    for (let ghost of ghost.values()) {
-      ghost.VelocityX = null;
-      ghost.VelocityY = null;
+function Freeze() {
+    for (let ghost of ghosts.values()) {
+      ghost.VelocityX = 0;
+      ghost.VelocityY = 0;
     }
 }
 
