@@ -25,6 +25,7 @@ let freezed = false;
 let chaseTimeout = null;
 let chaseInterval = null;
 let pop_ups = [];
+let freezeTimeout = null;
 
 const ghostBox = {
   x: 15 * tile_size,
@@ -528,6 +529,9 @@ function Controls() {
     }
 
     //makes ghosts move
+    if (freezed) {
+      continue; 
+  }
 
     ghost.x += ghost.VelocityX;
     ghost.y += ghost.VelocityY;
@@ -783,11 +787,34 @@ function reset_hearts() {
     }
 }
 
-function Freeze() {
-    for (let ghost of ghosts.values()) {
+// Replace your existing simple Freeze() function with this block
+
+function Freeze(duration = 5000) { 
+  // Clear any previous timeout to ensure a clean 5-second freeze
+  if (freezeTimeout) clearTimeout(freezeTimeout);
+
+  freezed = true;
+  
+  // Set all ghost velocities to 0 to stop movement immediately
+  for (let ghost of ghosts.values()) { // Corrected from 'ghost.values()'
       ghost.VelocityX = 0;
       ghost.VelocityY = 0;
-    }
+  }
+  
+  // Set a timeout to call Unfreeze after 5 seconds
+  freezeTimeout = setTimeout(() => {
+      Unfreeze();
+      freezeTimeout = null;
+  }, duration);
+}
+
+function Unfreeze() {
+  freezed = false;
+
+  // Restore movement by recalculating velocity based on their last direction
+  for (let ghost of ghosts.values()) {
+      ghost.Velocity_Refresh(); 
+  }
 }
 
 
