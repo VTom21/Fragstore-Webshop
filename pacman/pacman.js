@@ -61,7 +61,7 @@ let vulnerability_period = 1000; // 1000 milliseconds = 1 second
 
 let blue_ghost_img, red_ghost_img, orange_ghost_img, pink_ghost_img;
 let pacman_down_img, pacman_up_img, pacman_left_img, pacman_right_img;
-let wall_img, cherry_img, freeze_img;
+let wall_img, cherry_img, freeze_img, frozen_orb_img;
 
 let scared_ghost_img;
 
@@ -76,7 +76,8 @@ const image_paths = [
   "assets/pacman/pacmanRight.png",
   "assets/wall.png",
   "custom_assets/foods/strawberry.png",
-  "custom_assets/foods/orange.png"
+  "custom_assets/foods/orange.png",
+  "custom_assets/foods/frozen_orb.png"
 ];
 
 //Preload every images here from the array above
@@ -187,6 +188,7 @@ function load_images() {
   wall_img = images[8];
   cherry_img = images[9];
   freeze_img = images[10];
+  frozen_orb_img = images[11];
 
   scared_ghost_img = new Image();
   scared_ghost_img.src = "assets/ghosts/scaredGhost.png";
@@ -199,7 +201,7 @@ const map = [
   [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
   [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1],
   [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 10, 1],
   [1, 2, 1, 1, 1, 2, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1],
   [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1],
@@ -214,7 +216,7 @@ const map = [
   [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
   [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-  [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 10, 1, 1, 1],
+  [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1],
   [1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1],
   [1, 8, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 8, 1],
   [1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1],
@@ -323,7 +325,7 @@ function load_map() {
           cherries.add(cherry);
           break;
         case FREEZE_ORB:
-          const freez = new  Generate(freeze_img, x, y, tile_size, tile_size);
+          const freez = new  Generate(frozen_orb_img, x, y, tile_size, tile_size);
           freezes.add(freez);
           break;
       }
