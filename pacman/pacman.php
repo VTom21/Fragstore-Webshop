@@ -35,12 +35,12 @@
 
     <canvas class="game_canvas">
     </canvas>
+    <div class="gameoverbox">
+            <h1>Game over!!!</h1>
+        </div>
     <div class="content">
         <p id="title">Pac Man</p>
         <h2 class="start_text">Press <span id="f">F</span> to start</h2>
-        <div class="gameoverbox">
-            <h1>Game over!!!</h1>
-        </div>
     </div>
   
 </body>

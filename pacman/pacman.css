@@ -52,13 +52,19 @@ body {
     align-items: center;
     padding-top: 13vh;
     padding-bottom: 13vh;
-    top: 35vh;
+    top: 30vh;
     left: 37.5vw;
-    background-color: #212122;
-    color: white;
+    color: #FFD700;
     position: absolute;
+    z-index: 999;
+    
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    text-shadow: 
+        3px 3px 0 #FF0000,
+        -2px -2px 0 #00FFFF;
+    letter-spacing: 2px;
+    animation: gameOverPulse 1s ease-in-out infinite alternate;
 }
-
 .content {
     margin-top: 40px;
 }

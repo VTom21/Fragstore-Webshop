@@ -12,7 +12,7 @@ const canva_height = rows * tile_size;
 let MS = 40;
 let context; // Possible values => 2d, webgl, webgl2 (3d), webgpu
 let score = 0;
-let lives = 4;
+let lives = 1;
 let level = 1;
 let pacman_speed = 8;
 let ghost_speed_multiplier = 8;
@@ -527,8 +527,18 @@ function Controls() {
       hearts.removeChild(hearts.lastElementChild);
 
       if (lives == 0) {
-        gameoverUI.style.display = "inline";
-        setInterval(window.location.reload(),5000)  
+  // show game over screen
+  const gameoverUI = document.querySelector(".gameoverbox");
+  gameoverUI.style.display = "block";
+
+  // stop gameplay immediately
+  isGameRunning = false;
+  run_state = false;
+
+  // wait 3 seconds, then reload
+  setTimeout(() => {
+    window.location.reload();
+  }, 3000);
       }
       Reset();
     }
