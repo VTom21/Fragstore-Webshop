@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./assets/ghosts/redGhost.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <link rel=" stylesheet" href="pacman.css">
     <title>Pac Man</title>
 </head>
@@ -16,7 +17,7 @@
         </div>
 
         <div class="stat_item">
-            <h1>Life: <span class="life_value">4</span></h1>
+            <h1>Life: <span class="life_value">3</span></h1>
         </div>
 
         <div class="stat_item">
@@ -27,7 +28,6 @@
             <img id="heart1" src="../pacman/assets/pacman/pacmanRight.png" alt="">
             <img id="heart2"src="../pacman/assets/pacman/pacmanRight.png" alt="">
             <img id="heart3"src="../pacman/assets/pacman/pacmanRight.png" alt="">
-            <img id="heart4"src="../pacman/assets/pacman/pacmanRight.png" alt="">
         </div>
     </div>
 
@@ -36,15 +36,37 @@
     <canvas class="game_canvas">
     </canvas>
     <div class="gameoverbox">
-            <h1>Game over!!!</h1>
+            <h1 class="display_value"></h1>
         </div>
     <div class="content">
         <p id="title">Pac Man</p>
         <h2 class="start_text">Press <span id="f">F</span> to start</h2>
+        <div class="flex">
+        <h4 id="high_score"></h4>
+        <h4 id="leaderboard_ui">Press <span id="x">X</span> for Leaderboard</h4>
+        </div>
+
+        <!-- Leaderboard Modal -->
+<div id="leaderboard_modal" class="modal">
+  <div class="modal_content">
+    <span id="close_modal" class="close_btn">&times;</span>
+    <h2>🏆 Leaderboard</h2>
+    <ul id="leaderboard_list">
+        <?php include 'leaderboard.php'; ?>
+    </ul>
+  </div>
+</div>
     </div>
+    
+<form id="scoreForm" action="submit.php" method="POST" style="display:none;">
+  <input type="hidden" name="name" id="playerName" />
+  <input type="hidden" name="score" id="playerScore" />
+</form>
+
   
 </body>
 
 <script src="pacman.js" type="module"></script>
+<script type="module" src="leaderboard.js"></script>
 
 </html>

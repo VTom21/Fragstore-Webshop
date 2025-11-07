@@ -1,6 +1,6 @@
 //importing all necessary js files
 
-import { Munch, Intro, Death, Fruit_Munch, Ghost_Eat,Frightened,Stop_Frightened } from "./sfx.js";
+import { Munch, Intro, Death, Fruit_Munch, Ghost_Eat, Frightened, Stop_Frightened } from "./sfx.js";
 
 //base variables
 let canva = document.querySelector(".game_canvas");
@@ -12,7 +12,7 @@ const canva_height = rows * tile_size;
 let MS = 40;
 let context; // Possible values => 2d, webgl, webgl2 (3d), webgpu
 let score = 0;
-let lives = 4;
+let lives = 3;
 let level = 1;
 let pacman_speed = 8;
 let ghost_speed_multiplier = 8;
@@ -26,7 +26,12 @@ let chaseTimeout = null;
 let chaseInterval = null;
 let pop_ups = [];
 let freezeTimeout = null;
+let high_score = localStorage.getItem("high_score") || 0;
+high_score = parseInt(high_score);
 const gameoverUI = document.querySelector(".gameoverbox");
+const display_value = document.querySelector(".display_value");
+const high_score_ui = document.getElementById("high_score");
+high_score_ui.innerText = `High Score: ${high_score}`;
 
 const ghostBox = {
   x: 15 * tile_size,
@@ -162,8 +167,8 @@ function Popup(x, y, points) {
     x,
     y,
     text: `+${points}`,
-    alpha: 1,   
-    dy: -0.5      
+    alpha: 1,
+    dy: -0.5
   });
 }
 
@@ -261,10 +266,10 @@ function load_map() {
         case TILE_EMPTY:
           break;
         case GHOST_GATE:
-            const gate = new Generate(null, x, y + tile_size / 2, tile_size, 4); 
-            gate.color = "rgb(50, 50, 255)"; 
-            gates.add(gate); 
-            break;
+          const gate = new Generate(null, x, y + tile_size / 2, tile_size, 4);
+          gate.color = "rgb(50, 50, 255)";
+          gates.add(gate);
+          break;
 
         case WALL_TILE:
           const tile_ = new Generate(wall_img, x, y, tile_size, tile_size);
@@ -326,7 +331,7 @@ function load_map() {
           cherries.add(cherry);
           break;
         case FREEZE_ORB:
-          const freez = new  Generate(frozen_orb_img, x, y, tile_size, tile_size);
+          const freez = new Generate(frozen_orb_img, x, y, tile_size, tile_size);
           freezes.add(freez);
           break;
       }
@@ -361,6 +366,7 @@ function Continue() {
 function Reset() {
   setTimeout(() => {
     gameoverUI.style.display = "none";
+    display_value.innerHTML = "";
   }, 3000);
   pacman.reset();
   pacman.VelocityX = 0;
@@ -417,11 +423,11 @@ function display() {
     context.font = "20px Arial";
     context.fillText(p.text, p.x, p.y);
     context.globalAlpha = 1;
-  
+
     // animate
     p.y += p.dy;
     p.alpha -= 0.02;
-  
+
     if (p.alpha <= 0) pop_ups.splice(i, 1); // remove when faded
   }
 
@@ -438,13 +444,13 @@ function Controls() {
       chased = true;
       Frightened();
       Chase();
-      Popup(pacman.x,pacman.y, 200);
+      Popup(pacman.x, pacman.y, 200);
       break;
     }
   }
 
   for (let freeze of freezes.values()) {
-    if(Collision(pacman, freeze)){
+    if (Collision(pacman, freeze)) {
       freezes.delete(freeze);
       freezed = true;
       Freeze();
@@ -458,6 +464,7 @@ function Controls() {
     reset_game_stats(true); // fully reset lives, score, level
     gameOver = false;
     update();
+
   }
 
   // Here we store the current direction of pac man, alongside its positions
@@ -530,25 +537,42 @@ function Controls() {
       hearts.removeChild(hearts.lastElementChild);
 
       if (lives == 0) {
-  // show game over screen
-  gameoverUI.style.display = "block";
+        // show game over screen
+        gameoverUI.style.display = "block";
+        display_value.innerHTML = "Game Over!!!";
 
-  // stop gameplay immediately
-  isGameRunning = false;
-  run_state = false;
+        if (score > high_score) {
+          high_score = score;
+          localStorage.setItem("high_score", high_score);
+          high_score_ui.innerText = `High Score: ${high_score}`;
+        }
 
-  // wait 3 seconds, then reload
-  setTimeout(() => {
-    window.location.reload();
-  }, 3000);
+
+        // stop gameplay immediately
+        isGameRunning = false;
+        run_state = false;
+
+        // wait 3 seconds, then reload
+        const playerName = prompt("Enter your name:");
+        if (playerName) {
+          document.getElementById("playerName").value = playerName;
+          document.getElementById("playerScore").value = score;
+          document.getElementById("scoreForm").submit();
+        }
+
+
+        // wait 3 seconds, then reload
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
       }
       Reset();
     }
 
     //makes ghosts move
     if (freezed) {
-      continue; 
-  }
+      continue;
+    }
 
     ghost.x += ghost.VelocityX;
     ghost.y += ghost.VelocityY;
@@ -581,12 +605,12 @@ function Controls() {
         targetY = ghost.y - (pacman.y - ghost.y) * flee_multiplier;
 
         for (let wall of walls) {
-            if (Collision({x: targetX, y: targetY, width: ghost.width, height: ghost.height}, wall)) {
+          if (Collision({ x: targetX, y: targetY, width: ghost.width, height: ghost.height }, wall)) {
 
-                targetX = ghost.x + (ghost.x - pacman.x) * 0.5;
-                targetY = ghost.y + (ghost.y - pacman.y) * 0.5;
+            targetX = ghost.x + (ghost.x - pacman.x) * 0.5;
+            targetY = ghost.y + (ghost.y - pacman.y) * 0.5;
 
-            }
+          }
         }
       }
 
@@ -621,8 +645,8 @@ function Controls() {
           break;
 
         case blue_ghost_img: //Inky's (blue) job is the same as Blinky's
-            targetX = dx + pacman.x;  
-            targetY = dy + pacman.y;  
+          targetX = dx + pacman.x;
+          targetY = dy + pacman.y;
           break;
 
         case orange_ghost_img: //Clyde's (orange) job is to chase pac man if it's far away according to the ghost's radius (64px)
@@ -710,8 +734,8 @@ function Controls() {
   pellets.delete(pelletEaten); // removes the pellet from the map
 
   if (pellets.size === 0) { //if no pellets are left, you have won: lives, score reset, level increases
-    gameoverUI.style.display = "block"; 
-    gameoverUI.innerHTML = "You Win!";
+    gameoverUI.style.display = "block";
+    display_value.innerHTML = "You Win!";
     score_multiplier += 10;
     level++;
     levelUI.innerText = level;
@@ -763,7 +787,7 @@ function Chase() {
         Ghost_Eat();
         ghost.x = ghostBox.x;
         ghost.y = ghostBox.y;
-        Popup(pacman.x,pacman.y, 100);
+        Popup(pacman.x, pacman.y, 100);
         score += 100;
       }
     }
@@ -779,8 +803,17 @@ function Chase() {
   }, 17000);
 }
 
+function reset_high_score() {
+  localStorage.setItem("high_score", 0);
+  high_score = 0;
+  document.getElementById("high_score").innerText = "High Score: 0";
+}
+
+
+
+
 function reset_game_stats(fullReset = false) {
-  lives = 4;
+  lives = 3;
   lifeUI.innerText = lives;
   reset_hearts();
   Stop_Frightened();
@@ -796,34 +829,34 @@ function reset_game_stats(fullReset = false) {
 }
 
 function reset_hearts() {
-    hearts.innerHTML = ""; 
+  hearts.innerHTML = "";
 
-    for (let i = 0; i < lives; i++) { 
-        const heart = document.createElement("img");
-        heart.src = "../pacman/assets/pacman/pacmanRight.png";
-        heart.id= `heart${i}`;
-        hearts.appendChild(heart);
-    }
+  for (let i = 0; i < lives; i++) {
+    const heart = document.createElement("img");
+    heart.src = "../pacman/assets/pacman/pacmanRight.png";
+    heart.id = `heart${i}`;
+    hearts.appendChild(heart);
+  }
 }
 
 // Replace your existing simple Freeze() function with this block
 
-function Freeze(duration = 5000) { 
+function Freeze(duration = 5000) {
   // Clear any previous timeout to ensure a clean 5-second freeze
   if (freezeTimeout) clearTimeout(freezeTimeout);
 
   freezed = true;
-  
+
   // Set all ghost velocities to 0 to stop movement immediately
   for (let ghost of ghosts.values()) { // Corrected from 'ghost.values()'
-      ghost.VelocityX = 0;
-      ghost.VelocityY = 0;
+    ghost.VelocityX = 0;
+    ghost.VelocityY = 0;
   }
-  
+
   // Set a timeout to call Unfreeze after 5 seconds
   freezeTimeout = setTimeout(() => {
-      Unfreeze();
-      freezeTimeout = null;
+    Unfreeze();
+    freezeTimeout = null;
   }, duration);
 }
 
@@ -832,11 +865,11 @@ function Unfreeze() {
 
   // Restore movement by recalculating velocity based on their last direction
   for (let ghost of ghosts.values()) {
-      ghost.Velocity_Refresh(); 
+    ghost.Velocity_Refresh();
   }
 }
 
-function Edges(entity){
+function Edges(entity) {
   if (entity.x + entity.width < 0) {
     entity.x = canva_width - entity.width;
     entity.y = 448;

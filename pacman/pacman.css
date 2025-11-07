@@ -45,6 +45,275 @@ body {
     background-color: var(--black-regular);
 }
 
+#high_score,#leaderboard_ui{
+    color: var(--white-regular);
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin: 0px 0px;
+}
+
+#x,#high_score_value{
+    color: var(--yellow_regular);
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    animation: modalFadeIn 0.3s ease;
+  }
+  
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Modal box - enhanced with gradients and shadows */
+  .modal_content {
+    background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+    color: var(--white-regular, #fff);
+    padding: 30px;
+    border-radius: 16px;
+    width: 400px;
+    max-width: 80%;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(255, 204, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(255, 204, 0, 0.2);
+    animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  @keyframes modalSlideIn {
+    from {
+      transform: translateY(30px) scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .modal_content h2 {
+    margin-top: 0;
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffd700 0%, #ffaa00 50%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.3));
+  }
+  
+  /* Close button - modern circular design */
+  .close_btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    line-height: 1;
+  }
+  
+  .close_btn:hover {
+    color: #fff;
+    background: rgba(255, 68, 68, 0.2);
+    border-color: rgba(255, 68, 68, 0.5);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.4);
+  }
+  
+  /* Leaderboard list */
+  #leaderboard_list {
+    list-style: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    margin-top: 15px;
+    max-height: 400px;
+  }
+  
+  #leaderboard_list li {
+    margin: 10px 0;
+    padding: 14px 18px;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #leaderboard_list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(180deg, #ffd700, #ff6b35);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  #leaderboard_list li:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 204, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(255, 204, 0, 0.15);
+  }
+  
+  #leaderboard_list li:hover::before {
+    opacity: 1;
+  }
+  
+  /* Top 3 special effects */
+  #leaderboard_list li:nth-child(1) {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 215, 0, 0.03));
+    border-color: rgba(255, 215, 0, 0.4);
+    font-weight: 600;
+  }
+  
+  #leaderboard_list li:nth-child(2) {
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.12), rgba(192, 192, 192, 0.03));
+    border-color: rgba(192, 192, 192, 0.4);
+    font-weight: 600;
+  }
+  
+  #leaderboard_list li:nth-child(3) {
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.12), rgba(205, 127, 50, 0.03));
+    border-color: rgba(205, 127, 50, 0.4);
+    font-weight: 600;
+  }
+  
+  /* Enhanced scrollbar */
+  #leaderboard_list::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  #leaderboard_list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    margin: 8px 0;
+  }
+  
+  #leaderboard_list::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ffcc00, #ff6600);
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+  }
+  
+  #leaderboard_list::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ffee00, #ff3300);
+    box-shadow: 
+      inset 0 0 6px rgba(0, 0, 0, 0.3),
+      0 0 8px rgba(255, 204, 0, 0.5);
+  }
+  
+  /* Modal content scrollbar (if needed) */
+  .modal_content::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+  }
+  
+  .modal_content::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 10px;
+  }
+  
+  .modal_content::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #ffcc00, #ff6600);
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal_content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #ffee00, #ff3300);
+    box-shadow: 
+      inset 0 0 6px rgba(0, 0, 0, 0.3),
+      0 0 8px rgba(255, 204, 0, 0.5);
+  }
+  
+  /* Subtle glow effect on modal */
+  .modal_content::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 204, 0, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    .modal_content {
+      width: 90%;
+      padding: 25px 20px;
+    }
+  
+    .modal_content h2 {
+      font-size: 24px;
+    }
+  
+    #leaderboard_list li {
+      font-size: 16px;
+      padding: 12px 14px;
+    }
+  }
+  
+
+.flex{
+
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+    position: fixed;
+    bottom: 20px;
+}
+
 .gameoverbox{
     display: none;
     width: 25vw;
