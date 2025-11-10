@@ -33,6 +33,7 @@ const display_value = document.querySelector(".display_value");
 const high_score_ui = document.getElementById("high_score");
 high_score_ui.innerText = `High Score: ${high_score}`;
 
+
 const ghostBox = {
   x: 15 * tile_size,
   y: 15 * tile_size,
@@ -51,6 +52,12 @@ const PELLET = 2;
 const CHERRY = 8;
 const GHOST_GATE = 9;
 const FREEZE_ORB = 10;
+const STRAWBERRY = 11;
+const PORTAL = 12;
+const HEART = 13;
+
+const RANDOM_ORB = [FREEZE_ORB, STRAWBERRY, PORTAL, HEART];
+
 
 // UI variables
 
@@ -67,7 +74,7 @@ let vulnerability_period = 1000; // 1000 milliseconds = 1 second
 
 let blue_ghost_img, red_ghost_img, orange_ghost_img, pink_ghost_img;
 let pacman_down_img, pacman_up_img, pacman_left_img, pacman_right_img;
-let wall_img, cherry_img, freeze_img, frozen_orb_img;
+let wall_img, cherry_img,  frozen_orb_img, strawberry_img, portal_img, heart_img;
 
 let scared_ghost_img;
 
@@ -81,9 +88,11 @@ const image_paths = [
   "assets/pacman/pacmanLeft.png",
   "assets/pacman/pacmanRight.png",
   "assets/wall.png",
+  "assets/cherry.png",
+  "custom_assets/foods/frozen_orb.png",
   "custom_assets/foods/strawberry.png",
-  "custom_assets/foods/orange.png",
-  "custom_assets/foods/frozen_orb.png"
+  "custom_assets/foods/portal.png",
+  "custom_assets/foods/heart.png"
 ];
 
 //Preload every images here from the array above
@@ -193,8 +202,10 @@ function load_images() {
   pacman_right_img = images[7];
   wall_img = images[8];
   cherry_img = images[9];
-  freeze_img = images[10];
-  frozen_orb_img = images[11];
+  frozen_orb_img = images[10];
+  strawberry_img = images[11];
+  portal_img = images[12];
+  heart_img = images[13];
 
   scared_ghost_img = new Image();
   scared_ghost_img.src = "assets/ghosts/scaredGhost.png";
@@ -207,7 +218,7 @@ const map = [
   [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
   [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1],
   [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 10, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 10, 1], //(4,27)
   [1, 2, 1, 1, 1, 2, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1],
   [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1],
@@ -240,6 +251,9 @@ const cherries = new Set();
 const pellets = new Set();
 const gates = new Set();
 const freezes = new Set();
+const strawberries = new Set();
+const portals = new Set();
+const hearts_set = new Set();
 let pacman;
 
 // Loading the map
@@ -252,6 +266,9 @@ function load_map() {
   pellets.clear();
   gates.clear();
   freezes.clear();
+  strawberries.clear();
+  portals.clear();
+  hearts_set.clear();
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < columns; col++) {
@@ -259,6 +276,14 @@ function load_map() {
 
       let x = col * tile_size; // X coordinate => column value * tilesize => scalingX
       let y = row * tile_size; // Y coordinate => row value * tilesize => scalingY
+
+      if(row == 4 && col == 26){
+        map[row][col] = RANDOM_ORB[Math.floor(Math.random() * RANDOM_ORB.length)];
+      }
+
+      tile = map[row][col]; 
+      x = col * tile_size;
+      y = row * tile_size;
 
       //we the constant variables for conditioning, sets for storing and a generate class for generating blocks
 
@@ -323,18 +348,37 @@ function load_map() {
           );
           ghosts.add(pink_ghost);
           break;
+
         case TILE_PACMAN:
           pacman = new Generate(pacman_up_img, x, y, tile_size, tile_size);
           break;
+
         case CHERRY:
           const cherry = new Generate(cherry_img, x, y, tile_size, tile_size);
           cherries.add(cherry);
           break;
+
         case FREEZE_ORB:
           const freez = new Generate(frozen_orb_img, x, y, tile_size, tile_size);
           freezes.add(freez);
           break;
+
+        case STRAWBERRY:
+            const straw = new Generate(strawberry_img, x, y, tile_size, tile_size);
+            strawberries.add(straw);
+            break;
+
+        case PORTAL:
+            const portal = new Generate(portal_img, x, y, tile_size, tile_size);
+            portals.add(portal);
+            break;
+
+        case HEART:
+            const heart = new Generate(heart_img, x, y, tile_size, tile_size);
+            hearts_set.add(heart);
+            break;
       }
+      
     }
   }
 }
@@ -411,6 +455,19 @@ function display() {
     context.drawImage(value.img, value.x, value.y, value.width, value.height);
   });
 
+  strawberries.forEach((value) => {
+    context.drawImage(value.img, value.x, value.y, value.width, value.height);
+  });
+
+  portals.forEach((value) => {
+    context.drawImage(value.img, value.x, value.y, value.width, value.height);
+  });
+
+  hearts_set.forEach((value) => {
+    context.drawImage(value.img, value.x, value.y, value.width, value.height);
+  });
+  
+
   context.fillStyle = "white";
   pellets.forEach((value) => {
     context.fillRect(value.x, value.y, value.width, value.height); // Remember: pellets dont have a separate image to draw out -> using base rectangle form filled with white -> fillRect, fillStyle
@@ -454,6 +511,15 @@ function Controls() {
       freezes.delete(freeze);
       freezed = true;
       Freeze();
+    }
+  }
+
+  for (let strawberry of strawberries.values()) {
+    if (Collision(pacman, strawberry)) {
+      strawberries.delete(strawberry);
+      score += 500;
+      Popup(pacman.x, pacman.y, 500);
+      scoreUI.innerHTML = score;
     }
   }
 
