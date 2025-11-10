@@ -1,27 +1,51 @@
 [
     {
       "name": "Pellet Collector",
+      "id": "one",
       "description": "Eat 5000 pellets",
       "value": 5000,
-      "img": "./custom_assets/foods/pellet.png"
+      "img": "./custom_assets/foods/pellet.png",
+      "obtained": false
     },
     {
       "name": "Ghost Hunter",
-      "description": "Eat 100 ghosts",
-      "value": 100,
-      "img": "./assets/ghosts/scaredGhost.png"
+      "id": "two",
+      "description": "Catch 25 ghosts",
+      "value": 25,
+      "img": "./assets/ghosts/scaredGhost.png",
+      "obtained": false
     },
     {
       "name": "Fruit Lover",
-      "description": "Eat 50 fruits",
-      "value": 50,
-      "img": "./assets/cherry.png"
+      "id": "three",
+      "description": "Devour 50 fruits",
+      "value": 25,
+      "img": "./assets/cherry.png",
+      "obtained": false
     },
     {
-      "name": "Survivor",
-      "description": "Complete a level without losing a life",
-      "value": 1,
-      "img": "./assets/pacman/pacmanRight.png"
+    "name": "Pac-Man Legend",
+    "id": "four",
+    "description": "Reach 10,000 points",
+    "value": 10000,
+    "img": "./custom_assets/star.png",
+    "obtained": false
+    },
+    {
+      "name": "Pellet Monster",
+      "id": "five",
+      "description": "Eat 10000 pellets",
+      "value": 10000,
+      "img": "./custom_assets/foods/pellet2.png",
+      "obtained": false
+    },
+    {
+      "name": "Ghost Maniac",
+      "id": "six",
+      "description": "Catch 100 ghosts",
+      "value": 100,
+      "img": "./custom_assets/ghosts/brownGhost.png",
+      "obtained": false
     }
   ]
   

@@ -65,9 +65,9 @@
     <span id="close_achievement_modal" class="close_btn">&times;</span>
     <h2>🏅 Achievements</h2>
     <ul id="achievement_list">
-      <li ng-repeat="achievement in datas">
+      <li ng-repeat="achievement in datas"  class="{{achievement.id}}" ng-class="{'gold': achievement.obtained}">
         <img ng-src="{{achievement.img}}" alt="{{achievement.name}}" width="40" style="vertical-align: middle; margin-right: 10px;">
-        <strong>{{achievement.name}}</strong>{{achievement.description}}
+        <strong>{{achievement.name}}</strong> <p>{{achievement.description}}</p>
       </li>
     </ul>
   </div>

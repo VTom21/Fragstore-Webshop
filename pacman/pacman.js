@@ -19,13 +19,15 @@ let ghost_speed_multiplier = 8;
 let nextDirection = null;
 let score_multiplier = 10;
 
-let total_pellets = 0;
+let total_pellets = parseInt(localStorage.getItem("total_pellets") || 0);
+total_pellets = parseInt(total_pellets);
 
 
 let total_ghost = parseInt(localStorage.getItem("total_ghost") || 0);
 total_ghost = parseInt(total_ghost);
+
 let total_fruits = parseInt(localStorage.getItem("total_fruits") || 0);
-total_fruits =parseInt(total_fruits);
+total_fruits = parseInt(total_fruits);
 
 let run_state = true; //boolean to check if game is running
 let hearts = document.querySelector(".hearts");
@@ -647,6 +649,11 @@ function Controls() {
           high_score_ui.innerText = `High Score: ${high_score}`;
         }
 
+        if(total_level < 2){
+          localStorage.setItem("total_level", total_level);
+          total_level = 1;
+        }
+
 
         // stop gameplay immediately
         isGameRunning = false;
@@ -835,11 +842,13 @@ function Controls() {
   }
   pellets.delete(pelletEaten); // removes the pellet from the map
 
-  if (pellets.size === 0) { //if no pellets are left, you have won: lives, score reset, level increases
+  if (pellets.size === 300) { //if no pellets are left, you have won: lives, score reset, level increases
     gameoverUI.style.display = "block";
     display_value.innerHTML = "You Win!";
     score_multiplier += 10;
     level++;
+    total_level++;
+    localStorage.setItem("total_level", total_level);
     levelUI.innerText = level;
     load_map();
     reset_game_stats(false);
@@ -906,7 +915,7 @@ function Chase() {
   }, 17000);
 }
 
-function reset_high_score() {
+function reset_datas() {
   localStorage.setItem("high_score", 0);
   high_score = 0;
   document.getElementById("high_score").innerText = "High Score: 0";
@@ -919,9 +928,8 @@ function reset_high_score() {
 
   localStorage.setItem("total_fruits", 0);
   total_fruits = 0;
+
 }
-
-
 
 
 
