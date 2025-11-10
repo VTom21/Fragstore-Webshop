@@ -56,7 +56,7 @@ const STRAWBERRY = 11;
 const PORTAL = 12;
 const HEART = 13;
 
-const RANDOM_ORB = [HEART];
+const RANDOM_ORB = [PORTAL];
 
 
 // UI variables
@@ -530,6 +530,13 @@ function Controls() {
     }
   }
 
+  for (let portal of portals.values()) {
+    if (Collision(pacman, portal)) {
+      portals.delete(portal);
+      Warp();
+    }
+  }
+
   // if game is over, it calls the Update function, reloads the map and draws out everything onto the screen again
   if (gameOver) {
     load_map();
@@ -959,6 +966,20 @@ function heart_up(){
   lifeUI.innerHTML = lives;
   hearts.innerHTML += `<img src="../pacman/assets/pacman/pacmanRight.png" alt="">`;
   hearts.style.gridTemplateColumns = `repeat(${lives}, 1fr)`;
+}
+
+function Warp(){
+  let random_x = Math.floor(Math.random() * (rows - 6)) + 5;
+  let random_y = Math.floor(Math.random() * (columns - 1));
+
+  if(map[random_x][random_y] !== 1 && map[random_x][random_y] !== 3 && map[random_x][random_y] !== 4 && map[random_x][random_y] !== 5 && map[random_x][random_y] !== 6){
+    pacman.x = random_y * tile_size;
+    pacman.y = random_x * tile_size;
+  }
+  else{
+      Warp();
+  }
+
 }
 
 
