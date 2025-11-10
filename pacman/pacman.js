@@ -56,7 +56,7 @@ const STRAWBERRY = 11;
 const PORTAL = 12;
 const HEART = 13;
 
-const RANDOM_ORB = [FREEZE_ORB, STRAWBERRY, PORTAL, HEART];
+const RANDOM_ORB = [HEART];
 
 
 // UI variables
@@ -523,6 +523,13 @@ function Controls() {
     }
   }
 
+  for (let heart of hearts_set.values()) {
+    if (Collision(pacman, heart)) {
+      hearts_set.delete(heart);
+      heart_up()
+    }
+  }
+
   // if game is over, it calls the Update function, reloads the map and draws out everything onto the screen again
   if (gameOver) {
     load_map();
@@ -945,6 +952,13 @@ function Edges(entity) {
     entity.x = 0;
     entity.y = 448;
   }
+}
+
+function heart_up(){
+  lives++;
+  lifeUI.innerHTML = lives;
+  hearts.innerHTML += `<img src="../pacman/assets/pacman/pacmanRight.png" alt="">`;
+  hearts.style.gridTemplateColumns = `repeat(${lives}, 1fr)`;
 }
 
 

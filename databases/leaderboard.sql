@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Tábla szerkezet ehhez a táblához `datas`
 --
+CREATE database if not exists leaderboard;
+Use leaderboard;
 
 CREATE TABLE `datas` (
   `id` int(11) NOT NULL,
