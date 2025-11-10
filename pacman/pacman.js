@@ -19,14 +19,13 @@ let ghost_speed_multiplier = 8;
 let nextDirection = null;
 let score_multiplier = 10;
 
-let total_pellets = localStorage.getItem("total_pellets") || 0;
-total_pellets = parseInt(total_pellets);
+let total_pellets = 0;
 
-let total_ghost = localStorage.getItem("total_ghost") || 0;
+
+let total_ghost = parseInt(localStorage.getItem("total_ghost") || 0);
 total_ghost = parseInt(total_ghost);
-
-let total_fruits = localStorage.getItem("total_fruits") || 0;
-total_fruits = parseInt(total_fruits);
+let total_fruits = parseInt(localStorage.getItem("total_fruits") || 0);
+total_fruits =parseInt(total_fruits);
 
 let run_state = true; //boolean to check if game is running
 let hearts = document.querySelector(".hearts");
@@ -911,7 +910,17 @@ function reset_high_score() {
   localStorage.setItem("high_score", 0);
   high_score = 0;
   document.getElementById("high_score").innerText = "High Score: 0";
+
+  localStorage.setItem("total_pellets", 0);
+  total_pellets = 0;
+
+  localStorage.setItem("total_ghost", 0);
+  total_ghost = 0;
+
+  localStorage.setItem("total_fruits", 0);
+  total_fruits = 0;
 }
+
 
 
 
