@@ -1,9 +1,11 @@
+
+
+
+
+
 const leaderboardModal = document.getElementById("leaderboard_modal");
 const closeModal = document.getElementById("close_modal");
 const leaderboardList = document.getElementById("leaderboard_list");
-
-
-
 
 
 
@@ -28,3 +30,5 @@ window.addEventListener("keydown", (e) => {
     openLeaderboard();
   }
 });
+
+

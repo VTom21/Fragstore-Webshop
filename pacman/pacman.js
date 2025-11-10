@@ -18,6 +18,13 @@ let pacman_speed = 8;
 let ghost_speed_multiplier = 8;
 let nextDirection = null;
 let score_multiplier = 10;
+
+let total_pellets = localStorage.getItem("total_pellets") || 0;
+total_pellets = parseInt(total_pellets);
+
+let total_ghost = localStorage.getItem("total_ghost") || 0;
+total_ghost = parseInt(total_ghost);
+
 let run_state = true; //boolean to check if game is running
 let hearts = document.querySelector(".hearts");
 let chased = false;
@@ -56,7 +63,7 @@ const STRAWBERRY = 11;
 const PORTAL = 12;
 const HEART = 13;
 
-const RANDOM_ORB = [PORTAL];
+const RANDOM_ORB = [FREEZE_ORB, STRAWBERRY, PORTAL, HEART];
 
 
 // UI variables
@@ -89,7 +96,7 @@ const image_paths = [
   "assets/pacman/pacmanRight.png",
   "assets/wall.png",
   "assets/cherry.png",
-  "custom_assets/foods/frozen_orb.png",
+  "custom_assets/foods/ice_cube.png",
   "custom_assets/foods/strawberry.png",
   "custom_assets/foods/portal.png",
   "custom_assets/foods/heart.png"
@@ -806,6 +813,8 @@ function Controls() {
     if (Collision(pacman, pellet)) {
       Munch(); // calls sound effect from sfx.js
       pelletEaten = pellet;
+      total_pellets++;
+      localStorage.setItem("total_pellets", total_pellets);
       score += score_multiplier; //increases score
       scoreUI.innerText = score;
       break;
@@ -823,7 +832,6 @@ function Controls() {
     reset_game_stats(false);
     Reset();
   }
-  console.log(pellets.size);
 }
 
 //Axis-Aligned Bounding Box (AABB) collision detection formula
@@ -869,6 +877,8 @@ function Chase() {
         ghost.y = ghostBox.y;
         Popup(pacman.x, pacman.y, 100);
         score += 100;
+        total_ghost++;
+        localStorage.setItem("total_ghost", total_ghost);
       }
     }
   }, MS);

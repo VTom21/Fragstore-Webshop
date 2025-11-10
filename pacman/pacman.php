@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./assets/ghosts/redGhost.png">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <link rel=" stylesheet" href="pacman.css">
     <title>Pac Man</title>
 </head>
@@ -44,7 +45,9 @@
         <div class="flex">
         <h4 id="high_score"></h4>
         <h4 id="leaderboard_ui">Press <span id="x">X</span> for Leaderboard</h4>
+        <h4 id="achievement_ui">Press <span id="x">Z</span> for Achievements</h4>
         </div>
+    </div>
 
 
 <div id="leaderboard_modal" class="modal">
@@ -56,7 +59,23 @@
     </ul>
   </div>
 </div>
-    </div>
+
+<div id="achievement_modal" class="modal" ng-app="pacmanApp" ng-controller="AchievementsController">
+  <div class="modal_content">
+    <span id="close_achievement_modal" class="close_btn">&times;</span>
+    <h2>🏅 Achievements</h2>
+    <ul id="achievement_list">
+      <li ng-repeat="achievement in datas">
+        <img ng-src="{{achievement.img}}" alt="{{achievement.name}}" width="40" style="vertical-align: middle; margin-right: 10px;">
+        <strong>{{achievement.name}}</strong>{{achievement.description}}
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
     
 <form id="scoreForm" action="submit.php" method="POST" style="display:none;">
   <input type="hidden" name="name" id="playerName" />
@@ -68,5 +87,6 @@
 
 <script src="pacman.js" type="module"></script>
 <script type="module" src="leaderboard.js"></script>
+<script src="achievement.js" type="module"></script>
 
 </html>

@@ -39,8 +39,6 @@ CREATE TABLE `datas` (
 -- A tábla adatainak kiíratása `datas`
 --
 
-INSERT INTO `datas` (`id`, `name`, `score`) VALUES
-(11, 'Tommy', 2440);
 
 --
 -- Indexek a kiírt táblákhoz

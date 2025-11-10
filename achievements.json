@@ -1,0 +1,33 @@
+[
+    {
+      "name": "Pellet Collector",
+      "description": "Eat 5000 pellets",
+      "value": 5000,
+      "img": "./custom_assets/foods/pellet.png"
+    },
+    {
+      "name": "Ghost Hunter",
+      "description": "Eat 100 ghosts",
+      "value": 100,
+      "img": "./assets/ghosts/scaredGhost.png"
+    },
+    {
+      "name": "Speed Demon",
+      "description": "Complete a level under 2 minutes",
+      "value": 120,
+      "img": "./assets/ghosts/redGhost.png"
+    },
+    {
+      "name": "Fruit Lover",
+      "description": "Eat 50 fruits",
+      "value": 50,
+      "img": "./assets/cherry.png"
+    },
+    {
+      "name": "Survivor",
+      "description": "Complete a level without losing a life",
+      "value": 1,
+      "img": "./assets/pacman/pacmanRight.png"
+    }
+  ]
+  
