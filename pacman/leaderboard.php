@@ -16,7 +16,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   $i = 1;
   while($row = $result->fetch_assoc()) {
-    echo "<li>$i. " . htmlspecialchars($row["name"]) . " — " . $row["score"] . "</li>";
+    echo "<li>" . htmlspecialchars($row["name"]) . " — " . $row["score"] . "</li>";
     $i++;
   }
 } else {

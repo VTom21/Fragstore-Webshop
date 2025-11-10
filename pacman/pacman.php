@@ -46,11 +46,11 @@
         <h4 id="leaderboard_ui">Press <span id="x">X</span> for Leaderboard</h4>
         </div>
 
-        <!-- Leaderboard Modal -->
+
 <div id="leaderboard_modal" class="modal">
   <div class="modal_content">
     <span id="close_modal" class="close_btn">&times;</span>
-    <h2>🏆 Leaderboard</h2>
+    <h2>🏆 Best Scores</h2>
     <ul id="leaderboard_list">
         <?php include 'leaderboard.php'; ?>
     </ul>
