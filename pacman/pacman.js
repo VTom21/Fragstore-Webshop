@@ -25,6 +25,9 @@ total_pellets = parseInt(total_pellets);
 let total_ghost = localStorage.getItem("total_ghost") || 0;
 total_ghost = parseInt(total_ghost);
 
+let total_fruits = localStorage.getItem("total_fruits") || 0;
+total_fruits = parseInt(total_fruits);
+
 let run_state = true; //boolean to check if game is running
 let hearts = document.querySelector(".hearts");
 let chased = false;
@@ -506,8 +509,11 @@ function Controls() {
       Fruit_Munch();
       cherries.delete(cherry);
       chased = true;
+      total_fruits++;
+      localStorage.setItem("total_fruits", total_fruits);
       Frightened();
       Chase();
+
       Popup(pacman.x, pacman.y, 200);
       break;
     }
@@ -517,6 +523,8 @@ function Controls() {
     if (Collision(pacman, freeze)) {
       freezes.delete(freeze);
       freezed = true;
+      total_fruits++;
+      localStorage.setItem("total_fruits", total_fruits);
       Freeze();
     }
   }
@@ -525,6 +533,8 @@ function Controls() {
     if (Collision(pacman, strawberry)) {
       strawberries.delete(strawberry);
       score += 500;
+      total_fruits++;
+      localStorage.setItem("total_fruits", total_fruits);
       Popup(pacman.x, pacman.y, 500);
       scoreUI.innerHTML = score;
     }
@@ -533,6 +543,8 @@ function Controls() {
   for (let heart of hearts_set.values()) {
     if (Collision(pacman, heart)) {
       hearts_set.delete(heart);
+      total_fruits++;
+      localStorage.setItem("total_fruits", total_fruits);
       heart_up()
     }
   }
@@ -540,6 +552,8 @@ function Controls() {
   for (let portal of portals.values()) {
     if (Collision(pacman, portal)) {
       portals.delete(portal);
+      total_fruits++;
+      localStorage.setItem("total_fruits", total_fruits);
       Warp();
     }
   }

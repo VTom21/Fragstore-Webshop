@@ -12,12 +12,6 @@
       "img": "./assets/ghosts/scaredGhost.png"
     },
     {
-      "name": "Speed Demon",
-      "description": "Complete a level under 2 minutes",
-      "value": 120,
-      "img": "./assets/ghosts/redGhost.png"
-    },
-    {
       "name": "Fruit Lover",
       "description": "Eat 50 fruits",
       "value": 50,

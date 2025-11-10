@@ -2,11 +2,13 @@ angular.module('pacmanApp', [])
 .controller('AchievementsController', ['$scope', '$http', function($scope, $http) {
     $scope.pellet_count = parseInt(localStorage.getItem("total_pellets") || 0);
     $scope.ghost_count = parseInt(localStorage.getItem("total_ghost") || 0);
+    $scope.fruit_count = parseInt(localStorage.getItem("total_fruits") || 0);
 
     $scope.datas = [];
 
     console.log("Pellet count:", $scope.pellet_count);
     console.log("Ghost count:", $scope.ghost_count);
+    console.log("Fruit count:", $scope.fruit_count);
 
     // Load achievements from JSON
     $http.get("../achievements.json")
