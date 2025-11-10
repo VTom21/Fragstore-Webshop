@@ -301,6 +301,7 @@ function load_map() {
       switch (tile) {
         case TILE_EMPTY:
           break;
+
         case GHOST_GATE:
           const gate = new Generate(null, x, y + tile_size / 2, tile_size, 4);
           gate.color = "rgb(50, 50, 255)";
@@ -311,52 +312,29 @@ function load_map() {
           const tile_ = new Generate(wall_img, x, y, tile_size, tile_size);
           walls.add(tile_);
           break;
+
         case PELLET:
           const pellet = new Generate(null, x + 14, y + 14, 4, 4); // a pellet's size is 4x4, and is placed at 14 on both x and y inside the 32x32 tile -> centering of pellet
           pellets.add(pellet);
           break;
+
         case TILE_BLUE_GHOST:
-          const blue_ghost = new Generate(
-            blue_ghost_img,
-            x,
-            y,
-            tile_size,
-            tile_size,
-            true
-          );
+          const blue_ghost = new Generate(blue_ghost_img, x, y, tile_size, tile_size, true);
           ghosts.add(blue_ghost);
           break;
+
         case TILE_RED_GHOST:
-          const red_ghost = new Generate(
-            red_ghost_img,
-            x,
-            y,
-            tile_size,
-            tile_size,
-            true
-          );
+          const red_ghost = new Generate(red_ghost_img, x, y, tile_size, tile_size, true);
           ghosts.add(red_ghost);
           break;
+
         case TILE_ORANGE_GHOST:
-          const orange_ghost = new Generate(
-            orange_ghost_img,
-            x,
-            y,
-            tile_size,
-            tile_size,
-            true
-          );
+          const orange_ghost = new Generate(orange_ghost_img, x, y, tile_size, tile_size, true);
           ghosts.add(orange_ghost);
           break;
+
         case TILE_PINK_GHOST:
-          const pink_ghost = new Generate(
-            pink_ghost_img,
-            x,
-            y,
-            tile_size,
-            tile_size,
-            true
-          );
+          const pink_ghost = new Generate(pink_ghost_img, x, y, tile_size, tile_size, true);
           ghosts.add(pink_ghost);
           break;
 
@@ -370,8 +348,8 @@ function load_map() {
           break;
 
         case FREEZE_ORB:
-          const freez = new Generate(frozen_orb_img, x, y, tile_size, tile_size);
-          freezes.add(freez);
+          const freeze = new Generate(frozen_orb_img, x, y, tile_size, tile_size);
+          freezes.add(freeze);
           break;
 
         case STRAWBERRY:
@@ -388,8 +366,7 @@ function load_map() {
             const heart = new Generate(heart_img, x, y, tile_size, tile_size);
             hearts_set.add(heart);
             break;
-      }
-      
+      }    
     }
   }
 }
