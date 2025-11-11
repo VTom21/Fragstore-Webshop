@@ -825,7 +825,7 @@ function Controls() {
   }
   pellets.delete(pelletEaten); // removes the pellet from the map
 
-  if (pellets.size === 300) { //if no pellets are left, you have won: lives, score reset, level increases
+  if (pellets.size === 0) { //if no pellets are left, you have won: lives, score reset, level increases
     gameoverUI.style.display = "block";
     display_value.innerHTML = "You Win!";
     score_multiplier += 10;

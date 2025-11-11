@@ -475,7 +475,7 @@ body {
     grid-template-columns: repeat(3,1fr);
     flex-direction: row;
     justify-self: center;
-    gap: 30px;
+    gap: 60px;
     position: fixed;
     bottom: 20px;
 }
@@ -502,7 +502,8 @@ body {
 }
 .content {
     display: grid;
-    align-self: center;
+    align-content: center;
+    height:500px;
 }
 
 #title {
@@ -548,6 +549,12 @@ body {
     }
 }
 
+@media only screen and (max-width: 1200px){
+    .content{
+    height: 400px;
+  }
+}
+
 @media only screen and (max-width: 950px){
   .game_canvas{
     width: 95%;
@@ -556,6 +563,12 @@ body {
   }
   .stat-item h1{
     font-size: 15px;
+  }
+  #high_score{
+    align-items: center;
+  }
+    .content{
+    height: 1000px;
   }
 }
 
@@ -594,7 +607,15 @@ body {
       grid-area: 2/2;
       gap: 10%;
     }
+    .content{
+      height: 1000px;
+  }
 
+}
+@media only screen and (max-width:430px){
+  .content{
+    height: 400px;
+  }
 }
 
 @media only screen and (max-width: 600px) and (min-width:300px){
@@ -604,14 +625,29 @@ body {
   .flex{
     grid-template-columns: repeat(1,1fr);
     justify-items: center;
+    gap: 40px;
   }
 
   .stats{
     display: flex;
   }
+  .stat-item{
+    gap: 0;
+  }
   .hearts{
     align-self: center; 
   }
+    .content{
+    height: 200px;
+  }
+
+}
+
+@media only screen and (max-width: 380px) and (min-width:300px){
+  .content{
+    height: 200px;
+  }
+
 }
 
 @media only screen and (max-width: 300px){
