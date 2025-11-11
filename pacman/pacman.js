@@ -910,6 +910,7 @@ function reset_datas() {
 
 
 
+
 function reset_game_stats(fullReset = false) {
   lives = 3;
   lifeUI.innerText = lives;
