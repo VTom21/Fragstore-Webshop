@@ -133,13 +133,25 @@ function handleStart(e) {
 
     document.body.removeEventListener("keyup", handleStart); // prevents multiple triggers
   }
+
 }
 
 document.body.addEventListener("keyup", handleStart); //When player releases the F key, it calls the function
 
+document.querySelector(".start_text").addEventListener("click", () => {
+  const introAudio = Intro();
+  introAudio.addEventListener("ended", () => {
+    Load();
+  });
+
+  // also remove the keyboard listener so it can't trigger again
+  document.body.removeEventListener("keyup", handleStart);
+});
+
 //Load function: sets game sizes, resets life stats, defines drawing context, loads assets and the map, updates game every frame, defines pac man movement
 
 function Load() {
+  document.querySelector(".game_canvas").style.display = "block";
   document.querySelector(".content").style.display = "none";
   hearts.style.display = "grid";
   lifeUI.innerHTML = lives;
@@ -626,12 +638,6 @@ function Controls() {
           high_score_ui.innerText = `High Score: ${high_score}`;
         }
 
-        if(total_level < 2){
-          localStorage.setItem("total_level", total_level);
-          total_level = 1;
-        }
-
-
         // stop gameplay immediately
         isGameRunning = false;
         run_state = false;
@@ -824,8 +830,6 @@ function Controls() {
     display_value.innerHTML = "You Win!";
     score_multiplier += 10;
     level++;
-    total_level++;
-    localStorage.setItem("total_level", total_level);
     levelUI.innerText = level;
     load_map();
     reset_game_stats(false);
