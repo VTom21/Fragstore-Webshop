@@ -568,6 +568,11 @@ body {
       padding-left: 0;
       padding-right: 0;
     }
+
+    .hearts{
+      align-self: center;
+      gap: 15%;
+    }
 }
 
 @media only screen and (max-width: 600px) and (min-width:300px){
