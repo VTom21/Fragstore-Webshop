@@ -38,7 +38,7 @@
     </canvas>
     <div class="gameoverbox">
             <h1 class="display_value"></h1>
-        </div>
+    </div>
     <div class="content">
         <p id="title">Pac Man</p>
         <h2 class="start_text">Press <span id="f">F</span> to start</h2>

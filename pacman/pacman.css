@@ -514,7 +514,9 @@ body {
     letter-spacing: 4px;
 }
 
-  
+.display_value{
+  width: 100%;
+}
 
 .start_text {
     color: var(--white-regular);
