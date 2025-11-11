@@ -11,4 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     upBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    const header = document.getElementById('header');
+
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('sticky', window.scrollY > 0);
+    });
 });

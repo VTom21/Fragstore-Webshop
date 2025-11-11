@@ -9,7 +9,7 @@
     <title>Fragstore - Home</title>
 </head>
 <body>
-    <header>
+    <header id="header">
         <img id="logo" src="../icons/array.png"></img>
         <div class="navbar">
             <a href="#game">Games</a>
@@ -28,133 +28,191 @@
         </div>
     </header>
 
-    <section class="show">
-        <h1>Games</h1>
-        <h2>Sub</h2>
-    </section>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Unlock the Future of Gaming</h1>
+    <p>Discover exclusive deals, rare collectibles, and your next favorite adventure — all in one place.</p>
+    <div class="cta-buttons">
+      <a href="#game" class="btn">Explore Games</a>
+      <a href="#giftcard" class="btn secondary">Buy Gift Cards</a>
+    </div>
+  </div>
+</section>
+
 
     <main>
-        <section id="intro">
-            <div class="slide1">
-                <img src="../pacman/assets/cherry.png" alt="">
-                <div class="introbox">
-                    <h3>Title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aliquid dolores magnam voluptatem
-                        ad dolorem quibusdam fuga doloremque, ratione facere quaerat a, libero, eligendi placeat nisi
-                        quas molestiae excepturi veniam quo dicta quam recusandae. Fugit animi soluta nihil cupiditate
-                        consequuntur asperiores quia atque amet reprehenderit molestias rem doloribus iste ullam,
-                        aliquam cum quo, assumenda corporis eaque earum. Ad amet quae saepe vero est natus dicta tenetur
-                        iste rerum nostrum voluptas magnam impedit, ratione ut repudiandae eveniet facilis in unde
-                        aliquam. Porro deserunt optio eaque vitae atque reiciendis maxime eos facere corporis magni
-                        accusantium eius delectus ducimus inventore obcaecati harum, voluptas in.</p>
-                </div>
-            </div>
+<section id="intro" class="intro">
+  <div class="intro-container">
+    <div class="intro-item">
+      <div class="intro-image">
+        <img src="../pacman/assets/cherry.png" alt="Power Up Icon">
+      </div>
+      <div class="intro-content">
+        <h3>Power Up Your Play</h3>
+        <p>Upgrade your setup with elite gaming gear built for speed, precision, and performance. Crafted for those who demand more from every frame.</p>
+      </div>
+    </div>
 
-            <div class="slide2">
-                <div class="introbox">
-                    <h3>Title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aliquid dolores magnam voluptatem
-                        ad dolorem quibusdam fuga doloremque, ratione facere quaerat a, libero, eligendi placeat nisi
-                        quas molestiae excepturi veniam quo dicta quam recusandae. Fugit animi soluta nihil cupiditate
-                        consequuntur asperiores quia atque amet reprehenderit molestias rem doloribus iste ullam,
-                        aliquam cum quo, assumenda corporis eaque earum. Ad amet quae saepe vero est natus dicta tenetur
-                        iste rerum nostrum voluptas magnam impedit, ratione ut repudiandae eveniet facilis in unde
-                        aliquam. Porro deserunt optio eaque vitae atque reiciendis maxime eos facere corporis magni
-                        accusantium eius delectus ducimus inventore obcaecati harum, voluptas in.</p>
-                </div>
-                <img src="../pacman/assets/cherry.png" alt="">
-            </div>
+    <div class="intro-item reverse">
+      <div class="intro-image">
+        <img src="../pacman/assets/cherry.png" alt="Collectibles Icon">
+      </div>
+      <div class="intro-content">
+        <h3>Collect the Rare</h3>
+        <p>From limited-edition drops to iconic collaborations — bring home exclusive collectibles that define the next era of gaming culture.</p>
+      </div>
+    </div>
 
-            <div class="slide1">
-                <img src="../pacman/assets/cherry.png" alt="">
-                <div class="introbox">
-                    <h3>Title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aliquid dolores magnam voluptatem
-                        ad dolorem quibusdam fuga doloremque, ratione facere quaerat a, libero, eligendi placeat nisi
-                        quas molestiae excepturi veniam quo dicta quam recusandae. Fugit animi soluta nihil cupiditate
-                        consequuntur asperiores quia atque amet reprehenderit molestias rem doloribus iste ullam,
-                        aliquam cum quo, assumenda corporis eaque earum. Ad amet quae saepe vero est natus dicta tenetur
-                        iste rerum nostrum voluptas magnam impedit, ratione ut repudiandae eveniet facilis in unde
-                        aliquam. Porro deserunt optio eaque vitae atque reiciendis maxime eos facere corporis magni
-                        accusantium eius delectus ducimus inventore obcaecati harum, voluptas in.</p>
-                </div>
-            </div>
-        </section>
+    <div class="intro-item">
+      <div class="intro-image">
+        <img src="../pacman/assets/cherry.png" alt="Style Icon">
+      </div>
+      <div class="intro-content">
+        <h3>Style Meets Performance</h3>
+        <p>Designed with precision and passion, each product blends function, form, and futuristic design — so your gear performs as good as it looks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <h2>What Our Customers Say</h2>
+  <p class="section-desc">Real feedback from gamers and collectors around the world.</p>
+
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        <p>“Fragstore is my go-to for exclusive gaming gear. Fast delivery and top-notch quality every time.”</p>
+        <div class="testimonial-author">
+          <img src="https://i.pravatar.cc/100?img=1" alt="user photo">
+          <div>
+            <h4>Alex Johnson</h4>
+            <span>Pro Gamer</span>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        <p>“I love the limited edition items. The site feels premium and the customer service is amazing.”</p>
+        <div class="testimonial-author">
+          <img src="https://i.pravatar.cc/100?img=2" alt="user photo">
+          <div>
+            <h4>Samantha Lee</h4>
+            <span>Streamer & Collector</span>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        <p>“Excellent quality and smooth shopping experience. Definitely one of the best gaming stores out there.”</p>
+        <div class="testimonial-author">
+          <img src="https://i.pravatar.cc/100?img=3" alt="user photo">
+          <div>
+            <h4>Mark Rivera</h4>
+            <span>Esports Enthusiast</span>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         <section id="giftcard" class="product-cards">
-            <section class="section">
-                <h2 class="section-title">eGift Cards</h2>
-                <div class="card-grid gift-cards-grid">
-                    <div class="card card-placeholder"></div>
-                    <div class="card card-placeholder"></div>
-                    <div class="card card-placeholder"></div>
-                    <div class="card card-placeholder"></div>
-                </div>
-                <a href="#" class="show-all">Show all</a>
-            </section>
 
-            <section id="game" class="section">
-                <h2 class="section-title">Top Games</h2>
-                <div class="card-grid">
-                    <div class="card game-card">
-                        <div class="image-placeholder"></div>
-                        <p class="title">Text</p>
-                        <p class="price">$0</p>
-                        <p class="body-text">Body text.</p>
-                    </div>
-                    <div class="card game-card">
-                        <div class="image-placeholder"></div>
-                        <p class="title">Text</p>
-                        <p class="price">$0</p>
-                        <p class="body-text">Body text.</p>
-                    </div>
-                    <div class="card game-card">
-                        <div class="image-placeholder"></div>
-                        <p class="title">Text</p>
-                        <p class="price">$0</p>
-                        <p class="body-text">Body text.</p>
-                    </div>
-                    <div class="card game-card">
-                        <div class="image-placeholder"></div>
-                        <p class="title">Text</p>
-                        <p class="price">$0</p>
-                        <p class="body-text">Body text.</p>
-                    </div>
-                </div>
-                <a href="#" class="show-all">Show all</a>
-            </section>
+        
+    <section class="section">
+        <h2 class="section-title">eGift Cards</h2>
+        <div class="card-grid gift-cards-grid">
+            <div class="card card-placeholder">
+                <img src="../icons/array.png" class="h-48">
+            </div>
+            <div class="card card-placeholder">
+                <img src="../icons/array.png" class="h-48">
+            </div>
+            <div class="card card-placeholder">
+                <img src="../icons/array.png" class="h-48">
+            </div>
+            <div class="card card-placeholder">
+                <img src="../icons/array.png" class="h-48">
+            </div>
+        </div>
+        <a href="#" class="show-all">Show all</a>
+    </section>
 
-            <section class="section">
-                <h2 class="section-title">Upcoming games</h2>
-                <div class="card-grid">
-                    <div class="card game-card">
-                        <div class="image-placeholder"></div>
-                        <p class="title">Text</p>
-                        <p class="price">$0</p>
-                        <p class="body-text">Body text.</p>
-                    </div>
-                    <div class="card game-card">
-                        <div class="image-placeholder"></div>
-                        <p class="title">Text</p>
-                        <p class="price">$0</p>
-                        <p class="body-text">Body text.</p>
-                    </div>
-                    <div class="card game-card">
-                        <div class="image-placeholder"></div>
-                        <p class="title">Text</p>
-                        <p class="price">$0</p>
-                        <p class="body-text">Body text.</p>
-                    </div>
-                    <div class="card game-card">
-                        <div class="image-placeholder"></div>
-                        <p class="title">Text</p>
-                        <p class="price">$0</p>
-                        <p class="body-text">Body text.</p>
-                    </div>
-                </div>
-                <a href="#" class="show-all">Show all</a>
-            </section>
-        </section>
+    <!-- Top Games -->
+    <section id="game" class="section">
+        <h2 class="section-title">Top Games</h2>
+        <div class="card-grid">
+            <div class="card game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/d0/List_of_Playable_characters_in_Persona_5.jpg" alt="Game 1" class="w-full h-48 object-cover rounded-t-xl">
+                <p class="title">Game Title 1</p>
+                <p class="price">$59.99</p>
+                <p class="body-text">Exciting adventure with stunning graphics.</p>
+            </div>
+            <div class="card game-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47LjFayYHU_-Hc43iGrZkvbyFmG5YXrcrmA&s" alt="Game 2" class="w-full h-48 object-cover rounded-t-xl">
+                <p class="title">Game Title 2</p>
+                <p class="price">$49.99</p>
+                <p class="body-text">Fast-paced action and immersive story.</p>
+            </div>
+            <div class="card game-card">
+                <img src="https://store-images.s-microsoft.com/image/apps.58752.68182501197884443.ac728a87-7bc1-4a0d-8bc6-0712072da93c.0cf58754-9802-46f8-8557-8d3ff32a627a?q=90&w=480&h=270" alt="Game 3" class="w-full h-48 object-cover rounded-t-xl">
+                <p class="title">Game Title 3</p>
+                <p class="price">$39.99</p>
+                <p class="body-text">Open-world RPG with incredible exploration.</p>
+            </div>
+            <div class="card game-card">
+                <img src="https://media.wired.com/photos/639bf35a24c352e627eccc43/3:2/w_2560%2Cc_limit/Ragnaro%25CC%2588k-culture-ar1qdh.jpg" alt="Game 4" class="w-full h-48 object-cover rounded-t-xl">
+                <p class="title">Game Title 4</p>
+                <p class="price">$29.99</p>
+                <p class="body-text">Fun casual gameplay for everyone.</p>
+            </div>
+        </div>
+        <a href="#" class="show-all">Show all</a>
+    </section>
+
+    <!-- Upcoming Games -->
+    <section class="section">
+        <h2 class="section-title">Upcoming Games</h2>
+        <div class="card-grid">
+            <div class="card game-card">
+                <img src="https://cdn.mos.cms.futurecdn.net/iPi3bFFgSfLnoNe8NS764n.jpg" alt="Upcoming Game 1" class="w-full h-48 object-cover rounded-t-xl">
+                <p class="title">Upcoming Game 1</p>
+                <p class="price text-gray-400">Coming Soon</p>
+                <p class="body-text">Get ready for an epic new adventure!</p>
+            </div>
+            <div class="card game-card">
+                <img src="https://assets-prd.ignimgs.com/2022/10/09/fallout5-1665340097618.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80" alt="Upcoming Game 2" class="w-full h-48 object-cover rounded-t-xl">
+                <p class="title">Upcoming Game 2</p>
+                <p class="price text-gray-400">Coming Soon</p>
+                <p class="body-text">RPG adventure with multiplayer mode.</p>
+            </div>
+            <div class="card game-card">
+                <img src="https://gaming-cdn.com/images/products/6369/orig/the-sims-5-pc-mac-ea-app-cover.jpg?v=1753367505" alt="Upcoming Game 3" class="w-full h-48 object-cover rounded-t-xl">
+                <p class="title">Upcoming Game 3</p>
+                <p class="price text-gray-400">Coming Soon</p>
+                <p class="body-text">High-octane action and story-driven gameplay.</p>
+            </div>
+            <div class="card game-card">
+                <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2025/01/bioshock-4-2025-game-rant.jpg?w=1600&h=900&fit=crop" alt="Upcoming Game 4" class="w-full h-48 object-cover rounded-t-xl">
+                <p class="title">Upcoming Game 4</p>
+                <p class="price text-gray-400">Coming Soon</p>
+                <p class="body-text">Next-level graphics and immersive experience.</p>
+            </div>
+        </div>
+        <a href="#" class="show-all">Show all</a>
+    </section>
+
+</section>
+
 
         <section id="genre" class="section genre-section">
             <h2 class="section-title">Genre</h2>
@@ -223,6 +281,36 @@
             <a href="#" class="show-all centered-show-all">Show all</a>
         </section>
     </main>
+
+
+<section class="newsletter" id="newsletter">
+  <h2>Subscribe to Our Newsletter</h2>
+  <p>Get the latest deals, updates, and exclusive gaming content delivered straight to your inbox.</p>
+
+  <form action="#" method="post">
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+  </form>
+
+  <p class="privacy-note">We respect your privacy. Unsubscribe at any time.</p>
+</section>
+
+<!-- AI Chatbot Button -->
+<div id="chatbot-container">
+    <button id="chatbot-btn">💬</button>
+    <div id="chatbot-window">
+        <div id="chatbot-header">
+            <span>AI Assistant</span>
+            <button id="chatbot-close">✖</button>
+        </div>
+        <div id="chatbot-messages"></div>
+        <form id="chatbot-form">
+            <input type="text" id="chatbot-input" placeholder="Type a message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</div>
+
 
     <br><br>
     <footer class="dark:bg-gray-900 footer">

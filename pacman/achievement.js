@@ -45,7 +45,7 @@ angular.module('pacmanApp', [])
     };
 
     // Load achievements from JSON
-    $http.get("../achievements.json")
+    $http.get("./achievements.json")
         .then(function(response) {
             $scope.datas = response.data;
             console.log("Achievements loaded:", $scope.datas);
