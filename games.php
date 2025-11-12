@@ -49,6 +49,12 @@ try {
     $uniquePlatforms = array_unique($allPlatforms);
     $totalPlatforms = count($uniquePlatforms);
 
+    $genreStatsStmt = $pdo->query("SELECT genre, COUNT(*) AS count FROM datas GROUP BY genre");
+    $genreStats = [];
+    while ($row = $genreStatsStmt->fetch(PDO::FETCH_ASSOC)) {
+        $genreStats[$row['genre']] = (int)$row['count'];
+    }
+
 
     //converts the associative array to json format
 
@@ -57,8 +63,10 @@ try {
         'total' => $countResult['total'],
         'totalGenres' => $genreCount['totalGenres'],
         'totalPlatforms' => $totalPlatforms,
-        'Unique' => $uniquePlatforms
+        'Unique' => $uniquePlatforms,
+        'genreStats' => $genreStats
     ]);
+    
 } catch (PDOException $e) {
     echo json_encode(['error' => $e->getMessage()]); //error handling
 }

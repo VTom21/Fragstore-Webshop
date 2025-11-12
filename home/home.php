@@ -1,3 +1,11 @@
+<?php
+
+include 'genres.php';
+
+$genres = $genreStats;
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +35,7 @@
             </div>
         </div>
     </header>
+
 
 <section class="hero">
   <div class="hero-content">
@@ -214,72 +223,24 @@
 </section>
 
 
-        <section id="genre" class="section genre-section">
-            <h2 class="section-title">Genre</h2>
-            <div class="card-grid genre-grid">
+<section id="genre" class="section genre-section">
+    <h2 class="section-title">Genre</h2>
+    <div class="card-grid genre-grid">
+        <?php if (!empty($genreStats)): ?>
+            <?php foreach ($genreStats as $genre => $count): ?>
                 <div class="card genre-card">
-                    <div class="icon-placeholder">🎯</div>
-                    <p class="number">120</p>
-                    <p class="body-text">FPS (Shooter)</p>
+                    <div class="icon-placeholder">🎮</div> <!-- You can customize icons per genre -->
+                    <p class="number"><?= $count ?></p>
+                    <p class="body-text"><?= htmlspecialchars($genre) ?></p>
                 </div>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">⚔️</div>
-                    <p class="number">280</p>
-                    <p class="body-text">RPG (Role-Playing)</p>
-                </div>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">♟️</div>
-                    <p class="number">95</p>
-                    <p class="body-text">Strategy</p>
-                </div>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">⚽</div>
-                    <p class="number">45</p>
-                    <p class="body-text">Sport</p>
-                </div>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">🚗</div>
-                    <p class="number">60</p>
-                    <p class="number">Racing</p>
-                </div>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">🗺️</div>
-                    <p class="number">155</p>
-                    <p class="body-text">Adventure</p>
-                </div>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">🔥</div>
-                    <p class="number">30</p>
-                    <p class="body-text">Survival</p>
-                </div>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">🧩</div>
-                    <p class="number">75</p>
-                    <p class="body-text">Puzzle</p>
-                </div>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">👊</div>
-                    <p class="number">35</p>
-                    <p class="body-text">Fighting</p>
-                </div>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">👻</div>
-                    <p class="number">40</p>
-                    <p class="body-text">Horror</p>
-                </div>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">🎸</div>
-                    <p class="number">25</p>
-                    <p class="body-text">Music/Rhythm</p>
-                </div>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">✈️</div>
-                    <p class="number">50</p>
-                    <p class="body-text">Simulation</p>
-                </div>
-            </div>
-            <a href="#" class="show-all centered-show-all">Show all</a>
-        </section>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No genre data found.</p>
+        <?php endif; ?>
+    </div>
+    <a href="#" class="show-all centered-show-all">Show all</a>
+</section>
+
     </main>
 
 
@@ -310,6 +271,17 @@
         </form>
     </div>
 </div>
+
+<h2>Game Genres</h2>
+<ul>
+    <?php if (!empty($genreStats)): ?>
+        <?php foreach ($genreStats as $genre => $count): ?>
+            <li><?= htmlspecialchars($genre) ?>: <?= $count ?> games</li>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <li>No genre data found.</li>
+    <?php endif; ?>
+</ul>
 
 
     <br><br>
