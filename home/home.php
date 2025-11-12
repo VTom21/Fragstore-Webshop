@@ -211,30 +211,30 @@ $limit = 12;
         <div class="card-grid">
             <div class="card game-card">
                 <img src="https://upload.wikimedia.org/wikipedia/en/d/d0/List_of_Playable_characters_in_Persona_5.jpg" alt="Game 1" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Game Title 1</p>
+                <p class="title">Persona 5</p>
                 <p class="price">$59.99</p>
                 <p class="body-text">Exciting adventure with stunning graphics.</p>
             </div>
             <div class="card game-card">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47LjFayYHU_-Hc43iGrZkvbyFmG5YXrcrmA&s" alt="Game 2" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Game Title 2</p>
+                <p class="title">Grand Theft Auto 5</p>
                 <p class="price">$49.99</p>
                 <p class="body-text">Fast-paced action and immersive story.</p>
             </div>
             <div class="card game-card">
                 <img src="https://store-images.s-microsoft.com/image/apps.58752.68182501197884443.ac728a87-7bc1-4a0d-8bc6-0712072da93c.0cf58754-9802-46f8-8557-8d3ff32a627a?q=90&w=480&h=270" alt="Game 3" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Game Title 3</p>
+                <p class="title">Red Dead Redemption 2</p>
                 <p class="price">$39.99</p>
                 <p class="body-text">Open-world RPG with incredible exploration.</p>
             </div>
             <div class="card game-card">
                 <img src="https://media.wired.com/photos/639bf35a24c352e627eccc43/3:2/w_2560%2Cc_limit/Ragnaro%25CC%2588k-culture-ar1qdh.jpg" alt="Game 4" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Game Title 4</p>
+                <p class="title">God of War: Ragnarok</p>
                 <p class="price">$29.99</p>
                 <p class="body-text">Fun casual gameplay for everyone.</p>
             </div>
         </div>
-        <button  class="show-all centered-show-all">Show all</button>
+<br>
     </section>
 
     <!-- Upcoming Games -->
@@ -243,30 +243,30 @@ $limit = 12;
         <div class="card-grid">
             <div class="card game-card">
                 <img src="https://cdn.mos.cms.futurecdn.net/iPi3bFFgSfLnoNe8NS764n.jpg" alt="Upcoming Game 1" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Upcoming Game 1</p>
+                <p class="title">Grand Theft Auto VI</p>
                 <p class="price text-gray-400">Coming Soon</p>
                 <p class="body-text">Get ready for an epic new adventure!</p>
             </div>
             <div class="card game-card">
-                <img src="https://assets-prd.ignimgs.com/2022/10/09/fallout5-1665340097618.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80" alt="Upcoming Game 2" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Upcoming Game 2</p>
+                <img src="https://cdn.mos.cms.futurecdn.net/w9zhsvt8F3TNbamjRBg5Be.jpg" alt="Upcoming Game 2" class="w-full h-48 object-cover rounded-t-xl">
+                <p class="title">Fallout 5</p>
                 <p class="price text-gray-400">Coming Soon</p>
                 <p class="body-text">RPG adventure with multiplayer mode.</p>
             </div>
             <div class="card game-card">
                 <img src="https://gaming-cdn.com/images/products/6369/orig/the-sims-5-pc-mac-ea-app-cover.jpg?v=1753367505" alt="Upcoming Game 3" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Upcoming Game 3</p>
+                <p class="title">Sims 5</p>
                 <p class="price text-gray-400">Coming Soon</p>
                 <p class="body-text">High-octane action and story-driven gameplay.</p>
             </div>
             <div class="card game-card">
                 <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2025/01/bioshock-4-2025-game-rant.jpg?w=1600&h=900&fit=crop" alt="Upcoming Game 4" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Upcoming Game 4</p>
+                <p class="title">Bioshock 4</p>
                 <p class="price text-gray-400">Coming Soon</p>
                 <p class="body-text">Next-level graphics and immersive experience.</p>
             </div>
         </div>
-        <button  class="show-all centered-show-all">Show all</button>
+<br>
     </section>
 
 </section>
