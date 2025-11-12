@@ -85,6 +85,9 @@ header {
     background-color: var(--sticky-bg);
 }
 
+.hidden { display: none; }
+.hidden-gift { display: none; }
+
 #logo {
     width: 50px;
     height: 45px;
@@ -1000,6 +1003,19 @@ main {
     color: var(--text-muted);
     transition: color 0.3s ease;
 }
+
+.name{
+  padding: 12px 12px;
+  text-align: center;
+}
+
+.gift_card_img {
+  width: 100%;     
+  height: auto;     
+  display: block;   
+  object-fit: cover; 
+}
+
 
 
 .show-all {

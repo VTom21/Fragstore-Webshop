@@ -1,9 +1,55 @@
 <?php
 
 include 'genres.php';
+include 'giftcards.php';
 
-$genres = $genreStats;
+$genres = json_encode($genreStats);
+$gift_img = $Img;
 
+$emojiKeywords = [
+    'action' => '🎮',
+    'adventure' => '🗺️',
+    'rpg' => '🛡️',
+    'battle' => '⚔️',
+    'horror' => '👻',
+    'fighting' => '🥊',
+    'fps' => '🔫',
+    'shooter' => '🔫',
+    'platformer' => '🪜',
+    'puzzle' => '🧩',
+    'racing' => '🏎️',
+    'simulation' => '🛠️',
+    'sports' => '⚽',
+    'stealth' => '🕵️',
+    'strategy' => '♟️',
+    'survival' => '🪓',
+    'sandbox' => '🏖️',
+    'rhythm' => '🎵',
+    'visual novel' => '📖',
+    'co-op' => '🤝',
+    'metroidvania' => '🧭',
+    'party' => '🎉',
+    'mmorpg' => '🌐',
+    'moba' => '🗡️',
+    'tps' => '🔫',
+    'run' => '🏃',
+    'roguelike' => '🌀',
+    'exploration' => '🧭'
+];
+
+// Function to pick emoji based on keywords
+function getAccurateEmoji($genre, $emojiKeywords) {
+    $genreLower = strtolower($genre);
+    foreach ($emojiKeywords as $keyword => $emoji) {
+        if (strpos($genreLower, $keyword) !== false) {
+            return $emoji;
+        }
+    }
+    return '🎲'; // default emoji if no match
+}
+
+$index = 0;
+$limit = 12;
 
 ?>
 <!DOCTYPE html>
@@ -54,7 +100,7 @@ $genres = $genreStats;
   <div class="intro-container">
     <div class="intro-item">
       <div class="intro-image">
-        <img src="../pacman/assets/cherry.png" alt="Power Up Icon">
+        <img src="https://cms-assets.xboxservices.com/assets/bc/40/bc40fdf3-85a6-4c36-af92-dca2d36fc7e5.png?n=642227_Hero-Gallery-0_A1_857x676.png" alt="Power Up Icon">
       </div>
       <div class="intro-content">
         <h3>Power Up Your Play</h3>
@@ -64,7 +110,7 @@ $genres = $genreStats;
 
     <div class="intro-item reverse">
       <div class="intro-image">
-        <img src="../pacman/assets/cherry.png" alt="Collectibles Icon">
+        <img src="../pictures/game_pic.png" alt="Collectibles Icon">
       </div>
       <div class="intro-content">
         <h3>Collect the Rare</h3>
@@ -74,7 +120,7 @@ $genres = $genreStats;
 
     <div class="intro-item">
       <div class="intro-image">
-        <img src="../pacman/assets/cherry.png" alt="Style Icon">
+        <img src="../pictures/perfomance.png" alt="Style Icon">
       </div>
       <div class="intro-content">
         <h3>Style Meets Performance</h3>
@@ -134,27 +180,30 @@ $genres = $genreStats;
 </section>
 
 
-        <section id="giftcard" class="product-cards">
+<section id="giftcard" class="section gift-cards-section">
+    <h2 class="section-title">eGift Cards</h2>
+    <div class="card-grid gift-cards-grid">
+        <?php if (!empty($gift_img)): ?>
+            <?php $giftIndex = 0; ?>
+            <?php foreach ($gift_img as $img): ?>
+                <div class="gift-card-wrapper <?= $giftIndex >= $limit ? 'hidden-gift' : '' ?>">
+                    <div class="card gift-card">
+                        <img src="<?= htmlspecialchars($img['IMG']); ?>" class="h-48 gift_card_img" alt="<?= htmlspecialchars($img['Name']); ?>">
+                        <p class="body-text name"><?= htmlspecialchars($img['Name']); ?></p>
+                    </div>
+                </div>
+                <?php $giftIndex++; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No gift cards found.</p>
+        <?php endif; ?>
+    </div>
 
-        
-    <section class="section">
-        <h2 class="section-title">eGift Cards</h2>
-        <div class="card-grid gift-cards-grid">
-            <div class="card card-placeholder">
-                <img src="../icons/array.png" class="h-48">
-            </div>
-            <div class="card card-placeholder">
-                <img src="../icons/array.png" class="h-48">
-            </div>
-            <div class="card card-placeholder">
-                <img src="../icons/array.png" class="h-48">
-            </div>
-            <div class="card card-placeholder">
-                <img src="../icons/array.png" class="h-48">
-            </div>
-        </div>
-        <a href="#" class="show-all">Show all</a>
-    </section>
+    <?php if(count($gift_img) > $limit): ?>
+        <button class="show-all-gift centered-show-all">Show all</button>
+    <?php endif; ?>
+</section>
+
 
     <!-- Top Games -->
     <section id="game" class="section">
@@ -185,7 +234,7 @@ $genres = $genreStats;
                 <p class="body-text">Fun casual gameplay for everyone.</p>
             </div>
         </div>
-        <a href="#" class="show-all">Show all</a>
+        <button  class="show-all centered-show-all">Show all</button>
     </section>
 
     <!-- Upcoming Games -->
@@ -217,7 +266,7 @@ $genres = $genreStats;
                 <p class="body-text">Next-level graphics and immersive experience.</p>
             </div>
         </div>
-        <a href="#" class="show-all">Show all</a>
+        <button  class="show-all centered-show-all">Show all</button>
     </section>
 
 </section>
@@ -228,20 +277,28 @@ $genres = $genreStats;
     <div class="card-grid genre-grid">
         <?php if (!empty($genreStats)): ?>
             <?php foreach ($genreStats as $genre => $count): ?>
-                <div class="card genre-card">
-                    <div class="icon-placeholder">🎮</div> <!-- You can customize icons per genre -->
+                <a href="#"> <div class="genre-card-wrapper <?= $index >= $limit ? 'hidden' : '' ?>">
+                    <div class="card genre-card">
+                    <div class="icon-placeholder"><?= getAccurateEmoji($genre,$emojiKeywords); ?></div> <!-- You can customize icons per genre -->
                     <p class="number"><?= $count ?></p>
                     <p class="body-text"><?= htmlspecialchars($genre) ?></p>
-                </div>
+                    </div>
+                </div> </a>
+                <?php $index++;?>
             <?php endforeach; ?>
         <?php else: ?>
             <p>No genre data found.</p>
         <?php endif; ?>
     </div>
-    <a href="#" class="show-all centered-show-all">Show all</a>
+    <?php if($genreStats > $limit):?>
+
+        <button  class="show-all centered-show-all">Show all</button>
+    <?php endif; ?>
 </section>
 
     </main>
+
+
 
 
 <section class="newsletter" id="newsletter">
@@ -272,16 +329,7 @@ $genres = $genreStats;
     </div>
 </div>
 
-<h2>Game Genres</h2>
-<ul>
-    <?php if (!empty($genreStats)): ?>
-        <?php foreach ($genreStats as $genre => $count): ?>
-            <li><?= htmlspecialchars($genre) ?>: <?= $count ?> games</li>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <li>No genre data found.</li>
-    <?php endif; ?>
-</ul>
+
 
 
     <br><br>
@@ -377,5 +425,28 @@ $genres = $genreStats;
     </button>
 
     <script src="home.js"></script>
+
+    <script>
+document.querySelectorAll('.show-all').forEach(button => {
+    button.addEventListener('click', function() {
+        // Find all hidden cards in the same section
+        const section = this.closest('section');
+        section.querySelectorAll('.hidden').forEach(card => card.classList.remove('hidden'));
+        this.style.display = 'none';
+    });
+});
+
+
+document.querySelectorAll('.show-all-gift').forEach(button => {
+    button.addEventListener('click', function() {
+        const section = this.closest('section');
+        section.querySelectorAll('.hidden-gift').forEach(card => card.classList.remove('hidden-gift'));
+        this.style.display = 'none';
+    });
+});
+
+
+
+    </script>
 </body>
 </html>
