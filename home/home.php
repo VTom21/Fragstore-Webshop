@@ -315,19 +315,20 @@ $limit = 12;
 
 <!-- AI Chatbot Button -->
 <div id="chatbot-container">
-    <button id="chatbot-btn">💬</button>
-    <div id="chatbot-window">
-        <div id="chatbot-header">
-            <span>AI Assistant</span>
-            <button id="chatbot-close">✖</button>
-        </div>
-        <div id="chatbot-messages"></div>
-        <form id="chatbot-form">
-            <input type="text" id="chatbot-input" placeholder="Type a message..." required>
-            <button type="submit">Send</button>
-        </form>
+  <button id="chatbot-btn">💬</button>
+  <div id="chatbot-window">
+    <div id="chatbot-header">
+      <span>AI Assistant</span>
+      <button id="chatbot-close">✖</button>
     </div>
+    <div id="chatbot-messages"></div>
+    <form id="chatbot-form">
+      <input type="text" id="chatbot-input" placeholder="Type a message..." required>
+      <button type="submit">Send</button>
+    </form>
+  </div>
 </div>
+
 
 
 
@@ -445,7 +446,47 @@ document.querySelectorAll('.show-all-gift').forEach(button => {
     });
 });
 
+const chatbotBtn = document.getElementById("chatbot-btn");
+const chatbotWindow = document.getElementById("chatbot-window");
+const chatbotClose = document.getElementById("chatbot-close");
+const chatbotForm = document.getElementById("chatbot-form");
+const chatbotInput = document.getElementById("chatbot-input");
+const chatbotMessages = document.getElementById("chatbot-messages");
 
+// Toggle chatbot visibility
+chatbotBtn.addEventListener("click", () => {
+  chatbotWindow.style.display = "flex";
+});
+
+chatbotClose.addEventListener("click", () => {
+  chatbotWindow.style.display = "none";
+});
+
+// Handle message sending
+chatbotForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const userMessage = chatbotInput.value.trim();
+  if (userMessage === "") return;
+
+  // Add user message
+  addMessage(userMessage, "user-message");
+
+  // Simulated bot response
+  setTimeout(() => {
+    addMessage("I'm just a demo assistant for now 🤖", "bot-message");
+  }, 600);
+
+  chatbotInput.value = "";
+});
+
+// Function to append message
+function addMessage(text, type) {
+  const messageEl = document.createElement("div");
+  messageEl.classList.add("chatbot-message", type);
+  messageEl.textContent = text;
+  chatbotMessages.appendChild(messageEl);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // auto-scroll
+}
 
     </script>
 </body>
