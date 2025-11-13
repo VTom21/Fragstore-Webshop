@@ -319,9 +319,12 @@ $limit = 12;
   <div id="chatbot-window">
     <div id="chatbot-header">
       <span>AI Assistant</span>
+      <img src="../pictures/chatbot.png" alt="" class="chatbot_img">
       <button id="chatbot-close">✖</button>
     </div>
-    <div id="chatbot-messages"></div>
+    <div class="chatbot-wrapper">
+      <div id="chatbot-messages"></div>
+    </div>
     <form id="chatbot-form">
       <input type="text" id="chatbot-input" placeholder="Type a message..." required>
       <button type="submit" id="chatbot-send">Send</button>
