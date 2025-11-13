@@ -315,7 +315,6 @@ $limit = 12;
 
 <!-- AI Chatbot Button -->
 <div id="chatbot-container">
-  <button id="chatbot-btn">💬</button>
   <div id="chatbot-window">
     <div id="chatbot-header">
       <span>AI Assistant</span>
@@ -327,7 +326,9 @@ $limit = 12;
       <button type="submit">Send</button>
     </form>
   </div>
+  <button id="chatbot-btn">💬</button>
 </div>
+
 
 
 
