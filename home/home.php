@@ -110,21 +110,21 @@ $limit = 12;
 
     <div class="intro-item reverse">
       <div class="intro-image">
-        <img src="../pictures/game_pic.png" alt="Collectibles Icon">
+        <img src="../pictures/perfomance.png" alt="Collectibles Icon">
       </div>
       <div class="intro-content">
-        <h3>Collect the Rare</h3>
-        <p>From limited-edition drops to iconic collaborations — bring home exclusive collectibles that define the next era of gaming culture.</p>
+      <h3>Style Meets Performance</h3>
+      <p>Designed with precision and passion, each product blends function, form, and futuristic design — so your gear performs as good as it looks.</p>
       </div>
     </div>
 
     <div class="intro-item">
       <div class="intro-image">
-        <img src="../pictures/perfomance.png" alt="Style Icon">
+        <img src="../pictures/game_pic.png" alt="Style Icon">
       </div>
       <div class="intro-content">
-        <h3>Style Meets Performance</h3>
-        <p>Designed with precision and passion, each product blends function, form, and futuristic design — so your gear performs as good as it looks.</p>
+        <h3>Collect the Rare</h3>
+        <p>From limited-edition drops to iconic collaborations — bring home exclusive collectibles that define the next era of gaming culture.</p>
       </div>
     </div>
   </div>
