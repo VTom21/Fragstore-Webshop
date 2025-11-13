@@ -324,7 +324,7 @@ $limit = 12;
     <div id="chatbot-messages"></div>
     <form id="chatbot-form">
       <input type="text" id="chatbot-input" placeholder="Type a message..." required>
-      <button type="submit">Send</button>
+      <button type="submit" id="chatbot-send">Send</button>
     </form>
   </div>
 </div>
@@ -452,6 +452,7 @@ const chatbotClose = document.getElementById("chatbot-close");
 const chatbotForm = document.getElementById("chatbot-form");
 const chatbotInput = document.getElementById("chatbot-input");
 const chatbotMessages = document.getElementById("chatbot-messages");
+const Send = document.getElementById("chatbot-send");
 
 // Toggle chatbot visibility
 chatbotBtn.addEventListener("click", () => {
@@ -462,31 +463,65 @@ chatbotClose.addEventListener("click", () => {
   chatbotWindow.style.display = "none";
 });
 
-// Handle message sending
-chatbotForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const userMessage = chatbotInput.value.trim();
-  if (userMessage === "") return;
+Send.addEventListener("click", sendMessage);
 
-  // Add user message
-  addMessage(userMessage, "user-message");
-
-  // Simulated bot response
-  setTimeout(() => {
-    addMessage("I'm just a demo assistant for now 🤖", "bot-message");
-  }, 600);
-
-  chatbotInput.value = "";
+chatbotInput.addEventListener("keypress", (e) =>{
+    if(e.key === "Enter" ){
+        sendMessage();
+    }
 });
 
-// Function to append message
-function addMessage(text, type) {
-  const messageEl = document.createElement("div");
-  messageEl.classList.add("chatbot-message", type);
-  messageEl.textContent = text;
-  chatbotMessages.appendChild(messageEl);
-  chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // auto-scroll
+function sendMessage() {
+    const Message = document.getElementById("chatbot-input").value.trim();
+    appendMessage("user", Message);
+    document.getElementsByClassName("chatbot-input").value.trim();
+    getResponse();
 }
+
+function appendMessage(user,message){
+    const msg_element = document.getElementById("div");
+    msg_element.classList.add(message,user);
+    msg_element.textContent = message;
+    chatbotMessages.appendChild(msg_element);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+}
+
+async function getResponse(user_message){
+    const API_KEY = "";
+    const API_URL = "";
+
+    try{
+        const response = await fetch(API_URL, {
+            method:"POST",
+            headers: {"Content-Type", "application/json"},
+            body: JSON.stringify({
+                contents: [
+                    {
+                        parts: [{text:user_message}],
+                    },
+                ],
+            }),
+        });
+
+        const data = await response.json();
+
+        if(!data.candidates || !data.candidates.length){
+            throw new Error("No resposne!");
+        }
+
+        const bot_message = data.candidates[0].content.parts[0].text;
+        appendMessage("bot", bot_message);
+    }
+    catch (error){
+        console.error("Error:", error);
+        appendMessage(
+            "bot",
+            "Sorry i have trouble responding"
+        )
+    }
+}
+
 
     </script>
 </body>
