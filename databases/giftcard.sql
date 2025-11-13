@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Tábla szerkezet ehhez a táblához `giftcard`
 --
+CREATE DATABASE IF NOT EXISTS giftcards;
+USE giftcards;
 
 CREATE TABLE `giftcard` (
   `CardId` varchar(50) NOT NULL,
