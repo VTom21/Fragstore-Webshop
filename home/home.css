@@ -753,6 +753,25 @@ main {
     font-size: 1.2em;
 }
 
+.gift-card p{
+  border: 1px solid var(--header-border);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  transition: transform 0.6s ease-out;
+}
+
+.gift-card p:hover{
+  border: 1px solid var(--header-border);
+}
+
 
 /* === NEWSLETTER SECTION === */
 .newsletter {
