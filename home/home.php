@@ -110,7 +110,7 @@ $limit = 12;
 
     <div class="intro-item reverse">
       <div class="intro-image">
-        <img src="../pictures/perfomance.png  alt="Collectibles Icon">
+        <img src="../pictures/perfomance.png"  alt="Collectibles Icon">
       </div>
       <div class="intro-content">
         <h3>Style Meets Performance</h3>
@@ -452,75 +452,65 @@ const chatbotClose = document.getElementById("chatbot-close");
 const chatbotForm = document.getElementById("chatbot-form");
 const chatbotInput = document.getElementById("chatbot-input");
 const chatbotMessages = document.getElementById("chatbot-messages");
-const Send = document.getElementById("chatbot-send");
 
-// Toggle chatbot visibility
+// Show chatbot
 chatbotBtn.addEventListener("click", () => {
   chatbotWindow.style.display = "flex";
+  chatbotBtn.style.display = "none";
 });
 
+// Hide chatbot
 chatbotClose.addEventListener("click", () => {
   chatbotWindow.style.display = "none";
+  chatbotBtn.style.display = "block";
 });
 
-Send.addEventListener("click", sendMessage);
+// Handle form submission
+chatbotForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const userMessage = chatbotInput.value.trim();
+  if (!userMessage) return;
 
-chatbotInput.addEventListener("keypress", (e) =>{
-    if(e.key === "Enter" ){
-        sendMessage();
-    }
+  appendMessage("user", userMessage);
+  chatbotInput.value = "";
+  await getResponse(userMessage);
 });
 
-function sendMessage() {
-    const Message = document.getElementById("chatbot-input").value.trim();
-    appendMessage("user", Message);
-    document.getElementsByClassName("chatbot-input").value.trim();
-    getResponse();
+function appendMessage(sender, message) {
+  const msgElement = document.createElement("div");
+  msgElement.classList.add("message", sender);
+  msgElement.textContent = message;
+  chatbotMessages.appendChild(msgElement);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 }
 
-function appendMessage(user,message){
-    const msg_element = document.getElementById("div");
-    msg_element.classList.add(message,user);
-    msg_element.textContent = message;
-    chatbotMessages.appendChild(msg_element);
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+async function getResponse(userMessage) {
+  const API_KEY = "AIzaSyC-OwJUqBPkTyehSxqqpwE3YkRTGCmF7oE"; 
+  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
-}
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: userMessage }] }],
+      }),
+    });
 
-async function getResponse(user_message){
-    const API_KEY = "";
-    const API_URL = "";
+    const data = await response.json();
 
-    try{
-        const response = await fetch(API_URL, {
-            method:"POST",
-            headers: {"Content-Type", "application/json"},
-            body: JSON.stringify({
-                contents: [
-                    {
-                        parts: [{text:user_message}],
-                    },
-                ],
-            }),
-        });
-
-        const data = await response.json();
-
-        if(!data.candidates || !data.candidates.length){
-            throw new Error("No resposne!");
-        }
-
-        const bot_message = data.candidates[0].content.parts[0].text;
-        appendMessage("bot", bot_message);
+    if (!data.candidates || !data.candidates.length) {
+      throw new Error("No response from Gemini API");
     }
-    catch (error){
-        console.error("Error:", error);
-        appendMessage(
-            "bot",
-            "Sorry i have trouble responding"
-        )
-    }
+
+    const botMessage = data.candidates[0].content.parts[0].text;
+    appendMessage("bot", botMessage);
+  } catch (error) {
+    console.error("Error:", error);
+    appendMessage("bot", "⚠️ Sorry, I’m having trouble responding right now.");
+  }
 }
+
 
 
     </script>
