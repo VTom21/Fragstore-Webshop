@@ -298,20 +298,44 @@ $limit = 12;
 
     </main>
 
+    <section id="quotes" class="section quotes-section">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h2 class="section-title mb-6">From People</h2>
+    <p class="section-desc mb-12">Hear from gamers, creators, and enthusiasts who love shopping at Fragstore.</p>
 
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Fragstore has completely changed how I discover and buy games — the selection is unmatched!"</p>
+          <div class="testimonial-author">
+            <span>– Alex V., Pro Gamer</span>
+          </div>
+        </div>
+      </div>
 
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Fast delivery, awesome deals, and a community that really understands gamers. Fragstore is my go-to!"</p>
+          <div class="testimonial-author">
+            <span>– Maya L., Content Creator</span>
+          </div>
+        </div>
+      </div>
 
-<section class="newsletter" id="newsletter">
-  <h2>Subscribe to Our Newsletter</h2>
-  <p>Get the latest deals, updates, and exclusive gaming content delivered straight to your inbox.</p>
-
-  <form action="#" method="post">
-    <input type="email" name="email" placeholder="Enter your email" required>
-    <button type="submit">Subscribe</button>
-  </form>
-
-  <p class="privacy-note">We respect your privacy. Unsubscribe at any time.</p>
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"From indie gems to AAA hits, Fragstore always has exactly what I’m looking for. Shopping here is a joy."</p>
+          <div class="testimonial-author">
+            <span>– Jordan K., Game Enthusiast</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+
+
 
 <!-- AI Chatbot Button -->
 <div id="chatbot-container">

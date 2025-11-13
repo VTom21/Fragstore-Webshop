@@ -7,6 +7,7 @@
 
   --text-light: #e8e8e8;
   --text-muted: #a0a0a0;
+  --text-muted2:#c7c2c2;
 
   --color-primary: #00f7ff;
   --color-primary-dark: #00d4d4;
@@ -22,6 +23,9 @@
   --nav-light:#6d70862d;
   --chatbot_header: #59c3c5;
 
+
+
+    
 
 
     --shadow-subtle: rgba(0, 247, 255, 0.15); 
@@ -177,7 +181,7 @@ header {
   flex-direction: column;
   text-align: center;
   overflow: hidden;
-  background: radial-gradient(circle at top, var(--bg-hover) 0%, var(--bg-main) 100%);
+  background: url("../bg.png") no-repeat center center;
 }
 
 .hero::before {
@@ -221,7 +225,7 @@ header {
 
 .hero p {
   font-size: 1.2rem;
-  color: var(--text-muted);
+  color: var(--text-muted2);
   max-width: 650px;
   margin: 0 auto 30px;
 }

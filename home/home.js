@@ -18,3 +18,4 @@ document.addEventListener('DOMContentLoaded', () => {
         header.classList.toggle('sticky', window.scrollY > 0);
     });
 });
+
