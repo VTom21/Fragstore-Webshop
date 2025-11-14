@@ -32,7 +32,9 @@
     --shadow-medium: rgba(0, 247, 255, 0.3);  
     --shadow-strong: rgba(0, 247, 255, 0.5);  
     --header-border: #00f7ff44;               
-    --navbar-bg: #5658682d;   
+    --navbar-bg: #5658682d;  
+    --navbar-dark: #302f2f00;
+    --navbar-light: #4e4e4e2d;   
     --black2:#1e1e2f;    
     --green:#00f7ff44; 
 
@@ -163,6 +165,7 @@ header {
     color: var(--color-primary);
 }
 
+
 #sigin:hover {
 
     transform: translateY(-2px);
@@ -181,7 +184,7 @@ header {
   flex-direction: column;
   text-align: center;
   overflow: hidden;
-  background: url("../bg.png") no-repeat center center;
+  background: url("../pictures/bg.png") no-repeat center center;
 }
 
 .hero::before {
@@ -264,6 +267,8 @@ header {
   background: var(--color-secondary);
   color: var(--bg-main);
 }
+
+
 
 /* === TESTIMONIALS SECTION === */
 .testimonials {
@@ -871,7 +876,9 @@ main {
     }
 }
 
-
+#game,.section{
+  padding: 12px;
+}
 
 .game-card {
     padding: 0;
@@ -892,6 +899,10 @@ main {
     align-items: center;
     overflow: hidden;
     border-radius: 8px 8px 0 0;
+}
+
+.breadcrumbs{
+  padding: 12px 12px;
 }
 
 .image-placeholder::before,
@@ -992,6 +1003,10 @@ main {
 .genre-card > * {
     position: relative;
     z-index: 1;
+}
+
+#quotes{
+  margin: 12px 12px;
 }
 
 .genre-card:hover .icon-placeholder,
@@ -1399,6 +1414,149 @@ main {
 #chatbot-header button:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: rotate(90deg);
+}
+
+
+.faq-container {
+  width: 100%;
+  max-width: 700px;
+  display: grid;
+  justify-self: center;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  width: 30%;
+  justify-self: center;
+  font-weight: bold;
+  color: white;
+}
+
+/* Hide checkboxes */
+.faq-checkbox {
+  display: none;
+}
+
+/* FAQ Item */
+.faq-item {
+  background-color: transparent;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+/* FAQ Question */
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: background 0.3s;
+}
+
+.faq-question:hover {
+  background-color: var(--navbar-bg);
+}
+
+/* FAQ Answer */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+/* Show answer when checkbox is checked */
+.faq-checkbox:checked + .faq-question + .faq-answer {
+  max-height: 500px; /* large enough to fit content */
+  padding: 1rem 1.5rem;
+}
+
+/* Icon rotation */
+.faq-icon {
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  color: var(--color-primary);
+}
+
+.faq-checkbox:checked + .faq-question .faq-icon {
+  transform: rotate(180deg);
+}
+
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  margin-block: 32px;
+  background: var(--navbar-dark);
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.marquee-track {
+  display: flex;
+  width: fit-content;
+  animation: marquee 15s linear infinite; /* added animation */
+}
+
+.logos-slide {
+  display: flex;
+  gap: 100px;
+  padding: 48px 50px;
+}
+
+.logo-wrapper img {
+  width: 100%;
+  height: 68px;
+}
+
+.marquee-mask-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 128px;
+  background: linear-gradient(to right, var(--navbar-dark) 0%, transparent 100%);
+  z-index: 2;
+}
+
+.marquee-mask-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 128px;
+  background: linear-gradient(to left, var(--navbar-dark) 0%, transparent 100%);
+  z-index: 2;
+}
+
+@media (max-width:760px){
+  .logo-wrapper img{
+    height: 24px;
+  }
+  .logos-slide{
+    padding: 24px 32px;
+    gap: 60px;
+  }
+}
+
+/* Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(-50%); /* move half width for seamless loop */
+  }
 }
 
 

@@ -72,6 +72,7 @@ $limit = 12;
             <a href="../contact_us/contactus.php">Contact</a>
             <a href="#intro">About Us</a>
         </div>
+        
         <div id="stuff">
             <div id="sigin">
                 <a href="../login/Log In.php">Log in</a>
@@ -93,6 +94,26 @@ $limit = 12;
     </div>
   </div>
 </section>
+
+
+
+<nav class="flex breadcrumbs" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+    <li class="inline-flex items-center">
+      <a href="#" class="inline-flex items-center text-sm font-medium text-body hover:text-fg-brand">
+        <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5"/></svg>
+        Fragstore
+      </a>
+    </li>
+    <li>
+      <div class="flex items-center space-x-1.5">
+        <svg class="w-3.5 h-3.5 rtl:rotate-180 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
+        <a href="#" class="inline-flex items-center text-sm font-medium text-body hover:text-fg-brand">Home</a>
+      </div>
+    </li>
+  </ol>
+</nav>
+
 
 
     <main>
@@ -129,6 +150,43 @@ $limit = 12;
     </div>
   </div>
 </section>
+
+<div class="marquee-container">
+  <div class="marquee-mask-left"></div>
+  <div class="marquee-mask-right"></div>
+
+  <div class="marquee-track">
+    <div class="logos-slide">
+      <div class="logo-wrapper">
+        <img src="../pictures/playstation.png" alt="">
+      </div> 
+
+      <div class="logo-wrapper">
+        <img src="../pictures/xbox.png" alt="">
+      </div> 
+
+      <div class="logo-wrapper">
+        <img src="../pictures/nintendo_switch.png" alt="">
+      </div> 
+
+      <div class="logo-wrapper">
+        <img src="../pictures/sega.png" alt="">
+      </div> 
+
+      <div class="logo-wrapper">
+        <img src="../pictures/bethesda.png" alt="">
+      </div> 
+
+      <div class="logo-wrapper">
+        <img src="../pictures/rockstar.png" alt="">
+      </div> 
+
+      <div class="logo-wrapper">
+        <img src="../pictures/acti_vision.png" alt="">
+      </div> 
+    </div>
+  </div>
+</div>
 
 <section class="testimonials" id="testimonials">
   <h2>What Our Customers Say</h2>
@@ -298,6 +356,96 @@ $limit = 12;
 
     </main>
 
+
+    <div class="faq-container">
+  <h1 class="faq-title section-title mb-6">FAQ</h1><br>
+
+  <!-- FAQ Item 1 -->
+  <div class="faq-item">
+    <input type="checkbox" id="faq1" class="faq-checkbox">
+    <label for="faq1" class="faq-question">
+      What payment methods do you accept?
+      <span class="faq-icon">+</span>
+    </label>
+    <div class="faq-answer">
+      We accept major credit cards, PayPal, and gift cards. All transactions are secure.
+    </div>
+  </div>
+
+  <!-- FAQ Item 2 -->
+  <div class="faq-item">
+    <input type="checkbox" id="faq2" class="faq-checkbox">
+    <label for="faq2" class="faq-question">
+      Can I buy digital and physical games together?
+      <span class="faq-icon">+</span>
+    </label>
+    <div class="faq-answer">
+      Yes, you can combine digital downloads and physical copies in the same order. Shipping applies only to physical items.
+    </div>
+  </div>
+
+  <!-- FAQ Item 3 -->
+  <div class="faq-item">
+    <input type="checkbox" id="faq3" class="faq-checkbox">
+    <label for="faq3" class="faq-question">
+      How long does shipping take?
+      <span class="faq-icon">+</span>
+    </label>
+    <div class="faq-answer">
+      Standard shipping takes 3-7 business days, depending on your location. Express shipping is available at checkout.
+    </div>
+  </div>
+
+  <!-- FAQ Item 4 -->
+  <div class="faq-item">
+    <input type="checkbox" id="faq4" class="faq-checkbox">
+    <label for="faq4" class="faq-question">
+      Do you offer pre-order bonuses?
+      <span class="faq-icon">+</span>
+    </label>
+    <div class="faq-answer">
+      Yes! Pre-order games often include exclusive in-game content or collectibles. Check the product page for details.
+    </div>
+  </div>
+
+  <!-- FAQ Item 5 -->
+  <div class="faq-item">
+    <input type="checkbox" id="faq5" class="faq-checkbox">
+    <label for="faq5" class="faq-question">
+      Can I gift a digital game to a friend?
+      <span class="faq-icon">+</span>
+    </label>
+    <div class="faq-answer">
+      Absolutely! During checkout, select “Send as a gift” and enter your friend’s email to deliver the game digitally.
+    </div>
+  </div>
+
+  <!-- FAQ Item 6 -->
+  <div class="faq-item">
+    <input type="checkbox" id="faq6" class="faq-checkbox">
+    <label for="faq6" class="faq-question">
+      How do I redeem a game code?
+      <span class="faq-icon">+</span>
+    </label>
+    <div class="faq-answer">
+      After purchase, you will receive a code via email. Enter it in your platform’s store (Steam, Epic Games, etc.) to redeem your game.
+    </div>
+  </div>
+
+  <!-- FAQ Item 7 -->
+  <div class="faq-item">
+    <input type="checkbox" id="faq7" class="faq-checkbox">
+    <label for="faq7" class="faq-question">
+      Do you provide refunds for digital games?
+      <span class="faq-icon">+</span>
+    </label>
+    <div class="faq-answer">
+      Refunds for digital games depend on the platform's policies. For most platforms, games must not be downloaded or played for refund eligibility.
+    </div>
+  </div>
+
+</div>
+
     <section id="quotes" class="section quotes-section">
   <div class="max-w-6xl mx-auto px-4 text-center">
     <h2 class="section-title mb-6">From People</h2>
@@ -453,6 +601,8 @@ $limit = 12;
     </button>
 
     <script src="home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.0/dist/flowbite.min.js"></script>
+
 
     <script>
 document.querySelectorAll('.show-all').forEach(button => {
@@ -515,28 +665,46 @@ async function getResponse(userMessage) {
   const API_KEY = "AIzaSyC-OwJUqBPkTyehSxqqpwE3YkRTGCmF7oE"; 
   const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
+  // add user message to history
+  chatHistory.push({ role: "user", text: userMessage });
+
+  // create contents array
+  const contents = chatHistory.map(msg => ({
+    parts: [{ text: msg.text }]
+  }));
+
   try {
     const response = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: userMessage }] }],
+        contents,
+        generationConfig: {
+          maxOutputTokens: 150,
+          temperature: 0.7,
+        }
       }),
     });
 
     const data = await response.json();
 
-    if (!data.candidates || !data.candidates.length) {
+    if (!data.candidates?.length) {
       throw new Error("No response from Gemini API");
     }
 
     const botMessage = data.candidates[0].content.parts[0].text;
+
+    // add bot message to history
+    chatHistory.push({ role: "bot", text: botMessage });
+
     appendMessage("bot", botMessage);
+
   } catch (error) {
     console.error("Error:", error);
     appendMessage("bot", "⚠️ Sorry, I’m having trouble responding right now.");
   }
 }
+
 
 
 
