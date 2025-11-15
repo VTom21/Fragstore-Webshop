@@ -86,6 +86,14 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
                 $scope.uniqueGenres.push(genreObj);
             }
 
+            var urlGenres = $location.search().genres; 
+
+            $scope.uniqueGenres.forEach(function(genreObj) {
+                if (urlGenres.includes(genreObj.name)) {
+                    genreObj.selected = true;
+                }
+            });
+
             //$watch is an Angular function that watches whether a variable changes and executes a callback function
 
             //True means its gonna look inside if value has other properties -> thorough scrutinization

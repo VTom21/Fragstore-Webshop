@@ -51,6 +51,8 @@ function getAccurateEmoji($genre, $emojiKeywords) {
 $index = 0;
 $limit = 12;
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -248,7 +250,7 @@ $limit = 12;
     <div class="card-grid genre-grid">
         <?php if (!empty($genreStats)): ?>
             <?php foreach ($genreStats as $genre => $count): ?>
-                <a href="#"> <div class="genre-card-wrapper <?= $index >= $limit ? 'hidden' : '' ?>">
+                <a href="http://localhost:3000/games_main.php#!?genres=<?= $genre?>&platforms="> <div class="genre-card-wrapper <?= $index >= $limit ? 'hidden' : '' ?>">
                     <div class="card genre-card">
                     <div class="icon-placeholder"><?= getAccurateEmoji($genre,$emojiKeywords); ?></div> <!-- You can customize icons per genre -->
                     <p class="number"><?= $count ?></p>
