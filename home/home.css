@@ -178,6 +178,7 @@ header {
 .hero {
   position: relative;
   height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -185,6 +186,8 @@ header {
   text-align: center;
   overflow: hidden;
   background: url("../pictures/bg.png") no-repeat center center;
+  background-position: center;
+  background-size: cover;
 }
 
 .hero::before {
@@ -267,8 +270,6 @@ header {
   background: var(--color-secondary);
   color: var(--bg-main);
 }
-
-
 
 /* === TESTIMONIALS SECTION === */
 .testimonials {
@@ -1627,6 +1628,7 @@ main {
         margin: 10px 0;
         gap: 10px;
         order: 2;
+        display: none;
     }
 
     #stuff {
