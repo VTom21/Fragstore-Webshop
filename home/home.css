@@ -1196,7 +1196,6 @@ main {
 .chatbot_img{
   width: 32px;
   height: 32px;
-
 }
 
 @keyframes slideUp {
@@ -1661,4 +1660,34 @@ main {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
+}
+
+@media (max-width: 500px){
+    .genre-grid{
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+    .newsletter h2 {
+        font-size: 1.75rem;
+    }
+    #chatbot-window {
+        width: 90vw;
+        height: 60vh;
+        display: flex;
+        align-self: center;
+    }
+    .up-btn{
+      position: fixed;
+      bottom: 100vh;
+      z-index: 1000;
+    }
+}
+
+@media (max-width: 400px){
+  #chatbot-form{
+    flex-direction: column;
+  }
 }
