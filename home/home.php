@@ -87,7 +87,19 @@ $limit = 12;
     </header>
 
 
+
+
 <section class="hero">
+          <div class="lang-menu">
+      <div class="selected-lang">
+        English
+      </div>
+      <ul>
+          <li><a href="#"class="de">German</a></li>
+          <li><a href="#"class="it">Italian</a></li>
+          <li><a href="#"class="es">Spanish</a></li>
+      </ul>
+    </div>
   <div class="hero-content">
     <h1>Unlock the Future of Gaming</h1>
     <p>Discover exclusive deals, rare collectibles, and your next favorite adventure — all in one place.</p>

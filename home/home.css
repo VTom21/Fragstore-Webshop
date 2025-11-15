@@ -1551,6 +1551,90 @@ main {
   z-index: 2;
 }
 
+.lang-menu {
+  position: absolute;
+  top: 0px;     /* top-left corner */
+  left: 0px;
+  width: 150px;
+  margin:12px 12px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+/* SELECTED LANGUAGE */
+.selected-lang {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  background: var(--thumb);
+  border-radius: 6px;
+  box-shadow: 0px 1px 8px rgba(0,0,0,0.15);
+  color: var(--gradient-primary);
+}
+
+.selected-lang:before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-image: url("https://flagsapi.com/US/flat/32.png");
+}
+
+/* DROPDOWN */
+.lang-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: var(--thumb);
+  border: 1px solid var(--shadow);
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  top: 47px;
+  left: 0;
+  width: 150px;
+}
+
+/* SHOW ON HOVER */
+.lang-menu:hover ul {
+  display: block;
+}
+
+.lang-menu ul li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--gradient-primary);
+}
+
+.lang-menu ul li a:hover {
+  background-color: var(--header-border);
+}
+
+.lang-menu ul li a:before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+
+/* COUNTRY FLAGS */
+.de:before {
+  background-image: url("https://flagsapi.com/DE/flat/32.png");
+}
+
+.it:before {
+  background-image: url("https://flagsapi.com/IT/flat/32.png");
+}
+
+.es:before {
+  background-image: url("https://flagsapi.com/ES/flat/32.png");
+}
+
 @media (max-width:760px){
 
   .logos-slide{
