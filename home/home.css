@@ -1660,3 +1660,20 @@ main {
         gap: 10px;
     }
 }
+
+@media (max-width: 450px) {
+    .newsletter h2 {
+        font-size: 1.75rem;
+    }
+    #chatbot-window {
+        width: 90vw;
+        height: 60vh;
+        display: flex;
+        align-self: center;
+    }
+    .up-btn{
+      position: fixed;
+      bottom: 100vh;
+      z-index: 1000;
+    }
+}
