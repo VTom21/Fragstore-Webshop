@@ -1499,24 +1499,36 @@ main {
   margin-block: 32px;
   background: var(--navbar-dark);
   position: relative;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .marquee-track {
   display: flex;
   width: fit-content;
   animation: marquee 15s linear infinite; /* added animation */
+  flex-wrap: nowrap;
 }
 
 .logos-slide {
   display: flex;
   gap: 100px;
   padding: 48px 50px;
+  flex: 0 0 auto;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;     
+  min-width: 98px;    
 }
 
 .logo-wrapper img {
-  width: 100%;
-  height: 68px;
+  height: 88px;        
+  width: auto;         
+  max-width: 100%;     
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .marquee-mask-left {
@@ -1540,9 +1552,7 @@ main {
 }
 
 @media (max-width:760px){
-  .logo-wrapper img{
-    height: 24px;
-  }
+
   .logos-slide{
     padding: 24px 32px;
     gap: 60px;
@@ -1555,7 +1565,7 @@ main {
     transform: translateX(50%);
   }
   100% {
-    transform: translateX(-50%); /* move half width for seamless loop */
+    transform: translateX(-140%); /* move half width for seamless loop */
   }
 }
 

@@ -15,7 +15,7 @@ $emojiKeywords = [
     'fighting' => '🥊',
     'fps' => '🔫',
     'shooter' => '🔫',
-    'platformer' => '🪜',
+    'platformer' => '🚩',
     'puzzle' => '🧩',
     'racing' => '🏎️',
     'simulation' => '🛠️',
@@ -59,10 +59,11 @@ $limit = 12;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/icons/array.png">
     <title>Fragstore - Home</title>
 </head>
-<body>
+<body ng-app="home" ng-controller="home_controller">
     <header id="header">
         <img id="logo" src="../icons/array.png"></img>
         <div class="navbar">
@@ -141,7 +142,7 @@ $limit = 12;
 
     <div class="intro-item">
       <div class="intro-image">
-        <img src="../pictures/game_pic.png"" alt="Style Icon">
+        <img src="../pictures/game_pic.png" alt="Style Icon">
       </div>
       <div class="intro-content">
         <h3>Collect the Rare</h3>
@@ -151,84 +152,32 @@ $limit = 12;
   </div>
 </section>
 
-<div class="marquee-container">
-  <div class="marquee-mask-left"></div>
-  <div class="marquee-mask-right"></div>
+  <div class="marquee-container">
+    <div class="marquee-mask-left"></div>
+    <div class="marquee-mask-right"></div>
 
-  <div class="marquee-track">
-    <div class="logos-slide">
-      <div class="logo-wrapper">
-        <img src="../pictures/playstation.png" alt="">
-      </div> 
-
-      <div class="logo-wrapper">
-        <img src="../pictures/xbox.png" alt="">
-      </div> 
-
-      <div class="logo-wrapper">
-        <img src="../pictures/nintendo_switch.png" alt="">
-      </div> 
-
-      <div class="logo-wrapper">
-        <img src="../pictures/sega.png" alt="">
-      </div> 
-
-      <div class="logo-wrapper">
-        <img src="../pictures/bethesda.png" alt="">
-      </div> 
-
-      <div class="logo-wrapper">
-        <img src="../pictures/rockstar.png" alt="">
-      </div> 
-
-      <div class="logo-wrapper">
-        <img src="../pictures/acti_vision.png" alt="">
-      </div> 
+    <div class="marquee-track">
+      <div class="logos-slide">
+        <div class="logo-wrapper" ng-repeat="image in images">
+          <img ng-src="../pictures/{{image}}.png">
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
 <section class="testimonials" id="testimonials">
   <h2>What Our Customers Say</h2>
   <p class="section-desc">Real feedback from gamers and collectors around the world.</p>
 
   <div class="testimonial-grid">
-    <div class="testimonial-card">
+    <div class="testimonial-card" ng-repeat="rater in raters">
       <div class="testimonial-content">
-        <p>“Fragstore is my go-to for exclusive gaming gear. Fast delivery and top-notch quality every time.”</p>
+        <p>{{rater.testimony}}</p>
         <div class="testimonial-author">
-          <img src="https://i.pravatar.cc/100?img=1" alt="user photo">
+          <img ng-src="{{rater.img}}" alt="user photo">
           <div>
-            <h4>Alex Johnson</h4>
-            <span>Pro Gamer</span>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial-card">
-      <div class="testimonial-content">
-        <p>“I love the limited edition items. The site feels premium and the customer service is amazing.”</p>
-        <div class="testimonial-author">
-          <img src="https://i.pravatar.cc/100?img=2" alt="user photo">
-          <div>
-            <h4>Samantha Lee</h4>
-            <span>Streamer & Collector</span>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial-card">
-      <div class="testimonial-content">
-        <p>“Excellent quality and smooth shopping experience. Definitely one of the best gaming stores out there.”</p>
-        <div class="testimonial-author">
-          <img src="https://i.pravatar.cc/100?img=3" alt="user photo">
-          <div>
-            <h4>Mark Rivera</h4>
-            <span>Esports Enthusiast</span>
+            <h4>{{rater.name}}</h4>
+            <span>{{rater.job}}</span>
             <div class="stars">★★★★★</div>
           </div>
         </div>
@@ -267,29 +216,11 @@ $limit = 12;
     <section id="game" class="section">
         <h2 class="section-title">Top Games</h2>
         <div class="card-grid">
-            <div class="card game-card">
-                <img src="https://upload.wikimedia.org/wikipedia/en/d/d0/List_of_Playable_characters_in_Persona_5.jpg" alt="Game 1" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Persona 5</p>
-                <p class="price">$59.99</p>
-                <p class="body-text">Exciting adventure with stunning graphics.</p>
-            </div>
-            <div class="card game-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47LjFayYHU_-Hc43iGrZkvbyFmG5YXrcrmA&s" alt="Game 2" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Grand Theft Auto 5</p>
-                <p class="price">$49.99</p>
-                <p class="body-text">Fast-paced action and immersive story.</p>
-            </div>
-            <div class="card game-card">
-                <img src="https://store-images.s-microsoft.com/image/apps.58752.68182501197884443.ac728a87-7bc1-4a0d-8bc6-0712072da93c.0cf58754-9802-46f8-8557-8d3ff32a627a?q=90&w=480&h=270" alt="Game 3" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Red Dead Redemption 2</p>
-                <p class="price">$39.99</p>
-                <p class="body-text">Open-world RPG with incredible exploration.</p>
-            </div>
-            <div class="card game-card">
-                <img src="https://media.wired.com/photos/639bf35a24c352e627eccc43/3:2/w_2560%2Cc_limit/Ragnaro%25CC%2588k-culture-ar1qdh.jpg" alt="Game 4" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">God of War: Ragnarok</p>
-                <p class="price">$29.99</p>
-                <p class="body-text">Fun casual gameplay for everyone.</p>
+            <div class="card game-card" ng-repeat="game in top_games">
+                <img ng-src="{{game.img}}" alt="Game 1" class="w-full h-48 object-cover rounded-t-xl">
+                <p class="title">{{game.name}}</p>
+                <p class="price">{{game.prize}}</p>
+                <p class="body-text">{{game.desc}}</p>
             </div>
         </div>
 <br>
@@ -299,29 +230,11 @@ $limit = 12;
     <section class="section">
         <h2 class="section-title">Upcoming Games</h2>
         <div class="card-grid">
-            <div class="card game-card">
-                <img src="https://cdn.mos.cms.futurecdn.net/iPi3bFFgSfLnoNe8NS764n.jpg" alt="Upcoming Game 1" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Grand Theft Auto VI</p>
+            <div class="card game-card" ng-repeat="game in upcoming_games">
+                <img ng-src="{{game.img}}" alt="Upcoming Game 1" class="w-full h-48 object-cover rounded-t-xl">
+                <p class="title">{{game.name}}</p>
                 <p class="price text-gray-400">Coming Soon</p>
-                <p class="body-text">Get ready for an epic new adventure!</p>
-            </div>
-            <div class="card game-card">
-                <img src="https://cdn.mos.cms.futurecdn.net/w9zhsvt8F3TNbamjRBg5Be.jpg" alt="Upcoming Game 2" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Fallout 5</p>
-                <p class="price text-gray-400">Coming Soon</p>
-                <p class="body-text">RPG adventure with multiplayer mode.</p>
-            </div>
-            <div class="card game-card">
-                <img src="https://gaming-cdn.com/images/products/6369/orig/the-sims-5-pc-mac-ea-app-cover.jpg?v=1753367505" alt="Upcoming Game 3" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Sims 5</p>
-                <p class="price text-gray-400">Coming Soon</p>
-                <p class="body-text">High-octane action and story-driven gameplay.</p>
-            </div>
-            <div class="card game-card">
-                <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2025/01/bioshock-4-2025-game-rant.jpg?w=1600&h=900&fit=crop" alt="Upcoming Game 4" class="w-full h-48 object-cover rounded-t-xl">
-                <p class="title">Bioshock 4</p>
-                <p class="price text-gray-400">Coming Soon</p>
-                <p class="body-text">Next-level graphics and immersive experience.</p>
+                <p class="body-text">{{game.desc}}</p>
             </div>
         </div>
 <br>
@@ -357,124 +270,33 @@ $limit = 12;
     </main>
 
 
-    <div class="faq-container">
-  <h1 class="faq-title section-title mb-6">FAQ</h1><br>
+  <div class="faq-container">
+  <h1 class="faq-title section-title mb-6"id="FAQ">FAQ</h1><br>
 
-  <!-- FAQ Item 1 -->
-  <div class="faq-item">
-    <input type="checkbox" id="faq1" class="faq-checkbox">
-    <label for="faq1" class="faq-question">
-      What payment methods do you accept?
+  <div class="faq-item" ng-repeat="content in faq_contents">
+    <input type="checkbox" id="faq{{content.id}}" class="faq-checkbox">
+    <label  for="faq{{content.id}}" class="faq-question">
+      {{content.query}}
       <span class="faq-icon">+</span>
     </label>
     <div class="faq-answer">
-      We accept major credit cards, PayPal, and gift cards. All transactions are secure.
-    </div>
-  </div>
-
-  <!-- FAQ Item 2 -->
-  <div class="faq-item">
-    <input type="checkbox" id="faq2" class="faq-checkbox">
-    <label for="faq2" class="faq-question">
-      Can I buy digital and physical games together?
-      <span class="faq-icon">+</span>
-    </label>
-    <div class="faq-answer">
-      Yes, you can combine digital downloads and physical copies in the same order. Shipping applies only to physical items.
-    </div>
-  </div>
-
-  <!-- FAQ Item 3 -->
-  <div class="faq-item">
-    <input type="checkbox" id="faq3" class="faq-checkbox">
-    <label for="faq3" class="faq-question">
-      How long does shipping take?
-      <span class="faq-icon">+</span>
-    </label>
-    <div class="faq-answer">
-      Standard shipping takes 3-7 business days, depending on your location. Express shipping is available at checkout.
-    </div>
-  </div>
-
-  <!-- FAQ Item 4 -->
-  <div class="faq-item">
-    <input type="checkbox" id="faq4" class="faq-checkbox">
-    <label for="faq4" class="faq-question">
-      Do you offer pre-order bonuses?
-      <span class="faq-icon">+</span>
-    </label>
-    <div class="faq-answer">
-      Yes! Pre-order games often include exclusive in-game content or collectibles. Check the product page for details.
-    </div>
-  </div>
-
-  <!-- FAQ Item 5 -->
-  <div class="faq-item">
-    <input type="checkbox" id="faq5" class="faq-checkbox">
-    <label for="faq5" class="faq-question">
-      Can I gift a digital game to a friend?
-      <span class="faq-icon">+</span>
-    </label>
-    <div class="faq-answer">
-      Absolutely! During checkout, select “Send as a gift” and enter your friend’s email to deliver the game digitally.
-    </div>
-  </div>
-
-  <!-- FAQ Item 6 -->
-  <div class="faq-item">
-    <input type="checkbox" id="faq6" class="faq-checkbox">
-    <label for="faq6" class="faq-question">
-      How do I redeem a game code?
-      <span class="faq-icon">+</span>
-    </label>
-    <div class="faq-answer">
-      After purchase, you will receive a code via email. Enter it in your platform’s store (Steam, Epic Games, etc.) to redeem your game.
-    </div>
-  </div>
-
-  <!-- FAQ Item 7 -->
-  <div class="faq-item">
-    <input type="checkbox" id="faq7" class="faq-checkbox">
-    <label for="faq7" class="faq-question">
-      Do you provide refunds for digital games?
-      <span class="faq-icon">+</span>
-    </label>
-    <div class="faq-answer">
-      Refunds for digital games depend on the platform's policies. For most platforms, games must not be downloaded or played for refund eligibility.
+      {{content.answer}}
     </div>
   </div>
 
 </div>
 
-    <section id="quotes" class="section quotes-section">
+  <section id="quotes" class="section quotes-section">
   <div class="max-w-6xl mx-auto px-4 text-center">
     <h2 class="section-title mb-6">From People</h2>
     <p class="section-desc mb-12">Hear from gamers, creators, and enthusiasts who love shopping at Fragstore.</p>
 
     <div class="testimonial-grid">
-      <div class="testimonial-card">
+      <div class="testimonial-card"ng-repeat="content in testimonial_content">
         <div class="testimonial-content">
-          <p>"Fragstore has completely changed how I discover and buy games — the selection is unmatched!"</p>
+          <p>{{content.title}}</p>
           <div class="testimonial-author">
-            <span>– Alex V., Pro Gamer</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          <p>"Fast delivery, awesome deals, and a community that really understands gamers. Fragstore is my go-to!"</p>
-          <div class="testimonial-author">
-            <span>– Maya L., Content Creator</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          <p>"From indie gems to AAA hits, Fragstore always has exactly what I’m looking for. Shopping here is a joy."</p>
-          <div class="testimonial-author">
-            <span>– Jordan K., Game Enthusiast</span>
+            <span>{{content.author}}</span>
           </div>
         </div>
       </div>
@@ -523,10 +345,10 @@ $limit = 12;
                         <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white">About</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="https://flowbite.com/" class="">About Us</a>
+                                <a href="#intro" class="#">About Us</a>
                             </li>
                             <li>
-                                <a href="https://tailwindcss.com/" class="">Contacts</a>
+                                <a href="/contact_us/contactus.php" class="">Contacts</a>
                             </li>
                         </ul>
                     </div>
@@ -534,10 +356,10 @@ $limit = 12;
                         <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white">Help</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="https://github.com/themesberg/flowbite" class="">FAQ</a>
+                                <a href="#FAQ" class="">FAQ</a>
                             </li>
                             <li class="mb-4">
-                                <a href="https://discord.gg/4eeurUVvTy" class="">Refund Policy</a>
+                                <a href="../pdf/Refund Policy.pdf" class="">Refund Policy</a>
                             </li>
                         </ul>
                     </div>
@@ -545,10 +367,10 @@ $limit = 12;
                         <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white">Legal</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="#" class="">Privacy Policy</a>
+                                <a href="../pdf/Privacy Policy.pdf" class="">Privacy Policy</a>
                             </li>
                             <li>
-                                <a href="#" class="">Terms &amp; Conditions</a>
+                                <a href="../pdf/Terms and Conditions.pdf" class="">Terms &amp; Conditions</a>
                             </li>
                         </ul>
                     </div>
@@ -600,6 +422,7 @@ $limit = 12;
         </svg>
     </button>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="home.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.0/dist/flowbite.min.js"></script>
 
@@ -622,6 +445,8 @@ document.querySelectorAll('.show-all-gift').forEach(button => {
         this.style.display = 'none';
     });
 });
+
+const chatHistory = [];
 
 const chatbotBtn = document.getElementById("chatbot-btn");
 const chatbotWindow = document.getElementById("chatbot-window");
@@ -704,10 +529,6 @@ async function getResponse(userMessage) {
     appendMessage("bot", "⚠️ Sorry, I’m having trouble responding right now.");
   }
 }
-
-
-
-
     </script>
 </body>
 </html>
