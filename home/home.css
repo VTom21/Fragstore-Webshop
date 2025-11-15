@@ -1561,7 +1561,6 @@ main {
   z-index: 20;
 }
 
-/* SELECTED LANGUAGE */
 .selected-lang {
   display: flex;
   align-items: center;
@@ -1571,6 +1570,7 @@ main {
   border-radius: 6px;
   box-shadow: 0px 1px 8px rgba(0,0,0,0.15);
   color: var(--gradient-primary);
+  --flag: url("https://flagsapi.com/US/flat/32.png"); /* default flag */
 }
 
 .selected-lang:before {
@@ -1578,8 +1578,12 @@ main {
   display: block;
   width: 32px;
   height: 32px;
-  background-image: url("https://flagsapi.com/US/flat/32.png");
+  background-image: var(--flag);
+  background-size: cover;
 }
+
+
+
 
 /* DROPDOWN */
 .lang-menu ul {
@@ -1611,6 +1615,44 @@ main {
   color: var(--gradient-primary);
 }
 
+.de:before {
+  background-image: url("https://flagsapi.com/DE/flat/32.png");
+  background-size: cover;
+}
+
+.it:before {
+  background-image: url("https://flagsapi.com/IT/flat/32.png");
+  background-size: cover;
+}
+
+.es:before {
+  background-image: url("https://flagsapi.com/ES/flat/32.png");
+  background-size: cover;
+}
+
+.us:before{
+    background-image: url("https://flagsapi.com/US/flat/32.png");
+    background-size: cover;
+}
+
+.ru:before{
+    background-image: url("https://flagsapi.com/RU/flat/32.png");
+    background-size: cover;
+}
+
+.fr:before{
+    background-image: url("https://flagsapi.com/FR/flat/32.png");
+    background-size: cover;
+}
+
+.in:before{
+    background-image: url("https://flagsapi.com/IN/flat/32.png");
+    background-size: cover;
+}
+
+
+
+
 .lang-menu ul li a:hover {
   background-color: var(--header-border);
 }
@@ -1622,18 +1664,6 @@ main {
   height: 32px;
 }
 
-/* COUNTRY FLAGS */
-.de:before {
-  background-image: url("https://flagsapi.com/DE/flat/32.png");
-}
-
-.it:before {
-  background-image: url("https://flagsapi.com/IT/flat/32.png");
-}
-
-.es:before {
-  background-image: url("https://flagsapi.com/ES/flat/32.png");
-}
 
 @media (max-width:760px){
 

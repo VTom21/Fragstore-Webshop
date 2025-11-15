@@ -69,19 +69,19 @@ $limit = 12;
     <header id="header">
         <img id="logo" src="../icons/array.png"></img>
         <div class="navbar">
-            <a href="#game">Games</a>
-            <a href="#giftcard">Gift Cards</a>
-            <a href="#genre">Genres</a>
-            <a href="../contact_us/contactus.php">Contact</a>
-            <a href="#intro">About Us</a>
+            <a href="#game"data-i18n="games">Games</a>
+            <a href="#giftcard"data-i18n="giftcards">Gift Cards</a>
+            <a href="#genre"data-i18n="genres">Genres</a>
+            <a href="../contact_us/contactus.php"data-i18n="contact">Contact</a>
+            <a href="#intro"data-i18n="about_us">About Us</a>
         </div>
         
         <div id="stuff">
             <div id="sigin">
-                <a href="../login/Log In.php">Log in</a>
+                <a href="../login/Log In.php"data-i18n="log_in">Log in</a>
             </div>
             <div id="register">
-                <a href="../signup/Sign Up.php">Sign up</a>
+                <a href="../signup/Sign Up.php"data-i18n="sign_up">Sign up</a>
             </div>
         </div>
     </header>
@@ -90,22 +90,28 @@ $limit = 12;
 
 
 <section class="hero">
-          <div class="lang-menu">
-      <div class="selected-lang">
-        English
-      </div>
-      <ul>
-          <li><a href="#"class="de">German</a></li>
-          <li><a href="#"class="it">Italian</a></li>
-          <li><a href="#"class="es">Spanish</a></li>
-      </ul>
-    </div>
+<div class="lang-menu">
+  <div class="selected-lang" data-flag="https://flagsapi.com/US/flat/32.png">
+    English
+  </div>
+
+  <ul>
+    <li><a href="#" class="us" data-flag="https://flagsapi.com/US/flat/32.png">English</a></li>
+    <li><a href="#" class="de" data-flag="https://flagsapi.com/DE/flat/32.png">German</a></li>
+    <li><a href="#" class="it" data-flag="https://flagsapi.com/IT/flat/32.png">Italian</a></li>
+    <li><a href="#" class="es" data-flag="https://flagsapi.com/ES/flat/32.png">Spanish</a></li>
+    <li><a href="#" class="fr" data-flag="https://flagsapi.com/FR/flat/32.png">French</a></li>
+    <li><a href="#" class="ru" data-flag="https://flagsapi.com/RU/flat/32.png">Russian</a></li>
+    <li><a href="#" class="in" data-flag="https://flagsapi.com/IN/flat/32.png">Hindi</a></li>
+  </ul>
+</div>
+
   <div class="hero-content">
-    <h1>Unlock the Future of Gaming</h1>
-    <p>Discover exclusive deals, rare collectibles, and your next favorite adventure — all in one place.</p>
+    <h1 data-i18n="hero_heading">Unlock the Future of Gaming</h1>
+    <p data-i18n="hero_content">Discover exclusive deals, rare collectibles, and your next favorite adventure — all in one place.</p>
     <div class="cta-buttons">
-      <a href="#game" class="btn">Explore Games</a>
-      <a href="#giftcard" class="btn secondary">Buy Gift Cards</a>
+      <a href="#game" class="btn"data-i18n="explore">Explore Games</a>
+      <a href="#giftcard" class="btn secondary"data-i18n="buy">Buy Gift Cards</a>
     </div>
   </div>
 </section>
@@ -139,8 +145,8 @@ $limit = 12;
         <img src="https://cms-assets.xboxservices.com/assets/bc/40/bc40fdf3-85a6-4c36-af92-dca2d36fc7e5.png?n=642227_Hero-Gallery-0_A1_857x676.png" alt="Power Up Icon">
       </div>
       <div class="intro-content">
-        <h3>Power Up Your Play</h3>
-        <p>Upgrade your setup with elite gaming gear built for speed, precision, and performance. Crafted for those who demand more from every frame.</p>
+        <h3 data-i18n="intro_heading">Power Up Your Play</h3>
+        <p data-i18n="intro_content">Upgrade your setup with elite gaming gear built for speed, precision, and performance. Crafted for those who demand more from every frame.</p>
       </div>
     </div>
 
@@ -149,8 +155,8 @@ $limit = 12;
         <img src="../pictures/perfomance.png"  alt="Collectibles Icon">
       </div>
       <div class="intro-content">
-        <h3>Style Meets Performance</h3>
-        <p>Designed with precision and passion, each product blends function, form, and futuristic design — so your gear performs as good as it looks.</p>
+        <h3 data-i18n="intro_heading2">Style Meets Performance</h3>
+        <p data-i18n="intro_content2">Designed with precision and passion, each product blends function, form, and futuristic design — so your gear performs as good as it looks.</p>
       </div>
     </div>
 
@@ -159,8 +165,8 @@ $limit = 12;
         <img src="../pictures/game_pic.png" alt="Style Icon">
       </div>
       <div class="intro-content">
-        <h3>Collect the Rare</h3>
-        <p>From limited-edition drops to iconic collaborations — bring home exclusive collectibles that define the next era of gaming culture.</p>
+        <h3 data-i18n="intro_heading3">Collect the Rare</h3>
+        <p data-i18n="intro_content3">From limited-edition drops to iconic collaborations — bring home exclusive collectibles that define the next era of gaming culture.</p>
       </div>
     </div>
   </div>
@@ -180,8 +186,8 @@ $limit = 12;
   </div>
 
 <section class="testimonials" id="testimonials">
-  <h2>What Our Customers Say</h2>
-  <p class="section-desc">Real feedback from gamers and collectors around the world.</p>
+  <h2  data-i18n="customers_title">What Our Customers Say</h2>
+  <p class="section-desc" data-i18n="feedback">Real feedback from gamers and collectors around the world.</p>
 
   <div class="testimonial-grid">
     <div class="testimonial-card" ng-repeat="rater in raters">
@@ -202,7 +208,7 @@ $limit = 12;
 
 
 <section id="giftcard" class="section gift-cards-section">
-    <h2 class="section-title">eGift Cards</h2>
+    <h2 class="section-title" data-i18n="egiftcards">eGift Cards</h2>
     <div class="card-grid gift-cards-grid">
         <?php if (!empty($gift_img)): ?>
             <?php $giftIndex = 0; ?>
@@ -221,14 +227,14 @@ $limit = 12;
     </div>
 
     <?php if(count($gift_img) > $limit): ?>
-        <button class="show-all-gift centered-show-all">Show all</button>
+        <button class="show-all-gift centered-show-all" data-i18n="show_all">Show all</button>
     <?php endif; ?>
 </section>
 
 
     <!-- Top Games -->
     <section id="game" class="section">
-        <h2 class="section-title">Top Games</h2>
+        <h2 class="section-title" data-i18n="top_games">Top Games</h2>
         <div class="card-grid">
             <div class="card game-card" ng-repeat="game in top_games">
                 <img ng-src="{{game.img}}" alt="Game 1" class="w-full h-48 object-cover rounded-t-xl">
@@ -242,7 +248,7 @@ $limit = 12;
 
     <!-- Upcoming Games -->
     <section class="section">
-        <h2 class="section-title">Upcoming Games</h2>
+        <h2 class="section-title" data-i18n="upcoming_game">Upcoming Games</h2>
         <div class="card-grid">
             <div class="card game-card" ng-repeat="game in upcoming_games">
                 <img ng-src="{{game.img}}" alt="Upcoming Game 1" class="w-full h-48 object-cover rounded-t-xl">
@@ -258,7 +264,7 @@ $limit = 12;
 
 
 <section id="genre" class="section genre-section">
-    <h2 class="section-title">Genre</h2>
+    <h2 class="section-title" data-i18n="genre">Genre</h2>
     <div class="card-grid genre-grid">
         <?php if (!empty($genreStats)): ?>
             <?php foreach ($genreStats as $genre => $count): ?>
@@ -277,7 +283,7 @@ $limit = 12;
     </div>
     <?php if($genreStats > $limit):?>
 
-        <button  class="show-all centered-show-all">Show all</button>
+        <button  class="show-all centered-show-all" data-i18n="show_all">Show all</button>
     <?php endif; ?>
 </section>
 
@@ -285,7 +291,7 @@ $limit = 12;
 
 
   <div class="faq-container">
-  <h1 class="faq-title section-title mb-6"id="FAQ">FAQ</h1><br>
+  <h1 class="faq-title section-title mb-6"id="FAQ"data-i18n="faq">FAQ</h1><br>
 
   <div class="faq-item" ng-repeat="content in faq_contents">
     <input type="checkbox" id="faq{{content.id}}" class="faq-checkbox">
@@ -302,8 +308,8 @@ $limit = 12;
 
   <section id="quotes" class="section quotes-section">
   <div class="max-w-6xl mx-auto px-4 text-center">
-    <h2 class="section-title mb-6">From People</h2>
-    <p class="section-desc mb-12">Hear from gamers, creators, and enthusiasts who love shopping at Fragstore.</p>
+    <h2 class="section-title mb-6" data-i18n="from_people">From People</h2>
+    <p class="section-desc mb-12" data-i18n="from_people_content">Hear from gamers, creators, and enthusiasts who love shopping at Fragstore.</p>
 
     <div class="testimonial-grid">
       <div class="testimonial-card"ng-repeat="content in testimonial_content">
@@ -356,35 +362,35 @@ $limit = 12;
                 </div>
                 <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white">About</h2>
+                        <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white"data-i18n="about">About</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="#intro" class="#">About Us</a>
+                                <a href="#intro" class="#"data-i18n="about_us">About Us</a>
                             </li>
                             <li>
-                                <a href="/contact_us/contactus.php" class="">Contacts</a>
+                                <a href="/contact_us/contactus.php" class=""data-i18n="contact">Contacts</a>
                             </li>
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white">Help</h2>
+                        <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white"data-i18n="help">Help</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="#FAQ" class="">FAQ</a>
+                                <a href="#FAQ" class=""data-i18n="faq">FAQ</a>
                             </li>
                             <li class="mb-4">
-                                <a href="../pdf/Refund Policy.pdf" class="">Refund Policy</a>
+                                <a href="../pdf/Refund Policy.pdf" class=""data-i18n="refund_policy">Refund Policy</a>
                             </li>
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white">Legal</h2>
+                        <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white"data-i18n="legal">Legal</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="../pdf/Privacy Policy.pdf" class="">Privacy Policy</a>
+                                <a href="../pdf/Privacy Policy.pdf" class=""data-i18n="privacy_policy">Privacy Policy</a>
                             </li>
                             <li>
-                                <a href="../pdf/Terms and Conditions.pdf" class="">Terms &amp; Conditions</a>
+                                <a href="../pdf/Terms and Conditions.pdf" class=""data-i18n="terms_and_conditions">Terms &amp; Conditions</a>
                             </li>
                         </ul>
                     </div>
@@ -438,6 +444,7 @@ $limit = 12;
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="home.js"></script>
+    <script src="translations.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.0/dist/flowbite.min.js"></script>
 
 
