@@ -200,6 +200,19 @@
             height: 44px;
             font-size: 1.3rem;
         }
+        .title{
+            font-size: 1.9rem;
+        }
+    }
+
+    @media (max-width: 360px) {
+
+        .btn-group{
+            flex-direction: column;
+        }
+        .title{
+            font-size: 1.7rem;
+        }
     }
 
     span {

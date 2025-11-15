@@ -57,7 +57,7 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
 
             $scope.games = response.data.games;
             $scope.filteredGames = $scope.games;
-            $scope.numberOfGames = response.data.total;
+            $scope.numberOfProducts = response.data.total;
             $scope.numberOfGenres = response.data.totalGenres;
             $scope.numberOfPlatforms = $scope.platforms.length;
 
@@ -140,7 +140,7 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
     //uses Chart.js API
     function createChart() {
         var xValues = ["Games", "Genres", "Platforms"];
-        var yValues = [$scope.numberOfGames, $scope.numberOfGenres, $scope.numberOfPlatforms];
+        var yValues = [$scope.numberOfProducts, $scope.numberOfGenres, $scope.numberOfPlatforms];
         var barColors = ["#b91d47", "#00aba9", "#2b5797"];
 
         new Chart("myChart", {

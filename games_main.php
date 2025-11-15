@@ -48,7 +48,7 @@
             <div class="modal">
                 <h2>Game Rankings</h2><br>
                 <canvas id="myChart"></canvas>
-                <p>Total games: {{ numberOfGames }}</p>
+                <p>Total products: {{ numberOfProducts }}</p>
                 <p>Total Genres: {{ numberOfGenres }}</p>
                 <p>Total Platforms: {{ numberOfPlatforms }}</p><br>
                 <button ng-click="rankingOpen = false">Close</button>
