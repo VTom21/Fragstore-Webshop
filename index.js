@@ -89,7 +89,7 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
             var urlGenres = $location.search().genres; 
 
             $scope.uniqueGenres.forEach(function(genreObj) {
-                if (urlGenres.includes(genreObj.name)) {
+                if (urlGenres == genreObj.name) {
                     genreObj.selected = true;
                 }
             });

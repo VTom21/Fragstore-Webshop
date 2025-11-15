@@ -653,6 +653,8 @@ main {
   }
 }
 
+
+
 @media (max-width: 640px) {
   .intro {
     padding: 4rem 1.5rem;
@@ -1006,9 +1008,7 @@ main {
     z-index: 1;
 }
 
-#quotes{
-  margin: 12px 12px;
-}
+
 
 .genre-card:hover .icon-placeholder,
 .genre-card:hover .number,
@@ -1607,6 +1607,7 @@ main {
     .card-grid {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 20px;
+        font-size: 13px;
     }
 
     .genre-grid {
@@ -1652,11 +1653,19 @@ main {
     }
 
     .card-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        font-size: 14px;
     }
 
     .genre-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
+    }
+}
+
+@media (max-width: 500px){
+    .genre-grid{
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
     }
 }
