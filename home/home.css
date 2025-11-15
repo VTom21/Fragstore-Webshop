@@ -1679,15 +1679,22 @@ main {
         display: flex;
         align-self: center;
     }
-    .up-btn{
-      position: fixed;
+  .up-btn{
+      position: absolute;
       bottom: 100vh;
-      z-index: 1000;
+      left: -50%;
+      z-index: 0;
     }
 }
 
 @media (max-width: 400px){
   #chatbot-form{
     flex-direction: column;
+  }
+  .testimonials{
+    padding: 0;
+  }
+  .testimonial-grid{
+    justify-content: center;
   }
 }
