@@ -32,7 +32,7 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
     $scope.games = [];
     $scope.filteredGames = [];
 
-    var platformNames = ["PC", "PS5", "PS4", "PS3", "PS2", "PS1", "Xbox Series X", "Xbox One", "Xbox 360", "Nintendo Switch", "Nintendo Wii U", "Nintendo Wii", "Nintendo DS", "Nintendo 3DS", "Mobile", "Mac", "Linux", "Indie", "Arcade", "VR", "Point & Click", "Music"];
+    var platformNames = ["PC", "PS5", "PS4", "PS3", "PS2", "PS1", "Xbox Series X", "Xbox One", "Xbox 360", "Nintendo Switch", "Nintendo Wii U", "Nintendo Wii", "Nintendo DS", "Nintendo 3DS", "Mobile", "Mac", "Linux", "Indie", "Arcade", "VR", "Point & Click", "Music", "Gift Cards"];
     $scope.platforms = [];
 
 
