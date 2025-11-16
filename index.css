@@ -204,8 +204,14 @@ html {
     background-color: var(--shop_btn_bg);
 }
 
-.buy_btn {
+.buy_btn,.redirect_btn {
     background-color: var(--green);
+}
+
+.redirect_btn{
+    margin: 12px 0px;
+    padding: 12px 12px;
+    color:white;
 }
 
 .shop_btn,

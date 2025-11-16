@@ -58,6 +58,7 @@
                         <button ng-click="increaseQty(item)">+</button>
                     </div>
                 </div>
+            <button class="redirect_btn"ng-click="checkout()">Buy Now</button>
             </div>
         </div>
 

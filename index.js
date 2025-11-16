@@ -76,6 +76,11 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
 
 
 
+    $scope.checkout = function(){
+        $scope.cart_data = encodeURIComponent(JSON.stringify($scope.cartItems));
+        window.location.href = "http://localhost:3000/cart_website/sum_main.php?cart=" + $scope.cart_data;
+    }
+
 
 
     //puts every platform into the platforms array - stores dictionary values
