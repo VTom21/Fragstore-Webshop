@@ -35,6 +35,48 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
     var platformNames = ["PC", "PS5", "PS4", "PS3", "PS2", "PS1", "Xbox Series X", "Xbox One", "Xbox 360", "Nintendo Switch", "Nintendo Wii U", "Nintendo Wii", "Nintendo DS", "Nintendo 3DS", "Mobile", "Mac", "Linux", "Indie", "Arcade", "VR", "Point & Click", "Music", "Gift Cards"];
     $scope.platforms = [];
 
+    $scope.cartOpen = false;
+    $scope.cartItems = [];
+
+    $scope.openCart = function (game) {
+
+        let existingItem = $scope.cartItems.find(item => item.id === game.id);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+            existingItem.total_prize = existingItem.quantity * existingItem.prize;
+        } else {
+            $scope.cartItems.push({
+                id: game.id,
+                name: game.name,
+                prize: game.prize,
+                game_pic: game.game_pic,
+                quantity: 1,
+                total_prize: game.prize * 1   // <-- FIXED
+            });
+        }
+
+        $scope.cartOpen = true;
+    };
+
+    $scope.increaseQty = function (item) {
+        item.quantity++;
+        item.total_prize = item.prize * item.quantity;
+    };
+
+    $scope.decreaseQty = function (item) {
+        if (item.quantity > 1) {
+            item.quantity--;
+            item.total_prize = item.prize * item.quantity;
+        } else {
+            let index = $scope.cartItems.indexOf(item);
+            $scope.cartItems.splice(index, 1);
+        }
+    };
+
+
+
+
 
     //puts every platform into the platforms array - stores dictionary values
     //platforms: {"PC", false}
@@ -86,9 +128,9 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
                 $scope.uniqueGenres.push(genreObj);
             }
 
-            var urlGenres = $location.search().genres; 
+            var urlGenres = $location.search().genres;
 
-            $scope.uniqueGenres.forEach(function(genreObj) {
+            $scope.uniqueGenres.forEach(function (genreObj) {
                 if (urlGenres == genreObj.name) {
                     genreObj.selected = true;
                 }

@@ -504,10 +504,41 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .cart-content {
-    padding: 1rem;
+    padding: 12px 12px;
+    margin: auto;
     flex-grow: 1;
     overflow-y: auto;
 }
+
+.cart-data{
+    margin: 12px 12px;
+}
+
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.qty-controls button {
+    width: 28px;
+    height: 28px;
+    background: #222;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.qty-controls span {
+    width: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
 
 
 .filter-group {
