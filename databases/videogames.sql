@@ -357,7 +357,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (331, 'https://upload.wikimedia.org/wikipedia/en/a/a3/Mariowonder.png', 'Super Mario Bros. Wonder', '2023-10-20', 'Platformer', 'Nintendo Switch', 59.99),
 (332, 'https://m.media-amazon.com/images/M/MV5BOGU3NDVjNWYtMjYxMS00NDU0LWJlOTktODgxMjBhNDJkNDE3XkEyXkFqcGc@._V1_.jpg', 'Super Mario RPG', '2023-11-17', 'RPG', 'Nintendo Switch', 59.99),
 (333, 'https://upload.wikimedia.org/wikipedia/en/7/71/Mario_vs._Donkey_Kong_Coverart.png', 'Mario vs. Donkey Kong', '2024-02-16', 'Puzzle-Platformer', 'Nintendo Switch', 49.99),
-(334, 'https://upload.wikimedia.org/wikipedia/en/2/2d/Dragon_Ball_Xenoverse_cover_art.jpg', 'DRAGON BALL XENOVERSE', '2015-02-24', 'Action RPG', 'PC, PS3, PS4, Xbox 360, Xbox One', 39.99),
+(334, 'https://image.api.playstation.com/vulcan/img/rnd/202011/0204/WN3bbfswaZAQk7wTQIL5XcnZ.png?w=440', 'DRAGON BALL XENOVERSE', '2015-02-24', 'Action RPG', 'PC, PS3, PS4, Xbox 360, Xbox One', 39.99),
 (335, 'https://upload.wikimedia.org/wikipedia/en/f/fe/Dragon_Ball_Xenoverse_2_Cover.jpeg', 'DRAGON BALL XENOVERSE 2', '2016-10-25', 'Action RPG', 'PC, PS4, Xbox One, Switch', 19.99),
 (336, 'https://upload.wikimedia.org/wikipedia/en/a/ad/DBFZ_cover_art.jpg', 'DRAGON BALL FighterZ', '2018-01-26', 'Fighting', 'PC, PS4, Xbox One, Switch', 59.99),
 (337, 'https://upload.wikimedia.org/wikipedia/en/e/e4/Dragon_Ball_Z_Kakarot_logo.png', 'DRAGON BALL Z: KAKAROT', '2020-01-17', 'Action RPG', 'PC, PS4, Xbox One, Switch', 19.99),
