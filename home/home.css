@@ -1671,6 +1671,8 @@ main {
     padding: 24px 32px;
     gap: 60px;
   }
+
+  
 }
 
 /* Animation */
@@ -1751,7 +1753,7 @@ main {
 
     #stuff {
         width: 100%;
-        justify-content: space-around;
+        justify-content: center;
         order: 3;
         margin-top: 10px;
     }
@@ -1788,6 +1790,26 @@ main {
 }
 
 @media (max-width: 450px) {
+
+  .footer h2{
+    font-size: 13px;
+  }
+
+  .footer a{
+    font-size: 13px;
+  }
+  .cta-buttons{
+    flex-direction: column;
+  }
+
+  .hero-content p{
+    font-size: 15px;
+  }
+
+  .cta-buttons .btn{
+    font-size: 12px;
+  }
+
     .newsletter h2 {
         font-size: 1.75rem;
     }
