@@ -1736,6 +1736,10 @@ main {
         text-align: center;
     }
 
+    .hero h1 {
+      font-size: 1.5em;
+    }
+
     .navbar {
         width: 100%;
         justify-content: center;
