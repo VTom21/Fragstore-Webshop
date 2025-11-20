@@ -76,6 +76,7 @@ $limit = 12;
             <a href="#intro"data-i18n="about_us">About Us</a>
         </div>
         
+        
         <div id="stuff">
             <div id="sigin">
                 <a href="../login/Log In.php"data-i18n="log_in">Log in</a>
@@ -84,12 +85,22 @@ $limit = 12;
                 <a href="../signup/Sign Up.php"data-i18n="sign_up">Sign up</a>
             </div>
         </div>
+
+        <div class="progress-bar">
+        <div class="filled">
+
+        </div>
+    </div>
     </header>
+    
+    
+
 
 
 
 
 <section class="hero">
+  
 <div class="lang-menu">
   <div class="selected-lang" data-flag="https://flagsapi.com/US/flat/32.png">
     English

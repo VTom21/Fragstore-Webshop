@@ -155,4 +155,18 @@ app.controller("home_controller", function ($scope) {
 });
 
 
+const filled = document.querySelector('.filled');
+
+function updateProgressBar() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    filled.style.width = `${scrollPercent}%`;
+}
+
+window.addEventListener("scroll", updateProgressBar);
+
+
+
 
