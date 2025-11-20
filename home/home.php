@@ -79,10 +79,10 @@ $limit = 12;
         
         <div id="stuff">
             <div id="sigin">
-                <a href="../login/Log In.php"data-i18n="log_in">Log in</a>
+                <a href="../redirect/redirect.php?destination=../login/Log In.php"data-i18n="log_in">Log in</a>
             </div>
             <div id="register">
-                <a href="../signup/Sign Up.php"data-i18n="sign_up">Sign up</a>
+                <a href="../redirect/redirect.php?destination=../signup/Sign Up.php"data-i18n="sign_up">Sign up</a>
             </div>
         </div>
 

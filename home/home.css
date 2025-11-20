@@ -107,13 +107,13 @@ header {
 .navbar {
     display: flex;
     gap: 25px;
+    
 }
 
 .navbar a {
     font-weight: bold;
     padding: 5px 0;
     position: relative;
-
     color: var(--text-muted);
 }
 
@@ -1504,8 +1504,10 @@ main {
 .marquee-track {
   display: flex;
   width: fit-content;
-  animation: marquee 15s linear infinite; /* added animation */
   flex-wrap: nowrap;
+  white-space: nowrap;
+  transform: translateX(100%);
+  transition: transform 10s linear;
 }
 
 .logos-slide {
@@ -1513,6 +1515,7 @@ main {
   gap: 100px;
   padding: 48px 50px;
   flex: 0 0 auto;
+  
 }
 
 .logo-wrapper {
@@ -1523,12 +1526,23 @@ main {
   min-width: 98px;    
 }
 
+::selection {
+  color: var(--black2);
+  background: var(--chatbot_header);
+}
+
 .logo-wrapper img {
   height: 88px;        
   width: auto;         
   max-width: 100%;     
   object-fit: contain;
   flex-shrink: 0;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .marquee-mask-left {
@@ -1692,15 +1706,6 @@ main {
   
 }
 
-/* Animation */
-@keyframes marquee {
-  0% {
-    transform: translateX(50%);
-  }
-  100% {
-    transform: translateX(-140%); /* move half width for seamless loop */
-  }
-}
 
 
 

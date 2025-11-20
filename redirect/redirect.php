@@ -35,5 +35,7 @@
 
 </div>
 
+<script src="redirect.js"></script>
+
 </body>
 </html>

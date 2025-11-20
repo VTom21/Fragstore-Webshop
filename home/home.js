@@ -167,6 +167,37 @@ function updateProgressBar() {
 
 window.addEventListener("scroll", updateProgressBar);
 
+const track = document.querySelector('.marquee-track');
+
+// Duplicate content for seamless loop
+track.innerHTML += track.innerHTML;
+
+function startMarquee() {
+  // Reset instantly
+  track.style.transition = 'none';
+  track.style.transform = 'translateX(0)';
+
+  // Force browser to register reset
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const distance = -track.scrollWidth / 2; // scroll half, because we duplicated
+      const duration = 15; // adjust speed
+      track.style.transition = `transform ${duration}s linear`;
+      track.style.transform = `translateX(${distance}px)`;
+    });
+  });
+}
+
+// Start immediately
+startMarquee();
+
+// Loop infinitely
+track.addEventListener('transitionend', startMarquee);
+
+
+
+
+
 
 
 

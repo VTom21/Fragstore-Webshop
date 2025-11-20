@@ -53,7 +53,7 @@ INSERT INTO `giftcard` (`CardId`, `Name`, `IMG`, `Price`, `Region`) VALUES
 ('MS', 'Microsoft Store Card', 'https://liquit.com/app/uploads/2023/05/Microsoft-store-liquit-workspace.jpg', 0.00, 'USD'),
 ('NFLX30USD', 'Netflix Gift Card ', 'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940', 30.00, 'USD'),
 ('NIN', 'Nintendo eShop Card', 'https://pop.proddigital.com.br/wp-content/uploads/sites/8/2022/07/nintendo-capa.jpg', 0.00, 'USD'),
-('ORG', 'Origin Gift Card', 'https://www.tech-wd.com/wd/wp-content/uploads/2025/01/ea-origin.jpg', 0.00, 'USD'),
+('ORG', 'Origin Gift Card', 'https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/14231476/ea_origin_logo_640.1419979269.jpg?quality=90&strip=all&crop=0,1.2937595129376,100,97.412480974125', 0.00, 'USD'),
 ('PSN50USD', 'PlayStation Store Card ', 'https://www.psu.com/wp/wp-content/uploads/2021/09/PlayStationStore-1-1.jpeg', 50.00, 'USD'),
 ('RAZ', 'Razer Gold Gift Card', 'https://assets2.razerzone.com/images/og-image/razer-gold-pin-OGimage-1200x630.jpg', 0.00, 'USD'),
 ('ROB', 'Roblox Gift Card', 'https://i0.wp.com/www.dafontfree.io/wp-content/uploads/2020/12/roblox.png?resize=2000%2C1311&ssl=1', 0.00, 'USD'),
