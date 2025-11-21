@@ -1,129 +1,125 @@
 :root {
-    --bg-main: #1e1e1e;
-    --bg-card: #2b2d42;
-    --bg-hover: #1e1e2f;
-    --text-light: #d0d0d0;
-    --text-muted: #b1b1b1;
+    --navbar-bg:#2b2d422d;
+    --sticky-bg:#060607ab;
 
-    --color-primary: #00f7ff;
-    --color-primary-dark: #00d0d0;
-    --color-secondary: #b4a636;
-
-    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-
-    --shadow-subtle: rgba(0, 247, 255, 0.15);
-    --shadow-medium: rgba(0, 247, 255, 0.3);
-    --shadow-strong: rgba(0, 247, 255, 0.5);
-
-    --header-border: #00f7ff44;
-    --navbar-bg: #060607ab;
-    --black2:#1e1e2f;
+    --bg:#1e1e1e;
+    --footer-bg:#2b2d42;
+    --footer_link:#b1b1b1;
+    --h2:#37e6ec73;
+    --p:#d0d0d0;
     --green:#00f7ff44;
+    --box-shadow-green:rgba(0, 247, 255, 0.2);
+    --dark-green:#25f5fc44;
+
+    --gray1:#b1b1b1;
     --thumb-hover:#333333;
+
+    --card-bg:#2b2d42;
+    --card-hover:rgba(0, 247, 255, 0.15);
+    --card-strong:#37e6ec73;
+
+    --shop_btn_bg:#b4a636;
+
+    --cyan:#00d0d0;
+
+    --black1:#252539;
+    --black2:#1e1e2f;
+
+    --lightblue:#00f7ff;
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
     font-family: 'Montserrat', sans-serif;
-    background: var(--bg-main);
-    color: var(--text-light);
-    overflow: hidden;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(0,247,255,0.06), rgba(0,0,0,0.7));
-    pointer-events: none;
-    animation: bgPulse 10s ease-in-out alternate infinite;
-}
-
-@keyframes bgPulse {
-    from { opacity: .25; }
-    to { opacity: .6; }
-}
-
-.contactbox {
+body {
+    background-color: var(--bg);
+    color: var(--p);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    padding: 40px;
+    min-height: 100vh;
 }
 
-form {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--header-border);
-    backdrop-filter: blur(15px);
-    padding: 2.5rem;
-    width: 420px;
-    border-radius: 1rem;
-    box-shadow: 0 0 25px var(--shadow-subtle);
-    transition: .3s;
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-form:hover {
-    box-shadow: 0 0 35px var(--shadow-medium);
+.contactbox {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 500px;
 }
 
-label {
-    font-weight: 600;
-    font-size: .9rem;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-    display: block;
+.contactbox form {
+    display: flex;
+    flex-direction: column;
 }
 
-input, textarea {
+.contactbox label {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--gray1);
+}
+
+.contactbox input,
+.contactbox textarea {
     width: 100%;
     padding: 12px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    background: var(--black2);
-    border: 1px solid var(--header-border);
-    color: var(--text-light);
-    border-radius: 6px;
-    transition: .25s;
-    resize: none;
+    border: 2px solid var(--black2);
+    border-radius: 8px;
+    background-color: var(--black1);
+    color: var(--p);
     font-size: 1rem;
-}
-
-input:focus, textarea:focus {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 12px var(--shadow-strong);
     outline: none;
-    transform: scale(1.02);
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-button {
-    width: 100%;
-    padding: 14px;
-    background: var(--gradient-primary);
-    font-weight: 700;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 1.05rem;
+.contactbox input:focus,
+.contactbox textarea:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 11px var(--lightblue);
+}
+
+.contactbox textarea {
+    resize: vertical;
+}
+
+.contactbox h2{
+    text-align: center;
+    padding: 9px 9px;
+    color: var(--cyan);
+}
+
+.contactbox button {
+    margin-top: 1.5rem;
+    padding: 12px;
+    background-color: var(--cyan);
     color: #000;
-    text-transform: uppercase;
-    transition: .25s;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-button:hover {
-    box-shadow: 0 0 20px var(--color-primary);
-    transform: scale(1.04);
+.contactbox button:hover {
+    background-color: var(--green);
 }
 
-@media (max-width: 480px) {
-    form {
+/* Optional: responsive */
+@media (max-width: 600px) {
+    .contactbox {
+        padding: 1.5rem;
         width: 90%;
-        padding: 1.8rem;
     }
 }

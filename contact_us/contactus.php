@@ -12,21 +12,25 @@
     <main>
         <section>
             <div class="contactbox">
-                <form action="submit.php" method="POST">
+                <h2>Send us an EMAIL</h2>
+                <form method="POST">
                     <label for="name">Your Name</label>
-                    <input type="text" placeholder="Type in your name..">
+                    <input type="text" id="name" placeholder="Type in your name..">
 
                     <label for="email">Your Email</label>
                     <input type="email" name="email" id="email" placeholder="Type in your Email..">
 
-                    <label for="massage">Massage</label><br>
-                    <textarea name="uzenet" rows="6" cols="50" placeholder="Write your massage here.."></textarea><br><br>
+                    <label for="message">Message</label><br>
+                    <textarea name="uzenet" rows="6" cols="50" placeholder="Write your message here.." id="message"></textarea><br><br>
                     
-                    <button type="submit">Submit</button>
+                    <button onclick="sendMail(event);">Submit</button>
                 </form>
             </div>
         </section>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="contactus.js"></script>
 </body>
 
 </html>
