@@ -121,8 +121,8 @@ $limit = 12;
     <h1 data-i18n="hero_heading">Unlock the Future of Gaming</h1>
     <p data-i18n="hero_content">Discover exclusive deals, rare collectibles, and your next favorite adventure — all in one place.</p>
     <div class="cta-buttons">
-      <a href="#game" class="btn"data-i18n="explore">Explore Games</a>
-      <a href="#giftcard" class="btn secondary"data-i18n="buy">Buy Gift Cards</a>
+      <a href="../redirect/redirect.php?destination=../games_main.php" class="btn"data-i18n="explore">Explore Games</a>
+      <a href="../redirect/redirect.php?destination=../games_main.php" class="btn secondary"data-i18n="buy">Buy Gift Cards</a>
     </div>
   </div>
 </section>
@@ -224,12 +224,14 @@ $limit = 12;
         <?php if (!empty($gift_img)): ?>
             <?php $giftIndex = 0; ?>
             <?php foreach ($gift_img as $img): ?>
+              <a href="../games_main.php">
                 <div class="gift-card-wrapper <?= $giftIndex >= $limit ? 'hidden-gift' : '' ?>">
-                    <div class="card gift-card">
+                    <div class="card gift-card" >
                         <img src="<?= htmlspecialchars($img['IMG']); ?>" class="h-48 gift_card_img" alt="<?= htmlspecialchars($img['Name']); ?>">
                         <p class="body-text name"><?= htmlspecialchars($img['Name']); ?></p>
                     </div>
                 </div>
+                </a>
                 <?php $giftIndex++; ?>
             <?php endforeach; ?>
         <?php else: ?>

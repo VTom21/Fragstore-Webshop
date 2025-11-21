@@ -16,7 +16,7 @@
     <div class="navbar" id="#top">
         <button class="filter-ranking" ng-click="rankingOpen = true">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#37e6ec735" viewBox="0 0 24 24">
-                <path d="M4 21h4v-8H4v8zm6 0h4v-14h-4v14zm6 0h4v-5h-4v5z" />
+                <path d="M4 21h4v-8H4v8zm6 0h4v-14h-4v14zm6 0h4v-5h-4v5z" />   
             </svg>
         </button>
 
