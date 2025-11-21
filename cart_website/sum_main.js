@@ -1,9 +1,6 @@
-// sum_main.js
-// subtotal and taxRate are already defined in global scope from PHP
-
 // Get cart items from URL
 const parameters = new URLSearchParams(window.location.search);
-const cart_items = JSON.parse(parameters.get("cart") || []);
+const cart_items = JSON.parse(parameters.get("cart") || "[]");
 console.log(cart_items);
 
 const deliveryRadios = document.querySelectorAll('input[name="delivery"]');
@@ -12,6 +9,7 @@ const shippingCost = document.getElementById('shipping-amount');
 
 const paymentRadios = document.querySelectorAll('input[name="payment"]');
 const cardSection = document.getElementById('card-section');
+const paypalSection = document.querySelector('.paypal-section');
 
 function updateShipping() {
     const selectedRadio = document.querySelector('input[name="delivery"]:checked');
@@ -26,6 +24,7 @@ function updateShipping() {
         addressSection.classList.remove('hidden');
         shipping = 5.99;
     } else if (selected === 'pickup') {
+        addressSection.classList.add('hidden');
         shipping = 2.99;
     }
 
@@ -37,20 +36,34 @@ function updateShipping() {
     document.getElementById('subtotal-amount').textContent = `$${subtotal.toFixed(2)}`;
     document.getElementById('tax-amount').textContent = `$${tax.toFixed(2)}`;
     document.getElementById('total-amount').textContent = `$${total.toFixed(2)}`;
+}
 
+// Payment section toggle
+function updatePaymentSections() {
+    const selectedRadio = document.querySelector('input[name="payment"]:checked');
+    if (!selectedRadio) return;
+
+    if (selectedRadio.value === 'card') {
+        cardSection.style.display = 'block';
+        paypalSection.style.display = 'none';
+    } else if (selectedRadio.value === 'paypal') {
+        cardSection.style.display = 'none';
+        paypalSection.style.display = 'block';
+    } else {
+        cardSection.style.display = 'none';
+        paypalSection.style.display = 'none';
+    }
 }
 
 // Event listeners
 deliveryRadios.forEach(radio => radio.addEventListener('change', updateShipping));
-paymentRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-        cardSection.style.display = radio.value === 'card' ? 'block' : 'none';
-    });
-});
+paymentRadios.forEach(radio => radio.addEventListener('change', updatePaymentSections));
 
-// Call on load
+// Initial call on page load
 updateShipping();
+updatePaymentSections();
 
+// Checkout button
 function processCheckout() {
     const delivery = document.querySelector('input[name="delivery"]:checked').value;
     const payment = document.querySelector('input[name="payment"]:checked').value;
@@ -60,7 +73,7 @@ function processCheckout() {
     const total = subtotal + tax + shipping;
 
     const cartItemsParams = encodeURIComponent(JSON.stringify(cart_items));
-    const TotalParams = encodeURIComponent(total.toFixed(2));
+    const totalParams = encodeURIComponent(total.toFixed(2));
 
-    window.location.href = `../order_successful/success.php?cart=${cartItemsParams}&total=${TotalParams}`;
+    window.location.href = `../order_successful/success.php?cart=${cartItemsParams}&total=${totalParams}`;
 }

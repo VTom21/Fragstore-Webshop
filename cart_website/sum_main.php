@@ -136,7 +136,7 @@ $cart_items = json_decode($cart_json, true);
                         </label>
 
                         <label class="radio-card">
-                            <input type="radio" name="payment" value="paypal">
+                            <input type="radio" name="payment" value="paypal" id="paypal">
                             <div class="radio-content">
                                 <div class="radio-header">
                                     <span class="radio-icon">🅿️</span>
@@ -165,6 +165,13 @@ $cart_items = json_decode($cart_json, true);
                                 <label>CVV</label>
                                 <input type="text" placeholder="123" maxlength="3">
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="paypal-section" style="display:none;">
+                        <div class="form-group full-width">
+                            <label>Paypal Number</label>
+                            <input type="text" placeholder="Number on paypal">
                         </div>
                     </div>
                 </div>
