@@ -107,6 +107,7 @@ header {
 .navbar {
     display: flex;
     gap: 25px;
+    position: relative;
     
 }
 
@@ -1555,6 +1556,13 @@ main {
   z-index: 2;
 }
 
+.login_toggle{
+  display: none;
+  align-items: center;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
 .marquee-mask-right {
   position: absolute;
   top: 0;
@@ -1678,22 +1686,25 @@ main {
   height: 32px;
 }
 
+
+
 .progress-bar {
-  position: fixed;
-  top: 75px; /* Ensure it starts at the top of the page */
-  left: 0; /* Ensures it stretches across the entire width */
+  position: absolute;
+  bottom: 0; /* stick to the bottom of navbar */
+  left: 0;
   width: 100%;
-  height: 4px; /* Use pixels for a more standard height */
-  background-color: rgba(0, 0, 0, 0.192); /* Optional background for better visibility */
-  z-index: 9999; /* Make sure it is on top of other elements */
+  height: 4px; /* fixed height in pixels */
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .filled {
   width: 0;
   height: 100%;
   background-image: linear-gradient(to right, var(--color-primary), var(--chatbot_header));
-  transition: width 0.1s ease-out; /* Smooth animation for better UX */
+  transition: width 0.2s ease-out;
+  border-radius: 2px;
 }
+
 
 
 @media (max-width:760px){
@@ -1702,7 +1713,12 @@ main {
     padding: 24px 32px;
     gap: 60px;
   }
-
+  h2{
+    font-size: 1.1rem !important;
+  }
+  .faq-container h1{
+    font-size: 1.5rem !important;
+  }
   
 }
 
@@ -1808,6 +1824,12 @@ main {
     .genre-grid{
         grid-template-columns: repeat(1, 1fr);
         gap: 20px;
+    }
+    h2{
+      font-size: 1rem !important;
+    }
+    .faq-container h1{
+      font-size: 1.2rem !important;
     }
 }
 

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="contactus.css">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="/icons/array.png">
+    <title>Contact</title>
 </head>
 
 <body>

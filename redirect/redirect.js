@@ -16,7 +16,7 @@ if (destinationURL) {
     // Wait for a few seconds (e.g., 5 seconds)
     setTimeout(function () {
         // Redirect to the final destination
-        window.location.href = destinationURL;
+        window.location.replace(destinationURL);
     }, 5000); // 5000 milliseconds = 5 seconds
 } else {
     console.error('No destination URL specified.');
