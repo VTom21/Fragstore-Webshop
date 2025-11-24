@@ -90,7 +90,7 @@ $limit = 12;
       </div>
 
       <div id="logout">
-        <a href="../home/home.php" data-i18n="sign_up">Log out</a>
+        <a href="../home/home.php" data-i18n="log_out">Log out</a>
       </div>
     </div>
 

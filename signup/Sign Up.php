@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="form-group">
-          <input type="text" id="username" name="username" placeholder=" " required class="form-control" value="<?= e($username) ?>" />
+          <input type="text" maxlength="16" id="username" name="username" placeholder=" " required class="form-control" value="<?= e($username) ?>" />
           <label for="username">Username</label>
           <button type="button" class="clear-btn" onclick="document.getElementById('username').value=''; document.getElementById('username').focus();">&times;</button>
         </div>

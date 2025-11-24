@@ -1733,6 +1733,9 @@ main {
     .card-grid {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
+    .navbar a, .navbar p{
+      font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 992px) {

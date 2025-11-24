@@ -6,6 +6,7 @@ const translations = {
   about_us: { us: "About Us", de: "Über uns", it: "Chi Siamo", es: "Sobre Nosotros", ru: "О нас", fr: "À propos", in: "हमारे बारे में" },
   log_in: { us: "Log in", de: "Einloggen", it: "Accedi", es: "Iniciar Sesión", ru: "Войти", fr: "Se connecter", in: "लॉग इन करें" },
   sign_up: { us: "Sign up", de: "Registrieren", it: "Registrati", es: "Registrarse", ru: "Регистрация", fr: "S'inscrire", in: "साइन अप करें" },
+  log_out: {us: "Log out", de: "Abmelden", it: "disconnettersi", es: "desconectarse", ru: "выйти", fr: "déconnexion", in: "लॉग ऑफ़"},
   hero_heading: {
     us: "Unlock the Future of Gaming",
     de: "Entdecke die Zukunft des Gamings",
