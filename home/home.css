@@ -43,6 +43,44 @@
             
 }
 
+
+/* FULLSCREEN PRELOADER */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-main);
+  display: flex;
+  opacity: 0.6;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* NEON CIRCLE */
+.loader-circle {
+  width: 80px;
+  height: 80px;
+  border: 6px solid rgba(0, 247, 255, 0.2);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s infinite linear, glow 1.5s ease-in-out infinite alternate;
+}
+
+/* SPIN ANIMATION */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+#preloader.hide {
+  display: none !important;
+}
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -154,6 +192,10 @@ header {
     text-align: center;
     transition: all 0.3s ease;
     background-color: var(--header-border);
+}
+
+#logout{
+  display: none;
 }
 
 #sigin {
@@ -895,7 +937,6 @@ main {
 .image-placeholder {
     width: 100%;
     height: 180px;
-
     background: var(--bg-hover);
     margin-bottom: 10px;
     position: relative;

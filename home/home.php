@@ -80,7 +80,6 @@ $limit = 12;
       <p class="login_toggle"></p>
     </div>
 
-
     <div id="stuff">
       <div id="sigin">
         <a href="../redirect/redirect.php?destination=../login/Log In.php" data-i18n="log_in">Log in</a>
@@ -104,6 +103,10 @@ $limit = 12;
 
 
 
+
+<div id="preloader">
+  <div class="loader-circle"></div>
+</div>
 
 
 
@@ -477,7 +480,6 @@ $limit = 12;
 
 
   <script>
-
     document.querySelectorAll('.show-all').forEach(button => {
       button.addEventListener('click', function() {
         // Find all hidden cards in the same section
@@ -591,18 +593,18 @@ $limit = 12;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-    const loginToggle = document.querySelector(".login_toggle");
-    const username = localStorage.getItem("name"); // use the same key
+      const loginToggle = document.querySelector(".login_toggle");
+      const username = localStorage.getItem("name"); // use the same key
 
-    if (username) {
+      if (username) {
         loginToggle.style.display = "flex";
+        document.getElementById("logout").style.display = "block";
         loginToggle.textContent = `Welcome ${username}!`; // use textContent instead of innerHTML
-    } else {
+      } else {
         loginToggle.style.display = "none"; // hide if not logged in
-    }
+      }
 
-});
-
+    });
   </script>
 </body>
 

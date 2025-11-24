@@ -199,6 +199,13 @@ startMarquee();
 track.addEventListener('transitionend', startMarquee);
 
 
+setInterval(() => {
+    document.getElementById("preloader").classList.add("hide");
+}, 2000);
+
+
+
+
 
 
 
