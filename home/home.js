@@ -1,3 +1,7 @@
+document.getElementById("logout").addEventListener("click", ()=>{
+    localStorage.clear();
+})
+
 document.addEventListener('DOMContentLoaded', () => {
     const upBtn = document.querySelector('.up-btn');
 

@@ -88,6 +88,10 @@ $limit = 12;
       <div id="register">
         <a href="../redirect/redirect.php?destination=../signup/Sign Up.php" data-i18n="sign_up">Sign up</a>
       </div>
+
+      <div id="logout">
+        <a href="../home/home.php" data-i18n="sign_up">Log out</a>
+      </div>
     </div>
 
     <div class="progress-bar">

@@ -145,7 +145,8 @@ header {
 }
 
 #sigin,
-#register {
+#register,
+#logout {
     display: block;
     padding: 8px 15px;
     border-radius: 8px;
@@ -422,7 +423,7 @@ header {
     background-color: var(--green);
 }
 
-#register {
+#register, #logout {
 
     background-color: var(--bg-hover);
     border: 2px solid var(--shadow-medium);
@@ -432,7 +433,7 @@ header {
 
 
 
-#register:hover {
+#register:hover, #logout:hover {
     transform: translateY(-2px);
 
     box-shadow: 0 5px 20px var(--shadow-strong);
@@ -1772,6 +1773,15 @@ main {
     .navbar a, .navbar p{
       font-size: 0.8rem;
     }
+
+    .navbar {
+      width: 100%;
+      justify-content: center;
+      margin: 10px 0;
+      gap: 10px;
+      order: 2;
+      display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1785,14 +1795,6 @@ main {
       font-size: 1.5em;
     }
 
-    .navbar {
-        width: 100%;
-        justify-content: center;
-        margin: 10px 0;
-        gap: 10px;
-        order: 2;
-        display: none;
-    }
 
     #stuff {
         width: 100%;
@@ -1885,5 +1887,9 @@ main {
   }
   .testimonial-grid{
     justify-content: center;
+  }
+
+  #stuff{
+    flex-wrap: wrap;
   }
 }
