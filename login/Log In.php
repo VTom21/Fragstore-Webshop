@@ -88,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 
   <script>
+
     document.querySelectorAll('.form-control').forEach(input => {
       const clearBtn = input.parentElement.querySelector('.clear-btn');
       const toggle = () => clearBtn.style.display = input.value ? 'block' : 'none';

@@ -1563,6 +1563,7 @@ main {
   font-weight: 700;
 }
 
+
 .marquee-mask-right {
   position: absolute;
   top: 0;
@@ -1766,6 +1767,10 @@ main {
     .genre-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
+    }
+
+    .navbar a, .navbar p{
+      font-size: 0.8rem;
     }
 }
 

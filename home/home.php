@@ -77,7 +77,7 @@ $limit = 12;
       <a href="#genre" data-i18n="genres">Genres</a>
       <a href="../redirect/redirect.php?destination=../contact_us/contactus.php" data-i18n="contact">Contact</a>
       <a href="#intro" data-i18n="about_us">About Us</a>
-      <p class="login_toggle">Logged In.</p>
+      <p class="login_toggle"></p>
     </div>
 
 
@@ -473,6 +473,7 @@ $limit = 12;
 
 
   <script>
+
     document.querySelectorAll('.show-all').forEach(button => {
       button.addEventListener('click', function() {
         // Find all hidden cards in the same section
@@ -585,10 +586,19 @@ $limit = 12;
       }
     }
 
-    if (sessionStorage.getItem("login") == 'true') {
-      document.querySelector(".login_toggle").style.display = "flex";
-      sessionStorage.removeItem('loggedIn');
+    document.addEventListener('DOMContentLoaded', () => {
+    const loginToggle = document.querySelector(".login_toggle");
+    const username = localStorage.getItem("name"); // use the same key
+
+    if (username) {
+        loginToggle.style.display = "flex";
+        loginToggle.textContent = `Welcome ${username}!`; // use textContent instead of innerHTML
+    } else {
+        loginToggle.style.display = "none"; // hide if not logged in
     }
+
+});
+
   </script>
 </body>
 

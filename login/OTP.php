@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,6 +56,10 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
   <script src="OTP.js"></script>
+
+  <script>
+    localStorage.setItem("name", <?= json_encode($_SESSION['username']); ?>);
+  </script>
 
 </body>
 

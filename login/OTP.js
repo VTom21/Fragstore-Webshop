@@ -5,7 +5,7 @@ let currentOTP = null;  //variable that stores OTP code
 const d = new Date(); //calls current date
 
 function generateOTP() {
-  return Math.floor(100000 + Math.random() * 999999); //generate 6 digits OTP
+  return Math.floor(100000 + Math.random() * 899999); //generate 6 digits OTP
 }
 
 //sends the email in the backend
