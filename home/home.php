@@ -213,7 +213,7 @@ $limit = 12;
     </div>
 
     <section class="testimonials" id="testimonials">
-      <h2 data-i18n="customers_title">What Our Customers Say</h2>
+      <h2 data-i18n="customers_title" class="customers_title">What Our Customers Say</h2>
       <p class="section-desc" data-i18n="feedback">Real feedback from gamers and collectors around the world.</p>
 
       <div class="testimonial-grid">

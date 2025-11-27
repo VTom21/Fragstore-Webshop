@@ -171,32 +171,31 @@ function updateProgressBar() {
 
 window.addEventListener("scroll", updateProgressBar);
 
-const track = document.querySelector('.marquee-track');
-
-// Duplicate content for seamless loop
-track.innerHTML += track.innerHTML;
+// Duplicate once
+const track = document.querySelector(".marquee-track");
+if (!track.dataset.duplicated) {
+  track.innerHTML += track.innerHTML;
+  track.dataset.duplicated = "true";
+}
 
 function startMarquee() {
-  // Reset instantly
-  track.style.transition = 'none';
-  track.style.transform = 'translateX(0)';
+  track.style.transition = "none";
+  track.style.transform = "translateX(0)";
 
-  // Force browser to register reset
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      const distance = -track.scrollWidth / 2; // scroll half, because we duplicated
-      const duration = 15; // adjust speed
+      const distance = -track.scrollWidth / 2;
+      const duration = 15;
       track.style.transition = `transform ${duration}s linear`;
       track.style.transform = `translateX(${distance}px)`;
     });
   });
 }
 
-// Start immediately
-startMarquee();
+// ⭐ SIMPLE FIX: wait 50ms before starting
+setTimeout(startMarquee, 500);
 
-// Loop infinitely
-track.addEventListener('transitionend', startMarquee);
+track.addEventListener("transitionend", startMarquee);
 
 
 setInterval(() => {
