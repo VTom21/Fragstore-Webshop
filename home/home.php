@@ -130,7 +130,7 @@ $limit = 12;
     </div>
 
     <div class="hero-content">
-      <h1 data-i18n="hero_heading">Unlock the Future of Gaming</h1>
+      <h1 data-i18n="hero_heading" id="chars" class="hero_heading">Unlock the Future of Gaming</h1>
       <p data-i18n="hero_content">Discover exclusive deals, rare collectibles, and your next favorite adventure — all in one place.</p>
       <div class="cta-buttons">
         <a href="../redirect/redirect.php?destination=../games_main.php" class="btn" data-i18n="explore">Explore Games</a>
@@ -171,8 +171,8 @@ $limit = 12;
           <div class="intro-image">
             <img src="https://cms-assets.xboxservices.com/assets/bc/40/bc40fdf3-85a6-4c36-af92-dca2d36fc7e5.png?n=642227_Hero-Gallery-0_A1_857x676.png" alt="Power Up Icon">
           </div>
-          <div class="intro-content">
-            <h3 data-i18n="intro_heading">Power Up Your Play</h3>
+          <div class="intro-content intro-content1">
+            <h3 data-i18n="intro_heading" class="intro_heading">Power Up Your Play</h3>
             <p data-i18n="intro_content">Upgrade your setup with elite gaming gear built for speed, precision, and performance. Crafted for those who demand more from every frame.</p>
           </div>
         </div>
@@ -181,8 +181,8 @@ $limit = 12;
           <div class="intro-image">
             <img src="../pictures/perfomance.png" alt="Collectibles Icon">
           </div>
-          <div class="intro-content">
-            <h3 data-i18n="intro_heading2">Style Meets Performance</h3>
+          <div class="intro-content intro-content2">
+            <h3 data-i18n="intro_heading2" >Style Meets Performance</h3>
             <p data-i18n="intro_content2">Designed with precision and passion, each product blends function, form, and futuristic design — so your gear performs as good as it looks.</p>
           </div>
         </div>
@@ -191,7 +191,7 @@ $limit = 12;
           <div class="intro-image">
             <img src="../pictures/game_pic.png" alt="Style Icon">
           </div>
-          <div class="intro-content">
+          <div class="intro-content intro-content3">
             <h3 data-i18n="intro_heading3">Collect the Rare</h3>
             <p data-i18n="intro_content3">From limited-edition drops to iconic collaborations — bring home exclusive collectibles that define the next era of gaming culture.</p>
           </div>
@@ -473,10 +473,14 @@ $limit = 12;
     </svg>
   </button>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <script src="home.js"></script>
   <script src="translations.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.0/dist/flowbite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+
+  <script src="gsap.js"></script>
 
 
   <script>

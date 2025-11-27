@@ -150,10 +150,11 @@ header {
 }
 
 .navbar a {
-    font-weight: bold;
-    padding: 5px 0;
-    position: relative;
-    color: var(--text-muted);
+  font-weight: bold;
+  padding: 5px 0;
+  position: relative;
+  color: var(--text-muted);
+  transition: none !important;
 }
 
 .navbar a::after {
@@ -192,6 +193,7 @@ header {
     text-align: center;
     transition: all 0.3s ease;
     background-color: var(--header-border);
+    transition: none !important;
 }
 
 #logout{
@@ -284,6 +286,9 @@ header {
   display: flex;
   justify-content: center;
   gap: 20px;
+}
+.cta-buttons a{
+  transition: none !important;
 }
 
 .hero .btn {
@@ -640,7 +645,6 @@ main {
   box-shadow: 0 0 30px rgba(0, 247, 255, 0.04);
   backdrop-filter: blur(14px) saturate(110%);
   position: relative;
-  transition: all 0.3s ease;
 }
 
 .intro-content:hover {
@@ -1550,7 +1554,12 @@ main {
   flex-wrap: nowrap;
   white-space: nowrap;
   transform: translateX(100%);
-  transition: transform 10s linear;
+  transition: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .logos-slide {
