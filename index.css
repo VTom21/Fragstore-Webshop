@@ -57,7 +57,7 @@ canvas {
 
 
 .footer {
-    background-color: var(--footer-bg);
+    background-color: var(--navbar-bg);
     width: 100%;
 }
 

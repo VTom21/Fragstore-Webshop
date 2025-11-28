@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Fragstore</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="/icons/array.png">
 </head>
 
@@ -228,11 +228,11 @@
 
 
     <br><br>
-    <footer class="dark:bg-gray-900 footer">
+    <footer class="footer">
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
-                    <a href="/photos/favicon-32x32.png" class="flex items-center">
+                    <a href="./home/home.php" class="flex items-center">
                         <img src="/icons/array.png" class="h-10 me-3" alt="FlowBite Logo" />
                         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white id2"><span class="id1">Frag</span>store</span>
                     </a>
@@ -242,10 +242,10 @@
                         <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white">About</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="https://flowbite.com/" class="">About Us</a>
+                                <a href="./home/home.php" class="">About Us</a>
                             </li>
                             <li>
-                                <a href="https://tailwindcss.com/" class="">Contacts</a>
+                                <a href="./contact_us/contactus.php" class="">Contacts</a>
                             </li>
                         </ul>
                     </div>

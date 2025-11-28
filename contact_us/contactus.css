@@ -35,20 +35,121 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+
+    background: var(--navbar-bg);
+    backdrop-filter: blur(20px);
+
+
+    top: 0;
+    z-index: 1000;
+
+    border-bottom: 1px solid var(--navbar-bg);
+    transition: all .2s ease-in-out;
+}
+
+#logo {
+    width: 50px;
+    height: 45px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.navbar {
+    display: flex;
+    gap: 25px;
+    position: relative;
+    
+}
+
+.navbar a {
+  font-weight: bold;
+  padding: 5px 0;
+  position: relative;
+  color: var(--text-muted);
+  transition: none !important;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+
+    background: var(--shadow-medium);
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+
+    color: var(--text-light);
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+#stuff {
+    display: flex;
+    gap: 15px;
+}
+
+#sigin,
+#register,
+#logout {
+    display: block;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+    background-color: var(--header-border);
+    transition: none !important;
+}
+
+#logout{
+  display: none;
+}
+
+#sigin {
+    background: transparent;
+
+    border: 2px solid var(--shadow-medium);
+}
+
+#sigin a {
+
+    color: var(--color-primary);
+}
+
+
+#sigin:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 20px var(--shadow-strong);
+    border: 2px solid var(--color-primary);
+}
+
 body {
     background-color: var(--bg);
     color: var(--p);
+}
+
+main {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-}
-
-main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .contactbox {
@@ -99,6 +200,35 @@ main {
     padding: 9px 9px;
     color: var(--cyan);
 }
+
+.footer {
+    background-color: var(--navbar-bg);
+    width: 100%;
+}
+
+.footer h2 {
+    color: var(--h2);
+}
+
+.footer a {
+    color: var(--footer_link);
+    transition: all .3s ease-in-out;
+}
+
+.footer_text,
+.copyright_text {
+    color: var(--gray1) !important;
+}
+
+.footer span {
+    color: rgb(71, 70, 70);
+}
+
+
+.footer a:hover {
+    color: white;
+}
+
 
 .contactbox button {
     margin-top: 1.5rem;
