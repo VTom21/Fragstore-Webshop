@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Nov 27. 19:55
+-- Létrehozás ideje: 2025. Nov 28. 08:24
 -- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.0.30
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `awards`
+--
+
+CREATE DATABASE IF NOT EXISTS videogames;
+USE videogames;
+
+CREATE TABLE `awards` (
+  `award_id` int(11) NOT NULL,
+  `award_name` varchar(255) NOT NULL,
+  `award_year` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Tábla szerkezet ehhez a táblához `datas`
 --
 
@@ -34,12 +49,15 @@ CREATE TABLE `datas` (
   `release_date` date DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL,
   `platforms` varchar(255) DEFAULT NULL,
-  `prize` decimal(10,2) DEFAULT NULL
+  `prize` decimal(10,2) DEFAULT NULL,
+  `publisher_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `datas`
 --
+
+
 
 INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platforms`, `prize`) VALUES
 (1, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/capsule_616x353.jpg?t=1748630546', 'Elden Ring', '2022-02-25', 'Action RPG', 'PC, PS5, Xbox Series X', 59.99),
@@ -471,25 +489,213 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (452, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $25', NULL, 'giftcards', 'Xbox', 25.00),
 (453, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $50', NULL, 'giftcards', 'Xbox', 50.00);
 
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `developers`
+--
+
+CREATE TABLE `developers` (
+  `developer_id` int(11) NOT NULL,
+  `developer_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `developers_awards`
+--
+
+CREATE TABLE `developers_awards` (
+  `developer_id` int(11) NOT NULL,
+  `award_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `giftcard`
+--
+
+CREATE TABLE `giftcard` (
+  `CardId` varchar(50) NOT NULL,
+  `Name` varchar(255) DEFAULT NULL,
+  `IMG` varchar(255) DEFAULT NULL,
+  `Price` decimal(10,2) NOT NULL,
+  `Region` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `giftcard`
+--
+
+INSERT INTO `giftcard` (`CardId`, `Name`, `IMG`, `Price`, `Region`) VALUES
+('AMZ25EUR', 'Amazon Gift Card 25 EUR', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fmagzoid.com%2Famazon-unveils-first-major-logo-redesign-in-20-years%2F&psig=AOvVaw0v4EzLMg_P4BYHQFW286xo&ust=1762433874375000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOiXwvKH25ADFQAAAAAdAAAAABBr', 25.00, 'EUR'),
+('GPLHUF5K', 'Google Play 20 USD', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FGoogle-Play-Gift-Code-mail%2Fdp%2FB074T91QTZ&psig=AOvVaw28s4kPNfuWAtA5VML-BWrW&ust=1762433756520000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCKCm8LqH25ADFQAAAAAdAAAAABAX', 20.00, 'USD'),
+('NFLX30USD', 'Netflix Gift Card 30 USD', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbrand.netflix.com%2Fen%2Fterms%2F&psig=AOvVaw08MsfpmA5_219GbPpRLHF3&ust=1762433713105000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCODPtqaH25ADFQAAAAAdAAAAABAE', 30.00, 'USD'),
+('PSN50USD', 'PlayStation Store Card 50 USD', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ftech.yahoo.com%2Fgaming%2Farticles%2Fused-seeing-playstation-branding-xbox-120750257.html&psig=AOvVaw1099fGDnD2bzF5kqkGUwcN&ust=1762433787940000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMis-cyH2', 50.00, 'USD'),
+('STM10EUR', 'Steam Gift Card 10 EUR', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.steampowered.com%2F&psig=AOvVaw0eK3b70mcvZN-kMRKkW1fk&ust=1762433669826000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMjzwpGH25ADFQAAAAAdAAAAABAE', 10.00, 'EUR');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `partnerships`
+--
+
+CREATE TABLE `partnerships` (
+  `developer_id_1` int(11) NOT NULL,
+  `developer_id_2` int(11) NOT NULL,
+  `partnership_start` date DEFAULT NULL,
+  `partnership_type` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `publishers`
+--
+
+CREATE TABLE `publishers` (
+  `publisher_id` int(11) NOT NULL,
+  `publisher_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `review_id` int(11) NOT NULL,
+  `developer_id` int(11) DEFAULT NULL,
+  `reviewer_name` varchar(255) DEFAULT NULL,
+  `rating` decimal(3,1) DEFAULT NULL CHECK (`rating` >= 0 and `rating` <= 10),
+  `comment` text DEFAULT NULL,
+  `review_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexek a kiírt táblákhoz
 --
 
 --
+-- A tábla indexei `awards`
+--
+ALTER TABLE `awards`
+  ADD PRIMARY KEY (`award_id`);
+
+--
 -- A tábla indexei `datas`
 --
 ALTER TABLE `datas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `publisher_id` (`publisher_id`);
+
+--
+-- A tábla indexei `developers`
+--
+ALTER TABLE `developers`
+  ADD PRIMARY KEY (`developer_id`),
+  ADD UNIQUE KEY `developer_name` (`developer_name`);
+
+--
+-- A tábla indexei `developers_awards`
+--
+ALTER TABLE `developers_awards`
+  ADD PRIMARY KEY (`developer_id`,`award_id`),
+  ADD KEY `award_id` (`award_id`);
+
+--
+-- A tábla indexei `giftcard`
+--
+ALTER TABLE `giftcard`
+  ADD PRIMARY KEY (`CardId`);
+
+--
+-- A tábla indexei `partnerships`
+--
+ALTER TABLE `partnerships`
+  ADD PRIMARY KEY (`developer_id_1`,`developer_id_2`),
+  ADD KEY `developer_id_2` (`developer_id_2`);
+
+--
+-- A tábla indexei `publishers`
+--
+ALTER TABLE `publishers`
+  ADD PRIMARY KEY (`publisher_id`),
+  ADD UNIQUE KEY `publisher_name` (`publisher_name`);
+
+--
+-- A tábla indexei `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `developer_id` (`developer_id`);
 
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
 --
 
 --
+-- AUTO_INCREMENT a táblához `awards`
+--
+ALTER TABLE `awards`
+  MODIFY `award_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT a táblához `datas`
 --
 ALTER TABLE `datas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=454;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=370;
+
+--
+-- AUTO_INCREMENT a táblához `developers`
+--
+ALTER TABLE `developers`
+  MODIFY `developer_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT a táblához `publishers`
+--
+ALTER TABLE `publishers`
+  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT a táblához `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Megkötések a kiírt táblákhoz
+--
+
+--
+-- Megkötések a táblához `datas`
+--
+ALTER TABLE `datas`
+  ADD CONSTRAINT `datas_ibfk_1` FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`publisher_id`);
+
+--
+-- Megkötések a táblához `developers_awards`
+--
+ALTER TABLE `developers_awards`
+  ADD CONSTRAINT `developers_awards_ibfk_1` FOREIGN KEY (`developer_id`) REFERENCES `developers` (`developer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `developers_awards_ibfk_2` FOREIGN KEY (`award_id`) REFERENCES `awards` (`award_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Megkötések a táblához `partnerships`
+--
+ALTER TABLE `partnerships`
+  ADD CONSTRAINT `partnerships_ibfk_1` FOREIGN KEY (`developer_id_1`) REFERENCES `developers` (`developer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `partnerships_ibfk_2` FOREIGN KEY (`developer_id_2`) REFERENCES `developers` (`developer_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Megkötések a táblához `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`developer_id`) REFERENCES `developers` (`developer_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

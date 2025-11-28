@@ -235,7 +235,7 @@ $limit = 12;
 
 
     <section id="giftcard" class="section gift-cards-section">
-      <h2 class="section-title" data-i18n="egiftcards">eGift Cards</h2>
+      <h2 class="section-title gift_cards" data-i18n="egiftcards">eGift Cards</h2>
       <div class="card-grid gift-cards-grid">
         <?php if (!empty($gift_img)): ?>
           <?php $giftIndex = 0; ?>
@@ -263,9 +263,9 @@ $limit = 12;
 
     <!-- Top Games -->
     <section id="game" class="section">
-      <h2 class="section-title" data-i18n="top_games">Top Games</h2>
-      <div class="card-grid">
-        <div class="card game-card" ng-repeat="game in top_games">
+      <h2 class="section-title top_games" data-i18n="top_games">Top Games</h2>
+      <div class="card-grid top_games_card">
+        <div class="card game-card " ng-repeat="game in top_games">
           <img ng-src="{{game.img}}" alt="Game 1" class="w-full h-48 object-cover rounded-t-xl">
           <p class="title">{{game.name}}</p>
           <p class="price">{{game.prize}}</p>
@@ -277,8 +277,8 @@ $limit = 12;
 
     <!-- Upcoming Games -->
     <section class="section">
-      <h2 class="section-title" data-i18n="upcoming_game">Upcoming Games</h2>
-      <div class="card-grid">
+      <h2 class="section-title upcoming_games" data-i18n="upcoming_game">Upcoming Games</h2>
+      <div class="card-grid upcoming_games_card">
         <div class="card game-card" ng-repeat="game in upcoming_games">
           <img ng-src="{{game.img}}" alt="Upcoming Game 1" class="w-full h-48 object-cover rounded-t-xl">
           <p class="title">{{game.name}}</p>
@@ -293,7 +293,7 @@ $limit = 12;
 
 
     <section id="genre" class="section genre-section">
-      <h2 class="section-title" data-i18n="genre">Genre</h2>
+      <h2 class="section-title genre-title" data-i18n="genre">Genre</h2>
       <div class="card-grid genre-grid">
         <?php if (!empty($genreStats)): ?>
           <?php foreach ($genreStats as $genre => $count): ?>
@@ -386,7 +386,7 @@ $limit = 12;
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
       <div class="md:flex md:justify-between">
         <div class="mb-6 md:mb-0">
-          <a href="/icons/array.png" class="flex items-center">
+          <a href="/icons/array.png" class="flex items-center links">
             <img src="/icons/array.png" class="h-10 me-3" alt="FlowBite Logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white id2"><span class="id1">Frag</span>store</span>
           </a>
@@ -395,33 +395,33 @@ $limit = 12;
           <div>
             <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white" data-i18n="about">About</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
-              <li class="mb-4">
-                <a href="#intro" class="#" data-i18n="about_us">About Us</a>
+              <li class="mb-4 links">
+                <a href="#intro" class="links" data-i18n="about_us">About Us</a>
               </li>
-              <li>
-                <a href="/contact_us/contactus.php" class="" data-i18n="contact">Contacts</a>
+              <li class="links">
+                <a href="/contact_us/contactus.php"  data-i18n="contact">Contacts</a>
               </li>
             </ul>
           </div>
           <div>
             <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white" data-i18n="help">Help</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
-              <li class="mb-4">
-                <a href="#FAQ" class="" data-i18n="faq">FAQ</a>
+              <li class="mb-4 links">
+                <a href="#FAQ" class="links" data-i18n="faq">FAQ</a>
               </li>
-              <li class="mb-4">
-                <a href="../pdf/Refund Policy.pdf" class="" data-i18n="refund_policy">Refund Policy</a>
+              <li class="mb-4 links">
+                <a href="../pdf/Refund Policy.pdf" class="links" data-i18n="refund_policy">Refund Policy</a>
               </li>
             </ul>
           </div>
           <div>
             <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white" data-i18n="legal">Legal</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
-              <li class="mb-4">
-                <a href="../pdf/Privacy Policy.pdf" class="" data-i18n="privacy_policy">Privacy Policy</a>
+              <li class="mb-4 links">
+                <a href="../pdf/Privacy Policy.pdf" class="links" data-i18n="privacy_policy">Privacy Policy</a>
               </li>
-              <li>
-                <a href="../pdf/Terms and Conditions.pdf" class="" data-i18n="terms_and_conditions">Terms &amp; Conditions</a>
+              <li class="links">
+                <a href="../pdf/Terms and Conditions.pdf" class="links" data-i18n="terms_and_conditions">Terms &amp; Conditions</a>
               </li>
             </ul>
           </div>

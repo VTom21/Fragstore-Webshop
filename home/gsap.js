@@ -54,6 +54,15 @@ timeline.from(".cta-buttons a", {
     ease: "power2.out"
 });
 
+timeline.from("#chatbot-container", {
+    y: 30,
+    x:-30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out"
+});
+
 
   
 gsap.from(".intro-content1", {
@@ -129,14 +138,14 @@ gsap.from(".testimonial-grid", {
   }
 });
 
-gsap.from(".section-title", {
+gsap.from(".gift_cards", {
     x: -30,
     opacity: 0,
     duration: 0.6,
     stagger: 0.15,
     ease: "power2.out",
     scrollTrigger: {
-    trigger: ".section-title",
+    trigger: ".gift_cards",
     start: "top 70%",
   }
 });
@@ -153,6 +162,112 @@ gsap.from(".gift-card-wrapper", {
   }
 });
 
+gsap.from(".top_games", {
+    x: -30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out",
+    scrollTrigger: {
+    trigger: ".top_games",
+    start: "top 70%",
+  }
+});
+
+gsap.from(".top_games_card", {
+    y: -30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out",
+    scrollTrigger: {
+    trigger: ".top_games_card",
+    start: "top 70%",
+  }
+});
+
+gsap.from(".upcoming_games_card", {
+    y: -30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out",
+    scrollTrigger: {
+    trigger: ".upcoming_games_card",
+    start: "top 70%",
+  }
+});
+
+gsap.from(".upcoming_games", {
+    x: -30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out",
+    scrollTrigger: {
+    trigger: ".top_games",
+    start: "top 70%",
+  }
+});
+
+gsap.from(".genre-card-wrapper", {
+    y: -30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out",
+    scrollTrigger: {
+    trigger: ".genre-grid",
+    start: "top 70%",
+  }
+});
+
+gsap.from(".genre-title", {
+    y: -30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out",
+    scrollTrigger: {
+    trigger: ".genre-title",
+    start: "top 70%",
+  }
+});
+
+gsap.from(".faq-title", {
+    y: -30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out",
+    scrollTrigger: {
+    trigger: ".faq-title",
+    start: "top 70%",
+  }
+});
+
+gsap.from(".faq-item", {
+    y: -30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out",
+    scrollTrigger: {
+    trigger: ".faq-item",
+    start: "top 70%",
+  }
+});
+
+gsap.from(".footer", {
+    scale:0.75,
+    opacity: 0,
+    duration: 0.6,
+    ease: "power2.out",
+    scrollTrigger: {
+    trigger: ".footer",
+    start: "top 80%",
+  }
+});
 
 
 
