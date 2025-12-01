@@ -16,7 +16,8 @@ function sendMail(e) {
     const params = {
         name: name,
         time: d.getFullYear(),
-        user_email: email,
+        user_email: "fragstore63@gmail.com",
+        from_email:email,
         message: message,
     };
 

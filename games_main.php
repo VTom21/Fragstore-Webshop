@@ -242,7 +242,7 @@
                         <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white">About</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="./home/home.php" class="">About Us</a>
+                                <a href="/home/home.php#intro" class="">About Us</a>
                             </li>
                             <li>
                                 <a href="./contact_us/contactus.php" class="">Contacts</a>
@@ -253,10 +253,10 @@
                         <h2 class="mb-6 text-sm font-semibold  uppercase dark:text-white">Help</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="https://github.com/themesberg/flowbite" class="">FAQ</a>
+                                <a href="/home/home.php#FAQ" class="">FAQ</a>
                             </li>
                             <li class="mb-4">
-                                <a href="https://discord.gg/4eeurUVvTy" class="">Refund Policy</a>
+                                <a href="./pdf/Refund Policy.pdf" class="">Refund Policy</a>
                             </li>
                         </ul>
                     </div>
@@ -264,10 +264,10 @@
                         <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white">Legal</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="#" class="">Privacy Policy</a>
+                                <a href="./pdf/Privacy Policy.pdf" class="">Privacy Policy</a>
                             </li>
                             <li>
-                                <a href="#" class="">Terms &amp; Conditions</a>
+                                <a href="./pdf/Terms and Conditions.pdf" class="">Terms &amp; Conditions</a>
                             </li>
                         </ul>
                     </div>
