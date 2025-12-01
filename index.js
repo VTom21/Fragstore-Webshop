@@ -59,6 +59,19 @@ app.controller('GameController', function ($scope, $http, $window, $location) {
         $scope.cartOpen = true;
     };
 
+    $scope.pacmanCounter = 0;
+
+    $scope.easter_egg = function(game) {
+        if (game.name.toLowerCase() === "pac man") {
+            // Use Angular's ng-click on the image
+            $scope.pacmanCounter++; // increment counter on each click
+    
+            if ($scope.pacmanCounter >= 5) {
+                window.location.href = "../redirect/redirect.php?destination=../pacman/pacman.php";
+            }
+        }
+    };
+
     $scope.increaseQty = function (item) {
         item.quantity++;
         item.total_prize = item.prize * item.quantity;
