@@ -4,9 +4,17 @@
 </div>
 
 
-<div>
-![Build Status](https://img.shields.io/badge/Build-Passing-ghostwhite) ![Version](https://img.shields.io/badge/Version-1.0-indianred) ![License](https://img.shields.io/badge/License-MIT-ghostwhite) ![Last Commit](https://img.shields.io/badge/Last_Commit-1_day_ago-indianred)
+<div style="text-align:center;">
+  <img src="https://img.shields.io/badge/Build-Passing-ghostwhite">
+  <img src="https://img.shields.io/badge/Version-1.0-blue">
+  <img src="https://img.shields.io/badge/License-MIT-ghostwhite">
+  <img src="https://img.shields.io/badge/Last_Commit-1_day_ago-blue"><br>
+<img src="https://img.shields.io/badge/npm-v1.0-ghostwhite">
+<img src="https://img.shields.io/badge/stars-0-blue">
+<img src="https://img.shields.io/badge/commits-110-ghostwhite">
 </div>
+
+
 
 
 - - -
