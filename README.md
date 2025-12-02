@@ -1,102 +1,94 @@
 # 🎮 **Fragstore - Game Webshop**
 
-<div align="center">
-
 ![Build Status](https://img.shields.io/badge/Build-Passing-ghostwhite) ![Version](https://img.shields.io/badge/Version-1.0-indianred) ![License](https://img.shields.io/badge/License-MIT-ghostwhite) ![Last Commit](https://img.shields.io/badge/Last_Commit-1_day_ago-indianred)
 
-</div>
-
----
+- - -
 
 ## 📖 **Overview**
 
 **Fragstore** is a modern **game webshop platform** built with **Strapi** (backend) and designed to manage:
 
-- Hundreds of games
-- Gift cards
-- Custom user wishlists
-- Orders and Stripe payments  
+* Hundreds of games
+* Gift cards
+* Custom user wishlists
+* Orders and Stripe payments
 
 The platform also includes a **secret Pac-Man Easter Egg game** and an **advanced, responsive design**, providing a polished user experience.
 
----
+- - -
 
 ## 🚀 **Features**
 
-- **Game Catalog**: Browse and search hundreds of games.  
-- **Gift Cards**: Buy or redeem digital gift cards.  
-- **User Profiles**: Personalized dashboards and wishlists.  
-- **Secret Easter Egg**: Hidden Pac-Man game for fun discovery.  
-- **Stripe Integration**: Secure online payments.  
-- **Responsive UI**: Works seamlessly on desktop and mobile.  
+* **Game Catalog**: Browse and search hundreds of games.
+* **Gift Cards**: Buy or redeem digital gift cards.
+* **User Profiles**: Personalized dashboards and wishlists.
+* **Secret Easter Egg**: Hidden Pac-Man game for fun discovery.
+* **Stripe Integration**: Secure online payments.
+* **Responsive UI**: Works seamlessly on desktop and mobile.
 
----
+- - -
 
 ## 🖼 **UI Overview**
 
 ### **Homepage**
 
-- Featured games carousel
-- Quick search & category filters
-- Top-selling games display
+* Featured games carousel
+* Quick search & category filters
+* Top-selling games display
 
 ### **Game Details Page**
 
-- Detailed description & images
-- Price, stock, and purchase button
-- Wishlist & social sharing options
+* Detailed description & images
+* Price, stock, and purchase button
+* Wishlist & social sharing options
 
 ### **Cart & Checkout**
 
-- Manage orders
-- Apply gift cards
-- Secure Stripe checkout
+* Manage orders
+* Apply gift cards
+* Secure Stripe checkout
 
-<p align="center">
-  <img src="./icons/fragstore-home.png" width="800" alt="Fragstore Homepage"/>
-</p>
+<img src="./icons/array.png" width="800" alt="Fragstore Homepage">
 
----
+- - -
 
 ## ⚙️ **How It Works**
 
-### **1. Browsing Games**
+### **1\. Browsing Games**
 
-- Users can search, filter by category, or browse trending games.  
-- Each game page shows price, description, and available gift cards.
+* Users can search, filter by category, or browse trending games.
+* Each game page shows price, description, and available gift cards.
 
-### **2. Purchasing Games**
+### **2\. Purchasing Games**
 
-- Add items to the cart.  
-- Checkout securely with **Stripe integration**.  
-- Orders are saved under the user profile.
+* Add items to the cart.
+* Checkout securely with **Stripe integration**.
+* Orders are saved under the user profile.
 
-### **3. Using Wishlists & Easter Eggs**
+### **3\. Using Wishlists & Easter Eggs**
 
-- Add games to personal wishlists.  
-- Discover hidden **Pac-Man game** Easter egg on specific pages.
+* Add games to personal wishlists.
+* Discover hidden **Pac-Man game** Easter egg on specific pages.
 
----
+- - -
 
 ## 🏆 **Admin & Management**
 
 Administrators can manage all platform data via **Strapi**:
 
-- **Games**: Add, edit, or remove titles.  
-- **Categories**: Organize games efficiently.  
-- **Orders**: Track user purchases.  
-- **Users**: Manage accounts, roles, and permissions.
+* **Games**: Add, edit, or remove titles.
+* **Categories**: Organize games efficiently.
+* **Orders**: Track user purchases.
+* **Users**: Manage accounts, roles, and permissions.
 
----
+- - -
 
 ## 🧑‍💻 **How to Use**
 
 1. **Clone the repository**:
 
-
-
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
+| Tables | Are | Cool |
+| ------ | :---: | ---: |
+| col 1 is | left-aligned | $1600 |
+| col 2 is | centered | $12 |
+| col 3 is | right-aligned | $1 |
