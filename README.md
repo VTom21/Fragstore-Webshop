@@ -3,8 +3,6 @@
   <h2><strong>Fragstore - Game Webshop</strong></h2>
 </div>
 
-- - -
-
 <div align="center">
   <img src="https://img.shields.io/badge/Build-Passing-ghostwhite">
   <img src="https://img.shields.io/badge/Version-1.0-blue">
@@ -14,11 +12,12 @@
 <img src="https://img.shields.io/badge/stars-0-blue">
 <img src="https://img.shields.io/badge/commits-110-ghostwhite">
 </div>
+</div>
+<img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white">
 
 
 
-
-
+- - -
 
 ## 📖 **Overview**
 
