@@ -53,6 +53,18 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 * Apply gift cards
 * Secure Stripe checkout
 
+### Easter egg game (Pac man) <img style="display: inline-flex; align-self: center" src="./pacman/assets/pacman/pacmanRight.png" width="25" height="25px" alt="Fragstore Homepage"><br>
+</div>
+
+* Have a little fun while shopping 
+* You have to found  the Pac Man
+  * You have to found the way to play even after you get to it in the Store
+  * hint: Just click it sometimes  
+* The original mechanics from the first Pac man
+* New designs and abilities
+* Score system with local leaderboard  
+
+
 - - -
 
 ## ⚙️ **How It Works**
