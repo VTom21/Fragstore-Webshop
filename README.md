@@ -1,4 +1,4 @@
-# 🎮 **Fragstore - Game Webshop**
+# <img src="./icons/array.png" width="200" alt="Fragstore Homepage"> **Fragstore - Game Webshop**
 
 ![Build Status](https://img.shields.io/badge/Build-Passing-ghostwhite) ![Version](https://img.shields.io/badge/Version-1.0-indianred) ![License](https://img.shields.io/badge/License-MIT-ghostwhite) ![Last Commit](https://img.shields.io/badge/Last_Commit-1_day_ago-indianred)
 
@@ -47,8 +47,6 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 * Manage orders
 * Apply gift cards
 * Secure Stripe checkout
-
-<img src="./icons/array.png" width="800" alt="Fragstore Homepage">
 
 - - -
 
