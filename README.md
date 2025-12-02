@@ -64,7 +64,10 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 * Secure Stripe checkout
 
 
-### Easter egg game (Pac man) <img src="./pacman/assets/pacman/pacmanRight.png" width="30" height="25" align="absmiddle">
+<div align="center">
+  <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Fragstore Homepage"><br>
+  <h2><strong>Easter Egg game (Pacman)</strong></h2>
+</div>
 
 
 
