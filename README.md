@@ -1,10 +1,10 @@
-<div style="text-align:center;">
+<div align="center">
   <img src="./icons/array.png" width="60" alt="Fragstore Homepage"><br>
   <h2><strong>Fragstore - Game Webshop</strong></h2>
 </div>
 
 
-<div style="text-align:center;">
+<div align="center">
   <img src="https://img.shields.io/badge/Build-Passing-ghostwhite">
   <img src="https://img.shields.io/badge/Version-1.0-blue">
   <img src="https://img.shields.io/badge/License-MIT-ghostwhite">
