@@ -3,9 +3,11 @@
   <h2><strong>Fragstore - Game Webshop</strong></h2>
 </div>
 
-## **Fragstore - Game Webshop**
 
+<div>
 ![Build Status](https://img.shields.io/badge/Build-Passing-ghostwhite) ![Version](https://img.shields.io/badge/Version-1.0-indianred) ![License](https://img.shields.io/badge/License-MIT-ghostwhite) ![Last Commit](https://img.shields.io/badge/Last_Commit-1_day_ago-indianred)
+</div>
+
 
 - - -
 
