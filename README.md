@@ -3,6 +3,7 @@
   <h2><strong>Fragstore - Game Webshop</strong></h2>
 </div>
 
+- - -
 
 <div align="center">
   <img src="https://img.shields.io/badge/Build-Passing-ghostwhite">
@@ -17,7 +18,7 @@
 
 
 
-- - -
+
 
 ## 📖 **Overview**
 
@@ -66,7 +67,7 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 
 <div align="center">
   <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Fragstore Homepage"><br>
-  <h2><strong>Easter Egg game (Pacman)</strong></h2>
+  <h3><strong>Easter Egg game (Pacman)</strong></h3>
 </div>
 
 
