@@ -1,4 +1,9 @@
-# <img src="./icons/array.png" width="60" alt="Fragstore Homepage"> **Fragstore - Game Webshop**
+<div style="text-align:center;">
+  <img src="./icons/array.png" width="60" alt="Fragstore Homepage"><br>
+  <h2><strong>Fragstore - Game Webshop</strong></h2>
+</div>
+
+## **Fragstore - Game Webshop**
 
 ![Build Status](https://img.shields.io/badge/Build-Passing-ghostwhite) ![Version](https://img.shields.io/badge/Version-1.0-indianred) ![License](https://img.shields.io/badge/License-MIT-ghostwhite) ![Last Commit](https://img.shields.io/badge/Last_Commit-1_day_ago-indianred)
 
