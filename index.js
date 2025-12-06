@@ -10,6 +10,8 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.sortOrder = "";
   $scope.isAscChecked = false;
   $scope.isDescChecked = false;
+  $scope.discountedPrize = 0;
+  $scope.ratio = 0;
 
   //base variables for storing games, filtered games & platforms, Cart & Wish list items
   $scope.games = [];
@@ -44,17 +46,14 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
 
   $scope.cartOpen = false;
   $scope.cartItems = [];
-  
-  $scope.isInWishlist = function(gameId) {
-    return $scope.wishlistItems.some(item => item.id === gameId);
-};
 
+  $scope.isInWishlist = function (gameId) {
+    return $scope.wishlistItems.some((item) => item.id === gameId);
+  };
 
-  
-
-  $scope.wishlistItems = JSON.parse(localStorage.getItem("wishlistItems") || []);
-
-
+  $scope.wishlistItems = JSON.parse(
+    localStorage.getItem("wishlistItems") || []
+  );
 
   $scope.openCart = function (game) {
     let existingItem = $scope.cartItems.find((item) => item.id === game.id);
@@ -133,6 +132,22 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
       $scope.numberOfProducts = response.data.total;
       $scope.numberOfGenres = response.data.totalGenres;
       $scope.numberOfPlatforms = $scope.platforms.length;
+
+
+      function seededRandom(seed) {
+        var x = Math.sin(seed) * 10000;
+        return x - Math.floor(x);
+      }
+
+      $scope.games.forEach(function (game) {
+        if (game.isDiscount == 1) {
+          var seed = game.id || game.name.charCodeAt(0);
+          var randomPercentage = 0.1 + 0.8 * seededRandom(seed); 
+          game.discountedPrize = parseFloat(
+            (game.prize * randomPercentage).toFixed(2)
+          );
+        }
+      });
 
       // checks if the genre chosen by the user, exists. Doesnt allow duplicates.
 
@@ -459,7 +474,6 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
     wish_btn.classList.toggle("off");
     wish_btn.classList.toggle("active");
 
-
     let gameExist = $scope.wishlistItems.find((item) => item.id === game.id);
 
     if (wish_btn.classList.contains("active") && !gameExist) {
@@ -469,12 +483,12 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
         prize: game.prize,
         game_pic: game.game_pic,
       });
-    }
-    else{
-     $scope.wishlistItems = $scope.wishlistItems.filter(item => item.id !== game.id);
+    } else {
+      $scope.wishlistItems = $scope.wishlistItems.filter(
+        (item) => item.id !== game.id
+      );
     }
 
     localStorage.setItem("wishlistItems", JSON.stringify($scope.wishlistItems));
   };
-  
 });
