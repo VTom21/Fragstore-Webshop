@@ -16,7 +16,7 @@
     <div class="navbar" id="#top">
         <button class="filter-ranking" ng-click="rankingOpen = true">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#37e6ec735" viewBox="0 0 24 24">
-                <path d="M4 21h4v-8H4v8zm6 0h4v-14h-4v14zm6 0h4v-5h-4v5z" />   
+                <path d="M4 21h4v-8H4v8zm6 0h4v-14h-4v14zm6 0h4v-5h-4v5z" />
             </svg>
         </button>
 
@@ -58,13 +58,39 @@
                         <button ng-click="increaseQty(item)">+</button>
                     </div>
                 </div>
-            <button class="redirect_btn"ng-click="checkout()">Buy Now</button>
+                <button class="redirect_btn" ng-click="checkout()" ng-show="cartItems.length > 0">Buy Now</button>
             </div>
         </div>
 
         <div class="overlay" ng-class="{'active': cartOpen}" ng-click="cartOpen = false"></div>
 
-        <button class="wish-btn" ng-click="wishOpen = true">
+        <!-- Wishlist Sidebar -->
+        <div class="wishlist-sidebar" ng-class="{'active': wishlistOpen}">
+            <div class="wishlist-header">
+                <h2>Your Wishlist</h2>
+                <button class="close-btn" ng-click="wishlistOpen = false">×</button>
+            </div>
+
+            <div class="wishlist-content">
+                <div ng-if="wishlistItems.length === 0">Your wishlist is empty.</div>
+
+                <div class="wishlist-item" ng-repeat="item in wishlistItems track by item.id">
+                    <img ng-src="{{item.game_pic}}">
+                    <div class="wishlist-data">
+                        <h4>{{item.name}}</h4>
+                        <p>${{item.prize | number:2 }}</p>
+                    </div>
+
+                </div>
+                <button class="redirect_btn" ng-click="wishlistOpen = false" ng-hide="wishlistItems.length > 0">Add Now</button>
+            </div>
+        </div>
+
+        <!-- Wishlist Overlay -->
+        <div class="overlay" ng-class="{'active': wishlistOpen}" ng-click="wishlistOpen = false"></div>
+
+
+        <button class="wish-btn" ng-click="wishlistOpen = true">
             <svg xmlns="http://www.w3.org/2000/svg" fill="#37e6ec73" viewBox="0 0 24 24" stroke-width="0" width="20" height="20" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
             </svg>
@@ -189,7 +215,7 @@
         <div class="card" ng-repeat="game in filteredGames | filter:{name: searchText} | limitTo:itemsPerPage:((currentPage - 1) * itemsPerPage)">
             <img ng-src="{{game.game_pic}}" alt="{{game.name}}" ng-click="easter_egg(game)">
             <div class="card-content">
-                <h2 class="title">{{game.name}} <button class="wish_btn off">
+                <h2 class="title">{{game.name}} <button class="wish_btn off"data-game-id="{{game.id}}"ng-class="{'active': isInWishlist(game.id), 'off': !isInWishlist(game.id)}"  ng-click="Wishlist(game, $event)">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="transparent" viewBox="0 0 24 24" stroke-width="1.3" stroke="#00f7ff" class="WishBtn">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                         </svg>
