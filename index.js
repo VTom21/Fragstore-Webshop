@@ -10,8 +10,6 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.sortOrder = "";
   $scope.isAscChecked = false;
   $scope.isDescChecked = false;
-  $scope.discountedPrize = 0;
-  $scope.ratio = 0;
 
   //base variables for storing games, filtered games & platforms, Cart & Wish list items
   $scope.games = [];
@@ -55,25 +53,30 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
     localStorage.getItem("wishlistItems") || []
   );
 
-  $scope.openCart = function (game) {
+$scope.openCart = function (game) {
     let existingItem = $scope.cartItems.find((item) => item.id === game.id);
 
+    // Determine the actual price to use for this game
+    let priceToUse = (game.isDiscount == 1 && game.discountedPrize) ? game.discountedPrize : game.prize;
+
     if (existingItem) {
-      existingItem.quantity += 1;
-      existingItem.total_prize = existingItem.quantity * existingItem.prize;
+        existingItem.quantity += 1;
+        // Always use the stored 'prize' of the cart item, which is discounted if applicable
+        existingItem.total_prize = existingItem.quantity * existingItem.prize;
     } else {
-      $scope.cartItems.push({
-        id: game.id,
-        name: game.name,
-        prize: game.prize,
-        game_pic: game.game_pic,
-        quantity: 1,
-        total_prize: game.prize * 1,
-      });
+        $scope.cartItems.push({
+            id: game.id,
+            name: game.name,
+            prize: priceToUse,       // store the actual price
+            game_pic: game.game_pic,
+            quantity: 1,
+            total_prize: priceToUse * 1,
+        });
     }
 
     $scope.cartOpen = true;
-  };
+};
+
 
   $scope.pacmanCounter = 0;
 
