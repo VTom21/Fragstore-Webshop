@@ -26,6 +26,7 @@
     --black2:#1e1e2f;
 
     --lightblue:#00f7ff;
+    --discount-color:#ff4d4f
 }
 
 body {
@@ -127,6 +128,7 @@ html {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .card:hover {
@@ -212,6 +214,23 @@ html {
     font-size: 1.11rem;
     color: #999;
 }
+
+.discount-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: var(--discount-color); /* bright red */
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 10;
+    display: inline-block; /* always visible */
+}
+
 
 
 .shop_btn {

@@ -213,6 +213,9 @@
     <div class="game-container">
         <div class="card" ng-repeat="game in filteredGames | filter:{name: searchText} | limitTo:itemsPerPage:((currentPage - 1) * itemsPerPage)">
             <img ng-src="{{game.game_pic}}" alt="{{game.name}}" ng-click="easter_egg(game)">
+                <p class="discount-badge" ng-if="game.isDiscount == 1">
+        {{ (((game.prize - game.discountedPrize) / game.prize * 100)) * (-1) | number:0 }}%
+    </p>
             <div class="card-content">
                 <h2 class="title">{{game.name}} <button class="wish_btn off" data-game-id="{{game.id}}" ng-class="{'active': isInWishlist(game.id), 'off': !isInWishlist(game.id)}" ng-click="Wishlist(game, $event)">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="transparent" viewBox="0 0 24 24" stroke-width="1.3" stroke="#00f7ff" class="WishBtn">
@@ -227,15 +230,15 @@
                 <div class="status">
                     <h3 class="status_text"></h3>
                 </div>
-<div class="price-box">
-    <p class="price" ng-style="{'text-decoration': game.isDiscount == 1 ? 'line-through' : 'none'}">
-        ${{ game.prize | number:2 }}
-    </p>
+                <div class="price-box">
+                    <p class="price" ng-style="{'text-decoration': game.isDiscount == 1 ? 'line-through' : 'none'}">
+                        ${{ game.prize | number:2 }}
+                    </p>
 
-    <p class="discount" ng-if="game.isDiscount == 1">
-        ${{ game.discountedPrize | number:2 }}
-    </p>
-</div><br>
+                    <p class="discount" ng-if="game.isDiscount == 1">
+                        ${{ game.discountedPrize | number:2 }}
+                    </p>
+                </div><br>
 
 
 

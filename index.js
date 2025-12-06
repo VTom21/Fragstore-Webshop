@@ -53,30 +53,32 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
     localStorage.getItem("wishlistItems") || []
   );
 
-$scope.openCart = function (game) {
+  $scope.openCart = function (game) {
     let existingItem = $scope.cartItems.find((item) => item.id === game.id);
 
     // Determine the actual price to use for this game
-    let priceToUse = (game.isDiscount == 1 && game.discountedPrize) ? game.discountedPrize : game.prize;
+    let priceToUse =
+      game.isDiscount == 1 && game.discountedPrize
+        ? game.discountedPrize
+        : game.prize;
 
     if (existingItem) {
-        existingItem.quantity += 1;
-        // Always use the stored 'prize' of the cart item, which is discounted if applicable
-        existingItem.total_prize = existingItem.quantity * existingItem.prize;
+      existingItem.quantity += 1;
+      // Always use the stored 'prize' of the cart item, which is discounted if applicable
+      existingItem.total_prize = existingItem.quantity * existingItem.prize;
     } else {
-        $scope.cartItems.push({
-            id: game.id,
-            name: game.name,
-            prize: priceToUse,       // store the actual price
-            game_pic: game.game_pic,
-            quantity: 1,
-            total_prize: priceToUse * 1,
-        });
+      $scope.cartItems.push({
+        id: game.id,
+        name: game.name,
+        prize: priceToUse, // store the actual price
+        game_pic: game.game_pic,
+        quantity: 1,
+        total_prize: priceToUse * 1,
+      });
     }
 
     $scope.cartOpen = true;
-};
-
+  };
 
   $scope.pacmanCounter = 0;
 
@@ -136,7 +138,6 @@ $scope.openCart = function (game) {
       $scope.numberOfGenres = response.data.totalGenres;
       $scope.numberOfPlatforms = $scope.platforms.length;
 
-
       function seededRandom(seed) {
         var x = Math.sin(seed) * 10000;
         return x - Math.floor(x);
@@ -145,7 +146,7 @@ $scope.openCart = function (game) {
       $scope.games.forEach(function (game) {
         if (game.isDiscount == 1) {
           var seed = game.id || game.name.charCodeAt(0);
-          var randomPercentage = 0.1 + 0.8 * seededRandom(seed); 
+          var randomPercentage = 0.1 + 0.8 * seededRandom(seed);
           game.discountedPrize = parseFloat(
             (game.prize * randomPercentage).toFixed(2)
           );
@@ -449,8 +450,15 @@ $scope.openCart = function (game) {
     for (var i = 0; i < $scope.games.length; i++) {
       var game = $scope.games[i];
       var price = parseFloat(game.prize);
-      if (price >= min && price <= max) {
-        $scope.filteredGames.push(game);
+
+      if (game.isDiscount == 1) {
+        if (game.discountedPrize >= min && price <= max) {
+          $scope.filteredGames.push(game);
+        }
+      } else {
+        if (price >= min && price <= max) {
+          $scope.filteredGames.push(game);
+        }
       }
     }
 
