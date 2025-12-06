@@ -33,7 +33,6 @@
 
 
 
-- - -
 
 ## 📖 **Overview**
 
@@ -46,7 +45,6 @@
 
 The platform also includes a **secret Pac-Man Easter Egg game** and an **advanced, responsive design**, providing a polished user experience.
 
-- - -
 
 ## 🚀 **Features**
 
@@ -57,7 +55,6 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 * **Stripe Integration**: Secure online payments.
 * **Responsive UI**: Works seamlessly on desktop and mobile.
 
-- - -
 
 ## 🖼 **UI Overview**
 
@@ -96,7 +93,6 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 * Score system with local leaderboard  
 
 
-- - -
 
 ## ⚙️ **How It Works**
 
@@ -116,7 +112,6 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 * Add games to personal wishlists.
 * Discover hidden **Pac-Man game** Easter egg on specific pages.
 
-- - -
 
 ## 🏆 **Admin & Management**
 
@@ -127,7 +122,6 @@ Administrators can manage all platform data via **Strapi**:
 * **Orders**: Track user purchases.
 * **Users**: Manage accounts, roles, and permissions.
 
-- - -
 
 ## 🧑‍💻 **How to Use**
 
