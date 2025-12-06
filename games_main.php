@@ -226,10 +226,11 @@
             </div>
             <div class="price-wrapper">
                 <div class="status">
-                    <h3 class="status_text">GLOBAL</h3>
+                    <h3 class="status_text"></h3>
                 </div>
                 <div class="price-box">
-                    ${{game.prize | number:2}}
+                    <p class="price">${{game.prize | number:2}}</p>
+                    <p class="discount"></p>
                 </div><br>
                 <div class="btns">
                     <button class="buy_btn">Buy Now</button>
