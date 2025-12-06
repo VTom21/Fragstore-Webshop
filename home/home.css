@@ -143,10 +143,12 @@ header {
 }
 
 .navbar {
+    position: absolute;       
+    left: 50%;               
+    transform: translateX(-55%); 
     display: flex;
-    gap: 25px;
-    position: relative;
-    
+    gap: 25px;               
+    align-items: center;
 }
 
 .navbar a {
@@ -155,6 +157,7 @@ header {
   position: relative;
   color: var(--text-muted);
   transition: none !important;
+
 }
 
 .navbar a::after {
@@ -928,6 +931,39 @@ main {
         gap: 1rem;
     }
 }
+
+.discount-news-header {          /* sticks when scrolling */                /* height of your navbar */
+    z-index: 1000;             /* above other content */
+      background-image: url("https://www.gamewallpapers.com/img_script/wallpaper_dir/img.php?src=wallpaper_call_of_duty_black_ops_3_01_2560x1080.jpg&height=506&sharpen");
+    background-repeat: no-repeat;
+    background-size: cover;      /* cover the header area */
+    background-position: 30% 30%; /* center the image */
+    color: #fff;
+    padding: 14px 14px;
+    opacity: 0.6;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: grid;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Title and subtitle */
+.discount-news-header .title {
+    font-size: 1.5rem;
+    margin: 0 0 6px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.discount-news-header .subtitle {
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+
+
 
 #game,.section{
   padding: 12px;

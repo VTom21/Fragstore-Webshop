@@ -69,6 +69,12 @@ $limit = 12;
 </head>
 
 <body ng-app="home" ng-controller="home_controller">
+    <a href="../redirect/redirect.php?destination=../games_main.php">
+    <div class="discount-news-header">
+    <h1 class="title">Call of Duty Franchise Sale</h1>
+    <p class="subtitle">Grab the best cod games before they're gone!</p>
+</div>
+    </a>
   <header id="header">
     <img id="logo" src="../icons/array.png"></img>
     <div class="navbar">
@@ -100,6 +106,7 @@ $limit = 12;
 
     </div>
   </header>
+
 
 
 
