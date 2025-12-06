@@ -82,7 +82,7 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
   <h3><strong>Easter Egg game (Pacman)</strong></h3>
 </div>
 
-
+---
 
 * Have a little fun while shopping 
 * You have to found  the Pac Man
