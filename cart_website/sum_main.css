@@ -83,6 +83,10 @@ body {
     display: none;
 }
 
+.hidden{
+display: none !important;
+}
+
 .section-title {
     color: var(--lightblue);
     font-size: 1.5rem;

@@ -14,17 +14,22 @@ const paypalSection = document.querySelector('.paypal-section');
 function updateShipping() {
     const selectedRadio = document.querySelector('input[name="delivery"]:checked');
     const selected = selectedRadio ? selectedRadio.value : 'digital';
+    const cashOn = document.querySelector('input[name="payment"][value="cash"]');
+    const cashOnDiv = cashOn.closest('.radio-card');
     console.log('Selected delivery:', selected);
 
     let shipping = 0;
     if (selected === 'digital') {
         addressSection.classList.add('hidden');
+        cashOnDiv.classList.add('hidden');
         shipping = 0;
     } else if (selected === 'home') {
         addressSection.classList.remove('hidden');
+        cashOnDiv.classList.remove('hidden');
         shipping = 5.99;
     } else if (selected === 'pickup') {
         addressSection.classList.add('hidden');
+        cashOnDiv.classList.add('hidden');
         shipping = 2.99;
     }
 

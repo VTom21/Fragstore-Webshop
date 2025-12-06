@@ -165,15 +165,23 @@ $cart_items = json_decode($cart_json, true);
                                 <label>CVV</label>
                                 <input type="text" placeholder="123" maxlength="3">
                             </div>
+
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="text" placeholder="Email Address">
+                            </div>
                         </div>
                     </div>
 
                     <div class="paypal-section" style="display:none;">
                         <div class="form-group full-width">
                             <label>Paypal Number</label>
-                            <input type="text" placeholder="Number on paypal">
+                            <input type="text" placeholder="Number on paypal"><br>
+                            <label>Email Address</label>
+                            <input type="text" placeholder="Email Address">
                         </div>
                     </div>
+
                 </div>
             </div>
 
