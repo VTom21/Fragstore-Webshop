@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/Last_Commit-1_day_ago-blue"><br>
 <img src="https://img.shields.io/badge/npm-v1.0-ghostwhite">
 <img src="https://img.shields.io/badge/stars-0-blue">
-<img src="https://img.shields.io/badge/commits-110-ghostwhite">
+<img src="https://img.shields.io/badge/commits-140-ghostwhite">
 </div>
 
 
