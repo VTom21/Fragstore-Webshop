@@ -227,9 +227,13 @@ $currencies = array_keys($data["rates"]);
         </div>
     </div>
 
-<select ng-model="select_currency" ng-change="changeCurrency(select_currency)">
-    <option ng-repeat="(key, value) in rates" value="{{key}}">{{key}}</option>
-</select>
+    <div class="select-container">
+        <div class="select-wrapper">
+            <select id="currency-select" ng-model="select_currency" ng-change="changeCurrency(select_currency)">
+                <option ng-repeat="(key, value) in rates" value="{{key}}">{{key}}</option>
+            </select>
+        </div>
+    </div>
 
     <br><br><br><br>
 

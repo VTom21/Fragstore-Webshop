@@ -725,3 +725,52 @@ input[type="range"]::-webkit-slider-thumb {
     color: #45B649;
     padding: 12px 12px;
 }
+
+.select-container {
+    width: 100%;
+    padding: 12px 12px;
+    max-width: 240px;
+    margin: 0 0;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+#currency-select {
+    width: 100%;
+    padding: 10px 32px 10px 12px;
+    border: transparent;
+    border-radius: 0;
+    background-color: var(--card-bg);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    color: var(--p);
+    font-size: 14px;
+    outline: none;
+}
+
+
+
+.select-wrapper::after {
+    content: "▼";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--gray1);
+    font-size: 9px;
+}
+
+#currency-select option {
+    color: var(--p);
+    background-color: var(--navbar-bg);
+}
+
+
+
+
+
