@@ -1,3 +1,26 @@
+<?php
+$apiUrl = "https://open.er-api.com/v6/latest/USD";
+
+$context = stream_context_create([
+    "ssl" => [
+        "verify_peer"      => false,
+        "verify_peer_name" => false
+    ]
+]);
+
+$response = file_get_contents($apiUrl, false, $context);
+
+$data = json_decode($response, true);
+
+$currencies = array_keys($data["rates"]);
+
+
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" ng-app="videogameApp">
 
@@ -209,13 +232,18 @@
 
 
     <br><br><br><br>
+<select ng-model="selectedCurrency">
+<option ng-repeat="(key, value) in rates" value="{{key}}">{{key}}</option>
+</select>
+
+
 
     <div class="game-container">
         <div class="card" ng-repeat="game in filteredGames | filter:{name: searchText} | limitTo:itemsPerPage:((currentPage - 1) * itemsPerPage)">
             <img ng-src="{{game.game_pic}}" alt="{{game.name}}" ng-click="easter_egg(game)">
-                <p class="discount-badge" ng-if="game.isDiscount == 1">
-        {{ (((game.prize - game.discountedPrize) / game.prize * 100)) * (-1) | number:0 }}%
-    </p>
+            <p class="discount-badge" ng-if="game.isDiscount == 1">
+                {{ (((game.prize - game.discountedPrize) / game.prize * 100)) * (-1) | number:0 }}%
+            </p>
             <div class="card-content">
                 <h2 class="title">{{game.name}} <button class="wish_btn off" data-game-id="{{game.id}}" ng-class="{'active': isInWishlist(game.id), 'off': !isInWishlist(game.id)}" ng-click="Wishlist(game, $event)">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="transparent" viewBox="0 0 24 24" stroke-width="1.3" stroke="#00f7ff" class="WishBtn">
@@ -230,17 +258,17 @@
                 <div class="status">
                     <h3 class="status_text"></h3>
                 </div>
-                <div class="price-box">
-                    <p class="price" ng-style="{'text-decoration': game.isDiscount == 1 ? 'line-through' : 'none'}">
-                        ${{ game.prize | number:2 }}
-                    </p>
+<div class="price-box">
+    <p class="price" ng-style="{'text-decoration': game.isDiscount == 1 ? 'line-through' : 'none'}">
+        {{ (game.isDiscount == 1 ? convertPrice({prize: game.prize}) : convertPrice({prize: game.prize})) }} {{ selectedCurrency || 'USD' }}
+    </p>
 
-                    <p class="discount" ng-if="game.isDiscount == 1">
-                        ${{ game.discountedPrize | number:2 }}
-                    </p>
-                </div><br>
+    <p class="discount" ng-if="game.isDiscount == 1">
+        {{ convertPrice({prize: game.discountedPrize || game.prize}) }} {{ selectedCurrency || 'USD' }}
+    </p>
+</div>
 
-
+                <br>
 
 
                 <div class="btns">
@@ -358,9 +386,30 @@
         </svg>
     </button>
 
+        <script>
+        window.exchangeRates = <?php echo json_encode($data["rates"]); ?>;
+        const rates = <?php echo json_encode($data["rates"]); ?>;
+        const amount_numeric = parseFloat(current_amount.textContent);
+
+
+        function Conversion() {
+            const currency = select.value;
+            const rate = rates[currency];
+            const convert = (amount_numeric * rate).toFixed(2);
+        }
+
+        Conversion();
+        select.addEventListener("change", Conversion);
+
+
+
+        
+    </script>
+
 
     <script src="index.js"></script>
     <script src="autofill.js"></script>
+
 
 </body>
 

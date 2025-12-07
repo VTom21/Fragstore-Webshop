@@ -1,5 +1,7 @@
 var app = angular.module("videogameApp", []);
 
+
+
 app.controller("GameController", function ($scope, $http, $window, $location) {
   //boolean values to check prize & name sorting
 
@@ -44,6 +46,17 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
 
   $scope.cartOpen = false;
   $scope.cartItems = [];
+
+      $scope.rates = $window.exchangeRates;
+    $scope.selectedCurrency = "USD";
+$scope.convertPrice = function(game) {
+    let price = game.isDiscount == 1 ? game.discountedPrize : game.prize;
+    let rate = $scope.rates[$scope.selectedCurrency] || 1;
+    return (price * rate).toFixed(2);
+};
+
+
+  
 
   $scope.isInWishlist = function (gameId) {
     return $scope.wishlistItems.some((item) => item.id === gameId);
@@ -327,11 +340,15 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
 
     if ($scope.prizeSortOrder == "asc") {
       $scope.filteredGames.sort(function (a, b) {
-        return a.prize - b.prize; //if substraction gives minues value, a comes first, otherwise b
+        const PrizeA = a.isDiscount == 1 ? a.discountedPrize : a.prize; 
+        const PrizeB = b.isDiscount == 1 ? b.discountedPrize : b.prize;  
+        return PrizeA - PrizeB; //if substraction gives minues value, a comes first, otherwise b
       });
     } else if ($scope.prizeSortOrder == "desc") {
       $scope.filteredGames.sort(function (a, b) {
-        return b.prize - a.prize; //same logic inverted
+        const PrizeA = a.isDiscount == 1 ? a.discountedPrize : a.prize; 
+        const PrizeB = b.isDiscount == 1 ? b.discountedPrize : b.prize;  
+        return PrizeB - PrizeA; //same logic inverted
       });
     }
 
@@ -445,14 +462,16 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.PrizeRange = function () {
     var min = parseFloat($scope.parameter1) || 0;
     var max = parseFloat($scope.parameter2) || Infinity;
+    var rate = $scope.rates[$scope.selectedCurrency] || 1;
 
     $scope.filteredGames = [];
     for (var i = 0; i < $scope.games.length; i++) {
       var game = $scope.games[i];
-      var price = parseFloat(game.prize);
+      var price = game.prize * rate;
+      var discountedPrice = game.discountedPrize ? game.discountedPrize * rate : null;
 
       if (game.isDiscount == 1) {
-        if (game.discountedPrize >= min && price <= max) {
+        if (discountedPrice >= min && price <= max) {
           $scope.filteredGames.push(game);
         }
       } else {
@@ -501,5 +520,6 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
     }
 
     localStorage.setItem("wishlistItems", JSON.stringify($scope.wishlistItems));
+    
   };
 });
