@@ -203,7 +203,7 @@ $cart_items = json_decode($cart_json, true);
                                         <span class="summary-item-name"><?= htmlspecialchars($item["name"]) ?></span>
                                         <span class="summary-item-qty">x<?= htmlspecialchars($item["quantity"]) ?></span>
                                     </div>
-                                    <span class="summary-item-price">$<?= number_format($item_total, 2) ?></span>
+                                    <span class="summary-item-price"><?= number_format($item_total, 2) ?></span>
                                 </div>
                             <?php endforeach ?>
                         </div>
@@ -211,7 +211,7 @@ $cart_items = json_decode($cart_json, true);
                         <div class="summary-totals">
                             <div class="summary-row">
                                 <span>Subtotal</span>
-                                <span id="subtotal-amount">$<?= number_format($subtotal, 2) ?></span>
+                                <span id="subtotal-amount"><?= number_format($subtotal, 2) ?></span>
                             </div>
                             <div class="summary-row">
                                 <span>Shipping</span>
@@ -219,11 +219,11 @@ $cart_items = json_decode($cart_json, true);
                             </div>
                             <div class="summary-row">
                                 <span>Tax (8%)</span>
-                                <span id="tax-amount">$<?= number_format($subtotal * 0.08, 2) ?></span>
+                                <span id="tax-amount"><?= number_format($subtotal * 0.08, 2) ?></span>
                             </div>
                             <div class="summary-row total">
                                 <span>Total</span>
-                                <span id="total-amount">$<?= number_format($subtotal * 1.08, 2) ?></span>
+                                <span id="total-amount"><?= number_format($subtotal * 1.08, 2) ?></span>
                             </div>
                         </div>
 

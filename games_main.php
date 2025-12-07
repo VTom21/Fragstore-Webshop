@@ -37,17 +37,14 @@ $currencies = array_keys($data["rates"]);
 <body ng-controller="GameController">
 
     <div class="navbar" id="#top">
-        <button class="filter-ranking" ng-click="rankingOpen = true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#37e6ec735" viewBox="0 0 24 24">
-                <path d="M4 21h4v-8H4v8zm6 0h4v-14h-4v14zm6 0h4v-5h-4v5z" />
-            </svg>
-        </button>
 
         <button class="filter-ranking" ng-click="rankingOpen = true">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#37e6ec73" viewBox="0 0 24 24">
                 <path d="M4 21h4v-8H4v8zm6 0h4v-14h-4v14zm6 0h4v-5h-4v5z" />
             </svg>
         </button>
+
+        
 
         <button class="shop-cart" ng-click="cartOpen = true">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#37e6ec73" viewBox="0 0 24 24">
@@ -72,7 +69,7 @@ $currencies = array_keys($data["rates"]);
                     <img ng-src="{{item.game_pic}}">
                     <div class="cart-data">
                         <h4>{{item.name}}</h4>
-                        <p>${{item.total_prize | number:2 }}</p>
+                        <p>{{item.total_prize | number:2 }} {{select_currency}}</p>
                     </div>
 
                     <div class="qty-controls">
@@ -230,12 +227,11 @@ $currencies = array_keys($data["rates"]);
         </div>
     </div>
 
-
-    <br><br><br><br>
-<select ng-model="selectedCurrency">
-<option ng-repeat="(key, value) in rates" value="{{key}}">{{key}}</option>
+<select ng-model="select_currency" ng-change="changeCurrency(select_currency)">
+    <option ng-repeat="(key, value) in rates" value="{{key}}">{{key}}</option>
 </select>
 
+    <br><br><br><br>
 
 
     <div class="game-container">
@@ -260,11 +256,11 @@ $currencies = array_keys($data["rates"]);
                 </div>
 <div class="price-box">
     <p class="price" ng-style="{'text-decoration': game.isDiscount == 1 ? 'line-through' : 'none'}">
-        {{ (game.isDiscount == 1 ? convertPrice({prize: game.prize}) : convertPrice({prize: game.prize})) }} {{ selectedCurrency || 'USD' }}
+        {{ (game.isDiscount == 1 ? convertPrice({prize: game.prize}) : convertPrice({prize: game.prize})) }} {{select_currency}}
     </p>
 
     <p class="discount" ng-if="game.isDiscount == 1">
-        {{ convertPrice({prize: game.discountedPrize || game.prize}) }} {{ selectedCurrency || 'USD' }}
+        {{ convertPrice({prize: game.discountedPrize || game.prize}) }} {{select_currency}}
     </p>
 </div>
 
@@ -405,7 +401,6 @@ $currencies = array_keys($data["rates"]);
 
         
     </script>
-
 
     <script src="index.js"></script>
     <script src="autofill.js"></script>

@@ -8,6 +8,8 @@ $cart_items = json_decode($cart_json, true);
 
 $total_num = json_decode($total_json, true);
 
+$currency_local = $_GET["currency"] ?? "$";
+
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +55,7 @@ $total_num = json_decode($total_json, true);
                                 <div class="item-name"><?= htmlspecialchars($item["name"]) ?></div>
                                 <div class="item-quantity">Qty: <?= htmlspecialchars($item["quantity"]) ?></div>
                             </div>
-                            <div class="item-price">$<?= number_format($item_total, 2) ?></div>
+                            <div class="item-price"><?= htmlspecialchars($currency_local) ?> <?= number_format($item_total, 2) ?></div>
                         </div>
                     <?php endforeach ?>
                 </div>
@@ -61,15 +63,15 @@ $total_num = json_decode($total_json, true);
                 <div class="totals">
                     <div class="total-row">
                         <span>Subtotal</span>
-                        <span>$<?= number_format($subtotal, 2) ?></span>
+                        <span><?= htmlspecialchars($currency_local) ?> <?= number_format($subtotal, 2) ?></span>
                     </div>
                     <div class="total-row">
                         <span>Tax</span>
-                        <span>$<?= number_format($subtotal * 0.08, 2) ?></span>
+                        <span><?= htmlspecialchars($currency_local) ?> <?= number_format($subtotal * 0.08, 2) ?></span>
                     </div>
                     <div class="total-row grand-total">
                         <span>Total Paid</span>
-                        <span class="value">$<?= number_format($total_num, 2) ?></span>
+                        <span class="value"><?= htmlspecialchars($currency_local) ?> <?= number_format($total_num, 2) ?></span>
                     </div>
                 </div>
             </div>

@@ -47,16 +47,17 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.cartOpen = false;
   $scope.cartItems = [];
 
-      $scope.rates = $window.exchangeRates;
-    $scope.selectedCurrency = "USD";
+    $scope.rates = $window.exchangeRates;
+    $scope.select_currency = "USD";
+
+
 $scope.convertPrice = function(game) {
     let price = game.isDiscount == 1 ? game.discountedPrize : game.prize;
-    let rate = $scope.rates[$scope.selectedCurrency] || 1;
+    let rate = $scope.rates[$scope.select_currency] || 1;
     return (price * rate).toFixed(2);
 };
 
 
-  
 
   $scope.isInWishlist = function (gameId) {
     return $scope.wishlistItems.some((item) => item.id === gameId);
@@ -66,32 +67,36 @@ $scope.convertPrice = function(game) {
     localStorage.getItem("wishlistItems") || []
   );
 
-  $scope.openCart = function (game) {
+$scope.openCart = function (game) {
     let existingItem = $scope.cartItems.find((item) => item.id === game.id);
 
-    // Determine the actual price to use for this game
-    let priceToUse =
-      game.isDiscount == 1 && game.discountedPrize
-        ? game.discountedPrize
-        : game.prize;
+    // Get base price (considering discount)
+    let basePrice = game.isDiscount == 1 && game.discountedPrize ? game.discountedPrize : game.prize;
+
+    // Get current exchange rate
+    let rate = $scope.rates[$scope.select_currency] || 1;
+    let convertedPrice = parseFloat((basePrice * rate).toFixed(2));
 
     if (existingItem) {
-      existingItem.quantity += 1;
-      // Always use the stored 'prize' of the cart item, which is discounted if applicable
-      existingItem.total_prize = existingItem.quantity * existingItem.prize;
+        existingItem.quantity += 1;
+        existingItem.total_prize = parseFloat((existingItem.quantity * existingItem.prize).toFixed(2));
     } else {
-      $scope.cartItems.push({
-        id: game.id,
-        name: game.name,
-        prize: priceToUse, // store the actual price
-        game_pic: game.game_pic,
-        quantity: 1,
-        total_prize: priceToUse * 1,
-      });
+        $scope.cartItems.push({
+            id: game.id,
+            name: game.name,
+            prize: convertedPrice,
+            game_pic: game.game_pic,
+            quantity: 1,
+            total_prize: convertedPrice
+        });
     }
 
     $scope.cartOpen = true;
-  };
+
+    // Store selected currency
+    localStorage.setItem("currency", $scope.select_currency);
+};
+
 
   $scope.pacmanCounter = 0;
 
@@ -335,6 +340,7 @@ $scope.convertPrice = function(game) {
     }
   };
 
+
   $scope.applySorting = function () {
     // Sort by price
 
@@ -462,7 +468,7 @@ $scope.convertPrice = function(game) {
   $scope.PrizeRange = function () {
     var min = parseFloat($scope.parameter1) || 0;
     var max = parseFloat($scope.parameter2) || Infinity;
-    var rate = $scope.rates[$scope.selectedCurrency] || 1;
+    var rate = $scope.rates[$scope.select_currency] || 1;
 
     $scope.filteredGames = [];
     for (var i = 0; i < $scope.games.length; i++) {
@@ -522,4 +528,9 @@ $scope.convertPrice = function(game) {
     localStorage.setItem("wishlistItems", JSON.stringify($scope.wishlistItems));
     
   };
+
+  $scope.changeCurrency = function(newCurrency) {
+    $scope.select_currency = newCurrency;
+    localStorage.setItem("currency", newCurrency); 
+};
 });
