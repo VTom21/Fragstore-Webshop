@@ -63,9 +63,8 @@ $scope.convertPrice = function(game) {
     return $scope.wishlistItems.some((item) => item.id === gameId);
   };
 
-  $scope.wishlistItems = JSON.parse(
-    localStorage.getItem("wishlistItems") || []
-  );
+  $scope.wishlistItems = JSON.parse(localStorage.getItem("wishlistItems") || "[]");
+
 
 $scope.openCart = function (game) {
     let existingItem = $scope.cartItems.find((item) => item.id === game.id);
