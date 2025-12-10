@@ -29,6 +29,15 @@
     --discount-color:#ff4d4f
 }
 
+.light {
+    
+    color-scheme: light;
+  }
+  .dark {
+  
+    color-scheme: dark;
+  }
+
 body {
     font-family: Arial, sans-serif;
     background: var(--bg);

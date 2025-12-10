@@ -14,10 +14,6 @@ $data = json_decode($response, true);
 
 $currencies = array_keys($data["rates"]);
 
-
-
-
-
 ?>
 
 
@@ -34,7 +30,7 @@ $currencies = array_keys($data["rates"]);
     <link rel="icon" type="image/x-icon" href="/icons/array.png">
 </head>
 
-<body ng-controller="GameController">
+<body ng-controller="GameController" class="dark">
 
     <div class="navbar" id="#top">
 

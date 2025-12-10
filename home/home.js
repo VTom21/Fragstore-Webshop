@@ -192,7 +192,6 @@ function startMarquee() {
   });
 }
 
-// ⭐ SIMPLE FIX: wait 50ms before starting
 setTimeout(startMarquee, 500);
 
 track.addEventListener("transitionend", startMarquee);
