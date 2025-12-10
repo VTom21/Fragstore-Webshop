@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Dec 06. 20:32
+-- Létrehozás ideje: 2025. Dec 10. 10:52
 -- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.0.30
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,9 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Tábla szerkezet ehhez a táblához `awards`
 --
-
-CREATE DATABASE IF NOT EXISTS videogames;
-USE videogames;
 
 CREATE TABLE `awards` (
   `award_id` int(11) NOT NULL,
@@ -94,7 +91,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (33, 'https://upload.wikimedia.org/wikipedia/en/e/eb/Cuphead_%28artwork%29.png', 'Cuphead', '2017-09-29', 'Run and Gun', 'PC, Xbox, PS4, Switch', 19.99, NULL, 0),
 (34, 'https://helios-i.mashable.com/imagery/articles/00iMVz5oU69RK9UEoPsZTMW/hero-image.fill.size_1248x702.v1623390188.jpg', 'Ghost of Tsushima', '2020-07-17', 'Action-Adventure', 'PS4, PS5', 59.99, NULL, 0),
 (35, 'https://images.squarespace-cdn.com/content/v1/5f0f94f64a47900bb21e117e/1650575087045-SUFVFHNI58T1V07NWY1X/arklp.jpg?format=1000w', 'Tunic', '2022-03-16', 'Action-Adventure', 'PC, Xbox, PS4, PS5, Switch', 29.99, NULL, 0),
-(36, 'https://cdn1.epicgames.com/calluna/offer/1200x1600_CUE_OfferAsset-1200x1600-3c855cea4b117462d074ceb2c7b9f83e.jpg', 'Control', '2019-08-27', 'Action-Adventure', 'PC, PS4, PS5, Xbox', 39.99, NULL, 0),
+(36, 'https://gepig.com/game_cover_460w/5639.jpg', 'Control', '2019-08-27', 'Action-Adventure', 'PC, PS4, PS5, Xbox', 39.99, NULL, 0),
 (37, 'https://upload.wikimedia.org/wikipedia/en/5/50/INSIDE_Xbox_One_cover_art.png', 'Inside', '2016-06-29', 'Puzzle Platformer', 'PC, Xbox, PS4, Switch', 19.99, NULL, 0),
 (38, 'https://upload.wikimedia.org/wikipedia/en/c/cc/Limbo_Box_Art.jpg', 'Limbo', '2010-07-21', 'Puzzle Platformer', 'PC, Console', 9.99, NULL, 0),
 (39, 'https://sm.ign.com/ign_hu/blogroll/default/returnal-final-preview-blog-1619015711197-1624960579739_whnk.jpg', 'Returnal', '2021-04-30', 'Roguelike Shooter', 'PS5, PC', 69.99, NULL, 0),
@@ -106,7 +103,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (45, 'https://m.media-amazon.com/images/M/MV5BZjdiYjJmNDgtYzgxMS00Njk4LWEzZmMtNmVjYWNjNDJkZjViXkEyXkFqcGc@._V1_.jpg', 'Assassin\'s Creed Valhalla', '2020-11-10', 'Action', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
 (46, 'https://upload.wikimedia.org/wikipedia/en/0/05/Destiny_2_%28artwork%29.jpg', 'Destiny 2', '2017-09-06', 'Shooter', 'PC,PS4,Xbox One', 0.00, NULL, 0),
 (47, 'https://sm.ign.com/ign_ap/cover/f/fall-guys-/fall-guys-ultimate-knockout_bafj.jpg', 'Fall Guys', '2020-08-04', 'Party', 'PC,PS4', 19.99, NULL, 0),
-(48, 'https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/c_scale,w_400/store/software/switch/70010000021401/59686225dba24636062a421593effdb4fe136bbfd67b11c621fe92ed36a65734', 'Minecraft Dungeons', '2020-05-26', 'Adventure', 'PC,PS4,Xbox One,Switch', 19.99, NULL, 0),
+(48, 'https://i.guim.co.uk/img/media/ae184267567d50db7753e6a20e8f9bc345fb9225/0_170_1934_1160/master/1934.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=7a58c7a8fd06ce59397eecea626bb566', 'Minecraft Dungeons', '2020-05-26', 'Adventure', 'PC,PS4,Xbox One,Switch', 19.99, NULL, 0),
 (49, 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Rocket_League_coverart.jpg/250px-Rocket_League_coverart.jpg', 'Rocket League', '2015-07-07', 'Sports', 'PC,PS4,Xbox One,Switch', 19.99, NULL, 0),
 (50, 'https://cdn.mobygames.com/covers/9213927-genshin-impact-playstation-4-front-cover.jpg', 'Genshin Impact', '2020-09-28', 'RPG', 'PC,Mobile,PS4,PS5', 0.00, NULL, 0),
 (51, 'https://hd2.tudocdn.net/913677?w=1920', 'Halo 3', '2007-09-25', 'Shooter', 'Xbox 360', 19.99, NULL, 0),
@@ -131,7 +128,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (70, 'https://store-images.s-microsoft.com/image/apps.36487.69661693038755748.20d2d8fc-4614-415f-8f25-8fed634ea6ce.f9c25a1f-6330-47a3-a918-52c192faeaf6?q=90&w=480&h=270', 'Borderlands 2', '2012-09-18', 'Shooter', 'PC,PS3,PS4,Xbox 360,Xbox One,Switch', 19.99, NULL, 0),
 (71, 'https://assetsio.gnwcdn.com/dead_rising_41.jpg?width=1200&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp', 'Dead Rising 4', '2016-12-06', 'Action', 'PC,Xbox One', 29.99, NULL, 0),
 (72, 'https://upload.wikimedia.org/wikipedia/en/7/70/Fallout_4_cover_art.jpg', 'Fallout 4', '2015-11-10', 'RPG', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(73, 'https://cdn-bgp.bluestacks.com/BGP/us/gametiles_com.machinezone.ffane.jpg', 'Final Fantasy XV', '2016-11-29', 'RPG', 'PC,PS4,Xbox One', 29.99, NULL, 0),
+(73, 'https://cdn.wccftech.com/wp-content/uploads/2016/10/Final-Fantasy-XV-HDR.jpg', 'Final Fantasy XV', '2016-11-29', 'RPG', 'PC,PS4,Xbox One', 29.99, NULL, 0),
 (74, 'https://upload.wikimedia.org/wikipedia/en/2/2f/Forza_7_art.jpg', 'Forza Motorsport 7', '2017-10-03', 'Racing', 'PC,Xbox One', 39.99, NULL, 0),
 (76, 'https://upload.wikimedia.org/wikipedia/en/4/4b/Hitman_3_Packart.jpg', 'Hitman 3', '2021-01-20', 'Stealth', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
 (77, 'https://upload.wikimedia.org/wikipedia/en/9/93/Horizon_Zero_Dawn.jpg', 'Horizon Zero Dawn', '2017-02-28', 'Action RPG', 'PS4,PC', 29.99, NULL, 0),
@@ -179,7 +176,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (119, 'https://upload.wikimedia.org/wikipedia/en/8/80/Diablo_III_cover.png', 'Diablo III', '2012-05-15', 'RPG', 'PC,PS4,Xbox One,Switch', 39.99, NULL, 0),
 (120, 'https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/FFVIIRemake.png/250px-FFVIIRemake.png', 'Final Fantasy VII Remake', '2020-04-10', 'RPG', 'PS4,PS5', 59.99, NULL, 0),
 (121, 'https://upload.wikimedia.org/wikipedia/en/b/b1/Bayonetta_2_box_artwork.png', 'Bayonetta 2', '2014-10-24', 'Action', 'Switch,Wii U', 39.99, NULL, 0),
-(122, 'https://cdn1.epicgames.com/8ad9396e01f046aaa784a33f7e60dfbe/offer/EGS_MafiaIIIDefinitiveEdition_Hangar13_S2-1200x1600-5090188980551261df50e7897fe43f90.jpg', 'Mafia III', '2016-10-07', 'Action', 'PC,PS4,Xbox One', 29.99, NULL, 0),
+(122, 'https://www.sumo-digital.com/wp-content/uploads/2023/11/mafia.jpg', 'Mafia III', '2016-10-07', 'Action', 'PC,PS4,Xbox One', 29.99, NULL, 0),
 (123, 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/LA-Noire-Box-Art.jpg/250px-LA-Noire-Box-Art.jpg', 'L.A. Noire', '2011-05-17', 'Action', 'PC,PS4,Xbox One,Switch', 29.99, NULL, 0),
 (124, 'https://upload.wikimedia.org/wikipedia/en/d/dc/Resident_Evil_3.jpg', 'Resident Evil 3 Remake', '2020-04-03', 'Horror', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
 (125, 'https://m.media-amazon.com/images/M/MV5BYjU5YWNmZGQtZTZhOS00ZGJjLWE4ZmMtYTJiODYxZDlhYzc5XkEyXkFqcGc@._V1_.jpg', 'Roblox', '2006-09-01', 'Sandbox', 'PC,Mobile,Xbox One', 0.00, NULL, 0),
@@ -191,7 +188,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (131, 'https://m.media-amazon.com/images/M/MV5BYmYxY2E3MjktYmIxNi00MGZiLWJlM2UtYjQ2ZTkwZDVmMDE2XkEyXkFqcGc@._V1_.jpg', 'Undertale', '2015-09-15', 'RPG', 'PC,PS4,Switch', 9.99, NULL, 0),
 (132, 'https://upload.wikimedia.org/wikipedia/en/d/d7/Until_Dawn_cover_art.jpg', 'Until Dawn', '2015-08-25', 'Horror', 'PS4', 39.99, NULL, 0),
 (133, 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/10/alien-isolation-sequel-xenomorph.jpg', 'Alien: Isolation', '2014-10-07', 'Horror', 'PC,PS4,Xbox One,PS3,Xbox 360', 29.99, NULL, 0),
-(134, 'https://images.g2a.com/470x276/1x1x0/battlefield-1-ea-app-key-global-i10000016618004/590b27175bafe324f0665b43', 'Battlefield 1', '2016-10-21', 'Shooter', 'PC,PS4,Xbox One', 39.99, NULL, 0),
+(134, 'https://www.arthipo.com/image/cache/catalog/poster/game/pgame15-battlefield-1-game-poster-2-1000x563.webp', 'Battlefield 1', '2016-10-21', 'Shooter', 'PC,PS4,Xbox One', 39.99, NULL, 0),
 (135, 'https://store-images.s-microsoft.com/image/apps.997.70803643320167611.6d02d576-6cc3-42f8-8d47-36718b0154f8.dce9b715-083d-4dbf-b104-53a68a4fbe8a', 'BioShock Infinite', '2013-03-26', 'Shooter', 'PC,PS3,Xbox 360', 19.99, NULL, 0),
 (136, 'https://upload.wikimedia.org/wikipedia/en/1/1f/Dead_cells_cover_art.png', 'Dead Cells', '2018-08-07', 'Roguelike', 'PC,PS4,Xbox One,Switch', 24.99, NULL, 0),
 (137, 'https://upload.wikimedia.org/wikipedia/en/6/68/Halo_Guardians.png', 'Halo 5: Guardians', '2015-10-27', 'Shooter', 'Xbox One', 29.99, NULL, 0),
@@ -208,16 +205,16 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (148, 'https://m.media-amazon.com/images/I/81J+Jx1NiaL.jpg', 'Super Mario 3D Land', '2011-11-13', 'Platformer', 'Nintendo 3DS', 29.99, NULL, 0),
 (149, 'https://upload.wikimedia.org/wikipedia/en/e/ed/Alan_Wake_2_box_art.jpg', 'Alan Wake II', '2023-10-27', 'Horror', 'PC, PS5, Xbox Series X/S', 59.99, NULL, 0),
 (151, 'https://fifauteam.com/images/covers/fifa23/standard-cg.webp', 'FIFA 23', '2022-09-30', 'Sports', 'PC, PS4, PS5, Xbox, Switch', 69.99, NULL, 0),
-(152, 'https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_Frostpunk_11bitstudios_S2_1200x1600-c71dc27cfe505c6c662c49011b36a0c5', 'Frostpunk', '2018-04-24', 'Strategy', 'PC, PS4, Xbox', 24.99, NULL, 0),
+(152, 'https://plixton.de/cdn/shop/articles/frostpunk-tipps-plixton.png?v=1635359941&width=1920', 'Frostpunk', '2018-04-24', 'Strategy', 'PC, PS4, Xbox', 24.99, NULL, 0),
 (153, 'https://cdn.alza.hu/Foto/ImgGalery/Image/gran-turismo-7-key-art_1.jpg', 'Gran Turismo 7', '2022-03-04', 'Racing Simulator', 'PS4, PS5', 69.99, NULL, 0),
 (154, 'https://upload.wikimedia.org/wikipedia/en/4/46/TheForest_Game.jpg', 'The Forest', '2018-04-30', 'Survival Horror', 'PC, PS4', 14.99, NULL, 0),
-(155, 'https://images.g2a.com/470x276/1x1x0/path-of-exile-2-early-access-pc-official-website-key-global-i10000508950017/5b5c1c60449e47e9b8f75455', 'Path of Exile', '2013-10-23', 'Action RPG', 'PC, PS4, Xbox', 0.00, NULL, 0),
+(155, 'https://m.media-amazon.com/images/M/MV5BZDJkZTcxNjAtMDE2ZS00ZTJmLWIwOTQtOTQ1MzM2ZTJhMjU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Path of Exile', '2013-10-23', 'Action RPG', 'PC, PS4, Xbox', 0.00, NULL, 0),
 (156, 'https://cdn.mobygames.com/covers/10880318-dauntless-xbox-one-front-cover.jpg', 'Dauntless', '2019-09-26', 'Action RPG', 'PC, PS4, Xbox, Switch', 0.00, NULL, 0),
 (158, 'https://m.media-amazon.com/images/I/41V200WagZL._AC_UF894,1000_QL80_.jpg', 'Phasmophobia', '2020-09-18', 'Co-op Horror', 'PC', 13.99, NULL, 0),
 (159, 'https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg/250px-The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg', 'The Legend of Zelda: Tears of the Kingdom', '2023-05-12', 'Action-Adventure', 'Nintendo Switch', 69.99, NULL, 0),
 (160, 'https://upload.wikimedia.org/wikipedia/en/1/1c/Diablo_IV_cover_art.png', 'Diablo IV', '2023-06-06', 'RPG', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 69.99, NULL, 0),
 (161, 'https://upload.wikimedia.org/wikipedia/en/b/bb/Dark_souls_3_cover_art.jpg', 'Dark Souls III', '2016-04-12', 'Action RPG', 'PC, PS4, Xbox One', 39.99, NULL, 0),
-(162, 'https://images.g2a.com/470x276/1x1x0/xcom-2-pc-steam-key-global-i10000002469011/5a05b5435bafe35df1096654', 'XCOM 2', '2016-02-05', 'Strategy', 'PC, PS4, Xbox One, Switch', 39.99, NULL, 0),
+(162, 'https://m.media-amazon.com/images/I/918MBaFEp9L.jpg', 'XCOM 2', '2016-02-05', 'Strategy', 'PC, PS4, Xbox One, Switch', 39.99, NULL, 0),
 (163, 'https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Forza_Horizon_boxart.jpg/250px-Forza_Horizon_boxart.jpg', 'Forza Horizon', '2012-10-23', 'Racing', 'Xbox 360', 29.99, NULL, 0),
 (164, 'https://upload.wikimedia.org/wikipedia/en/2/2e/Forza_Horizon_2_Cover_Art.png', 'Forza Horizon 2', '2014-09-30', 'Racing', 'Xbox 360, Xbox One', 39.99, NULL, 0),
 (165, 'https://upload.wikimedia.org/wikipedia/en/5/54/Forza_horizon_3_cover_art.jpg', 'Forza Horizon 3', '2016-09-27', 'Racing', 'PC, Xbox One', 49.99, NULL, 0),
@@ -225,11 +222,11 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (167, 'https://upload.wikimedia.org/wikipedia/en/6/63/Far_Cry_4_box_art.jpg', 'Far Cry 4', '2014-11-18', 'Shooter', 'PC, PS4, Xbox One', 39.99, NULL, 0),
 (168, 'https://upload.wikimedia.org/wikipedia/en/1/18/Far_Cry_Primal_cover_art.jpg', 'Far Cry Primal', '2016-02-23', 'Action-Adventure', 'PC, PS4, Xbox One', 39.99, NULL, 0),
 (169, 'https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2019/02/22/a24e623f-d9ef-4782-bb03-8cf40c33f70d/far-cry-new-dawn-enemy', 'Far Cry New Dawn', '2019-02-15', 'Shooter', 'PC, PS4, Xbox One', 39.99, NULL, 0),
-(170, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/418370/capsule_616x353.jpg?t=1728436752', 'Resident Evil 7: Biohazard', '2017-01-24', 'Survival Horror', 'PC, PS4, Xbox One', 39.99, NULL, 0),
+(170, 'https://sm.ign.com/t/ign_nordic/review/r/resident-e/resident-evil-7-biohazard-review_8qf9.1200.jpg', 'Resident Evil 7: Biohazard', '2017-01-24', 'Survival Horror', 'PC, PS4, Xbox One', 39.99, NULL, 0),
 (171, 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/05/resident-evil-village-1.jpg', 'Resident Evil Village', '2021-05-07', 'Survival Horror', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 59.99, NULL, 0),
 (172, 'https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Doom_Cover.jpg/250px-Doom_Cover.jpg', 'DOOM (2016)', '2016-05-13', 'FPS', 'PC, PS4, Xbox One, Switch', 39.99, NULL, 0),
-(173, 'https://cdn1.epicgames.com/offer/7f1853beef0a4b40827038d0f47606f3/EGS_DOOM3_idSoftwarePanicButton_S2_1200x1600-ea552d0725a456dad637318dbf2f50c3', 'Doom 3: BFG Edition', '2012-10-16', 'FPS', 'PC, PS3, Xbox 360, PS4, Xbox One, Switch', 19.99, NULL, 0),
-(174, 'https://www.retrogamesmaster.co.uk/wp-content/uploads/2015/12/49757-tekken-playstation-front-cover.jpg', 'Tekken', '1994-12-09', 'Fighting', 'Arcade, PlayStation', 9.99, NULL, 0),
+(173, 'https://store-images.s-microsoft.com/image/apps.55076.70302460125194768.98b07d26-79bd-4df7-a56f-45428e24708e.cce77df7-923c-4fbb-b768-76187765eae8?q=90&w=480&h=270', 'Doom 3: BFG Edition', '2012-10-16', 'FPS', 'PC, PS3, Xbox 360, PS4, Xbox One, Switch', 19.99, NULL, 0),
+(174, 'https://archive.org/download/tekken_1_pal_manual/0001.JPG', 'Tekken', '1994-12-09', 'Fighting', 'Arcade, PlayStation', 9.99, NULL, 0),
 (175, 'https://e.snmc.io/lk/f/x/8ac4959f96284e1c8c171887aa83043b/11805688', 'Tekken 4', '2001-07-01', 'Fighting', 'Arcade, PlayStation 2', 19.99, NULL, 0),
 (176, 'https://e.snmc.io/lk/o/x/bacb7e5f8d0fd6e2659c28b2885d05fe/11784818', 'Tekken 5', '2004-11-24', 'Fighting', 'Arcade, PlayStation 2, PSP', 19.99, NULL, 0),
 (177, 'https://upload.wikimedia.org/wikipedia/en/2/21/Tekken_6_Box_Art.jpg', 'Tekken 6', '2007-11-26', 'Fighting', 'Arcade, PS3, Xbox 360, PSP', 29.99, NULL, 0),
@@ -238,11 +235,11 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (180, 'https://acloserlisten.com/wp-content/uploads/2019/06/outerwilds.jpg?w=300&h=300', 'Outer Wilds', '2019-05-28', 'Adventure', 'PC, PS4, PS5, Xbox One, Xbox Series X/S, Switch', 24.99, NULL, 0),
 (181, 'https://m.media-amazon.com/images/M/MV5BMTUyOWI1ZTctNmIwYS00MWIxLWEzYzktY2E0NDljNTc2MzkzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Far Cry', '2004-03-23', 'Shooter', 'PC', 14.99, NULL, 0),
 (182, 'https://upload.wikimedia.org/wikipedia/en/9/97/Far_Cry_2_cover_art.jpg', 'Far Cry 2', '2008-10-21', 'Shooter', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(183, 'https://cdn1.epicgames.com/offer/fc8d1547232045f6a23257cfd04ef3e8/RAYL_StorePortrait_1200x1600_1200x1600-fb12d95d31bf845aa33409748940b904', 'Rayman Legends', '2013-09-03', 'Platformer', 'PC, PS3, PS4, Xbox 360, Xbox One, Switch, Wii U, Vita', 19.99, NULL, 0),
+(183, 'https://cdn.cdkeys.com/496x700/media/catalog/product/s/t/streamer-life-simulator-free-download-steam-repacks_13_.jpg', 'Rayman Legends', '2013-09-03', 'Platformer', 'PC, PS3, PS4, Xbox 360, Xbox One, Switch, Wii U, Vita', 19.99, NULL, 0),
 (184, 'https://store-images.s-microsoft.com/image/apps.8017.65328483881162508.89a95049-a2dc-4b27-8f56-0a4f5a72a393.31a122bb-6c53-49a1-bd7e-a23586dc6961?q=90&w=480&h=270', 'Crash Bandicoot N. Sane Trilogy', '2017-06-30', 'Platformer', 'PC, PS4, Xbox One, Switch', 39.99, NULL, 0),
 (185, 'https://upload.wikimedia.org/wikipedia/en/b/b6/Darksiders_3_Box_Art.png', 'Darksiders III', '2018-11-27', 'Action', 'PC, PS4, Xbox One', 39.99, NULL, 0),
 (186, 'https://m.media-amazon.com/images/I/71rz9XPq2fL._AC_UF894,1000_QL80_.jpg', 'Nioh 2', '2020-03-13', 'Action RPG', 'PC, PS4, PS5', 59.99, NULL, 0),
-(187, 'https://cdn1.epicgames.com/offer/17a1f8585f9246808597b30780aaf4fb/EGS_Featured_Carousal_Image_1200x1600_MobileCRM_1200x1600-3c3a82d36e59aaae069224789fcfb8c8', 'Crysis Remastered', '2020-09-18', 'Shooter', 'PC, PS4, Xbox One, Switch', 29.99, NULL, 0),
+(187, 'https://sm.ign.com/t/ign_hu/screenshot/default/crysis-remastered_23qd.1280.jpg', 'Crysis Remastered', '2020-09-18', 'Shooter', 'PC, PS4, Xbox One, Switch', 29.99, NULL, 0),
 (188, 'https://upload.wikimedia.org/wikipedia/en/2/25/Half-Life_2_cover.jpg', 'Half-Life 2', '2004-11-16', 'Shooter', 'PC, Xbox, Xbox 360', 9.99, NULL, 0),
 (189, 'https://assets-prd.ignimgs.com/2021/12/20/portal-cover-1640031155845.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Portal', '2007-10-10', 'Puzzle', 'PC, PS3, Xbox 360, Switch', 9.99, NULL, 0),
 (190, 'https://upload.wikimedia.org/wikipedia/en/5/56/The_Evil_Within_boxart.jpg', 'The Evil Within', '2014-10-14', 'Horror', 'PC, PS3, PS4, Xbox 360, Xbox One', 19.99, NULL, 0),
@@ -251,8 +248,8 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (193, 'https://upload.wikimedia.org/wikipedia/en/a/a8/Day_Z_cover.jpg', 'DayZ', '2018-12-13', 'Survival', 'PC, PS4, Xbox One', 39.99, NULL, 0),
 (194, 'https://assets-prd.ignimgs.com/2022/01/10/needforspeedmostwanted-sq-1641850444088.jpg', 'Need for Speed: Most Wanted (2012)', '2012-10-30', 'Racing', 'PC, PS3, PS4, Xbox 360, Xbox One', 19.99, NULL, 0),
 (195, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-v6BxwGmFK28T-XG-NCWR8kmfdoss7a-dPw&s', 'Dirt Rally 2.0', '2019-02-26', 'Racing', 'PC, PS4, Xbox One', 29.99, NULL, 0),
-(196, 'https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_Crysis2Remastered_Crytek_S2_1200x1600-a5e7d0c976ee5270055975afac5daff0', 'Crysis 2', '2011-03-22', 'Shooter', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(197, 'https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_Crysis3Remastered_Crytek_S2_1200x1600-a98a0e5a8215ee2f2b768ec2140f5fd4', 'Crysis 3', '2013-02-19', 'Shooter', 'PC, PS3, Xbox 360', 29.99, NULL, 0),
+(196, 'https://www.slantmagazine.com/wp-content/uploads/2015/06/crysis2.jpg', 'Crysis 2', '2011-03-22', 'Shooter', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
+(197, 'https://torrent4you.org/wp-content/uploads/crysis-3.jpg', 'Crysis 3', '2013-02-19', 'Shooter', 'PC, PS3, Xbox 360', 29.99, NULL, 0),
 (198, 'https://upload.wikimedia.org/wikipedia/en/5/52/Need_for_Speed_Underground_cover.jpg', 'Need for Speed: Underground', '2003-11-17', 'Racing', 'PC, PS2, Xbox, GameCube', 14.99, NULL, 0),
 (199, 'https://m.media-amazon.com/images/M/MV5BM2ZiNTk2NTYtZDJmNy00MGFiLTljYWQtNGRjY2VkZWE1NDk2XkEyXkFqcGc@._V1_.jpg', 'Need for Speed: Underground 2', '2004-11-09', 'Racing', 'PC, PS2, Xbox, GameCube', 19.99, NULL, 0),
 (200, 'https://m.media-amazon.com/images/M/MV5BZWVmNDQ3MDktZWZjNC00ODc5LWJkYmUtMDcyN2Q4NDc1NmI3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Need for Speed: Carbon', '2006-10-31', 'Racing', 'PC, PS2, PS3, Xbox, Xbox 360, Wii', 19.99, NULL, 0),
@@ -269,7 +266,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (211, 'https://upload.wikimedia.org/wikipedia/en/0/05/Dirt_rally_cover_art.jpg', 'DiRT Rally', '2015-12-07', 'Racing', 'PC, PS4, Xbox One', 29.99, NULL, 0),
 (212, 'https://upload.wikimedia.org/wikipedia/en/2/2d/Dirt_4_cover.jpg', 'DiRT 4', '2017-06-06', 'Racing', 'PC, PS4, Xbox One', 29.99, NULL, 0),
 (213, 'https://store-images.s-microsoft.com/image/apps.48357.14564144462522178.840de816-99f5-48c8-885d-33b3b0dffe20.3cdf6aa4-cc38-4cfd-b120-1ef1d03b2379?q=90&w=480&h=270', 'DiRT 5', '2020-11-06', 'Racing', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 59.99, NULL, 0),
-(214, 'https://gamingbolt.com/wp-content/uploads/2021/07/assassins-creed-logo.jpg', 'Assassin\'s Creed', '2007-11-13', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
+(214, 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f75efd47287397.5875f43932fa1.jpg', 'Assassin\'s Creed', '2007-11-13', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
 (215, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTf7u9eKg9x_06MjXD5kEYYXb_iZmaRKQFZ4Unt5P29aaN95AFAHTspK1v7Fk-eyHFVP4&usqp=CAU', 'Assassin\'s Creed II', '2009-11-17', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
 (216, 'https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1JGRgqSTqKmO1Bveq5p1WO/4ebac6e2922869a4bec387b402977540/acb_searchthumb_Mobile.jpg', 'Assassin\'s Creed: Brotherhood', '2010-11-16', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
 (217, 'https://upload.wikimedia.org/wikipedia/en/d/d9/Assassins_Creed_Revelations_Cover.jpg', 'Assassin\'s Creed: Revelations', '2011-11-15', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
@@ -296,7 +293,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (238, 'https://assets1.ignimgs.com/2019/05/17/pokemon-silver---button-1558057647925.jpg', 'Pokémon Silver', '1999-11-21', 'RPG', 'Game Boy Color', 39.99, NULL, 0),
 (239, 'https://assets-prd.ignimgs.com/2021/12/14/pokemoncrystal-1639519080473.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Pokémon Crystal', '2000-12-14', 'RPG', 'Game Boy Color', 39.99, NULL, 0),
 (240, 'https://m.media-amazon.com/images/M/MV5BMjkzYmZhZmUtNTI1NS00NGNkLTg3OTMtYjJjNGFhYzA4NDlmXkEyXkFqcGc@._V1_.jpg', 'Pokémon Ruby', '2002-11-21', 'RPG', 'Game Boy Advance', 39.99, NULL, 0),
-(241, 'https://img.pokemondb.net/boxes/lg/sapphire-large.jpg', 'Pokémon Sapphire', '2002-11-21', 'RPG', 'Game Boy Advance', 39.99, NULL, 0),
+(241, 'https://i.ytimg.com/vi/5Z1pmpuxKxc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDIQ5mdhN0_moABiuGj8FGHT3OJog', 'Pokémon Sapphire', '2002-11-21', 'RPG', 'Game Boy Advance', 39.99, NULL, 0),
 (242, 'https://assets-prd.ignimgs.com/2022/02/08/pokemonemerald-sq-1644346782465.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Pokémon Emerald', '2004-09-16', 'RPG', 'Game Boy Advance', 39.99, NULL, 0),
 (243, 'https://assets-prd.ignimgs.com/2022/01/31/pokemon-firered-button-crop-1643616703712.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Pokémon FireRed', '2004-01-29', 'RPG', 'Game Boy Advance', 39.99, NULL, 0),
 (244, 'https://assets-prd.ignimgs.com/2022/01/31/pokemon-leafgreen-button-crop-v3-1643617153926.jpg', 'Pokémon LeafGreen', '2004-01-29', 'RPG', 'Game Boy Advance', 39.99, NULL, 0),
@@ -326,17 +323,17 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (269, 'https://upload.wikimedia.org/wikipedia/en/5/5f/Call_of_Duty_4_Modern_Warfare.jpg', 'Call of Duty 4: Modern Warfare', '2007-11-07', 'FPS', 'PC, Console', 19.99, NULL, 0),
 (270, 'https://upload.wikimedia.org/wikipedia/en/6/69/WAW_Cover_Art.jpg', 'Call of Duty: World at War', '2008-11-11', 'FPS', 'PC, Console', 19.99, NULL, 0),
 (271, 'https://upload.wikimedia.org/wikipedia/en/thumb/0/02/CoD_Black_Ops_cover.png/250px-CoD_Black_Ops_cover.png', 'Call of Duty: Black Ops', '2010-11-09', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(272, 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f6/MWIII_Cover_Art.png/250px-MWIII_Cover_Art.png', 'Call of Duty: Modern Warfare III', '2011-11-08', 'FPS', 'PC, Console', 39.99, NULL, 0);
-INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platforms`, `prize`, `publisher_id`, `isDiscount`) VALUES
+(272, 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f6/MWIII_Cover_Art.png/250px-MWIII_Cover_Art.png', 'Call of Duty: Modern Warfare III', '2011-11-08', 'FPS', 'PC, Console', 39.99, NULL, 0),
 (273, 'https://upload.wikimedia.org/wikipedia/en/0/05/Call_of_Duty_Black_Ops_II_box_artwork.png', 'Call of Duty: Black Ops II', '2012-11-13', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(274, 'https://upload.wikimedia.org/wikipedia/en/9/9c/Call_of_duty_ghosts_box_art.jpg', 'Call of Duty: Ghosts', '2013-11-05', 'FPS', 'PC, Console', 59.99, NULL, 0),
+(274, 'https://upload.wikimedia.org/wikipedia/en/9/9c/Call_of_duty_ghosts_box_art.jpg', 'Call of Duty: Ghosts', '2013-11-05', 'FPS', 'PC, Console', 59.99, NULL, 0);
+INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platforms`, `prize`, `publisher_id`, `isDiscount`) VALUES
 (275, 'https://upload.wikimedia.org/wikipedia/en/3/3b/Advanced_Warfare.jpg', 'Call of Duty: Advanced Warfare', '2014-11-04', 'FPS', 'PC, Console', 59.99, NULL, 0),
 (276, 'https://upload.wikimedia.org/wikipedia/en/b/b1/Black_Ops_3.jpg', 'Call of Duty: Black Ops III', '2015-11-06', 'FPS', 'PC, Console', 59.99, NULL, 0),
 (277, 'https://upload.wikimedia.org/wikipedia/en/8/87/Call_of_Duty_Infinite_Warfare_cover.jpg', 'Call of Duty: Infinite Warfare', '2016-11-04', 'FPS', 'PC, Console', 59.99, NULL, 0),
 (278, 'https://upload.wikimedia.org/wikipedia/en/1/18/Call_of_Duty_WWII_Cover_Art.jpg', 'Call of Duty: WWII', '2017-11-03', 'FPS', 'PC, Console', 59.99, NULL, 0),
 (279, 'https://upload.wikimedia.org/wikipedia/en/1/1c/Call_of_Duty_Black_Ops_4_official_box_art.jpg', 'Call of Duty: Black Ops 4', '2018-10-12', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(280, 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2000950/capsule_616x353.jpg?t=1678294805', 'Call of Duty: Modern Warfare', '2019-10-25', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(281, 'https://data.xxlgamer.com/products/5294/6fq1CNkktkGTaN-big.jpg', 'Call of Duty: Vanguard', '2021-11-05', 'FPS', 'PC, Console', 59.99, NULL, 0),
+(280, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPEo_RnvLrhFIOi3DVBDQsPCLVjgbw64toag&s', 'Call of Duty: Modern Warfare', '2019-10-25', 'FPS', 'PC, Console', 59.99, NULL, 0),
+(281, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjSet4Ft3Y4J26WnQH-BStui44gbjzw1gsBQ&s', 'Call of Duty: Vanguard', '2021-11-05', 'FPS', 'PC, Console', 59.99, NULL, 0),
 (282, 'https://upload.wikimedia.org/wikipedia/en/c/c9/Call_of_Duty_Black_Ops_6_Key_Art.png', 'Call of Duty: Black Ops 6', '2024-10-25', 'FPS', 'PC, Console', 79.99, NULL, 0),
 (301, 'https://upload.wikimedia.org/wikipedia/en/a/a3/Call_of_Duty_Black_Ops_7_Key_Art.png', 'Call of Duty: Black Ops 7', '2025-11-14', 'FPS', 'PC, Console', 70.00, NULL, 0),
 (302, 'https://upload.wikimedia.org/wikipedia/en/8/82/Gears_of_war_cover_art.jpg', 'Gears of War', '2006-11-07', 'TPS', 'Xbox 360, Windows', 0.00, NULL, 0),
@@ -355,8 +352,8 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (315, 'https://cdn.mobygames.com/covers/1762685-outlast-playstation-4-front-cover.jpg', 'Outlast', '2013-09-04', 'Horror', 'PC, PS4, Xbox One, Switch', 14.99, NULL, 0),
 (316, 'https://www.gamechannel.hu/pictures/kifuto/outlast-2_1.jpg', 'Outlast 2', '2017-04-25', 'Horror', 'PC, PS4, Xbox One, Switch', 19.99, NULL, 0),
 (317, 'https://upload.wikimedia.org/wikipedia/en/8/81/The_Outlast_Trials_cover.jpg', 'The Outlast Trials', '2023-05-18', 'Horror', 'PC, PS5, Xbox Series X/S', 39.99, NULL, 0),
-(318, 'https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_WolfensteinTheNewOrder_MachineGames_S2_1200x1600-0f70ad56e210812c26a9dde1a8143a58', 'Wolfenstein: The New Order', '2014-05-20', 'FPS', 'PC, PS4, Xbox One', 19.99, NULL, 0),
-(319, 'https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_WolfensteinTheOldBlood_MachineGames_S4_1200x1600-23a40cd1dccefeceb0c39b1f760bc79e', 'Wolfenstein: The Old Blood', '2015-05-05', 'FPS', 'PC, PS4, Xbox One', 19.99, NULL, 0),
+(318, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY83ZNMpxaNc3iKtiyyajp-JuonaFb0IIxdQ&s', 'Wolfenstein: The New Order', '2014-05-20', 'FPS', 'PC, PS4, Xbox One', 19.99, NULL, 0),
+(319, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDhDCnma8Y27rfjO0-3ICOb0gIfqu1QlXY7w&s', 'Wolfenstein: The Old Blood', '2015-05-05', 'FPS', 'PC, PS4, Xbox One', 19.99, NULL, 0),
 (320, 'https://upload.wikimedia.org/wikipedia/en/5/54/Wolfenstein-ii-the-new-colossus-cover.jpeg', 'Wolfenstein II: The New Colossus', '2017-10-27', 'FPS', 'PC, PS4, Xbox One, Switch', 39.99, NULL, 0),
 (321, 'https://upload.wikimedia.org/wikipedia/en/7/7c/Doki_Doki_Literature_Club_Cover.jpg', 'Doki Doki Literature Club!', '2017-09-22', 'Visual Novel', 'PC', 0.00, NULL, 0),
 (322, 'https://upload.wikimedia.org/wikipedia/en/6/65/Kirby_Star_Allies.jpg', 'Kirby Star Allies', '2018-03-16', 'Platformer', 'Nintendo Switch', 59.99, NULL, 0),
@@ -375,7 +372,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (335, 'https://upload.wikimedia.org/wikipedia/en/f/fe/Dragon_Ball_Xenoverse_2_Cover.jpeg', 'DRAGON BALL XENOVERSE 2', '2016-10-25', 'Action RPG', 'PC, PS4, Xbox One, Switch', 19.99, NULL, 0),
 (336, 'https://upload.wikimedia.org/wikipedia/en/a/ad/DBFZ_cover_art.jpg', 'DRAGON BALL FighterZ', '2018-01-26', 'Fighting', 'PC, PS4, Xbox One, Switch', 59.99, NULL, 0),
 (337, 'https://upload.wikimedia.org/wikipedia/en/e/e4/Dragon_Ball_Z_Kakarot_logo.png', 'DRAGON BALL Z: KAKAROT', '2020-01-17', 'Action RPG', 'PC, PS4, Xbox One, Switch', 19.99, NULL, 0),
-(338, 'https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000029643/6879fa3616ef618128208342b51922a759ebb96e82bfee7f452534f1d42a660e', 'DRAGON BALL: THE BREAKERS', '2022-10-14', 'Action (Asymmetrical)', 'PC, PS4, Xbox One, Switch', 19.99, NULL, 0),
+(338, 'https://dbas.bn-ent.net/img/6f7b8d7338af193a34a4cd294a8b19be-772x1024.png', 'DRAGON BALL: THE BREAKERS', '2022-10-14', 'Action (Asymmetrical)', 'PC, PS4, Xbox One, Switch', 19.99, NULL, 0),
 (339, 'https://upload.wikimedia.org/wikipedia/en/7/7f/DBZ_Sparking_Zero_Cover_Art.jpg', 'DRAGON BALL: Sparking! ZERO', '2024-10-11', 'Fighting', 'PC, PS5, Xbox Series X/S', 69.99, NULL, 0),
 (340, 'https://static.rustore.ru/imgproxy/GV5CvUI745WXXqMGgHIyMZvaz67DtU5UMeIYfmuqvm0/preset:web_app_icon_160/aHR0cHM6Ly9zdGF0aWMucnVzdG9yZS5ydS9hcGsvMjA2MzU5MDE1NC9jb250ZW50L0lDT04vNWFkYTc3N2QtNTM3MC00YmY1LWEzYzQtNTBkMDk0YTM1ZmYxLnBuZw==.webp', '60 Seconds! Reatomized', '2019-07-25', 'Survival', 'PC, Console', 9.99, NULL, 0),
 (341, 'https://lumiere-a.akamaihd.net/v1/images/lego-star-wars-skywalker-saga-01_tall_80785940.jpeg?region=336,0,864,864', 'LEGO Star Wars: The Skywalker Saga', '2022-04-05', 'Action-Adventure', 'PC, PS4, PS5, Xbox One, Xbox Series X/S, Switch', 7.49, NULL, 0),
@@ -394,13 +391,13 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (356, 'https://assets-prd.ignimgs.com/2023/07/06/farmingsim11-1688686579698.jpg', 'Farming Simulator 2011', '2010-10-29', 'Simulation', 'PC, Mac', 7.99, NULL, 0),
 (357, 'https://www.codeguru.hu/img/40000/DIGI03647/DIGI03647.webp', 'Farming Simulator 2013 Titanium Edition', '2013-10-09', 'Simulation', 'PC, Mac', 14.99, NULL, 0),
 (358, 'https://store-images.s-microsoft.com/image/apps.41062.64967151257760797.b440e798-649e-4b83-b511-7890d42d9480.8e5b045e-7b90-4013-a091-ed4a3736983c?q=90&w=480&h=270', 'Farming Simulator 15', '2014-10-30', 'Simulation', 'PC, PS3, PS4, Xbox 360, Xbox One', 12.99, NULL, 0),
-(359, 'https://imgproxy.eneba.games/bBgITfHtueuVaO-VmKt78eeiRi3-czFyunsVnL8JLis/rs:fit:350/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9w/YTN6OXV6bWk0cWZo/dXU2aHVjOC5qcGc', 'Farming Simulator 17', '2016-10-25', 'Simulation', 'PC, PS4, Xbox One', 14.99, NULL, 0),
+(359, 'https://store-images.s-microsoft.com/image/apps.2891.66445546520609419.4a3b03bf-e99b-4622-bb87-89586f01c3b4.1d9388d2-8e2d-46e8-a98a-ef62a426b246?q=90&w=480&h=270', 'Farming Simulator 17', '2016-10-25', 'Simulation', 'PC, PS4, Xbox One', 14.99, NULL, 0),
 (360, 'https://ccdn.g-portal.com/fs19_game_cover_593d4bf988.png', 'Farming Simulator 19', '2018-11-19', 'Simulation', 'PC, PS4, Xbox One', 17.99, NULL, 0),
 (361, 'https://store-images.s-microsoft.com/image/apps.35136.14617846210383148.f5d1d30e-892f-4959-a5b8-f2ef506cf0ae.d40fe9db-42d7-4434-83be-bcbb42f685c3?q=90&w=480&h=270', 'Farming Simulator 22', '2021-11-22', 'Simulation', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 29.99, NULL, 0),
 (362, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCopyugpNBFejO2X9cmN03T1euQZVJjOCG3g&s', 'Farming Simulator 25', '2024-11-12', 'Simulation', 'PC, PS5, Xbox Series X/S', 49.99, NULL, 0),
 (363, 'https://www.allkeyshop.com/blog/wp-content/uploads/buy-european-bus-simulator-2012-cd-key-pc-download-img1.jpg', 'Bus-Simulator 2012', '2012-02-23', 'Simulation', 'PC', 6.99, NULL, 0),
 (364, 'https://assets1.ignimgs.com/2016/01/07/bus-simulator-2016-buttonjpg-19bee4.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Bus Simulator 16', '2016-03-02', 'Simulation', 'PC', 9.99, NULL, 0),
-(365, 'https://www.astragon.com/fileadmin/_processed_/2/b/csm_ESD64036C4_Bus_Simulator_18_Map_Extension_Screenshot_1_1920x1080_f712911105.jpg', 'Bus Simulator 18', '2018-06-13', 'Simulation', 'PC', 24.99, NULL, 0),
+(365, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqk1kbItC1Alot3u8gT8XwqHDZWhOKQkWLbg&s', 'Bus Simulator 18', '2018-06-13', 'Simulation', 'PC', 24.99, NULL, 0),
 (367, 'https://upload.wikimedia.org/wikipedia/en/thumb/5/55/F1_24_cover_art.jpg/250px-F1_24_cover_art.jpg', 'F1 24', '2024-05-31', 'Racing', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 69.99, NULL, 0),
 (368, 'https://img.redbull.com/images/q_auto,f_auto/redbullcom/2025/3/26/ik4bfsmqwixcjwoffp08/f1-25-iconic-edition', 'F1 25', '2025-05-30', 'Racing', 'PC, PS5, Xbox Series X/S', 47.99, NULL, 0),
 (370, 'https://i0.wp.com/magzoid.com/wp-content/uploads/2025/05/amazon-rebrand-2025_dezeen_2364_col_1-1.webp?fit=2364%2C1330&ssl=1', 'Amazon Gift Card $5', NULL, 'giftcards', 'Amazon', 5.00, NULL, 0),
