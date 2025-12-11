@@ -94,8 +94,6 @@ updatePaymentSections();
 
 // Checkout button
 function processCheckout() {
-    const delivery = document.querySelector('input[name="delivery"]:checked').value;
-    const payment = document.querySelector('input[name="payment"]:checked').value;
 
     const shipping = shippingCost.textContent === 'Free' ? 0 : parseFloat(shippingCost.textContent.replace(currency_local, '').trim());
 

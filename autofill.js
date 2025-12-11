@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.addEventListener('scroll', onScroll);
-    onScroll();
 
     upBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });

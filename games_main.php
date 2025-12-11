@@ -40,7 +40,7 @@ $currencies = array_keys($data["rates"]);
             </svg>
         </button>
 
-        
+
 
         <button class="shop-cart" ng-click="cartOpen = true">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#37e6ec73" viewBox="0 0 24 24">
@@ -254,18 +254,17 @@ $currencies = array_keys($data["rates"]);
                 <div class="status">
                     <h3 class="status_text"></h3>
                 </div>
-<div class="price-box">
-    <p class="price" ng-style="{'text-decoration': game.isDiscount == 1 ? 'line-through' : 'none'}">
-        {{ (game.isDiscount == 1 ? convertPrice({prize: game.prize}) : convertPrice({prize: game.prize})) }} {{select_currency}}
-    </p>
+                <div class="price-box">
+                    <p class="price" ng-style="{'text-decoration': game.isDiscount == 1 ? 'line-through' : 'none'}">
+                        {{ (game.isDiscount == 1 ? convertPrice({prize: game.prize}) : convertPrice({prize: game.prize})) }} {{select_currency}}
+                    </p>
 
-    <p class="discount" ng-if="game.isDiscount == 1">
-        {{ convertPrice({prize: game.discountedPrize || game.prize}) }} {{select_currency}}
-    </p>
-</div>
+                    <p class="discount" ng-if="game.isDiscount == 1">
+                        {{ convertPrice({prize: game.discountedPrize || game.prize}) }} {{select_currency}}
+                    </p>
+                </div>
 
                 <br>
-
 
                 <div class="btns">
                     <button class="buy_btn">Buy Now</button>
@@ -382,24 +381,11 @@ $currencies = array_keys($data["rates"]);
         </svg>
     </button>
 
-        <script>
+    <script>
         window.exchangeRates = <?php echo json_encode($data["rates"]); ?>;
-        const rates = <?php echo json_encode($data["rates"]); ?>;
-        const amount_numeric = parseFloat(current_amount.textContent);
-
-
-        function Conversion() {
-            const currency = select.value;
-            const rate = rates[currency];
-            const convert = (amount_numeric * rate).toFixed(2);
-        }
-
-        Conversion();
-        select.addEventListener("change", Conversion);
 
 
 
-        
     </script>
 
     <script src="index.js"></script>

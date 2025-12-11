@@ -47,7 +47,7 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.cartOpen = false;
   $scope.cartItems = [];
 
-    $scope.rates = $window.exchangeRates;
+    $scope.rates = window.exchangeRates;
     $scope.select_currency = "USD";
 
 
@@ -105,8 +105,7 @@ $scope.openCart = function (game) {
       $scope.pacmanCounter++; // increment counter on each click
 
       if ($scope.pacmanCounter >= 5) {
-        window.location.href =
-          "../redirect/redirect.php?destination=../pacman/pacman.php";
+        window.location.href = "../redirect/redirect.php?destination=../pacman/pacman.php";
       }
     }
   };
@@ -128,9 +127,7 @@ $scope.openCart = function (game) {
 
   $scope.checkout = function () {
     $scope.cart_data = encodeURIComponent(JSON.stringify($scope.cartItems));
-    window.location.href =
-      "http://localhost:3000/cart_website/sum_main.php?cart=" +
-      $scope.cart_data;
+    window.location.href = "http://localhost:3000/cart_website/sum_main.php?cart=" + $scope.cart_data;
   };
 
   //puts every platform into the platforms array - stores dictionary values
@@ -257,11 +254,7 @@ $scope.openCart = function (game) {
   //uses Chart.js API
   function createChart() {
     var xValues = ["Games", "Genres", "Platforms"];
-    var yValues = [
-      $scope.numberOfProducts,
-      $scope.numberOfGenres,
-      $scope.numberOfPlatforms,
-    ];
+    var yValues = [$scope.numberOfProducts, $scope.numberOfGenres, $scope.numberOfPlatforms];
     var barColors = ["#b91d47", "#00aba9", "#2b5797"];
 
     new Chart("myChart", {
@@ -281,7 +274,7 @@ $scope.openCart = function (game) {
         plugins: {
           title: {
             display: true,
-            text: "Game Data Overview",
+            text: "Products Info",
           },
         },
       },
@@ -340,8 +333,9 @@ $scope.openCart = function (game) {
   };
 
 
-  $scope.applySorting = function () {
+  $scope.applySorting = function () { // => Prototype Sorting
     // Sort by price
+    //exp. a.prize - 59.99, b.prize - 49.99
 
     if ($scope.prizeSortOrder == "asc") {
       $scope.filteredGames.sort(function (a, b) {
@@ -418,9 +412,7 @@ $scope.openCart = function (game) {
       //platform filtering
       //checks if platforms variable stores an array, if yes it separates all values with commas, else it leaves them in lowercase
 
-      var gamePlatforms = Array.isArray(game.platforms)
-        ? game.platforms.join(",").toLowerCase()
-        : game.platforms.toLowerCase();
+      var gamePlatforms = Array.isArray(game.platforms) ? game.platforms.join(",").toLowerCase() : game.platforms.toLowerCase();
       var platformMatch = false;
       if (selectedPlatforms.length === 0) {
         platformMatch = true; //if user chooses no platforms, genre match will still apply
@@ -454,7 +446,7 @@ $scope.openCart = function (game) {
       var game = $scope.games[i];
       var current_year = game.release_date;
       var year = parseInt(current_year.substring(0, 4));
-      if (year == minYear) {
+      if (year >= minYear) {
         $scope.filteredGames.push(game);
       }
     }
@@ -476,7 +468,7 @@ $scope.openCart = function (game) {
       var discountedPrice = game.discountedPrize ? game.discountedPrize * rate : null;
 
       if (game.isDiscount == 1) {
-        if (discountedPrice >= min && price <= max) {
+        if (discountedPrice >= min && discountedPrice <= max) {
           $scope.filteredGames.push(game);
         }
       } else {
@@ -519,9 +511,7 @@ $scope.openCart = function (game) {
         game_pic: game.game_pic,
       });
     } else {
-      $scope.wishlistItems = $scope.wishlistItems.filter(
-        (item) => item.id !== game.id
-      );
+      $scope.wishlistItems = $scope.wishlistItems.filter((item) => item.id !== game.id);
     }
 
     localStorage.setItem("wishlistItems", JSON.stringify($scope.wishlistItems));
