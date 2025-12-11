@@ -308,7 +308,7 @@ function load_map() {
       x = col * tile_size;
       y = row * tile_size;
 
-      //we the constant variables for conditioning, sets for storing and a generate class for generating blocks
+      //we use the constant variables for conditioning, sets for storing and a generate class for generating blocks
 
       switch (tile) {
         case TILE_EMPTY:
@@ -384,8 +384,9 @@ function load_map() {
 }
 
 //updates game every frame, checks if the game is running
-//if yes, it calls itself every 40 millisecond so the game runs on 25 FPS
+//if yes, it calls itself every 40 millisecond so the game runs on 30 FPS
 // calls control and display functions
+
 function update() {
   if (!isGameRunning) {
     return;
@@ -555,7 +556,6 @@ function Controls() {
     reset_game_stats(true); // fully reset lives, score, level
     gameOver = false;
     update();
-
   }
 
   // Here we store the current direction of pac man, alongside its positions
@@ -650,7 +650,6 @@ function Controls() {
           document.getElementById("scoreForm").submit();
         }
 
-
         // wait 3 seconds, then reload
         setTimeout(() => {
           window.location.reload();
@@ -717,19 +716,19 @@ function Controls() {
         case red_ghost_img: //Blinky's (red) job to target pac man's position. By default it breaks out the switch cuz target values are already defined
           break;
 
-        case pink_ghost_img: //Pinky's (pink) job to get ahead of pac man based on which direction it moves, offset is 128px
+        case pink_ghost_img: //Pinky's (pink) job to get ahead of pac man based on which direction it moves, offset is 32px
           switch (pacman.direction) {
             case "U":
-              targetY -= offset; //pac man moves on +Y (upwards), exp pac man (0,128), then ghost (0,0) so gets 128 pixels ahead of pac man on +Y
+              targetY -= offset; //pac man moves on -Y (upwards), exp pac man (0,64), then ghost (0,32) so gets 32 pixels ahead of pac man on +Y
               break;
             case "D":
-              targetY += offset; //pac man(0,128), ghost(0,256)
+              targetY += offset; //pac man(0,128), ghost(0,160)
               break;
             case "L":
-              targetX -= offset; //pac man(128,0), ghost(0,0)
+              targetX -= offset; //pac man(128,0), ghost(96,0)
               break;
             case "R":
-              targetX += offset; //pac man(20,0), ghost(148,0)
+              targetX += offset; //pac man(20,0), ghost(52,0)
               break;
           }
           break;
