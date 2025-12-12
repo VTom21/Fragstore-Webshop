@@ -895,21 +895,21 @@ function Chase() {
   }, 17000);
 }
 
-function reset_datas() {
-  localStorage.setItem("high_score", 0);
-  high_score = 0;
-  document.getElementById("high_score").innerText = "High Score: 0";
-
-  localStorage.setItem("total_pellets", 0);
-  total_pellets = 0;
-
-  localStorage.setItem("total_ghost", 0);
-  total_ghost = 0;
-
-  localStorage.setItem("total_fruits", 0);
-  total_fruits = 0;
-
-}
+//function reset_datas() {
+//  localStorage.setItem("high_score", 0);
+//  high_score = 0;
+//  document.getElementById("high_score").innerText = "High Score: 0";
+//
+//  localStorage.setItem("total_pellets", 0);
+//  total_pellets = 0;
+//
+//  localStorage.setItem("total_ghost", 0);
+//  total_ghost = 0;
+//
+//  localStorage.setItem("total_fruits", 0);
+//  total_fruits = 0;
+//
+//}
 
 
 
@@ -1001,7 +1001,6 @@ function Warp(){
   else{
       Warp();
   }
-
 }
 
 
