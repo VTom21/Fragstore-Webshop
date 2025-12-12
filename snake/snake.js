@@ -8,14 +8,18 @@ let snakeImg;
 //Creating Snake class for storing its positions and Velocity
 class Snake {
   constructor(x, y, VelocityX, VelocityY) {
-    this.body = [{x, y}];
+    this.body = [];
     this.x = x;
     this.y = y;
     this.VelocityX = VelocityX;
     this.VelocityY = VelocityY;
 
+    for (let i = 4; i >= 0; i--) {
+      this.body.push({ x: x - 1 * cell, y: y });
+    }
+
     // Fix: Use cell size for proper grid alignment
-    
+
     this.foodX = Math.floor(Math.random() * (width / cell)) * cell;
     this.foodY = Math.floor(Math.random() * (height / cell)) * cell;
 
@@ -28,6 +32,11 @@ class Snake {
       if (this.x >= width || this.y >= height || this.x < 0 || this.y < 0) {
         this.x = 200;
         this.y = 200;
+        this.body = [{ x: 200, y: 200 }];
+        this.VelocityX = 1;
+        this.VelocityY = 0;
+        alert("You died!");
+        setup();
       }
 
       let body_part = {
@@ -40,8 +49,7 @@ class Snake {
       if (body_part.x === this.foodX && body_part.y === this.foodY) {
         this.foodX = Math.floor(Math.random() * (width / cell)) * cell;
         this.foodY = Math.floor(Math.random() * (height / cell)) * cell;
-      }
-      else{
+      } else {
         this.body.shift();
       }
     };
@@ -52,7 +60,7 @@ class Snake {
       foodImg = createImg("assets/food.png");
       foodImg.hide();
 
-      for(let part of this.body){
+      for (let part of this.body) {
         image(foodImg, snake.foodX, snake.foodY);
         image(snakeImg, part.x, part.y);
       }
