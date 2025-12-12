@@ -140,6 +140,13 @@ Administrators can manage all platform data via **Strapi**:
 ## 🧑‍💻 **How to Use**
 
 1. **Clone the repository**:
+2. **After cloning make sure to load in the datebases**
+   * Open xampp
+   * Start Apache for php files
+   * Start MySQL for the databases than run it as an admin
+   * In the admin panel import the sql files one each time
+   * After that you good to go 
+
 
 | Tables | Are | Cool |
 | ------ | :---: | ---: |
