@@ -8,6 +8,7 @@ let snakeImg;
 //Creating Snake class for storing its positions and Velocity
 class Snake {
   constructor(x, y, VelocityX, VelocityY) {
+    this.body = [{x, y}];
     this.x = x;
     this.y = y;
     this.VelocityX = VelocityX;
@@ -29,9 +30,19 @@ class Snake {
         this.y = 200;
       }
 
-      if (this.x === this.foodX && this.y === this.foodY) {
+      let body_part = {
+        x: this.body[this.body.length - 1].x + this.VelocityX * cell,
+        y: this.body[this.body.length - 1].y + this.VelocityY * cell,
+      };
+
+      this.body.push(body_part);
+
+      if (body_part.x === this.foodX && body_part.y === this.foodY) {
         this.foodX = Math.floor(Math.random() * (width / cell)) * cell;
         this.foodY = Math.floor(Math.random() * (height / cell)) * cell;
+      }
+      else{
+        this.body.shift();
       }
     };
 
@@ -40,6 +51,11 @@ class Snake {
       snakeImg.hide();
       foodImg = createImg("assets/food.png");
       foodImg.hide();
+
+      for(let part of this.body){
+        image(foodImg, snake.foodX, snake.foodY);
+        image(snakeImg, part.x, part.y);
+      }
     };
   }
 }
@@ -57,8 +73,6 @@ function draw() {
   background("#45B649");
   snake.update();
   snake.show();
-  image(foodImg, snake.foodX, snake.foodY);
-  image(snakeImg, snake.x, snake.y);
 }
 
 function Controls(snake) {
