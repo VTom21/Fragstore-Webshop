@@ -100,7 +100,7 @@ $scope.openCart = function (game) {
   $scope.pacmanCounter = 0;
 
   $scope.easter_egg = function (game) {
-    if (game.name.toLowerCase() === "pac man") {
+    if (game.name.toLowerCase() === "pac-man") {
       // Use Angular's ng-click on the image
       $scope.pacmanCounter++; // increment counter on each click
 
