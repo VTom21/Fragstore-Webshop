@@ -93,6 +93,19 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 * New designs and abilities
 * Score system with local leaderboard  
 
+<div align="center">
+  <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Fragstore Homepage"><br>
+  <h3><strong>Easter Egg game (Snake)</strong></h3>
+</div>
+
+---
+
+* This also for  fun 
+* It's also hidden 
+  * You have to found it like the one befor
+* The mechanics almost same as the original, but we made it a little bit more creative
+* Different design like other fruits
+
 
 
 ## ⚙️ **How It Works**
