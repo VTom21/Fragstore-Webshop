@@ -1,0 +1,22 @@
+//Variables
+
+$bg: #535557;
+$base_font:'Press Start 2P', monospace;
+$title_color: #76b852;
+$font-size: 3rem;
+
+body{
+    display: grid;
+    justify-content: center;
+    background-color: $bg;
+    align-items: center;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.title{
+    font-family: $base_font;
+    text-align: center;
+    color: $title_color;
+    font-size: $font-size;
+}

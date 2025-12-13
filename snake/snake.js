@@ -33,18 +33,27 @@ class Snake {
 
       //Constrain Logic
       if (this.x >= width || this.y >= height || this.x < 0 || this.y < 0) {
-        this.x = 200;
-        this.y = 200;
-        this.body = [{ x: 200, y: 200 }];
+        alert("You died!");
         this.VelocityX = 1;
         this.VelocityY = 0;
-        setup();
+        return;
       }
+      
 
-      for (let i = 0; i < this.body.length; i++) {
+      //We go through parts of body
+      for (let i = 1; i < this.body.length; i++) {
         if (this.x === this.body[i].x && this.y === this.body[i].y) {
-          alert("you died!");
-          break;
+          alert("You died!");
+          this.x = 200;
+          this.y = 200;
+          this.body = [{ x: 200, y: 200 }];
+
+          for (let i = 3; i >= 0; i--) {
+            this.body.push({ x: x - i * cell, y: y });
+          }
+          this.VelocityX = 1;
+          this.VelocityY = 0;
+          return; // STOP update()
         }
       }
       

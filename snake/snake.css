@@ -1,0 +1,15 @@
+body {
+  display: grid;
+  justify-content: center;
+  background-color: #535557;
+  align-items: center;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.title {
+  font-family: "Press Start 2P", monospace;
+  text-align: center;
+  color: #76b852;
+  font-size: 3rem;
+}/*# sourceMappingURL=snake.css.map */

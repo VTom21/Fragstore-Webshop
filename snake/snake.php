@@ -7,9 +7,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sketch.js/1.1/sketch.js" integrity="sha512-5t4lSiUS+fgaOiTm36s+DrDJc+rLx0zPHWrtbmnLsNOdjHyQLBg0mPpLoK2Qb6i5LpfRt6PdcG0FyiGmqVST0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js"></script>
     <script src="snake.js"></script>
+    <link rel="stylesheet" href="snake.css">
     <title>Document</title>
 </head>
 <body>
-    
+
+    <h1 class="title">Snake Game</h1>
 </body>
 </html>
