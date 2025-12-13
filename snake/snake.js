@@ -40,7 +40,7 @@ class Snake {
       }
       
 
-      //We go through parts of body
+      //We go through parts of body, if self collision => centers snake and resets body block count
       for (let i = 1; i < this.body.length; i++) {
         if (this.x === this.body[i].x && this.y === this.body[i].y) {
           alert("You died!");
@@ -53,11 +53,12 @@ class Snake {
           }
           this.VelocityX = 1;
           this.VelocityY = 0;
-          return; // STOP update()
+          return;
         }
       }
       
 
+      //generates body by stacking the body parts together
       let body_part = {
         x: this.body[this.body.length - 1].x + this.VelocityX * cell,
         y: this.body[this.body.length - 1].y + this.VelocityY * cell,
@@ -65,6 +66,7 @@ class Snake {
 
       this.body.push(body_part);
 
+      //snake & food collision logic => random food generation at collision
       if (body_part.x === this.foodX && body_part.y === this.foodY) {
         this.foodX = Math.floor(Math.random() * (width / cell)) * cell;
         this.foodY = Math.floor(Math.random() * (height / cell)) * cell;
@@ -73,12 +75,14 @@ class Snake {
       }
     };
 
+    //Show function for loading game assets
     this.show = function () {
       snakeImg = createImg("assets/body.png");
       snakeImg.hide();
       foodImg = createImg("assets/food.png");
       foodImg.hide();
 
+      //Iterates through every body part and applies same sprite
       for (let part of this.body) {
         image(foodImg, snake.foodX, snake.foodY);
         image(snakeImg, part.x, part.y);
@@ -89,6 +93,7 @@ class Snake {
 
 let snake;
 
+//Setup function creates the canvas on fixed width, sets Framerate. basic controls and calls snake class 
 function setup() {
   createCanvas(width, height);
   snake = new Snake(200, 200, 1, 0);
@@ -96,12 +101,15 @@ function setup() {
   frameRate(10);
 }
 
+//gets called every frame => Updates image , movement & collision
 function draw() {
   background("#45B649");
   snake.update();
   snake.show();
 }
 
+
+//Function for handling controls => -y, +y, -x, +x
 function Controls(snake) {
   document.addEventListener("keydown", function (e) {
     switch (e.key) {
