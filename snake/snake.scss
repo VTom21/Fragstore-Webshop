@@ -4,6 +4,8 @@ $bg: #535557;
 $base_font:'Press Start 2P', monospace;
 $title_color: #76b852;
 $font-size: 3rem;
+$border-width: 5px;
+$game-border-color:#d6ae7b;
 
 body{
     display: grid;
@@ -22,5 +24,5 @@ body{
 }
 
 canvas{
-    border: 1px solid #535557;
+    border: $border-width solid $game-border-color;
 }
