@@ -2,24 +2,27 @@ const cell = 20;
 const width = 800;
 const height = 800;
 
+
+//Images
 let foodImg;
 let snakeImg;
 
 //Creating Snake class for storing its positions and Velocity
 class Snake {
   constructor(x, y, VelocityX, VelocityY) {
-    this.body = [];
+    this.body = []; //Rest of the snake body except it's head = {x,y}
     this.x = x;
     this.y = y;
     this.VelocityX = VelocityX;
     this.VelocityY = VelocityY;
 
-    for (let i = 4; i >= 0; i--) {
-      this.body.push({ x: x - 1 * cell, y: y });
+
+    //Starting length of snake => head + body
+    for (let i = 3; i >= 0; i--) {
+      this.body.push({ x: x - i * cell, y: y });
     }
 
-    // Fix: Use cell size for proper grid alignment
-
+    //generate random x,y positions for food
     this.foodX = Math.floor(Math.random() * (width / cell)) * cell;
     this.foodY = Math.floor(Math.random() * (height / cell)) * cell;
 
@@ -35,9 +38,16 @@ class Snake {
         this.body = [{ x: 200, y: 200 }];
         this.VelocityX = 1;
         this.VelocityY = 0;
-        alert("You died!");
         setup();
       }
+
+      for (let i = 0; i < this.body.length; i++) {
+        if (this.x === this.body[i].x && this.y === this.body[i].y) {
+          alert("you died!");
+          break;
+        }
+      }
+      
 
       let body_part = {
         x: this.body[this.body.length - 1].x + this.VelocityX * cell,
@@ -87,23 +97,31 @@ function Controls(snake) {
   document.addEventListener("keydown", function (e) {
     switch (e.key) {
       case "ArrowUp":
-        snake.VelocityX = 0;
-        snake.VelocityY = -1;
+        if(snake.VelocityY !== 1){
+          snake.VelocityX = 0;
+          snake.VelocityY = -1;
+        }
         break;
 
       case "ArrowDown":
-        snake.VelocityX = 0;
-        snake.VelocityY = 1;
+        if(snake.VelocityY !== -1){
+          snake.VelocityX = 0;
+          snake.VelocityY = 1;
+        }
         break;
 
       case "ArrowLeft":
-        snake.VelocityY = 0;
-        snake.VelocityX = -1;
+        if(snake.VelocityX !== 1){
+          snake.VelocityY = 0;
+          snake.VelocityX = -1;
+        }
         break;
 
       case "ArrowRight":
-        snake.VelocityY = 0;
-        snake.VelocityX = 1;
+        if(snake.VelocityX !== -1){
+          snake.VelocityY = 0;
+          snake.VelocityX = 1;
+        }
         break;
     }
   });
