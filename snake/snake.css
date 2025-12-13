@@ -12,4 +12,8 @@ body {
   text-align: center;
   color: #76b852;
   font-size: 3rem;
+}
+
+canvas {
+  border: 1px solid #535557;
 }/*# sourceMappingURL=snake.css.map */
