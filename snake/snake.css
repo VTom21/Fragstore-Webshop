@@ -16,4 +16,18 @@ body {
 
 canvas {
   border: 5px solid #d6ae7b;
+}
+
+.menu-div {
+  display: block; /* hide at start */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 40px;
+  border-radius: 10px;
+  color: #fff;
+  font-family: "Press Start 2P", monospace;
 }/*# sourceMappingURL=snake.css.map */

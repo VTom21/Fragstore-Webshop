@@ -150,3 +150,12 @@ function Controls(snake) {
     }
   });
 }
+
+function GameMenu() {
+  snake.VelocityX = 0;
+  snake.VelocityY = 0;
+
+  const menu = document.querySelector('.menu-div');
+  menu.style.display = 'block';
+}
+

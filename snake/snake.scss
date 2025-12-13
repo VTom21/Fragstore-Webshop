@@ -6,6 +6,9 @@ $title_color: #76b852;
 $font-size: 3rem;
 $border-width: 5px;
 $game-border-color:#d6ae7b;
+$game_over_font: 2.5rem;
+$game_over_bottom: 40%;
+$game_over_left: 44.75%;
 
 body{
     display: grid;
@@ -26,3 +29,20 @@ body{
 canvas{
     border: $border-width solid $game-border-color;
 }
+
+
+
+.menu-div {
+    display: block; /* hide at start */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0,0,0,0.8);
+    padding: 40px;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Press Start 2P', monospace;
+  }
+  

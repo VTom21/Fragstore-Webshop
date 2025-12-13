@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,16 @@
     <link rel="stylesheet" href="snake.css">
     <title>Document</title>
 </head>
+
 <body>
 
     <h1 class="title">Snake Game</h1>
+
+    <div class="menu-div">
+        <h3 class="game_over">Game Over</h3>
+        <button class="restart_btn">Play</button>
+    </div>
+
 </body>
+
 </html>
