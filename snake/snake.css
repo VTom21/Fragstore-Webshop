@@ -19,7 +19,7 @@ canvas {
 }
 
 .menu-div {
-  display: block; /* hide at start */
+  display: none; /* hide at start */
   position: absolute;
   top: 50%;
   left: 50%;
