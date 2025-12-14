@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-//Creating Snake class for storing its positions and Velocity
+//Creating Snake class for storing its positions and Velocity.
 class Snake {
   constructor(x, y, VelocityX, VelocityY) {
     this.body = [];
