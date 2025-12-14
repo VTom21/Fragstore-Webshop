@@ -10,6 +10,8 @@ $game-border-glow: 0 0 20px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0
 $game_over_font: 2.5rem;
 $accent-color: #ff6b6b;
 $white: #fff;
+$diff_color: rgb(53, 52, 52);
+$diff_shadow: rgb(46, 45, 45);
 
 * {
   margin: 0;
@@ -151,6 +153,10 @@ canvas {
   color: $white;
 }
 
+.high_score{
+    color:$white;
+}
+
 
 .scores{
     display: flex;
@@ -191,4 +197,41 @@ canvas {
       inset 0 4px 8px rgba(0, 0, 0, 0.3);
   }
 }
+
+.difficulty {
+  display: flex;
+  gap: 1.5rem; // space between radio buttons
+  margin-bottom: 2rem;
+  justify-content: center;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; // space between radio and text
+    padding: 0.5rem 1rem;
+    border: 2px solid $diff_shadow;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background-color: $diff_shadow;
+    transition: all 0.2s ease;
+    justify-self: center;
+
+    input[type='radio'] {
+      accent-color: #4CAF50; // modern way to style radio
+      cursor: pointer;
+    }
+
+    &:hover {
+      border-color: $title_shadow;
+    }
+
+    &.selected {
+      background-color: #4CAF50;
+      color: #fff;
+      border-color: #45B649;
+    }
+  }
+}
+
+
 

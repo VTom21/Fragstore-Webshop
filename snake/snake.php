@@ -19,12 +19,26 @@
 
     <div x-data="{ startVisible: true, gameOverVisible: false }" class="wrapper">
         <div class="scores">
-        <h2 class="score_heading">Score: 0</h2>
-        <h2 class="high_score">High Score: 0</h2>
+            <h2 class="score_heading">Score: 0</h2>
+            <h2 class="high_score">High Score: 0</h2>
         </div>
 
         <div class="start-div" x-show="startVisible">
-            <h3>Start Game</h3>
+            <h3>Start Game</h3><br>
+            <div class="difficulty">
+                <label>
+                    <input type="radio" name="difficulty" value="easy" @change="setDifficulty('easy')">
+                    Easy
+                </label>
+                <label>
+                    <input type="radio" name="difficulty" value="medium" @change="setDifficulty('medium')">
+                    Medium
+                </label>
+                <label>
+                    <input type="radio" name="difficulty" value="hard" @change="setDifficulty('hard')">
+                    Hard
+                </label>
+            </div>
             <button class="start_btn" @click="Start(); startVisible = false">Play</button>
         </div>
 

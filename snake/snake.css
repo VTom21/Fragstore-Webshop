@@ -111,10 +111,14 @@ canvas {
     opacity: 0.9;
   }
 }
-.score_heading,.high_score {
+.score_heading {
   display: flex;
   align-items: flex-end;
   gap: 12px;
+  color: #fff;
+}
+
+.high_score {
   color: #fff;
 }
 
@@ -146,4 +150,35 @@ canvas {
 .menu-div button:active, .start-div button:active {
   transform: translateY(0);
   box-shadow: 0 2px 10px rgba(0, 255, 136, 0.3), inset 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.difficulty {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+.difficulty label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid rgb(46, 45, 45);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: rgb(46, 45, 45);
+  transition: all 0.2s ease;
+  justify-self: center;
+}
+.difficulty label input[type=radio] {
+  accent-color: #4CAF50;
+  cursor: pointer;
+}
+.difficulty label:hover {
+  border-color: #00aa55;
+}
+.difficulty label.selected {
+  background-color: #4CAF50;
+  color: #fff;
+  border-color: #45B649;
 }/*# sourceMappingURL=snake.css.map */
