@@ -114,9 +114,12 @@ canvas {
 }
 .score_heading {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  align-self: center;
   gap: 12px;
   color: #fff;
+  padding: 0;
+  margin: 0;
 }
 
 .menu-div button, .start-div button {

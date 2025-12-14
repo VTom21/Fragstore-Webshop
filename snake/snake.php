@@ -18,7 +18,7 @@
 
 
     <div x-data="{ startVisible: true, gameOverVisible: false }" class="wrapper">
-        <h2 class="score_heading">Score: <span id="score">0</span></h2>
+        <h2 class="score_heading">Score: 0</h2>
 
         <div class="start-div" x-show="startVisible">
             <h3>Start Game</h3>
