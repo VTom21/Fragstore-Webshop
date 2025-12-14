@@ -8,7 +8,17 @@ let snakeImg;
 let gameOverDiv;
 let gamePanelDiv;
 let scoreDiv;
+let HighScoreDiv;
 let score = 0;
+let high_score = parseInt(localStorage.getItem("high_score")) || 0;
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  HighScoreDiv = document.querySelector(".high_score");
+  HighScoreDiv.innerHTML = `High Score: ${high_score}`;
+});
+
+
 
 //Creating Snake class for storing its positions and Velocity
 class Snake {
@@ -60,6 +70,13 @@ class Snake {
         score++;
         scoreDiv = document.querySelector(".score_heading");
         scoreDiv.innerHTML = `Score: ${score}`;
+
+            if (score > high_score) {
+      high_score = score;  // update variable
+      localStorage.setItem("high_score", high_score); // store in localStorage
+      HighScoreDiv.innerHTML = `High Score: ${high_score}`; // update display
+    }
+
       } else {
         this.body.shift();
       }
@@ -143,6 +160,8 @@ function Freeze() {
 
 function Restart() {
   score = 0;
+  scoreDiv.innerHTML = `Score: ${score}`;
+  HighScoreDiv.innerHTML = `High Score: ${high_score}`;
   document.querySelector(".score_heading").innerHTML = `Score: ${score}`;
   gameOverDiv = document.querySelector(".menu-div");
   gameOverDiv.style.display = "none";

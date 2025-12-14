@@ -76,7 +76,6 @@ canvas {
   min-width: 400px;
   z-index: 100;
 }
-
 @media (max-width: 768px) {
   .menu-div,
   .start-div {
@@ -112,14 +111,16 @@ canvas {
     opacity: 0.9;
   }
 }
-.score_heading {
+.score_heading,.high_score {
   display: flex;
-  align-items: center;
-  align-self: center;
+  align-items: flex-end;
   gap: 12px;
   color: #fff;
-  padding: 0;
-  margin: 0;
+}
+
+.scores {
+  display: flex;
+  gap: 20px;
 }
 
 .menu-div button, .start-div button {

@@ -152,7 +152,10 @@ canvas {
 }
 
 
-
+.scores{
+    display: flex;
+    gap:20px;
+}
 
 .menu-div button, .start-div button {
 
