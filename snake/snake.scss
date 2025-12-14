@@ -1,48 +1,191 @@
-//Variables
-
-$bg: #535557;
-$base_font:'Press Start 2P', monospace;
-$title_color: #76b852;
-$font-size: 3rem;
-$border-width: 5px;
-$game-border-color:#d6ae7b;
+// Variables
+$bg: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+$base_font: 'Press Start 2P', monospace;
+$title_color: #00ff88;
+$title_shadow: #00aa55;
+$font-size: 3.5rem;
+$border-width: 8px;
+$game-border-color: #00ff88;
+$game-border-glow: 0 0 20px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.3);
 $game_over_font: 2.5rem;
-$game_over_bottom: 40%;
-$game_over_left: 44.75%;
+$accent-color: #ff6b6b;
+$white: #fff;
 
-body{
-    display: grid;
-    justify-content: center;
-    background-color: $bg;
-    align-items: center;
-    height: 100vh;
-    overflow-y: hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.title{
-    font-family: $base_font;
-    text-align: center;
-    color: $title_color;
-    font-size: $font-size;
-}
+body {
+  display: grid;
+  justify-content: center;
+  background: $bg;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  
 
-canvas{
-    border: $border-width solid $game-border-color;
-}
-
-
-
-.menu-div {
-    display: block; /* hide at start */
+  &::before {
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background: rgba(0,0,0,0.8);
-    padding: 40px;
-    border-radius: 10px;
-    color: #fff;
-    font-family: 'Press Start 2P', monospace;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.03) 2px,
+        rgba(255, 255, 255, 0.03) 4px
+      );
+    pointer-events: none;
+    animation: scanlines 8s linear infinite;
+  }
+}
+
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+
+.title {
+  font-family: $base_font;
+  text-align: center;
+  color: $title_color;
+  font-size: $font-size;
+  margin-bottom: 30px;
+  text-shadow: 
+    3px 3px 0 $title_shadow,
+    0 0 30px rgba(0, 255, 136, 0.7),
+    0 0 60px rgba(0, 255, 136, 0.4);
+  letter-spacing: 4px;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+
+
+canvas {
+  border: $border-width solid $game-border-color;
+  box-shadow: 
+    $game-border-glow,
+    inset 0 0 60px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+  border-radius: 4px;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+
+.menu-div,
+.start-div {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 40, 0.95) 100%);
+  padding: 50px 60px;
+  border-radius: 20px;
+  color: $white;
+  font-family: $base_font;
+  border: 4px solid $game-border-color;
+  box-shadow: 
+    0 0 30px rgba(0, 255, 136, 0.4),
+    inset 0 0 40px rgba(0, 0, 0, 0.5);
+  min-width: 400px;
+  z-index: 100;
+  
+  @media (max-width: 768px) {
+    min-width: 300px;
+    padding: 40px 30px;
+  }
+}
+
+.start-div.show{
+    display: block;
+}
+
+.menu-div h2 {
+  font-size: $game_over_font;
+  color: $accent-color;
+  margin-bottom: 30px;
+  text-shadow: 
+    2px 2px 0 darken($accent-color, 20%),
+    0 0 20px rgba(255, 107, 107, 0.6);
+  animation: gameOverPulse 1s ease-in-out infinite;
+  
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+}
+
+@keyframes gameOverPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+.score_heading {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  color: $white;
+}
+
+
+
+
+.menu-div button, .start-div button {
+
+  font-family: $base_font;
+  font-size: 1rem;
+  padding: 15px 40px;
+  margin: 20px 10px;
+  background: linear-gradient(135deg, $title_color 0%, darken($title_color, 15%) 100%);
+  color: #000;
+  border: 3px solid darken($title_color, 10%);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 15px rgba(0, 255, 136, 0.3),
+    inset 0 -4px 0 rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 6px 25px rgba(0, 255, 136, 0.5),
+      inset 0 -4px 0 rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, lighten($title_color, 10%) 0%, $title_color 100%);
   }
   
+  &:active {
+    transform: translateY(0);
+    box-shadow: 
+      0 2px 10px rgba(0, 255, 136, 0.3),
+      inset 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+

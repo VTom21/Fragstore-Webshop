@@ -1,9 +1,11 @@
 const cell = 20;
 const width = 800;
-const height = 800;
+const height = 700;
 
 let foodImg;
 let snakeImg;
+let gameOverDiv;
+let gamePanelDiv;
 
 //Creating Snake class for storing its positions and Velocity
 class Snake {
@@ -24,20 +26,8 @@ class Snake {
     this.foodY = Math.floor(Math.random() * (height / cell)) * cell;
 
     this.update = function () {
-      //Moving
-      this.x = this.x + this.VelocityX * cell;
-      this.y = this.y + this.VelocityY * cell;
 
-      //Constrain Logic
-      if (this.x >= width || this.y >= height || this.x < 0 || this.y < 0) {
-        this.x = 200;
-        this.y = 200;
-        this.body = [{ x: 200, y: 200 }];
-        this.VelocityX = 1;
-        this.VelocityY = 0;
-        alert("You died!");
-        setup();
-      }
+
 
       let body_part = {
         x: this.body[this.body.length - 1].x + this.VelocityX * cell,
@@ -45,11 +35,21 @@ class Snake {
       };
 
       this.body.push(body_part);
+
+      //Constrain Logic
+      if (body_part.x >= width || body_part.y >= height || body_part.x < 0 || body_part.y < 0) {
+        this.x = 200;
+        this.y = 200;
+        this.body = [{ x: 200, y: 200 }];
+        this.VelocityX = 1;
+        this.VelocityY = 0;
+        Freeze();
+        return;
+      }
       
       for(let i = 0; i  < this.body.length - 1; i++){
         if(this.body[i].x == body_part.x && this.body[i].y == body_part.y){
-          alert("You died!");
-          setup();
+          Freeze();
           return;
         }
       }
@@ -79,20 +79,27 @@ class Snake {
 let snake;
 
 function setup() {
+  gamePanelDiv = document.querySelector(".start-div");
+  gamePanelDiv.classList.add("show");
   createCanvas(width, height);
-  snake = new Snake(200, 200, 1, 0);
-  Controls(snake);
+  Controls();
   frameRate(10);
+
 }
 
 function draw() {
   background("#45B649");
-  snake.update();
-  snake.show();
+  if(snake){
+    snake.update();
+    snake.show();
+  }
 }
 
-function Controls(snake) {
+function Controls() {
   document.addEventListener("keydown", function (e) {
+    if(!snake){
+      return;
+    }
     switch (e.key) {
       case "ArrowUp":
         if(snake.VelocityY !== 1){
@@ -123,4 +130,25 @@ function Controls(snake) {
         break;
     }
   });
+}
+
+function Freeze(){
+  gameOverDiv = document.querySelector(".menu-div");
+  gameOverDiv.style.display = "block";
+  snake = null;
+  noLoop();
+}
+
+function Restart(){
+  gameOverDiv = document.querySelector(".menu-div");
+  gameOverDiv.style.display = "none";
+  snake = new Snake(200,200,1,0);
+  loop();
+}
+
+function Start(){
+    gamePanelDiv = document.querySelector(".start-div");
+    gamePanelDiv.classList.remove("show");
+    snake = new Snake(200,200,1,0);
+    loop();
 }
