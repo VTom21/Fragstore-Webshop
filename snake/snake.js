@@ -7,6 +7,7 @@ let foodImg;
 let snakeImg;
 let gameOverDiv;
 let gamePanelDiv;
+let scoreDiv;
 let score = 0;
 
 //Creating Snake class for storing its positions and Velocity
@@ -56,6 +57,9 @@ class Snake {
       if (body_part.x >= this.foodX - (hitbox - cell) / 2 && body_part.x < this.foodX + hitbox - (hitbox - cell) / 2 && body_part.y >= this.foodY - (hitbox - cell) / 2 && body_part.y < this.foodY + hitbox - (hitbox - cell) / 2) {
         this.foodX = Math.floor(Math.random() * (width / cell)) * cell;
         this.foodY = Math.floor(Math.random() * (height / cell)) * cell;
+        score++;
+        scoreDiv = document.querySelector(".score_heading");
+        scoreDiv.innerHTML = `Score: ${score}`;
       } else {
         this.body.shift();
       }
@@ -138,6 +142,8 @@ function Freeze() {
 }
 
 function Restart() {
+  score = 0;
+  document.querySelector(".score_heading").innerHTML = `Score: ${score}`;
   gameOverDiv = document.querySelector(".menu-div");
   gameOverDiv.style.display = "none";
   snake = new Snake(200, 200, 1, 0);
