@@ -27,15 +27,15 @@
             <h3>Start Game</h3><br>
             <div class="difficulty">
                 <label>
-                    <input type="radio" name="difficulty" value="easy" @change="setDifficulty('easy')">
+                    <input type="radio" name="difficulty" value="easy" @change="Difficulty('easy')">
                     Easy
                 </label>
                 <label>
-                    <input type="radio" name="difficulty" value="medium" @change="setDifficulty('medium')">
+                    <input type="radio" name="difficulty" value="medium" @change="Difficulty('medium')">
                     Medium
                 </label>
                 <label>
-                    <input type="radio" name="difficulty" value="hard" @change="setDifficulty('hard')">
+                    <input type="radio" name="difficulty" value="hard" @change="Difficulty('hard')">
                     Hard
                 </label>
             </div>

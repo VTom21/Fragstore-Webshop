@@ -176,3 +176,19 @@ function Start() {
   snake = new Snake(200, 200, 1, 0);
   loop();
 }
+
+function Difficulty(diff){
+  switch(diff){
+    case "easy":
+      frameRate(10);
+      break;
+
+    case "medium":
+      frameRate(20);
+      break;
+
+    case "hard":
+      frameRate(26);
+      break;
+  }
+}
