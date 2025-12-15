@@ -98,6 +98,7 @@ $scope.openCart = function (game) {
 
 
   $scope.pacmanCounter = 0;
+  $scope.snakeCounter = 0;
 
   $scope.easter_egg = function (game) {
     if (game.name.toLowerCase() === "pac-man") {
@@ -106,6 +107,15 @@ $scope.openCart = function (game) {
 
       if ($scope.pacmanCounter >= 5) {
         window.location.href = "../redirect/redirect.php?destination=../pacman/pacman.php";
+      }
+    }
+
+    if (game.name.toLowerCase() === "snake") {
+      // Use Angular's ng-click on the image
+      $scope.snakeCounter++; // increment counter on each click
+
+      if ($scope.snakeCounter >= 5) {
+        window.location.href = "../redirect/redirect.php?destination=../snake/snake.php";
       }
     }
   };
