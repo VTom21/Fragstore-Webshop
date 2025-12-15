@@ -81,13 +81,13 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 * Apply gift cards
 * Secure Stripe checkout
 
+---
 
 <div align="center">
   <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Fragstore Homepage"><br>
   <h3><strong>Easter Egg game (Pacman)</strong></h3>
 </div>
 
----
 
 * Have a little fun while shopping 
 * You have to found  the Pac Man
@@ -97,12 +97,14 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 * New designs and abilities
 * Score system with local leaderboard  
 
+---
+
 <div align="center">
-  <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Fragstore Homepage"><br>
+  <img src="./snake/assets/icon.png" width="60" alt="Fragstore Homepage"><br>
   <h3><strong>Easter Egg game (Snake)</strong></h3>
 </div>
 
----
+
 
 * This also for  fun 
 * It's also hidden 
@@ -110,6 +112,7 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 * The mechanics almost same as the original, but we made it a little bit more creative
 * Different design like other fruits
 
+---
 
 
 ## ⚙️ **How It Works**
@@ -150,6 +153,8 @@ Administrators can manage all platform data via **Strapi**:
    * Start MySQL for the databases than run it as an admin
    * In the admin panel import the sql files one each time
    * After that you good to go 
+
+---
 
 ## 👨‍💻 **Code Snippets**
 
@@ -330,6 +335,371 @@ $scope.PrizeRange = function () {
         </div>
     </div>
 
+```
+
+---
+
+<h3>
+  Snake
+  <img align="right" padding="0" margin="0" width="160" src="https://skillicons.dev/icons?i=html,css,js,php">
+</h3><br>
+
+
+```javascript
+//Creating Snake class for storing its positions and Velocity.
+class Snake {
+  constructor(x, y, VelocityX, VelocityY) {
+    this.body = [];
+    this.x = x;
+    this.y = y;
+    this.VelocityX = VelocityX;
+    this.VelocityY = VelocityY;
+
+    for (let i = 4; i >= 0; i--) {
+      this.body.push({ x: x - 1 * cell, y: y });
+    }
+
+    // Fix: Use cell size for proper grid alignment
+
+    this.foodX = Math.floor(Math.random() * ((width - hitbox) / cell)) * cell;
+    this.foodY = Math.floor(Math.random() * ((height - hitbox) / cell)) * cell;
+
+    this.update = function () {
+      let body_part = {
+        x: this.body[this.body.length - 1].x + this.VelocityX * cell,
+        y: this.body[this.body.length - 1].y + this.VelocityY * cell,
+      };
+
+      this.body.push(body_part);
+
+      //Constrain Logic
+      if (body_part.x >= width || body_part.y >= height || body_part.x < 0 || body_part.y < 0) {
+        this.x = 200;
+        this.y = 200;
+        this.body = [{ x: 200, y: 200 }];
+        this.VelocityX = 1;
+        this.VelocityY = 0;
+        Freeze();
+        return;
+      }
+
+      for (let i = 0; i < this.body.length - 1; i++) {
+        if (this.body[i].x == body_part.x && this.body[i].y == body_part.y) {
+          Freeze();
+          return;
+        }
+      }
+
+      if (body_part.x >= this.foodX - (hitbox - cell) / 2 && body_part.x < this.foodX + hitbox - (hitbox - cell) / 2 && body_part.y >= this.foodY - (hitbox - cell) / 2 && body_part.y < this.foodY + hitbox - (hitbox - cell) / 2) {
+        this.foodX = Math.floor(Math.random() * (width / cell)) * cell;
+        this.foodY = Math.floor(Math.random() * (height / cell)) * cell;
+        score++;
+        scoreDiv = document.querySelector(".score_heading");
+        scoreDiv.innerHTML = `Score: ${score}`;
+
+            if (score > high_score) {
+      high_score = score;  // update variable
+      localStorage.setItem("high_score", high_score); // store in localStorage
+      HighScoreDiv.innerHTML = `High Score: ${high_score}`; // update display
+    }
+
+      } else {
+        this.body.shift();
+      }
+    };
+
+    this.show = function () {
+      snakeImg = createImg("assets/body.png");
+      snakeImg.hide();
+      foodImg = createImg("assets/apple.png");
+      foodImg.hide();
+
+      for (let part of this.body) {
+        image(foodImg, snake.foodX, snake.foodY);
+        image(snakeImg, part.x, part.y);
+      }
+    };
+  }
+}
+
+//The controls
+
+function Controls() {
+  document.addEventListener("keydown", function (e) {
+    if (!snake) {
+      return;
+    }
+    switch (e.key) {
+      case "ArrowUp":
+        if (snake.VelocityY !== 1) {
+          snake.VelocityX = 0;
+          snake.VelocityY = -1;
+        }
+        break;
+
+      case "ArrowDown":
+        if (snake.VelocityY !== -1) {
+          snake.VelocityX = 0;
+          snake.VelocityY = 1;
+        }
+        break;
+
+      case "ArrowLeft":
+        if (snake.VelocityX !== 1) {
+          snake.VelocityY = 0;
+          snake.VelocityX = -1;
+        }
+        break;
+
+      case "ArrowRight":
+        if (snake.VelocityX !== -1) {
+          snake.VelocityY = 0;
+          snake.VelocityX = 1;
+        }
+        break;
+    }
+  });
+}
+```
+
+---
+<h3>
+  Pac Man
+  <img align="right" padding="0" margin="0" width="160" src="https://skillicons.dev/icons?i=html,css,js,php">
+</h3><br>
+
+```javascript
+//image load function
+
+function load_images() {
+  image_paths.forEach((path, i) => {
+    images[i] = new Image();
+    images[i].src = path;
+  });
+
+  blue_ghost_img = images[0];
+  red_ghost_img = images[1];
+  orange_ghost_img = images[2];
+  pink_ghost_img = images[3];
+  pacman_down_img = images[4];
+  pacman_up_img = images[5];
+  pacman_left_img = images[6];
+  pacman_right_img = images[7];
+  wall_img = images[8];
+  cherry_img = images[9];
+  frozen_orb_img = images[10];
+  strawberry_img = images[11];
+  portal_img = images[12];
+  heart_img = images[13];
+
+  scared_ghost_img = new Image();
+  scared_ghost_img.src = "assets/ghosts/scaredGhost.png";
+}
+
+// creating map[]
+
+const map = [
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1],
+  [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 10, 1], //(4,27)
+  [1, 2, 1, 1, 1, 2, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1],
+  [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1],
+  [0, 0, 0, 0, 1, 2, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 0, 0, 0, 0, 0],
+  [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1],
+  [1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1],
+  [0, 0, 0, 0, 0, 2, 2, 1, 2, 2, 2, 1, 9, 9, 9, 9, 1, 2, 2, 2, 1, 2, 2, 0, 0, 0, 0, 0],
+  [1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 3, 6, 5, 4, 1, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1],
+  [1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1],
+  [1, 8, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 8, 1],
+  [1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 7, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+];
+
+
+//Map Sets and variables
+//Sets dont allow duplicates, better element accessing <-> lists are ordered, slower searching, requires indexing
+
+const walls = new Set();
+const ghosts = new Set();
+const cherries = new Set();
+const pellets = new Set();
+const gates = new Set();
+const freezes = new Set();
+const strawberries = new Set();
+const portals = new Set();
+const hearts_set = new Set();
+let pacman;
+
+// Loading the map
+
+function load_map() {
+  //reset all contents on the map
+  walls.clear();
+  ghosts.clear();
+  cherries.clear();
+  pellets.clear();
+  gates.clear();
+  freezes.clear();
+  strawberries.clear();
+  portals.clear();
+  hearts_set.clear();
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < columns; col++) {
+      let tile = map[row][col]; //current tile (exp. 0,0)
+
+      let x = col * tile_size; // X coordinate => column value * tilesize => scalingX
+      let y = row * tile_size; // Y coordinate => row value * tilesize => scalingY
+
+      if(row == 4 && col == 26){
+        map[row][col] = RANDOM_ORB[Math.floor(Math.random() * RANDOM_ORB.length)];
+      }
+
+      tile = map[row][col]; 
+      x = col * tile_size;
+      y = row * tile_size;
+
+      //we use the constant variables for conditioning, sets for storing and a generate class for generating blocks
+
+      switch (tile) {
+        case TILE_EMPTY:
+          break;
+
+        case GHOST_GATE:
+          const gate = new Generate(null, x, y + tile_size / 2, tile_size, 4);
+          gate.color = "rgb(50, 50, 255)";
+          gates.add(gate);
+          break;
+
+        case WALL_TILE:
+          const tile_ = new Generate(wall_img, x, y, tile_size, tile_size);
+          walls.add(tile_);
+          break;
+
+        case PELLET:
+          const pellet = new Generate(null, x + 14, y + 14, 4, 4); // a pellet's size is 4x4, and is placed at 14 on both x and y inside the 32x32 tile -> centering of pellet
+          pellets.add(pellet);
+          break;
+
+        case TILE_BLUE_GHOST:
+          const blue_ghost = new Generate(blue_ghost_img, x, y, tile_size, tile_size, true);
+          ghosts.add(blue_ghost);
+          break;
+
+        case TILE_RED_GHOST:
+          const red_ghost = new Generate(red_ghost_img, x, y, tile_size, tile_size, true);
+          ghosts.add(red_ghost);
+          break;
+
+        case TILE_ORANGE_GHOST:
+          const orange_ghost = new Generate(orange_ghost_img, x, y, tile_size, tile_size, true);
+          ghosts.add(orange_ghost);
+          break;
+
+        case TILE_PINK_GHOST:
+          const pink_ghost = new Generate(pink_ghost_img, x, y, tile_size, tile_size, true);
+          ghosts.add(pink_ghost);
+          break;
+
+        case TILE_PACMAN:
+          pacman = new Generate(pacman_up_img, x, y, tile_size, tile_size);
+          break;
+
+        case CHERRY:
+          const cherry = new Generate(cherry_img, x, y, tile_size, tile_size);
+          cherries.add(cherry);
+          break;
+
+        case FREEZE_ORB:
+          const freeze = new Generate(frozen_orb_img, x, y, tile_size, tile_size);
+          freezes.add(freeze);
+          break;
+
+        case STRAWBERRY:
+            const straw = new Generate(strawberry_img, x, y, tile_size, tile_size);
+            strawberries.add(straw);
+            break;
+
+        case PORTAL:
+            const portal = new Generate(portal_img, x, y, tile_size, tile_size);
+            portals.add(portal);
+            break;
+
+        case HEART:
+            const heart = new Generate(heart_img, x, y, tile_size, tile_size);
+            hearts_set.add(heart);
+            break;
+      }    
+    }
+  }
+}
+
+//Abilities 
+
+for (let cherry of cherries.values()) {
+    if (Collision(pacman, cherry)) {
+      Fruit_Munch();
+      cherries.delete(cherry);
+      chased = true;
+      total_fruits++;
+      localStorage.setItem("total_fruits", total_fruits);
+      Frightened();
+      Chase();
+
+      Popup(pacman.x, pacman.y, 200);
+      break;
+    }
+  }
+
+  for (let freeze of freezes.values()) {
+    if (Collision(pacman, freeze)) {
+      freezes.delete(freeze);
+      freezed = true;
+      total_fruits++;
+      localStorage.setItem("total_fruits", total_fruits);
+      Freeze();
+    }
+  }
+
+  for (let strawberry of strawberries.values()) {
+    if (Collision(pacman, strawberry)) {
+      strawberries.delete(strawberry);
+      score += 500;
+      total_fruits++;
+      localStorage.setItem("total_fruits", total_fruits);
+      Popup(pacman.x, pacman.y, 500);
+      scoreUI.innerHTML = score;
+    }
+  }
+
+  for (let heart of hearts_set.values()) {
+    if (Collision(pacman, heart)) {
+      hearts_set.delete(heart);
+      total_fruits++;
+      localStorage.setItem("total_fruits", total_fruits);
+      heart_up()
+    }
+  }
+
+  for (let portal of portals.values()) {
+    if (Collision(pacman, portal)) {
+      portals.delete(portal);
+      total_fruits++;
+      localStorage.setItem("total_fruits", total_fruits);
+      Warp();
+    }
+  }
 ```
 ---
 <h3>
