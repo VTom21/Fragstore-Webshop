@@ -333,7 +333,7 @@ $scope.PrizeRange = function () {
 
 ```
 
-<h3>
+<h3 align="center">
   Backend
   <img align="right" padding="0" margin="0" width="30" src="https://skillicons.dev/icons?i=mysql">
 </h3>
