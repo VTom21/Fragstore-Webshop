@@ -156,7 +156,7 @@ Administrators can manage all platform data via **Strapi**:
 
 <h3>
   Translation in
-  <img align="right" width="35" src="https://skillicons.dev/icons?i=js">
+  <img align="right" padding="0" margin="0" width="30" src="https://skillicons.dev/icons?i=js">
 </h3>
 
 
