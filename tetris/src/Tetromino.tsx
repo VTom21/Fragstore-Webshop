@@ -1,6 +1,5 @@
 
 
-export const IsRunning = false;
 export type TetrominoShape = number[][];
 
 export const SHAPES: Record<string, TetrominoShape> = {
