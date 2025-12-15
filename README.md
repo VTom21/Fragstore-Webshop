@@ -154,16 +154,10 @@ Administrators can manage all platform data via **Strapi**:
 ## 👨‍💻 **Code Snippets**
 
 
-<table>
-  <tr>
-    <td style="border:none;"><h3>Translation in</h3></td>
-    <td align="right" style="border:none;">
-      <img width="50" src="https://skillicons.dev/icons?i=js">
-    </td>
-  </tr>
-</table>
-
-
+<h3>
+  Translation in
+  <img align="right" width="35" src="https://skillicons.dev/icons?i=js">
+</h3>
 
 
 
