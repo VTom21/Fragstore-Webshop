@@ -154,7 +154,13 @@ Administrators can manage all platform data via **Strapi**:
 ## 👨‍💻 **Code Snippets**
 
 
-## Translation in <img  width="75" align="right" src="https://skillicons.dev/icons?i=js,"></img> <br>
+<h3 style="display:flex; align-items:center;">
+  Translation in
+  <img style="margin-left:auto;" width="50" src="https://skillicons.dev/icons?i=js">
+</h3>
+
+
+
 ```Javascript
 /*Translation option in the home page */
 
