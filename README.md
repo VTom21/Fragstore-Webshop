@@ -155,7 +155,7 @@ Administrators can manage all platform data via **Strapi**:
 
 
 <h3>
-  Translation in
+  Translation
   <img align="right" padding="0" margin="0" width="30" src="https://skillicons.dev/icons?i=js">
 </h3>
 
@@ -207,7 +207,10 @@ selected.addEventListener("click", () => {
 });
 ```
 
-## *Prize Range in <img align="center" src="https://skillicons.dev/icons?i=js,"> <br>*
+<h3>
+  Prize Range
+  <img align="right" padding="0" margin="0" width="30" src="https://skillicons.dev/icons?i=js">
+</h3>
 
 ```javascript
 /*Main page
@@ -286,7 +289,10 @@ $scope.PrizeRange = function () {
     }
   };
 ```
-## *Cards with <img align="center" src="https://skillicons.dev/icons?i=php,angular,html,css"> <br>*
+<h3>
+  Cards
+  <img align="right" padding="0" margin="0" width="160" src="https://skillicons.dev/icons?i=html,css,angular,php">
+</h3>
 
 
 ```html
@@ -327,7 +333,10 @@ $scope.PrizeRange = function () {
 
 ```
 
-## *Backend with <img align="center" src="https://skillicons.dev/icons?i=mysql,"> <br>*
+<h3>
+  Backend
+  <img align="right" padding="0" margin="0" width="30" src="https://skillicons.dev/icons?i=mysql">
+</h3>
 
 ```sql
 --Snippet from one of our database (giftcard.sql)
