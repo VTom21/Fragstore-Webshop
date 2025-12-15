@@ -151,6 +151,236 @@ Administrators can manage all platform data via **Strapi**:
    * In the admin panel import the sql files one each time
    * After that you good to go 
 
+## 👨‍💻 **Code Snippets**
+
+```Javascript
+/*Translation option in the home page */
+
+const translations = {
+  hero_heading: {
+    us: "Unlock the Future of Gaming",
+    de: "Entdecke die Zukunft des Gamings",
+    it: "Scopri il Futuro del Gaming",
+    es: "Desbloquea el Futuro del Gaming",
+    ru: "Откройте будущее гейминга",
+    fr: "Déverrouillez l'avenir du gaming",
+    in: "गेमिंग का भविष्य खोलें"
+  },
+  
+};
+
+// ----- TRANSLATION FUNCTION -----
+function translate(lang) {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if(translations[key] && translations[key][lang]) {
+      el.textContent = translations[key][lang];
+    }
+  });
+}
+
+// ----- LANGUAGE SWITCHER -----
+const selected = document.querySelector(".selected-lang");
+document.querySelectorAll(".lang-menu a").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const lang = link.className;
+    selected.textContent = link.textContent;
+    selected.style.setProperty("--flag", `url(${link.dataset.flag})`);
+    document.querySelector(".lang-menu ul").style.display = "none";
+    translate(lang);
+  });
+});
+
+selected.addEventListener("click", () => {
+  const menu = document.querySelector(".lang-menu ul");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+});
+```
+
+```javascript
+/*Main page
+ (PrizeRange)*/
+
+$scope.PrizeRange = function () {
+    var min = parseFloat($scope.parameter1) || 0;
+    var max = parseFloat($scope.parameter2) || Infinity;
+    var rate = $scope.rates[$scope.select_currency] || 1;
+
+    $scope.filteredGames = [];
+    for (var i = 0; i < $scope.games.length; i++) {
+      var game = $scope.games[i];
+      var price = game.prize * rate;
+      var discountedPrice = game.discountedPrize ? game.discountedPrize * rate : null;
+
+      if (game.isDiscount == 1) {
+        if (discountedPrice >= min && discountedPrice <= max) {
+          $scope.filteredGames.push(game);
+        }
+      } else {
+        if (price >= min && price <= max) {
+          $scope.filteredGames.push(game);
+        }
+      }
+  }
+
+  $scope.applySorting();
+};
+
+// Filter games accordingly
+
+    var filtered = [];
+    for (var i = 0; i < $scope.games.length; i++) {
+      var game = $scope.games[i]; //stores all games
+
+      var gameGenres = game.genre.toLowerCase(); //stores all their genres
+
+      var genreMatch = false; //checks if theres a match in genres
+
+      if (selectedGenres.length === 0) {
+        genreMatch = true; //if user chooses no genres, genre match will still apply
+      } else {
+        for (var j = 0; j < selectedGenres.length; j++) {
+          if (gameGenres.includes(selectedGenres[j])) {
+            //checks from all existing genres if there really is one
+            genreMatch = true;
+            break;
+          }
+        }
+      }
+
+// Prize sorting
+
+  $scope.updatePrizeSortOrder = function (which) {
+    if (which === "asc") {
+      if ($scope.isPrizeAscChecked) {
+        $scope.isPrizeDescChecked = false;
+        $scope.prizeSortOrder = "asc";
+      } else {
+        $scope.prizeSortOrder = "";
+      }
+    } else if (which === "desc") {
+      if ($scope.isPrizeDescChecked) {
+        $scope.isPrizeAscChecked = false;
+        $scope.prizeSortOrder = "desc";
+      } else {
+        $scope.prizeSortOrder = "";
+      }
+    }
+
+    if ($scope.prizeSortOrder) {
+      $scope.applySorting();
+    } else {
+      $scope.applyAdvancedFilters();
+    }
+  };
+```
+
+```php
+//Inbedded html in php and angularjs (Games card)
+
+<div class="game-container">
+        <div class="card" ng-repeat="game in filteredGames | filter:{name: searchText} | limitTo:itemsPerPage:((currentPage - 1) * itemsPerPage)">
+            <img ng-src="{{game.game_pic}}" alt="{{game.name}}" ng-click="easter_egg(game)">
+            <p class="discount-badge" ng-if="game.isDiscount == 1">
+                {{ (((game.prize - game.discountedPrize) / game.prize * 100)) * (-1) | number:0 }}%
+            </p>
+            <div class="card-content">
+                <h2 class="title">{{game.name}} <button class="wish_btn off" data-game-id="{{game.id}}" ng-class="{'active': isInWishlist(game.id), 'off': !isInWishlist(game.id)}" ng-click="Wishlist(game, $event)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="transparent" viewBox="0 0 24 24" stroke-width="1.3" stroke="#00f7ff" class="WishBtn">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                        </svg>
+                    </button></h2>
+                <p><strong>Genre:</strong> {{game.genre}}</p>
+                <p><strong>Platform:</strong> {{game.platforms}}</p>
+                <p><strong>Release:</strong> {{game.release_date}}</p>
+            </div>
+            <div class="price-wrapper">
+                <div class="status">
+                    <h3 class="status_text"></h3>
+                </div>
+                <div class="price-box">
+                    <p class="price" ng-style="{'text-decoration': game.isDiscount == 1 ? 'line-through' : 'none'}">
+                        {{ (game.isDiscount == 1 ? convertPrice({prize: game.prize}) : convertPrice({prize: game.prize})) }} {{select_currency}}
+                    </p>
+
+                    <p class="discount" ng-if="game.isDiscount == 1">
+                        {{ convertPrice({prize: game.discountedPrize || game.prize}) }} {{select_currency}}
+                    </p>
+                </div>
+
+                <br>
+
+                <div class="btns">
+                    <button class="buy_btn">Buy Now</button>
+                    <button class="shop_btn" ng-click="openCart(game)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+```
+
+```sql
+--Snippet from one of our database (giftcard.sql)
+
+CREATE TABLE `giftcard` (
+  `CardId` varchar(50) NOT NULL,
+  `Name` varchar(255) DEFAULT NULL,
+  `IMG` varchar(255) DEFAULT NULL,
+  `Price` decimal(10,2) NOT NULL,
+  `Region` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+INSERT INTO `giftcard` (`CardId`, `Name`, `IMG`, `Price`, `Region`)
+
+-- (videogames.sql)
+
+CREATE DATABASE IF NOT EXISTS videogames;
+USE videogames;
+
+CREATE TABLE `awards` (
+  `award_id` int(11) NOT NULL,
+  `award_name` varchar(255) NOT NULL,
+  `award_year` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `datas` (
+  `id` int(11) NOT NULL,
+  `game_pic` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `release_date` date DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL,
+  `platforms` varchar(255) DEFAULT NULL,
+  `prize` decimal(10,2) DEFAULT NULL,
+  `publisher_id` int(11) DEFAULT NULL,
+  `isDiscount` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, 
+`genre`, `platforms`, `prize`, `publisher_id`, `isDiscount`)
+
+-- (users.sql)
+
+CREATE database if not exists users;
+use users;
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password_hash` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `created_at`)
+
+```
+
 
 | Tables | Are | Cool |
 | ------ | :---: | ---: |
