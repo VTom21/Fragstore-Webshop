@@ -152,7 +152,7 @@ Administrators can manage all platform data via **Strapi**:
    * After that you good to go 
 
 ## 👨‍💻 **Code Snippets**
-
+## *Translation in <img align="center" src="https://skillicons.dev/icons?i=js,"> <br>*
 ```Javascript
 /*Translation option in the home page */
 
@@ -197,6 +197,8 @@ selected.addEventListener("click", () => {
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 });
 ```
+
+## *Prize Range in <img align="center" src="https://skillicons.dev/icons?i=js,"> <br>*
 
 ```javascript
 /*Main page
@@ -275,9 +277,11 @@ $scope.PrizeRange = function () {
     }
   };
 ```
+## *Cards with <img align="center" src="https://skillicons.dev/icons?i=php,angular,html,css"> <br>*
+
 
 ```html
-//Inbedded html in php and angularjs (Games card)
+<!--Inbedded html in php and angularjs (Games card)-->
 
 <div class="game-container">
         <div class="card" ng-repeat="game in filteredGames | filter:{name: searchText} | limitTo:itemsPerPage:((currentPage - 1) * itemsPerPage)">
@@ -313,6 +317,8 @@ $scope.PrizeRange = function () {
     </div>
 
 ```
+
+## *Backend with <img align="center" src="https://skillicons.dev/icons?i=mysql,"> <br>*
 
 ```sql
 --Snippet from one of our database (giftcard.sql)
