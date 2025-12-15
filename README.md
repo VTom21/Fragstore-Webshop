@@ -160,8 +160,6 @@ Administrators can manage all platform data via **Strapi**:
 </h3><br>
 
 
-
-
 ```Javascript
 /*Translation option in the home page */
 
@@ -206,7 +204,7 @@ selected.addEventListener("click", () => {
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 });
 ```
-
+---
 <h3>
   Prize Range
   <img align="right" padding="0" margin="0" width="80" src="https://skillicons.dev/icons?i=js,angular">
@@ -289,6 +287,7 @@ $scope.PrizeRange = function () {
     }
   };
 ```
+---
 <h3>
   Cards
   <img align="right" padding="0" margin="0" width="160" src="https://skillicons.dev/icons?i=html,css,angular,php">
@@ -332,7 +331,7 @@ $scope.PrizeRange = function () {
     </div>
 
 ```
-
+---
 <h3>
   Backend
   <img align="right" padding="0" margin="0" width="80" src="https://skillicons.dev/icons?i=mysql,php">
@@ -394,7 +393,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `created_at`)
 
 ```
-
+---
 
 | Tables | Are | Cool |
 | ------ | :---: | ---: |
