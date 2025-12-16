@@ -50,16 +50,14 @@ export const SHAPE_COLORS = [
     '#F44336'
 ];
 
+export function getTetrominoColor(type: string) {
+    const SHAPE_TYPES = Object.keys(SHAPES); 
+    const index = SHAPE_TYPES.indexOf(type);
+    return SHAPE_COLORS[index]; 
+  }
+
 console.log(SHAPES);
 console.log(SHAPE_COLORS);
-
-
-let currentTetromino: {
-    shape: TetrominoShape;
-    x: number;
-    y: number;
-    type: string;
-};
 
 
 
@@ -68,12 +66,13 @@ export function generateTetromino() {
     const randomIndex = Math.floor(Math.random() * types.length);
     const randomType = types[randomIndex];
 
-    currentTetromino = {
+    return{
         shape: SHAPES[randomType],
-        x: 0,
+        x: 3,
         y: 0,
         type: randomType
     };
 
-    console.log(currentTetromino);
 }
+
+

@@ -1,9 +1,11 @@
 import { useRef, useEffect } from "react";
-import "./App.css";
-import { generateTetromino } from "./Tetromino";
+import { generateTetromino, getTetrominoColor } from "./Tetromino";
+// @ts-ignore
+import './App.css';
 
 function App() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const tetrominoRef = useRef<ReturnType<typeof generateTetromino> | null>(null);
   const isRunning = useRef(false);
 
   useEffect(() => {
@@ -11,9 +13,9 @@ function App() {
     const ctx = canvas.getContext("2d")!;
     ctx.fillStyle = "#000";
 
-    const BLOCK_SIZE = 40;
-    const COLS = 10;
-    const ROWS = 20;
+    const BLOCK_SIZE = 20;
+    const COLS = 20;
+    const ROWS = 40;
     const GRID_WIDTH = COLS * BLOCK_SIZE;
     const GRID_HEIGHT = ROWS * BLOCK_SIZE;
 
@@ -29,11 +31,67 @@ function App() {
       }
     }
 
+    function drawTetromino(){
+      const tetromino = tetrominoRef.current;
+      if(!tetromino) return;
+      ctx.fillStyle = getTetrominoColor(tetromino.type);
+
+      tetromino.shape.forEach((row, y) =>{
+        row.forEach((cell,x)=>{
+          if(cell){
+            ctx.fillRect(
+              (tetromino.x + x) * BLOCK_SIZE,
+              (tetromino.y + y) * BLOCK_SIZE,
+              BLOCK_SIZE,
+              BLOCK_SIZE
+            );
+          }
+        })
+      });
+    }
+
+
+
+   function Controls(e: KeyboardEvent){
+
+        if (!tetrominoRef.current) return;
+  
+        switch (e.key) {
+          case "ArrowLeft":
+            tetrominoRef.current.x -= 1; 
+            break;
+          case "ArrowRight":
+            tetrominoRef.current.x += 1; 
+            break;
+          case "ArrowDown":
+            tetrominoRef.current.y += 1; 
+            break;
+          case "ArrowUp":
+            break;
+        }
+
+        Draw();
+        drawTetromino();
+    }
+
+    function Move(){
+      if(!tetrominoRef.current) return;
+      tetrominoRef.current.y += 1;
+      Draw();
+      drawTetromino();
+    }
+
     const handleKeyDown = (e: KeyboardEvent) => {
+      Controls(e);
       if (e.code === "Space" && !isRunning.current) {
         isRunning.current = true;
+        tetrominoRef.current = generateTetromino();
         Draw();
-        generateTetromino();
+        drawTetromino();
+        
+        setInterval(() => {
+          Move();
+        }, 500); // moves every 500ms (adjust for speed)
       }
     };
 
