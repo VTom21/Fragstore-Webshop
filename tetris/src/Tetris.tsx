@@ -92,32 +92,38 @@ function App() {
 
     function Controls(e: KeyboardEvent) {
       if (!tetrominoRef.current) return;
-
+      const tetro = tetrominoRef.current;
+    
       switch (e.key) {
         case "ArrowLeft":
           if (!isBottom.current) {
-            tetrominoRef.current.x -= 1;
+            tetro.x = Math.max(tetro.x - 1, 0); 
           }
           break;
+    
         case "ArrowRight":
           if (!isBottom.current) {
-            tetrominoRef.current.x += 1;
+            const maxX = COLS - tetro.shape[0].length;
+            tetro.x = Math.min(tetro.x + 1, maxX);
           }
           break;
+    
         case "ArrowDown":
-          if (BottomCollision(tetrominoRef.current)) {
+          if (BottomCollision(tetro)) {
             isBottom.current = true;
           } else {
-            tetrominoRef.current.y += 1;
+            tetro.y += 1;
           }
           break;
+    
         case "ArrowUp":
           break;
       }
-
+    
       Draw();
       drawTetromino(tetrominoRef.current);
     }
+    
 
     function Move() {
       if (!tetrominoRef.current) return;
