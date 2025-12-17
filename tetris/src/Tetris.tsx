@@ -1,8 +1,6 @@
 import { useRef, useEffect } from "react";
 import { generateTetromino, getTetrominoColor } from "./Tetromino"; //imports functions from Tetromino.tsx
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
-import "./App.css"; //stylesheet
+
 
 function App() {
   //Refs are React Hooks that lets you edit (mutate) a stored value without rendering
@@ -255,7 +253,17 @@ function App() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="canvas"></canvas>;
+ return (
+  <div className="game-container">
+    <canvas ref={canvasRef} className="canvas" />
+    <div className="sidebar">
+      <div className="block-grid">
+        
+      </div>
+    </div>
+  </div>
+);
+
 }
 
 export default App;
