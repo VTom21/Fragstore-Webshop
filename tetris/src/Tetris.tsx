@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import { generateTetromino, getTetrominoColor } from "./Tetromino"; //imports functions from Tetromino.tsx
-// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
 import './App.css'; //stylesheet
 
 function App() {
@@ -112,12 +113,29 @@ function App() {
 
 
 
-    function Rotation( ){
+    function Rotation(){
       if(!tetrominoRef.current) return;
       const tetromino = tetrominoRef.current;
-      const size = tetromino.shape.length; 
-
+      const size = tetromino.shape.length; //if 3x3 -> 3, 4x4 -> 4 etc.
       
+      const newElements: number[][] = [];
+
+      for(let y = 0; y < size; y++){
+        newElements[y] = [];
+        for(let x = 0; x < size; x++){
+          newElements[y][x] = 0;
+        }
+      }
+      for(let y = 0; y < size; y++){
+        for(let x = 0; x < size; x++){
+            const newX = size - 1 - y;
+            const newY = x;
+
+            newElements[newY][newX] = tetromino.shape[y][x];
+        }
+      } 
+
+      tetromino.shape = newElements;
     }
 
 
@@ -152,7 +170,7 @@ function App() {
           break;
     
         case "ArrowUp":
-          Rotation(tetro);
+          Rotation();
           break;
       }
     
