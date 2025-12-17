@@ -1,7 +1,8 @@
 
 
-export type TetrominoShape = number[][];
+export type TetrominoShape = number[][]; // defines a 2D array type called TetrominoShape
 
+//
 export const SHAPES: Record<string, TetrominoShape> = {
     i: [
         [0,0,0,0],
