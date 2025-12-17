@@ -7,6 +7,8 @@ function App() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const tetrominoRef = useRef<ReturnType<typeof generateTetromino> | null>(null);
   const isRunning = useRef(false);
+  const isBottom = useRef(false);
+  const placedTetrominos = useRef<ReturnType<typeof generateTetromino>[]>([]); // store old blocks
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -24,21 +26,35 @@ function App() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     function Draw() {
-      if (isRunning.current) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#000";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      }
+      // Clear canvas
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw all placed Tetrominos
+      placedTetrominos.current.forEach(tetro => {
+        ctx.fillStyle = getTetrominoColor(tetro.type);
+        tetro.shape.forEach((row, y) => {
+          row.forEach((cell, x) => {
+            if (cell) {
+              ctx.fillRect(
+                (tetro.x + x) * BLOCK_SIZE,
+                (tetro.y + y) * BLOCK_SIZE,
+                BLOCK_SIZE,
+                BLOCK_SIZE
+              );
+            }
+          });
+        });
+      });
     }
 
-    function drawTetromino(){
-      const tetromino = tetrominoRef.current;
-      if(!tetromino) return;
+    function drawTetromino(tetromino: typeof tetrominoRef.current) {
+      if (!tetromino) return;
       ctx.fillStyle = getTetrominoColor(tetromino.type);
 
-      tetromino.shape.forEach((row, y) =>{
-        row.forEach((cell,x)=>{
-          if(cell){
+      tetromino.shape.forEach((row, y) => {
+        row.forEach((cell, x) => {
+          if (cell) {
             ctx.fillRect(
               (tetromino.x + x) * BLOCK_SIZE,
               (tetromino.y + y) * BLOCK_SIZE,
@@ -46,59 +62,99 @@ function App() {
               BLOCK_SIZE
             );
           }
-        })
+        });
       });
     }
 
+    function BottomCollision(tetromino: typeof tetrominoRef.current) {
+      if (!tetromino) return;
 
-
-   function Controls(e: KeyboardEvent){
-
-        if (!tetrominoRef.current) return;
-  
-        switch (e.key) {
-          case "ArrowLeft":
-            tetrominoRef.current.x -= 1; 
-            break;
-          case "ArrowRight":
-            tetrominoRef.current.x += 1; 
-            break;
-          case "ArrowDown":
-            tetrominoRef.current.y += 1; 
-            break;
-          case "ArrowUp":
-            break;
+      for (let y = 0; y < tetromino.shape.length; y++) {
+        for (let x = 0; x < tetromino.shape[y].length; x++) {
+          if (tetromino.shape[y][x]) {
+            if (tetromino.y + y + 1 >= ROWS) {
+              return true;
+            }
+            // Optional: check collisions with placed Tetrominos
+            for (const placed of placedTetrominos.current) {
+              if (
+                placed.shape[y + tetromino.y + 1 - placed.y] &&
+                placed.shape[y + tetromino.y + 1 - placed.y][x + tetromino.x - placed.x]
+              ) {
+                return true;
+              }
+            }
+          }
         }
-
-        Draw();
-        drawTetromino();
+      }
+      return false;
     }
 
-    function Move(){
-      if(!tetrominoRef.current) return;
-      tetrominoRef.current.y += 1;
+    function Controls(e: KeyboardEvent) {
+      if (!tetrominoRef.current) return;
+
+      switch (e.key) {
+        case "ArrowLeft":
+          if (!isBottom.current) {
+            tetrominoRef.current.x -= 1;
+          }
+          break;
+        case "ArrowRight":
+          if (!isBottom.current) {
+            tetrominoRef.current.x += 1;
+          }
+          break;
+        case "ArrowDown":
+          if (BottomCollision(tetrominoRef.current)) {
+            isBottom.current = true;
+          } else {
+            tetrominoRef.current.y += 1;
+          }
+          break;
+        case "ArrowUp":
+          break;
+      }
+
       Draw();
-      drawTetromino();
+      drawTetromino(tetrominoRef.current);
+    }
+
+    function Move() {
+      if (!tetrominoRef.current) return;
+
+      if (BottomCollision(tetrominoRef.current)) {
+        // Add tetromino to placed list
+        placedTetrominos.current.push(tetrominoRef.current);
+
+        tetrominoRef.current = generateTetromino();
+        isBottom.current = false;
+      } else {
+        tetrominoRef.current.y += 1;
+      }
+
+      Draw();
+      drawTetromino(tetrominoRef.current);
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
       Controls(e);
       if (e.code === "Space" && !isRunning.current) {
         isRunning.current = true;
+        isBottom.current = false;
         tetrominoRef.current = generateTetromino();
         Draw();
-        drawTetromino();
-        
+        drawTetromino(tetrominoRef.current);
+
         setInterval(() => {
           Move();
-        }, 500); // moves every 500ms (adjust for speed)
+        }, 500);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown); // cleanup
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 
