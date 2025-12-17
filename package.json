@@ -5,6 +5,12 @@
     "currency-to-locale": "^1.1.4",
     "express": "^5.1.0",
     "nodemailer": "^7.0.6",
-    "pixi.js": "^8.14.3"
+    "pixi.js": "^8.14.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3"
   }
 }
