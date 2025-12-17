@@ -109,6 +109,18 @@ function App() {
     }
 
 
+
+
+
+    function Rotation( ){
+      if(!tetrominoRef.current) return;
+      const tetromino = tetrominoRef.current;
+      const size = tetromino.shape.length; 
+
+      
+    }
+
+
     //Controls Function: takes a keyboard event as parameter
 
     function Controls(e: KeyboardEvent) {
@@ -140,6 +152,7 @@ function App() {
           break;
     
         case "ArrowUp":
+          Rotation(tetro);
           break;
       }
     
