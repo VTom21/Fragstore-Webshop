@@ -80,40 +80,56 @@ function App() {
       });
     }
 
-    //Bottom-Collision Function
+//Collision Checker Function
 
-    function BottomCollision(tetromino: typeof tetrominoRef.current) {
-      if (!tetromino) return;
 
-      //Goes through rows and cells (columns) of the Tetromino
-      for (let y = 0; y < tetromino.shape.length; y++) {
-        for (let x = 0; x < tetromino.shape[y].length; x++) {
-          if (tetromino.shape[y][x]) {
-            //checks if cell is filled (1 = true, 0 = false)
-            if (tetromino.y + y + 1 >= ROWS) {
-              //checks the next row as it moves down, whether it goes past bottom
-              return true;
-            }
+function CheckCollision(tetro: typeof tetrominoRef.current, offsetX = 0, offsetY = 0) {
+  if (!tetro) return false;
 
-            //goes through the array containing Tetrominos already placed on Canvas
-            for (const placed of placedTetrominos.current) {
-              //Checks if there is an existing row and that the cell is filled => next Tetromino falls on the first cell of placed Tetromino
-              //exp. 1 + 5 + 1 - 6 = 1 => ensures we are looking at the correct row of placed Tetromino
-              //exp. 1 + 3 - 2 = 2 => ensures we are looking at the correct column of placed Tetromino
-              if (
-                placed.shape[y + tetromino.y + 1 - placed.y] &&
-                placed.shape[y + tetromino.y + 1 - placed.y][
-                  x + tetromino.x - placed.x
-                ]
-              ) {
-                return true; //Tetromino falls onto another one
-              }
-            }
+  //Loops through rows and columns of Tetromino
+
+  for (let y = 0; y < tetro.shape.length; y++) {
+    for (let x = 0; x < tetro.shape[y].length; x++) {
+      if (tetro.shape[y][x]) { //if filled (1), assign new x and y
+        const newX = tetro.x + x + offsetX; //exp. 4 + 1 + 1 = 6
+        const newY = tetro.y + y + offsetY; //exp. 4 + 0 + 0 = 5 (stays the same)
+
+        // Checks whether it goes outside any borders on x and y
+        if (newX < 0 || newX >= COLS || newY >= ROWS) return true;
+
+        // Loops through already placed Tetrominos
+        for (const placed of placedTetrominos.current) {
+          //placed.shape[newY - placed.y] => checks if row exists
+          //placed.shape[newY - placed.y][newX - placed.x] => checks if cell is filled
+          // && binds the logic together
+          if (placed.shape[newY - placed.y] && placed.shape[newY - placed.y][newX - placed.x]) 
+          {
+            return true;
           }
         }
       }
-      return false;
     }
+  }
+
+  return false;
+}
+
+// Bottom collision => OffsetY + 1 => We check one row ahead on Y
+function BottomCollision(tetro: typeof tetrominoRef.current) {
+  return CheckCollision(tetro, 0, 1);
+}
+
+// Left collision => OffsetX - 1 => We check one column to the left on X
+function LeftCollision(tetro: typeof tetrominoRef.current) {
+  return CheckCollision(tetro, -1, 0);
+}
+
+// Right collision => OffsetX + 1 => We check one column to the right on X
+function RightCollision(tetro: typeof tetrominoRef.current) {
+  return CheckCollision(tetro, 1, 0);
+}
+
+
 
     function Edges(tetro: typeof tetrominoRef.current){
       if(!tetro) return {minC: 0, maxC:0};
@@ -174,20 +190,19 @@ function App() {
     function Controls(e: KeyboardEvent) {
       if (!tetrominoRef.current) return;
       const tetro = tetrominoRef.current; //stores current Tetromino
-      const {minC, maxC} = Edges(tetro);
 
 
 
       //switch statements for movements
       switch (e.key) {
         case "ArrowLeft":
-          if (!isBottom.current && tetro.x + minC > 0) {
+          if (!isBottom.current && !LeftCollision(tetro)) {
             tetro.x -= 1; //Moving Tetris to the left. If x is -1, Math.max doesn't let the Tetromino go too far left as it chooses the bigger value (a, b)
           }
           break;
 
         case "ArrowRight":
-          if (!isBottom.current && tetro.x + maxC < COLS - 1) {
+          if (!isBottom.current && !RightCollision(tetro)) {
             tetro.x += 1; //Moving Tetris to the right. If x is more than column count, Math.min doesn't let the Tetromino go too far right as it the smaller bigger value (a, b)
           }
           break;
@@ -258,7 +273,7 @@ function App() {
     <canvas ref={canvasRef} className="canvas" />
     <div className="sidebar">
       <div className="block-grid">
-        
+
       </div>
     </div>
   </div>
