@@ -75,7 +75,7 @@ function App() {
             if (tetromino.y + y + 1 >= ROWS) {
               return true;
             }
-            // Optional: check collisions with placed Tetrominos
+
             for (const placed of placedTetrominos.current) {
               if (
                 placed.shape[y + tetromino.y + 1 - placed.y] &&

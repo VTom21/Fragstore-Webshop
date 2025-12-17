@@ -2,8 +2,7 @@
 
 export type TetrominoShape = number[][]; // defines a 2D array type called TetrominoShape
 
-//
-export const SHAPES: Record<string, TetrominoShape> = {
+export const SHAPES: Record<string, TetrominoShape> = { //Record is a Typescript Utility that creates an object with a key (string) and property (TetrominoShape) 
     i: [
         [0,0,0,0],
         [1,1,1,1],
@@ -11,8 +10,8 @@ export const SHAPES: Record<string, TetrominoShape> = {
         [0,0,0,0]
     ],
     j: [
-        [1,0,0],
-        [1,1,1],
+        [1,0,0], 
+        [1,1,1], 
         [0,0,0],
     ],
     l: [
@@ -51,27 +50,30 @@ export const SHAPE_COLORS = [
     '#F44336'
 ];
 
+
+
 export function getTetrominoColor(type: string) {
-    const SHAPE_TYPES = Object.keys(SHAPES); 
-    const index = SHAPE_TYPES.indexOf(type);
-    return SHAPE_COLORS[index]; 
+    const SHAPE_TYPES = Object.keys(SHAPES);  // returns an array of all the keys in the object, exp: i, j
+    const index = SHAPE_TYPES.indexOf(type); // stores the index of that Tetromino
+    return SHAPE_COLORS[index]; //returns its color based on index
   }
 
 console.log(SHAPES);
 console.log(SHAPE_COLORS);
 
 
+//Generating Tetromino
 
 export function generateTetromino() {
     const types = Object.keys(SHAPES);
-    const randomIndex = Math.floor(Math.random() * types.length);
-    const randomType = types[randomIndex];
+    const randomIndex = Math.floor(Math.random() * types.length); //generates a random index
+    const randomType = types[randomIndex]; //chooses a random Tetromino
 
     return{
-        shape: SHAPES[randomType],
-        x: 3,
-        y: 0,
-        type: randomType
+        shape: SHAPES[randomType], //2D array of that Tetromino, exp z: [[0,1,1], [1,1,0], [0,0,0]]
+        x: 3, //x-axis
+        y: 0,//y-axis
+        type: randomType //exp: i, j
     };
 
 }
