@@ -1,6 +1,10 @@
 import { useRef, useEffect } from "react";
-import { generateTetromino, getTetrominoColor } from "./Tetromino"; //imports functions from Tetromino.tsx
-
+import {
+  generateTetromino,
+  getTetrominoColor,
+  SHAPES,
+  SHAPE_COLORS,
+} from "./Tetromino"; //imports functions from Tetromino.tsx
 
 function App() {
   //Refs are React Hooks that lets you edit (mutate) a stored value without rendering
@@ -80,59 +84,63 @@ function App() {
       });
     }
 
-//Collision Checker Function
+    //Collision Checker Function
 
+    function CheckCollision(
+      tetro: typeof tetrominoRef.current,
+      offsetX = 0,
+      offsetY = 0
+    ) {
+      if (!tetro) return false;
 
-function CheckCollision(tetro: typeof tetrominoRef.current, offsetX = 0, offsetY = 0) {
-  if (!tetro) return false;
+      //Loops through rows and columns of Tetromino
 
-  //Loops through rows and columns of Tetromino
+      for (let y = 0; y < tetro.shape.length; y++) {
+        for (let x = 0; x < tetro.shape[y].length; x++) {
+          if (tetro.shape[y][x]) {
+            //if filled (1), assign new x and y
+            const newX = tetro.x + x + offsetX; //exp. 4 + 1 + 1 = 6
+            const newY = tetro.y + y + offsetY; //exp. 4 + 0 + 0 = 5 (stays the same)
 
-  for (let y = 0; y < tetro.shape.length; y++) {
-    for (let x = 0; x < tetro.shape[y].length; x++) {
-      if (tetro.shape[y][x]) { //if filled (1), assign new x and y
-        const newX = tetro.x + x + offsetX; //exp. 4 + 1 + 1 = 6
-        const newY = tetro.y + y + offsetY; //exp. 4 + 0 + 0 = 5 (stays the same)
+            // Checks whether it goes outside any borders on x and y
+            if (newX < 0 || newX >= COLS || newY >= ROWS) return true;
 
-        // Checks whether it goes outside any borders on x and y
-        if (newX < 0 || newX >= COLS || newY >= ROWS) return true;
-
-        // Loops through already placed Tetrominos
-        for (const placed of placedTetrominos.current) {
-          //placed.shape[newY - placed.y] => checks if row exists
-          //placed.shape[newY - placed.y][newX - placed.x] => checks if cell is filled
-          // && binds the logic together
-          if (placed.shape[newY - placed.y] && placed.shape[newY - placed.y][newX - placed.x]) 
-          {
-            return true;
+            // Loops through already placed Tetrominos
+            for (const placed of placedTetrominos.current) {
+              //placed.shape[newY - placed.y] => checks if row exists
+              //placed.shape[newY - placed.y][newX - placed.x] => checks if cell is filled
+              // && binds the logic together
+              if (
+                placed.shape[newY - placed.y] &&
+                placed.shape[newY - placed.y][newX - placed.x]
+              ) {
+                return true;
+              }
+            }
           }
         }
       }
+
+      return false;
     }
-  }
 
-  return false;
-}
+    // Bottom collision => OffsetY + 1 => We check one row ahead on Y
+    function BottomCollision(tetro: typeof tetrominoRef.current) {
+      return CheckCollision(tetro, 0, 1);
+    }
 
-// Bottom collision => OffsetY + 1 => We check one row ahead on Y
-function BottomCollision(tetro: typeof tetrominoRef.current) {
-  return CheckCollision(tetro, 0, 1);
-}
+    // Left collision => OffsetX - 1 => We check one column to the left on X
+    function LeftCollision(tetro: typeof tetrominoRef.current) {
+      return CheckCollision(tetro, -1, 0);
+    }
 
-// Left collision => OffsetX - 1 => We check one column to the left on X
-function LeftCollision(tetro: typeof tetrominoRef.current) {
-  return CheckCollision(tetro, -1, 0);
-}
+    // Right collision => OffsetX + 1 => We check one column to the right on X
+    function RightCollision(tetro: typeof tetrominoRef.current) {
+      return CheckCollision(tetro, 1, 0);
+    }
 
-// Right collision => OffsetX + 1 => We check one column to the right on X
-function RightCollision(tetro: typeof tetrominoRef.current) {
-  return CheckCollision(tetro, 1, 0);
-}
-
-
-
-    function Edges(tetro: typeof tetrominoRef.current){
-      if(!tetro) return {minC: 0, maxC:0};
+    function Edges(tetro: typeof tetrominoRef.current) {
+      if (!tetro) return { minC: 0, maxC: 0 };
       const size = tetro.shape.length;
       let minC = size;
       let maxC = 0;
@@ -145,7 +153,79 @@ function RightCollision(tetro: typeof tetrominoRef.current) {
         }
       }
 
-      return {minC, maxC};
+      return { minC, maxC };
+    }
+
+    function ClearLines() {
+      const board: number[][] = [];
+      const colors: string[][] = [];
+
+      for (let y = 0; y < ROWS; y++) {
+        board[y] = [];
+        colors[y] = [];
+        for (let x = 0; x < COLS; x++) {
+          board[y][x] = 0;
+          colors[y][x] = "";
+        }
+      }
+
+      placedTetrominos.current.forEach((tetro) => {
+        const color = getTetrominoColor(tetro.type);
+        tetro.shape.forEach((row, y) => {
+          row.forEach((cell, x) => {
+            if (cell) {
+              const gridY = tetro.y + y;
+              const gridX = tetro.x + x;
+              if (gridY >= 0 && gridY < ROWS && gridX >= 0 && gridX < COLS) {
+                board[gridY][gridX] = 1;
+                colors[gridY][gridX] = color;
+              }
+            }
+          });
+        });
+      });
+
+      const complete_lines: number[] = [];
+
+      for (let y = 0; y < ROWS; y++) {
+        if (board[y].every((cell) => cell == 1)) {
+          complete_lines.push(y);
+        }
+      }
+
+      if (complete_lines.length === 0) return;
+
+      for (let y = complete_lines.length - 1; y >= 0; y--) {
+        const line = complete_lines[y];
+
+        board.splice(line, 1);
+        colors.splice(line, 1);
+
+        board.unshift(Array(COLS).fill(0));
+        colors.unshift(Array(COLS).fill(""));
+
+        for(let j = 0; j <= y; j++){
+          complete_lines[j]++;
+        }
+      }
+
+      placedTetrominos.current = [];
+      for (let y = 0; y < ROWS; y++) {
+        for (let x = 0; x < COLS; x++) {
+          if (board[y][x] === 1) {
+            const color = colors[y][x];
+            const typeIndex = SHAPE_COLORS.indexOf(color);
+            const type = Object.keys(SHAPES)[typeIndex];
+
+            placedTetrominos.current.push({
+              shape: [[1]],
+              x: x,
+              y: y,
+              type: type,
+            });
+          }
+        }
+      }
     }
 
     function Rotation() {
@@ -172,17 +252,15 @@ function RightCollision(tetro: typeof tetrominoRef.current) {
 
       tetromino.shape = newElements;
 
-      const {minC, maxC} = Edges(tetromino);
+      const { minC, maxC } = Edges(tetromino);
 
-
-      if(tetromino.x + maxC >= COLS){
+      if (tetromino.x + maxC >= COLS) {
         tetromino.x -= tetromino.x + maxC - COLS + 1;
       }
 
-      if(tetromino.x + minC < 0){
+      if (tetromino.x + minC < 0) {
         tetromino.x += -(tetromino.x + minC);
       }
-
     }
 
     //Controls Function: takes a keyboard event as parameter
@@ -190,8 +268,6 @@ function RightCollision(tetro: typeof tetrominoRef.current) {
     function Controls(e: KeyboardEvent) {
       if (!tetrominoRef.current) return;
       const tetro = tetrominoRef.current; //stores current Tetromino
-
-
 
       //switch statements for movements
       switch (e.key) {
@@ -232,6 +308,7 @@ function RightCollision(tetro: typeof tetrominoRef.current) {
       //checks if theres bottom collision made by the Tetromino
       if (BottomCollision(tetrominoRef.current)) {
         placedTetrominos.current.push(tetrominoRef.current); //pushes Tetromino values to array
+        ClearLines();
 
         tetrominoRef.current = generateTetromino(); // genereates a new Tetromino
         isBottom.current = false; //sets boolean to false
@@ -268,17 +345,14 @@ function RightCollision(tetro: typeof tetrominoRef.current) {
     };
   }, []);
 
- return (
-  <div className="game-container">
-    <canvas ref={canvasRef} className="canvas" />
-    <div className="sidebar">
-      <div className="block-grid">
-
+  return (
+    <div className="game-container">
+      <canvas ref={canvasRef} className="canvas" />
+      <div className="sidebar">
+        <div className="block-grid"></div>
       </div>
     </div>
-  </div>
-);
-
+  );
 }
 
 export default App;
