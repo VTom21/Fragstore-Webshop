@@ -228,6 +228,8 @@ function App() {
       }
     }
 
+    
+
     function Rotation() {
       if (!tetrominoRef.current) return;
       const tetromino = tetrominoRef.current;
