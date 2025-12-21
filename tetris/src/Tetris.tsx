@@ -1,18 +1,13 @@
 import { useRef, useEffect } from "react";
-import {
-  generateTetromino,
-  getTetrominoColor,
-  SHAPES,
-  SHAPE_COLORS,
-} from "./Tetromino"; //imports functions from Tetromino.tsx
+import {generateTetromino, getTetrominoColor, SHAPES, SHAPE_COLORS,} from "./Tetromino"; //imports functions from Tetromino.tsx
 
 function App() {
   //Refs are React Hooks that lets you edit (mutate) a stored value without rendering
 
-  const canvasRef = useRef<HTMLCanvasElement | null>(null); //Creates the Canvas object
-  const tetrominoRef = useRef<ReturnType<typeof generateTetromino> | null>(
-    null
-  ); //References and assigns the generateTetromino class
+  const canvasRef = useRef<HTMLCanvasElement | null>(null); //Creates the Canvas container
+  const NextcanvasRef = useRef<HTMLCanvasElement | null>(null); //Creates another Canvas container fror sidebar
+  const tetrominoRef = useRef<ReturnType<typeof generateTetromino> | null>(null); //References and assigns the generateTetromino class
+  const NextTetrominoRef = useRef<ReturnType<typeof generateTetromino> | null>(null); 
   const isRunning = useRef(false); //isRunning Boolean
   const isBottom = useRef(false); //isBottom Boolean
   const placedTetrominos = useRef<ReturnType<typeof generateTetromino>[]>([]); // stores old, already placed blocks in array
@@ -83,6 +78,35 @@ function App() {
         });
       });
     }
+
+function Next_Tetromino(tetromino: typeof NextTetrominoRef.current) {
+  if (!tetromino) return;
+
+  const sidebar = NextcanvasRef.current;
+  if (!sidebar) return;
+
+  const sidebar_ctx = sidebar.getContext("2d");
+  if (!sidebar_ctx) return;
+
+  // CLEAR SIDEBAR CANVAS
+  sidebar_ctx.clearRect(0, 0, sidebar.width, sidebar.height);
+
+  sidebar_ctx.fillStyle = getTetrominoColor(tetromino.type);
+
+  tetromino.shape.forEach((row, y) => {
+    row.forEach((cell, x) => {
+      if (cell) {
+        sidebar_ctx.fillRect(
+          x * BLOCK_SIZE + 25,
+          y * BLOCK_SIZE + 20,
+          BLOCK_SIZE,
+          BLOCK_SIZE
+        );
+      }
+    });
+  });
+}
+
 
     //Collision Checker Function
 
@@ -312,7 +336,17 @@ function App() {
         placedTetrominos.current.push(tetrominoRef.current); //pushes Tetromino values to array
         ClearLines();
 
-        tetrominoRef.current = generateTetromino(); // genereates a new Tetromino
+          if (!NextTetrominoRef.current) {
+            NextTetrominoRef.current = generateTetromino();
+          }
+
+        tetrominoRef.current = NextTetrominoRef.current;
+        if (tetrominoRef.current) {
+          tetrominoRef.current.x = 3;
+          tetrominoRef.current.y = 0;
+          }
+
+        NextTetrominoRef.current = generateTetromino();
         isBottom.current = false; //sets boolean to false
       } else {
         tetrominoRef.current.y += 1; //continues moving it downwards
@@ -321,6 +355,7 @@ function App() {
       //calls draw functions
       Draw();
       drawTetromino(tetrominoRef.current);
+      Next_Tetromino(NextTetrominoRef.current);
     }
 
     //at Spacebar press, the game starts.
@@ -350,8 +385,8 @@ function App() {
   return (
     <div className="game-container">
       <canvas ref={canvasRef} className="canvas" />
-      <div className="sidebar">
-        <div className="block-grid"></div>
+      <div  className="sidebar">
+        <canvas ref={NextcanvasRef} width={120} height={120} />
       </div>
     </div>
   );
