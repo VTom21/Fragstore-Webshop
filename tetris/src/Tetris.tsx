@@ -2,10 +2,13 @@ import { useRef, useEffect, useState } from "react";
 import { generateTetromino, getTetrominoColor, SHAPES, SHAPE_COLORS, } from "./Tetromino"; //imports functions from Tetromino.tsx
 
 function App() {
-  //Refs are React Hooks that lets you edit (mutate) a stored value without rendering
+  //In React, we have to talk about rendering => React only renders state changes (useState), property and context changes
+  //Refs are React Hooks that lets you edit (mutate) a stored value without re-rendering, by using .current
+  //useState is a React model that lets you render (score) and also re-render (setScore) a specific variable
+  //useState - useRef Comparison: setScore(value) - score.current = value
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null); //Creates the Canvas container
-  const NextcanvasRef = useRef<HTMLCanvasElement | null>(null); //Creates another Canvas container fror sidebar
+  const NextcanvasRef = useRef<HTMLCanvasElement | null>(null); //Creates another Canvas container for sidebar
   const tetrominoRef = useRef<ReturnType<typeof generateTetromino> | null>(null); //References and assigns the generateTetromino class
   const NextTetrominoRef = useRef<ReturnType<typeof generateTetromino> | null>(null);
   const isRunning = useRef(false); //isRunning Boolean
@@ -287,29 +290,41 @@ function App() {
     }
 
 
-
+    //Rotation Function => Matrix Rotation
     function Rotation() {
       if (!tetrominoRef.current) return;
-      const tetromino = tetrominoRef.current;
+      const tetromino = tetrominoRef.current; //stores current tetromino
       const size = tetromino.shape.length; //if 3x3 -> 3, 4x4 -> 4 etc.
 
-      const newElements: number[][] = [];
+      const newElements: number[][] = []; //creates a new 2D Array
 
+      //We fill out this 2D array with zeros
       for (let y = 0; y < size; y++) {
         newElements[y] = [];
         for (let x = 0; x < size; x++) {
           newElements[y][x] = 0;
         }
       }
+      //We perform rotation
+      //example of Matrix Rotation with T-shape (counter-clockwise):
+      /* 
+      0°  : (1,1)
+      90° : (0,1)
+      180°: (1,0)
+      270°: (2,1)
+
+      */
       for (let y = 0; y < size; y++) {
         for (let x = 0; x < size; x++) {
-          const newX = size - 1 - y;
-          const newY = x;
+          const newX = size - 1 - y; //Gets the value of X
+          const newY = x; //Y gets the value of X in previous angle
+
 
           newElements[newY][newX] = tetromino.shape[y][x];
         }
       }
 
+      //applies the new position for the tetromino
       tetromino.shape = newElements;
 
       const { minC, maxC } = Edges(tetromino);
@@ -414,9 +429,11 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  });
 
   return (
+    //this is where our UI elements are
+    //by using the Ref variables, we create the base UI elements
     <div className="game-container">
       <canvas ref={canvasRef} className="canvas" />
       <div className="sidebar">
