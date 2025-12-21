@@ -11,6 +11,7 @@ function App() {
   const isRunning = useRef(false); //isRunning Boolean
   const isBottom = useRef(false); //isBottom Boolean
   const placedTetrominos = useRef<ReturnType<typeof generateTetromino>[]>([]); // stores old, already placed blocks in array
+  const score = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current!; //We access the Cnavas object
@@ -105,6 +106,10 @@ function Next_Tetromino(tetromino: typeof NextTetrominoRef.current) {
       }
     });
   });
+  
+
+  sidebar_ctx.fillStyle = "white";
+  sidebar_ctx.fillText("Score:" + score.current, 20, 120);
 }
 
 
@@ -216,6 +221,7 @@ function Next_Tetromino(tetromino: typeof NextTetrominoRef.current) {
           complete_lines.push(y);
         }
       }
+      score.current += 10 * complete_lines.length;
 
       if (complete_lines.length === 0) return;
 
@@ -386,7 +392,7 @@ function Next_Tetromino(tetromino: typeof NextTetrominoRef.current) {
     <div className="game-container">
       <canvas ref={canvasRef} className="canvas" />
       <div  className="sidebar">
-        <canvas ref={NextcanvasRef} width={120} height={120} />
+        <canvas ref={NextcanvasRef} width={120} height={320} />
       </div>
     </div>
   );
