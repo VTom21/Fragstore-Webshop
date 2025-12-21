@@ -67,7 +67,7 @@ console.log(SHAPE_COLORS);
 export function generateTetromino() {
     const types = Object.keys(SHAPES);
     const randomIndex = Math.floor(Math.random() * types.length); //generates a random index
-    const randomType = types[randomIndex]; //chooses a random Tetromino
+    const randomType = types[randomIndex]; //chooses a random Tetromino type, exp i, j 
 
     return{
         shape: SHAPES[randomType], //2D array of that Tetromino, exp z: [[0,1,1], [1,1,0], [0,0,0]]

@@ -1,5 +1,5 @@
-import { useRef, useEffect } from "react";
-import {generateTetromino, getTetrominoColor, SHAPES, SHAPE_COLORS,} from "./Tetromino"; //imports functions from Tetromino.tsx
+import { useRef, useEffect, useState } from "react";
+import { generateTetromino, getTetrominoColor, SHAPES, SHAPE_COLORS, } from "./Tetromino"; //imports functions from Tetromino.tsx
 
 function App() {
   //Refs are React Hooks that lets you edit (mutate) a stored value without rendering
@@ -7,11 +7,14 @@ function App() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null); //Creates the Canvas container
   const NextcanvasRef = useRef<HTMLCanvasElement | null>(null); //Creates another Canvas container fror sidebar
   const tetrominoRef = useRef<ReturnType<typeof generateTetromino> | null>(null); //References and assigns the generateTetromino class
-  const NextTetrominoRef = useRef<ReturnType<typeof generateTetromino> | null>(null); 
+  const NextTetrominoRef = useRef<ReturnType<typeof generateTetromino> | null>(null);
   const isRunning = useRef(false); //isRunning Boolean
   const isBottom = useRef(false); //isBottom Boolean
   const placedTetrominos = useRef<ReturnType<typeof generateTetromino>[]>([]); // stores old, already placed blocks in array
-  const score = useRef(0);
+  const [score, setScore] = useState(0);
+  const scoreUI = useRef<HTMLHeadingElement | null>(null);
+  const high_score = localStorage.getItem("highScore") || "";
+  const highScoreUI = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current!; //We access the Cnavas object
@@ -30,6 +33,10 @@ function App() {
     canvas.width = GRID_WIDTH;
     canvas.height = GRID_HEIGHT;
     ctx.fillRect(0, 0, canvas.width, canvas.height); //initial clear on Canvas
+
+    if (highScoreUI.current) {
+      highScoreUI.current.textContent = `High Score: ${high_score || 0}`;
+    }
 
     //draws out already placed Tetrominos on bottom
     function Draw() {
@@ -80,37 +87,34 @@ function App() {
       });
     }
 
-function Next_Tetromino(tetromino: typeof NextTetrominoRef.current) {
-  if (!tetromino) return;
+    function Next_Tetromino(tetromino: typeof NextTetrominoRef.current) {
+      if (!tetromino) return;
 
-  const sidebar = NextcanvasRef.current;
-  if (!sidebar) return;
+      const sidebar = NextcanvasRef.current;
+      if (!sidebar) return;
 
-  const sidebar_ctx = sidebar.getContext("2d");
-  if (!sidebar_ctx) return;
+      const sidebar_ctx = sidebar.getContext("2d");
+      if (!sidebar_ctx) return;
 
-  // CLEAR SIDEBAR CANVAS
-  sidebar_ctx.clearRect(0, 0, sidebar.width, sidebar.height);
+      // CLEAR SIDEBAR CANVAS
+      sidebar_ctx.clearRect(0, 0, sidebar.width, sidebar.height);
 
-  sidebar_ctx.fillStyle = getTetrominoColor(tetromino.type);
+      sidebar_ctx.fillStyle = getTetrominoColor(tetromino.type);
 
-  tetromino.shape.forEach((row, y) => {
-    row.forEach((cell, x) => {
-      if (cell) {
-        sidebar_ctx.fillRect(
-          x * BLOCK_SIZE + 25,
-          y * BLOCK_SIZE + 20,
-          BLOCK_SIZE,
-          BLOCK_SIZE
-        );
-      }
-    });
-  });
-  
+      tetromino.shape.forEach((row, y) => {
+        row.forEach((cell, x) => {
+          if (cell) {
+            sidebar_ctx.fillRect(
+              x * BLOCK_SIZE + 25,
+              y * BLOCK_SIZE + 20,
+              BLOCK_SIZE,
+              BLOCK_SIZE
+            );
+          }
+        });
+      });
 
-  sidebar_ctx.fillStyle = "white";
-  sidebar_ctx.fillText("Score:" + score.current, 20, 120);
-}
+    }
 
 
     //Collision Checker Function
@@ -221,7 +225,31 @@ function Next_Tetromino(tetromino: typeof NextTetrominoRef.current) {
           complete_lines.push(y);
         }
       }
-      score.current += 10 * complete_lines.length;
+      setScore(prev => {
+        const newScore = prev + 10 * complete_lines.length;
+
+        if (scoreUI.current) {
+          scoreUI.current.textContent = `Score: ${newScore}`;
+        }
+
+        const currentHigh = parseInt(high_score) || 0;
+
+        if (newScore > currentHigh) {
+
+          if (highScoreUI.current) {
+            highScoreUI.current.textContent = `High Score: ${newScore}`;
+          }
+
+          localStorage.setItem("highScore", newScore.toString());
+        }
+
+        return newScore;
+      });
+
+
+      if (score > parseInt(high_score)) {
+        localStorage.setItem("highScore", score.toString());
+      }
 
       if (complete_lines.length === 0) return;
 
@@ -234,7 +262,7 @@ function Next_Tetromino(tetromino: typeof NextTetrominoRef.current) {
         board.unshift(Array(COLS).fill(0));
         colors.unshift(Array(COLS).fill(""));
 
-        for(let j = 0; j <= y; j++){
+        for (let j = 0; j <= y; j++) {
           complete_lines[j]++;
         }
       }
@@ -258,7 +286,7 @@ function Next_Tetromino(tetromino: typeof NextTetrominoRef.current) {
       }
     }
 
-    
+
 
     function Rotation() {
       if (!tetrominoRef.current) return;
@@ -342,15 +370,15 @@ function Next_Tetromino(tetromino: typeof NextTetrominoRef.current) {
         placedTetrominos.current.push(tetrominoRef.current); //pushes Tetromino values to array
         ClearLines();
 
-          if (!NextTetrominoRef.current) {
-            NextTetrominoRef.current = generateTetromino();
-          }
+        if (!NextTetrominoRef.current) {
+          NextTetrominoRef.current = generateTetromino();
+        }
 
         tetrominoRef.current = NextTetrominoRef.current;
         if (tetrominoRef.current) {
           tetrominoRef.current.x = 3;
           tetrominoRef.current.y = 0;
-          }
+        }
 
         NextTetrominoRef.current = generateTetromino();
         isBottom.current = false; //sets boolean to false
@@ -391,8 +419,10 @@ function Next_Tetromino(tetromino: typeof NextTetrominoRef.current) {
   return (
     <div className="game-container">
       <canvas ref={canvasRef} className="canvas" />
-      <div  className="sidebar">
+      <div className="sidebar">
         <canvas ref={NextcanvasRef} width={120} height={320} />
+        <h3 className="score" ref={scoreUI}>Score: {score}</h3>
+        <h3 className="high_score" ref={highScoreUI}>Score: {score}</h3>
       </div>
     </div>
   );

@@ -103,16 +103,16 @@ body {
       background: linear-gradient(90deg, transparent, rgba($primary-color, 0.3), transparent);
     }
 
-    h3 {
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 2.5px;
-      color: $accent-light;
-      margin-bottom: 1.25rem;
-      font-weight: 700;
-      text-shadow: 0 0 15px rgba($accent-light, 0.3);
-    }
   }
+
+  .score, .high_score{
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    color: $primary-color;
+  }
+
+
 
   .stat-item {
     display: flex;
