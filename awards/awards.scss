@@ -1,0 +1,456 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+// ================= VARIABLES =================
+$bg-main: #0f0f14;
+$bg-card: #1a1b26;
+$bg-hover: #202231;
+
+$text-light: #e8e8e8;
+$text-muted2: #c7c2c2;
+
+$color-primary: #00f7ff;
+$color-primary-dark: #00d4d4;
+
+$gradient-primary: linear-gradient(135deg, $color-primary, $color-primary-dark);
+$shadow: 0 4px 25px rgba(0, 247, 255, 0.1);
+
+
+
+
+// ================= GLOBAL =================
+body {
+  background: $bg-card;
+  color: $text-light;
+  font-family: system-ui, sans-serif;
+}
+
+// ================= HERO =================
+.hero {
+  height: 100vh;
+  background: $bg-main;
+  position: relative;
+  overflow: hidden;
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('../pictures/awards_hero.png') center/cover no-repeat;
+    filter: brightness(0.2);
+    z-index: 0;
+  }
+
+  .hero-title {
+    font-size: 4rem;
+    color: $color-primary;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-subtitle {
+    max-width: 36rem;
+    color: $text-muted2;
+    margin-bottom: 2.5rem;
+    font-size: 1.25rem;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .btn-primary {
+      background: $gradient-primary;
+      color: $bg-main;
+      padding: 0.75rem 2rem;
+      border-radius: 0.75rem;
+      box-shadow: $shadow;
+      font-weight: 600;
+    }
+
+  }
+
+  .arrow {
+    margin-top: 3rem;
+
+    svg {
+      width: 2rem;
+      animation: bounce 1.5s infinite;
+    }
+  }
+}
+
+@keyframes bounce {
+  50% { transform: translateY(0.5rem); }
+}
+
+// ================= NAVBAR =================
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 4rem;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    color: $text-light;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+
+
+// ================= DIVIDER =================
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, $color-primary, transparent);
+}
+
+// ================= COMPANIES =================
+.companies {
+  padding: 6rem 0;
+  background:
+    radial-gradient(circle at top, rgba(0,247,255,0.08), transparent 60%),
+    linear-gradient(to bottom, $bg-main, $bg-card);
+}
+
+.brand-cloud h2::after {
+  content: '';
+  display: block;
+  width: 4rem;
+  height: 3px;
+  background: $gradient-primary;
+  margin: 1rem auto;
+  border-radius: 999px;
+}
+
+.brand-grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+}
+
+.brand-card {
+  background: rgba(26, 27, 38, 0.7);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  height: 6.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.35s ease;
+
+  img {
+    max-height: 3rem;
+    opacity: 0.7;
+    filter: grayscale(100%);
+    transition: all 0.35s ease;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(0,247,255,0.2);
+
+    img {
+      opacity: 1;
+      filter: none;
+    }
+  }
+}
+
+// ================= FAB =================
+.fab-icon {
+  width: 3rem;
+  height: 3rem;
+  background: $bg-card;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+}
+
+
+.learn_more {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  color: #e8e8e8;
+  border: 2px solid #00f7ff;
+  overflow: hidden;
+  transition: color 0.35s ease;
+  z-index: 1;
+
+  span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, #00f7ff, #00d4d4);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: #0f0f14;
+
+    span {
+      width: 350%;
+      height: 350%;
+    }
+  }
+}
+
+.text-content h2{
+    color: $color-primary;
+}
+
+#mission,#about,.awards_wrapper {
+    padding: 2rem;
+}
+
+.awards-section {
+  background-color: #0f0f14;
+  padding: 4rem 1.5rem;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #00f7ff, #00d4d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      color: #c7c2c2;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .cards {
+      display: grid;
+      gap: 1.5rem;
+
+      .card {
+        border-radius: 1rem;
+        background: #1a1a1f;
+        box-shadow: 0 4px 20px rgba(0, 215, 255, 0.2);
+        padding: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+          box-shadow: 0 8px 40px rgba(0, 215, 255, 0.35);
+        }
+
+        h3 {
+          color: #00f7ff;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          color: #c7c2c2;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+/* SCSS */
+.section {
+  padding: 6rem 1.5rem;
+  background-color: #0f0f14;
+  overflow: hidden;
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-self:center;
+    max-width: 1300px;
+    margin: 0 auto;
+    gap: 8rem;
+
+
+
+    .text {
+      flex: 1 1 45%;
+      color: #c7c2c2;
+
+      h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #00f7ff, #00d4d4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.75rem 2rem;
+        background: linear-gradient(135deg, #00f7ff, #00d4d4);
+        color: #0f0f14;
+        font-weight: 600;
+        border-radius: 1rem;
+        box-shadow: 0 4px 25px rgba(0, 247, 255, 0.1);
+        text-decoration: none;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .image {
+      flex: 1 1 45%;
+      position: relative;
+
+      img {
+        width: 100%;
+        max-width: 450px;
+        border-radius: 1.5rem;
+        transition: transform 0.5s ease;
+        display: block;
+        margin: 0 auto;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .section .container {
+    flex-direction: column;
+    gap: 3rem;
+
+    &.reverse {
+      flex-direction: column;
+    }
+
+    .text,
+    .image {
+      flex: 1 1 100%;
+      text-align: center;
+
+      .btn {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .section .container .text h2 {
+    font-size: 2rem;
+  }
+
+  .section .container .text p {
+    font-size: 1rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .awards-section .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .awards-section .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.awards_wrapper{
+      background-color: #101011;
+        padding: 7rem;
+}
+
+#awards_promo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  padding: 5rem;
+
+  .award-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left; // text full width
+    background-color: #101011;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 3px solid $bg-card;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; // full width of grid cell
+    max-width: 300px;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    img {
+      margin-bottom: 1rem;
+      width: 120px;
+      height: auto;
+      border-radius: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      color: #00f7ff;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
+#why_us{
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #00f7ff, #00d4d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+
+

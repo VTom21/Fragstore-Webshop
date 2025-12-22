@@ -321,17 +321,17 @@ $currencies = array_keys($data["rates"]);
                             </li>
                         </ul>
                     </div>
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white">Legal</h2>
-                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                            <li class="mb-4">
-                                <a href="./pdf/Privacy Policy.pdf" class="">Privacy Policy</a>
-                            </li>
-                            <li>
-                                <a href="./pdf/Terms and Conditions.pdf" class="">Terms &amp; Conditions</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div>
+            <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white" data-i18n="legal">Community</h2>
+            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <li class="mb-4 links">
+                <a href="../pdf/Privacy Policy.pdf" class="links" data-i18n="privacy_policy">Game Awards</a>
+              </li>
+              <li class="links">
+                <a href="../pdf/Terms and Conditions.pdf" class="links" data-i18n="terms_and_conditions">Work with us</a>
+              </li>
+            </ul>
+          </div>
                 </div>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" style="border-color:rgb(88, 86, 86);" />
