@@ -2,9 +2,9 @@
 include 'awards_data.php';
 
 $topGOTY = null;
-foreach($awards as $award){
-    if($award['award_name'] === 'Game of the Year'){
-        if(!$topGOTY || $award['award_year'] > $topGOTY['award_year']){
+foreach ($awards as $award) {
+    if ($award['award_name'] === 'Game of the Year') {
+        if (!$topGOTY || $award['award_year'] > $topGOTY['award_year']) {
             $topGOTY = $award;
         }
     }
@@ -148,44 +148,59 @@ foreach($awards as $award){
         </section>
     </div>
 
-<!-- Hero Section for #1 Game of the Year -->
-<section class="relative w-full h-screen bg-gray-900">
-  <?php if($topGOTY): ?>
-  <!-- Background Image -->
-  <div class="absolute inset-0">
-    <img src="<?php echo $topGOTY['game_img']; ?>" alt="<?php echo $topGOTY['game_name']; ?>" class="w-full h-full object-cover brightness-50">
-  </div>
+    <!-- Hero Section for #1 Game of the Year -->
+    <section class="relative w-full h-screen bg-gray-900">
+        <?php if ($topGOTY): ?>
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+                <img src="<?php echo $topGOTY['game_img']; ?>" alt="<?php echo $topGOTY['game_name']; ?>" class="w-full h-full object-cover brightness-50">
+            </div>
 
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70"></div>
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70"></div>
 
-  <!-- Hero Content -->
-  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-    <span class="bg-yellow-400 text-black font-bold px-4 py-2 rounded-full uppercase tracking-wide text-sm shadow-lg mb-4">
-      Game of the Year <?php echo $topGOTY['award_year']; ?>
-    </span>
-    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white mb-6">
-      <?php echo $topGOTY['game_name']; ?>
-    </h1>
-    <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mb-8">
-      Celebrate the most acclaimed game of the year—experience innovation, creativity, and excellence in gaming.
-    </p>
-    <a href="#featured_winners" class="bg-cyan-400 text-gray-900 font-semibold px-8 py-4 rounded-lg shadow-lg hover:scale-105 transition-transform">
-      Explore Winners
-    </a>
-  </div>
-  <?php endif; ?>
-</section>
+            <!-- Hero Content -->
+            <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+                <span class="bg-yellow-400 text-black font-bold px-4 py-2 rounded-full uppercase tracking-wide text-sm shadow-lg mb-4">
+                    Game of the Year <?php echo $topGOTY['award_year']; ?>
+                </span>
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white mb-6">
+                    <?php echo $topGOTY['game_name']; ?>
+                </h1>
+                <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mb-8">
+                    Celebrate the most acclaimed game of the year—experience innovation, creativity, and excellence in gaming.
+                </p>
+                <a href="#featured_winners" class="bg-cyan-400 text-gray-900 font-semibold px-8 py-4 rounded-lg shadow-lg hover:scale-105 transition-transform">
+                    Explore Winners
+                </a>
+            </div>
+        <?php endif; ?>
+    </section>
     <!-- Featured Winners Section -->
     <section id="featured_winners" class="relative bg-[#0f0f14] py-24">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00f7ff] to-[#00d4d4] text-center mb-16">
-                Featured Winners
+                Awards Archive
             </h2>
 
+            <div class="flex flex-wrap justify-center gap-3 mb-16">
+                <button class="abc-btn px-4 py-2 rounded-lg bg-gray-700 text-white hover:bg-gray-600 transition" data-filter="all">All</button>
+                <?php foreach (range('A', 'Z') as $letter): ?>
+                    <button class="abc-btn px-4 py-2 rounded-lg bg-gray-700 text-white hover:bg-gray-600 transition" data-filter="<?php echo $letter; ?>">
+                        <?php echo $letter; ?>
+                    </button>
+                <?php endforeach; ?>
+            </div>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
                 <?php foreach ($awards as $award): ?>
-                    <div class="group relative rounded-3xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-3xl">
+
+                    <?php
+                    // Get the first letter of the game name (uppercase)
+                    $firstLetter = strtoupper(substr($award['game_name'], 0, 1));
+                    ?>
+                    <div class=" award-card group relative rounded-3xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-3xl" data-letter="<?php echo $firstLetter; ?>">
                         <!-- Game Image -->
                         <div class="overflow-hidden rounded-3xl">
                             <img src="<?php echo $award['game_img']; ?>" alt="<?php echo $award['game_name']; ?>" class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110">
@@ -264,6 +279,6 @@ foreach($awards as $award){
     </div>
 </body>
 
-<script type="module" src="awards.js"></script>
+<script src="awards.js"></script>
 
 </html>
