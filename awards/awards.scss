@@ -9,6 +9,7 @@ $text-muted2: #c7c2c2;
 
 $color-primary: #00f7ff;
 $color-primary-dark: #00d4d4;
+$test: rgba(0, 0, 0, 0.267);
 
 $gradient-primary: linear-gradient(135deg, $color-primary, $color-primary-dark);
 $shadow: 0 4px 25px rgba(0, 247, 255, 0.1);
@@ -93,15 +94,45 @@ body {
   justify-content: space-between;
   align-items: center;
 
+
+
   a {
     color: $text-light;
+    position: relative;
 
     &:hover {
       color: $color-primary;
     }
+
+    &::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: $color-primary;
+
+  }
+
+  &:hover::after{
+    width: 100%;
+    animation: up 0.3s ease;
+  }
+
   }
 }
 
+@keyframes up {
+    0%{
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    100%{
+      opacity: 1;
+      transform: translateY(0px);
+    }
+}
 
 
 // ================= DIVIDER =================
@@ -220,10 +251,16 @@ body {
 }
 
 .awards-section {
-  background-color: #0f0f14;
+  position: relative; // needed if you add overlay later
+  background: url("https://cdn.mos.cms.futurecdn.net/c3Y8YW6YHrkiqp86gyyyJF.png") center center / cover no-repeat;
   padding: 4rem 1.5rem;
+  overflow: hidden; // ensures content stays inside
+
+
 
   .container {
+    position: relative; // ensures container is above overlay
+    z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
@@ -245,6 +282,7 @@ body {
 
     .cards {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
 
       .card {
@@ -273,6 +311,7 @@ body {
     }
   }
 }
+
 
 /* SCSS */
 .section {
@@ -407,16 +446,17 @@ body {
   gap: 2rem;
   width: 100%;
   padding: 5rem;
+  
 
   .award-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: left; // text full width
-    background-color: #101011;
+    background-color: $test;
     padding: 1.5rem;
     border-radius: 1rem;
-    border: 3px solid $bg-card;
+    border: 1px solid $bg-card;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%; // full width of grid cell
     max-width: 300px;

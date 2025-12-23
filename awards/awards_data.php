@@ -30,7 +30,7 @@ try {
     $developerAwards = $developerAwardsStmt->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    // In case of error, set all arrays to empty
+    
     $awards = [];
     $publishers = [];
     $developers = [];

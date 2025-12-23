@@ -68,11 +68,35 @@ body {
 }
 .navbar a {
   color: #e8e8e8;
+  position: relative;
 }
 .navbar a:hover {
   color: #00f7ff;
 }
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #00f7ff;
+}
+.navbar a:hover::after {
+  width: 100%;
+  animation: up 0.3s ease;
+}
 
+@keyframes up {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
 .section-divider {
   height: 1px;
   background: linear-gradient(to right, transparent, #00f7ff, transparent);
@@ -176,10 +200,14 @@ body {
 }
 
 .awards-section {
-  background-color: #0f0f14;
+  position: relative;
+  background: url("https://cdn.mos.cms.futurecdn.net/c3Y8YW6YHrkiqp86gyyyJF.png") center center/cover no-repeat;
   padding: 4rem 1.5rem;
+  overflow: hidden;
 }
 .awards-section .container {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
@@ -199,6 +227,7 @@ body {
 }
 .awards-section .container .cards {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 .awards-section .container .cards .card {
@@ -340,10 +369,10 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: left;
-  background-color: #101011;
+  background-color: rgba(0, 0, 0, 0.267);
   padding: 1.5rem;
   border-radius: 1rem;
-  border: 3px solid #1a1b26;
+  border: 1px solid #1a1b26;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   max-width: 300px;
