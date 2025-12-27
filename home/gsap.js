@@ -54,14 +54,6 @@ timeline.from(".cta-buttons a", {
     ease: "power2.out"
 });
 
-timeline.from("#chatbot-container", {
-    y: 30,
-    x:-30,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.15,
-    ease: "power2.out"
-});
 
 
   
