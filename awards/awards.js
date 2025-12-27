@@ -55,19 +55,18 @@ const tl = gsap.timeline({
         start: "top top",
         end: "+=6400",  
         scrub: 1,
-        markers: true,
         pin: true,
     }
 })  
 
 tl.to(".grid1", {
-    x: -3200,
+    x: -4500,
     ease:"none",
     duration:1
 });
 
 tl.to(".grid2", {
-    x: -3200,
+    x: -4830,
     ease:"none",
     duration:1
 });

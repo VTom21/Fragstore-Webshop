@@ -4,6 +4,7 @@ $bg-main: #0f0f14;
 $bg-card: #1a1b26;
 $bg-hover: #202231;
 $bg-dark: #15151a;
+$black-overlay: #1a1919a2;
 
 $text-light: #e8e8e8;
 $text-muted2: #c7c2c2;
@@ -11,6 +12,7 @@ $text-muted2: #c7c2c2;
 $color-primary: #00f7ff;
 $color-primary-dark: #00d4d4;
 $test: rgba(0, 0, 0, 0.267);
+$cyan-selection:#1fbec4de;
 
 $gradient-primary: linear-gradient(135deg, $color-primary, $color-primary-dark);
 $shadow: 0 4px 25px rgba(0, 247, 255, 0.1);
@@ -574,6 +576,217 @@ body {
   }
 }
 
+.footer{
+  background-color: $bg-hover;
+}
+
+.footer a{
+  transition: all .3s ease;
+}
+
+.footer a:hover{
+  color: $color-primary;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+
+::-webkit-scrollbar-track {
+    background-color: $bg-main;
+    transition: all .3s ease;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background-color: $color-primary;
+    border-radius: 6px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: $bg-hover;
+}
+
+
+// Timeline Component
+.timeline-section {
+  background: $bg-main;
+  padding: 6rem 2rem;
+  position: relative;
+
+  .timeline-header {
+    text-align: center;
+    margin-bottom: 4rem;
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: $text-muted2;
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .timeline-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 0;
+
+    .timeline-icon-wrapper {
+      position: relative;
+      flex-shrink: 0;
+
+      // Connecting line
+      .timeline-line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: linear-gradient(180deg, 
+          $color-primary 0%, 
+          rgba($color-primary, 0.3) 100%
+        );
+        transform: translateX(-50%);
+      }
+
+      // Icon circle
+      .timeline-icon {
+        position: relative;
+        z-index: 10;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background: $bg-card;
+        border: 3px solid $color-primary;
+        display: grid;
+        place-items: center;
+        color: $color-primary;
+        transition: all 0.3s ease;
+
+        svg {
+          width: 1.25rem;
+          height: 1.25rem;
+        }
+      }
+    }
+
+    // Remove line from last item
+    &:last-child .timeline-line {
+      display: none;
+    }
+
+    .timeline-content {
+      flex: 1;
+      padding-bottom: 3rem;
+      transform: translateY(-0.375rem);
+
+      .timeline-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: $text-light;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-description {
+        color: $text-muted2;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .timeline-date {
+        display: inline-block;
+        margin-top: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        background: rgba($color-primary, 0.1);
+        color: $color-primary;
+        font-size: 0.85rem;
+        border-radius: 1rem;
+        font-weight: 500;
+      }
+    }
+
+  }
+
+  // Animation
+  //.timeline-item {
+  //  opacity: 0;
+  //  animation: fadeInUp 0.6s ease forwards;
+//
+  //  @for $i from 1 through 10 {
+  //    &:nth-child(#{$i}) {
+  //      animation-delay: #{$i * 0.15}s;
+  //    }
+  //  }
+  //}
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive
+@media (max-width: 640px) {
+  .timeline-section {
+    padding: 4rem 1rem;
+
+    .timeline-header h2 {
+      font-size: 2rem;
+    }
+
+    .timeline-item {
+      gap: 1rem;
+
+      .timeline-icon-wrapper .timeline-icon {
+        width: 2rem;
+        height: 2rem;
+
+        svg {
+          width: 1rem;
+          height: 1rem;
+        }
+      }
+
+      .timeline-content {
+        .timeline-title {
+          font-size: 1.1rem;
+        }
+
+        .timeline-description {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+::selection {
+  color: $cyan-selection;
+  background: $black-overlay;
+}
 
 
 
