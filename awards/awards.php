@@ -271,7 +271,7 @@ foreach ($awards as $award) {
 
 
             <?php foreach ($awardsUnique as $award): ?>
-                <div class="award-card">
+                <div class="award-card award-card1">
                     <img src="https://cdn-icons-png.flaticon.com/512/6535/6535462.png" alt="Award Image">
                     <h2><?php echo $award["award_name"]; ?></h2>
                 </div>
@@ -286,16 +286,16 @@ foreach ($awards as $award) {
                 Awards Archive
             </h2>
 
-            <div class="flex flex-wrap justify-center gap-3 mb-16">
-                <button class="abc-btn px-4 py-2 rounded-lg bg-gray-700 text-white hover:bg-gray-600 transition" data-filter="all">All</button>
+            <div class="flex flex-wrap justify-center gap-3 mb-16 letters">
+                <button class="abc-btn px-4 py-2 rounded-lg bg-gray-700 text-white hover:bg-gray-600" data-filter="all">All</button>
                 <?php foreach (range('A', 'Z') as $letter): ?>
-                    <button class="abc-btn px-4 py-2 rounded-lg bg-gray-700 text-white hover:bg-gray-600 transition" data-filter="<?php echo $letter; ?>">
+                    <button class="abc-btn px-4 py-2 rounded-lg bg-gray-700 text-white hover:bg-gray-600" data-filter="<?php echo $letter; ?>">
                         <?php echo $letter; ?>
                     </button>
                 <?php endforeach; ?>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 cards_div">
 
                 <?php foreach ($awards as $award): ?>
 
@@ -303,10 +303,10 @@ foreach ($awards as $award) {
                     // Get the first letter of the game name (uppercase)
                     $firstLetter = strtoupper(substr($award['game_name'], 0, 1));
                     ?>
-                    <div class=" award-card group relative rounded-3xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-3xl" data-letter="<?php echo $firstLetter; ?>">
+                    <div class="award-card award-card2 group relative rounded-3xl overflow-hidden shadow-2xl hover:scale-105 hover:shadow-3xl" data-letter="<?php echo $firstLetter; ?>">
                         <!-- Game Image -->
                         <div class="overflow-hidden rounded-3xl">
-                            <img src="<?php echo $award['game_img']; ?>" alt="<?php echo $award['game_name']; ?>" class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <img src="<?php echo $award['game_img']; ?>" alt="<?php echo $award['game_name']; ?>" class="w-full h-72 object-cover group-hover:scale-110">
                         </div>
 
                         <!-- Gradient Overlay -->
@@ -424,11 +424,11 @@ foreach ($awards as $award) {
 
 
     <section class="relative bg-[#0f0f14] py-24">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 experience_div">
             <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00f7ff] to-[#00d4d4] text-center mb-12">
                 Experience the Awards
             </h2>
-            <div class="flex justify-center">
+            <div class="flex justify-center video_div">
                 <div class="relative rounded-2xl overflow-hidden shadow-2xl">
                     <iframe width="800" height="450" 
                         src="https://www.youtube.com/embed/_1dyS-bi1oo?si=55_7KuPQ8h0eCcx0" 
@@ -449,14 +449,14 @@ foreach ($awards as $award) {
         <div class="max-w-7xl mx-auto px-6 py-16">
             <div class=" py-24 sm:py-32">
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                    <h2 class="text-center text-3xl sm:text-4xl font-bold tracking-tight text-white">
+                    <h2 class="text-center text-3xl sm:text-4xl font-bold tracking-tight text-white trusted">
                         Trusted by Industry Leaders
                     </h2>
-                    <p class="mt-4 text-center text-gray-400 max-w-2xl mx-auto">
+                    <p class="mt-4 text-center text-gray-400 max-w-2xl mx-auto trusted_text">
                         Celebrating the studios and publishers shaping the future of gaming.
                     </p>
 
-                    <div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+                    <div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5 logos">
                         <img width="158" height="78" src="https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/video-games/epic-games-hg3aynrgcuetqn170db1g9.png/epic-games-y5xqpgrdx4l1nft47f5gz7.png?_a=DATAg1AAZAA0" alt="Transistor" class="col-span-2 max-h-32 w-full object-contain lg:col-span-1" />
                         <img width="158" height="78" src="https://upload.wikimedia.org/wikipedia/pt/9/95/Guerrilla_logo.png" alt="Reform" class="col-span-2 max-h-32 w-full object-contain lg:col-span-1" />
                         <img width="158" height="78" src="https://static.vecteezy.com/system/resources/previews/020/975/554/non_2x/sony-logo-sony-icon-transparent-free-png.png" alt="Tuple" class="col-span-2 max-h-64 w-full object-contain lg:col-span-1" />
@@ -472,7 +472,7 @@ foreach ($awards as $award) {
 
 
     <footer class="footer">
-        <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div class="mx-auto p-4 py-6 lg:py-8 footer_div justify-center">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
                     <a href="/icons/array.png" class="flex items-center links">

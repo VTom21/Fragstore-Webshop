@@ -264,6 +264,170 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    gsap.from("#why_us", {
+        x: -30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: ".awards-section",
+            start: "top 65%",
+            toggleActions: "play none none none",
+            markers: false,
+        }
+    });
+
+    gsap.from(".award-card1", {
+        x: -30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: ".awards-section",
+            start: "top 65%",
+            toggleActions: "play none none none",
+            markers: false,
+        }
+    });
+
+    gsap.from("#featured_winners h2", {
+        y: -30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: "#featured_winners",
+            start: "top 65%",
+            toggleActions: "play none none none",
+            markers: false,
+        }
+    });
+
+    gsap.from(".letters .abc-btn", {
+        y: -30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: ".letters",
+            start: "top 65%",
+            toggleActions: "play none none none",
+            markers: false,
+        }
+    });
+
+    gsap.from(".award-card2", {
+        y: -30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: ".cards_div",
+            start: "top 65%",
+            toggleActions: "play none none none",
+            markers: false,
+        }
+    });
+
+    gsap.from(".experience_div h2", {
+        y: -30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: ".experience_div",
+            start: "top 65%",
+            toggleActions: "play none none none",
+            markers: false,
+        }
+    });
+
+    gsap.from(".video_div div", {
+        y: -30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: ".video_div",
+            start: "top 65%",
+            toggleActions: "play none none none",
+            markers: false,
+        }
+    });
+
+
+    gsap.from(".trusted", {
+        y: -30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: ".companies",
+            start: "top 65%",
+            toggleActions: "play none none none",
+            markers: false,
+        }
+    });
+
+    gsap.from(".trusted_text", {
+        y: -30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: ".companies",
+            start: "top 65%",
+            toggleActions: "play none none none",
+            markers: false,
+        }
+    });
+
+    gsap.from(".logos img", {
+        y: -30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: ".companies",
+            start: "top 65%",
+            toggleActions: "play none none none",
+            markers: false,
+        }
+    });
+
+        gsap.from(".footer_div", {
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        delay: 0.3,
+        scale: 0.5,
+        scrollTrigger: {
+            trigger: ".footer",
+            start: "top 85%",
+            toggleActions: "play none none none",
+            markers: false,
+        }
+    });
 
     tl.to(".grid1", {
         x: -4500,
