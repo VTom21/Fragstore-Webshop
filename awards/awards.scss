@@ -3,6 +3,7 @@
 $bg-main: #0f0f14;
 $bg-card: #1a1b26;
 $bg-hover: #202231;
+$bg-dark: #15151a;
 
 $text-light: #e8e8e8;
 $text-muted2: #c7c2c2;
@@ -19,7 +20,7 @@ $shadow: 0 4px 25px rgba(0, 247, 255, 0.1);
 
 // ================= GLOBAL =================
 body {
-  background: $bg-card;
+  background: $bg-main;
   color: $text-light;
   font-family: system-ui, sans-serif;
 }
@@ -495,6 +496,84 @@ body {
 .abc-btn:hover{
   background-color: $bg-card!important;
 }
+
+
+.developers-section {
+  height: 700px;         // fixed height
+  overflow: hidden;      // prevent vertical growth
+  position: relative;
+  padding: 2rem;
+
+  h2 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 800;
+    background: linear-gradient(135deg, #00f7ff, #00d4d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: nowrap;     // all cards in one row
+    gap: 2rem;         // fill section height
+  }
+
+    .grid-wrapper {
+    width: 100%;
+    overflow: hidden;   
+  }
+
+  .developer-card {
+    flex: 0 0 300px;       // fixed width for horizontal scroll
+    background-color: #1a1b26;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    color: #e8e8e8;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #202231;
+      transform: translateY(-5px);
+    }
+
+    h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+      &.role {
+        color: #00f7ff;
+        font-weight: 500;
+      }
+    }
+
+    h4 {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    ul {
+      list-style: disc inside;
+      color: #c7c2c2;
+
+      li {
+        margin-bottom: 0.25rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #00f7ff;
+        }
+      }
+    }
+  }
+}
+
 
 
 

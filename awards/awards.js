@@ -1,3 +1,6 @@
+
+
+
 document.querySelectorAll('.learn_more').forEach(btn => {
   btn.addEventListener('mouseenter', e => {
     const span = btn.querySelector('span');
@@ -42,4 +45,34 @@ document.addEventListener('DOMContentLoaded', () => {
     allButton.click();
     
 });
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+const tl = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".developers-section",
+        start: "top top",
+        end: "+=6400",  
+        scrub: 1,
+        markers: true,
+        pin: true,
+    }
+})  
+
+tl.to(".grid1", {
+    x: -3200,
+    ease:"none",
+    duration:1
+});
+
+tl.to(".grid2", {
+    x: -3200,
+    ease:"none",
+    duration:1
+});
+
+
+
+
 

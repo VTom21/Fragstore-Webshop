@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 body {
-  background: #1a1b26;
+  background: #0f0f14;
   color: #e8e8e8;
   font-family: system-ui, sans-serif;
 }
@@ -406,4 +406,69 @@ body {
 
 .abc-btn:hover {
   background-color: #1a1b26 !important;
+}
+
+.developers-section {
+  height: 700px;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem;
+}
+.developers-section h2 {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00f7ff, #00d4d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.developers-section .grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+}
+.developers-section .grid-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+.developers-section .developer-card {
+  flex: 0 0 300px;
+  background-color: #1a1b26;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: #e8e8e8;
+  transition: all 0.3s ease;
+}
+.developers-section .developer-card:hover {
+  background-color: #202231;
+  transform: translateY(-5px);
+}
+.developers-section .developer-card h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.developers-section .developer-card p {
+  margin-bottom: 0.5rem;
+}
+.developers-section .developer-card p.role {
+  color: #00f7ff;
+  font-weight: 500;
+}
+.developers-section .developer-card h4 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.developers-section .developer-card ul {
+  list-style: disc inside;
+  color: #c7c2c2;
+}
+.developers-section .developer-card ul li {
+  margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+.developers-section .developer-card ul li:hover {
+  color: #00f7ff;
 }/*# sourceMappingURL=awards.css.map */

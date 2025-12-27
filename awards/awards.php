@@ -20,6 +20,8 @@ foreach ($awards as $award) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="awards.css">
     <link rel="icon" type="image/x-icon" href="/icons/array (2).png">
     <title>Awards</title>
@@ -248,6 +250,60 @@ foreach ($awards as $award) {
             </div>
         </div>
     </section>
+
+
+    <div class="developers-section">
+        <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00f7ff] to-[#00d4d4] text-center mb-16">
+            Publisher Awards
+        </h2>
+        <div class="grid-wrapper">
+            <div class="grid grid1">
+                <?php foreach ($publishers as $publisher): ?>
+                    <div class="developer-card">
+                        <h3><?php echo htmlspecialchars($publisher['person_name']); ?></h3>
+                        <p><?php echo htmlspecialchars($publisher['company_name']); ?></p>
+                        <p class="role"><?php echo htmlspecialchars($publisher['role']); ?></p>
+
+                        <h4>Awards:</h4>
+                        <ul>
+                            <?php foreach ($publisherAwards as $publisherAward): ?>
+                                <?php if ($publisherAward['publisher_id'] == $publisher['publisher_id']): ?>
+                                    <?php foreach ($awards as $award): ?>
+                                        <?php if ($award['award_id'] == $publisherAward['award_id']): ?>
+                                            <li><?php echo htmlspecialchars($award['award_name'] . ' (' . $award['award_year'] . ')'); ?></li>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+<br><br>
+            <div class="grid grid2">
+                <?php foreach ($developers as $developer): ?>
+                    <div class="developer-card">
+                        <h3><?php echo htmlspecialchars($developer['person_name']); ?></h3>
+                        <p><?php echo htmlspecialchars($developer['company_name']); ?></p>
+                        <p class="role"><?php echo htmlspecialchars($developer['role']); ?></p>
+
+                        <h4>Awards:</h4>
+                        <ul>
+                            <?php foreach ($developerAwards as $developerAward): ?>
+                                <?php if ($developerAward['developer_id'] == $developer['publisher_id']): ?>
+                                    <?php foreach ($awards as $award): ?>
+                                        <?php if ($award['award_id'] == $developerAward['award_id']): ?>
+                                            <li><?php echo htmlspecialchars($award['award_name'] . ' (' . $award['award_year'] . ')'); ?></li>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
 
 
 
