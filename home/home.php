@@ -366,6 +366,10 @@ $limit = 12;
 
 
 
+
+
+
+
   <br><br>
   <footer class="dark:bg-gray-900 footer">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -468,6 +472,42 @@ $limit = 12;
   <script src="gsap.js"></script>
 
 
+  <script>
+    document.querySelectorAll('.show-all').forEach(button => {
+      button.addEventListener('click', function() {
+        // Find all hidden cards in the same section
+        const section = this.closest('section');
+        section.querySelectorAll('.hidden').forEach(card => card.classList.remove('hidden'));
+        this.style.display = 'none';
+      });
+    });
+
+
+    document.querySelectorAll('.show-all-gift').forEach(button => {
+      button.addEventListener('click', function() {
+        const section = this.closest('section');
+        section.querySelectorAll('.hidden-gift').forEach(card => card.classList.remove('hidden-gift'));
+        this.style.display = 'none';
+      });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginToggle = document.querySelector(".login_toggle");
+      const username = localStorage.getItem("name"); // use the same key
+
+      if (username) {
+        loginToggle.style.display = "flex";
+        document.getElementById("logout").style.display = "block";
+        loginToggle.textContent = `Welcome ${username}!`; // use textContent instead of innerHTML
+        document.getElementById("sigin").style.display = "none";
+        document.getElementById("register").style.display = "none";
+      } else {
+        loginToggle.style.display = "none"; // hide if not logged in
+      }
+
+    });
+  </script>
 </body>
 
 </html>
