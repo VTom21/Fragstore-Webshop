@@ -243,12 +243,13 @@ $cart_items = json_decode($cart_json, true);
         </div>
     </div>
 
-    <script src="sum_main.js"></script>
-
     <script>
         const subtotal = <?= floatval($subtotal) ?>;
         const taxRate = 0.08;
     </script>
+
+    <script src="sum_main.js"></script>
+
 </body>
 
 </html>

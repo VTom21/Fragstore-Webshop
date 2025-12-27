@@ -18,13 +18,26 @@ const cardSection = document.getElementById('card-section');
 const paypalSection = document.querySelector('.paypal-section');
 
 
-    document.querySelectorAll('.summary-item-price').forEach(el => {
-        el.textContent = `${el.textContent} ${currency_local}`;
-    });
+
+  function UpdateCurrency(){
+    
+
+    const tax = subtotal * taxRate;
+    const total = subtotal + tax + currentShipping;
 
 
 
-let currentShipping = 0; // global variable to store numeric shipping
+    document.getElementById('subtotal-amount').textContent = `${subtotal.toFixed(2)} ${currency_local}`;
+    document.getElementById('tax-amount').textContent = `${tax.toFixed(2)} ${currency_local}`;
+    document.getElementById('total-amount').textContent = `${total.toFixed(2)} ${currency_local}`;
+  } 
+  
+document.querySelectorAll('.summary-item-price').forEach(el => {
+    el.textContent = `${el.textContent} ${currency_local}`;
+});
+
+
+let currentShipping = 0;
 
 function updateShipping() {
     const selectedRadio = document.querySelector('input[name="delivery"]:checked');
@@ -54,9 +67,7 @@ function updateShipping() {
     const tax = subtotal * taxRate;
     const total = subtotal + tax + currentShipping;
 
-    document.getElementById('subtotal-amount').textContent = `${subtotal.toFixed(2)} ${currency_local}`;
-    document.getElementById('tax-amount').textContent = `${tax.toFixed(2)} ${currency_local}`;
-    document.getElementById('total-amount').textContent = `${total.toFixed(2)} ${currency_local}`;
+    UpdateCurrency();
 }
 
 
@@ -91,6 +102,7 @@ paymentRadios.forEach(radio => radio.addEventListener('change', updatePaymentSec
 // Initial call on page load
 updateShipping();
 updatePaymentSections();
+UpdateCurrency();
 
 // Checkout button
 function processCheckout() {
