@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </form>
 
       <div class="small-text mt-3">
-        <a href="#">Forgot password?</a><br /><br>
+        <a href="./Forgot.php">Forgot password?</a><br /><br>
         Don't have an account?
         <a href="../signup/Sign Up.php">Register here</a>
       </div>

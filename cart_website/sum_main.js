@@ -26,7 +26,6 @@ const paypalSection = document.querySelector('.paypal-section');
     const total = subtotal + tax + currentShipping;
 
 
-
     document.getElementById('subtotal-amount').textContent = `${subtotal.toFixed(2)} ${currency_local}`;
     document.getElementById('tax-amount').textContent = `${tax.toFixed(2)} ${currency_local}`;
     document.getElementById('total-amount').textContent = `${total.toFixed(2)} ${currency_local}`;

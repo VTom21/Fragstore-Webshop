@@ -325,7 +325,7 @@ $currencies = array_keys($data["rates"]);
             <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white" data-i18n="legal">Community</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
               <li class="mb-4 links">
-                <a href="../pdf/Privacy Policy.pdf" class="links" data-i18n="privacy_policy">Game Awards</a>
+                <a href="../redirect/redirect.php?destination=../awards/awards.php" class="links" data-i18n="privacy_policy">Game Awards</a>
               </li>
               <li class="links">
                 <a href="../pdf/Terms and Conditions.pdf" class="links" data-i18n="terms_and_conditions">Work with us</a>
