@@ -76,36 +76,45 @@ $limit = 12;
 </div>
     </a>
   <header id="header">
-    <img id="logo" src="../icons/array.png"></img>
-    <div class="navbar">
-      <a href="#game" data-i18n="games">Games</a>
-      <a href="#giftcard" data-i18n="giftcards">Gift Cards</a>
-      <a href="#genre" data-i18n="genres">Genres</a>
-      <a href="../redirect/redirect.php?destination=../contact_us/contactus.php" data-i18n="contact">Contact</a>
-      <a href="#intro" data-i18n="about_us">About Us</a>
-      <p class="login_toggle"></p>
-    </div>
+    <img id="logo" src="../icons/array.png" alt="Logo">
+    
+        <!-- Hamburger Button -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+
+    
+    <!-- Navbar (works for both desktop and mobile) -->
+    <nav class="navbar" id="navbar">
+        <a href="#game" data-i18n="games">Games</a>
+        <a href="#giftcard" data-i18n="giftcards">Gift Cards</a>
+        <a href="#genre" data-i18n="genres">Genres</a>
+        <a href="../redirect/redirect.php?destination=../contact_us/contactus.php" data-i18n="contact">Contact</a>
+        <a href="#intro" data-i18n="about_us">About Us</a>
+        <p class="login_toggle"></p>
+    </nav>
 
     <div id="stuff">
-      <div id="sigin">
-        <a href="../redirect/redirect.php?destination=../login/Log In.php" data-i18n="log_in">Log in</a>
-      </div>
-      <div id="register">
-        <a href="../redirect/redirect.php?destination=../signup/Sign Up.php" data-i18n="sign_up">Sign up</a>
-      </div>
-
-      <div id="logout">
-        <a href="../home/home.php" data-i18n="log_out">Log out</a>
-      </div>
+        <div id="sigin">
+            <a href="../redirect/redirect.php?destination=../login/Log In.php" data-i18n="log_in">Log in</a>
+        </div>
+        <div id="register">
+            <a href="../redirect/redirect.php?destination=../signup/Sign Up.php" data-i18n="sign_up">Sign up</a>
+        </div>
+        <div id="logout">
+            <a href="../home/home.php" data-i18n="log_out">Log out</a>
+        </div>
     </div>
 
     <div class="progress-bar">
-      <div class="filled">
-
-      </div>
-
+        <div class="filled"></div>
     </div>
-  </header>
+</header>
 
 
 
