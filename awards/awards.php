@@ -51,13 +51,13 @@ foreach ($awards as $award) {
             <h1 class="hero-title text-4xl sm:text-6xl font-bold text-cyan-400 mb-6">Game Awards</h1>
             <p class="hero-subtitle text-gray-300 text-lg sm:text-xl max-w-2xl mb-8">Explore the latest winners, discover top developers, and celebrate the best games in the industry.</p>
             <div class="buttons flex flex-col sm:flex-row gap-4">
-                <a href="#awards" class="btn-primary px-6 py-3 rounded-lg font-semibold bg-cyan-400 text-gray-900 shadow-lg hover:scale-105 transition-transform">View Awards</a>
+                <a href="#awards" class="btn-primary px-6 py-3 rounded-lg font-semibold bg-cyan-400 text-gray-900 shadow-lg hover:scale-105 view_awards">View Awards</a>
                 <a href="#about" class="learn_more">
                     Learn More
                     <span></span>
                 </a>
             </div>
-            <div class="arrow mt-12 animate-bounce">
+            <div class="arrow mt-12 animate-bounce arrow_svg">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-cyan-400">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 18.75l7.5-7.5 7.5 7.5" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5" />
@@ -65,8 +65,7 @@ foreach ($awards as $award) {
             </div>
         </div>
 
-        <!-- Floating Pop-Up Button (Bottom Right of Hero) -->
-        <div class="absolute bottom-6 right-6 z-20">
+        <div class="absolute bottom-6 right-6 z-20 popup_bar">
             <div class="group">
                 <!-- Main Button -->
                 <button class="relative h-12 w-12 rounded-full bg-gray-900 text-white shadow-md hover:shadow-lg transition-all" type="button">
@@ -101,7 +100,7 @@ foreach ($awards as $award) {
     </div>
 
     <!-- Hero Section for #1 Game of the Year -->
-    <section class="relative w-full h-screen bg-gray-900">
+    <section class="relative w-full h-screen bg-gray-900 goty_div">
         <?php if ($topGOTY): ?>
             <!-- Background Image -->
             <div class="absolute inset-0">
@@ -113,16 +112,16 @@ foreach ($awards as $award) {
 
             <!-- Hero Content -->
             <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-                <span class="bg-yellow-400 text-black font-bold px-4 py-2 rounded-full uppercase tracking-wide text-sm shadow-lg mb-4">
+                <span class="bg-yellow-400 text-black font-bold px-4 py-2 rounded-full uppercase tracking-wide text-sm shadow-lg mb-4 game_of_the_year">
                     Game of the Year <?php echo $topGOTY['award_year']; ?>
                 </span>
-                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white mb-6">
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white mb-6 goty">
                     <?php echo $topGOTY['game_name']; ?>
                 </h1>
-                <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mb-8">
+                <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mb-8 promo">
                     Celebrate the most acclaimed game of the year—experience innovation, creativity, and excellence in gaming.
                 </p>
-                <a href="#featured_winners" class="bg-cyan-400 text-gray-900 font-semibold px-8 py-4 rounded-lg shadow-lg hover:scale-105 transition-transform">
+                <a href="#featured_winners" class="featured_winners bg-cyan-400 text-gray-900 font-semibold px-8 py-4 rounded-lg shadow-lg hover:scale-105">
                     Explore Winners
                 </a>
             </div>
@@ -133,7 +132,7 @@ foreach ($awards as $award) {
         <!-- About Section -->
         <section id="about" class="section about-section">
             <div class="container">
-                <div class="image">
+                <div class="image img1">
                     <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fb9cfb5b-aa09-4dc2-b19b-931576776dae/de4fujh-3cf64804-b0b2-4d1a-8f60-928f1ddeb575.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9mYjljZmI1Yi1hYTA5LTRkYzItYjE5Yi05MzE1NzY3NzZkYWUvZGU0ZnVqaC0zY2Y2NDgwNC1iMGIyLTRkMWEtOGY2MC05MjhmMWRkZWI1NzUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.rFK081Buxx-AdSvVm4ThS2DvtEi_M2R6XBRzlpRIrmI" alt="Gaming Illustration">
                 </div>
                 <div class="text">
@@ -153,7 +152,7 @@ foreach ($awards as $award) {
                     <p>The Game Awards exist to celebrate creativity, innovation, and excellence in gaming. Our mission is to shine a light on the developers, studios, and artists shaping the future of interactive entertainment.</p>
                     <p>From indie gems to blockbuster hits, we believe every game that inspires, entertains, or moves players deserves recognition and celebration.</p>
                 </div>
-                <div class="image">
+                <div class="image img2">
                     <img src="https://images.steamusercontent.com/ugc/54707509771119863/718F623C460F13B6C40B6E9F3461FE8701613B70/" alt="Celebration Illustration">
                 </div>
             </div>
