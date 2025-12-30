@@ -841,7 +841,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `created_at`)
 
 ```
----
+<br>
 
 ## 🔌 API Endpoints & Integrations
 
@@ -1050,6 +1050,11 @@ You are free to use, copy, modify, merge, publish, distribute, sublicense, and/o
 
 ---
 
+
+<div align="center">
+  Made with ❤️ by Fragstore Webshop <br>
+  <sub>Powered by modern web technologies for a seamless gaming experience</sub>
+</div>
 
 
 
