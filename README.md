@@ -107,18 +107,18 @@ npm install
    - Download and install PHP: [https://www.php.net/downloads.php](https://www.php.net/downloads.php)
 
   **macOS:**
-```bash
+```shell
 brew install php node
 ```
 
    **Linux (Ubuntu/Debian):**
-```bash
+```shell
 sudo apt update
 sudo apt install php php-cli php-mysql php-json nodejs npm -y
 ```
 
    **Verify Installations:**
-```bash
+```shell
 php -v
 node -v
 npm -v
