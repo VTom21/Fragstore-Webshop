@@ -919,13 +919,16 @@ for (let cherry of cherries.values()) {
   }
 ```
 ---
-<div align="center">
+<div align="left">
 <h3>Database Schema</h3><img  padding="0" margin="0" width="80" src="https://skillicons.dev/icons?i=mysql,php">
 </div>
 <br>
 
+This section outlines the structure of all the databases used throughout this entire project.  
+
+### 1. `giftcard`
+
 ```sql
---Snippet from one of our database (giftcard.sql)
 
 CREATE TABLE `giftcard` (
   `CardId` varchar(50) NOT NULL,
@@ -933,22 +936,12 @@ CREATE TABLE `giftcard` (
   `IMG` varchar(255) DEFAULT NULL,
   `Price` decimal(10,2) NOT NULL,
   `Region` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) 
+```
 
+### 2. `videogames`
 
-INSERT INTO `giftcard` (`CardId`, `Name`, `IMG`, `Price`, `Region`)
-
--- (videogames.sql)
-
-CREATE DATABASE IF NOT EXISTS videogames;
-USE videogames;
-
-CREATE TABLE `awards` (
-  `award_id` int(11) NOT NULL,
-  `award_name` varchar(255) NOT NULL,
-  `award_year` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+```sql
 CREATE TABLE `datas` (
   `id` int(11) NOT NULL,
   `game_pic` varchar(255) DEFAULT NULL,
@@ -959,26 +952,62 @@ CREATE TABLE `datas` (
   `prize` decimal(10,2) DEFAULT NULL,
   `publisher_id` int(11) DEFAULT NULL,
   `isDiscount` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) 
+```
 
-INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, 
-`genre`, `platforms`, `prize`, `publisher_id`, `isDiscount`)
+```sql
+CREATE TABLE `awards` (
+  `award_id` int(11) NOT NULL,
+  `award_name` varchar(255) NOT NULL,
+  `award_year` int(11) DEFAULT NULL
+) 
 
--- (users.sql)
+```
 
-CREATE database if not exists users;
-use users;
+```sql
+CREATE TABLE `developers` (
+  `developer_id` int(11) NOT NULL,
+  `person_name` varchar(100) NOT NULL,
+  `company_name` varchar(100) NOT NULL,
+  `role` varchar(100) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date DEFAULT NULL,
+  `publisher_id` int(11) DEFAULT NULL
+) 
+```
 
+```sql
+CREATE TABLE `publishers` (
+  `publisher_id` int(11) NOT NULL,
+  `person_name` varchar(100) NOT NULL,
+  `company_name` varchar(100) NOT NULL,
+  `role` varchar(100) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date DEFAULT NULL
+) 
+```
+
+### 3. `users`
+
+```sql
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)
 
-INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `created_at`)
+```
 
+### 4. `leaderboard`
+
+```sql
+CREATE TABLE `datas` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `score` int(11) DEFAULT NULL
+) 
 ```
 <br>
 
