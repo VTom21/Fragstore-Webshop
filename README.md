@@ -152,17 +152,61 @@ Three classic arcade games lie hidden within Fragstore, waiting to be discovered
 ### The Secret:
 Click on **any game card 5 times** to unlock one of three nostalgic surprises:
 
-> 🐍 Snake <span style="float:right">v1.0</span>
 
-> 🟦 Tetris <span style="float:right">v1.0</span>
 
-> <span style="display:flex; justify-content:space-between; align-items:center;">
->     <span style="display:flex; align-items:center;"id="app-flow">
->         <img src="pacman/assets/ghosts/redGhost.png" height="20" style="margin-right:5px;">Pac-Man
->     </span>
->     <span>v1.0</span>
-> </span>
+<div style="display:flex;">
 
+  <table>
+    <thead>
+      <tr>
+        <th>Game</th>
+        <th>Version</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🐍 Snake</td>
+        <td>v1.0</td>
+        <td>Available</td>
+      </tr>
+      <tr>
+        <td>🟦 Tetris</td>
+        <td>v1.0</td>
+        <td>Available</td>
+      </tr>
+      <tr>
+        <td><span style="display:flex; align-items:center;"><img src="pacman/assets/ghosts/redGhost.png" height="20">Pac-Man</span></td>
+        <td>v1.0</td>
+        <td>Available</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th>sfx</th>
+        <th>Scoring</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>no</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>no</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
 
 
 
