@@ -36,7 +36,28 @@
 <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
 
 </div>
-<br>
+
+
+## About
+<img src="/pictures/home2.png"></img>
+<img src="/pictures/main1.png"></img>
+
+**Fragstore** is a modern webshop for games featuring a sleek, responsive design and dynamic functionality. Browse, purchase, and discover hidden gems—including **3 secret games** waiting to be unlocked by curious explorers.
+
+
+### Key Features
+
+- **User System** – Secure Sign Up and Login for personalized experiences  
+- **Browse & Search** – Explore a vast catalog of games, gift cards via advanced filtering  
+- **Shopping Cart** – Add items to cart, review, and purchase seamlessly  
+- **Wishlist** – Save your favorite games and products for later  
+- **Purchase Products** – Buy games and gift cards with integrated PayPal payment  
+- **Secret Games** – Discover 3 hidden Easter eggs and unlockable games 
+- **Real-time Updates** – Stay informed about new releases, deals, and latest game awards  
+- **Responsive Design** – Optimized for mobile and desktop devices  
+- **Enhanced Filtering & Sorting** – Quickly find products by category, price and so on
+- **Language Selection** - For up to 6+ available languages
+
 ## 📑 Table of Contents
 
 - [About](#about)
@@ -60,27 +81,6 @@
   - [Chart.js](#chartjs)
 - [Contributing](#🤝-contributing)
 - [License](#📄-license)
-
-## About
-<img src="/pictures/home2.png"></img>
-<img src="/pictures/main1.png"></img>
-
-**Fragstore** is a modern webshop for games featuring a sleek, responsive design and dynamic functionality. Browse, purchase, and discover hidden gems—including **3 secret games** waiting to be unlocked by curious explorers.
-
-
-### Key Features
-
-- **User System** – Secure Sign Up and Login for personalized experiences  
-- **Browse & Search** – Explore a vast catalog of games, gift cards via advanced filtering  
-- **Shopping Cart** – Add items to cart, review, and purchase seamlessly  
-- **Wishlist** – Save your favorite games and products for later  
-- **Purchase Products** – Buy games and gift cards with integrated PayPal payment  
-- **Secret Games** – Discover 3 hidden Easter eggs and unlockable games 
-- **Real-time Updates** – Stay informed about new releases, deals, and latest game awards  
-- **Responsive Design** – Optimized for mobile and desktop devices  
-- **Enhanced Filtering & Sorting** – Quickly find products by category, price and so on
-- **Language Selection** - For up to 6+ available languages
-
 
 ---
 
