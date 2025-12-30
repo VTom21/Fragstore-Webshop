@@ -1026,7 +1026,7 @@ function createChart() {
 - Products Data Visualization
 ---
 
-## 🤝 Contributing
+<h2>🤝 Contributing</h2>
 
 Contributions are welcome! Follow these steps:
 
@@ -1038,7 +1038,7 @@ Contributions are welcome! Follow these steps:
 
 ------------------
 
-## 📄 License
+<h2>📄 License</h2>
 
 This project is licensed under the **MIT License**.  
 
