@@ -61,7 +61,7 @@
 ### 📑 Table of Contents
 
 - [About](#about)
-- [Installation](#Installation)
+- [Installation](#🚀 installation)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
 - [Secret Games](#🕹️-secret-games)
