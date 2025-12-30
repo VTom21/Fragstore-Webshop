@@ -171,25 +171,25 @@ Will you uncover all three hidden treasures?
 
 ```
 
-               Home
-        ┌───────┼───────┐
-        ↓       ↓       ↓
-Main Website  Contacts  Login / Sign Up
-        │
-        │
-        ├─────────────┬─────────────┬─────────────┐
-        ↓             ↓             ↓             ↓
-Shopping Cart  Secret Game Entry  Game Awards    Home
-        │             Points       Website
-        ↓             ↓             ↓
-     Summary        Game Screen   Completion & Rewards
-        ↓                           ↓
-     Checkout                      Home
-        ↓
-      Payment
-        ↓
-   Success/Failure
-
+                                 Home
+                          ┌───────┼───────┐
+                          ↓       ↓       ↓
+                  Main Website  Contacts  Login / Sign Up
+                          │
+                          │
+                          ├─────────────┬─────────────┬─────────────┐
+                          ↓             ↓             ↓             ↓
+                  Shopping Cart  Secret Game Entry  Game Awards    Home
+                          │             Points       Website
+                          ↓             ↓             ↓
+                       Summary        Game Screen   Completion & Rewards
+                          ↓                           ↓
+                       Checkout                      Home
+                          ↓
+                        Payment
+                          ↓
+                     Success/Failure
+                  
 ```
 
 <div align="center" id="pacman">
