@@ -155,7 +155,7 @@ Click on **any game card 5 times** to unlock one of three nostalgic surprises:
 
 <div width="20">
 
-| Game | Version | Status    | High Score System | Score System | Leaderboard | Custom Sprites | Achievements | SFX |
+| Game | Version | Status    | High Score | Score System | Leaderboard | Custom Sprites | Achievements | SFX |
 |------|--------|----------|-----------------|-------------|------------|----------------|--------------|-----|
 | 🐍 Snake | v1.0 | Available | yes | yes | no | yes | no | no |
 | 🟦 Tetris | v1.0 | Available | yes | yes | no | no  | no | no |
