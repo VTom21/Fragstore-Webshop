@@ -39,7 +39,7 @@
 
 
 ### About
-<img src="/pictures/home2.png"></img>
+<img src="/pictures/home2.png"></img><br>
 <img src="/pictures/main1.png"></img>
 
 **Fragstore** is a modern webshop for games featuring a sleek, responsive design and dynamic functionality. Browse, purchase, and discover hidden gems—including **3 secret games** waiting to be unlocked by curious explorers.
