@@ -61,30 +61,23 @@
 ### 📑 Table of Contents
 
 - [About](#about)
-- [Installation](#🚀 installation)
+- [Installation](#prerequisites)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
-- [Secret Games](#🕹️-secret-games)
-- [Application Flow](#🖥️-application-flow)
-- [Easter Egg Games](#easter-egg-games)
-  - [Pac-Man](#pac-man)
-  - [Snake](#snake)
-- [Code Snippets](#👨‍💻-code-snippets)
-  - [Translation](#translation)
-  - [Prize Range](#prize-range)
-  - [Cards](#cards)
-  - [Backend](#backend)
-- [API Endpoints & Integrations](#🔌-api-endpoints--integrations)
-  - [EmailJS](#emailjs-gmail-service---smp)
-  - [Currency Exchange API](#currency-exchange-api)
-  - [Flags API](#flags-api)
-  - [Chart.js](#chartjs)
-- [Contributing](#🤝-contributing)
-- [License](#📄-license)
+- [Secret Games](#the-secret)
+- [Application Flow](#app-flow)
+- [API Endpoints & Integrations](#api)
+  - [EmailJS](#api)
+  - [Currency Exchange API](#currency)
+  - [Flags API](#flags)
+  - [Chart.js](#chart)
+- [Contributing](#contribute)
+- [License](#license)
+
 
 ---
 
-### 🚀 Installation
+## 🚀 Installation
 
 ### Prerequisites
 - Node.js (v14 or higher)
@@ -164,7 +157,7 @@ Click on **any game card 5 times** to unlock one of three nostalgic surprises:
 > 🟦 Tetris <span style="float:right">v1.0</span>
 
 > <span style="display:flex; justify-content:space-between; align-items:center;">
->     <span style="display:flex; align-items:center;">
+>     <span style="display:flex; align-items:center;"id="app-flow">
 >         <img src="pacman/assets/ghosts/redGhost.png" height="20" style="margin-right:5px;">Pac-Man
 >     </span>
 >     <span>v1.0</span>
@@ -200,7 +193,7 @@ Shopping Cart  Secret Game Entry  Game Awards    Home
 
 ```
 
-<div align="center">
+<div align="center" id="pacman">
   <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Fragstore Homepage"><br>
   <h3><strong>Easter Egg game (Pacman)</strong></h3>
 </div>
@@ -849,7 +842,7 @@ Fragstore integrates multiple APIs to provide a seamless shopping experience.
 
 ---
 
-### <img height="35" style="display:inline; align-items:center;" align="center" src="https://www.emailjs.com/logo.png"></img> EmailJS (Gmail Service - SMP)
+### <img height="35" id="api" style="display:inline; align-items:center;" align="center" src="https://www.emailjs.com/logo.png"></img> EmailJS (Gmail Service - SMP)
 Used for sending emails and OTP verification.
 
 **Configuration:**
@@ -879,7 +872,7 @@ emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
 
 ---
 
-### <img height="50" style="display:inline; align-items:center;" align="center" src="https://img.stackshare.io/stack/37303/default_657b34af1c7b9ea45750ae5720351d3735cf17d4.png"></img> Currency Exchange API
+### <img height="50" id="currency" style="display:inline; align-items:center;" align="center" src="https://img.stackshare.io/stack/37303/default_657b34af1c7b9ea45750ae5720351d3735cf17d4.png"></img> Currency Exchange API
 Real-time currency conversion using [ExchangeRate-API](https://open.er-api.com).
 
 **Endpoint:**
@@ -924,7 +917,7 @@ fetch('https://open.er-api.com/v6/latest/USD')
 
 ---
 
-### <img height="50" style="display:inline; align-items:center;" align="center" src="https://apiverve.com/images/favicon.png"></img> Flags API
+### <img height="50" id="flags" style="display:inline; align-items:center;" align="center" src="https://apiverve.com/images/favicon.png"></img> Flags API
 Display country flags based on currency or user location.
 
 **Endpoint:**
@@ -963,7 +956,7 @@ const getFlagUrl = (currency) => {
 
 ---
 
-### <img height="50" style="display:inline; align-items:center;" align="center" src="https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/1/chartjs-gbwxkdn5urp4w5jg9xk4g5.png/chartjs-p7803bgd17hc5uxtz82i.png?_a=DATAg1AAZAA0"></img> Chart.js
+### <img height="50" style="display:inline; align-items:center;" align="center" id="chart" src="https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/1/chartjs-gbwxkdn5urp4w5jg9xk4g5.png/chartjs-p7803bgd17hc5uxtz82i.png?_a=DATAg1AAZAA0"></img> Chart.js
 JavaScript charting library for data visualization.
 
 **Installation:**
@@ -1026,6 +1019,8 @@ function createChart() {
 - Products Data Visualization
 ---
 
+<div id="contribute"></div>
+
 ### 🤝 Contributing
 
 Contributions are welcome! Follow these steps:
@@ -1037,6 +1032,8 @@ Contributions are welcome! Follow these steps:
 5. Open a Pull Request
 
 ------------------
+
+<div id="license"></div>
 
 ### 📄 License
 
