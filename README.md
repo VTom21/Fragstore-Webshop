@@ -364,20 +364,33 @@ Fragstore-Webshop/
 ---
 
 
-<div align="center">
-  <img src="./snake/assets/icon.png" width="60" alt="Fragstore Homepage"><br>
-  <h3><strong>Easter Egg game (Snake)</strong></h3>
-</div>
 
 
 
-* This also for  fun 
-* It's also hidden 
-  * You have to found it like the one befor
-* The mechanics almost same as the original, but we made it a little bit more creative
-* Different design like other fruits
+
+### 🐍 Snake
+A timeless arcade classic reimagined with smooth controls and scalable difficulty.
+
+<img src="pictures\snake1.png"></img>
+
+Control the snake as it moves across the screen, eating food to grow longer while avoiding collisions with walls and your own tail. As the game progresses, the challenge increases, testing your reflexes and strategic movement.
+
+Perfect for quick play sessions, Snake rewards precision, timing, and smart path planning.
+
+**Features:**
+- Three difficulty modes (Easy, Medium, Hard)
+- Responsive controls
+
+**Difficulty Settings:**
+
+| Difficulty | Frame rate 
+|-----------|--------
+| Easy      | 10   
+| Medium    | 20 
+| Hard      | 26   
 
 ---
+
 
 
 
