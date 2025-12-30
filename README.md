@@ -191,6 +191,199 @@ Will you uncover all three hidden treasures?
                          Success/Failure
                       
 ```
+### 📁 File Structure
+
+Here’s the entire structure of the Fragstore Webshop project:
+
+```
+Fragstore-Webshop
+    ├── awards
+    │   ├── awards_data.php
+    │   ├── awards.css
+    │   ├── awards.css.map
+    │   ├── awards.js
+    │   ├── awards.php
+    │   └── awards.scss
+    ├── cart_website
+    │   ├── sum_main.css
+    │   ├── sum_main.js
+    │   └── sum_main.php
+    ├── contact_us
+    │   ├── contactus.css
+    │   ├── contactus.js
+    │   └── contactus.php
+    ├── databases
+    │   ├── giftcard.sql
+    │   ├── leaderboard.sql
+    │   ├── users.sql
+    │   ├── videogames (4).sql
+    │   └── videogames.sql
+    ├── documentation
+    │   └── documentation.docx
+    ├── home
+    │   ├── genres.php
+    │   ├── giftcards.php
+    │   ├── gsap.js
+    │   ├── home.css
+    │   ├── home.js
+    │   ├── home.php
+    │   └── translations.js
+    ├── icons
+    │   ├── array (1).png
+    │   ├── array (2).png
+    │   ├── array.png
+    │   ├── favicon-16x16.png
+    │   ├── favicon-32x32.png
+    │   └── shopping-cart-01-svgrepo-com.svg
+    ├── login
+    │   ├── Forgot.php
+    │   ├── Log In.css
+    │   ├── Log In.php
+    │   ├── OTP.css
+    │   ├── OTP.js
+    │   └── OTP.php
+    ├── order_successful
+    │   ├── success.css
+    │   ├── success.js
+    │   └── success.php
+    ├── pacman
+    │   ├── assets
+    │   │   ├── ghosts
+    │   │   │   ├── blueGhost.png
+    │   │   │   ├── orangeGhost.png
+    │   │   │   ├── pinkGhost.png
+    │   │   │   ├── redGhost.png
+    │   │   │   └── scaredGhost.png
+    │   │   ├── pacman
+    │   │   │   ├── pacmanDown.png
+    │   │   │   ├── pacmanLeft.png
+    │   │   │   ├── pacmanRight.png
+    │   │   │   └── pacmanUp.png
+    │   │   ├── cherry.png
+    │   │   ├── cherry2.png
+    │   │   └── wall.png
+    │   ├── custom_assets
+    │   │   ├── foods
+    │   │   │   ├── apple.png
+    │   │   │   ├── frozen_orb.png
+    │   │   │   ├── heart.png
+    │   │   │   ├── ice_cube.png
+    │   │   │   ├── key.png
+    │   │   │   ├── melon.png
+    │   │   │   ├── orange.png
+    │   │   │   ├── pellet.png
+    │   │   │   ├── pellet2.png
+    │   │   │   ├── portal.png
+    │   │   │   └── strawberry.png
+    │   │   ├── ghosts
+    │   │   │   ├── blackGhost.png
+    │   │   │   ├── brownGhost.png
+    │   │   │   └── greenGhost.png
+    │   │   ├── level.png
+    │   │   └── star.png
+    │   ├── sfx
+    │   │   ├── death.wav
+    │   │   ├── eat_ghost.wav
+    │   │   ├── fright.wav
+    │   │   ├── fruit_munch.wav
+    │   │   ├── intro.wav
+    │   │   └── munch.wav
+    │   ├── achievement.js
+    │   ├── achievements.json
+    │   ├── leaderboard.js
+    │   ├── leaderboard.php
+    │   ├── pacman.css
+    │   ├── pacman.js
+    │   ├── pacman.php
+    │   ├── sfx.js
+    │   └── submit.php
+    ├── pdf
+    │   ├── Privacy Policy.pdf
+    │   ├── Refund Policy.pdf
+    │   └── Terms and Conditions.pdf
+    ├── pictures
+    │   ├── acti_vision.png
+    │   ├── ai-powered-device-concept (1).jpg
+    │   ├── ai-powered-device-concept.jpg
+    │   ├── awards_hero.png
+    │   ├── bandai_namco.png
+    │   ├── bethesda.png
+    │   ├── bg.png
+    │   ├── blizzard.png
+    │   ├── capcom.png
+    │   ├── cart.gif
+    │   ├── EA.png
+    │   ├── game_pic.png
+    │   ├── high-angle-controller-vr-glasses.jpg
+    │   ├── home1.png
+    │   ├── home2.png
+    │   ├── iron_galaxy.png
+    │   ├── main1.png
+    │   ├── microsoft.png
+    │   ├── nintendo_switch.png
+    │   ├── perfomance.png
+    │   ├── playstation.png
+    │   ├── pokemon.png
+    │   ├── rockstar.png
+    │   ├── sega.png
+    │   ├── sony.png
+    │   ├── take-two.png
+    │   ├── tencent.png
+    │   ├── ubisoft.png
+    │   └── xbox.png
+    ├── redirect
+    │   ├── redirect.css
+    │   ├── redirect.js
+    │   └── redirect.php
+    ├── signup
+    │   ├── robot-hand-finger-pointing-ai-technology.jpg
+    │   ├── Sign Up.css
+    │   └── Sign Up.php
+    ├── snake
+    │   ├── assets
+    │   │   ├── apple.png
+    │   │   ├── body.png
+    │   │   ├── body2.png
+    │   │   ├── food.png
+    │   │   └── icon.png
+    │   ├── snake.css
+    │   ├── snake.css.map
+    │   ├── snake.js
+    │   ├── snake.php
+    │   └── snake.scss
+    ├── tetris
+    │   ├── public
+    │   │   └── tetris.png
+    │   ├── src
+    │   │   ├── App.css
+    │   │   ├── App.css.map
+    │   │   ├── App.scss
+    │   │   ├── index.css
+    │   │   ├── main.tsx
+    │   │   ├── Tetris.tsx
+    │   │   └── Tetromino.tsx
+    │   ├── .gitignore
+    │   ├── eslint.config.js
+    │   ├── index.html
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── README.md
+    │   ├── tsconfig.app.json
+    │   ├── tsconfig.json
+    │   ├── tsconfig.node.json
+    │   └── vite.config.ts
+    ├── autofill.js
+    ├── config.php
+    ├── games_main.php
+    ├── games.php
+    ├── index.css
+    ├── index.js
+    ├── package-lock.json
+    ├── package.json
+    └── README.md
+
+
+```
 
 <div align="center" id="pacman">
   <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Fragstore Homepage"><br>
