@@ -142,12 +142,12 @@ npm -v
 
 5. Start the development server:
 ```php
-   php -S localhost:8000
+php -S localhost:8000
 ```
 
 6. Open your browser and visit:
 ```powershell
-   http://localhost:3000
+http://localhost:3000
 ```
 
 ---
