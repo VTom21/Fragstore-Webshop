@@ -66,6 +66,12 @@
   - [Setup](#setup)
 - [Secret Games](#the-secret)
 - [Application Flow](#app-flow)
+- [File Structure](#file)
+- [Database Schema](#database)
+  - [Giftcards](#giftcard)
+  - [Videogames](#videogames)
+  - [Users](#users)
+  - [Leaderboard](#leaderboard)
 - [API Endpoints & Integrations](#api)
   - [EmailJS](#api)
   - [Currency Exchange API](#currency)
@@ -191,7 +197,9 @@ Will you uncover all three hidden treasures?
                          Success/Failure
                       
 ```
-### 📁 Main Folders
+<div id="file"></div>
+
+### 📁 File Structure
 
 Here’s the entire structure of the Fragstore Webshop project:
 
@@ -919,13 +927,15 @@ for (let cherry of cherries.values()) {
   }
 ```
 ---
-<div align="left">
+<div align="left" id="database">
 <h3>Database Schema</h3><img  padding="0" margin="0" width="80" src="https://skillicons.dev/icons?i=mysql,php">
 </div>
 <br>
 
 This section outlines the structure of all the databases used throughout this project.  
-Each table is described to provide clarity about its purpose and relationships. 
+Each table is described to provide clarity about its purpose and relationships.
+
+<div id="giftcard"></div>
 
 ### 1. `giftcard`
 
@@ -939,6 +949,7 @@ CREATE TABLE `giftcard` (
   `Region` varchar(255) DEFAULT NULL
 ) 
 ```
+<div id="videogames"></div>
 
 ### 2. `videogames`
 
@@ -989,6 +1000,7 @@ CREATE TABLE `publishers` (
   `end_date` date DEFAULT NULL
 ) 
 ```
+<div id="users"></div>
 
 ### 3. `users`
 Stores registered users, their emails, usernames, password hashes, and account creation timestamps.
@@ -1002,6 +1014,7 @@ CREATE TABLE `users` (
 )
 
 ```
+<div id="leaderboard"></div>
 
 ### 4. `leaderboard`
 Stores player scores for the arcade games.  
