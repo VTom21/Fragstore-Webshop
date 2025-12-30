@@ -919,10 +919,10 @@ for (let cherry of cherries.values()) {
   }
 ```
 ---
-<h3 align="center">
-  Database Schema
-  <img align="right" padding="0" margin="0" width="80" src="https://skillicons.dev/icons?i=mysql,php">
-</h3><br>
+<div align="center">
+<h3>Database Schema</h3><img  padding="0" margin="0" width="80" src="https://skillicons.dev/icons?i=mysql,php">
+</div>
+<br>
 
 ```sql
 --Snippet from one of our database (giftcard.sql)
