@@ -96,7 +96,7 @@ cd Fragstore-Webshop
 ```
 
 2. Install dependencies:
-```bash
+```sh
 npm install
 ```
 
@@ -107,18 +107,18 @@ npm install
    - Download and install PHP: [https://www.php.net/downloads.php](https://www.php.net/downloads.php)
 
   **macOS:**
-```shell
+```sh
 brew install php node
 ```
 
    **Linux (Ubuntu/Debian):**
-```shell
+```sh
 sudo apt update
 sudo apt install php php-cli php-mysql php-json nodejs npm -y
 ```
 
    **Verify Installations:**
-```shell
+```sh
 php -v
 node -v
 npm -v
