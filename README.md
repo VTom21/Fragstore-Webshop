@@ -924,8 +924,8 @@ for (let cherry of cherries.values()) {
 </div>
 <br>
 
-git clone https://github.com/Vtom21/Fragstore-Webshop.git
-cd Fragstore-Webshop 
+This section outlines the structure of all the databases used throughout this project.  
+Each table is described to provide clarity about its purpose and relationships. 
 
 ### 1. `giftcard`
 
@@ -942,6 +942,8 @@ CREATE TABLE `giftcard` (
 
 ### 2. `videogames`
 
+Contains details about games, including the picture, name, release date, genre, platforms, prize, publisher, and discount status.
+
 ```sql
 CREATE TABLE `datas` (
   `id` int(11) NOT NULL,
@@ -955,7 +957,7 @@ CREATE TABLE `datas` (
   `isDiscount` tinyint(1) NOT NULL DEFAULT 0
 ) 
 ```
-
+Stores awards associated with games or developers, including award name and year.
 ```sql
 CREATE TABLE `awards` (
   `award_id` int(11) NOT NULL,
@@ -964,7 +966,7 @@ CREATE TABLE `awards` (
 ) 
 
 ```
-
+Contains information about developers, including their personal/company details, role, start and end dates, and associated publisher.
 ```sql
 CREATE TABLE `developers` (
   `developer_id` int(11) NOT NULL,
@@ -976,7 +978,7 @@ CREATE TABLE `developers` (
   `publisher_id` int(11) DEFAULT NULL
 ) 
 ```
-
+Stores information about publishers, including contact person, company, role, and tenure.
 ```sql
 CREATE TABLE `publishers` (
   `publisher_id` int(11) NOT NULL,
@@ -989,7 +991,7 @@ CREATE TABLE `publishers` (
 ```
 
 ### 3. `users`
-
+Stores registered users, their emails, usernames, password hashes, and account creation timestamps.
 ```sql
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
@@ -1002,7 +1004,8 @@ CREATE TABLE `users` (
 ```
 
 ### 4. `leaderboard`
-
+Stores player scores for the arcade games.  
+This table is used to track high scores and display rankings across the platform.
 ```sql
 CREATE TABLE `datas` (
   `id` int(11) NOT NULL,
