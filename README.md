@@ -38,7 +38,7 @@
 </div>
 
 
-## About
+### About
 <img src="/pictures/home2.png"></img>
 <img src="/pictures/main1.png"></img>
 
@@ -58,7 +58,7 @@
 - **Enhanced Filtering & Sorting** – Quickly find products by category, price and so on
 - **Language Selection** - For up to 6+ available languages
 
-## 📑 Table of Contents
+### 📑 Table of Contents
 
 - [About](#about)
 - [Installation](#🚀-installation)
@@ -84,7 +84,7 @@
 
 ---
 
-## 🚀 Installation
+### 🚀 Installation
 
 ### Prerequisites
 - Node.js (v14 or higher)
@@ -152,7 +152,7 @@ http://localhost:3000
 
 ---
 
-## 🕹️ Secret Games
+### 🕹️ Secret Games
 
 Three classic arcade games lie hidden within Fragstore, waiting to be discovered by curious explorers.
 
@@ -175,7 +175,7 @@ Click on **any game card 5 times** to unlock one of three nostalgic surprises:
 
 Will you uncover all three hidden treasures?
 
-## 🖥️ Application Flow 
+### 🖥️ Application Flow 
 
 ```
 
@@ -843,7 +843,7 @@ INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `created_at`)
 ```
 <br>
 
-## 🔌 API Endpoints & Integrations
+### 🔌 API Endpoints & Integrations
 
 Fragstore integrates multiple APIs to provide a seamless shopping experience.
 
