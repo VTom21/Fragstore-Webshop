@@ -154,59 +154,19 @@ Click on **any game card 5 times** to unlock one of three nostalgic surprises:
 
 
 
-<div style="display:flex;">
+| Game        | Version | Status    |
+|------------|--------|----------|
+| 🐍 Snake   | v1.0   | Available|
+| 🟦 Tetris  | v1.0   | Available|
+| <img align="center" src="pacman/assets/ghosts/redGhost.png" height="25"></img> Pac-Man | v1.0 | Available |
 
-  <table>
-    <thead>
-      <tr>
-        <th>Game</th>
-        <th>Version</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>🐍 Snake</td>
-        <td>v1.0</td>
-        <td>Available</td>
-      </tr>
-      <tr>
-        <td>🟦 Tetris</td>
-        <td>v1.0</td>
-        <td>Available</td>
-      </tr>
-      <tr>
-        <td><span style="display:flex; align-items:center;"><img src="pacman/assets/ghosts/redGhost.png" height="20">Pac-Man</span></td>
-        <td>v1.0</td>
-        <td>Available</td>
-      </tr>
-    </tbody>
-  </table>
+| SFX  | Scoring | Custom Sprites |
+|------|---------|----------------|
+| no   | yes     | included       |
+| no   | yes     | not included   |
+| yes  | yes     | included       |
 
-  <table>
-    <thead>
-      <tr>
-        <th>sfx</th>
-        <th>Scoring</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>no</td>
-        <td>yes</td>
-      </tr>
-      <tr>
-        <td>no</td>
-        <td>yes</td>
-      </tr>
-      <tr>
-        <td>yes</td>
-        <td>yes</td>
-      </tr>
-    </tbody>
-  </table>
 
-</div>
 
 
 
