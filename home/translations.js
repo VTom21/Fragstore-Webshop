@@ -123,7 +123,7 @@ const translations = {
   terms_and_conditions: { us: "Terms & Conditions", de: "Geschäftsbedingungen", it: "Termini e Condizioni", es: "Términos y Condiciones", ru: "Условия и положения", fr: "Termes et conditions", in: "नियम और शर्तें" }
 };
 
-// ----- TRANSLATION FUNCTION -----
+
 function translate(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
@@ -133,7 +133,7 @@ function translate(lang) {
   });
 }
 
-// ----- LANGUAGE SWITCHER -----
+
 const selected = document.querySelector(".selected-lang");
 document.querySelectorAll(".lang-menu a").forEach(link => {
   link.addEventListener("click", e => {

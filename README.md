@@ -4,14 +4,15 @@
 </div>
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Build-Passing-ghostwhite">
-  <img src="https://img.shields.io/badge/Version-1.0-blue">
-  <img src="https://img.shields.io/badge/License-MIT-ghostwhite">
-  <img src="https://img.shields.io/badge/Last_Commit-1_day_ago-blue"><br>
-<img src="https://img.shields.io/badge/npm-v1.0-ghostwhite">
-<img src="https://img.shields.io/badge/stars-0-blue">
-<img src="https://img.shields.io/badge/commits-140-ghostwhite">
+  <img src="https://img.shields.io/badge/Build-Passing-blue">
+    <img src="https://img.shields.io/github/last-commit/Vtom21/Fragstore-Webshop?color=blue">
+  <img src="https://img.shields.io/badge/License-MIT-blue"><br>
+  <img src="https://img.shields.io/badge/Version-1.0-ghostwhite">
+  <img src="https://img.shields.io/github/commit-activity/t/Vtom21/Fragstore-Webshop?color=white">
+<img src="https://img.shields.io/github/languages/count/Vtom21/Fragstore-Webshop?color=white">
+
 </div>
+
 
 
 <br>
@@ -35,54 +36,169 @@
 <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
 
 </div>
+<br>
+## 📑 Table of Contents
+
+- [About](#about)
+- [Installation](#🚀-installation)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+- [Secret Games](#🕹️-secret-games)
+- [Application Flow](#🖥️-application-flow)
+- [Easter Egg Games](#easter-egg-games)
+  - [Pac-Man](#pac-man)
+  - [Snake](#snake)
+- [Code Snippets](#👨‍💻-code-snippets)
+  - [Translation](#translation)
+  - [Prize Range](#prize-range)
+  - [Cards](#cards)
+  - [Backend](#backend)
+- [API Endpoints & Integrations](#🔌-api-endpoints--integrations)
+  - [EmailJS](#emailjs-gmail-service---smp)
+  - [Currency Exchange API](#currency-exchange-api)
+  - [Flags API](#flags-api)
+  - [Chart.js](#chartjs)
+- [Contributing](#🤝-contributing)
+- [License](#📄-license)
+
+## About
+<img src="/pictures/home2.png"></img>
+<img src="/pictures/main1.png"></img>
+
+**Fragstore** is a modern webshop for games featuring a sleek, responsive design and dynamic functionality. Browse, purchase, and discover hidden gems—including **3 secret games** waiting to be unlocked by curious explorers.
 
 
+### Key Features
 
+- **User System** – Secure Sign Up and Login for personalized experiences  
+- **Browse & Search** – Explore a vast catalog of games, gift cards via advanced filtering  
+- **Shopping Cart** – Add items to cart, review, and purchase seamlessly  
+- **Wishlist** – Save your favorite games and products for later  
+- **Purchase Products** – Buy games and gift cards with integrated PayPal payment  
+- **Secret Games** – Discover 3 hidden Easter eggs and unlockable games 
+- **Real-time Updates** – Stay informed about new releases, deals, and latest game awards  
+- **Responsive Design** – Optimized for mobile and desktop devices  
+- **Enhanced Filtering & Sorting** – Quickly find products by category, price and so on
+- **Language Selection** - For up to 6+ available languages
 
-
-## 📖 **Overview**
-
-**Fragstore** is a modern **game webshop platform** built with **Strapi** (backend) and designed to manage:
-
-* Hundreds of games
-* Gift cards
-* Custom user wishlists
-* Orders and Stripe payments
-
-The platform also includes a **secret Pac-Man Easter Egg game** and an **advanced, responsive design**, providing a polished user experience.
-
-
-## 🚀 **Features**
-
-* **Game Catalog**: Browse and search hundreds of games.
-* **Gift Cards**: Buy or redeem digital gift cards.
-* **User Profiles**: Personalized dashboards and wishlists.
-* **Secret Easter Egg**: Hidden Pac-Man game for fun discovery.
-* **Stripe Integration**: Secure online payments.
-* **Responsive UI**: Works seamlessly on desktop and mobile.
-
-
-## 🖼 **UI Overview**
-
-### **Homepage**
-
-* Featured games carousel
-* Quick search & category filters
-* Top-selling games display
-
-### **Game Details Page**
-
-* Detailed description & images
-* Price, stock, and purchase button
-* Wishlist & social sharing options
-
-### **Cart & Checkout**
-
-* Manage orders
-* Apply gift cards
-* Secure Stripe checkout
 
 ---
+
+## 🚀 Installation
+
+### Prerequisites
+- Node.js (v14 or higher)
+- PHP (v7.4+)
+- Git (v2.30+)
+- MySQL or MariaDB
+- Code Editor (Visual Studio, WebStorm..)
+- Database Client (phpMyAdmin, DBeaver..)
+
+### Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Vtom21/Fragstore-Webshop.git
+cd Fragstore-Webshop
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Install PHP and Node.js:
+
+  **Windows:**
+   - Download and install Node.js: [https://nodejs.org/en/download](https://nodejs.org/en/download)
+   - Download and install PHP: [https://www.php.net/downloads.php](https://www.php.net/downloads.php)
+
+  **macOS:**
+```bash
+   brew install php node
+```
+
+   **Linux (Ubuntu/Debian):**
+```bash
+   sudo apt update
+   sudo apt install php php-cli php-mysql php-json nodejs npm -y
+```
+
+   **Verify Installations:**
+```bash
+   php -v
+   node -v
+   npm -v
+```
+
+4. Import all databases from ```databases``` folder:
+```
+📁 databases/
+├── 🛢️ giftcard.sql
+├── 🛢️ leaderboard.sql
+├── 🛢️ users.sql
+└── 🛢️ videogames.sql
+```
+
+5. Start the development server:
+```php
+   php -S localhost:8000
+```
+
+6. Open your browser and visit:
+```powershell
+   http://localhost:3000
+```
+
+---
+
+## 🕹️ Secret Games
+
+Three classic arcade games lie hidden within Fragstore, waiting to be discovered by curious explorers.
+
+### The Secret:
+Click on **any game card 5 times** to unlock one of three nostalgic surprises:
+
+> 🐍 Snake <span style="float:right">v1.0</span>
+
+> 🟦 Tetris <span style="float:right">v1.0</span>
+
+> <span style="display:flex; justify-content:space-between; align-items:center;">
+>     <span style="display:flex; align-items:center;">
+>         <img src="pacman/assets/ghosts/redGhost.png" height="20" style="margin-right:5px;">Pac-Man
+>     </span>
+>     <span>v1.0</span>
+> </span>
+
+
+
+
+Will you uncover all three hidden treasures?
+
+## 🖥️ Application Flow 
+
+```
+
+               Home
+        ┌───────┼───────┐
+        ↓       ↓       ↓
+Main Website  Contacts  Login / Sign Up
+        │
+        │
+        ├─────────────┬─────────────┬─────────────┐
+        ↓             ↓             ↓             ↓
+Shopping Cart  Secret Game Entry  Game Awards    Home
+        │             Points       Website
+        ↓             ↓             ↓
+     Summary        Game Screen   Completion & Rewards
+        ↓                           ↓
+     Checkout                      Home
+        ↓
+      Payment
+        ↓
+   Success/Failure
+
+```
 
 <div align="center">
   <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Fragstore Homepage"><br>
@@ -100,6 +216,7 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 
 ---
 
+
 <div align="center">
   <img src="./snake/assets/icon.png" width="60" alt="Fragstore Homepage"><br>
   <h3><strong>Easter Egg game (Snake)</strong></h3>
@@ -116,46 +233,6 @@ The platform also includes a **secret Pac-Man Easter Egg game** and an **advance
 ---
 
 
-## ⚙️ **How It Works**
-
-### **1\. Browsing Games**
-
-* Users can search, filter by category, or browse trending games.
-* Each game page shows price, description, and available gift cards.
-
-### **2\. Purchasing Games**
-
-* Add items to the cart.
-* Checkout securely with **Stripe integration**.
-* Orders are saved under the user profile.
-
-### **3\. Using Wishlists & Easter Eggs**
-
-* Add games to personal wishlists.
-* Discover hidden **Pac-Man game** Easter egg on specific pages.
-
-
-## 🏆 **Admin & Management**
-
-Administrators can manage all platform data via **Strapi**:
-
-* **Games**: Add, edit, or remove titles.
-* **Categories**: Organize games efficiently.
-* **Orders**: Track user purchases.
-* **Users**: Manage accounts, roles, and permissions.
-
-
-## 🧑‍💻 **How to Use**
-
-1. **Clone the repository**:
-2. **After cloning make sure to load in the datebases**
-   * Open xampp
-   * Start Apache for php files
-   * Start MySQL for the databases than run it as an admin
-   * In the admin panel import the sql files one each time
-   * After that you good to go 
-
----
 
 ## 👨‍💻 **Code Snippets**
 
@@ -766,11 +843,215 @@ INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `created_at`)
 ```
 ---
 
-| Tables | Are | Cool |
-| ------ | :---: | ---: |
-| col 1 is | left-aligned | $1600 |
-| col 2 is | centered | $12 |
-| col 3 is | right-aligned | $1 |
+## 🔌 API Endpoints & Integrations
+
+Fragstore integrates multiple APIs to provide a seamless shopping experience.
+
+---
+
+### <img height="35" style="display:inline; align-items:center;" align="center" src="https://www.emailjs.com/logo.png"></img> EmailJS (Gmail Service - SMP)
+Used for sending emails and OTP verification.
+
+**Configuration:**
+```javascript
+emailjs.init('YOUR_PUBLIC_KEY');
+
+// Send OTP Email
+emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+  to_email: 'user@example.com',
+  otp_code: '123456',
+  user_name: 'John Doe'
+});
+```
+
+**Example Response:**
+```json
+{
+  "status": 200,
+  "text": "OK"
+}
+```
+
+**Use Cases:**
+- Order confirmation email (work in progress)
+- OTP verification for account security
+- Reach & write to Contact email
+
+---
+
+### <img height="50" style="display:inline; align-items:center;" align="center" src="https://img.stackshare.io/stack/37303/default_657b34af1c7b9ea45750ae5720351d3735cf17d4.png"></img> Currency Exchange API
+Real-time currency conversion using [ExchangeRate-API](https://open.er-api.com).
+
+**Endpoint:**
+```
+GET https://open.er-api.com/v6/latest/USD
+```
+
+**Example Request:**
+```javascript
+fetch('https://open.er-api.com/v6/latest/USD')
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+**Example Response:**
+```json
+{
+  "result": "success",
+  "provider": "https://www.exchangerate-api.com",
+  "documentation": "https://www.exchangerate-api.com/docs/free",
+  "terms_of_use": "https://www.exchangerate-api.com/terms",
+  "time_last_update_unix": 1735516801,
+  "time_last_update_utc": "Mon, 30 Dec 2024 00:00:01 +0000",
+  "time_next_update_unix": 1735603201,
+  "time_next_update_utc": "Tue, 31 Dec 2024 00:00:01 +0000",
+  "time_eol_unix": 0,
+  "base_code": "USD",
+  "rates": {
+    "USD": 1,
+    "EUR": 0.85,
+    "GBP": 0.73,
+    "JPY": 110.5,
+    "HUF": 350.25
+  }
+}
+```
+
+**Use Cases:**
+- Display prices in user's local currency
+- Multi-currency checkout
+- Real-time exchange rate updates
+
+---
+
+### <img height="50" style="display:inline; align-items:center;" align="center" src="https://apiverve.com/images/favicon.png"></img> Flags API
+Display country flags based on currency or user location.
+
+**Endpoint:**
+```
+GET https://flagsapi.com/{COUNTRY_CODE}/flat/64.png
+```
+
+**Example Request:**
+```javascript
+// Get Hungarian flag
+const flagUrl = 'https://flagsapi.com/HU/flat/64.png';
+
+// Usage in React, PHP or html
+<img src={`https://flagsapi.com/${countryCode}/flat/64.png`} alt="Country Flag" />
+```
+
+**Example Implementation:**
+```javascript
+const currencies = {
+  USD: 'US',
+  EUR: 'EU',
+  GBP: 'GB',
+  HUF: 'HU'
+};
+
+const getFlagUrl = (currency) => {
+  const countryCode = currencies[currency];
+  return `https://flagsapi.com/${countryCode}/flat/64.png`;
+};
+```
+
+**Use Cases:**
+- Currency selector with flag icons
+- User location display
+- Multi-language support indicators
+
+---
+
+### <img height="50" style="display:inline; align-items:center;" align="center" src="https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/1/chartjs-gbwxkdn5urp4w5jg9xk4g5.png/chartjs-p7803bgd17hc5uxtz82i.png?_a=DATAg1AAZAA0"></img> Chart.js
+JavaScript charting library for data visualization.
+
+**Installation:**
+```bash
+npm install chart.js react-chartjs-2
+```
+
+**Example Implementation:**
+```javascript
+
+function createChart() {
+  var xValues = ["Games", "Genres", "Platforms"];
+  var yValues = [$scope.numberOfProducts, $scope.numberOfGenres, 
+                 $scope.numberOfPlatforms];
+
+  var barColors = ["#b91d47", "#00aba9", "#2b5797"];
+
+  new Chart("myChart", {
+    type: "pie",
+    data: {
+      labels: xValues,
+      datasets: [
+        {
+          backgroundColor: barColors,
+          data: yValues,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Products Info",
+        },
+      },
+    },
+  });
+}
+```
+
+**Example Chart Data:**
+```json
+{
+  "labels": ["January", "February", "March", "April", "May", "June"],
+  "datasets": [
+    {
+      "label": "Monthly Sales",
+      "data": [65, 59, 80, 81, 56, 55],
+      "backgroundColor": "rgba(54, 162, 235, 0.2)",
+      "borderColor": "rgba(54, 162, 235, 1)",
+      "borderWidth": 2
+    }
+  ]
+}
+```
+
+**Use Cases:**
+- Products Data Visualization
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Follow these steps:
+
+1. Fork the repository
+2. Create a new branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch:  `git push origin feature/your-feature`
+5. Open a Pull Request
+
+------------------
+
+## 📄 License
+
+This project is licensed under the **MIT License**.  
+
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, under the following conditions:
+
+1. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+2. The software is provided "as is", without warranty of any kind, express or implied.
+
+
+---
+
+
+
 
 
 <br>
