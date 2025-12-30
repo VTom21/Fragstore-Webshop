@@ -919,8 +919,8 @@ for (let cherry of cherries.values()) {
   }
 ```
 ---
-<h3>
-  Backend
+<h3 align="center">
+  Database Schema
   <img align="right" padding="0" margin="0" width="80" src="https://skillicons.dev/icons?i=mysql,php">
 </h3><br>
 
