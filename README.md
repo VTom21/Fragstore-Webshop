@@ -153,21 +153,16 @@ Three classic arcade games lie hidden within Fragstore, waiting to be discovered
 Click on **any game card 5 times** to unlock one of three nostalgic surprises:
 
 
+<div width="20">
 
-| Game        | Version | Status    |
-|------------|--------|----------|
-| 🐍 Snake   | v1.0   | Available|
-| 🟦 Tetris  | v1.0   | Available|
-| <img align="center" src="pacman/assets/ghosts/redGhost.png" height="25"></img> Pac-Man | v1.0 | Available |
-
-| SFX  | Scoring | Custom Sprites |
-|------|---------|----------------|
-| no   | yes     | included       |
-| no   | yes     | not included   |
-| yes  | yes     | included       |
+| Game | Version | Status    | High Score System | Score System | Leaderboard | Custom Sprites | Achievements | SFX |
+|------|--------|----------|-----------------|-------------|------------|----------------|--------------|-----|
+| 🐍 Snake | v1.0 | Available | yes | yes | no | yes | no | no |
+| 🟦 Tetris | v1.0 | Available | yes | yes | no | no  | no | no |
+| <img src="pacman/assets/ghosts/redGhost.png" height="25" width="25"> Pac-Man | v1.0 | Available | yes | yes | yes | yes | yes | yes |
 
 
-
+</div>
 
 
 Will you uncover all three hidden treasures?
