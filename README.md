@@ -115,20 +115,20 @@ npm install
 
   **macOS:**
 ```bash
-   brew install php node
+  brew install php node
 ```
 
    **Linux (Ubuntu/Debian):**
 ```bash
-   sudo apt update
-   sudo apt install php php-cli php-mysql php-json nodejs npm -y
+  sudo apt update
+  sudo apt install php php-cli php-mysql php-json nodejs npm -y
 ```
 
    **Verify Installations:**
 ```bash
-   php -v
-   node -v
-   npm -v
+  php -v
+  node -v
+  npm -v
 ```
 
 4. Import all databases from ```databases``` folder:
