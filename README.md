@@ -924,7 +924,8 @@ for (let cherry of cherries.values()) {
 </div>
 <br>
 
-This section outlines the structure of all the databases used throughout this entire project.  
+git clone https://github.com/Vtom21/Fragstore-Webshop.git
+cd Fragstore-Webshop 
 
 ### 1. `giftcard`
 
