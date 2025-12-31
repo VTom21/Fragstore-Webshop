@@ -134,6 +134,29 @@ node -v
 npm -v
 ```
 
+Alternatively, you can use pre-made bash scripts for download process
+
+1. open `Visual Studio`
+
+2. click on `terminal`
+
+3. then choose `bash`:
+```sh
+cd scripts
+```
+
+then
+
+```sh
+chmod +x deploy.sh
+```
+
+and finally
+
+```sh
+bash deploy.sh
+```
+
 4. Import all databases from ```databases``` folder:
 ```
 📁 databases/
