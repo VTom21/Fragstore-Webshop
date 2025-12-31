@@ -392,7 +392,12 @@ Perfect for quick play sessions, Snake rewards precision, timing, and smart path
 ---
 
 
+### 🟧 Tetris
 
+A legendary puzzle game that challenges your speed, foresight, and spatial reasoning. Rotate and position falling blocks to form complete horizontal lines while managing limited space and increasing speeds.
+
+
+<img src="pictures\tetris1.png"></img>
 
 ## 👨‍💻 **Code Snippets**
 
