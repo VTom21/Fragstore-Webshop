@@ -1,2 +1,3 @@
 *.sh linguist-language=Shell
 *.sh text eol=lf
+
