@@ -67,6 +67,10 @@
 - [Secret Games](#the-secret)
 - [Application Flow](#app-flow)
 - [File Structure](#file)
+- [Minigames](#pacman)
+  - [Pac man](#pacman)
+  - [Snake game](#snake)
+  - [Tetris](#tetris)
 - [Database Schema](#database)
   - [Giftcards](#giftcard)
   - [Videogames](#videogames)
@@ -351,7 +355,7 @@ Fragstore-Webshop/
 
 A classic arcade game where you navigate Pacman through a maze, eating pellets and avoiding ghosts. Collect power-ups to turn the tables on your enemies and rack up high scores. This version includes both **basic and custom-made power-ups**, giving players exciting new ways to interact with the game.
 
-<div align="left">
+<div align="left" id="pacman">
 <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Pacman">
 <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Pacman">
 <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Pacman">
@@ -391,7 +395,7 @@ This Pacman remake emphasizes both nostalgia and new gameplay mechanics, offerin
 ### 🐍 Snake
 A timeless arcade classic reimagined with smooth controls and scalable difficulty.
 
-<img src="pictures\snake1.png"></img>
+<img src="pictures\snake1.png" id="snake"></img>
 
 Control the snake as it moves across the screen, eating food to grow longer while avoiding collisions with walls and your own tail. As the game progresses, the challenge increases, testing your reflexes and strategic movement.
 
@@ -417,7 +421,7 @@ Perfect for quick play sessions, Snake rewards precision, timing, and smart path
 A legendary puzzle game that challenges your speed, foresight, and spatial reasoning. Rotate and position falling blocks to form complete horizontal lines while managing limited space and increasing speeds.
 
 
-<img src="pictures\tetris1.png"></img>
+<img src="pictures\tetris1.png" id="tetris"></img>
 
 <div align="center">
 
