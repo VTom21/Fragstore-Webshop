@@ -399,6 +399,98 @@ A legendary puzzle game that challenges your speed, foresight, and spatial reaso
 
 <img src="pictures\tetris1.png"></img>
 
+<div align="center">
+
+## Matrix Rotation Logic
+
+<img height="200"  src="pictures\tetrominos.png"></img>
+
+</div>
+
+---------
+### shapes
+```tsx
+{
+   i: [ // I shape
+        [0,0,0,0],
+        [1,1,1,1], 
+        [0,0,0,0],
+        [0,0,0,0]
+    ],
+    j: [ // J shape
+        [1,0,0], 
+        [1,1,1], 
+        [0,0,0],
+    ],
+    l: [ // L shape
+        [0,0,1],
+        [1,1,1], 
+        [0,0,0],
+    ],
+    o: [ // O shape
+        [1,1], 
+        [1,1], 
+    ],
+    s: [ // S shape
+        [0,1,1],
+        [1,1,0],
+        [0,0,0],
+    ],
+    t: [ // T shape
+        [1,1,1],
+        [0,1,0],
+        [0,0,0],
+    ],
+    z: [ // Z shape
+        [1,1,0],
+        [0,1,1],
+        [0,0,0],
+    ],
+};
+
+```
+### rotation logic
+
+```tsx
+
+    function Rotation() {
+      if (!tetrominoRef.current) return;
+      const tetromino = tetrominoRef.current; 
+      const size = tetromino.shape.length; 
+
+      const newElements: number[][] = []; 
+
+
+      for (let y = 0; y < size; y++) {
+        newElements[y] = [];
+        for (let x = 0; x < size; x++) {
+          newElements[y][x] = 0;
+        }
+      }
+
+      for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+          const newX = size - 1 - y; 
+          const newY = x; 
+
+          newElements[newY][newX] = tetromino.shape[y][x]; 
+        }
+      }
+
+      tetromino.shape = newElements;
+
+      const { minC, maxC } = Edges(tetromino); 
+
+      if (tetromino.x + maxC >= COLS) { 
+        tetromino.x -= tetromino.x + maxC - COLS + 1; 
+      }
+
+      if (tetromino.x + minC < 0) { 
+        tetromino.x += -(tetromino.x + minC);  
+      }
+    }
+```
+
 ## 👨‍💻 **Code Snippets**
 
 
