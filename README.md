@@ -401,7 +401,7 @@ A legendary puzzle game that challenges your speed, foresight, and spatial reaso
 
 <div align="center">
 
-## Matrix Rotation Logic
+### Matrix Rotation Logic
 
 <img height="200"  src="pictures\tetrominos.png"></img>
 
@@ -447,6 +447,34 @@ A legendary puzzle game that challenges your speed, foresight, and spatial reaso
         [0,0,0],
     ],
 };
+
+```
+### rotation flow
+
+```
+[1, 0, 0]
+[1, 1, 1] => 0°
+[0, 0, 0]
+    │
+    ↓
+[0, 1, 1]
+[0, 1, 0] => 90°
+[0, 1, 0]
+    │
+    ↓
+[0, 1, 0]
+[0, 1, 0] => 180°
+[1, 1, 0]
+    │
+    ↓
+[0, 0, 0]
+[1, 1, 1] => 270°
+[0, 0, 1]
+    │
+    ↓
+[1, 0, 0]
+[1, 1, 1] => 360°
+[0, 0, 0]
 
 ```
 ### rotation logic
