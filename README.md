@@ -347,24 +347,44 @@ Fragstore-Webshop/
 
 ```
 
-<div align="center" id="pacman">
-  <img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Fragstore Homepage"><br>
-  <h3><strong>Easter Egg game (Pacman)</strong></h3>
+### 🟡 Pacman
+
+A classic arcade game where you navigate Pacman through a maze, eating pellets and avoiding ghosts. Collect power-ups to turn the tables on your enemies and rack up high scores. This version includes both **basic and custom-made power-ups**, giving players exciting new ways to interact with the game.
+
+<div align="left">
+<img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Pacman">
+<img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Pacman">
+<img src="./pacman/assets/pacman/pacmanRight.png" width="60" alt="Pacman">
 </div>
 
+<br>
 
-* Have a little fun while shopping 
-* You have to found  the Pac Man
-  * You have to found the way to play even after you get to it in the Store
-  * hint: Just click it sometimes  
-* The original mechanics from the first Pac man
-* New designs and abilities
-* Score system with local leaderboard  
+<img src="pictures/pacman1.png" alt="Pacman Gameplay 1">
+<img src="pictures/pacman2.png" alt="Pacman Gameplay 2">
 
 ---
 
+### Features
 
+- Classic maze navigation with ghosts  
+- Collectible pellets and fruit  
+- Basic and custom power-ups 
+- Sound effects (SFX) for actions and events  
+- Score and high score system  
+- Leaderboard to track top players  
 
+---
+<div align="left">
+<img src="pacman\assets\cherry.png" width="60" alt="Pacman">
+<img src="pacman\custom_assets\foods\ice_cube.png" width="55" alt="Pacman">
+<img src="pacman\custom_assets\foods\heart.png" width="60" alt="Pacman">
+<img src="pacman\custom_assets\foods\strawberry.png" width="60"alt="Pacman">
+<img src="pacman\custom_assets\foods\portal.png" width="60"alt="Pacman">
+</div><br>
+
+This Pacman remake emphasizes both nostalgia and new gameplay mechanics, offering **fun, strategy, and replayability** for casual and competitive players alike.
+
+---
 
 
 
