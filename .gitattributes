@@ -1,2 +1,3 @@
 deploy.sh linguist-language=Shell
 check.sh linguist-language=Shell
+multi-check.sh linguist-language=Shell
