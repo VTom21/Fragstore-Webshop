@@ -571,7 +571,7 @@ CREATE TABLE `giftcard` (
 
 ### 2. `videogames`
 
-Contains details about games, including the picture, name, release date, genre, platforms, prize, publisher, and discount status.
+Contains details about all products, including the picture, name, release date, genre, platforms, prize, publisher, and discount status.
 
 ```sql
 CREATE TABLE `datas` (
