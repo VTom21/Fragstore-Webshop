@@ -1,1 +1,2 @@
 deploy.sh linguist-language=Shell
+check.sh linguist-language=Shell
