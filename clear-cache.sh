@@ -54,3 +54,7 @@ echo ""
 echo "======================================="
 echo "         Cache Clearing Completed"
 echo "======================================="
+
+
+#!/usr/bin/env sh
+set -e

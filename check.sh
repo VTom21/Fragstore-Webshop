@@ -32,3 +32,7 @@ fi
 echo "======================================="
 echo "Version check completed."
 echo "======================================="
+
+
+#!/usr/bin/env sh
+set -e

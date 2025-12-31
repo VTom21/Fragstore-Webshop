@@ -77,3 +77,7 @@ echo "======================================="
 echo "Deployment guidance completed!"
 echo "Please follow instructions above for missing tools."
 echo "======================================="
+
+#!/usr/bin/env sh
+set -e
+
