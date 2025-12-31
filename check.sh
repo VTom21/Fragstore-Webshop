@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
 echo "======================================="
@@ -6,7 +6,7 @@ echo "Checking installed versions"
 echo "======================================="
 
 # --- Check Node.js ---
-if command -v node &> /dev/null; then
+if type node >/dev/null 2>&1; then
     NODE_VERSION=$(node -v)
     echo "Node.js is installed: $NODE_VERSION"
 else
@@ -14,7 +14,7 @@ else
 fi
 
 # --- Check npm ---
-if command -v npm &> /dev/null; then
+if type npm >/dev/null 2>&1; then
     NPM_VERSION=$(npm -v)
     echo "npm is installed: $NPM_VERSION"
 else
@@ -22,7 +22,7 @@ else
 fi
 
 # --- Check PHP ---
-if command -v php &> /dev/null; then
+if type php >/dev/null 2>&1; then
     PHP_VERSION=$(php -v | head -n 1)
     echo "PHP is installed: $PHP_VERSION"
 else
