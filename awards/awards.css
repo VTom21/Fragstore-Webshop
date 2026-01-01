@@ -653,6 +653,15 @@ body {
   background: rgba(26, 25, 25, 0.6352941176);
 }/*# sourceMappingURL=awards.css.map */
 
+@media (max-width: 800px) {
+    iframe{
+        width: 100vw;
+        height: 45vh;
+        margin: none;
+        justify-content: start;
+    }
+}
+
 @media (max-width: 580px) {
     .grid-items {
         grid-template-columns: repeat(2, 1fr);
