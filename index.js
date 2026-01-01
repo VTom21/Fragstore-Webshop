@@ -65,6 +65,7 @@ $scope.convertPrice = function(game) {
   };
 
   $scope.wishlistItems = JSON.parse(localStorage.getItem("wishlistItems") || "[]");
+  $scope.count2 =  $scope.wishlistItems.length || 0;
 
 
 $scope.openCart = function (game) {
@@ -511,6 +512,7 @@ $scope.openCart = function (game) {
   };
 
   $scope.Wishlist = function (game, event) {
+
     var wish_btn = event.currentTarget;
     wish_btn.classList.toggle("off");
     wish_btn.classList.toggle("active");
@@ -528,6 +530,7 @@ $scope.openCart = function (game) {
       $scope.wishlistItems = $scope.wishlistItems.filter((item) => item.id !== game.id);
     }
 
+    $scope.count2 = $scope.wishlistItems.length;
     localStorage.setItem("wishlistItems", JSON.stringify($scope.wishlistItems));
     
   };

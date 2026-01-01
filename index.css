@@ -442,7 +442,23 @@ input[type="range"]::-webkit-slider-thumb {
     pointer-events: none;
 }
 
-.shop-cart:not([data-count="0"])::after {
+ .wish-btn::after{
+    content: attr(data-count2);
+    position: absolute;
+    background-color: var(--shop_btn_bg);
+    border-radius: 50%;
+    width: 20px;
+    height: 25px;
+    top: -9px;
+    left: -10px;
+    padding: 2px 6px;
+    color: white;
+    font-size: 14px;
+    display: none;
+    pointer-events: none;
+ }
+
+.shop-cart:not([data-count="0"])::after, .wish-btn:not([data-count2="0"])::after {
   display: block;
 }
 
