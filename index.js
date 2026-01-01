@@ -12,6 +12,7 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.sortOrder = "";
   $scope.isAscChecked = false;
   $scope.isDescChecked = false;
+  $scope.count = 0;
 
   //base variables for storing games, filtered games & platforms, Cart & Wish list items
   $scope.games = [];
@@ -67,6 +68,7 @@ $scope.convertPrice = function(game) {
 
 
 $scope.openCart = function (game) {
+    $scope.count++;
     let existingItem = $scope.cartItems.find((item) => item.id === game.id);
 
     // Get base price (considering discount)
@@ -121,11 +123,13 @@ $scope.openCart = function (game) {
   };
 
   $scope.increaseQty = function (item) {
+    $scope.count++;
     item.quantity++;
     item.total_prize = item.prize * item.quantity;
   };
 
   $scope.decreaseQty = function (item) {
+    $scope.count--;
     if (item.quantity > 1) {
       item.quantity--;
       item.total_prize = item.prize * item.quantity;

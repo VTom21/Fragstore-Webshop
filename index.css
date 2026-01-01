@@ -426,6 +426,26 @@ input[type="range"]::-webkit-slider-thumb {
     margin: 12px 6px;
 }
 
+.shop-cart::after{
+    content: attr(data-count);
+    position: absolute;
+    background-color: var(--shop_btn_bg);
+    border-radius: 50%;
+    width: 20px;
+    height: 25px;
+    top: -9px;
+    left: -10px;
+    padding: 2px 6px;
+    color: white;
+    font-size: 14px;
+    display: none;
+    pointer-events: none;
+}
+
+.shop-cart:not([data-count="0"])::after {
+  display: block;
+}
+
 .wish-btn {
     position: relative;
     float: right;

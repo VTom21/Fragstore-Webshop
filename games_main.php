@@ -42,7 +42,7 @@ $currencies = array_keys($data["rates"]);
 
 
 
-        <button class="shop-cart" ng-click="cartOpen = true">
+        <button class="shop-cart" ng-click="cartOpen = true" data-count={{count}}>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#37e6ec73" viewBox="0 0 24 24">
                 <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 
                  0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.16 
@@ -383,7 +383,6 @@ $currencies = array_keys($data["rates"]);
 
     <script>
         window.exchangeRates = <?php echo json_encode($data["rates"]); ?>;
-
 
 
     </script>
