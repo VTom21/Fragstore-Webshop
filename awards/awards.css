@@ -62,9 +62,21 @@ body {
   width: 100%;
   height: 4rem;
   padding: 0 1.5rem;
-  display: flex;
   justify-content: space-between;
   align-items: center;
+  
+}
+
+.grid-nav{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-items{
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 1rem;
+  justify-content: end;
 }
 .navbar a {
   color: #e8e8e8;
@@ -640,3 +652,31 @@ body {
   color: rgba(31, 190, 196, 0.8705882353);
   background: rgba(26, 25, 25, 0.6352941176);
 }/*# sourceMappingURL=awards.css.map */
+
+@media (max-width: 580px) {
+    .grid-items {
+        grid-template-columns: repeat(2, 1fr);
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .navbar{
+      margin-top: 1rem;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      font-size: large;
+      font-weight: 600;
+    }
+
+    #logo{
+      width: 60px;
+      height: auto;
+    }
+
+}
+
+@media (max-width: 400px) {
+    #logo{
+      display: none;
+    }
+}

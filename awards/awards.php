@@ -36,15 +36,17 @@ foreach ($awards as $award) {
         <div class="hero-bg absolute inset-0 bg-cover bg-center" style="background-image: url('../pictures/awards_hero.png'); filter: brightness(0.2);"></div>
 
         <!-- Navbar -->
-        <nav class="navbar relative z-10 flex justify-between items-center max-w-7xl mx-auto px-6 h-16 w-full">
-            <img src="../icons/array (2).png" alt="Logo" class="h-8 w-auto">
-            <div class="flex space-x-4">
+
+        <nav class="grid-nav navbar relative z-10  justify-between items-center max-w-7xl mx-auto px-6 h-16 w-full">
+            <img src="../icons/array (2).png" alt="Logo" id="logo" class="h-8 w-auto">
+            <div class="grid-items space-x-4">
                 <a href="../redirect/redirect.php?destination=../home/home.php" class="text-white hover:text-cyan-400 px-3 py-2 rounded">Home</a>
                 <a href="#dev_pub" class="text-white hover:text-cyan-400 px-3 py-2 rounded">Developers</a>
                 <a href="#dev_pub" class="text-white hover:text-cyan-400 px-3 py-2 rounded">Publishers</a>
                 <a href="#featured_winners" class="text-white hover:text-cyan-400 px-3 py-2 rounded">Awards</a>
             </div>
         </nav>
+
 
         <!-- Hero content -->
         <div class="relative z-10 max-w-4xl mx-auto px-6 py-32 text-center flex flex-col items-center justify-center min-h-screen">
@@ -77,40 +79,40 @@ foreach ($awards as $award) {
                 </button>
 
                 <!-- Popup Buttons -->
-<div class="absolute bottom-full py-2 right-0 hidden flex-col items-center gap-3 group-hover:flex">
+                <div class="absolute bottom-full py-2 right-0 hidden flex-col items-center gap-3 group-hover:flex">
 
-  <!-- Home -->
-  <a href="../redirect/redirect.php?destination=../home/home.php"
-     class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-900 text-gray-400 hover:scale-110 transition-transform">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-         stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-      <path stroke-linecap="round" stroke-linejoin="round"
-        d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-    </svg>
-  </a>
+                    <!-- Home -->
+                    <a href="../redirect/redirect.php?destination=../home/home.php"
+                        class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-900 text-gray-400 hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                        </svg>
+                    </a>
 
-<a href="../redirect/redirect.php?destination=../games_main.php"
-   class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-900 text-gray-400 hover:scale-110 transition-transform">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-       stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-    <path stroke-linecap="round" stroke-linejoin="round"
-      d="M12 3v6m0 0a2.25 2.25 0 102.25 2.25M12 9a2.25 2.25 0 11-2.25 2.25M6 15.75a3.75 3.75 0 013.75-3.75h4.5A3.75 3.75 0 0118 15.75v1.5A2.25 2.25 0 0115.75 19.5h-7.5A2.25 2.25 0 016 17.25v-1.5z" />
-  </svg>
-</a>
+                    <a href="../redirect/redirect.php?destination=../games_main.php"
+                        class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-900 text-gray-400 hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 3v6m0 0a2.25 2.25 0 102.25 2.25M12 9a2.25 2.25 0 11-2.25 2.25M6 15.75a3.75 3.75 0 013.75-3.75h4.5A3.75 3.75 0 0118 15.75v1.5A2.25 2.25 0 0115.75 19.5h-7.5A2.25 2.25 0 016 17.25v-1.5z" />
+                        </svg>
+                    </a>
 
 
 
-  <!-- Trophy -->
-  <a href="#featured_winners"
-     class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-900 text-gray-400 hover:scale-110 transition-transform">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-         stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-      <path stroke-linecap="round" stroke-linejoin="round"
-        d="M16.5 18.75h-9m4.5-3v3m-3-6h6m-9-9h12v3a6 6 0 01-12 0v-3zm0 0H3v1.5a4.5 4.5 0 004.5 4.5M21 3h-3v1.5a4.5 4.5 0 01-4.5 4.5" />
-    </svg>
-  </a>
+                    <!-- Trophy -->
+                    <a href="#featured_winners"
+                        class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-900 text-gray-400 hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M16.5 18.75h-9m4.5-3v3m-3-6h6m-9-9h12v3a6 6 0 01-12 0v-3zm0 0H3v1.5a4.5 4.5 0 004.5 4.5M21 3h-3v1.5a4.5 4.5 0 01-4.5 4.5" />
+                        </svg>
+                    </a>
 
-</div>
+                </div>
 
             </div>
         </div>
