@@ -33,11 +33,10 @@ foreach ($awards as $award) {
     <div class="hero relative min-h-screen bg-gray-900">
 
         <!-- Hero background -->
-        <div class="hero-bg absolute inset-0 bg-cover bg-center" style="background-image: url('../pictures/awards_hero.png'); filter: brightness(0.2);"></div>
-
+        
         <!-- Navbar -->
 
-        <nav class="grid-nav navbar relative z-10  justify-between items-center max-w-7xl mx-auto px-6 h-16 w-full">
+        <nav class="grid-nav navbar z-10  justify-between items-center max-w-7xl mx-auto px-6 h-16 w-full">
             <img src="../icons/array (2).png" alt="Logo" id="logo" class="h-8 w-auto">
             <div class="grid-items space-x-4">
                 <a href="../redirect/redirect.php?destination=../home/home.php" class="text-white hover:text-cyan-400 px-3 py-2 rounded">Home</a>
@@ -47,10 +46,11 @@ foreach ($awards as $award) {
             </div>
         </nav>
 
+<div class="hero-bg absolute inset-0 bg-cover bg-center" style="background-image: url('../pictures/awards_hero.png'); filter: brightness(0.2);"></div>
 
         <!-- Hero content -->
-        <div class="relative z-10 max-w-4xl mx-auto px-6 py-32 text-center flex flex-col items-center justify-center min-h-screen">
-            <h1 class="hero-title text-4xl sm:text-6xl font-bold text-cyan-400 mb-6">Game Awards</h1>
+        <div class=" z-10 max-w-4xl mx-auto px-6 py-32 text-center flex flex-col items-center justify-center min-h-screen">
+            <h1 class="hero-title font-bold text-cyan-400 mb-6">Game Awards</h1>
             <p class="hero-subtitle text-gray-300 text-lg sm:text-xl max-w-2xl mb-8">Explore the latest winners, discover top developers, and celebrate the best games in the industry.</p>
             <div class="buttons flex flex-col sm:flex-row gap-4">
                 <a href="#featured_winners" class="btn-primary px-6 py-3 rounded-lg font-semibold bg-cyan-400 text-gray-900 shadow-lg hover:scale-105 view_awards">View Awards</a>
@@ -135,7 +135,7 @@ foreach ($awards as $award) {
                 <span class="bg-yellow-400 text-black font-bold px-4 py-2 rounded-full uppercase tracking-wide text-sm shadow-lg mb-4 game_of_the_year">
                     Game of the Year <?php echo $topGOTY['award_year']; ?>
                 </span>
-                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white mb-6 goty">
+                <h1 class=" font-extrabold text-white mb-6 goty">
                     <?php echo $topGOTY['game_name']; ?>
                 </h1>
                 <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mb-8 promo">
@@ -177,7 +177,7 @@ foreach ($awards as $award) {
                 </div>
             </div>
         </section>
-    </div>
+
 
     <section class="timeline-section">
         <div class="timeline-header">
@@ -291,7 +291,7 @@ foreach ($awards as $award) {
 
 
             <?php foreach ($awardsUnique as $award): ?>
-                <div class="award-card award-card1">
+                <div class="award-card" id="award-card1">
                     <img src="https://cdn-icons-png.flaticon.com/512/6535/6535462.png" alt="Award Image">
                     <h2><?php echo $award["award_name"]; ?></h2>
                 </div>

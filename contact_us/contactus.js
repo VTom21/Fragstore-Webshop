@@ -1,7 +1,7 @@
 emailjs.init("2w8KrX-es6cBuW9Rt");
 
 function sendMail(e) {
-    e.preventDefault(); // IMPORTANT — prevents page reload
+    e.preventDefault(); 
 
     const emailInput = document.getElementById("email");
     const nameInput = document.getElementById("name");

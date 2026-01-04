@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    gsap.from(".award-card1", {
+    gsap.from("#award-card1", {
         x: -30,
         opacity: 0,
         duration: 0.6,
@@ -292,6 +292,10 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleActions: "play none none none",
             markers: false,
         }
+    });
+
+    gsap.to("#award-card1", {
+        x: 0,
     });
 
     gsap.from("#featured_winners h2", {
@@ -442,10 +446,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-
-
-
-
-
 
 

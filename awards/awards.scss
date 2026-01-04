@@ -25,6 +25,7 @@ body {
   background: $bg-main;
   color: $text-light;
   font-family: system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 // ================= HERO =================
@@ -95,10 +96,10 @@ body {
   width: 100%;
   height: 4rem;
   padding: 0 1.5rem;
-  display: grid;
-  justify-content: space-between;
+
+  display: flex;
   align-items: center;
-  grid-template-columns: 4fr 1fr 1fr 1fr;
+  justify-content: space-between;
 
 
 
@@ -395,7 +396,23 @@ body {
   }
 }
 
+.goty{
+  font-size: 4rem;
+}
+
 /* Responsive */
+
+@media (max-width: 1355px){
+  .goty{
+  font-size: 2rem;
+}
+
+.container .text{
+  text-align: center;
+}
+}
+
+
 @media (max-width: 1024px) {
   .section .container {
     flex-direction: column;
@@ -441,53 +458,250 @@ body {
   }
 }
 
+@media (max-width: 850px) {
+  #awards_promo {
+    padding: 2rem;
+    gap: 2rem;
+
+    .award-card {
+      max-width: 100%; // full width
+      padding: 1rem;
+
+      h2 {
+        font-size: 1rem;
+      }
+
+      img {
+        width: 80px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 390px) {
+
+.navbar a{
+  font-size: 0.8rem;
+}
+.hero{
+.hero-title{
+  font-size: 1.5rem;
+}
+
+.hero-subtitle{
+  font-size: 0.8rem;
+}
+
+
+}
+
+.goty{
+  font-size: 1.5rem !important;
+}
+
+
+}
+
+@media(max-width:250px){
+
+}
+
+@media(max-width:285px){
+  .cards_div .award-card h3{
+      font-size: 1rem;
+  }
+}
+
+@media (max-width:500px){
+  .goty{
+  font-size: 2rem;
+}
+.award-card{
+  border: none !important;
+}
+}
+
+@media (max-width:550px){
+  .goty{
+  font-size: 2rem;
+}
+
+
+@media (max-width: 500px) {
+  #awards_promo {
+    display: block; /* stack cards vertically */
+    padding: 0;     /* remove container padding to avoid overflow */
+  }
+
+  .award-card {
+    width: 100vw;       /* full viewport width */
+    max-width: 100vw;   /* ensure no max-width restriction */
+    margin: 0;          /* remove margin to avoid overflow */
+    border-radius: 0;   /* optional: full-width flat edges */
+  }
+}
+
+.awards-section{
+  width: auto !important;
+}
+
+#why_us{
+  font-size: 1.5rem !important;
+}
+
+}
+
+@media (max-width: 460px) {
+  #awards_promo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); // responsive columns
+  gap: 1.5rem;
+  padding: 1rem;
+  justify-items: center; // center cards in smaller grids
+  box-sizing: border-box;
+
+    .award-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $test; // your card color
+  border-radius: 1rem;
+  border: 1px solid $bg-card;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 250px; // optional: prevent cards from becoming too wide
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgba(0, 215, 255, 0.35);
+  }
+
+  img {
+    max-width: 80px; // shrink images on small screens
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 1rem;
+    word-wrap: break-word;
+    color: #fff; // adjust if needed
+  }
+}
+  }
+}
+
+
+@media (max-width: 250px) {
+.navbar img{
+  display: none;
+}
+
+
+  #awards_promo{
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
+  }
+
+
+}
+
+@media (max-width: 260px) {
+.game_of_the_year{
+  font-size: 0.7rem !important;
+}
+
+}
+
 .awards_wrapper{
       background-color: #101011;
         padding: 7rem;
 }
 
+
 #awards_promo {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  width: 100%;
-  padding: 5rem;
-  
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  justify-items: center;
 
   .award-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: left; // text full width
-    background-color: $test;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    border: 1px solid $bg-card;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%; // full width of grid cell
-    max-width: 300px;
+    justify-content: space-between;
+    background: linear-gradient(145deg, rgba(26, 27, 38, 0.8), rgba(26, 27, 38, 0.5));
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(0, 247, 255, 0.15);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 320px;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+    
+    // Subtle glow effect
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at top, rgba(0, 247, 255, 0.1), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
 
     &:hover {
-      transform: scale(1.05);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 48px rgba(0, 247, 255, 0.25);
+      border-color: rgba(0, 247, 255, 0.4);
+      
+      &::before {
+        opacity: 1;
+      }
+      
+      img {
+        transform: scale(1.1) rotate(5deg);
+      }
+      
+      h2 {
+        color: #00f7ff;
+      }
     }
 
     img {
-      margin-bottom: 1rem;
-      width: 120px;
-      height: auto;
-      border-radius: 0.5rem;
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 4px 12px rgba(0, 247, 255, 0.3));
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     h2 {
-      font-size: 1.25rem;
-      color: #00f7ff;
-      font-weight: 600;
-      margin-top: 0.5rem;
       text-align: center;
-      width: 100%;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #e8e8e8;
+      word-wrap: break-word;
+      line-height: 1.5;
+      margin: 0;
+      transition: color 0.3s ease;
+      letter-spacing: 0.3px;
     }
   }
 }
+
 
 #why_us{
     font-size: 2.5rem;
@@ -787,7 +1001,37 @@ body {
       }
     }
   }
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .navbar img {
+    margin-bottom: 0.5rem;
+  }
+
+  .grid-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .navbar a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+  }
+
 }
+
+
+
+
 
 ::selection {
   color: $cyan-selection;
