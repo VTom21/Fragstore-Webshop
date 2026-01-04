@@ -324,6 +324,12 @@ Fragstore-Webshop/
     │   ├── redirect.js
     │   └── redirect.php
     │
+    ├── scripts
+    │   ├── check.sh
+    │   ├── clear-cache.sh
+    │   ├── deploy.sh
+    │   └── multi-check.sh
+    │
     ├── signup
     │   ├── Sign Up.css
     │   └── Sign Up.php
