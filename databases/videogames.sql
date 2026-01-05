@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Dec 10. 10:52
+-- Létrehozás ideje: 2026. Jan 05. 19:25
 -- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
+-- PHP verzió: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,14 +26,47 @@ SET time_zone = "+00:00";
 --
 -- Tábla szerkezet ehhez a táblához `awards`
 --
-CREATE DATABASE IF NOT EXISTS videogames;
-USE videogames;
 
 CREATE TABLE `awards` (
   `award_id` int(11) NOT NULL,
-  `award_name` varchar(255) NOT NULL,
-  `award_year` int(11) DEFAULT NULL
+  `game_name` varchar(150) NOT NULL,
+  `game_img` varchar(255) DEFAULT NULL,
+  `award_name` varchar(100) NOT NULL,
+  `award_year` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `awards`
+--
+
+INSERT INTO `awards` (`award_id`, `game_name`, `game_img`, `award_name`, `award_year`) VALUES
+(1, 'The Sims', 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMg1TNlmJ6Yn_kWprZH2n411_gI-1pBQrBfN3fy8if0O9S-3HjF09B3YXA4-p4ISVcWCq4Rwh4wcgZW0rqW0AIMAI4QjgUWmm3YPO6goAE6BTmKJtTKQqymtJFiA25Vfa3ATaBIa5rMKM/s800/The_Sims_%2528PC%2529_01.jpg', 'Game of the Year', 2000),
+(2, 'The Sims', 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMg1TNlmJ6Yn_kWprZH2n411_gI-1pBQrBfN3fy8if0O9S-3HjF09B3YXA4-p4ISVcWCq4Rwh4wcgZW0rqW0AIMAI4QjgUWmm3YPO6goAE6BTmKJtTKQqymtJFiA25Vfa3ATaBIa5rMKM/s800/The_Sims_%2528PC%2529_01.jpg', 'Best Narrative', 2000),
+(3, 'Grand Theft Auto III', 'https://cdn.wallpapersafari.com/20/95/af9UBE.jpg', 'Game of the Year', 2001),
+(4, 'Grand Theft Auto III', 'https://cdn.wallpapersafari.com/20/95/af9UBE.jpg', 'Best Audio Design', 2001),
+(5, 'Metroid Prime', 'https://images.nintendolife.com/9cfa7f075e765/metroid-prime-3-the-wait-is-over.900x.jpg', 'Game of the Year', 2002),
+(6, 'Metroid Prime', 'https://images.nintendolife.com/9cfa7f075e765/metroid-prime-3-the-wait-is-over.900x.jpg', 'Best Art Direction', 2002),
+(7, 'Star Wars: Knights of the Old Republic', 'https://gaming-cdn.com/images/products/8671/orig/star-wars-knights-of-the-old-republic-remake-remake-pc-game-cover.jpg?v=1729670003', 'Game of the Year', 2003),
+(8, 'Half-Life 2', 'https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/hl2_gordon_alyx_citadel.jpg', 'Game of the Year', 2004),
+(9, 'Half-Life 2', 'https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/hl2_gordon_alyx_citadel.jpg', 'Best Action', 2004),
+(10, 'Shadow of the Colossus', 'https://www.froyok.fr/blog/2012-10-breakdown-shadow-of-the-colossus-pal-ps2/unfurl.jpg', 'Game of the Year', 2005),
+(11, 'Shadow of the Colossus', 'https://www.froyok.fr/blog/2012-10-breakdown-shadow-of-the-colossus-pal-ps2/unfurl.jpg', 'Best Art Direction', 2005),
+(12, 'The Witcher 3: Wild Hunt', 'https://sm.ign.com/ign_ap/review/t/the-witche/the-witcher-3-the-wild-hunt-review_q5k7.jpg', 'Game of the Year', 2015),
+(13, 'The Witcher 3: Wild Hunt', 'https://sm.ign.com/ign_ap/review/t/the-witche/the-witcher-3-the-wild-hunt-review_q5k7.jpg', 'Best Narrative', 2015),
+(14, 'Elden Ring', 'https://cdn.thewirecutter.com/wp-content/media/2022/03/elden-ring-2048px-0001.jpg?auto=webp&quality=75&width=1024', 'Game of the Year', 2022),
+(15, 'Elden Ring', 'https://cdn.thewirecutter.com/wp-content/media/2022/03/elden-ring-2048px-0001.jpg?auto=webp&quality=75&width=1024', 'Best Action', 2022),
+(16, 'Clair Obscur: Expedition 33', 'https://cms-assets.unrealengine.com/AiKUh5PQCTaOFnmJDZJBfz/resize=width:1920/output=format:webp/cm8hn66uk5qhd08oeu7lyz87g', 'Game of the Year', 2025),
+(17, 'Clair Obscur: Expedition 33', 'https://cms-assets.unrealengine.com/AiKUh5PQCTaOFnmJDZJBfz/resize=width:1920/output=format:webp/cm8hn66uk5qhd08oeu7lyz87g', 'Most Anticipated', 2025),
+(18, 'God of War Ragnarök', 'https://sm.ign.com/t/ign_in/photo/default/godofwarragnarokps5vsps4provsps4performancereview-36190303-g_gupy.1280.jpg', 'Game of the Year', 2023),
+(19, 'God of War Ragnarök', 'https://sm.ign.com/t/ign_in/photo/default/godofwarragnarokps5vsps4provsps4performancereview-36190303-g_gupy.1280.jpg', 'Best Narrative', 2023),
+(20, 'Horizon Forbidden West', 'https://gaming-cdn.com/images/news/articles/5568/cover/1000x563/horizon-forbidden-west-complete-edition-fait-moins-bien-que-zero-dawn-a-son-lancement-sur-steam-cover660292e8ceaf6.jpg', 'Best Art Direction', 2023),
+(21, 'Resident Evil 4 Remake', 'https://files.vgtimes.ru/si/post_96920_1x1_ru.webp', 'Best Audio Design', 2023),
+(22, 'The Legend of Zelda: Tears of the Kingdom', 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Princess_Zelda_Tears_Of_The_Kingdom.jpg', 'Game of the Year', 2023),
+(23, 'The Legend of Zelda: Tears of the Kingdom', 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Princess_Zelda_Tears_Of_The_Kingdom.jpg', 'Best Innovation', 2023),
+(24, 'Cyberpunk 2077: Phantom Liberty', 'https://sm.pcmag.com/t/pcmag_me/review/c/cyberpunk-/cyberpunk-2077-phantom-liberty_tvtm.1920.jpg', 'Most Anticipated', 2025),
+(25, 'Final Fantasy XVI', 'https://fyre.cdn.sewest.net/ff-xvi/637cf9194dc880a0db62c591/hero_bg-tT8XHFrO5.jpg?quality=85&width=3840', 'Game of the Year', 2025),
+(26, 'Final Fantasy XVI', 'https://fyre.cdn.sewest.net/ff-xvi/637cf9194dc880a0db62c591/hero_bg-tT8XHFrO5.jpg?quality=85&width=3840', 'Best Narrative', 2025),
+(27, 'Starfield', 'https://images.mweb.bethesda.net/_images/starfield_creations_watchtower-1.jpg?s=k1puLWS2G5NkC-JRgjjOfi0CdVhZAhQT6e4-XGDlx1s', 'Best Action', 2025);
 
 -- --------------------------------------------------------
 
@@ -49,7 +82,6 @@ CREATE TABLE `datas` (
   `genre` varchar(255) DEFAULT NULL,
   `platforms` varchar(255) DEFAULT NULL,
   `prize` decimal(10,2) DEFAULT NULL,
-  `publisher_id` int(11) DEFAULT NULL,
   `isDiscount` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -57,435 +89,435 @@ CREATE TABLE `datas` (
 -- A tábla adatainak kiíratása `datas`
 --
 
-INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platforms`, `prize`, `publisher_id`, `isDiscount`) VALUES
-(1, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/capsule_616x353.jpg?t=1748630546', 'Elden Ring', '2022-02-25', 'Action RPG', 'PC, PS5, Xbox Series X', 59.99, NULL, 1),
-(2, 'https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png', 'Grand Theft Auto V', '2013-09-17', 'Action-Adventure', 'PC, PS4, PS5, Xbox', 29.99, NULL, 0),
-(3, 'https://media.wired.com/photos/633c95ef85e7a4cc2f802256/master/pass/Breath-of-the-Wild-Casual-Gamer-Culture.jpg', 'The Legend of Zelda: Breath of the Wild', '2017-03-03', 'Action-Adventure', 'Nintendo Switch', 59.99, NULL, 0),
-(4, 'https://upload.wikimedia.org/wikipedia/en/9/9f/Cyberpunk_2077_box_art.jpg', 'Cyberpunk 2077', '2020-12-10', 'RPG', 'PC, PS4, PS5, Xbox', 49.99, NULL, 0),
-(5, 'https://c.files.bbci.co.uk/3D08/production/_131442651_mediaitem131442649.jpg', 'Minecraft', '2011-11-18', 'Sandbox', 'PC, Console, Mobile', 26.95, NULL, 0),
-(6, 'https://i.insider.com/5b5126aea0374026008b47ca?width=1022&format=jpeg', 'Fortnite', '2017-07-25', 'Battle Royale', 'PC, Console, Mobile', 0.00, NULL, 0),
-(7, 'https://portforward.com/call-of-duty-modern-warfare-ii/call-of-duty-modern-warfare-ii-header-small.webp', 'Call of Duty: Modern Warfare II', '2022-10-28', 'FPS', 'PC, PS5, Xbox', 69.99, NULL, 0),
-(8, 'https://cdn2.unrealengine.com/hades-wallpaper-01-1920x1079-2edc605bbf52.jpg', 'Hades', '2020-09-17', 'Roguelike', 'PC, Switch, PS4, Xbox', 24.99, NULL, 0),
-(9, 'https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg', 'Animal Crossing: New Horizons', '2020-03-20', 'Simulation', 'Nintendo Switch', 59.99, NULL, 0),
-(10, 'https://images.squarespace-cdn.com/content/v1/606d159a953867291018f801/1619987722169-VV6ZASHHZNRBJW9X0PLK/Key_Art_02_layeredjpg.jpg?format=1500w', 'Hollow Knight', '2017-02-24', 'Metroidvania', 'PC, Switch, PS4, Xbox', 14.99, NULL, 1),
-(11, 'https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg', 'Red dead Redemption 2', '2018-10-26', 'Action-Adventure', 'PC, PS4, Xbox', 39.99, NULL, 0),
-(12, 'https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg', 'God of War', '2018-04-20', 'Action', 'PS4, PS5, PC', 49.99, NULL, 0),
-(13, 'https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltdabc3782553659f1/6785b50a1970a9f14eb5ccd7/xboxshowcase.png', 'Overwatch 2', '2022-10-04', 'FPS', 'PC, Console', 0.00, NULL, 0),
-(14, 'https://cdn.arstechnica.net/wp-content/uploads/2020/04/valorant-listing-scaled.jpg', 'Valorant', '2020-06-02', 'FPS', 'PC', 0.00, NULL, 0),
-(15, 'https://upload.wikimedia.org/wikipedia/en/a/ae/Tetris_Effect_cover.jpg', 'Tetris Effect', '2018-11-09', 'Puzzle', 'PC, PS4, Xbox, VR', 19.99, NULL, 0),
-(16, 'https://media.printler.com/media/photo/187246.jpg?rmode=crop&width=638&height=900', 'Doom Eternal', '2020-03-20', 'FPS', 'PC, PS4, Xbox, Switch', 39.99, NULL, 0),
-(17, 'https://media.wired.com/photos/65de6b587f1f5ec3f36a117e/3:2/w_2560%2Cc_limit/Stardew-Valley-Update-Announcement-Gear-Multiplayer_Screenshot2.jpg', 'Stardew Valley', '2016-02-26', 'Simulation', 'PC, Mobile, Console', 14.99, NULL, 0),
-(18, 'https://assets-prd.ignimgs.com/2021/12/14/leagueoflegends-1639513774570.jpg', 'League of Legends', '2009-10-27', 'MOBA', 'PC', 0.00, NULL, 0),
-(19, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSznnWoYN2cmS-3P49_yvjpUeAToiRDPa7JZQ&s', 'Apex Legends', '2019-02-04', 'Battle Royale', 'PC, Console', 0.00, NULL, 0),
-(20, 'https://upload.wikimedia.org/wikipedia/en/d/df/Resident_Evil_4_remake_cover_art.jpg', 'Resident Evil 4 Remake', '2023-03-24', 'Survival Horror', 'PC, PS5, Xbox', 59.99, NULL, 0),
-(21, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2420110/capsule_616x353.jpg?t=1737564719', 'Horizon Forbidden West', '2022-02-18', 'Action RPG', 'PS4, PS5', 69.99, NULL, 0),
-(22, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/814380/capsule_616x353.jpg?t=1726158438', 'Sekiro: Shadows Die Twice', '2019-03-22', 'Action-Adventure', 'PC, PS4, Xbox', 59.99, NULL, 0),
-(23, 'https://upload.wikimedia.org/wikipedia/en/2/22/Death_Stranding.jpg', 'Death Stranding', '2019-11-08', 'Action', 'PS4, PC, PS5', 49.99, NULL, 0),
-(24, 'https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000006442/691ba3e0801180a9864cc8a7694b6f98097f9d9799bc7e3dc6db92f086759252', 'Celeste', '2018-01-25', 'Platformer', 'PC, Console', 19.99, NULL, 0),
-(25, 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkwVU1hYrvR4S9y_1o6Q2U-y5KBC0kl9Fs63ueXkTfpy8m9iUZkrH665gZDYffIVrN7RyB7X_p-4tPpLcC6y_9P399OoPYJBnP3eIKeP1oM0jHYWZG6iWsftB18AJQKH927RwaqobN1Qh5/s1600/Bloodborne-Game-Wallpaper.jpg', 'Bloodborne', '2015-03-24', 'Action RPG', 'PS4', 39.99, NULL, 0),
-(26, 'https://media.icdn.hu/content/entity/2019/02/49574/5d2865ec98574nierlogo.jpg', 'NieR: Automata', '2017-02-23', 'Action RPG', 'PC, PS4, Xbox', 39.99, NULL, 0),
-(27, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_616x353.jpg?t=1730911936', 'It Takes Two', '2021-03-26', 'Puzzle Adventure', 'PC, PS4, PS5, Xbox', 39.99, NULL, 0),
-(28, 'https://upload.wikimedia.org/wikipedia/en/1/16/Fire_Emblem_Three_Houses.jpg', 'Fire Emblem: Three Houses', '2019-07-26', 'Tactical RPG', 'Nintendo Switch', 59.99, NULL, 0),
-(29, 'https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000046395/94a4095cda06c4d85c637d1af451979f9933302b6b17174d97c45de7a68584a2', 'Splatoon 3', '2022-09-09', 'Third-Person Shooter', 'Nintendo Switch', 59.99, NULL, 0),
-(30, 'https://upload.wikimedia.org/wikipedia/en/f/fe/Bayonetta_3_cover.webp', 'Bayonetta 3', '2022-10-28', 'Action', 'Nintendo Switch', 59.99, NULL, 0),
-(31, 'https://upload.wikimedia.org/wikipedia/en/a/ae/A_Plague_Tale_Requiem_cover_art.jpg', 'A Plague Tale: Requiem', '2022-10-18', 'Action-Adventure', 'PC, PS5, Xbox Series X', 49.99, NULL, 0),
-(32, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138710/capsule_616x353.jpg?t=1734256859', 'Sifu', '2022-02-08', 'Action', 'PC, PS4, PS5, Xbox, Switch', 39.99, NULL, 0),
-(33, 'https://upload.wikimedia.org/wikipedia/en/e/eb/Cuphead_%28artwork%29.png', 'Cuphead', '2017-09-29', 'Run and Gun', 'PC, Xbox, PS4, Switch', 19.99, NULL, 0),
-(34, 'https://helios-i.mashable.com/imagery/articles/00iMVz5oU69RK9UEoPsZTMW/hero-image.fill.size_1248x702.v1623390188.jpg', 'Ghost of Tsushima', '2020-07-17', 'Action-Adventure', 'PS4, PS5', 59.99, NULL, 0),
-(35, 'https://images.squarespace-cdn.com/content/v1/5f0f94f64a47900bb21e117e/1650575087045-SUFVFHNI58T1V07NWY1X/arklp.jpg?format=1000w', 'Tunic', '2022-03-16', 'Action-Adventure', 'PC, Xbox, PS4, PS5, Switch', 29.99, NULL, 0),
-(36, 'https://gepig.com/game_cover_460w/5639.jpg', 'Control', '2019-08-27', 'Action-Adventure', 'PC, PS4, PS5, Xbox', 39.99, NULL, 0),
-(37, 'https://upload.wikimedia.org/wikipedia/en/5/50/INSIDE_Xbox_One_cover_art.png', 'Inside', '2016-06-29', 'Puzzle Platformer', 'PC, Xbox, PS4, Switch', 19.99, NULL, 0),
-(38, 'https://upload.wikimedia.org/wikipedia/en/c/cc/Limbo_Box_Art.jpg', 'Limbo', '2010-07-21', 'Puzzle Platformer', 'PC, Console', 9.99, NULL, 0),
-(39, 'https://sm.ign.com/ign_hu/blogroll/default/returnal-final-preview-blog-1619015711197-1624960579739_whnk.jpg', 'Returnal', '2021-04-30', 'Roguelike Shooter', 'PS5, PC', 69.99, NULL, 0),
-(40, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1693980/capsule_616x353.jpg?t=1702492799', 'Dead Space Remake', '2023-01-27', 'Survival Horror', 'PC, PS5, Xbox', 69.99, NULL, 0),
-(41, 'https://data.xxlgamer.com/products/5131/EgzSJKhYJ6m6yy-medium.jpg', 'Among Us', '2018-06-15', 'Party', 'PC,Mobile,Switch', 4.99, NULL, 0),
-(42, 'https://cdn.dlcompare.com/game_tetiere/upload/gameimage/file/40125.jpeg.webp', 'Halo Infinite', '2021-12-08', 'Shooter', 'Xbox Series X,PC', 59.99, NULL, 0),
-(43, 'https://upload.wikimedia.org/wikipedia/en/8/8d/Super_Mario_Odyssey.jpg', 'Super Mario Odyssey', '2017-10-27', 'Platformer', 'Nintendo Switch', 59.99, NULL, 0),
-(44, 'https://upload.wikimedia.org/wikipedia/en/0/0c/Witcher_3_cover_art.jpg', 'The Witcher 3: Wild Hunt', '2015-05-19', 'RPG', 'PC,PS4,Xbox One,Switch', 39.99, NULL, 0),
-(45, 'https://m.media-amazon.com/images/M/MV5BZjdiYjJmNDgtYzgxMS00Njk4LWEzZmMtNmVjYWNjNDJkZjViXkEyXkFqcGc@._V1_.jpg', 'Assassin\'s Creed Valhalla', '2020-11-10', 'Action', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(46, 'https://upload.wikimedia.org/wikipedia/en/0/05/Destiny_2_%28artwork%29.jpg', 'Destiny 2', '2017-09-06', 'Shooter', 'PC,PS4,Xbox One', 0.00, NULL, 0),
-(47, 'https://sm.ign.com/ign_ap/cover/f/fall-guys-/fall-guys-ultimate-knockout_bafj.jpg', 'Fall Guys', '2020-08-04', 'Party', 'PC,PS4', 19.99, NULL, 0),
-(48, 'https://i.guim.co.uk/img/media/ae184267567d50db7753e6a20e8f9bc345fb9225/0_170_1934_1160/master/1934.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=7a58c7a8fd06ce59397eecea626bb566', 'Minecraft Dungeons', '2020-05-26', 'Adventure', 'PC,PS4,Xbox One,Switch', 19.99, NULL, 0),
-(49, 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Rocket_League_coverart.jpg/250px-Rocket_League_coverart.jpg', 'Rocket League', '2015-07-07', 'Sports', 'PC,PS4,Xbox One,Switch', 19.99, NULL, 0),
-(50, 'https://cdn.mobygames.com/covers/9213927-genshin-impact-playstation-4-front-cover.jpg', 'Genshin Impact', '2020-09-28', 'RPG', 'PC,Mobile,PS4,PS5', 0.00, NULL, 0),
-(51, 'https://hd2.tudocdn.net/913677?w=1920', 'Halo 3', '2007-09-25', 'Shooter', 'Xbox 360', 19.99, NULL, 0),
-(52, 'https://upload.wikimedia.org/wikipedia/en/f/f0/Battlefield_V_standard_edition_box_art.jpg', 'Battlefield V', '2018-11-20', 'Shooter', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(53, 'https://www.fountaindale.org/wp-content/uploads/Images/Blog-Photos/20_persona-royal-450x450.jpg', 'Persona 5', '2019-03-31', 'RPG', 'PS4', 59.99, NULL, 0),
-(54, 'https://upload.wikimedia.org/wikipedia/en/b/b7/Dead_by_Daylight_Steam_header.jpg', 'Dead by Daylight', '2016-06-14', 'Horror', 'PC,PS4,Xbox One,Switch', 19.99, NULL, 0),
-(55, 'https://upload.wikimedia.org/wikipedia/en/8/87/Forza_Horizon_4_cover.jpg', 'Forza Horizon 4', '2018-10-02', 'Racing', 'PC,Xbox One', 59.99, NULL, 0),
-(56, 'https://upload.wikimedia.org/wikipedia/en/e/e7/The_Outer_Worlds_cover_art.png', 'The Outer Worlds', '2019-10-25', 'RPG', 'PC,PS4,Xbox One,Switch', 59.99, NULL, 0),
-(57, 'https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Cover_Art_of_Metro_Exodus.png/250px-Cover_Art_of_Metro_Exodus.png', 'Metro Exodus', '2019-02-15', 'Shooter', 'PC,PS4,Xbox One', 59.99, NULL, 0),
-(58, 'https://images.ctfassets.net/wn7ipiv9ue5v/1vx25DlWzcRohbJnhBxgkr/1c9d2f64cdf84cc692e3dafc0196e352/2KSMKT_BR3_SDE_1310x738__1_.jpg', 'Borderlands 3', '2019-09-13', 'Shooter', 'PC,PS4,Xbox One', 59.99, NULL, 0),
-(59, 'https://upload.wikimedia.org/wikipedia/en/9/94/Ori_and_the_Will_of_the_Wisps.jpg', 'Ori and the Will of the Wisps', '2020-03-11', 'Platformer', 'PC,Xbox One,Switch', 29.99, NULL, 0),
-(60, 'https://assetsio.gnwcdn.com/watch-dogs-legion-review-a-bleak-and-buggy-retread-of-ubisofts-formula-1604389923218.jpg?width=1200&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp', 'Watch Dogs: Legion', '2020-10-29', 'Action', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(61, 'https://helios-i.mashable.com/imagery/articles/01cwlWvPAHuVnGDpMp8KtMc/hero-image.fill.size_1248x702.v1633903510.jpg', 'Far Cry 6', '2021-10-07', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(62, 'https://upload.wikimedia.org/wikipedia/en/2/2c/Ghostrunner_cover_art.jpg', 'Ghostrunner', '2020-10-27', 'Action', 'PC,PS4,Xbox One,Switch', 29.99, NULL, 0),
-(63, 'https://upload.wikimedia.org/wikipedia/en/8/84/Little_Nightmares_II_cover.jpg', 'Little Nightmares II', '2021-02-11', 'Horror', 'PC,PS4,PS5,Xbox One,Xbox Series X,Switch', 29.99, NULL, 0),
-(64, 'https://www.tombraider.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fx77ixfmkpoiv%2F4UnPNfdN8Yq2aZvOhIdBx9%2F1b641d296ebb37bfa3eca8873c25a321%2FSOTTR_Product_Image.jpg&w=3840&q=75', 'Shadow of the Tomb Raider', '2018-09-14', 'Action', 'PC,PS4,Xbox One,Switch', 39.99, NULL, 0),
-(65, 'https://m.media-amazon.com/images/M/MV5BZWJkZWNkZDgtOTMzMS00NjlhLTk5MTEtZWFiMTQ0MzE4MzAyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Terraria', '2011-05-16', 'Sandbox', 'PC,PS4,Xbox One,Switch,Mobile', 9.99, NULL, 0),
-(66, 'https://upload.wikimedia.org/wikipedia/en/1/15/The_Elder_Scrolls_V_Skyrim_cover.png', 'The Elder Scrolls V: Skyrim', '2011-11-11', 'RPG', 'PC,PS3,PS4,Xbox 360,Xbox One,Switch', 39.99, NULL, 0),
-(67, 'https://cdn.displate.com/artwork/857x1200/2023-02-01/2cf201b54d230f2f7ebb7d7a85de3d85_5ed333b5962130ee1c8bc3f55b4acb60.jpg', 'Titanfall 2', '2016-10-28', 'Shooter', 'PC,PS4,Xbox One', 19.99, NULL, 0),
-(68, 'https://upload.wikimedia.org/wikipedia/en/2/2b/ArkSurvivalEvolved.png', 'ARK: Survival Evolved', '2017-08-29', 'Survival', 'PC,PS4,Xbox One,Switch', 59.99, NULL, 0),
-(69, 'https://upload.wikimedia.org/wikipedia/en/e/ec/Battlefield_2042_cover_art.jpg', 'Battlefield 2042', '2021-11-19', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(70, 'https://store-images.s-microsoft.com/image/apps.36487.69661693038755748.20d2d8fc-4614-415f-8f25-8fed634ea6ce.f9c25a1f-6330-47a3-a918-52c192faeaf6?q=90&w=480&h=270', 'Borderlands 2', '2012-09-18', 'Shooter', 'PC,PS3,PS4,Xbox 360,Xbox One,Switch', 19.99, NULL, 0),
-(71, 'https://assetsio.gnwcdn.com/dead_rising_41.jpg?width=1200&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp', 'Dead Rising 4', '2016-12-06', 'Action', 'PC,Xbox One', 29.99, NULL, 0),
-(72, 'https://upload.wikimedia.org/wikipedia/en/7/70/Fallout_4_cover_art.jpg', 'Fallout 4', '2015-11-10', 'RPG', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(73, 'https://cdn.wccftech.com/wp-content/uploads/2016/10/Final-Fantasy-XV-HDR.jpg', 'Final Fantasy XV', '2016-11-29', 'RPG', 'PC,PS4,Xbox One', 29.99, NULL, 0),
-(74, 'https://upload.wikimedia.org/wikipedia/en/2/2f/Forza_7_art.jpg', 'Forza Motorsport 7', '2017-10-03', 'Racing', 'PC,Xbox One', 39.99, NULL, 0),
-(76, 'https://upload.wikimedia.org/wikipedia/en/4/4b/Hitman_3_Packart.jpg', 'Hitman 3', '2021-01-20', 'Stealth', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(77, 'https://upload.wikimedia.org/wikipedia/en/9/93/Horizon_Zero_Dawn.jpg', 'Horizon Zero Dawn', '2017-02-28', 'Action RPG', 'PS4,PC', 29.99, NULL, 0),
-(78, 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Subnautica_cover_art.png/250px-Subnautica_cover_art.png', 'Subnautica', '2018-01-23', 'Survival', 'PC,PS4,Xbox One', 29.99, NULL, 0),
-(79, 'https://store-images.s-microsoft.com/image/apps.8440.68311792912961316.3b0709ee-2e0c-48af-868c-64e971d60a1c.5fbfe112-3af1-465d-a6da-6f7152d48ee6?q=90&w=480&h=270', 'Mad Max', '2015-09-01', 'Action', 'PC,PS4,Xbox One', 29.99, NULL, 0),
-(80, 'https://fyre.cdn.sewest.net/life-is-strange-hub/6634aba837d4a15412aaed4b/life-is-strange-2024-2--nN3g9MGLt.jpg?quality=85&width=3840', 'Life is Strange', '2015-01-30', 'Adventure', 'PC,PS3,PS4,Xbox 360,Xbox One', 19.99, NULL, 0),
-(81, 'https://upload.wikimedia.org/wikipedia/en/f/f9/Portal2cover.jpg', 'Portal 2', '2011-04-19', 'Puzzle', 'PC,PS3,Xbox 360', 19.99, NULL, 0),
-(82, 'https://m.media-amazon.com/images/M/MV5BMDViMTAwMTctZDBmMS00OWQwLTg1MzUtMzMwZGQ0YzA0NTFiXkEyXkFqcGc@._V1_.jpg', 'World of Warcraft', '2004-11-23', 'MMORPG', 'PC', 14.99, NULL, 0),
-(83, 'https://gamecritics.com/wp-content/uploads/2018/12/Hitman-2-01.jpg', 'Hitman 2', '2018-11-13', 'Stealth', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(84, 'https://upload.wikimedia.org/wikipedia/en/7/7e/Mortal_Kombat_11_cover_art.png', 'Mortal Kombat 11', '2019-04-23', 'Fighting', 'PC,PS4,PS5,Xbox One,Xbox Series X,Switch', 39.99, NULL, 0),
-(85, 'https://upload.wikimedia.org/wikipedia/en/7/7f/Cover_Art_of_Need_for_Speed_Heat.png', 'Need for Speed Heat', '2019-11-08', 'Racing', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(86, 'https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Tom_Clancy%27s_Rainbow_Six_Siege_cover_art.jpg/250px-Tom_Clancy%27s_Rainbow_Six_Siege_cover_art.jpg', 'Rainbow Six Siege', '2015-12-01', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 19.99, NULL, 0),
-(87, 'https://e.snmc.io/lk/lv/x/edd3c892d16df89d7dfea2a16f63c9a4/7740094', 'Tekken 7', '2017-06-02', 'Fighting', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(88, 'https://upload.wikimedia.org/wikipedia/en/9/99/ACOdysseyCoverArt.png', 'Assassin’s Creed Odyssey', '2018-10-05', 'RPG', 'PC,PS4,Xbox One,Switch,Stadia', 39.99, NULL, 0),
-(89, 'https://upload.wikimedia.org/wikipedia/en/3/31/BOCW_Cover_Art.jpg', 'Call of Duty: Black Ops Cold War', '2020-11-13', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(90, 'https://upload.wikimedia.org/wikipedia/en/c/cb/Devil_May_Cry_5.jpg', 'Devil May Cry 5', '2019-03-08', 'Action', 'PC,PS4,PS5,Xbox One,Xbox Series X', 39.99, NULL, 0),
-(91, 'https://upload.wikimedia.org/wikipedia/en/5/54/Wolfenstein-ii-the-new-colossus-cover.jpeg', 'Wolfenstein II: The New Colossus', '2017-10-27', 'Shooter', 'PC,PS4,Xbox One,Switch', 39.99, NULL, 0),
-(92, 'https://upload.wikimedia.org/wikipedia/en/thumb/8/86/F1_2021_cover_art.jpg/250px-F1_2021_cover_art.jpg', 'F1 2021', '2021-07-16', 'Racing', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(93, 'https://upload.wikimedia.org/wikipedia/en/8/86/Forza_Horizon_5_cover_art.jpg', 'Forza Horizon 5', '2021-11-09', 'Racing', 'PC,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(94, 'https://p1.akcdn.net/full/873067848.square-enix-just-cause-4-digital-deluxe-edition-pc.jpg', 'Just Cause 4', '2018-12-04', 'Action', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(95, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDHmR-UElz3Easu6ByFvj3xsD_tPBzo73EZNLnQvAQ3NP1JJH--tXaWH9MuBhHEp04D24&usqp=CAU', 'Killer Instinct', '2017-03-29', 'Fighting', 'PC,Xbox One', 19.99, NULL, 0),
-(96, 'https://upload.wikimedia.org/wikipedia/en/4/4d/Layers_of_Fear_Cover.png', 'Layers of Fear', '2016-02-16', 'Horror', 'PC,PS4,Xbox One,Switch', 19.99, NULL, 0),
-(97, 'https://upload.wikimedia.org/wikipedia/en/6/67/No_Man%27s_Sky.jpg', 'No Man’s Sky', '2016-08-09', 'Exploration', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(98, 'https://upload.wikimedia.org/wikipedia/en/thumb/9/98/Rainbow_Six_Extraction_cover_art.jpg/250px-Rainbow_Six_Extraction_cover_art.jpg', 'Rainbow Six Extraction', '2022-01-20', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(99, 'https://upload.wikimedia.org/wikipedia/en/f/fd/Resident_Evil_2_Remake.jpg', 'Resident Evil 2 Remake', '2019-01-25', 'Horror', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(100, 'https://magyaritasok.hu/storage/images/cover/co24t8.jpg', 'Sniper Elite 4', '2017-02-14', 'Shooter', 'PC,PS4,Xbox One', 29.99, NULL, 0),
-(101, 'https://upload.wikimedia.org/wikipedia/en/9/9d/State_of_Decay_2_art.jpg', 'State of Decay 2', '2018-05-22', 'Survival', 'PC,Xbox One,Xbox Series X', 29.99, NULL, 0),
-(102, 'https://upload.wikimedia.org/wikipedia/en/8/84/Titanfall_box_art.jpg', 'Titanfall', '2014-03-11', 'Shooter', 'PC,Xbox One,Xbox 360', 29.99, NULL, 0),
-(103, 'https://rukminim2.flixcart.com/image/850/1000/kylvr0w0/poster/1/2/e/medium-uncharted-4-a-thief-s-end-video-games-matte-finish-poster-original-imagaspxaswhh9up.jpeg?q=90&crop=false', 'Uncharted 4: A Thief’s End', '2016-05-10', 'Action', 'PS4', 39.99, NULL, 0),
-(104, 'https://upload.wikimedia.org/wikipedia/en/b/b0/Watch_Dogs_2.jpg', 'Watch Dogs 2', '2016-11-15', 'Action', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(105, 'https://i0.wp.com/enderg.com/wp-content/uploads/2022/08/fifa-22-23.png?fit=476%2C477&ssl=1', 'FIFA 22', '2021-10-01', 'Sports', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(106, 'https://upload.wikimedia.org/wikipedia/en/f/f1/TombRaider2013.jpg', 'Tomb Raider (2013)', '2013-03-05', 'Action', 'PC,PS3,PS4,Xbox 360,Xbox One', 29.99, NULL, 0),
-(107, 'https://upload.wikimedia.org/wikipedia/en/6/6a/Unravel_cover_art.jpg', 'Unravel', '2016-02-09', 'Puzzle-Platformer', 'PC,PS4,Xbox One', 19.99, NULL, 0),
-(108, 'https://upload.wikimedia.org/wikipedia/en/d/d9/Watch_Dogs_box_art.jpg', 'Watch Dogs', '2014-05-27', 'Action', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(109, 'https://hips.hearstapps.com/hmg-prod/images/wolfenstein-youngblood-1564131787.jpg?crop=0.564xw:1.00xh;0.147xw,0&resize=640:*', 'Wolfenstein: Youngblood', '2019-07-26', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X,Switch', 39.99, NULL, 0),
-(110, 'https://upload.wikimedia.org/wikipedia/en/4/4b/The_Elder_Scrolls_IV_Oblivion_cover.png', 'The Elder Scrolls IV: Oblivion', '2006-03-20', 'RPG', 'PC,PS3,Xbox 360', 19.99, NULL, 0),
-(111, 'https://upload.wikimedia.org/wikipedia/en/a/a3/Subnautica_Below_Zero_cover_art.jpg', 'Subnautica: Below Zero', '2021-05-14', 'Survival', 'PC,PS4,PS5,Xbox One,Xbox Series X', 29.99, NULL, 0),
-(112, 'https://upload.wikimedia.org/wikipedia/en/a/a3/Official_cover_art_for_Bioshock_Infinite.jpg', 'Bioshock Infinite', '2013-03-26', 'Shooter', 'PC,PS3,PS4,Xbox 360,Xbox One', 29.99, NULL, 0),
-(113, 'https://m.media-amazon.com/images/I/71Gzzr-YRsL._AC_UF1000,1000_QL80_.jpg', 'Alan Wake', '2010-05-14', 'Action', 'PC,Xbox 360,Xbox One', 19.99, NULL, 0),
-(114, 'https://upload.wikimedia.org/wikipedia/en/0/03/Far_Cry_5_boxshot.jpg', 'Far Cry 5', '2018-03-27', 'Shooter', 'PC,PS4,Xbox One', 59.99, NULL, 0),
-(115, 'https://upload.wikimedia.org/wikipedia/en/b/b7/Grand_Theft_Auto_IV_cover.jpg', 'Grand Theft Auto IV', '2008-04-29', 'Action', 'PC,PS3,Xbox 360', 29.99, NULL, 0),
-(116, 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/Spider-Man_PS4_cover.jpg/250px-Spider-Man_PS4_cover.jpg', 'Marvel’s Spider-Man', '2018-09-07', 'Action', 'PS4,PS5', 59.99, NULL, 0),
-(117, 'https://m.media-amazon.com/images/M/MV5BZGMyMDBjZWMtMjFkNi00OWI1LWIyNmUtMDlkNDRiMjUyYWE2XkEyXkFqcGc@._V1_.jpg', 'Yakuza 0', '2017-03-12', 'Action', 'PC,PS4,PS5', 39.99, NULL, 0),
-(118, 'https://upload.wikimedia.org/wikipedia/en/b/bd/Warframe_Cover_Art.png', 'Warframe', '2013-03-25', 'MMORPG', 'PC,PS4,PS5,Xbox One,Xbox Series X,Switch', 0.00, NULL, 0),
-(119, 'https://upload.wikimedia.org/wikipedia/en/8/80/Diablo_III_cover.png', 'Diablo III', '2012-05-15', 'RPG', 'PC,PS4,Xbox One,Switch', 39.99, NULL, 0),
-(120, 'https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/FFVIIRemake.png/250px-FFVIIRemake.png', 'Final Fantasy VII Remake', '2020-04-10', 'RPG', 'PS4,PS5', 59.99, NULL, 0),
-(121, 'https://upload.wikimedia.org/wikipedia/en/b/b1/Bayonetta_2_box_artwork.png', 'Bayonetta 2', '2014-10-24', 'Action', 'Switch,Wii U', 39.99, NULL, 0),
-(122, 'https://www.sumo-digital.com/wp-content/uploads/2023/11/mafia.jpg', 'Mafia III', '2016-10-07', 'Action', 'PC,PS4,Xbox One', 29.99, NULL, 0),
-(123, 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/LA-Noire-Box-Art.jpg/250px-LA-Noire-Box-Art.jpg', 'L.A. Noire', '2011-05-17', 'Action', 'PC,PS4,Xbox One,Switch', 29.99, NULL, 0),
-(124, 'https://upload.wikimedia.org/wikipedia/en/d/dc/Resident_Evil_3.jpg', 'Resident Evil 3 Remake', '2020-04-03', 'Horror', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, NULL, 0),
-(125, 'https://m.media-amazon.com/images/M/MV5BYjU5YWNmZGQtZTZhOS00ZGJjLWE4ZmMtYTJiODYxZDlhYzc5XkEyXkFqcGc@._V1_.jpg', 'Roblox', '2006-09-01', 'Sandbox', 'PC,Mobile,Xbox One', 0.00, NULL, 0),
-(126, 'https://upload.wikimedia.org/wikipedia/en/5/5d/SaintsRowIV.jpg', 'Saints Row IV', '2013-08-20', 'Action', 'PC,PS3,PS4,Xbox 360,Xbox One', 29.99, NULL, 0),
-(127, 'https://upload.wikimedia.org/wikipedia/en/7/77/Sea_of_thieves_cover_art.jpg', 'Sea of Thieves', '2018-03-20', 'Adventure', 'PC,Xbox One,Xbox Series X', 39.99, NULL, 0),
-(128, 'https://upload.wikimedia.org/wikipedia/en/c/c8/Shovel_knight_cover.jpg', 'Shovel Knight', '2014-06-26', 'Platformer', 'PC,PS4,Xbox One,Switch', 19.99, NULL, 0),
-(129, 'https://upload.wikimedia.org/wikipedia/en/5/5f/Tf2_standalonebox.jpg', 'Team Fortress 2', '2007-10-10', 'Shooter', 'PC', 0.00, NULL, 0),
-(130, 'https://store-images.s-microsoft.com/image/apps.2698.70012318168468878.5eebf938-97f1-4542-82e0-499e9e44e737.bb898327-ced8-4279-8f20-69f91c770fa8?q=90&w=480&h=270', 'The Surge 2', '2019-09-24', 'RPG', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(131, 'https://m.media-amazon.com/images/M/MV5BYmYxY2E3MjktYmIxNi00MGZiLWJlM2UtYjQ2ZTkwZDVmMDE2XkEyXkFqcGc@._V1_.jpg', 'Undertale', '2015-09-15', 'RPG', 'PC,PS4,Switch', 9.99, NULL, 0),
-(132, 'https://upload.wikimedia.org/wikipedia/en/d/d7/Until_Dawn_cover_art.jpg', 'Until Dawn', '2015-08-25', 'Horror', 'PS4', 39.99, NULL, 0),
-(133, 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/10/alien-isolation-sequel-xenomorph.jpg', 'Alien: Isolation', '2014-10-07', 'Horror', 'PC,PS4,Xbox One,PS3,Xbox 360', 29.99, NULL, 0),
-(134, 'https://www.arthipo.com/image/cache/catalog/poster/game/pgame15-battlefield-1-game-poster-2-1000x563.webp', 'Battlefield 1', '2016-10-21', 'Shooter', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(135, 'https://store-images.s-microsoft.com/image/apps.997.70803643320167611.6d02d576-6cc3-42f8-8d47-36718b0154f8.dce9b715-083d-4dbf-b104-53a68a4fbe8a', 'BioShock Infinite', '2013-03-26', 'Shooter', 'PC,PS3,Xbox 360', 19.99, NULL, 0),
-(136, 'https://upload.wikimedia.org/wikipedia/en/1/1f/Dead_cells_cover_art.png', 'Dead Cells', '2018-08-07', 'Roguelike', 'PC,PS4,Xbox One,Switch', 24.99, NULL, 0),
-(137, 'https://upload.wikimedia.org/wikipedia/en/6/68/Halo_Guardians.png', 'Halo 5: Guardians', '2015-10-27', 'Shooter', 'Xbox One', 29.99, NULL, 0),
-(138, 'https://hype.games/_next/image?url=https%3A%2F%2Fimg.hype.games%2Fcdn%2F4becd989-efd6-4bf2-8b59-4f7f143da7bcInjustice%202%20cover.jpg&w=3840&q=75', 'Injustice 2', '2017-05-16', 'Fighting', 'PC,PS4,Xbox One', 39.99, NULL, 0),
-(139, 'https://i.discogs.com/64KfnFV1LJDM0X-KFjzFGfXuWMMHCxMzEg0GqWksF1I/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0NDgw/MDMwLTE1NzU1ODc0/MDQtNzQxNC5qcGVn.jpeg', 'Life is Strange 2', '2018-09-27', 'Adventure', 'PC,PS4,Xbox One', 29.99, NULL, 0),
-(140, 'https://upload.wikimedia.org/wikipedia/en/2/21/Max_Payne_3_Cover.jpg', 'Max Payne 3', '2012-05-15', 'Action', 'PC,PS3,Xbox 360', 19.99, NULL, 0),
-(141, 'https://sm.ign.com/ign_ap/review/o/overcooked/overcooked-2-review_61vh.jpg', 'Overcooked! 2', '2018-08-07', 'Party', 'PC,PS4,Xbox One,Switch', 24.99, NULL, 0),
-(142, 'https://upload.wikimedia.org/wikipedia/en/b/ba/Left4Dead2.jpg', 'Left 4 Dead 2', '2009-11-17', 'Shooter', 'PC,Xbox 360', 19.99, NULL, 0),
-(143, 'https://upload.wikimedia.org/wikipedia/en/e/e1/The_Binding_of_Issac_Rebirth_cover.jpg', 'The Binding of Isaac: Rebirth', '2014-11-04', 'Roguelike', 'PC,PS4,Xbox One,Switch', 14.99, NULL, 0),
-(144, 'https://m.media-amazon.com/images/M/MV5BNjQ1YTI4N2EtOGViYS00ZDlkLTg1NWItMDFkNjY4N2RjZDA0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Smite', '2014-03-25', 'MOBA', 'PC,PS4,Xbox One,Switch', 0.00, NULL, 0),
-(145, 'https://upload.wikimedia.org/wikipedia/en/8/80/Street_Fighter_V_box_artwork.png', 'Street Fighter V', '2016-02-16', 'Fighting', 'PC,PS4', 39.99, NULL, 0),
-(146, 'https://assets1.ignimgs.com/2019/06/04/legend-of-zelda-ocarina-of-time-3d-1559683061479.jpg', 'The Legend of Zelda: Ocarina of Time 3D', '2011-06-19', 'Action-Adventure', 'Nintendo 3DS', 39.99, NULL, 0),
-(147, 'https://m.media-amazon.com/images/I/71l7wuDLCyL.jpg', 'Pokémon X', '2013-10-12', 'RPG', 'Nintendo 3DS', 44.99, NULL, 0),
-(148, 'https://m.media-amazon.com/images/I/81J+Jx1NiaL.jpg', 'Super Mario 3D Land', '2011-11-13', 'Platformer', 'Nintendo 3DS', 29.99, NULL, 0),
-(149, 'https://upload.wikimedia.org/wikipedia/en/e/ed/Alan_Wake_2_box_art.jpg', 'Alan Wake II', '2023-10-27', 'Horror', 'PC, PS5, Xbox Series X/S', 59.99, NULL, 0),
-(151, 'https://fifauteam.com/images/covers/fifa23/standard-cg.webp', 'FIFA 23', '2022-09-30', 'Sports', 'PC, PS4, PS5, Xbox, Switch', 69.99, NULL, 0),
-(152, 'https://plixton.de/cdn/shop/articles/frostpunk-tipps-plixton.png?v=1635359941&width=1920', 'Frostpunk', '2018-04-24', 'Strategy', 'PC, PS4, Xbox', 24.99, NULL, 0),
-(153, 'https://cdn.alza.hu/Foto/ImgGalery/Image/gran-turismo-7-key-art_1.jpg', 'Gran Turismo 7', '2022-03-04', 'Racing Simulator', 'PS4, PS5', 69.99, NULL, 0),
-(154, 'https://upload.wikimedia.org/wikipedia/en/4/46/TheForest_Game.jpg', 'The Forest', '2018-04-30', 'Survival Horror', 'PC, PS4', 14.99, NULL, 0),
-(155, 'https://m.media-amazon.com/images/M/MV5BZDJkZTcxNjAtMDE2ZS00ZTJmLWIwOTQtOTQ1MzM2ZTJhMjU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Path of Exile', '2013-10-23', 'Action RPG', 'PC, PS4, Xbox', 0.00, NULL, 0),
-(156, 'https://cdn.mobygames.com/covers/10880318-dauntless-xbox-one-front-cover.jpg', 'Dauntless', '2019-09-26', 'Action RPG', 'PC, PS4, Xbox, Switch', 0.00, NULL, 0),
-(158, 'https://m.media-amazon.com/images/I/41V200WagZL._AC_UF894,1000_QL80_.jpg', 'Phasmophobia', '2020-09-18', 'Co-op Horror', 'PC', 13.99, NULL, 0),
-(159, 'https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg/250px-The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg', 'The Legend of Zelda: Tears of the Kingdom', '2023-05-12', 'Action-Adventure', 'Nintendo Switch', 69.99, NULL, 0),
-(160, 'https://upload.wikimedia.org/wikipedia/en/1/1c/Diablo_IV_cover_art.png', 'Diablo IV', '2023-06-06', 'RPG', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 69.99, NULL, 0),
-(161, 'https://upload.wikimedia.org/wikipedia/en/b/bb/Dark_souls_3_cover_art.jpg', 'Dark Souls III', '2016-04-12', 'Action RPG', 'PC, PS4, Xbox One', 39.99, NULL, 0),
-(162, 'https://m.media-amazon.com/images/I/918MBaFEp9L.jpg', 'XCOM 2', '2016-02-05', 'Strategy', 'PC, PS4, Xbox One, Switch', 39.99, NULL, 0),
-(163, 'https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Forza_Horizon_boxart.jpg/250px-Forza_Horizon_boxart.jpg', 'Forza Horizon', '2012-10-23', 'Racing', 'Xbox 360', 29.99, NULL, 0),
-(164, 'https://upload.wikimedia.org/wikipedia/en/2/2e/Forza_Horizon_2_Cover_Art.png', 'Forza Horizon 2', '2014-09-30', 'Racing', 'Xbox 360, Xbox One', 39.99, NULL, 0),
-(165, 'https://upload.wikimedia.org/wikipedia/en/5/54/Forza_horizon_3_cover_art.jpg', 'Forza Horizon 3', '2016-09-27', 'Racing', 'PC, Xbox One', 49.99, NULL, 0),
-(166, 'https://upload.wikimedia.org/wikipedia/en/c/c6/Far_Cry_3_PAL_box_art.jpg', 'Far Cry 3', '2012-11-29', 'Shooter', 'PC, PS3, Xbox 360', 29.99, NULL, 0),
-(167, 'https://upload.wikimedia.org/wikipedia/en/6/63/Far_Cry_4_box_art.jpg', 'Far Cry 4', '2014-11-18', 'Shooter', 'PC, PS4, Xbox One', 39.99, NULL, 0),
-(168, 'https://upload.wikimedia.org/wikipedia/en/1/18/Far_Cry_Primal_cover_art.jpg', 'Far Cry Primal', '2016-02-23', 'Action-Adventure', 'PC, PS4, Xbox One', 39.99, NULL, 0),
-(169, 'https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2019/02/22/a24e623f-d9ef-4782-bb03-8cf40c33f70d/far-cry-new-dawn-enemy', 'Far Cry New Dawn', '2019-02-15', 'Shooter', 'PC, PS4, Xbox One', 39.99, NULL, 0),
-(170, 'https://sm.ign.com/t/ign_nordic/review/r/resident-e/resident-evil-7-biohazard-review_8qf9.1200.jpg', 'Resident Evil 7: Biohazard', '2017-01-24', 'Survival Horror', 'PC, PS4, Xbox One', 39.99, NULL, 0),
-(171, 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/05/resident-evil-village-1.jpg', 'Resident Evil Village', '2021-05-07', 'Survival Horror', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 59.99, NULL, 0),
-(172, 'https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Doom_Cover.jpg/250px-Doom_Cover.jpg', 'DOOM (2016)', '2016-05-13', 'FPS', 'PC, PS4, Xbox One, Switch', 39.99, NULL, 0),
-(173, 'https://store-images.s-microsoft.com/image/apps.55076.70302460125194768.98b07d26-79bd-4df7-a56f-45428e24708e.cce77df7-923c-4fbb-b768-76187765eae8?q=90&w=480&h=270', 'Doom 3: BFG Edition', '2012-10-16', 'FPS', 'PC, PS3, Xbox 360, PS4, Xbox One, Switch', 19.99, NULL, 0),
-(174, 'https://archive.org/download/tekken_1_pal_manual/0001.JPG', 'Tekken', '1994-12-09', 'Fighting', 'Arcade, PlayStation', 9.99, NULL, 0),
-(175, 'https://e.snmc.io/lk/f/x/8ac4959f96284e1c8c171887aa83043b/11805688', 'Tekken 4', '2001-07-01', 'Fighting', 'Arcade, PlayStation 2', 19.99, NULL, 0),
-(176, 'https://e.snmc.io/lk/o/x/bacb7e5f8d0fd6e2659c28b2885d05fe/11784818', 'Tekken 5', '2004-11-24', 'Fighting', 'Arcade, PlayStation 2, PSP', 19.99, NULL, 0),
-(177, 'https://upload.wikimedia.org/wikipedia/en/2/21/Tekken_6_Box_Art.jpg', 'Tekken 6', '2007-11-26', 'Fighting', 'Arcade, PS3, Xbox 360, PSP', 29.99, NULL, 0),
-(178, 'https://upload.wikimedia.org/wikipedia/en/5/5c/Tekken_TT2_console.png', 'Tekken Tag Tournament 2', '2011-09-11', 'Fighting', 'Arcade, PS3, Xbox 360, Wii U', 19.99, NULL, 0),
-(179, 'https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Tekken_8_cover_art.jpg/250px-Tekken_8_cover_art.jpg', 'Tekken 8', '2024-01-26', 'Fighting', 'PC, PS5, Xbox Series X/S', 69.99, NULL, 0),
-(180, 'https://acloserlisten.com/wp-content/uploads/2019/06/outerwilds.jpg?w=300&h=300', 'Outer Wilds', '2019-05-28', 'Adventure', 'PC, PS4, PS5, Xbox One, Xbox Series X/S, Switch', 24.99, NULL, 0),
-(181, 'https://m.media-amazon.com/images/M/MV5BMTUyOWI1ZTctNmIwYS00MWIxLWEzYzktY2E0NDljNTc2MzkzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Far Cry', '2004-03-23', 'Shooter', 'PC', 14.99, NULL, 0),
-(182, 'https://upload.wikimedia.org/wikipedia/en/9/97/Far_Cry_2_cover_art.jpg', 'Far Cry 2', '2008-10-21', 'Shooter', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(183, 'https://cdn.cdkeys.com/496x700/media/catalog/product/s/t/streamer-life-simulator-free-download-steam-repacks_13_.jpg', 'Rayman Legends', '2013-09-03', 'Platformer', 'PC, PS3, PS4, Xbox 360, Xbox One, Switch, Wii U, Vita', 19.99, NULL, 0),
-(184, 'https://store-images.s-microsoft.com/image/apps.8017.65328483881162508.89a95049-a2dc-4b27-8f56-0a4f5a72a393.31a122bb-6c53-49a1-bd7e-a23586dc6961?q=90&w=480&h=270', 'Crash Bandicoot N. Sane Trilogy', '2017-06-30', 'Platformer', 'PC, PS4, Xbox One, Switch', 39.99, NULL, 0),
-(185, 'https://upload.wikimedia.org/wikipedia/en/b/b6/Darksiders_3_Box_Art.png', 'Darksiders III', '2018-11-27', 'Action', 'PC, PS4, Xbox One', 39.99, NULL, 0),
-(186, 'https://m.media-amazon.com/images/I/71rz9XPq2fL._AC_UF894,1000_QL80_.jpg', 'Nioh 2', '2020-03-13', 'Action RPG', 'PC, PS4, PS5', 59.99, NULL, 0),
-(187, 'https://sm.ign.com/t/ign_hu/screenshot/default/crysis-remastered_23qd.1280.jpg', 'Crysis Remastered', '2020-09-18', 'Shooter', 'PC, PS4, Xbox One, Switch', 29.99, NULL, 0),
-(188, 'https://upload.wikimedia.org/wikipedia/en/2/25/Half-Life_2_cover.jpg', 'Half-Life 2', '2004-11-16', 'Shooter', 'PC, Xbox, Xbox 360', 9.99, NULL, 0),
-(189, 'https://assets-prd.ignimgs.com/2021/12/20/portal-cover-1640031155845.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Portal', '2007-10-10', 'Puzzle', 'PC, PS3, Xbox 360, Switch', 9.99, NULL, 0),
-(190, 'https://upload.wikimedia.org/wikipedia/en/5/56/The_Evil_Within_boxart.jpg', 'The Evil Within', '2014-10-14', 'Horror', 'PC, PS3, PS4, Xbox 360, Xbox One', 19.99, NULL, 0),
-(191, 'https://upload.wikimedia.org/wikipedia/en/b/bf/The_Evil_Within_2_cover_art.jpg', 'The Evil Within 2', '2017-10-13', 'Horror', 'PC, PS4, Xbox One', 29.99, NULL, 0),
-(192, 'https://upload.wikimedia.org/wikipedia/en/thumb/2/21/Soma_Game_Art.png/250px-Soma_Game_Art.png', 'SOMA', '2015-09-22', 'Horror', 'PC, PS4, Xbox One', 19.99, NULL, 0),
-(193, 'https://upload.wikimedia.org/wikipedia/en/a/a8/Day_Z_cover.jpg', 'DayZ', '2018-12-13', 'Survival', 'PC, PS4, Xbox One', 39.99, NULL, 0),
-(194, 'https://assets-prd.ignimgs.com/2022/01/10/needforspeedmostwanted-sq-1641850444088.jpg', 'Need for Speed: Most Wanted (2012)', '2012-10-30', 'Racing', 'PC, PS3, PS4, Xbox 360, Xbox One', 19.99, NULL, 0),
-(195, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-v6BxwGmFK28T-XG-NCWR8kmfdoss7a-dPw&s', 'Dirt Rally 2.0', '2019-02-26', 'Racing', 'PC, PS4, Xbox One', 29.99, NULL, 0),
-(196, 'https://www.slantmagazine.com/wp-content/uploads/2015/06/crysis2.jpg', 'Crysis 2', '2011-03-22', 'Shooter', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(197, 'https://torrent4you.org/wp-content/uploads/crysis-3.jpg', 'Crysis 3', '2013-02-19', 'Shooter', 'PC, PS3, Xbox 360', 29.99, NULL, 0),
-(198, 'https://upload.wikimedia.org/wikipedia/en/5/52/Need_for_Speed_Underground_cover.jpg', 'Need for Speed: Underground', '2003-11-17', 'Racing', 'PC, PS2, Xbox, GameCube', 14.99, NULL, 0),
-(199, 'https://m.media-amazon.com/images/M/MV5BM2ZiNTk2NTYtZDJmNy00MGFiLTljYWQtNGRjY2VkZWE1NDk2XkEyXkFqcGc@._V1_.jpg', 'Need for Speed: Underground 2', '2004-11-09', 'Racing', 'PC, PS2, Xbox, GameCube', 19.99, NULL, 0),
-(200, 'https://m.media-amazon.com/images/M/MV5BZWVmNDQ3MDktZWZjNC00ODc5LWJkYmUtMDcyN2Q4NDc1NmI3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Need for Speed: Carbon', '2006-10-31', 'Racing', 'PC, PS2, PS3, Xbox, Xbox 360, Wii', 19.99, NULL, 0),
-(201, 'https://upload.wikimedia.org/wikipedia/en/1/16/NFS_ProStreet_cover.png', 'Need for Speed: ProStreet', '2007-11-14', 'Racing', 'PC, PS2, PS3, Xbox 360, Wii', 14.99, NULL, 0),
-(202, 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Need_for_Speed_Undercover_cover.jpg/250px-Need_for_Speed_Undercover_cover.jpg', 'Need for Speed: Undercover', '2008-11-18', 'Racing', 'PC, PS2, PS3, Xbox 360, Wii', 14.99, NULL, 0),
-(203, 'https://upload.wikimedia.org/wikipedia/en/8/85/Need_for_Speed_Hot_Pursuit_2010.jpg', 'Need for Speed: Hot Pursuit (2010)', '2010-11-16', 'Racing', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(204, 'https://upload.wikimedia.org/wikipedia/en/7/7c/Needforspeedtheruncover.jpg', 'Need for Speed: The Run', '2011-11-15', 'Racing', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(205, 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/Need_for_Speed_Rivals_cover.jpg/250px-Need_for_Speed_Rivals_cover.jpg', 'Need for Speed: Rivals', '2013-11-15', 'Racing', 'PC, PS3, PS4, Xbox 360, Xbox One', 29.99, NULL, 0),
-(206, 'https://upload.wikimedia.org/wikipedia/en/a/a9/Need_for_Speed_2015.jpg', 'Need for Speed (2015)', '2015-11-03', 'Racing', 'PC, PS4, Xbox One', 19.99, NULL, 0),
-(207, 'https://upload.wikimedia.org/wikipedia/en/6/64/Need_for_Speed_Payback_standard_edition_cover_art.jpg', 'Need for Speed Payback', '2017-11-10', 'Racing', 'PC, PS4, Xbox One', 29.99, NULL, 0),
-(208, 'https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/Cover_Art_of_Need_for_Speed_Heat.png/250px-Cover_Art_of_Need_for_Speed_Heat.png', 'Need for Speed Heat', '2019-11-08', 'Racing', 'PC, PS4, Xbox One', 39.99, NULL, 0),
-(209, 'https://upload.wikimedia.org/wikipedia/en/d/db/Need_for_Speed_Unbound.png', 'Need for Speed Unbound', '2022-12-02', 'Racing', 'PC, PS5, Xbox Series X/S', 69.99, NULL, 0),
-(210, 'https://upload.wikimedia.org/wikipedia/en/2/2b/Dirt_3.jpg', 'DiRT 3', '2011-05-24', 'Racing', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(211, 'https://upload.wikimedia.org/wikipedia/en/0/05/Dirt_rally_cover_art.jpg', 'DiRT Rally', '2015-12-07', 'Racing', 'PC, PS4, Xbox One', 29.99, NULL, 0),
-(212, 'https://upload.wikimedia.org/wikipedia/en/2/2d/Dirt_4_cover.jpg', 'DiRT 4', '2017-06-06', 'Racing', 'PC, PS4, Xbox One', 29.99, NULL, 0),
-(213, 'https://store-images.s-microsoft.com/image/apps.48357.14564144462522178.840de816-99f5-48c8-885d-33b3b0dffe20.3cdf6aa4-cc38-4cfd-b120-1ef1d03b2379?q=90&w=480&h=270', 'DiRT 5', '2020-11-06', 'Racing', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 59.99, NULL, 0),
-(214, 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f75efd47287397.5875f43932fa1.jpg', 'Assassin\'s Creed', '2007-11-13', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(215, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTf7u9eKg9x_06MjXD5kEYYXb_iZmaRKQFZ4Unt5P29aaN95AFAHTspK1v7Fk-eyHFVP4&usqp=CAU', 'Assassin\'s Creed II', '2009-11-17', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(216, 'https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1JGRgqSTqKmO1Bveq5p1WO/4ebac6e2922869a4bec387b402977540/acb_searchthumb_Mobile.jpg', 'Assassin\'s Creed: Brotherhood', '2010-11-16', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(217, 'https://upload.wikimedia.org/wikipedia/en/d/d9/Assassins_Creed_Revelations_Cover.jpg', 'Assassin\'s Creed: Revelations', '2011-11-15', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(218, 'https://howlongtobeat.com/games/65940_Assassins_Creed_III_Remastered.jpg?width=250', 'Assassin\'s Creed III', '2012-10-30', 'Action-Adventure', 'PC, PS3, Xbox 360, Wii U', 29.99, NULL, 0),
-(219, 'https://upload.wikimedia.org/wikipedia/en/2/28/Assassin%27s_Creed_IV_-_Black_Flag_cover.jpg', 'Assassin\'s Creed IV: Black Flag', '2013-10-29', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Wii U, Switch', 29.99, NULL, 0),
-(220, 'https://i.pinimg.com/474x/eb/c1/b5/ebc1b52e16eea372fd19d25c6f9bccad.jpg', 'Assassin\'s Creed: Rogue', '2014-11-11', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Switch', 19.99, NULL, 0),
-(221, 'https://howlongtobeat.com/games/Assassinscreedunity.jpg?width=250', 'Assassin\'s Creed: Unity', '2014-11-11', 'Action-Adventure', 'PC, PS4, Xbox One', 29.99, NULL, 0),
-(222, 'https://imgix.bustle.com/uploads/image/2024/11/26/7fd912f8/ac-syndicate-herobanner.jpg?w=1200&h=1200&fit=crop&crop=faces&fm=jpg', 'Assassin\'s Creed: Syndicate', '2015-10-23', 'Action-Adventure', 'PC, PS4, Xbox One', 29.99, NULL, 0),
-(223, 'https://upload.wikimedia.org/wikipedia/en/4/4a/Assassin%27s_Creed_Origins_Cover_Art.png', 'Assassin\'s Creed Origins', '2017-10-27', 'Action RPG', 'PC, PS4, Xbox One, Stadia', 39.99, NULL, 0),
-(224, 'https://upload.wikimedia.org/wikipedia/en/2/23/Assassin%27s_Creed_Mirage_cover.jpeg', 'Assassin\'s Creed Mirage', '2023-10-05', 'Action-Adventure', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 49.99, NULL, 0),
-(225, 'https://upload.wikimedia.org/wikipedia/en/e/e7/GTA_-_Box_Front.jpg', 'Grand Theft Auto', '1997-11-28', 'Action-Adventure', 'PC, PS1', 9.99, NULL, 0),
-(226, 'https://upload.wikimedia.org/wikipedia/en/b/be/GTA3boxcover.jpg', 'Grand Theft Auto III', '2001-10-22', 'Action-Adventure', 'PC, PS2, Xbox, Mobile', 14.99, NULL, 0),
-(227, 'http://upload.wikimedia.org/wikipedia/en/c/ce/Vice-city-cover.jpg', 'Grand Theft Auto: Vice City', '2002-10-29', 'Action-Adventure', 'PC, PS2, Xbox, Mobile', 14.99, NULL, 0),
-(228, 'https://upload.wikimedia.org/wikipedia/en/c/c4/GTASABOX.jpg', 'Grand Theft Auto: San Andreas', '2004-10-26', 'Action-Adventure', 'PC, PS2, Xbox, PS3, Xbox 360, Mobile', 19.99, NULL, 0),
-(229, 'https://upload.wikimedia.org/wikipedia/en/9/90/Sleeping_Dogs_-_Square_Enix_video_game_cover.jpg', 'Sleeping Dogs', '2012-08-14', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, NULL, 0),
-(230, 'https://www.gamespot.com/a/uploads/scale_landscape/1574/15746725/4123612-etk_deadisland2_site.jpg', 'Dead Island 2', '2023-04-21', 'Survival Horror', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 59.99, NULL, 0),
-(231, 'https://upload.wikimedia.org/wikipedia/en/5/5b/Fablebox.jpg', 'Fable', '2004-09-14', 'RPG', 'Xbox, PC', 9.99, NULL, 0),
-(232, 'https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/Fable_II.jpg/250px-Fable_II.jpg', 'Fable II', '2008-10-21', 'RPG', 'Xbox 360', 19.99, NULL, 0),
-(233, 'https://images.steamusercontent.com/ugc/1100291843061646175/2A335EAE4B9BB6FEC6B6152553A9A23B355766DD/', 'Fable III', '2010-10-26', 'RPG', 'PC, Xbox 360', 19.99, NULL, 0),
-(234, 'https://assets-prd.ignimgs.com/2022/04/13/pokemon-red-button-2022-1649888301240.jpg', 'Pokémon Red', '1996-02-27', 'RPG', 'Game Boy', 39.99, NULL, 0),
-(235, 'https://assets-prd.ignimgs.com/2021/12/14/pokemonblue-1639518061112.jpg', 'Pokémon Blue', '1996-10-15', 'RPG', 'Game Boy', 39.99, NULL, 0),
-(236, 'https://assets1.ignimgs.com/2019/05/17/pokemon-yellow---button-1558057648010.jpg', 'Pokémon Yellow', '1998-09-12', 'RPG', 'Game Boy', 39.99, NULL, 0),
-(237, 'https://m.media-amazon.com/images/M/MV5BMzU1ODhlZDItYzNkYS00OTFiLThhNWMtM2FlMGMzYjI5OTJkXkEyXkFqcGc@._V1_.jpg', 'Pokémon Gold', '1999-11-21', 'RPG', 'Game Boy Color', 39.99, NULL, 0),
-(238, 'https://assets1.ignimgs.com/2019/05/17/pokemon-silver---button-1558057647925.jpg', 'Pokémon Silver', '1999-11-21', 'RPG', 'Game Boy Color', 39.99, NULL, 0),
-(239, 'https://assets-prd.ignimgs.com/2021/12/14/pokemoncrystal-1639519080473.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Pokémon Crystal', '2000-12-14', 'RPG', 'Game Boy Color', 39.99, NULL, 0),
-(240, 'https://m.media-amazon.com/images/M/MV5BMjkzYmZhZmUtNTI1NS00NGNkLTg3OTMtYjJjNGFhYzA4NDlmXkEyXkFqcGc@._V1_.jpg', 'Pokémon Ruby', '2002-11-21', 'RPG', 'Game Boy Advance', 39.99, NULL, 0),
-(241, 'https://i.ytimg.com/vi/5Z1pmpuxKxc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDIQ5mdhN0_moABiuGj8FGHT3OJog', 'Pokémon Sapphire', '2002-11-21', 'RPG', 'Game Boy Advance', 39.99, NULL, 0),
-(242, 'https://assets-prd.ignimgs.com/2022/02/08/pokemonemerald-sq-1644346782465.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Pokémon Emerald', '2004-09-16', 'RPG', 'Game Boy Advance', 39.99, NULL, 0),
-(243, 'https://assets-prd.ignimgs.com/2022/01/31/pokemon-firered-button-crop-1643616703712.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Pokémon FireRed', '2004-01-29', 'RPG', 'Game Boy Advance', 39.99, NULL, 0),
-(244, 'https://assets-prd.ignimgs.com/2022/01/31/pokemon-leafgreen-button-crop-v3-1643617153926.jpg', 'Pokémon LeafGreen', '2004-01-29', 'RPG', 'Game Boy Advance', 39.99, NULL, 0),
-(245, 'https://ia803401.us.archive.org/28/items/pokemon-diamond-europe/pokemon-diamond.jpg', 'Pokémon Diamond', '2006-09-28', 'RPG', 'Nintendo DS', 39.99, NULL, 0),
-(246, 'https://m.media-amazon.com/images/I/61MM1UJWfeL.jpg', 'Pokémon Pearl', '2006-09-28', 'RPG', 'Nintendo DS', 39.99, NULL, 0),
-(247, 'https://upload.wikimedia.org/wikipedia/en/c/ca/Pokemon_Platinum.png', 'Pokémon Platinum', '2008-09-13', 'RPG', 'Nintendo DS', 39.99, NULL, 0),
-(248, 'https://m.media-amazon.com/images/M/MV5BMTEwOGQ5M2EtNGU4NS00YjlhLWE5MjAtYmI5ZDU3ZjFhNzM5XkEyXkFqcGc@._V1_.jpg', 'Pokémon HeartGold', '2009-09-12', 'RPG', 'Nintendo DS', 39.99, NULL, 0),
-(249, 'https://m.media-amazon.com/images/M/MV5BY2IwMDQxMGMtMzczOC00ZjJmLWEwZGMtMmVhN2JmNWFiYTc2XkEyXkFqcGc@._V1_.jpg', 'Pokémon SoulSilver', '2009-09-12', 'RPG', 'Nintendo DS', 39.99, NULL, 0),
-(250, 'https://m.media-amazon.com/images/M/MV5BNDJmM2IzM2YtZjJjYS00ZGE2LWFkZTctNzI3NjJlNmFkODJhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Pokémon Black', '2010-09-18', 'RPG', 'Nintendo DS', 39.99, NULL, 0),
-(251, 'https://m.media-amazon.com/images/M/MV5BZWFjNWE2NDgtYmY1NS00ZmU0LTlhYTYtOGMyZDkxNGUxMmY2XkEyXkFqcGc@._V1_.jpg', 'Pokémon White', '2010-09-18', 'RPG', 'Nintendo DS', 39.99, NULL, 0),
-(252, 'https://assets1.ignimgs.com/2019/05/17/pokemon-x---button-1558057647988.jpg', 'Pokémon X', '2013-10-12', 'RPG', 'Nintendo 3DS', 39.99, NULL, 0),
-(253, 'https://assets1.ignimgs.com/2019/05/17/pokemon-y---button-1558057648001.jpg', 'Pokémon Y', '2013-10-12', 'RPG', 'Nintendo 3DS', 39.99, NULL, 0),
-(254, 'https://howlongtobeat.com/games/21324_Pokmon_Omega_Ruby_and_Alpha_Sapphire.png', 'Pokémon Omega Ruby', '2014-11-21', 'RPG', 'Nintendo 3DS', 39.99, NULL, 0),
-(255, 'https://assets1.ignimgs.com/2019/05/17/pokemon-alphasapphire---button-1558055142101.jpg', 'Pokémon Alpha Sapphire', '2014-11-21', 'RPG', 'Nintendo 3DS', 39.99, NULL, 0),
-(256, 'https://m.media-amazon.com/images/M/MV5BYzY4MmY3MzAtZmRhOS00MWU3LWFkN2YtNjY3OTI2ZGNlYTg5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Pokémon Sun', '2016-11-18', 'RPG', 'Nintendo 3DS', 39.99, NULL, 0),
-(257, 'https://assets1.ignimgs.com/2019/05/17/pokemon-moon---button-1558055594983.jpg', 'Pokémon Moon', '2016-11-18', 'RPG', 'Nintendo 3DS', 39.99, NULL, 0),
-(258, 'https://cdn.mobygames.com/covers/7432109-pokemon-lets-go-pikachu-nintendo-switch-front-cover.jpg', 'Pokémon Let\'s Go, Pikachu!', '2018-11-16', 'RPG', 'Nintendo Switch', 59.99, NULL, 0),
-(259, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX6BMBUCJmZ0_50X4d6jS_kbyLRM2sxuqgpA&s', 'Pokémon Let\'s Go, Eevee!', '2018-11-16', 'RPG', 'Nintendo Switch', 59.99, NULL, 0),
-(260, 'https://m.media-amazon.com/images/M/MV5BYjlkYzMyMWMtNzM3ZS00Zjg2LTg2MjQtOGYyYWEyZGM4ZTY2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Pokémon Sword', '2019-11-15', 'RPG', 'Nintendo Switch', 59.99, NULL, 0),
-(261, 'https://grandhub.co.ke/wp-content/uploads/2023/10/Pokemon-Shield-Game-price-in-Nairobi.jpg', 'Pokémon Shield', '2019-11-15', 'RPG', 'Nintendo Switch', 59.99, NULL, 0),
-(262, 'https://m.media-amazon.com/images/M/MV5BMmRjZmE0NmMtNjgxZC00OTE4LWI4ZjctMWYyNDVjNzA5ODUwXkEyXkFqcGc@._V1_.jpg', 'Pokémon Scarlet', '2022-11-18', 'RPG', 'Nintendo Switch', 59.99, NULL, 0),
-(263, 'https://m.media-amazon.com/images/M/MV5BZmU1NzA4MjYtOTU2YS00Y2E4LTk1ZTItMWEyYTAyZTczMDQ5XkEyXkFqcGc@._V1_.jpg', 'Pokémon Violet', '2022-11-18', 'RPG', 'Nintendo Switch', 59.99, NULL, 0),
-(264, 'https://cdn.mobygames.com/covers/4347875-pokemon-stadium-nintendo-64-front-cover.jpg', 'Pokémon Stadium', '1999-04-30', 'Battle', 'Nintendo 64', 39.99, NULL, 0),
-(265, 'https://howlongtobeat.com/games/7176_Pokmon_Stadium_2.jpg', 'Pokémon Stadium 2', '2000-12-14', 'Battle', 'Nintendo 64', 39.99, NULL, 0),
-(266, 'https://cdn.mobygames.com/covers/7076620-call-of-duty-modern-warfare-2-hardened-edition-xbox-360-other.jpg', 'Call of Duty', '2003-10-29', 'FPS', 'PC, Console', 19.99, NULL, 0),
-(267, 'https://store-images.s-microsoft.com/image/apps.56814.65003753600797265.4ae0b2c1-f1b9-4df7-8bb7-0508976e0f74.b2c18196-2994-48c4-9eab-266edd1a7aa6', 'Call of Duty 2', '2005-10-25', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(269, 'https://upload.wikimedia.org/wikipedia/en/5/5f/Call_of_Duty_4_Modern_Warfare.jpg', 'Call of Duty 4: Modern Warfare', '2007-11-07', 'FPS', 'PC, Console', 19.99, NULL, 0),
-(270, 'https://upload.wikimedia.org/wikipedia/en/6/69/WAW_Cover_Art.jpg', 'Call of Duty: World at War', '2008-11-11', 'FPS', 'PC, Console', 19.99, NULL, 0),
-(271, 'https://upload.wikimedia.org/wikipedia/en/thumb/0/02/CoD_Black_Ops_cover.png/250px-CoD_Black_Ops_cover.png', 'Call of Duty: Black Ops', '2010-11-09', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(272, 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f6/MWIII_Cover_Art.png/250px-MWIII_Cover_Art.png', 'Call of Duty: Modern Warfare III', '2011-11-08', 'FPS', 'PC, Console', 39.99, NULL, 0),
-(273, 'https://upload.wikimedia.org/wikipedia/en/0/05/Call_of_Duty_Black_Ops_II_box_artwork.png', 'Call of Duty: Black Ops II', '2012-11-13', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(274, 'https://upload.wikimedia.org/wikipedia/en/9/9c/Call_of_duty_ghosts_box_art.jpg', 'Call of Duty: Ghosts', '2013-11-05', 'FPS', 'PC, Console', 59.99, NULL, 0);
-INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platforms`, `prize`, `publisher_id`, `isDiscount`) VALUES
-(275, 'https://upload.wikimedia.org/wikipedia/en/3/3b/Advanced_Warfare.jpg', 'Call of Duty: Advanced Warfare', '2014-11-04', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(276, 'https://upload.wikimedia.org/wikipedia/en/b/b1/Black_Ops_3.jpg', 'Call of Duty: Black Ops III', '2015-11-06', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(277, 'https://upload.wikimedia.org/wikipedia/en/8/87/Call_of_Duty_Infinite_Warfare_cover.jpg', 'Call of Duty: Infinite Warfare', '2016-11-04', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(278, 'https://upload.wikimedia.org/wikipedia/en/1/18/Call_of_Duty_WWII_Cover_Art.jpg', 'Call of Duty: WWII', '2017-11-03', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(279, 'https://upload.wikimedia.org/wikipedia/en/1/1c/Call_of_Duty_Black_Ops_4_official_box_art.jpg', 'Call of Duty: Black Ops 4', '2018-10-12', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(280, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPEo_RnvLrhFIOi3DVBDQsPCLVjgbw64toag&s', 'Call of Duty: Modern Warfare', '2019-10-25', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(281, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjSet4Ft3Y4J26WnQH-BStui44gbjzw1gsBQ&s', 'Call of Duty: Vanguard', '2021-11-05', 'FPS', 'PC, Console', 59.99, NULL, 0),
-(282, 'https://upload.wikimedia.org/wikipedia/en/c/c9/Call_of_Duty_Black_Ops_6_Key_Art.png', 'Call of Duty: Black Ops 6', '2024-10-25', 'FPS', 'PC, Console', 79.99, NULL, 0),
-(301, 'https://upload.wikimedia.org/wikipedia/en/a/a3/Call_of_Duty_Black_Ops_7_Key_Art.png', 'Call of Duty: Black Ops 7', '2025-11-14', 'FPS', 'PC, Console', 70.00, NULL, 0),
-(302, 'https://upload.wikimedia.org/wikipedia/en/8/82/Gears_of_war_cover_art.jpg', 'Gears of War', '2006-11-07', 'TPS', 'Xbox 360, Windows', 0.00, NULL, 0),
-(303, 'https://www.allkeyshop.com/blog/wp-content/uploads/buy-gears-of-war-2-cd-key-compare-prices.webp', 'Gears of War 2', '2008-11-07', 'TPS', 'Xbox 360', 11.99, NULL, 0),
-(304, 'https://assets1.ignimgs.com/thumbs/userUploaded/2020/1/16/saddes-1579217089678.jpg', 'Gears of War 3', '2011-09-20', 'TPS', 'Xbox 360', 11.99, NULL, 0),
-(305, 'https://i.ebayimg.com/images/g/a-AAAOSwgJdfZ31V/s-l1200.jpg', 'Gears of War: Judgment', '2013-03-19', 'TPS', 'Xbox 360', 11.99, NULL, 0),
-(306, 'https://upload.wikimedia.org/wikipedia/en/f/ff/Gears_of_War_4.jpg', 'Gears of War 4', '2016-10-11', 'TPS', 'Xbox One, Windows 10', 19.99, NULL, 0),
-(307, 'https://sightingames.wordpress.com/wp-content/uploads/2022/07/gears-5.jpg', 'Gears 5', '2019-09-10', 'TPS', 'Xbox One, Xbox Series X/S, PC', 29.99, NULL, 0),
-(308, 'https://m.media-amazon.com/images/I/91k0VPB82LL._UF1000,1000_QL80_.jpg', 'Gears Tactics', '2020-04-28', 'Strategy', 'PC, Xbox One, Xbox Series X/S', 29.99, NULL, 0),
-(309, 'https://cdn.mobygames.com/covers/9427702-just-dance-2021-nintendo-switch-front-cover.jpg', 'Just Dance 2021', '2020-11-12', 'Rhythm', 'Switch, PS4, PS5, Xbox One, Xbox Series X/S, Stadia', 49.99, NULL, 0),
-(310, 'https://upload.wikimedia.org/wikipedia/en/8/82/Just_Dance_2022.jpg', 'Just Dance 2022', '2021-11-04', 'Rhythm', 'Switch, PS4, PS5, Xbox One, Xbox Series X/S', 49.99, NULL, 0),
-(311, 'https://assets-prd.ignimgs.com/2023/06/12/justdance24-1686590368199.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Just Dance 2024 Edition', '2023-10-24', 'Rhythm', 'Switch, PS5, Xbox Series X/S', 49.99, NULL, 0),
-(312, 'https://images.genius.com/5627dbfcfc0b341ee7a475e688371ea3.900x900x1.jpg', 'Just Dance 2025 Edition', '2024-10-15', 'Rhythm', 'Switch, PS5, Xbox Series X/S', 19.99, NULL, 0),
-(313, 'https://upload.wikimedia.org/wikipedia/en/8/86/The_Last_of_Us_Part_I_cover.jpg', 'The Last of Us Part I', '2022-09-02', 'Action-Adventure', 'PS5, PC', 69.99, NULL, 0),
-(314, 'https://upload.wikimedia.org/wikipedia/en/4/4f/TLOU_P2_Box_Art_2.png', 'The Last of Us Part II Remastered', '2024-01-19', 'Action-Adventure', 'PS5', 49.99, NULL, 0),
-(315, 'https://cdn.mobygames.com/covers/1762685-outlast-playstation-4-front-cover.jpg', 'Outlast', '2013-09-04', 'Horror', 'PC, PS4, Xbox One, Switch', 14.99, NULL, 0),
-(316, 'https://www.gamechannel.hu/pictures/kifuto/outlast-2_1.jpg', 'Outlast 2', '2017-04-25', 'Horror', 'PC, PS4, Xbox One, Switch', 19.99, NULL, 0),
-(317, 'https://upload.wikimedia.org/wikipedia/en/8/81/The_Outlast_Trials_cover.jpg', 'The Outlast Trials', '2023-05-18', 'Horror', 'PC, PS5, Xbox Series X/S', 39.99, NULL, 0),
-(318, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY83ZNMpxaNc3iKtiyyajp-JuonaFb0IIxdQ&s', 'Wolfenstein: The New Order', '2014-05-20', 'FPS', 'PC, PS4, Xbox One', 19.99, NULL, 0),
-(319, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDhDCnma8Y27rfjO0-3ICOb0gIfqu1QlXY7w&s', 'Wolfenstein: The Old Blood', '2015-05-05', 'FPS', 'PC, PS4, Xbox One', 19.99, NULL, 0),
-(320, 'https://upload.wikimedia.org/wikipedia/en/5/54/Wolfenstein-ii-the-new-colossus-cover.jpeg', 'Wolfenstein II: The New Colossus', '2017-10-27', 'FPS', 'PC, PS4, Xbox One, Switch', 39.99, NULL, 0),
-(321, 'https://upload.wikimedia.org/wikipedia/en/7/7c/Doki_Doki_Literature_Club_Cover.jpg', 'Doki Doki Literature Club!', '2017-09-22', 'Visual Novel', 'PC', 0.00, NULL, 0),
-(322, 'https://upload.wikimedia.org/wikipedia/en/6/65/Kirby_Star_Allies.jpg', 'Kirby Star Allies', '2018-03-16', 'Platformer', 'Nintendo Switch', 59.99, NULL, 0),
-(323, 'https://m.media-amazon.com/images/M/MV5BOGI1ZGM3Y2UtNWJlZi00ODQ1LTg3NDEtOTkwYWIzYWE1YTkxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Kirby and the Forgotten Land', '2022-03-25', 'Platformer', 'Nintendo Switch', 59.99, NULL, 0),
-(324, 'https://m.media-amazon.com/images/S/aplus-media-library-service-media/37a77ece-7d10-4c74-a05e-e3aeb26b1ca7.__CR0,0,600,450_PT0_SX600_V1___.jpg', 'Kirby\'s Return to Dream Land Deluxe', '2023-02-24', 'Platformer', 'Nintendo Switch', 59.99, NULL, 0),
-(325, 'https://m.media-amazon.com/images/M/MV5BZmE3ZjI2ZGEtNGM0Yi00MTQxLTk4NzItZjE5MjIzMTc2NDFhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Kirby Fighters 2', '2020-09-23', 'Fighting', 'Nintendo Switch', 19.99, NULL, 0),
-(326, 'https://i.ebayimg.com/00/s/MTYwMFgxMTk5/z/M5EAAOSwhkNnowSY/$_57.JPG?set_id=880000500F', 'Kirby\'s Dream Buffet', '2022-08-17', 'Party', 'Nintendo Switch', 14.99, NULL, 0),
-(327, 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/Super_Mario_Odyssey.jpg/250px-Super_Mario_Odyssey.jpg', 'Super Mario Odyssey', '2017-10-27', 'Platformer', 'Nintendo Switch', 59.99, NULL, 0),
-(328, 'https://cdn.mos.cms.futurecdn.net/v2/t:0,l:420,cw:1080,ch:1080,q:80,w:1080/Xe7aAA8Y2CpC2kNxsSZFmC.jpg', 'New Super Mario Bros. U Deluxe', '2019-01-11', 'Platformer', 'Nintendo Switch', 59.99, NULL, 0),
-(329, 'https://upload.wikimedia.org/wikipedia/en/c/c7/Super_Mario_Maker_2.jpg', 'Super Mario Maker 2', '2019-06-28', 'Platformer / Creation', 'Nintendo Switch', 59.99, NULL, 0),
-(330, 'https://howlongtobeat.com/games/82771_Super_Mario_3D_World__Bowsers_Fury.jpg', 'Super Mario 3D World + Bowser\'s Fury', '2021-02-12', 'Platformer', 'Nintendo Switch', 59.99, NULL, 0),
-(331, 'https://upload.wikimedia.org/wikipedia/en/a/a3/Mariowonder.png', 'Super Mario Bros. Wonder', '2023-10-20', 'Platformer', 'Nintendo Switch', 59.99, NULL, 0),
-(332, 'https://m.media-amazon.com/images/M/MV5BOGU3NDVjNWYtMjYxMS00NDU0LWJlOTktODgxMjBhNDJkNDE3XkEyXkFqcGc@._V1_.jpg', 'Super Mario RPG', '2023-11-17', 'RPG', 'Nintendo Switch', 59.99, NULL, 0),
-(333, 'https://upload.wikimedia.org/wikipedia/en/7/71/Mario_vs._Donkey_Kong_Coverart.png', 'Mario vs. Donkey Kong', '2024-02-16', 'Puzzle-Platformer', 'Nintendo Switch', 49.99, NULL, 0),
-(334, 'https://m.media-amazon.com/images/M/MV5BYzMwZWUwODEtMTU3Zi00MDYwLTg1MjUtNGVlMDVlZDBkNGZmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'DRAGON BALL XENOVERSE', '2015-02-24', 'Action RPG', 'PC, PS3, PS4, Xbox 360, Xbox One', 39.99, NULL, 0),
-(335, 'https://upload.wikimedia.org/wikipedia/en/f/fe/Dragon_Ball_Xenoverse_2_Cover.jpeg', 'DRAGON BALL XENOVERSE 2', '2016-10-25', 'Action RPG', 'PC, PS4, Xbox One, Switch', 19.99, NULL, 0),
-(336, 'https://upload.wikimedia.org/wikipedia/en/a/ad/DBFZ_cover_art.jpg', 'DRAGON BALL FighterZ', '2018-01-26', 'Fighting', 'PC, PS4, Xbox One, Switch', 59.99, NULL, 0),
-(337, 'https://upload.wikimedia.org/wikipedia/en/e/e4/Dragon_Ball_Z_Kakarot_logo.png', 'DRAGON BALL Z: KAKAROT', '2020-01-17', 'Action RPG', 'PC, PS4, Xbox One, Switch', 19.99, NULL, 0),
-(338, 'https://dbas.bn-ent.net/img/6f7b8d7338af193a34a4cd294a8b19be-772x1024.png', 'DRAGON BALL: THE BREAKERS', '2022-10-14', 'Action (Asymmetrical)', 'PC, PS4, Xbox One, Switch', 19.99, NULL, 0),
-(339, 'https://upload.wikimedia.org/wikipedia/en/7/7f/DBZ_Sparking_Zero_Cover_Art.jpg', 'DRAGON BALL: Sparking! ZERO', '2024-10-11', 'Fighting', 'PC, PS5, Xbox Series X/S', 69.99, NULL, 0),
-(340, 'https://static.rustore.ru/imgproxy/GV5CvUI745WXXqMGgHIyMZvaz67DtU5UMeIYfmuqvm0/preset:web_app_icon_160/aHR0cHM6Ly9zdGF0aWMucnVzdG9yZS5ydS9hcGsvMjA2MzU5MDE1NC9jb250ZW50L0lDT04vNWFkYTc3N2QtNTM3MC00YmY1LWEzYzQtNTBkMDk0YTM1ZmYxLnBuZw==.webp', '60 Seconds! Reatomized', '2019-07-25', 'Survival', 'PC, Console', 9.99, NULL, 0),
-(341, 'https://lumiere-a.akamaihd.net/v1/images/lego-star-wars-skywalker-saga-01_tall_80785940.jpeg?region=336,0,864,864', 'LEGO Star Wars: The Skywalker Saga', '2022-04-05', 'Action-Adventure', 'PC, PS4, PS5, Xbox One, Xbox Series X/S, Switch', 7.49, NULL, 0),
-(342, 'https://store-images.s-microsoft.com/image/apps.22585.70311916332380430.984c5134-5b46-45c7-a5f9-c14ef79d4308.fc930d30-4d60-4d4d-8883-8d70ff603522?q=90&w=480&h=270', 'LEGO Star Wars: The Force Awakens', '2016-06-28', 'Action-Adventure', 'PC, PS4, PS3, Xbox One, Xbox 360, Wii U', 3.99, NULL, 0),
-(343, 'https://store-images.s-microsoft.com/image/apps.22252.63650118280316002.65752177-7b67-479a-873d-54f674a999aa.0186e1c9-df79-4b65-a382-a91a793153bf?q=90&w=336&h=200', 'LEGO Marvel Super Heroes', '2013-10-22', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Wii U', 3.99, NULL, 0),
-(344, 'https://i.pinimg.com/474x/1e/25/60/1e256067fd339f361f8af3fa001bea61.jpg', 'LEGO Marvel Super Heroes 2', '2017-11-14', 'Action-Adventure', 'PC, PS4, Xbox One, Switch', 3.99, NULL, 0),
-(345, 'https://upload.wikimedia.org/wikipedia/en/9/96/Lego_Marvel%27s_Avengers_cover_art.jpg', 'LEGO Marvel\'s Avengers', '2016-01-26', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Wii U', 3.99, NULL, 0),
-(346, 'https://upload.wikimedia.org/wikipedia/en/0/0e/Lego_Jurassic_World_cover.png', 'LEGO Jurassic World', '2015-06-11', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Switch', 3.99, NULL, 0),
-(347, 'https://upload.wikimedia.org/wikipedia/en/thumb/9/99/LegoTheHobbitVideoGameBoxart.jpg/250px-LegoTheHobbitVideoGameBoxart.jpg', 'LEGO The Hobbit', '2014-04-10', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One', 3.99, NULL, 0),
-(348, 'https://upload.wikimedia.org/wikipedia/en/a/a0/Lego_Lord_of_the_Rings_cover.jpg', 'LEGO The Lord of the Rings', '2012-11-27', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One', 3.99, NULL, 0),
-(349, 'https://upload.wikimedia.org/wikipedia/en/5/5b/LegoCityUndercover.jpg', 'LEGO City Undercover', '2017-04-04', 'Action-Adventure', 'PC, PS4, Xbox One, Switch', 2.99, NULL, 0),
-(350, 'https://upload.wikimedia.org/wikipedia/en/2/2d/Lego_Batman_3_-_Beyond_Gotham_cover.jpg', 'LEGO Batman 3: Beyond Gotham', '2014-11-11', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One', 4.49, NULL, 0),
-(351, 'https://store-images.s-microsoft.com/image/apps.12197.68850728623624216.6e2867fc-0ab8-4f68-98cc-b59c6d10b278.4f7fcd3c-d803-4b42-8bf6-d338fbaf79a1', 'LEGO DC Super-Villains', '2018-10-16', 'Action-Adventure', 'PC, PS4, Xbox One, Switch', 5.99, NULL, 0),
-(352, 'https://upload.wikimedia.org/wikipedia/en/a/aa/The_Lego_Movie_Videogame_cover.jpg', 'The LEGO Movie Videogame', '2014-02-07', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Wii U', 3.99, NULL, 0),
-(355, 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2f/NBA_2K25_cover_art.jpg/250px-NBA_2K25_cover_art.jpg', 'NBA 2K25', '2024-09-06', 'Sports', 'PS4, PS5, Xbox One, Xbox Series X/S, Switch, PC', 69.99, NULL, 0),
-(356, 'https://assets-prd.ignimgs.com/2023/07/06/farmingsim11-1688686579698.jpg', 'Farming Simulator 2011', '2010-10-29', 'Simulation', 'PC, Mac', 7.99, NULL, 0),
-(357, 'https://www.codeguru.hu/img/40000/DIGI03647/DIGI03647.webp', 'Farming Simulator 2013 Titanium Edition', '2013-10-09', 'Simulation', 'PC, Mac', 14.99, NULL, 0),
-(358, 'https://store-images.s-microsoft.com/image/apps.41062.64967151257760797.b440e798-649e-4b83-b511-7890d42d9480.8e5b045e-7b90-4013-a091-ed4a3736983c?q=90&w=480&h=270', 'Farming Simulator 15', '2014-10-30', 'Simulation', 'PC, PS3, PS4, Xbox 360, Xbox One', 12.99, NULL, 0),
-(359, 'https://store-images.s-microsoft.com/image/apps.2891.66445546520609419.4a3b03bf-e99b-4622-bb87-89586f01c3b4.1d9388d2-8e2d-46e8-a98a-ef62a426b246?q=90&w=480&h=270', 'Farming Simulator 17', '2016-10-25', 'Simulation', 'PC, PS4, Xbox One', 14.99, NULL, 0),
-(360, 'https://ccdn.g-portal.com/fs19_game_cover_593d4bf988.png', 'Farming Simulator 19', '2018-11-19', 'Simulation', 'PC, PS4, Xbox One', 17.99, NULL, 0),
-(361, 'https://store-images.s-microsoft.com/image/apps.35136.14617846210383148.f5d1d30e-892f-4959-a5b8-f2ef506cf0ae.d40fe9db-42d7-4434-83be-bcbb42f685c3?q=90&w=480&h=270', 'Farming Simulator 22', '2021-11-22', 'Simulation', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 29.99, NULL, 0),
-(362, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCopyugpNBFejO2X9cmN03T1euQZVJjOCG3g&s', 'Farming Simulator 25', '2024-11-12', 'Simulation', 'PC, PS5, Xbox Series X/S', 49.99, NULL, 0),
-(363, 'https://www.allkeyshop.com/blog/wp-content/uploads/buy-european-bus-simulator-2012-cd-key-pc-download-img1.jpg', 'Bus-Simulator 2012', '2012-02-23', 'Simulation', 'PC', 6.99, NULL, 0),
-(364, 'https://assets1.ignimgs.com/2016/01/07/bus-simulator-2016-buttonjpg-19bee4.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Bus Simulator 16', '2016-03-02', 'Simulation', 'PC', 9.99, NULL, 0),
-(365, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqk1kbItC1Alot3u8gT8XwqHDZWhOKQkWLbg&s', 'Bus Simulator 18', '2018-06-13', 'Simulation', 'PC', 24.99, NULL, 0),
-(367, 'https://upload.wikimedia.org/wikipedia/en/thumb/5/55/F1_24_cover_art.jpg/250px-F1_24_cover_art.jpg', 'F1 24', '2024-05-31', 'Racing', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 69.99, NULL, 0),
-(368, 'https://img.redbull.com/images/q_auto,f_auto/redbullcom/2025/3/26/ik4bfsmqwixcjwoffp08/f1-25-iconic-edition', 'F1 25', '2025-05-30', 'Racing', 'PC, PS5, Xbox Series X/S', 47.99, NULL, 0),
-(370, 'https://i0.wp.com/magzoid.com/wp-content/uploads/2025/05/amazon-rebrand-2025_dezeen_2364_col_1-1.webp?fit=2364%2C1330&ssl=1', 'Amazon Gift Card $5', NULL, 'giftcards', 'Amazon', 5.00, NULL, 0),
-(371, 'https://i0.wp.com/magzoid.com/wp-content/uploads/2025/05/amazon-rebrand-2025_dezeen_2364_col_1-1.webp?fit=2364%2C1330&ssl=1', 'Amazon Gift Card $10', NULL, 'giftcards', 'Amazon', 10.00, NULL, 0),
-(372, 'https://i0.wp.com/magzoid.com/wp-content/uploads/2025/05/amazon-rebrand-2025_dezeen_2364_col_1-1.webp?fit=2364%2C1330&ssl=1', 'Amazon Gift Card $25', NULL, 'giftcards', 'Amazon', 25.00, NULL, 0),
-(373, 'https://i0.wp.com/magzoid.com/wp-content/uploads/2025/05/amazon-rebrand-2025_dezeen_2364_col_1-1.webp?fit=2364%2C1330&ssl=1', 'Amazon Gift Card $50', NULL, 'giftcards', 'Amazon', 50.00, NULL, 0),
-(374, 'https://i.pinimg.com/736x/a6/71/85/a6718568ee615a8dbe6f50da7409fdf9.jpg', 'Apple Gift Card $5', NULL, 'giftcards', 'Apple', 5.00, NULL, 0),
-(375, 'https://i.pinimg.com/736x/a6/71/85/a6718568ee615a8dbe6f50da7409fdf9.jpg', 'Apple Gift Card $10', NULL, 'giftcards', 'Apple', 10.00, NULL, 0),
-(376, 'https://i.pinimg.com/736x/a6/71/85/a6718568ee615a8dbe6f50da7409fdf9.jpg', 'Apple Gift Card $25', NULL, 'giftcards', 'Apple', 25.00, NULL, 0),
-(377, 'https://i.pinimg.com/736x/a6/71/85/a6718568ee615a8dbe6f50da7409fdf9.jpg', 'Apple Gift Card $50', NULL, 'giftcards', 'Apple', 50.00, NULL, 0),
-(378, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj97fmjaCYgkevu7aFhgWDjXPfuNxt8bWk5w&s', 'Binance Gift Card $5', NULL, 'giftcards', 'Binance', 5.00, NULL, 0),
-(379, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj97fmjaCYgkevu7aFhgWDjXPfuNxt8bWk5w&s', 'Binance Gift Card $10', NULL, 'giftcards', 'Binance', 10.00, NULL, 0),
-(380, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj97fmjaCYgkevu7aFhgWDjXPfuNxt8bWk5w&s', 'Binance Gift Card $25', NULL, 'giftcards', 'Binance', 25.00, NULL, 0),
-(381, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj97fmjaCYgkevu7aFhgWDjXPfuNxt8bWk5w&s', 'Binance Gift Card $50', NULL, 'giftcards', 'Binance', 50.00, NULL, 0),
-(382, 'https://img.icons8.com/color/1200/battle-net.jpg', 'Battle.net Gift Card $5', NULL, 'giftcards', 'Battle.net', 5.00, NULL, 0),
-(383, 'https://img.icons8.com/color/1200/battle-net.jpg', 'Battle.net Gift Card $10', NULL, 'giftcards', 'Battle.net', 10.00, NULL, 0),
-(384, 'https://img.icons8.com/color/1200/battle-net.jpg', 'Battle.net Gift Card $25', NULL, 'giftcards', 'Battle.net', 25.00, NULL, 0),
-(385, 'https://img.icons8.com/color/1200/battle-net.jpg', 'Battle.net Gift Card $50', NULL, 'giftcards', 'Battle.net', 50.00, NULL, 0),
-(386, 'https://support.discord.com/hc/article_attachments/1500015317842', 'Discord Gift Card $5', NULL, 'giftcards', 'Discord', 5.00, NULL, 0),
-(387, 'https://support.discord.com/hc/article_attachments/1500015317842', 'Discord Gift Card $10', NULL, 'giftcards', 'Discord', 10.00, NULL, 0),
-(388, 'https://support.discord.com/hc/article_attachments/1500015317842', 'Discord Gift Card $25', NULL, 'giftcards', 'Discord', 25.00, NULL, 0),
-(389, 'https://support.discord.com/hc/article_attachments/1500015317842', 'Discord Gift Card $50', NULL, 'giftcards', 'Discord', 50.00, NULL, 0),
-(390, 'https://cdn2.unrealengine.com/UnrealEngine%2FNews%2FAnnouncing+the+Epic+Games+Store%2FFB_EpicGamesStore-1200x630-ca750cd84e1b60d746606db9e5a5ac55f8d27672.jpg', 'Epic Games Gift Card $5', NULL, 'giftcards', 'Epic Games', 5.00, NULL, 0),
-(391, 'https://cdn2.unrealengine.com/UnrealEngine%2FNews%2FAnnouncing+the+Epic+Games+Store%2FFB_EpicGamesStore-1200x630-ca750cd84e1b60d746606db9e5a5ac55f8d27672.jpg', 'Epic Games Gift Card $10', NULL, 'giftcards', 'Epic Games', 10.00, NULL, 0),
-(392, 'https://cdn2.unrealengine.com/UnrealEngine%2FNews%2FAnnouncing+the+Epic+Games+Store%2FFB_EpicGamesStore-1200x630-ca750cd84e1b60d746606db9e5a5ac55f8d27672.jpg', 'Epic Games Gift Card $25', NULL, 'giftcards', 'Epic Games', 25.00, NULL, 0),
-(393, 'https://cdn2.unrealengine.com/UnrealEngine%2FNews%2FAnnouncing+the+Epic+Games+Store%2FFB_EpicGamesStore-1200x630-ca750cd84e1b60d746606db9e5a5ac55f8d27672.jpg', 'Epic Games Gift Card $50', NULL, 'giftcards', 'Epic Games', 50.00, NULL, 0),
-(394, 'https://www.internetmatters.org/wp-content/uploads/2024/10/google_play_image-1.png', 'Google Play Gift Card $5', NULL, 'giftcards', 'Google Play', 5.00, NULL, 0),
-(395, 'https://www.internetmatters.org/wp-content/uploads/2024/10/google_play_image-1.png', 'Google Play Gift Card $10', NULL, 'giftcards', 'Google Play', 10.00, NULL, 0),
-(396, 'https://www.internetmatters.org/wp-content/uploads/2024/10/google_play_image-1.png', 'Google Play Gift Card $25', NULL, 'giftcards', 'Google Play', 25.00, NULL, 0),
-(397, 'https://www.internetmatters.org/wp-content/uploads/2024/10/google_play_image-1.png', 'Google Play Gift Card $50', NULL, 'giftcards', 'Google Play', 50.00, NULL, 0),
-(398, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ITunes_logo.svg/2039px-ITunes_logo.svg.png', 'iTunes Gift Card $5', NULL, 'giftcards', 'iTunes', 5.00, NULL, 0),
-(399, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ITunes_logo.svg/2039px-ITunes_logo.svg.png', 'iTunes Gift Card $10', NULL, 'giftcards', 'iTunes', 10.00, NULL, 0),
-(400, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ITunes_logo.svg/2039px-ITunes_logo.svg.png', 'iTunes Gift Card $25', NULL, 'giftcards', 'iTunes', 25.00, NULL, 0),
-(401, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ITunes_logo.svg/2039px-ITunes_logo.svg.png', 'iTunes Gift Card $50', NULL, 'giftcards', 'iTunes', 50.00, NULL, 0),
-(402, 'https://liquit.com/app/uploads/2023/05/Microsoft-store-liquit-workspace.jpg', 'Microsoft Store Card $5', NULL, 'giftcards', 'Microsoft Store', 5.00, NULL, 0),
-(403, 'https://liquit.com/app/uploads/2023/05/Microsoft-store-liquit-workspace.jpg', 'Microsoft Store Card $10', NULL, 'giftcards', 'Microsoft Store', 10.00, NULL, 0),
-(404, 'https://liquit.com/app/uploads/2023/05/Microsoft-store-liquit-workspace.jpg', 'Microsoft Store Card $25', NULL, 'giftcards', 'Microsoft Store', 25.00, NULL, 0),
-(405, 'https://liquit.com/app/uploads/2023/05/Microsoft-store-liquit-workspace.jpg', 'Microsoft Store Card $50', NULL, 'giftcards', 'Microsoft Store', 50.00, NULL, 0),
-(406, 'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940', 'Netflix Gift Card $5', NULL, 'giftcards', 'Netflix', 5.00, NULL, 0),
-(407, 'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940', 'Netflix Gift Card $10', NULL, 'giftcards', 'Netflix', 10.00, NULL, 0),
-(408, 'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940', 'Netflix Gift Card $25', NULL, 'giftcards', 'Netflix', 25.00, NULL, 0),
-(409, 'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940', 'Netflix Gift Card $50', NULL, 'giftcards', 'Netflix', 50.00, NULL, 0),
-(410, 'https://pop.proddigital.com.br/wp-content/uploads/sites/8/2022/07/nintendo-capa.jpg', 'Nintendo eShop Card $5', NULL, 'giftcards', 'Nintendo', 5.00, NULL, 0),
-(411, 'https://pop.proddigital.com.br/wp-content/uploads/sites/8/2022/07/nintendo-capa.jpg', 'Nintendo eShop Card $10', NULL, 'giftcards', 'Nintendo', 10.00, NULL, 0),
-(412, 'https://pop.proddigital.com.br/wp-content/uploads/sites/8/2022/07/nintendo-capa.jpg', 'Nintendo eShop Card $25', NULL, 'giftcards', 'Nintendo', 25.00, NULL, 0),
-(413, 'https://pop.proddigital.com.br/wp-content/uploads/sites/8/2022/07/nintendo-capa.jpg', 'Nintendo eShop Card $50', NULL, 'giftcards', 'Nintendo', 50.00, NULL, 0),
-(414, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtnE7xLkcyCbAlcptu2-ebNW9DFpvq73hSig&s', 'Origin Gift Card $5', NULL, 'giftcards', 'Origin', 5.00, NULL, 0),
-(415, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtnE7xLkcyCbAlcptu2-ebNW9DFpvq73hSig&s', 'Origin Gift Card $10', NULL, 'giftcards', 'Origin', 10.00, NULL, 0),
-(416, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtnE7xLkcyCbAlcptu2-ebNW9DFpvq73hSig&s', 'Origin Gift Card $25', NULL, 'giftcards', 'Origin', 25.00, NULL, 0),
-(417, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtnE7xLkcyCbAlcptu2-ebNW9DFpvq73hSig&s', 'Origin Gift Card $50', NULL, 'giftcards', 'Origin', 50.00, NULL, 0),
-(418, 'https://brandlogos.net/wp-content/uploads/2022/09/playstation_store-logo_brandlogos.net_q6kzh-512x512.png', 'PlayStation Store Card $5', NULL, 'giftcards', 'PlayStation', 5.00, NULL, 0),
-(419, 'https://brandlogos.net/wp-content/uploads/2022/09/playstation_store-logo_brandlogos.net_q6kzh-512x512.png', 'PlayStation Store Card $10', NULL, 'giftcards', 'PlayStation', 10.00, NULL, 0),
-(420, 'https://brandlogos.net/wp-content/uploads/2022/09/playstation_store-logo_brandlogos.net_q6kzh-512x512.png', 'PlayStation Store Card $25', NULL, 'giftcards', 'PlayStation', 25.00, NULL, 0),
-(421, 'https://brandlogos.net/wp-content/uploads/2022/09/playstation_store-logo_brandlogos.net_q6kzh-512x512.png', 'PlayStation Store Card $50', NULL, 'giftcards', 'PlayStation', 50.00, NULL, 0),
-(422, 'https://assets2.razerzone.com/images/og-image/razer-gold-pin-OGimage-1200x630.jpg', 'Razer Gold Gift Card $5', NULL, 'giftcards', 'Razer', 5.00, NULL, 0),
-(423, 'https://assets2.razerzone.com/images/og-image/razer-gold-pin-OGimage-1200x630.jpg', 'Razer Gold Gift Card $10', NULL, 'giftcards', 'Razer', 10.00, NULL, 0),
-(424, 'https://assets2.razerzone.com/images/og-image/razer-gold-pin-OGimage-1200x630.jpg', 'Razer Gold Gift Card $25', NULL, 'giftcards', 'Razer', 25.00, NULL, 0),
-(425, 'https://assets2.razerzone.com/images/og-image/razer-gold-pin-OGimage-1200x630.jpg', 'Razer Gold Gift Card $50', NULL, 'giftcards', 'Razer', 50.00, NULL, 0),
-(426, 'https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/0/e/e/0eeeb19633422b1241f4306419a0f15f39d58de9.png', 'Roblox Gift Card $5', NULL, 'giftcards', 'Roblox', 5.00, NULL, 0),
-(427, 'https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/0/e/e/0eeeb19633422b1241f4306419a0f15f39d58de9.png', 'Roblox Gift Card $10', NULL, 'giftcards', 'Roblox', 10.00, NULL, 0),
-(428, 'https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/0/e/e/0eeeb19633422b1241f4306419a0f15f39d58de9.png', 'Roblox Gift Card $25', NULL, 'giftcards', 'Roblox', 25.00, NULL, 0),
-(429, 'https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/0/e/e/0eeeb19633422b1241f4306419a0f15f39d58de9.png', 'Roblox Gift Card $50', NULL, 'giftcards', 'Roblox', 50.00, NULL, 0),
-(430, 'https://www.allkeyshop.com/blog/wp-content/uploads/SpotifyPremiumGiftCard.jpg', 'Spotify Gift Card $5', NULL, 'giftcards', 'Spotify', 5.00, NULL, 0),
-(431, 'https://www.allkeyshop.com/blog/wp-content/uploads/SpotifyPremiumGiftCard.jpg', 'Spotify Gift Card $10', NULL, 'giftcards', 'Spotify', 10.00, NULL, 0),
-(432, 'https://www.allkeyshop.com/blog/wp-content/uploads/SpotifyPremiumGiftCard.jpg', 'Spotify Gift Card $25', NULL, 'giftcards', 'Spotify', 25.00, NULL, 0),
-(433, 'https://www.allkeyshop.com/blog/wp-content/uploads/SpotifyPremiumGiftCard.jpg', 'Spotify Gift Card $50', NULL, 'giftcards', 'Spotify', 50.00, NULL, 0),
-(434, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJeKeFNkUdI5HargYBKLeLGYCF-yNvfJ3UoA&s', 'Shein Gift Card $5', NULL, 'giftcards', 'Shein', 5.00, NULL, 0),
-(435, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJeKeFNkUdI5HargYBKLeLGYCF-yNvfJ3UoA&s', 'Shein Gift Card $10', NULL, 'giftcards', 'Shein', 10.00, NULL, 0),
-(436, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJeKeFNkUdI5HargYBKLeLGYCF-yNvfJ3UoA&s', 'Shein Gift Card $25', NULL, 'giftcards', 'Shein', 25.00, NULL, 0),
-(437, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJeKeFNkUdI5HargYBKLeLGYCF-yNvfJ3UoA&s', 'Shein Gift Card $50', NULL, 'giftcards', 'Shein', 50.00, NULL, 0),
-(438, 'https://images.alphacoders.com/133/1339887.png', 'Steam Gift Card $5', NULL, 'giftcards', 'Steam', 5.00, NULL, 0),
-(439, 'https://images.alphacoders.com/133/1339887.png', 'Steam Gift Card $10', NULL, 'giftcards', 'Steam', 10.00, NULL, 0),
-(440, 'https://images.alphacoders.com/133/1339887.png', 'Steam Gift Card $25', NULL, 'giftcards', 'Steam', 25.00, NULL, 0),
-(441, 'https://images.alphacoders.com/133/1339887.png', 'Steam Gift Card $50', NULL, 'giftcards', 'Steam', 50.00, NULL, 0),
-(442, 'https://www.evilcontrollers.com/media/magefan_blog/apps.63170.14246812968525544.2de1e6fd-94a7-4291-88ea-6803f279b4ed.jpeg', 'Ubisoft Connect Gift Card $5', NULL, 'giftcards', 'Ubisoft', 5.00, NULL, 0),
-(443, 'https://www.evilcontrollers.com/media/magefan_blog/apps.63170.14246812968525544.2de1e6fd-94a7-4291-88ea-6803f279b4ed.jpeg', 'Ubisoft Connect Gift Card $10', NULL, 'giftcards', 'Ubisoft', 10.00, NULL, 0),
-(444, 'https://www.evilcontrollers.com/media/magefan_blog/apps.63170.14246812968525544.2de1e6fd-94a7-4291-88ea-6803f279b4ed.jpeg', 'Ubisoft Connect Gift Card $25', NULL, 'giftcards', 'Ubisoft', 25.00, NULL, 0),
-(445, 'https://www.evilcontrollers.com/media/magefan_blog/apps.63170.14246812968525544.2de1e6fd-94a7-4291-88ea-6803f279b4ed.jpeg', 'Ubisoft Connect Gift Card $50', NULL, 'giftcards', 'Ubisoft', 50.00, NULL, 0),
-(446, 'https://wallpapercat.com/w/full/1/5/4/1254747-1920x1080-desktop-full-hd-mastercard-background-image.jpg', 'Mastercard Gift Card $5', NULL, 'giftcards', 'Mastercard', 5.00, NULL, 0),
-(447, 'https://wallpapercat.com/w/full/1/5/4/1254747-1920x1080-desktop-full-hd-mastercard-background-image.jpg', 'Mastercard Gift Card $10', NULL, 'giftcards', 'Mastercard', 10.00, NULL, 0),
-(448, 'https://wallpapercat.com/w/full/1/5/4/1254747-1920x1080-desktop-full-hd-mastercard-background-image.jpg', 'Mastercard Gift Card $25', NULL, 'giftcards', 'Mastercard', 25.00, NULL, 0),
-(449, 'https://wallpapercat.com/w/full/1/5/4/1254747-1920x1080-desktop-full-hd-mastercard-background-image.jpg', 'Mastercard Gift Card $50', NULL, 'giftcards', 'Mastercard', 50.00, NULL, 0),
-(450, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $5', NULL, 'giftcards', 'Xbox', 5.00, NULL, 0),
-(451, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $10', NULL, 'giftcards', 'Xbox', 10.00, NULL, 0),
-(452, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $25', NULL, 'giftcards', 'Xbox', 25.00, NULL, 0),
-(453, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $50', NULL, 'giftcards', 'Xbox', 50.00, NULL, 0);
+INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platforms`, `prize`, `isDiscount`) VALUES
+(1, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/capsule_616x353.jpg?t=1748630546', 'Elden Ring', '2022-02-25', 'Action RPG', 'PC, PS5, Xbox Series X', 59.99, 1),
+(2, 'https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png', 'Grand Theft Auto V', '2013-09-17', 'Action-Adventure', 'PC, PS4, PS5, Xbox', 29.99, 0),
+(3, 'https://media.wired.com/photos/633c95ef85e7a4cc2f802256/master/pass/Breath-of-the-Wild-Casual-Gamer-Culture.jpg', 'The Legend of Zelda: Breath of the Wild', '2017-03-03', 'Action-Adventure', 'Nintendo Switch', 59.99, 0),
+(4, 'https://upload.wikimedia.org/wikipedia/en/9/9f/Cyberpunk_2077_box_art.jpg', 'Cyberpunk 2077', '2020-12-10', 'RPG', 'PC, PS4, PS5, Xbox', 49.99, 0),
+(5, 'https://c.files.bbci.co.uk/3D08/production/_131442651_mediaitem131442649.jpg', 'Minecraft', '2011-11-18', 'Sandbox', 'PC, Console, Mobile', 26.95, 0),
+(6, 'https://i.insider.com/5b5126aea0374026008b47ca?width=1022&format=jpeg', 'Fortnite', '2017-07-25', 'Battle Royale', 'PC, Console, Mobile', 0.00, 0),
+(7, 'https://portforward.com/call-of-duty-modern-warfare-ii/call-of-duty-modern-warfare-ii-header-small.webp', 'Call of Duty: Modern Warfare II', '2022-10-28', 'FPS', 'PC, PS5, Xbox', 69.99, 0),
+(8, 'https://cdn2.unrealengine.com/hades-wallpaper-01-1920x1079-2edc605bbf52.jpg', 'Hades', '2020-09-17', 'Roguelike', 'PC, Switch, PS4, Xbox', 24.99, 0),
+(9, 'https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg', 'Animal Crossing: New Horizons', '2020-03-20', 'Simulation', 'Nintendo Switch', 59.99, 0),
+(10, 'https://images.squarespace-cdn.com/content/v1/606d159a953867291018f801/1619987722169-VV6ZASHHZNRBJW9X0PLK/Key_Art_02_layeredjpg.jpg?format=1500w', 'Hollow Knight', '2017-02-24', 'Metroidvania', 'PC, Switch, PS4, Xbox', 14.99, 1),
+(11, 'https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg', 'Red dead Redemption 2', '2018-10-26', 'Action-Adventure', 'PC, PS4, Xbox', 39.99, 0),
+(12, 'https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg', 'God of War', '2018-04-20', 'Action', 'PS4, PS5, PC', 49.99, 0),
+(13, 'https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltdabc3782553659f1/6785b50a1970a9f14eb5ccd7/xboxshowcase.png', 'Overwatch 2', '2022-10-04', 'FPS', 'PC, Console', 0.00, 0),
+(14, 'https://cdn.arstechnica.net/wp-content/uploads/2020/04/valorant-listing-scaled.jpg', 'Valorant', '2020-06-02', 'FPS', 'PC', 0.00, 0),
+(15, 'https://upload.wikimedia.org/wikipedia/en/a/ae/Tetris_Effect_cover.jpg', 'Tetris Effect', '2018-11-09', 'Puzzle', 'PC, PS4, Xbox, VR', 19.99, 0),
+(16, 'https://media.printler.com/media/photo/187246.jpg?rmode=crop&width=638&height=900', 'Doom Eternal', '2020-03-20', 'FPS', 'PC, PS4, Xbox, Switch', 39.99, 0),
+(17, 'https://media.wired.com/photos/65de6b587f1f5ec3f36a117e/3:2/w_2560%2Cc_limit/Stardew-Valley-Update-Announcement-Gear-Multiplayer_Screenshot2.jpg', 'Stardew Valley', '2016-02-26', 'Simulation', 'PC, Mobile, Console', 14.99, 0),
+(18, 'https://assets-prd.ignimgs.com/2021/12/14/leagueoflegends-1639513774570.jpg', 'League of Legends', '2009-10-27', 'MOBA', 'PC', 0.00, 0),
+(19, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSznnWoYN2cmS-3P49_yvjpUeAToiRDPa7JZQ&s', 'Apex Legends', '2019-02-04', 'Battle Royale', 'PC, Console', 0.00, 0),
+(20, 'https://upload.wikimedia.org/wikipedia/en/d/df/Resident_Evil_4_remake_cover_art.jpg', 'Resident Evil 4 Remake', '2023-03-24', 'Survival Horror', 'PC, PS5, Xbox', 59.99, 0),
+(21, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2420110/capsule_616x353.jpg?t=1737564719', 'Horizon Forbidden West', '2022-02-18', 'Action RPG', 'PS4, PS5', 69.99, 0),
+(22, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/814380/capsule_616x353.jpg?t=1726158438', 'Sekiro: Shadows Die Twice', '2019-03-22', 'Action-Adventure', 'PC, PS4, Xbox', 59.99, 0),
+(23, 'https://upload.wikimedia.org/wikipedia/en/2/22/Death_Stranding.jpg', 'Death Stranding', '2019-11-08', 'Action', 'PS4, PC, PS5', 49.99, 0),
+(24, 'https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000006442/691ba3e0801180a9864cc8a7694b6f98097f9d9799bc7e3dc6db92f086759252', 'Celeste', '2018-01-25', 'Platformer', 'PC, Console', 19.99, 0),
+(25, 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkwVU1hYrvR4S9y_1o6Q2U-y5KBC0kl9Fs63ueXkTfpy8m9iUZkrH665gZDYffIVrN7RyB7X_p-4tPpLcC6y_9P399OoPYJBnP3eIKeP1oM0jHYWZG6iWsftB18AJQKH927RwaqobN1Qh5/s1600/Bloodborne-Game-Wallpaper.jpg', 'Bloodborne', '2015-03-24', 'Action RPG', 'PS4', 39.99, 0),
+(26, 'https://media.icdn.hu/content/entity/2019/02/49574/5d2865ec98574nierlogo.jpg', 'NieR: Automata', '2017-02-23', 'Action RPG', 'PC, PS4, Xbox', 39.99, 0),
+(27, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/capsule_616x353.jpg?t=1730911936', 'It Takes Two', '2021-03-26', 'Puzzle Adventure', 'PC, PS4, PS5, Xbox', 39.99, 0),
+(28, 'https://upload.wikimedia.org/wikipedia/en/1/16/Fire_Emblem_Three_Houses.jpg', 'Fire Emblem: Three Houses', '2019-07-26', 'Tactical RPG', 'Nintendo Switch', 59.99, 0),
+(29, 'https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000046395/94a4095cda06c4d85c637d1af451979f9933302b6b17174d97c45de7a68584a2', 'Splatoon 3', '2022-09-09', 'Third-Person Shooter', 'Nintendo Switch', 59.99, 0),
+(30, 'https://upload.wikimedia.org/wikipedia/en/f/fe/Bayonetta_3_cover.webp', 'Bayonetta 3', '2022-10-28', 'Action', 'Nintendo Switch', 59.99, 0),
+(31, 'https://upload.wikimedia.org/wikipedia/en/a/ae/A_Plague_Tale_Requiem_cover_art.jpg', 'A Plague Tale: Requiem', '2022-10-18', 'Action-Adventure', 'PC, PS5, Xbox Series X', 49.99, 0),
+(32, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138710/capsule_616x353.jpg?t=1734256859', 'Sifu', '2022-02-08', 'Action', 'PC, PS4, PS5, Xbox, Switch', 39.99, 0),
+(33, 'https://upload.wikimedia.org/wikipedia/en/e/eb/Cuphead_%28artwork%29.png', 'Cuphead', '2017-09-29', 'Run and Gun', 'PC, Xbox, PS4, Switch', 19.99, 0),
+(34, 'https://helios-i.mashable.com/imagery/articles/00iMVz5oU69RK9UEoPsZTMW/hero-image.fill.size_1248x702.v1623390188.jpg', 'Ghost of Tsushima', '2020-07-17', 'Action-Adventure', 'PS4, PS5', 59.99, 0),
+(35, 'https://images.squarespace-cdn.com/content/v1/5f0f94f64a47900bb21e117e/1650575087045-SUFVFHNI58T1V07NWY1X/arklp.jpg?format=1000w', 'Tunic', '2022-03-16', 'Action-Adventure', 'PC, Xbox, PS4, PS5, Switch', 29.99, 0),
+(36, 'https://gepig.com/game_cover_460w/5639.jpg', 'Control', '2019-08-27', 'Action-Adventure', 'PC, PS4, PS5, Xbox', 39.99, 0),
+(37, 'https://upload.wikimedia.org/wikipedia/en/5/50/INSIDE_Xbox_One_cover_art.png', 'Inside', '2016-06-29', 'Puzzle Platformer', 'PC, Xbox, PS4, Switch', 19.99, 0),
+(38, 'https://upload.wikimedia.org/wikipedia/en/c/cc/Limbo_Box_Art.jpg', 'Limbo', '2010-07-21', 'Puzzle Platformer', 'PC, Console', 9.99, 0),
+(39, 'https://sm.ign.com/ign_hu/blogroll/default/returnal-final-preview-blog-1619015711197-1624960579739_whnk.jpg', 'Returnal', '2021-04-30', 'Roguelike Shooter', 'PS5, PC', 69.99, 0),
+(40, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1693980/capsule_616x353.jpg?t=1702492799', 'Dead Space Remake', '2023-01-27', 'Survival Horror', 'PC, PS5, Xbox', 69.99, 0),
+(41, 'https://data.xxlgamer.com/products/5131/EgzSJKhYJ6m6yy-medium.jpg', 'Among Us', '2018-06-15', 'Party', 'PC,Mobile,Switch', 4.99, 0),
+(42, 'https://cdn.dlcompare.com/game_tetiere/upload/gameimage/file/40125.jpeg.webp', 'Halo Infinite', '2021-12-08', 'Shooter', 'Xbox Series X,PC', 59.99, 0),
+(43, 'https://upload.wikimedia.org/wikipedia/en/8/8d/Super_Mario_Odyssey.jpg', 'Super Mario Odyssey', '2017-10-27', 'Platformer', 'Nintendo Switch', 59.99, 0),
+(44, 'https://upload.wikimedia.org/wikipedia/en/0/0c/Witcher_3_cover_art.jpg', 'The Witcher 3: Wild Hunt', '2015-05-19', 'RPG', 'PC,PS4,Xbox One,Switch', 39.99, 0),
+(45, 'https://m.media-amazon.com/images/M/MV5BZjdiYjJmNDgtYzgxMS00Njk4LWEzZmMtNmVjYWNjNDJkZjViXkEyXkFqcGc@._V1_.jpg', 'Assassin\'s Creed Valhalla', '2020-11-10', 'Action', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0),
+(46, 'https://upload.wikimedia.org/wikipedia/en/0/05/Destiny_2_%28artwork%29.jpg', 'Destiny 2', '2017-09-06', 'Shooter', 'PC,PS4,Xbox One', 0.00, 0),
+(47, 'https://sm.ign.com/ign_ap/cover/f/fall-guys-/fall-guys-ultimate-knockout_bafj.jpg', 'Fall Guys', '2020-08-04', 'Party', 'PC,PS4', 19.99, 0),
+(48, 'https://i.guim.co.uk/img/media/ae184267567d50db7753e6a20e8f9bc345fb9225/0_170_1934_1160/master/1934.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=7a58c7a8fd06ce59397eecea626bb566', 'Minecraft Dungeons', '2020-05-26', 'Adventure', 'PC,PS4,Xbox One,Switch', 19.99, 0),
+(49, 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Rocket_League_coverart.jpg/250px-Rocket_League_coverart.jpg', 'Rocket League', '2015-07-07', 'Sports', 'PC,PS4,Xbox One,Switch', 19.99, 0),
+(50, 'https://cdn.mobygames.com/covers/9213927-genshin-impact-playstation-4-front-cover.jpg', 'Genshin Impact', '2020-09-28', 'RPG', 'PC,Mobile,PS4,PS5', 0.00, 0),
+(51, 'https://hd2.tudocdn.net/913677?w=1920', 'Halo 3', '2007-09-25', 'Shooter', 'Xbox 360', 19.99, 0),
+(52, 'https://upload.wikimedia.org/wikipedia/en/f/f0/Battlefield_V_standard_edition_box_art.jpg', 'Battlefield V', '2018-11-20', 'Shooter', 'PC,PS4,Xbox One', 39.99, 0),
+(53, 'https://www.fountaindale.org/wp-content/uploads/Images/Blog-Photos/20_persona-royal-450x450.jpg', 'Persona 5', '2019-03-31', 'RPG', 'PS4', 59.99, 0),
+(54, 'https://upload.wikimedia.org/wikipedia/en/b/b7/Dead_by_Daylight_Steam_header.jpg', 'Dead by Daylight', '2016-06-14', 'Horror', 'PC,PS4,Xbox One,Switch', 19.99, 0),
+(55, 'https://upload.wikimedia.org/wikipedia/en/8/87/Forza_Horizon_4_cover.jpg', 'Forza Horizon 4', '2018-10-02', 'Racing', 'PC,Xbox One', 59.99, 0),
+(56, 'https://upload.wikimedia.org/wikipedia/en/e/e7/The_Outer_Worlds_cover_art.png', 'The Outer Worlds', '2019-10-25', 'RPG', 'PC,PS4,Xbox One,Switch', 59.99, 0),
+(57, 'https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Cover_Art_of_Metro_Exodus.png/250px-Cover_Art_of_Metro_Exodus.png', 'Metro Exodus', '2019-02-15', 'Shooter', 'PC,PS4,Xbox One', 59.99, 0),
+(58, 'https://images.ctfassets.net/wn7ipiv9ue5v/1vx25DlWzcRohbJnhBxgkr/1c9d2f64cdf84cc692e3dafc0196e352/2KSMKT_BR3_SDE_1310x738__1_.jpg', 'Borderlands 3', '2019-09-13', 'Shooter', 'PC,PS4,Xbox One', 59.99, 0),
+(59, 'https://upload.wikimedia.org/wikipedia/en/9/94/Ori_and_the_Will_of_the_Wisps.jpg', 'Ori and the Will of the Wisps', '2020-03-11', 'Platformer', 'PC,Xbox One,Switch', 29.99, 0),
+(60, 'https://assetsio.gnwcdn.com/watch-dogs-legion-review-a-bleak-and-buggy-retread-of-ubisofts-formula-1604389923218.jpg?width=1200&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp', 'Watch Dogs: Legion', '2020-10-29', 'Action', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0),
+(61, 'https://helios-i.mashable.com/imagery/articles/01cwlWvPAHuVnGDpMp8KtMc/hero-image.fill.size_1248x702.v1633903510.jpg', 'Far Cry 6', '2021-10-07', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0),
+(62, 'https://upload.wikimedia.org/wikipedia/en/2/2c/Ghostrunner_cover_art.jpg', 'Ghostrunner', '2020-10-27', 'Action', 'PC,PS4,Xbox One,Switch', 29.99, 0),
+(63, 'https://upload.wikimedia.org/wikipedia/en/8/84/Little_Nightmares_II_cover.jpg', 'Little Nightmares II', '2021-02-11', 'Horror', 'PC,PS4,PS5,Xbox One,Xbox Series X,Switch', 29.99, 0),
+(64, 'https://www.tombraider.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fx77ixfmkpoiv%2F4UnPNfdN8Yq2aZvOhIdBx9%2F1b641d296ebb37bfa3eca8873c25a321%2FSOTTR_Product_Image.jpg&w=3840&q=75', 'Shadow of the Tomb Raider', '2018-09-14', 'Action', 'PC,PS4,Xbox One,Switch', 39.99, 0),
+(65, 'https://m.media-amazon.com/images/M/MV5BZWJkZWNkZDgtOTMzMS00NjlhLTk5MTEtZWFiMTQ0MzE4MzAyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Terraria', '2011-05-16', 'Sandbox', 'PC,PS4,Xbox One,Switch,Mobile', 9.99, 0),
+(66, 'https://upload.wikimedia.org/wikipedia/en/1/15/The_Elder_Scrolls_V_Skyrim_cover.png', 'The Elder Scrolls V: Skyrim', '2011-11-11', 'RPG', 'PC,PS3,PS4,Xbox 360,Xbox One,Switch', 39.99, 0),
+(67, 'https://cdn.displate.com/artwork/857x1200/2023-02-01/2cf201b54d230f2f7ebb7d7a85de3d85_5ed333b5962130ee1c8bc3f55b4acb60.jpg', 'Titanfall 2', '2016-10-28', 'Shooter', 'PC,PS4,Xbox One', 19.99, 0),
+(68, 'https://upload.wikimedia.org/wikipedia/en/2/2b/ArkSurvivalEvolved.png', 'ARK: Survival Evolved', '2017-08-29', 'Survival', 'PC,PS4,Xbox One,Switch', 59.99, 0),
+(69, 'https://upload.wikimedia.org/wikipedia/en/e/ec/Battlefield_2042_cover_art.jpg', 'Battlefield 2042', '2021-11-19', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0),
+(70, 'https://store-images.s-microsoft.com/image/apps.36487.69661693038755748.20d2d8fc-4614-415f-8f25-8fed634ea6ce.f9c25a1f-6330-47a3-a918-52c192faeaf6?q=90&w=480&h=270', 'Borderlands 2', '2012-09-18', 'Shooter', 'PC,PS3,PS4,Xbox 360,Xbox One,Switch', 19.99, 0),
+(71, 'https://assetsio.gnwcdn.com/dead_rising_41.jpg?width=1200&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp', 'Dead Rising 4', '2016-12-06', 'Action', 'PC,Xbox One', 29.99, 0),
+(72, 'https://upload.wikimedia.org/wikipedia/en/7/70/Fallout_4_cover_art.jpg', 'Fallout 4', '2015-11-10', 'RPG', 'PC,PS4,Xbox One', 39.99, 0),
+(73, 'https://cdn.wccftech.com/wp-content/uploads/2016/10/Final-Fantasy-XV-HDR.jpg', 'Final Fantasy XV', '2016-11-29', 'RPG', 'PC,PS4,Xbox One', 29.99, 0),
+(74, 'https://upload.wikimedia.org/wikipedia/en/2/2f/Forza_7_art.jpg', 'Forza Motorsport 7', '2017-10-03', 'Racing', 'PC,Xbox One', 39.99, 0),
+(76, 'https://upload.wikimedia.org/wikipedia/en/4/4b/Hitman_3_Packart.jpg', 'Hitman 3', '2021-01-20', 'Stealth', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0),
+(77, 'https://upload.wikimedia.org/wikipedia/en/9/93/Horizon_Zero_Dawn.jpg', 'Horizon Zero Dawn', '2017-02-28', 'Action RPG', 'PS4,PC', 29.99, 0),
+(78, 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Subnautica_cover_art.png/250px-Subnautica_cover_art.png', 'Subnautica', '2018-01-23', 'Survival', 'PC,PS4,Xbox One', 29.99, 0),
+(79, 'https://store-images.s-microsoft.com/image/apps.8440.68311792912961316.3b0709ee-2e0c-48af-868c-64e971d60a1c.5fbfe112-3af1-465d-a6da-6f7152d48ee6?q=90&w=480&h=270', 'Mad Max', '2015-09-01', 'Action', 'PC,PS4,Xbox One', 29.99, 0),
+(80, 'https://fyre.cdn.sewest.net/life-is-strange-hub/6634aba837d4a15412aaed4b/life-is-strange-2024-2--nN3g9MGLt.jpg?quality=85&width=3840', 'Life is Strange', '2015-01-30', 'Adventure', 'PC,PS3,PS4,Xbox 360,Xbox One', 19.99, 0),
+(81, 'https://upload.wikimedia.org/wikipedia/en/f/f9/Portal2cover.jpg', 'Portal 2', '2011-04-19', 'Puzzle', 'PC,PS3,Xbox 360', 19.99, 0),
+(82, 'https://m.media-amazon.com/images/M/MV5BMDViMTAwMTctZDBmMS00OWQwLTg1MzUtMzMwZGQ0YzA0NTFiXkEyXkFqcGc@._V1_.jpg', 'World of Warcraft', '2004-11-23', 'MMORPG', 'PC', 14.99, 0),
+(83, 'https://gamecritics.com/wp-content/uploads/2018/12/Hitman-2-01.jpg', 'Hitman 2', '2018-11-13', 'Stealth', 'PC,PS4,Xbox One', 39.99, 0),
+(84, 'https://upload.wikimedia.org/wikipedia/en/7/7e/Mortal_Kombat_11_cover_art.png', 'Mortal Kombat 11', '2019-04-23', 'Fighting', 'PC,PS4,PS5,Xbox One,Xbox Series X,Switch', 39.99, 0),
+(85, 'https://upload.wikimedia.org/wikipedia/en/7/7f/Cover_Art_of_Need_for_Speed_Heat.png', 'Need for Speed Heat', '2019-11-08', 'Racing', 'PC,PS4,Xbox One', 39.99, 0),
+(86, 'https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Tom_Clancy%27s_Rainbow_Six_Siege_cover_art.jpg/250px-Tom_Clancy%27s_Rainbow_Six_Siege_cover_art.jpg', 'Rainbow Six Siege', '2015-12-01', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 19.99, 0),
+(87, 'https://e.snmc.io/lk/lv/x/edd3c892d16df89d7dfea2a16f63c9a4/7740094', 'Tekken 7', '2017-06-02', 'Fighting', 'PC,PS4,Xbox One', 39.99, 0),
+(88, 'https://upload.wikimedia.org/wikipedia/en/9/99/ACOdysseyCoverArt.png', 'Assassin’s Creed Odyssey', '2018-10-05', 'RPG', 'PC,PS4,Xbox One,Switch,Stadia', 39.99, 0),
+(89, 'https://upload.wikimedia.org/wikipedia/en/3/31/BOCW_Cover_Art.jpg', 'Call of Duty: Black Ops Cold War', '2020-11-13', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0),
+(90, 'https://upload.wikimedia.org/wikipedia/en/c/cb/Devil_May_Cry_5.jpg', 'Devil May Cry 5', '2019-03-08', 'Action', 'PC,PS4,PS5,Xbox One,Xbox Series X', 39.99, 0),
+(91, 'https://upload.wikimedia.org/wikipedia/en/5/54/Wolfenstein-ii-the-new-colossus-cover.jpeg', 'Wolfenstein II: The New Colossus', '2017-10-27', 'Shooter', 'PC,PS4,Xbox One,Switch', 39.99, 0),
+(92, 'https://upload.wikimedia.org/wikipedia/en/thumb/8/86/F1_2021_cover_art.jpg/250px-F1_2021_cover_art.jpg', 'F1 2021', '2021-07-16', 'Racing', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0),
+(93, 'https://upload.wikimedia.org/wikipedia/en/8/86/Forza_Horizon_5_cover_art.jpg', 'Forza Horizon 5', '2021-11-09', 'Racing', 'PC,Xbox One,Xbox Series X', 59.99, 0),
+(94, 'https://p1.akcdn.net/full/873067848.square-enix-just-cause-4-digital-deluxe-edition-pc.jpg', 'Just Cause 4', '2018-12-04', 'Action', 'PC,PS4,Xbox One', 39.99, 0),
+(95, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDHmR-UElz3Easu6ByFvj3xsD_tPBzo73EZNLnQvAQ3NP1JJH--tXaWH9MuBhHEp04D24&usqp=CAU', 'Killer Instinct', '2017-03-29', 'Fighting', 'PC,Xbox One', 19.99, 0),
+(96, 'https://upload.wikimedia.org/wikipedia/en/4/4d/Layers_of_Fear_Cover.png', 'Layers of Fear', '2016-02-16', 'Horror', 'PC,PS4,Xbox One,Switch', 19.99, 0),
+(97, 'https://upload.wikimedia.org/wikipedia/en/6/67/No_Man%27s_Sky.jpg', 'No Man’s Sky', '2016-08-09', 'Exploration', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0),
+(98, 'https://upload.wikimedia.org/wikipedia/en/thumb/9/98/Rainbow_Six_Extraction_cover_art.jpg/250px-Rainbow_Six_Extraction_cover_art.jpg', 'Rainbow Six Extraction', '2022-01-20', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0),
+(99, 'https://upload.wikimedia.org/wikipedia/en/f/fd/Resident_Evil_2_Remake.jpg', 'Resident Evil 2 Remake', '2019-01-25', 'Horror', 'PC,PS4,Xbox One', 39.99, 0),
+(100, 'https://magyaritasok.hu/storage/images/cover/co24t8.jpg', 'Sniper Elite 4', '2017-02-14', 'Shooter', 'PC,PS4,Xbox One', 29.99, 0),
+(101, 'https://upload.wikimedia.org/wikipedia/en/9/9d/State_of_Decay_2_art.jpg', 'State of Decay 2', '2018-05-22', 'Survival', 'PC,Xbox One,Xbox Series X', 29.99, 0),
+(102, 'https://upload.wikimedia.org/wikipedia/en/8/84/Titanfall_box_art.jpg', 'Titanfall', '2014-03-11', 'Shooter', 'PC,Xbox One,Xbox 360', 29.99, 0),
+(103, 'https://rukminim2.flixcart.com/image/850/1000/kylvr0w0/poster/1/2/e/medium-uncharted-4-a-thief-s-end-video-games-matte-finish-poster-original-imagaspxaswhh9up.jpeg?q=90&crop=false', 'Uncharted 4: A Thief’s End', '2016-05-10', 'Action', 'PS4', 39.99, 0),
+(104, 'https://upload.wikimedia.org/wikipedia/en/b/b0/Watch_Dogs_2.jpg', 'Watch Dogs 2', '2016-11-15', 'Action', 'PC,PS4,Xbox One', 39.99, 0),
+(105, 'https://i0.wp.com/enderg.com/wp-content/uploads/2022/08/fifa-22-23.png?fit=476%2C477&ssl=1', 'FIFA 22', '2021-10-01', 'Sports', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0),
+(106, 'https://upload.wikimedia.org/wikipedia/en/f/f1/TombRaider2013.jpg', 'Tomb Raider (2013)', '2013-03-05', 'Action', 'PC,PS3,PS4,Xbox 360,Xbox One', 29.99, 0),
+(107, 'https://upload.wikimedia.org/wikipedia/en/6/6a/Unravel_cover_art.jpg', 'Unravel', '2016-02-09', 'Puzzle-Platformer', 'PC,PS4,Xbox One', 19.99, 0),
+(108, 'https://upload.wikimedia.org/wikipedia/en/d/d9/Watch_Dogs_box_art.jpg', 'Watch Dogs', '2014-05-27', 'Action', 'PC,PS4,Xbox One', 39.99, 0),
+(109, 'https://hips.hearstapps.com/hmg-prod/images/wolfenstein-youngblood-1564131787.jpg?crop=0.564xw:1.00xh;0.147xw,0&resize=640:*', 'Wolfenstein: Youngblood', '2019-07-26', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X,Switch', 39.99, 0),
+(110, 'https://upload.wikimedia.org/wikipedia/en/4/4b/The_Elder_Scrolls_IV_Oblivion_cover.png', 'The Elder Scrolls IV: Oblivion', '2006-03-20', 'RPG', 'PC,PS3,Xbox 360', 19.99, 0),
+(111, 'https://upload.wikimedia.org/wikipedia/en/a/a3/Subnautica_Below_Zero_cover_art.jpg', 'Subnautica: Below Zero', '2021-05-14', 'Survival', 'PC,PS4,PS5,Xbox One,Xbox Series X', 29.99, 0),
+(112, 'https://upload.wikimedia.org/wikipedia/en/a/a3/Official_cover_art_for_Bioshock_Infinite.jpg', 'Bioshock Infinite', '2013-03-26', 'Shooter', 'PC,PS3,PS4,Xbox 360,Xbox One', 29.99, 0),
+(113, 'https://m.media-amazon.com/images/I/71Gzzr-YRsL._AC_UF1000,1000_QL80_.jpg', 'Alan Wake', '2010-05-14', 'Action', 'PC,Xbox 360,Xbox One', 19.99, 0),
+(114, 'https://upload.wikimedia.org/wikipedia/en/0/03/Far_Cry_5_boxshot.jpg', 'Far Cry 5', '2018-03-27', 'Shooter', 'PC,PS4,Xbox One', 59.99, 0),
+(115, 'https://upload.wikimedia.org/wikipedia/en/b/b7/Grand_Theft_Auto_IV_cover.jpg', 'Grand Theft Auto IV', '2008-04-29', 'Action', 'PC,PS3,Xbox 360', 29.99, 0),
+(116, 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/Spider-Man_PS4_cover.jpg/250px-Spider-Man_PS4_cover.jpg', 'Marvel’s Spider-Man', '2018-09-07', 'Action', 'PS4,PS5', 59.99, 0),
+(117, 'https://m.media-amazon.com/images/M/MV5BZGMyMDBjZWMtMjFkNi00OWI1LWIyNmUtMDlkNDRiMjUyYWE2XkEyXkFqcGc@._V1_.jpg', 'Yakuza 0', '2017-03-12', 'Action', 'PC,PS4,PS5', 39.99, 0),
+(118, 'https://upload.wikimedia.org/wikipedia/en/b/bd/Warframe_Cover_Art.png', 'Warframe', '2013-03-25', 'MMORPG', 'PC,PS4,PS5,Xbox One,Xbox Series X,Switch', 0.00, 0),
+(119, 'https://upload.wikimedia.org/wikipedia/en/8/80/Diablo_III_cover.png', 'Diablo III', '2012-05-15', 'RPG', 'PC,PS4,Xbox One,Switch', 39.99, 0),
+(120, 'https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/FFVIIRemake.png/250px-FFVIIRemake.png', 'Final Fantasy VII Remake', '2020-04-10', 'RPG', 'PS4,PS5', 59.99, 0),
+(121, 'https://upload.wikimedia.org/wikipedia/en/b/b1/Bayonetta_2_box_artwork.png', 'Bayonetta 2', '2014-10-24', 'Action', 'Switch,Wii U', 39.99, 0),
+(122, 'https://www.sumo-digital.com/wp-content/uploads/2023/11/mafia.jpg', 'Mafia III', '2016-10-07', 'Action', 'PC,PS4,Xbox One', 29.99, 0),
+(123, 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/LA-Noire-Box-Art.jpg/250px-LA-Noire-Box-Art.jpg', 'L.A. Noire', '2011-05-17', 'Action', 'PC,PS4,Xbox One,Switch', 29.99, 0),
+(124, 'https://upload.wikimedia.org/wikipedia/en/d/dc/Resident_Evil_3.jpg', 'Resident Evil 3 Remake', '2020-04-03', 'Horror', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0),
+(125, 'https://m.media-amazon.com/images/M/MV5BYjU5YWNmZGQtZTZhOS00ZGJjLWE4ZmMtYTJiODYxZDlhYzc5XkEyXkFqcGc@._V1_.jpg', 'Roblox', '2006-09-01', 'Sandbox', 'PC,Mobile,Xbox One', 0.00, 0),
+(126, 'https://upload.wikimedia.org/wikipedia/en/5/5d/SaintsRowIV.jpg', 'Saints Row IV', '2013-08-20', 'Action', 'PC,PS3,PS4,Xbox 360,Xbox One', 29.99, 0),
+(127, 'https://upload.wikimedia.org/wikipedia/en/7/77/Sea_of_thieves_cover_art.jpg', 'Sea of Thieves', '2018-03-20', 'Adventure', 'PC,Xbox One,Xbox Series X', 39.99, 0),
+(128, 'https://upload.wikimedia.org/wikipedia/en/c/c8/Shovel_knight_cover.jpg', 'Shovel Knight', '2014-06-26', 'Platformer', 'PC,PS4,Xbox One,Switch', 19.99, 0),
+(129, 'https://upload.wikimedia.org/wikipedia/en/5/5f/Tf2_standalonebox.jpg', 'Team Fortress 2', '2007-10-10', 'Shooter', 'PC', 0.00, 0),
+(130, 'https://store-images.s-microsoft.com/image/apps.2698.70012318168468878.5eebf938-97f1-4542-82e0-499e9e44e737.bb898327-ced8-4279-8f20-69f91c770fa8?q=90&w=480&h=270', 'The Surge 2', '2019-09-24', 'RPG', 'PC,PS4,Xbox One', 39.99, 0),
+(131, 'https://m.media-amazon.com/images/M/MV5BYmYxY2E3MjktYmIxNi00MGZiLWJlM2UtYjQ2ZTkwZDVmMDE2XkEyXkFqcGc@._V1_.jpg', 'Undertale', '2015-09-15', 'RPG', 'PC,PS4,Switch', 9.99, 0),
+(132, 'https://upload.wikimedia.org/wikipedia/en/d/d7/Until_Dawn_cover_art.jpg', 'Until Dawn', '2015-08-25', 'Horror', 'PS4', 39.99, 0),
+(133, 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/10/alien-isolation-sequel-xenomorph.jpg', 'Alien: Isolation', '2014-10-07', 'Horror', 'PC,PS4,Xbox One,PS3,Xbox 360', 29.99, 0),
+(134, 'https://www.arthipo.com/image/cache/catalog/poster/game/pgame15-battlefield-1-game-poster-2-1000x563.webp', 'Battlefield 1', '2016-10-21', 'Shooter', 'PC,PS4,Xbox One', 39.99, 0),
+(135, 'https://store-images.s-microsoft.com/image/apps.997.70803643320167611.6d02d576-6cc3-42f8-8d47-36718b0154f8.dce9b715-083d-4dbf-b104-53a68a4fbe8a', 'BioShock Infinite', '2013-03-26', 'Shooter', 'PC,PS3,Xbox 360', 19.99, 0),
+(136, 'https://upload.wikimedia.org/wikipedia/en/1/1f/Dead_cells_cover_art.png', 'Dead Cells', '2018-08-07', 'Roguelike', 'PC,PS4,Xbox One,Switch', 24.99, 0),
+(137, 'https://upload.wikimedia.org/wikipedia/en/6/68/Halo_Guardians.png', 'Halo 5: Guardians', '2015-10-27', 'Shooter', 'Xbox One', 29.99, 0),
+(138, 'https://hype.games/_next/image?url=https%3A%2F%2Fimg.hype.games%2Fcdn%2F4becd989-efd6-4bf2-8b59-4f7f143da7bcInjustice%202%20cover.jpg&w=3840&q=75', 'Injustice 2', '2017-05-16', 'Fighting', 'PC,PS4,Xbox One', 39.99, 0),
+(139, 'https://i.discogs.com/64KfnFV1LJDM0X-KFjzFGfXuWMMHCxMzEg0GqWksF1I/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0NDgw/MDMwLTE1NzU1ODc0/MDQtNzQxNC5qcGVn.jpeg', 'Life is Strange 2', '2018-09-27', 'Adventure', 'PC,PS4,Xbox One', 29.99, 0),
+(140, 'https://upload.wikimedia.org/wikipedia/en/2/21/Max_Payne_3_Cover.jpg', 'Max Payne 3', '2012-05-15', 'Action', 'PC,PS3,Xbox 360', 19.99, 0),
+(141, 'https://sm.ign.com/ign_ap/review/o/overcooked/overcooked-2-review_61vh.jpg', 'Overcooked! 2', '2018-08-07', 'Party', 'PC,PS4,Xbox One,Switch', 24.99, 0),
+(142, 'https://upload.wikimedia.org/wikipedia/en/b/ba/Left4Dead2.jpg', 'Left 4 Dead 2', '2009-11-17', 'Shooter', 'PC,Xbox 360', 19.99, 0),
+(143, 'https://upload.wikimedia.org/wikipedia/en/e/e1/The_Binding_of_Issac_Rebirth_cover.jpg', 'The Binding of Isaac: Rebirth', '2014-11-04', 'Roguelike', 'PC,PS4,Xbox One,Switch', 14.99, 0),
+(144, 'https://m.media-amazon.com/images/M/MV5BNjQ1YTI4N2EtOGViYS00ZDlkLTg1NWItMDFkNjY4N2RjZDA0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Smite', '2014-03-25', 'MOBA', 'PC,PS4,Xbox One,Switch', 0.00, 0),
+(145, 'https://upload.wikimedia.org/wikipedia/en/8/80/Street_Fighter_V_box_artwork.png', 'Street Fighter V', '2016-02-16', 'Fighting', 'PC,PS4', 39.99, 0),
+(146, 'https://assets1.ignimgs.com/2019/06/04/legend-of-zelda-ocarina-of-time-3d-1559683061479.jpg', 'The Legend of Zelda: Ocarina of Time 3D', '2011-06-19', 'Action-Adventure', 'Nintendo 3DS', 39.99, 0),
+(147, 'https://m.media-amazon.com/images/I/71l7wuDLCyL.jpg', 'Pokémon X', '2013-10-12', 'RPG', 'Nintendo 3DS', 44.99, 0),
+(148, 'https://m.media-amazon.com/images/I/81J+Jx1NiaL.jpg', 'Super Mario 3D Land', '2011-11-13', 'Platformer', 'Nintendo 3DS', 29.99, 0),
+(149, 'https://upload.wikimedia.org/wikipedia/en/e/ed/Alan_Wake_2_box_art.jpg', 'Alan Wake II', '2023-10-27', 'Horror', 'PC, PS5, Xbox Series X/S', 59.99, 0),
+(151, 'https://fifauteam.com/images/covers/fifa23/standard-cg.webp', 'FIFA 23', '2022-09-30', 'Sports', 'PC, PS4, PS5, Xbox, Switch', 69.99, 0),
+(152, 'https://plixton.de/cdn/shop/articles/frostpunk-tipps-plixton.png?v=1635359941&width=1920', 'Frostpunk', '2018-04-24', 'Strategy', 'PC, PS4, Xbox', 24.99, 0),
+(153, 'https://cdn.alza.hu/Foto/ImgGalery/Image/gran-turismo-7-key-art_1.jpg', 'Gran Turismo 7', '2022-03-04', 'Racing Simulator', 'PS4, PS5', 69.99, 0),
+(154, 'https://upload.wikimedia.org/wikipedia/en/4/46/TheForest_Game.jpg', 'The Forest', '2018-04-30', 'Survival Horror', 'PC, PS4', 14.99, 0),
+(155, 'https://m.media-amazon.com/images/M/MV5BZDJkZTcxNjAtMDE2ZS00ZTJmLWIwOTQtOTQ1MzM2ZTJhMjU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Path of Exile', '2013-10-23', 'Action RPG', 'PC, PS4, Xbox', 0.00, 0),
+(156, 'https://cdn.mobygames.com/covers/10880318-dauntless-xbox-one-front-cover.jpg', 'Dauntless', '2019-09-26', 'Action RPG', 'PC, PS4, Xbox, Switch', 0.00, 0),
+(158, 'https://m.media-amazon.com/images/I/41V200WagZL._AC_UF894,1000_QL80_.jpg', 'Phasmophobia', '2020-09-18', 'Co-op Horror', 'PC', 13.99, 0),
+(159, 'https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg/250px-The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg', 'The Legend of Zelda: Tears of the Kingdom', '2023-05-12', 'Action-Adventure', 'Nintendo Switch', 69.99, 0),
+(160, 'https://upload.wikimedia.org/wikipedia/en/1/1c/Diablo_IV_cover_art.png', 'Diablo IV', '2023-06-06', 'RPG', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 69.99, 0),
+(161, 'https://upload.wikimedia.org/wikipedia/en/b/bb/Dark_souls_3_cover_art.jpg', 'Dark Souls III', '2016-04-12', 'Action RPG', 'PC, PS4, Xbox One', 39.99, 0),
+(162, 'https://m.media-amazon.com/images/I/918MBaFEp9L.jpg', 'XCOM 2', '2016-02-05', 'Strategy', 'PC, PS4, Xbox One, Switch', 39.99, 0),
+(163, 'https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Forza_Horizon_boxart.jpg/250px-Forza_Horizon_boxart.jpg', 'Forza Horizon', '2012-10-23', 'Racing', 'Xbox 360', 29.99, 0),
+(164, 'https://upload.wikimedia.org/wikipedia/en/2/2e/Forza_Horizon_2_Cover_Art.png', 'Forza Horizon 2', '2014-09-30', 'Racing', 'Xbox 360, Xbox One', 39.99, 0),
+(165, 'https://upload.wikimedia.org/wikipedia/en/5/54/Forza_horizon_3_cover_art.jpg', 'Forza Horizon 3', '2016-09-27', 'Racing', 'PC, Xbox One', 49.99, 0),
+(166, 'https://upload.wikimedia.org/wikipedia/en/c/c6/Far_Cry_3_PAL_box_art.jpg', 'Far Cry 3', '2012-11-29', 'Shooter', 'PC, PS3, Xbox 360', 29.99, 0),
+(167, 'https://upload.wikimedia.org/wikipedia/en/6/63/Far_Cry_4_box_art.jpg', 'Far Cry 4', '2014-11-18', 'Shooter', 'PC, PS4, Xbox One', 39.99, 0),
+(168, 'https://upload.wikimedia.org/wikipedia/en/1/18/Far_Cry_Primal_cover_art.jpg', 'Far Cry Primal', '2016-02-23', 'Action-Adventure', 'PC, PS4, Xbox One', 39.99, 0),
+(169, 'https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2019/02/22/a24e623f-d9ef-4782-bb03-8cf40c33f70d/far-cry-new-dawn-enemy', 'Far Cry New Dawn', '2019-02-15', 'Shooter', 'PC, PS4, Xbox One', 39.99, 0),
+(170, 'https://sm.ign.com/t/ign_nordic/review/r/resident-e/resident-evil-7-biohazard-review_8qf9.1200.jpg', 'Resident Evil 7: Biohazard', '2017-01-24', 'Survival Horror', 'PC, PS4, Xbox One', 39.99, 0),
+(171, 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/05/resident-evil-village-1.jpg', 'Resident Evil Village', '2021-05-07', 'Survival Horror', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 59.99, 0),
+(172, 'https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Doom_Cover.jpg/250px-Doom_Cover.jpg', 'DOOM (2016)', '2016-05-13', 'FPS', 'PC, PS4, Xbox One, Switch', 39.99, 0),
+(173, 'https://store-images.s-microsoft.com/image/apps.55076.70302460125194768.98b07d26-79bd-4df7-a56f-45428e24708e.cce77df7-923c-4fbb-b768-76187765eae8?q=90&w=480&h=270', 'Doom 3: BFG Edition', '2012-10-16', 'FPS', 'PC, PS3, Xbox 360, PS4, Xbox One, Switch', 19.99, 0),
+(174, 'https://archive.org/download/tekken_1_pal_manual/0001.JPG', 'Tekken', '1994-12-09', 'Fighting', 'Arcade, PlayStation', 9.99, 0),
+(175, 'https://e.snmc.io/lk/f/x/8ac4959f96284e1c8c171887aa83043b/11805688', 'Tekken 4', '2001-07-01', 'Fighting', 'Arcade, PlayStation 2', 19.99, 0),
+(176, 'https://e.snmc.io/lk/o/x/bacb7e5f8d0fd6e2659c28b2885d05fe/11784818', 'Tekken 5', '2004-11-24', 'Fighting', 'Arcade, PlayStation 2, PSP', 19.99, 0),
+(177, 'https://upload.wikimedia.org/wikipedia/en/2/21/Tekken_6_Box_Art.jpg', 'Tekken 6', '2007-11-26', 'Fighting', 'Arcade, PS3, Xbox 360, PSP', 29.99, 0),
+(178, 'https://upload.wikimedia.org/wikipedia/en/5/5c/Tekken_TT2_console.png', 'Tekken Tag Tournament 2', '2011-09-11', 'Fighting', 'Arcade, PS3, Xbox 360, Wii U', 19.99, 0),
+(179, 'https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Tekken_8_cover_art.jpg/250px-Tekken_8_cover_art.jpg', 'Tekken 8', '2024-01-26', 'Fighting', 'PC, PS5, Xbox Series X/S', 69.99, 0),
+(180, 'https://acloserlisten.com/wp-content/uploads/2019/06/outerwilds.jpg?w=300&h=300', 'Outer Wilds', '2019-05-28', 'Adventure', 'PC, PS4, PS5, Xbox One, Xbox Series X/S, Switch', 24.99, 0),
+(181, 'https://m.media-amazon.com/images/M/MV5BMTUyOWI1ZTctNmIwYS00MWIxLWEzYzktY2E0NDljNTc2MzkzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Far Cry', '2004-03-23', 'Shooter', 'PC', 14.99, 0),
+(182, 'https://upload.wikimedia.org/wikipedia/en/9/97/Far_Cry_2_cover_art.jpg', 'Far Cry 2', '2008-10-21', 'Shooter', 'PC, PS3, Xbox 360', 19.99, 0),
+(183, 'https://cdn.cdkeys.com/496x700/media/catalog/product/s/t/streamer-life-simulator-free-download-steam-repacks_13_.jpg', 'Rayman Legends', '2013-09-03', 'Platformer', 'PC, PS3, PS4, Xbox 360, Xbox One, Switch, Wii U, Vita', 19.99, 0),
+(184, 'https://store-images.s-microsoft.com/image/apps.8017.65328483881162508.89a95049-a2dc-4b27-8f56-0a4f5a72a393.31a122bb-6c53-49a1-bd7e-a23586dc6961?q=90&w=480&h=270', 'Crash Bandicoot N. Sane Trilogy', '2017-06-30', 'Platformer', 'PC, PS4, Xbox One, Switch', 39.99, 0),
+(185, 'https://upload.wikimedia.org/wikipedia/en/b/b6/Darksiders_3_Box_Art.png', 'Darksiders III', '2018-11-27', 'Action', 'PC, PS4, Xbox One', 39.99, 0),
+(186, 'https://m.media-amazon.com/images/I/71rz9XPq2fL._AC_UF894,1000_QL80_.jpg', 'Nioh 2', '2020-03-13', 'Action RPG', 'PC, PS4, PS5', 59.99, 0),
+(187, 'https://sm.ign.com/t/ign_hu/screenshot/default/crysis-remastered_23qd.1280.jpg', 'Crysis Remastered', '2020-09-18', 'Shooter', 'PC, PS4, Xbox One, Switch', 29.99, 0),
+(188, 'https://upload.wikimedia.org/wikipedia/en/2/25/Half-Life_2_cover.jpg', 'Half-Life 2', '2004-11-16', 'Shooter', 'PC, Xbox, Xbox 360', 9.99, 0),
+(189, 'https://assets-prd.ignimgs.com/2021/12/20/portal-cover-1640031155845.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Portal', '2007-10-10', 'Puzzle', 'PC, PS3, Xbox 360, Switch', 9.99, 0),
+(190, 'https://upload.wikimedia.org/wikipedia/en/5/56/The_Evil_Within_boxart.jpg', 'The Evil Within', '2014-10-14', 'Horror', 'PC, PS3, PS4, Xbox 360, Xbox One', 19.99, 0),
+(191, 'https://upload.wikimedia.org/wikipedia/en/b/bf/The_Evil_Within_2_cover_art.jpg', 'The Evil Within 2', '2017-10-13', 'Horror', 'PC, PS4, Xbox One', 29.99, 0),
+(192, 'https://upload.wikimedia.org/wikipedia/en/thumb/2/21/Soma_Game_Art.png/250px-Soma_Game_Art.png', 'SOMA', '2015-09-22', 'Horror', 'PC, PS4, Xbox One', 19.99, 0),
+(193, 'https://upload.wikimedia.org/wikipedia/en/a/a8/Day_Z_cover.jpg', 'DayZ', '2018-12-13', 'Survival', 'PC, PS4, Xbox One', 39.99, 0),
+(194, 'https://assets-prd.ignimgs.com/2022/01/10/needforspeedmostwanted-sq-1641850444088.jpg', 'Need for Speed: Most Wanted (2012)', '2012-10-30', 'Racing', 'PC, PS3, PS4, Xbox 360, Xbox One', 19.99, 0),
+(195, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-v6BxwGmFK28T-XG-NCWR8kmfdoss7a-dPw&s', 'Dirt Rally 2.0', '2019-02-26', 'Racing', 'PC, PS4, Xbox One', 29.99, 0),
+(196, 'https://www.slantmagazine.com/wp-content/uploads/2015/06/crysis2.jpg', 'Crysis 2', '2011-03-22', 'Shooter', 'PC, PS3, Xbox 360', 19.99, 0),
+(197, 'https://torrent4you.org/wp-content/uploads/crysis-3.jpg', 'Crysis 3', '2013-02-19', 'Shooter', 'PC, PS3, Xbox 360', 29.99, 0),
+(198, 'https://upload.wikimedia.org/wikipedia/en/5/52/Need_for_Speed_Underground_cover.jpg', 'Need for Speed: Underground', '2003-11-17', 'Racing', 'PC, PS2, Xbox, GameCube', 14.99, 0),
+(199, 'https://m.media-amazon.com/images/M/MV5BM2ZiNTk2NTYtZDJmNy00MGFiLTljYWQtNGRjY2VkZWE1NDk2XkEyXkFqcGc@._V1_.jpg', 'Need for Speed: Underground 2', '2004-11-09', 'Racing', 'PC, PS2, Xbox, GameCube', 19.99, 0),
+(200, 'https://m.media-amazon.com/images/M/MV5BZWVmNDQ3MDktZWZjNC00ODc5LWJkYmUtMDcyN2Q4NDc1NmI3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Need for Speed: Carbon', '2006-10-31', 'Racing', 'PC, PS2, PS3, Xbox, Xbox 360, Wii', 19.99, 0),
+(201, 'https://upload.wikimedia.org/wikipedia/en/1/16/NFS_ProStreet_cover.png', 'Need for Speed: ProStreet', '2007-11-14', 'Racing', 'PC, PS2, PS3, Xbox 360, Wii', 14.99, 0),
+(202, 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Need_for_Speed_Undercover_cover.jpg/250px-Need_for_Speed_Undercover_cover.jpg', 'Need for Speed: Undercover', '2008-11-18', 'Racing', 'PC, PS2, PS3, Xbox 360, Wii', 14.99, 0),
+(203, 'https://upload.wikimedia.org/wikipedia/en/8/85/Need_for_Speed_Hot_Pursuit_2010.jpg', 'Need for Speed: Hot Pursuit (2010)', '2010-11-16', 'Racing', 'PC, PS3, Xbox 360', 19.99, 0),
+(204, 'https://upload.wikimedia.org/wikipedia/en/7/7c/Needforspeedtheruncover.jpg', 'Need for Speed: The Run', '2011-11-15', 'Racing', 'PC, PS3, Xbox 360', 19.99, 0),
+(205, 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/Need_for_Speed_Rivals_cover.jpg/250px-Need_for_Speed_Rivals_cover.jpg', 'Need for Speed: Rivals', '2013-11-15', 'Racing', 'PC, PS3, PS4, Xbox 360, Xbox One', 29.99, 0),
+(206, 'https://upload.wikimedia.org/wikipedia/en/a/a9/Need_for_Speed_2015.jpg', 'Need for Speed (2015)', '2015-11-03', 'Racing', 'PC, PS4, Xbox One', 19.99, 0),
+(207, 'https://upload.wikimedia.org/wikipedia/en/6/64/Need_for_Speed_Payback_standard_edition_cover_art.jpg', 'Need for Speed Payback', '2017-11-10', 'Racing', 'PC, PS4, Xbox One', 29.99, 0),
+(208, 'https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/Cover_Art_of_Need_for_Speed_Heat.png/250px-Cover_Art_of_Need_for_Speed_Heat.png', 'Need for Speed Heat', '2019-11-08', 'Racing', 'PC, PS4, Xbox One', 39.99, 0),
+(209, 'https://upload.wikimedia.org/wikipedia/en/d/db/Need_for_Speed_Unbound.png', 'Need for Speed Unbound', '2022-12-02', 'Racing', 'PC, PS5, Xbox Series X/S', 69.99, 0),
+(210, 'https://upload.wikimedia.org/wikipedia/en/2/2b/Dirt_3.jpg', 'DiRT 3', '2011-05-24', 'Racing', 'PC, PS3, Xbox 360', 19.99, 0),
+(211, 'https://upload.wikimedia.org/wikipedia/en/0/05/Dirt_rally_cover_art.jpg', 'DiRT Rally', '2015-12-07', 'Racing', 'PC, PS4, Xbox One', 29.99, 0),
+(212, 'https://upload.wikimedia.org/wikipedia/en/2/2d/Dirt_4_cover.jpg', 'DiRT 4', '2017-06-06', 'Racing', 'PC, PS4, Xbox One', 29.99, 0),
+(213, 'https://store-images.s-microsoft.com/image/apps.48357.14564144462522178.840de816-99f5-48c8-885d-33b3b0dffe20.3cdf6aa4-cc38-4cfd-b120-1ef1d03b2379?q=90&w=480&h=270', 'DiRT 5', '2020-11-06', 'Racing', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 59.99, 0),
+(214, 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f75efd47287397.5875f43932fa1.jpg', 'Assassin\'s Creed', '2007-11-13', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, 0),
+(215, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTf7u9eKg9x_06MjXD5kEYYXb_iZmaRKQFZ4Unt5P29aaN95AFAHTspK1v7Fk-eyHFVP4&usqp=CAU', 'Assassin\'s Creed II', '2009-11-17', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, 0),
+(216, 'https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1JGRgqSTqKmO1Bveq5p1WO/4ebac6e2922869a4bec387b402977540/acb_searchthumb_Mobile.jpg', 'Assassin\'s Creed: Brotherhood', '2010-11-16', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, 0),
+(217, 'https://upload.wikimedia.org/wikipedia/en/d/d9/Assassins_Creed_Revelations_Cover.jpg', 'Assassin\'s Creed: Revelations', '2011-11-15', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, 0),
+(218, 'https://howlongtobeat.com/games/65940_Assassins_Creed_III_Remastered.jpg?width=250', 'Assassin\'s Creed III', '2012-10-30', 'Action-Adventure', 'PC, PS3, Xbox 360, Wii U', 29.99, 0),
+(219, 'https://upload.wikimedia.org/wikipedia/en/2/28/Assassin%27s_Creed_IV_-_Black_Flag_cover.jpg', 'Assassin\'s Creed IV: Black Flag', '2013-10-29', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Wii U, Switch', 29.99, 0),
+(220, 'https://i.pinimg.com/474x/eb/c1/b5/ebc1b52e16eea372fd19d25c6f9bccad.jpg', 'Assassin\'s Creed: Rogue', '2014-11-11', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Switch', 19.99, 0),
+(221, 'https://howlongtobeat.com/games/Assassinscreedunity.jpg?width=250', 'Assassin\'s Creed: Unity', '2014-11-11', 'Action-Adventure', 'PC, PS4, Xbox One', 29.99, 0),
+(222, 'https://imgix.bustle.com/uploads/image/2024/11/26/7fd912f8/ac-syndicate-herobanner.jpg?w=1200&h=1200&fit=crop&crop=faces&fm=jpg', 'Assassin\'s Creed: Syndicate', '2015-10-23', 'Action-Adventure', 'PC, PS4, Xbox One', 29.99, 0),
+(223, 'https://upload.wikimedia.org/wikipedia/en/4/4a/Assassin%27s_Creed_Origins_Cover_Art.png', 'Assassin\'s Creed Origins', '2017-10-27', 'Action RPG', 'PC, PS4, Xbox One, Stadia', 39.99, 0),
+(224, 'https://upload.wikimedia.org/wikipedia/en/2/23/Assassin%27s_Creed_Mirage_cover.jpeg', 'Assassin\'s Creed Mirage', '2023-10-05', 'Action-Adventure', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 49.99, 0),
+(225, 'https://upload.wikimedia.org/wikipedia/en/e/e7/GTA_-_Box_Front.jpg', 'Grand Theft Auto', '1997-11-28', 'Action-Adventure', 'PC, PS1', 9.99, 0),
+(226, 'https://upload.wikimedia.org/wikipedia/en/b/be/GTA3boxcover.jpg', 'Grand Theft Auto III', '2001-10-22', 'Action-Adventure', 'PC, PS2, Xbox, Mobile', 14.99, 0),
+(227, 'http://upload.wikimedia.org/wikipedia/en/c/ce/Vice-city-cover.jpg', 'Grand Theft Auto: Vice City', '2002-10-29', 'Action-Adventure', 'PC, PS2, Xbox, Mobile', 14.99, 0),
+(228, 'https://upload.wikimedia.org/wikipedia/en/c/c4/GTASABOX.jpg', 'Grand Theft Auto: San Andreas', '2004-10-26', 'Action-Adventure', 'PC, PS2, Xbox, PS3, Xbox 360, Mobile', 19.99, 0),
+(229, 'https://upload.wikimedia.org/wikipedia/en/9/90/Sleeping_Dogs_-_Square_Enix_video_game_cover.jpg', 'Sleeping Dogs', '2012-08-14', 'Action-Adventure', 'PC, PS3, Xbox 360', 19.99, 0),
+(230, 'https://www.gamespot.com/a/uploads/scale_landscape/1574/15746725/4123612-etk_deadisland2_site.jpg', 'Dead Island 2', '2023-04-21', 'Survival Horror', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 59.99, 0),
+(231, 'https://upload.wikimedia.org/wikipedia/en/5/5b/Fablebox.jpg', 'Fable', '2004-09-14', 'RPG', 'Xbox, PC', 9.99, 0),
+(232, 'https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/Fable_II.jpg/250px-Fable_II.jpg', 'Fable II', '2008-10-21', 'RPG', 'Xbox 360', 19.99, 0),
+(233, 'https://images.steamusercontent.com/ugc/1100291843061646175/2A335EAE4B9BB6FEC6B6152553A9A23B355766DD/', 'Fable III', '2010-10-26', 'RPG', 'PC, Xbox 360', 19.99, 0),
+(234, 'https://assets-prd.ignimgs.com/2022/04/13/pokemon-red-button-2022-1649888301240.jpg', 'Pokémon Red', '1996-02-27', 'RPG', 'Game Boy', 39.99, 0),
+(235, 'https://assets-prd.ignimgs.com/2021/12/14/pokemonblue-1639518061112.jpg', 'Pokémon Blue', '1996-10-15', 'RPG', 'Game Boy', 39.99, 0),
+(236, 'https://assets1.ignimgs.com/2019/05/17/pokemon-yellow---button-1558057648010.jpg', 'Pokémon Yellow', '1998-09-12', 'RPG', 'Game Boy', 39.99, 0),
+(237, 'https://m.media-amazon.com/images/M/MV5BMzU1ODhlZDItYzNkYS00OTFiLThhNWMtM2FlMGMzYjI5OTJkXkEyXkFqcGc@._V1_.jpg', 'Pokémon Gold', '1999-11-21', 'RPG', 'Game Boy Color', 39.99, 0),
+(238, 'https://assets1.ignimgs.com/2019/05/17/pokemon-silver---button-1558057647925.jpg', 'Pokémon Silver', '1999-11-21', 'RPG', 'Game Boy Color', 39.99, 0),
+(239, 'https://assets-prd.ignimgs.com/2021/12/14/pokemoncrystal-1639519080473.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Pokémon Crystal', '2000-12-14', 'RPG', 'Game Boy Color', 39.99, 0),
+(240, 'https://m.media-amazon.com/images/M/MV5BMjkzYmZhZmUtNTI1NS00NGNkLTg3OTMtYjJjNGFhYzA4NDlmXkEyXkFqcGc@._V1_.jpg', 'Pokémon Ruby', '2002-11-21', 'RPG', 'Game Boy Advance', 39.99, 0),
+(241, 'https://i.ytimg.com/vi/5Z1pmpuxKxc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDIQ5mdhN0_moABiuGj8FGHT3OJog', 'Pokémon Sapphire', '2002-11-21', 'RPG', 'Game Boy Advance', 39.99, 0),
+(242, 'https://assets-prd.ignimgs.com/2022/02/08/pokemonemerald-sq-1644346782465.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Pokémon Emerald', '2004-09-16', 'RPG', 'Game Boy Advance', 39.99, 0),
+(243, 'https://assets-prd.ignimgs.com/2022/01/31/pokemon-firered-button-crop-1643616703712.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Pokémon FireRed', '2004-01-29', 'RPG', 'Game Boy Advance', 39.99, 0),
+(244, 'https://assets-prd.ignimgs.com/2022/01/31/pokemon-leafgreen-button-crop-v3-1643617153926.jpg', 'Pokémon LeafGreen', '2004-01-29', 'RPG', 'Game Boy Advance', 39.99, 0),
+(245, 'https://ia803401.us.archive.org/28/items/pokemon-diamond-europe/pokemon-diamond.jpg', 'Pokémon Diamond', '2006-09-28', 'RPG', 'Nintendo DS', 39.99, 0),
+(246, 'https://m.media-amazon.com/images/I/61MM1UJWfeL.jpg', 'Pokémon Pearl', '2006-09-28', 'RPG', 'Nintendo DS', 39.99, 0),
+(247, 'https://upload.wikimedia.org/wikipedia/en/c/ca/Pokemon_Platinum.png', 'Pokémon Platinum', '2008-09-13', 'RPG', 'Nintendo DS', 39.99, 0),
+(248, 'https://m.media-amazon.com/images/M/MV5BMTEwOGQ5M2EtNGU4NS00YjlhLWE5MjAtYmI5ZDU3ZjFhNzM5XkEyXkFqcGc@._V1_.jpg', 'Pokémon HeartGold', '2009-09-12', 'RPG', 'Nintendo DS', 39.99, 0),
+(249, 'https://m.media-amazon.com/images/M/MV5BY2IwMDQxMGMtMzczOC00ZjJmLWEwZGMtMmVhN2JmNWFiYTc2XkEyXkFqcGc@._V1_.jpg', 'Pokémon SoulSilver', '2009-09-12', 'RPG', 'Nintendo DS', 39.99, 0),
+(250, 'https://m.media-amazon.com/images/M/MV5BNDJmM2IzM2YtZjJjYS00ZGE2LWFkZTctNzI3NjJlNmFkODJhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Pokémon Black', '2010-09-18', 'RPG', 'Nintendo DS', 39.99, 0),
+(251, 'https://m.media-amazon.com/images/M/MV5BZWFjNWE2NDgtYmY1NS00ZmU0LTlhYTYtOGMyZDkxNGUxMmY2XkEyXkFqcGc@._V1_.jpg', 'Pokémon White', '2010-09-18', 'RPG', 'Nintendo DS', 39.99, 0),
+(252, 'https://assets1.ignimgs.com/2019/05/17/pokemon-x---button-1558057647988.jpg', 'Pokémon X', '2013-10-12', 'RPG', 'Nintendo 3DS', 39.99, 0),
+(253, 'https://assets1.ignimgs.com/2019/05/17/pokemon-y---button-1558057648001.jpg', 'Pokémon Y', '2013-10-12', 'RPG', 'Nintendo 3DS', 39.99, 0),
+(254, 'https://howlongtobeat.com/games/21324_Pokmon_Omega_Ruby_and_Alpha_Sapphire.png', 'Pokémon Omega Ruby', '2014-11-21', 'RPG', 'Nintendo 3DS', 39.99, 0),
+(255, 'https://assets1.ignimgs.com/2019/05/17/pokemon-alphasapphire---button-1558055142101.jpg', 'Pokémon Alpha Sapphire', '2014-11-21', 'RPG', 'Nintendo 3DS', 39.99, 0),
+(256, 'https://m.media-amazon.com/images/M/MV5BYzY4MmY3MzAtZmRhOS00MWU3LWFkN2YtNjY3OTI2ZGNlYTg5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Pokémon Sun', '2016-11-18', 'RPG', 'Nintendo 3DS', 39.99, 0),
+(257, 'https://assets1.ignimgs.com/2019/05/17/pokemon-moon---button-1558055594983.jpg', 'Pokémon Moon', '2016-11-18', 'RPG', 'Nintendo 3DS', 39.99, 0),
+(258, 'https://cdn.mobygames.com/covers/7432109-pokemon-lets-go-pikachu-nintendo-switch-front-cover.jpg', 'Pokémon Let\'s Go, Pikachu!', '2018-11-16', 'RPG', 'Nintendo Switch', 59.99, 0),
+(259, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX6BMBUCJmZ0_50X4d6jS_kbyLRM2sxuqgpA&s', 'Pokémon Let\'s Go, Eevee!', '2018-11-16', 'RPG', 'Nintendo Switch', 59.99, 0),
+(260, 'https://m.media-amazon.com/images/M/MV5BYjlkYzMyMWMtNzM3ZS00Zjg2LTg2MjQtOGYyYWEyZGM4ZTY2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Pokémon Sword', '2019-11-15', 'RPG', 'Nintendo Switch', 59.99, 0),
+(261, 'https://grandhub.co.ke/wp-content/uploads/2023/10/Pokemon-Shield-Game-price-in-Nairobi.jpg', 'Pokémon Shield', '2019-11-15', 'RPG', 'Nintendo Switch', 59.99, 0),
+(262, 'https://m.media-amazon.com/images/M/MV5BMmRjZmE0NmMtNjgxZC00OTE4LWI4ZjctMWYyNDVjNzA5ODUwXkEyXkFqcGc@._V1_.jpg', 'Pokémon Scarlet', '2022-11-18', 'RPG', 'Nintendo Switch', 59.99, 0),
+(263, 'https://m.media-amazon.com/images/M/MV5BZmU1NzA4MjYtOTU2YS00Y2E4LTk1ZTItMWEyYTAyZTczMDQ5XkEyXkFqcGc@._V1_.jpg', 'Pokémon Violet', '2022-11-18', 'RPG', 'Nintendo Switch', 59.99, 0),
+(264, 'https://cdn.mobygames.com/covers/4347875-pokemon-stadium-nintendo-64-front-cover.jpg', 'Pokémon Stadium', '1999-04-30', 'Battle', 'Nintendo 64', 39.99, 0),
+(265, 'https://howlongtobeat.com/games/7176_Pokmon_Stadium_2.jpg', 'Pokémon Stadium 2', '2000-12-14', 'Battle', 'Nintendo 64', 39.99, 0),
+(266, 'https://cdn.mobygames.com/covers/7076620-call-of-duty-modern-warfare-2-hardened-edition-xbox-360-other.jpg', 'Call of Duty', '2003-10-29', 'FPS', 'PC, Console', 19.99, 0),
+(267, 'https://store-images.s-microsoft.com/image/apps.56814.65003753600797265.4ae0b2c1-f1b9-4df7-8bb7-0508976e0f74.b2c18196-2994-48c4-9eab-266edd1a7aa6', 'Call of Duty 2', '2005-10-25', 'FPS', 'PC, Console', 59.99, 0),
+(269, 'https://upload.wikimedia.org/wikipedia/en/5/5f/Call_of_Duty_4_Modern_Warfare.jpg', 'Call of Duty 4: Modern Warfare', '2007-11-07', 'FPS', 'PC, Console', 19.99, 0),
+(270, 'https://upload.wikimedia.org/wikipedia/en/6/69/WAW_Cover_Art.jpg', 'Call of Duty: World at War', '2008-11-11', 'FPS', 'PC, Console', 19.99, 0),
+(271, 'https://upload.wikimedia.org/wikipedia/en/thumb/0/02/CoD_Black_Ops_cover.png/250px-CoD_Black_Ops_cover.png', 'Call of Duty: Black Ops', '2010-11-09', 'FPS', 'PC, Console', 59.99, 0),
+(272, 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f6/MWIII_Cover_Art.png/250px-MWIII_Cover_Art.png', 'Call of Duty: Modern Warfare III', '2011-11-08', 'FPS', 'PC, Console', 39.99, 0),
+(273, 'https://upload.wikimedia.org/wikipedia/en/0/05/Call_of_Duty_Black_Ops_II_box_artwork.png', 'Call of Duty: Black Ops II', '2012-11-13', 'FPS', 'PC, Console', 59.99, 0),
+(274, 'https://upload.wikimedia.org/wikipedia/en/9/9c/Call_of_duty_ghosts_box_art.jpg', 'Call of Duty: Ghosts', '2013-11-05', 'FPS', 'PC, Console', 59.99, 0),
+(275, 'https://upload.wikimedia.org/wikipedia/en/3/3b/Advanced_Warfare.jpg', 'Call of Duty: Advanced Warfare', '2014-11-04', 'FPS', 'PC, Console', 59.99, 0),
+(276, 'https://upload.wikimedia.org/wikipedia/en/b/b1/Black_Ops_3.jpg', 'Call of Duty: Black Ops III', '2015-11-06', 'FPS', 'PC, Console', 59.99, 0),
+(277, 'https://upload.wikimedia.org/wikipedia/en/8/87/Call_of_Duty_Infinite_Warfare_cover.jpg', 'Call of Duty: Infinite Warfare', '2016-11-04', 'FPS', 'PC, Console', 59.99, 0),
+(278, 'https://upload.wikimedia.org/wikipedia/en/1/18/Call_of_Duty_WWII_Cover_Art.jpg', 'Call of Duty: WWII', '2017-11-03', 'FPS', 'PC, Console', 59.99, 0),
+(279, 'https://upload.wikimedia.org/wikipedia/en/1/1c/Call_of_Duty_Black_Ops_4_official_box_art.jpg', 'Call of Duty: Black Ops 4', '2018-10-12', 'FPS', 'PC, Console', 59.99, 0),
+(280, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPEo_RnvLrhFIOi3DVBDQsPCLVjgbw64toag&s', 'Call of Duty: Modern Warfare', '2019-10-25', 'FPS', 'PC, Console', 59.99, 0),
+(281, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjSet4Ft3Y4J26WnQH-BStui44gbjzw1gsBQ&s', 'Call of Duty: Vanguard', '2021-11-05', 'FPS', 'PC, Console', 59.99, 0),
+(282, 'https://upload.wikimedia.org/wikipedia/en/c/c9/Call_of_Duty_Black_Ops_6_Key_Art.png', 'Call of Duty: Black Ops 6', '2024-10-25', 'FPS', 'PC, Console', 79.99, 0),
+(301, 'https://upload.wikimedia.org/wikipedia/en/a/a3/Call_of_Duty_Black_Ops_7_Key_Art.png', 'Call of Duty: Black Ops 7', '2025-11-14', 'FPS', 'PC, Console', 70.00, 0),
+(302, 'https://upload.wikimedia.org/wikipedia/en/8/82/Gears_of_war_cover_art.jpg', 'Gears of War', '2006-11-07', 'TPS', 'Xbox 360, Windows', 0.00, 0);
+INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platforms`, `prize`, `isDiscount`) VALUES
+(303, 'https://www.allkeyshop.com/blog/wp-content/uploads/buy-gears-of-war-2-cd-key-compare-prices.webp', 'Gears of War 2', '2008-11-07', 'TPS', 'Xbox 360', 11.99, 0),
+(304, 'https://assets1.ignimgs.com/thumbs/userUploaded/2020/1/16/saddes-1579217089678.jpg', 'Gears of War 3', '2011-09-20', 'TPS', 'Xbox 360', 11.99, 0),
+(305, 'https://i.ebayimg.com/images/g/a-AAAOSwgJdfZ31V/s-l1200.jpg', 'Gears of War: Judgment', '2013-03-19', 'TPS', 'Xbox 360', 11.99, 0),
+(306, 'https://upload.wikimedia.org/wikipedia/en/f/ff/Gears_of_War_4.jpg', 'Gears of War 4', '2016-10-11', 'TPS', 'Xbox One, Windows 10', 19.99, 0),
+(307, 'https://sightingames.wordpress.com/wp-content/uploads/2022/07/gears-5.jpg', 'Gears 5', '2019-09-10', 'TPS', 'Xbox One, Xbox Series X/S, PC', 29.99, 0),
+(308, 'https://m.media-amazon.com/images/I/91k0VPB82LL._UF1000,1000_QL80_.jpg', 'Gears Tactics', '2020-04-28', 'Strategy', 'PC, Xbox One, Xbox Series X/S', 29.99, 0),
+(309, 'https://cdn.mobygames.com/covers/9427702-just-dance-2021-nintendo-switch-front-cover.jpg', 'Just Dance 2021', '2020-11-12', 'Rhythm', 'Switch, PS4, PS5, Xbox One, Xbox Series X/S, Stadia', 49.99, 0),
+(310, 'https://upload.wikimedia.org/wikipedia/en/8/82/Just_Dance_2022.jpg', 'Just Dance 2022', '2021-11-04', 'Rhythm', 'Switch, PS4, PS5, Xbox One, Xbox Series X/S', 49.99, 0),
+(311, 'https://assets-prd.ignimgs.com/2023/06/12/justdance24-1686590368199.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Just Dance 2024 Edition', '2023-10-24', 'Rhythm', 'Switch, PS5, Xbox Series X/S', 49.99, 0),
+(312, 'https://images.genius.com/5627dbfcfc0b341ee7a475e688371ea3.900x900x1.jpg', 'Just Dance 2025 Edition', '2024-10-15', 'Rhythm', 'Switch, PS5, Xbox Series X/S', 19.99, 0),
+(313, 'https://upload.wikimedia.org/wikipedia/en/8/86/The_Last_of_Us_Part_I_cover.jpg', 'The Last of Us Part I', '2022-09-02', 'Action-Adventure', 'PS5, PC', 69.99, 0),
+(314, 'https://upload.wikimedia.org/wikipedia/en/4/4f/TLOU_P2_Box_Art_2.png', 'The Last of Us Part II Remastered', '2024-01-19', 'Action-Adventure', 'PS5', 49.99, 0),
+(315, 'https://cdn.mobygames.com/covers/1762685-outlast-playstation-4-front-cover.jpg', 'Outlast', '2013-09-04', 'Horror', 'PC, PS4, Xbox One, Switch', 14.99, 0),
+(316, 'https://www.gamechannel.hu/pictures/kifuto/outlast-2_1.jpg', 'Outlast 2', '2017-04-25', 'Horror', 'PC, PS4, Xbox One, Switch', 19.99, 0),
+(317, 'https://upload.wikimedia.org/wikipedia/en/8/81/The_Outlast_Trials_cover.jpg', 'The Outlast Trials', '2023-05-18', 'Horror', 'PC, PS5, Xbox Series X/S', 39.99, 0),
+(318, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY83ZNMpxaNc3iKtiyyajp-JuonaFb0IIxdQ&s', 'Wolfenstein: The New Order', '2014-05-20', 'FPS', 'PC, PS4, Xbox One', 19.99, 0),
+(319, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDhDCnma8Y27rfjO0-3ICOb0gIfqu1QlXY7w&s', 'Wolfenstein: The Old Blood', '2015-05-05', 'FPS', 'PC, PS4, Xbox One', 19.99, 0),
+(320, 'https://upload.wikimedia.org/wikipedia/en/5/54/Wolfenstein-ii-the-new-colossus-cover.jpeg', 'Wolfenstein II: The New Colossus', '2017-10-27', 'FPS', 'PC, PS4, Xbox One, Switch', 39.99, 0),
+(321, 'https://upload.wikimedia.org/wikipedia/en/7/7c/Doki_Doki_Literature_Club_Cover.jpg', 'Doki Doki Literature Club!', '2017-09-22', 'Visual Novel', 'PC', 0.00, 0),
+(322, 'https://upload.wikimedia.org/wikipedia/en/6/65/Kirby_Star_Allies.jpg', 'Kirby Star Allies', '2018-03-16', 'Platformer', 'Nintendo Switch', 59.99, 0),
+(323, 'https://m.media-amazon.com/images/M/MV5BOGI1ZGM3Y2UtNWJlZi00ODQ1LTg3NDEtOTkwYWIzYWE1YTkxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Kirby and the Forgotten Land', '2022-03-25', 'Platformer', 'Nintendo Switch', 59.99, 0),
+(324, 'https://m.media-amazon.com/images/S/aplus-media-library-service-media/37a77ece-7d10-4c74-a05e-e3aeb26b1ca7.__CR0,0,600,450_PT0_SX600_V1___.jpg', 'Kirby\'s Return to Dream Land Deluxe', '2023-02-24', 'Platformer', 'Nintendo Switch', 59.99, 0),
+(325, 'https://m.media-amazon.com/images/M/MV5BZmE3ZjI2ZGEtNGM0Yi00MTQxLTk4NzItZjE5MjIzMTc2NDFhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Kirby Fighters 2', '2020-09-23', 'Fighting', 'Nintendo Switch', 19.99, 0),
+(326, 'https://i.ebayimg.com/00/s/MTYwMFgxMTk5/z/M5EAAOSwhkNnowSY/$_57.JPG?set_id=880000500F', 'Kirby\'s Dream Buffet', '2022-08-17', 'Party', 'Nintendo Switch', 14.99, 0),
+(327, 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/Super_Mario_Odyssey.jpg/250px-Super_Mario_Odyssey.jpg', 'Super Mario Odyssey', '2017-10-27', 'Platformer', 'Nintendo Switch', 59.99, 0),
+(328, 'https://cdn.mos.cms.futurecdn.net/v2/t:0,l:420,cw:1080,ch:1080,q:80,w:1080/Xe7aAA8Y2CpC2kNxsSZFmC.jpg', 'New Super Mario Bros. U Deluxe', '2019-01-11', 'Platformer', 'Nintendo Switch', 59.99, 0),
+(329, 'https://upload.wikimedia.org/wikipedia/en/c/c7/Super_Mario_Maker_2.jpg', 'Super Mario Maker 2', '2019-06-28', 'Platformer / Creation', 'Nintendo Switch', 59.99, 0),
+(330, 'https://howlongtobeat.com/games/82771_Super_Mario_3D_World__Bowsers_Fury.jpg', 'Super Mario 3D World + Bowser\'s Fury', '2021-02-12', 'Platformer', 'Nintendo Switch', 59.99, 0),
+(331, 'https://upload.wikimedia.org/wikipedia/en/a/a3/Mariowonder.png', 'Super Mario Bros. Wonder', '2023-10-20', 'Platformer', 'Nintendo Switch', 59.99, 0),
+(332, 'https://m.media-amazon.com/images/M/MV5BOGU3NDVjNWYtMjYxMS00NDU0LWJlOTktODgxMjBhNDJkNDE3XkEyXkFqcGc@._V1_.jpg', 'Super Mario RPG', '2023-11-17', 'RPG', 'Nintendo Switch', 59.99, 0),
+(333, 'https://upload.wikimedia.org/wikipedia/en/7/71/Mario_vs._Donkey_Kong_Coverart.png', 'Mario vs. Donkey Kong', '2024-02-16', 'Puzzle-Platformer', 'Nintendo Switch', 49.99, 0),
+(334, 'https://m.media-amazon.com/images/M/MV5BYzMwZWUwODEtMTU3Zi00MDYwLTg1MjUtNGVlMDVlZDBkNGZmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'DRAGON BALL XENOVERSE', '2015-02-24', 'Action RPG', 'PC, PS3, PS4, Xbox 360, Xbox One', 39.99, 0),
+(335, 'https://upload.wikimedia.org/wikipedia/en/f/fe/Dragon_Ball_Xenoverse_2_Cover.jpeg', 'DRAGON BALL XENOVERSE 2', '2016-10-25', 'Action RPG', 'PC, PS4, Xbox One, Switch', 19.99, 0),
+(336, 'https://upload.wikimedia.org/wikipedia/en/a/ad/DBFZ_cover_art.jpg', 'DRAGON BALL FighterZ', '2018-01-26', 'Fighting', 'PC, PS4, Xbox One, Switch', 59.99, 0),
+(337, 'https://upload.wikimedia.org/wikipedia/en/e/e4/Dragon_Ball_Z_Kakarot_logo.png', 'DRAGON BALL Z: KAKAROT', '2020-01-17', 'Action RPG', 'PC, PS4, Xbox One, Switch', 19.99, 0),
+(338, 'https://dbas.bn-ent.net/img/6f7b8d7338af193a34a4cd294a8b19be-772x1024.png', 'DRAGON BALL: THE BREAKERS', '2022-10-14', 'Action (Asymmetrical)', 'PC, PS4, Xbox One, Switch', 19.99, 0),
+(339, 'https://upload.wikimedia.org/wikipedia/en/7/7f/DBZ_Sparking_Zero_Cover_Art.jpg', 'DRAGON BALL: Sparking! ZERO', '2024-10-11', 'Fighting', 'PC, PS5, Xbox Series X/S', 69.99, 0),
+(340, 'https://static.rustore.ru/imgproxy/GV5CvUI745WXXqMGgHIyMZvaz67DtU5UMeIYfmuqvm0/preset:web_app_icon_160/aHR0cHM6Ly9zdGF0aWMucnVzdG9yZS5ydS9hcGsvMjA2MzU5MDE1NC9jb250ZW50L0lDT04vNWFkYTc3N2QtNTM3MC00YmY1LWEzYzQtNTBkMDk0YTM1ZmYxLnBuZw==.webp', '60 Seconds! Reatomized', '2019-07-25', 'Survival', 'PC, Console', 9.99, 0),
+(341, 'https://lumiere-a.akamaihd.net/v1/images/lego-star-wars-skywalker-saga-01_tall_80785940.jpeg?region=336,0,864,864', 'LEGO Star Wars: The Skywalker Saga', '2022-04-05', 'Action-Adventure', 'PC, PS4, PS5, Xbox One, Xbox Series X/S, Switch', 7.49, 0),
+(342, 'https://store-images.s-microsoft.com/image/apps.22585.70311916332380430.984c5134-5b46-45c7-a5f9-c14ef79d4308.fc930d30-4d60-4d4d-8883-8d70ff603522?q=90&w=480&h=270', 'LEGO Star Wars: The Force Awakens', '2016-06-28', 'Action-Adventure', 'PC, PS4, PS3, Xbox One, Xbox 360, Wii U', 3.99, 0),
+(343, 'https://store-images.s-microsoft.com/image/apps.22252.63650118280316002.65752177-7b67-479a-873d-54f674a999aa.0186e1c9-df79-4b65-a382-a91a793153bf?q=90&w=336&h=200', 'LEGO Marvel Super Heroes', '2013-10-22', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Wii U', 3.99, 0),
+(344, 'https://i.pinimg.com/474x/1e/25/60/1e256067fd339f361f8af3fa001bea61.jpg', 'LEGO Marvel Super Heroes 2', '2017-11-14', 'Action-Adventure', 'PC, PS4, Xbox One, Switch', 3.99, 0),
+(345, 'https://upload.wikimedia.org/wikipedia/en/9/96/Lego_Marvel%27s_Avengers_cover_art.jpg', 'LEGO Marvel\'s Avengers', '2016-01-26', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Wii U', 3.99, 0),
+(346, 'https://upload.wikimedia.org/wikipedia/en/0/0e/Lego_Jurassic_World_cover.png', 'LEGO Jurassic World', '2015-06-11', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Switch', 3.99, 0),
+(347, 'https://upload.wikimedia.org/wikipedia/en/thumb/9/99/LegoTheHobbitVideoGameBoxart.jpg/250px-LegoTheHobbitVideoGameBoxart.jpg', 'LEGO The Hobbit', '2014-04-10', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One', 3.99, 0),
+(348, 'https://upload.wikimedia.org/wikipedia/en/a/a0/Lego_Lord_of_the_Rings_cover.jpg', 'LEGO The Lord of the Rings', '2012-11-27', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One', 3.99, 0),
+(349, 'https://upload.wikimedia.org/wikipedia/en/5/5b/LegoCityUndercover.jpg', 'LEGO City Undercover', '2017-04-04', 'Action-Adventure', 'PC, PS4, Xbox One, Switch', 2.99, 0),
+(350, 'https://upload.wikimedia.org/wikipedia/en/2/2d/Lego_Batman_3_-_Beyond_Gotham_cover.jpg', 'LEGO Batman 3: Beyond Gotham', '2014-11-11', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One', 4.49, 0),
+(351, 'https://store-images.s-microsoft.com/image/apps.12197.68850728623624216.6e2867fc-0ab8-4f68-98cc-b59c6d10b278.4f7fcd3c-d803-4b42-8bf6-d338fbaf79a1', 'LEGO DC Super-Villains', '2018-10-16', 'Action-Adventure', 'PC, PS4, Xbox One, Switch', 5.99, 0),
+(352, 'https://upload.wikimedia.org/wikipedia/en/a/aa/The_Lego_Movie_Videogame_cover.jpg', 'The LEGO Movie Videogame', '2014-02-07', 'Action-Adventure', 'PC, PS3, PS4, Xbox 360, Xbox One, Wii U', 3.99, 0),
+(355, 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2f/NBA_2K25_cover_art.jpg/250px-NBA_2K25_cover_art.jpg', 'NBA 2K25', '2024-09-06', 'Sports', 'PS4, PS5, Xbox One, Xbox Series X/S, Switch, PC', 69.99, 0),
+(356, 'https://assets-prd.ignimgs.com/2023/07/06/farmingsim11-1688686579698.jpg', 'Farming Simulator 2011', '2010-10-29', 'Simulation', 'PC, Mac', 7.99, 0),
+(357, 'https://www.codeguru.hu/img/40000/DIGI03647/DIGI03647.webp', 'Farming Simulator 2013 Titanium Edition', '2013-10-09', 'Simulation', 'PC, Mac', 14.99, 0),
+(358, 'https://store-images.s-microsoft.com/image/apps.41062.64967151257760797.b440e798-649e-4b83-b511-7890d42d9480.8e5b045e-7b90-4013-a091-ed4a3736983c?q=90&w=480&h=270', 'Farming Simulator 15', '2014-10-30', 'Simulation', 'PC, PS3, PS4, Xbox 360, Xbox One', 12.99, 0),
+(359, 'https://store-images.s-microsoft.com/image/apps.2891.66445546520609419.4a3b03bf-e99b-4622-bb87-89586f01c3b4.1d9388d2-8e2d-46e8-a98a-ef62a426b246?q=90&w=480&h=270', 'Farming Simulator 17', '2016-10-25', 'Simulation', 'PC, PS4, Xbox One', 14.99, 0),
+(360, 'https://ccdn.g-portal.com/fs19_game_cover_593d4bf988.png', 'Farming Simulator 19', '2018-11-19', 'Simulation', 'PC, PS4, Xbox One', 17.99, 0),
+(361, 'https://store-images.s-microsoft.com/image/apps.35136.14617846210383148.f5d1d30e-892f-4959-a5b8-f2ef506cf0ae.d40fe9db-42d7-4434-83be-bcbb42f685c3?q=90&w=480&h=270', 'Farming Simulator 22', '2021-11-22', 'Simulation', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 29.99, 0),
+(362, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCopyugpNBFejO2X9cmN03T1euQZVJjOCG3g&s', 'Farming Simulator 25', '2024-11-12', 'Simulation', 'PC, PS5, Xbox Series X/S', 49.99, 0),
+(363, 'https://www.allkeyshop.com/blog/wp-content/uploads/buy-european-bus-simulator-2012-cd-key-pc-download-img1.jpg', 'Bus-Simulator 2012', '2012-02-23', 'Simulation', 'PC', 6.99, 0),
+(364, 'https://assets1.ignimgs.com/2016/01/07/bus-simulator-2016-buttonjpg-19bee4.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80', 'Bus Simulator 16', '2016-03-02', 'Simulation', 'PC', 9.99, 0),
+(365, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqk1kbItC1Alot3u8gT8XwqHDZWhOKQkWLbg&s', 'Bus Simulator 18', '2018-06-13', 'Simulation', 'PC', 24.99, 0),
+(367, 'https://upload.wikimedia.org/wikipedia/en/thumb/5/55/F1_24_cover_art.jpg/250px-F1_24_cover_art.jpg', 'F1 24', '2024-05-31', 'Racing', 'PC, PS4, PS5, Xbox One, Xbox Series X/S', 69.99, 0),
+(368, 'https://img.redbull.com/images/q_auto,f_auto/redbullcom/2025/3/26/ik4bfsmqwixcjwoffp08/f1-25-iconic-edition', 'F1 25', '2025-05-30', 'Racing', 'PC, PS5, Xbox Series X/S', 47.99, 0),
+(370, 'https://i0.wp.com/magzoid.com/wp-content/uploads/2025/05/amazon-rebrand-2025_dezeen_2364_col_1-1.webp?fit=2364%2C1330&ssl=1', 'Amazon Gift Card $5', NULL, 'giftcards', 'Amazon', 5.00, 0),
+(371, 'https://i0.wp.com/magzoid.com/wp-content/uploads/2025/05/amazon-rebrand-2025_dezeen_2364_col_1-1.webp?fit=2364%2C1330&ssl=1', 'Amazon Gift Card $10', NULL, 'giftcards', 'Amazon', 10.00, 0),
+(372, 'https://i0.wp.com/magzoid.com/wp-content/uploads/2025/05/amazon-rebrand-2025_dezeen_2364_col_1-1.webp?fit=2364%2C1330&ssl=1', 'Amazon Gift Card $25', NULL, 'giftcards', 'Amazon', 25.00, 0),
+(373, 'https://i0.wp.com/magzoid.com/wp-content/uploads/2025/05/amazon-rebrand-2025_dezeen_2364_col_1-1.webp?fit=2364%2C1330&ssl=1', 'Amazon Gift Card $50', NULL, 'giftcards', 'Amazon', 50.00, 0),
+(374, 'https://i.pinimg.com/736x/a6/71/85/a6718568ee615a8dbe6f50da7409fdf9.jpg', 'Apple Gift Card $5', NULL, 'giftcards', 'Apple', 5.00, 0),
+(375, 'https://i.pinimg.com/736x/a6/71/85/a6718568ee615a8dbe6f50da7409fdf9.jpg', 'Apple Gift Card $10', NULL, 'giftcards', 'Apple', 10.00, 0),
+(376, 'https://i.pinimg.com/736x/a6/71/85/a6718568ee615a8dbe6f50da7409fdf9.jpg', 'Apple Gift Card $25', NULL, 'giftcards', 'Apple', 25.00, 0),
+(377, 'https://i.pinimg.com/736x/a6/71/85/a6718568ee615a8dbe6f50da7409fdf9.jpg', 'Apple Gift Card $50', NULL, 'giftcards', 'Apple', 50.00, 0),
+(378, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj97fmjaCYgkevu7aFhgWDjXPfuNxt8bWk5w&s', 'Binance Gift Card $5', NULL, 'giftcards', 'Binance', 5.00, 0),
+(379, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj97fmjaCYgkevu7aFhgWDjXPfuNxt8bWk5w&s', 'Binance Gift Card $10', NULL, 'giftcards', 'Binance', 10.00, 0),
+(380, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj97fmjaCYgkevu7aFhgWDjXPfuNxt8bWk5w&s', 'Binance Gift Card $25', NULL, 'giftcards', 'Binance', 25.00, 0),
+(381, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj97fmjaCYgkevu7aFhgWDjXPfuNxt8bWk5w&s', 'Binance Gift Card $50', NULL, 'giftcards', 'Binance', 50.00, 0),
+(382, 'https://img.icons8.com/color/1200/battle-net.jpg', 'Battle.net Gift Card $5', NULL, 'giftcards', 'Battle.net', 5.00, 0),
+(383, 'https://img.icons8.com/color/1200/battle-net.jpg', 'Battle.net Gift Card $10', NULL, 'giftcards', 'Battle.net', 10.00, 0),
+(384, 'https://img.icons8.com/color/1200/battle-net.jpg', 'Battle.net Gift Card $25', NULL, 'giftcards', 'Battle.net', 25.00, 0),
+(385, 'https://img.icons8.com/color/1200/battle-net.jpg', 'Battle.net Gift Card $50', NULL, 'giftcards', 'Battle.net', 50.00, 0),
+(386, 'https://support.discord.com/hc/article_attachments/1500015317842', 'Discord Gift Card $5', NULL, 'giftcards', 'Discord', 5.00, 0),
+(387, 'https://support.discord.com/hc/article_attachments/1500015317842', 'Discord Gift Card $10', NULL, 'giftcards', 'Discord', 10.00, 0),
+(388, 'https://support.discord.com/hc/article_attachments/1500015317842', 'Discord Gift Card $25', NULL, 'giftcards', 'Discord', 25.00, 0),
+(389, 'https://support.discord.com/hc/article_attachments/1500015317842', 'Discord Gift Card $50', NULL, 'giftcards', 'Discord', 50.00, 0),
+(390, 'https://cdn2.unrealengine.com/UnrealEngine%2FNews%2FAnnouncing+the+Epic+Games+Store%2FFB_EpicGamesStore-1200x630-ca750cd84e1b60d746606db9e5a5ac55f8d27672.jpg', 'Epic Games Gift Card $5', NULL, 'giftcards', 'Epic Games', 5.00, 0),
+(391, 'https://cdn2.unrealengine.com/UnrealEngine%2FNews%2FAnnouncing+the+Epic+Games+Store%2FFB_EpicGamesStore-1200x630-ca750cd84e1b60d746606db9e5a5ac55f8d27672.jpg', 'Epic Games Gift Card $10', NULL, 'giftcards', 'Epic Games', 10.00, 0),
+(392, 'https://cdn2.unrealengine.com/UnrealEngine%2FNews%2FAnnouncing+the+Epic+Games+Store%2FFB_EpicGamesStore-1200x630-ca750cd84e1b60d746606db9e5a5ac55f8d27672.jpg', 'Epic Games Gift Card $25', NULL, 'giftcards', 'Epic Games', 25.00, 0),
+(393, 'https://cdn2.unrealengine.com/UnrealEngine%2FNews%2FAnnouncing+the+Epic+Games+Store%2FFB_EpicGamesStore-1200x630-ca750cd84e1b60d746606db9e5a5ac55f8d27672.jpg', 'Epic Games Gift Card $50', NULL, 'giftcards', 'Epic Games', 50.00, 0),
+(394, 'https://www.internetmatters.org/wp-content/uploads/2024/10/google_play_image-1.png', 'Google Play Gift Card $5', NULL, 'giftcards', 'Google Play', 5.00, 0),
+(395, 'https://www.internetmatters.org/wp-content/uploads/2024/10/google_play_image-1.png', 'Google Play Gift Card $10', NULL, 'giftcards', 'Google Play', 10.00, 0),
+(396, 'https://www.internetmatters.org/wp-content/uploads/2024/10/google_play_image-1.png', 'Google Play Gift Card $25', NULL, 'giftcards', 'Google Play', 25.00, 0),
+(397, 'https://www.internetmatters.org/wp-content/uploads/2024/10/google_play_image-1.png', 'Google Play Gift Card $50', NULL, 'giftcards', 'Google Play', 50.00, 0),
+(398, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ITunes_logo.svg/2039px-ITunes_logo.svg.png', 'iTunes Gift Card $5', NULL, 'giftcards', 'iTunes', 5.00, 0),
+(399, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ITunes_logo.svg/2039px-ITunes_logo.svg.png', 'iTunes Gift Card $10', NULL, 'giftcards', 'iTunes', 10.00, 0),
+(400, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ITunes_logo.svg/2039px-ITunes_logo.svg.png', 'iTunes Gift Card $25', NULL, 'giftcards', 'iTunes', 25.00, 0),
+(401, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ITunes_logo.svg/2039px-ITunes_logo.svg.png', 'iTunes Gift Card $50', NULL, 'giftcards', 'iTunes', 50.00, 0),
+(402, 'https://liquit.com/app/uploads/2023/05/Microsoft-store-liquit-workspace.jpg', 'Microsoft Store Card $5', NULL, 'giftcards', 'Microsoft Store', 5.00, 0),
+(403, 'https://liquit.com/app/uploads/2023/05/Microsoft-store-liquit-workspace.jpg', 'Microsoft Store Card $10', NULL, 'giftcards', 'Microsoft Store', 10.00, 0),
+(404, 'https://liquit.com/app/uploads/2023/05/Microsoft-store-liquit-workspace.jpg', 'Microsoft Store Card $25', NULL, 'giftcards', 'Microsoft Store', 25.00, 0),
+(405, 'https://liquit.com/app/uploads/2023/05/Microsoft-store-liquit-workspace.jpg', 'Microsoft Store Card $50', NULL, 'giftcards', 'Microsoft Store', 50.00, 0),
+(406, 'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940', 'Netflix Gift Card $5', NULL, 'giftcards', 'Netflix', 5.00, 0),
+(407, 'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940', 'Netflix Gift Card $10', NULL, 'giftcards', 'Netflix', 10.00, 0),
+(408, 'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940', 'Netflix Gift Card $25', NULL, 'giftcards', 'Netflix', 25.00, 0),
+(409, 'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940', 'Netflix Gift Card $50', NULL, 'giftcards', 'Netflix', 50.00, 0),
+(410, 'https://pop.proddigital.com.br/wp-content/uploads/sites/8/2022/07/nintendo-capa.jpg', 'Nintendo eShop Card $5', NULL, 'giftcards', 'Nintendo', 5.00, 0),
+(411, 'https://pop.proddigital.com.br/wp-content/uploads/sites/8/2022/07/nintendo-capa.jpg', 'Nintendo eShop Card $10', NULL, 'giftcards', 'Nintendo', 10.00, 0),
+(412, 'https://pop.proddigital.com.br/wp-content/uploads/sites/8/2022/07/nintendo-capa.jpg', 'Nintendo eShop Card $25', NULL, 'giftcards', 'Nintendo', 25.00, 0),
+(413, 'https://pop.proddigital.com.br/wp-content/uploads/sites/8/2022/07/nintendo-capa.jpg', 'Nintendo eShop Card $50', NULL, 'giftcards', 'Nintendo', 50.00, 0),
+(414, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtnE7xLkcyCbAlcptu2-ebNW9DFpvq73hSig&s', 'Origin Gift Card $5', NULL, 'giftcards', 'Origin', 5.00, 0),
+(415, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtnE7xLkcyCbAlcptu2-ebNW9DFpvq73hSig&s', 'Origin Gift Card $10', NULL, 'giftcards', 'Origin', 10.00, 0),
+(416, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtnE7xLkcyCbAlcptu2-ebNW9DFpvq73hSig&s', 'Origin Gift Card $25', NULL, 'giftcards', 'Origin', 25.00, 0),
+(417, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtnE7xLkcyCbAlcptu2-ebNW9DFpvq73hSig&s', 'Origin Gift Card $50', NULL, 'giftcards', 'Origin', 50.00, 0),
+(418, 'https://brandlogos.net/wp-content/uploads/2022/09/playstation_store-logo_brandlogos.net_q6kzh-512x512.png', 'PlayStation Store Card $5', NULL, 'giftcards', 'PlayStation', 5.00, 0),
+(419, 'https://brandlogos.net/wp-content/uploads/2022/09/playstation_store-logo_brandlogos.net_q6kzh-512x512.png', 'PlayStation Store Card $10', NULL, 'giftcards', 'PlayStation', 10.00, 0),
+(420, 'https://brandlogos.net/wp-content/uploads/2022/09/playstation_store-logo_brandlogos.net_q6kzh-512x512.png', 'PlayStation Store Card $25', NULL, 'giftcards', 'PlayStation', 25.00, 0),
+(421, 'https://brandlogos.net/wp-content/uploads/2022/09/playstation_store-logo_brandlogos.net_q6kzh-512x512.png', 'PlayStation Store Card $50', NULL, 'giftcards', 'PlayStation', 50.00, 0),
+(422, 'https://assets2.razerzone.com/images/og-image/razer-gold-pin-OGimage-1200x630.jpg', 'Razer Gold Gift Card $5', NULL, 'giftcards', 'Razer', 5.00, 0),
+(423, 'https://assets2.razerzone.com/images/og-image/razer-gold-pin-OGimage-1200x630.jpg', 'Razer Gold Gift Card $10', NULL, 'giftcards', 'Razer', 10.00, 0),
+(424, 'https://assets2.razerzone.com/images/og-image/razer-gold-pin-OGimage-1200x630.jpg', 'Razer Gold Gift Card $25', NULL, 'giftcards', 'Razer', 25.00, 0),
+(425, 'https://assets2.razerzone.com/images/og-image/razer-gold-pin-OGimage-1200x630.jpg', 'Razer Gold Gift Card $50', NULL, 'giftcards', 'Razer', 50.00, 0),
+(426, 'https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/0/e/e/0eeeb19633422b1241f4306419a0f15f39d58de9.png', 'Roblox Gift Card $5', NULL, 'giftcards', 'Roblox', 5.00, 0),
+(427, 'https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/0/e/e/0eeeb19633422b1241f4306419a0f15f39d58de9.png', 'Roblox Gift Card $10', NULL, 'giftcards', 'Roblox', 10.00, 0),
+(428, 'https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/0/e/e/0eeeb19633422b1241f4306419a0f15f39d58de9.png', 'Roblox Gift Card $25', NULL, 'giftcards', 'Roblox', 25.00, 0),
+(429, 'https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/0/e/e/0eeeb19633422b1241f4306419a0f15f39d58de9.png', 'Roblox Gift Card $50', NULL, 'giftcards', 'Roblox', 50.00, 0),
+(430, 'https://www.allkeyshop.com/blog/wp-content/uploads/SpotifyPremiumGiftCard.jpg', 'Spotify Gift Card $5', NULL, 'giftcards', 'Spotify', 5.00, 0),
+(431, 'https://www.allkeyshop.com/blog/wp-content/uploads/SpotifyPremiumGiftCard.jpg', 'Spotify Gift Card $10', NULL, 'giftcards', 'Spotify', 10.00, 0),
+(432, 'https://www.allkeyshop.com/blog/wp-content/uploads/SpotifyPremiumGiftCard.jpg', 'Spotify Gift Card $25', NULL, 'giftcards', 'Spotify', 25.00, 0),
+(433, 'https://www.allkeyshop.com/blog/wp-content/uploads/SpotifyPremiumGiftCard.jpg', 'Spotify Gift Card $50', NULL, 'giftcards', 'Spotify', 50.00, 0),
+(434, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJeKeFNkUdI5HargYBKLeLGYCF-yNvfJ3UoA&s', 'Shein Gift Card $5', NULL, 'giftcards', 'Shein', 5.00, 0),
+(435, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJeKeFNkUdI5HargYBKLeLGYCF-yNvfJ3UoA&s', 'Shein Gift Card $10', NULL, 'giftcards', 'Shein', 10.00, 0),
+(436, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJeKeFNkUdI5HargYBKLeLGYCF-yNvfJ3UoA&s', 'Shein Gift Card $25', NULL, 'giftcards', 'Shein', 25.00, 0),
+(437, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJeKeFNkUdI5HargYBKLeLGYCF-yNvfJ3UoA&s', 'Shein Gift Card $50', NULL, 'giftcards', 'Shein', 50.00, 0),
+(438, 'https://images.alphacoders.com/133/1339887.png', 'Steam Gift Card $5', NULL, 'giftcards', 'Steam', 5.00, 0),
+(439, 'https://images.alphacoders.com/133/1339887.png', 'Steam Gift Card $10', NULL, 'giftcards', 'Steam', 10.00, 0),
+(440, 'https://images.alphacoders.com/133/1339887.png', 'Steam Gift Card $25', NULL, 'giftcards', 'Steam', 25.00, 0),
+(441, 'https://images.alphacoders.com/133/1339887.png', 'Steam Gift Card $50', NULL, 'giftcards', 'Steam', 50.00, 0),
+(442, 'https://www.evilcontrollers.com/media/magefan_blog/apps.63170.14246812968525544.2de1e6fd-94a7-4291-88ea-6803f279b4ed.jpeg', 'Ubisoft Connect Gift Card $5', NULL, 'giftcards', 'Ubisoft', 5.00, 0),
+(443, 'https://www.evilcontrollers.com/media/magefan_blog/apps.63170.14246812968525544.2de1e6fd-94a7-4291-88ea-6803f279b4ed.jpeg', 'Ubisoft Connect Gift Card $10', NULL, 'giftcards', 'Ubisoft', 10.00, 0),
+(444, 'https://www.evilcontrollers.com/media/magefan_blog/apps.63170.14246812968525544.2de1e6fd-94a7-4291-88ea-6803f279b4ed.jpeg', 'Ubisoft Connect Gift Card $25', NULL, 'giftcards', 'Ubisoft', 25.00, 0),
+(445, 'https://www.evilcontrollers.com/media/magefan_blog/apps.63170.14246812968525544.2de1e6fd-94a7-4291-88ea-6803f279b4ed.jpeg', 'Ubisoft Connect Gift Card $50', NULL, 'giftcards', 'Ubisoft', 50.00, 0),
+(446, 'https://wallpapercat.com/w/full/1/5/4/1254747-1920x1080-desktop-full-hd-mastercard-background-image.jpg', 'Mastercard Gift Card $5', NULL, 'giftcards', 'Mastercard', 5.00, 0),
+(447, 'https://wallpapercat.com/w/full/1/5/4/1254747-1920x1080-desktop-full-hd-mastercard-background-image.jpg', 'Mastercard Gift Card $10', NULL, 'giftcards', 'Mastercard', 10.00, 0),
+(448, 'https://wallpapercat.com/w/full/1/5/4/1254747-1920x1080-desktop-full-hd-mastercard-background-image.jpg', 'Mastercard Gift Card $25', NULL, 'giftcards', 'Mastercard', 25.00, 0),
+(449, 'https://wallpapercat.com/w/full/1/5/4/1254747-1920x1080-desktop-full-hd-mastercard-background-image.jpg', 'Mastercard Gift Card $50', NULL, 'giftcards', 'Mastercard', 50.00, 0),
+(450, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $5', NULL, 'giftcards', 'Xbox', 5.00, 0),
+(451, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $10', NULL, 'giftcards', 'Xbox', 10.00, 0),
+(452, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $25', NULL, 'giftcards', 'Xbox', 25.00, 0),
+(453, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $50', NULL, 'giftcards', 'Xbox', 50.00, 0);
 
 -- --------------------------------------------------------
 
@@ -495,57 +527,88 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 
 CREATE TABLE `developers` (
   `developer_id` int(11) NOT NULL,
-  `developer_name` varchar(255) NOT NULL
+  `person_name` varchar(100) NOT NULL,
+  `company_name` varchar(100) NOT NULL,
+  `role` varchar(100) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date DEFAULT NULL,
+  `publisher_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `developers`
+--
+
+INSERT INTO `developers` (`developer_id`, `person_name`, `company_name`, `role`, `start_date`, `end_date`, `publisher_id`) VALUES
+(1, 'Tom Green', 'Maxis', 'Lead Developer', '1999-06-01', NULL, 1),
+(2, 'Anna White', 'DMA Design', 'Gameplay Programmer', '2000-06-01', NULL, 2),
+(3, 'Mark Black', 'Retro Studios', 'Game Designer', '2001-06-01', NULL, 3),
+(4, 'Lucy King', 'BioWare', 'Game Designer', '2002-06-01', NULL, 4),
+(5, 'Peter Young', 'Valve', 'Lead Programmer', '2003-06-01', NULL, 5),
+(6, 'Sarah Hall', 'Team Ico', 'Level Designer', '2004-06-01', NULL, 6),
+(7, 'Daniel Allen', 'Epic Games', 'Gameplay Engineer', '2005-06-01', NULL, 7),
+(8, 'Brian Lewis', 'FromSoftware', 'Quest Designer', '2022-06-01', NULL, 9),
+(9, 'Karen Walker', 'CD Projekt', 'Game Designer', '2015-06-01', NULL, 7),
+(10, 'Jessica Scott', 'Larian Studios', 'Game Designer', '2023-06-01', NULL, 8),
+(11, 'Ethan Parker', 'Santa Monica Studio', 'Lead Designer', '2023-01-15', NULL, 10),
+(12, 'Olivia Martinez', 'Naughty Dog', 'Level Designer', '2023-03-01', NULL, 11),
+(13, 'Liam Thompson', 'Guerrilla Games', 'Gameplay Programmer', '2023-04-10', NULL, 12),
+(14, 'Sophia Johnson', 'Rockstar North', 'Art Director', '2024-02-20', NULL, 13),
+(15, 'Noah Brown', 'Bethesda Game Studios', 'Quest Designer', '2024-05-05', NULL, 14),
+(16, 'Emma Davis', 'CD Projekt', 'Narrative Designer', '2024-06-15', NULL, 7),
+(17, 'James Wilson', 'FromSoftware', 'Combat Designer', '2025-01-10', NULL, 9),
+(18, 'Ava Moore', 'BioWare', 'Senior Game Designer', '2025-03-25', NULL, 4),
+(19, 'Mason Taylor', 'Valve', 'Lead Programmer', '2025-04-01', NULL, 5),
+(20, 'Isabella Anderson', 'Larian Studios', 'Gameplay Engineer', '2025-06-01', NULL, 8);
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `developers_awards`
+-- Tábla szerkezet ehhez a táblához `developer_awards`
 --
 
-CREATE TABLE `developers_awards` (
+CREATE TABLE `developer_awards` (
   `developer_id` int(11) NOT NULL,
   `award_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Tábla szerkezet ehhez a táblához `giftcard`
+-- A tábla adatainak kiíratása `developer_awards`
 --
 
-CREATE TABLE `giftcard` (
-  `CardId` varchar(50) NOT NULL,
-  `Name` varchar(255) DEFAULT NULL,
-  `IMG` varchar(255) DEFAULT NULL,
-  `Price` decimal(10,2) NOT NULL,
-  `Region` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- A tábla adatainak kiíratása `giftcard`
---
-
-INSERT INTO `giftcard` (`CardId`, `Name`, `IMG`, `Price`, `Region`) VALUES
-('AMZ25EUR', 'Amazon Gift Card 25 EUR', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fmagzoid.com%2Famazon-unveils-first-major-logo-redesign-in-20-years%2F&psig=AOvVaw0v4EzLMg_P4BYHQFW286xo&ust=1762433874375000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOiXwvKH25ADFQAAAAAdAAAAABBr', 25.00, 'EUR'),
-('GPLHUF5K', 'Google Play 20 USD', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FGoogle-Play-Gift-Code-mail%2Fdp%2FB074T91QTZ&psig=AOvVaw28s4kPNfuWAtA5VML-BWrW&ust=1762433756520000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCKCm8LqH25ADFQAAAAAdAAAAABAX', 20.00, 'USD'),
-('NFLX30USD', 'Netflix Gift Card 30 USD', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbrand.netflix.com%2Fen%2Fterms%2F&psig=AOvVaw08MsfpmA5_219GbPpRLHF3&ust=1762433713105000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCODPtqaH25ADFQAAAAAdAAAAABAE', 30.00, 'USD'),
-('PSN50USD', 'PlayStation Store Card 50 USD', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ftech.yahoo.com%2Fgaming%2Farticles%2Fused-seeing-playstation-branding-xbox-120750257.html&psig=AOvVaw1099fGDnD2bzF5kqkGUwcN&ust=1762433787940000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMis-cyH2', 50.00, 'USD'),
-('STM10EUR', 'Steam Gift Card 10 EUR', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.steampowered.com%2F&psig=AOvVaw0eK3b70mcvZN-kMRKkW1fk&ust=1762433669826000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMjzwpGH25ADFQAAAAAdAAAAABAE', 10.00, 'EUR');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `partnerships`
---
-
-CREATE TABLE `partnerships` (
-  `developer_id_1` int(11) NOT NULL,
-  `developer_id_2` int(11) NOT NULL,
-  `partnership_start` date DEFAULT NULL,
-  `partnership_type` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `developer_awards` (`developer_id`, `award_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 4),
+(3, 5),
+(3, 6),
+(4, 7),
+(5, 8),
+(5, 9),
+(6, 10),
+(6, 11),
+(8, 14),
+(8, 15),
+(9, 12),
+(9, 13),
+(10, 16),
+(10, 17),
+(11, 18),
+(11, 19),
+(12, 20),
+(13, 21),
+(14, 22),
+(14, 23),
+(15, 24),
+(16, 25),
+(16, 26),
+(17, 27),
+(18, 16),
+(18, 17),
+(19, 14),
+(19, 15),
+(20, 24);
 
 -- --------------------------------------------------------
 
@@ -555,23 +618,86 @@ CREATE TABLE `partnerships` (
 
 CREATE TABLE `publishers` (
   `publisher_id` int(11) NOT NULL,
-  `publisher_name` varchar(255) NOT NULL
+  `person_name` varchar(100) NOT NULL,
+  `company_name` varchar(100) NOT NULL,
+  `role` varchar(100) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `publishers`
+--
+
+INSERT INTO `publishers` (`publisher_id`, `person_name`, `company_name`, `role`, `start_date`, `end_date`) VALUES
+(1, 'John Smith', 'Electronic Arts', 'Executive Producer', '2000-01-01', NULL),
+(2, 'Alice Johnson', 'Rockstar Games', 'Producer', '2001-01-01', NULL),
+(3, 'Robert Brown', 'Nintendo', 'Marketing Manager', '2002-01-01', NULL),
+(4, 'Emily Davis', 'LucasArts', 'Project Manager', '2003-01-01', NULL),
+(5, 'Michael Wilson', 'Valve', 'Studio Head', '2004-01-01', NULL),
+(6, 'Laura Taylor', 'Sony Interactive Entertainment', 'Executive Producer', '2005-01-01', NULL),
+(7, 'David Martinez', 'CD Projekt', 'Studio Head', '2015-01-01', NULL),
+(8, 'Olivia Harris', 'Larian Studios', 'Executive Producer', '2023-01-01', NULL),
+(9, 'Sophia Anderson', 'FromSoftware', 'Producer', '2022-01-01', NULL),
+(10, 'Ethan Parker', 'Santa Monica Studio', 'Executive Producer', '2023-06-01', NULL),
+(11, 'Liam Thompson', 'Guerrilla Games', 'Studio Head', '2023-07-15', NULL),
+(12, 'Isabella Johnson', 'Naughty Dog', 'Producer', '2023-08-01', NULL),
+(13, 'Mason Brown', 'Rockstar North', 'Executive Producer', '2024-01-10', NULL),
+(14, 'Emma Davis', 'Bethesda Game Studios', 'Studio Head', '2024-02-20', NULL),
+(15, 'Noah Wilson', 'BioWare', 'Executive Producer', '2024-03-05', NULL),
+(16, 'Olivia Moore', 'CD Projekt', 'Producer', '2025-01-01', NULL),
+(17, 'James Taylor', 'FromSoftware', 'Executive Producer', '2025-02-15', NULL),
+(18, 'Ava Anderson', 'Larian Studios', 'Studio Head', '2025-03-01', NULL),
+(19, 'Daniel Lewis', 'Epic Games', 'Executive Producer', '2025-04-10', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `reviews`
+-- Tábla szerkezet ehhez a táblához `publisher_awards`
 --
 
-CREATE TABLE `reviews` (
-  `review_id` int(11) NOT NULL,
-  `developer_id` int(11) DEFAULT NULL,
-  `reviewer_name` varchar(255) DEFAULT NULL,
-  `rating` decimal(3,1) DEFAULT NULL CHECK (`rating` >= 0 and `rating` <= 10),
-  `comment` text DEFAULT NULL,
-  `review_date` date DEFAULT NULL
+CREATE TABLE `publisher_awards` (
+  `publisher_id` int(11) NOT NULL,
+  `award_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `publisher_awards`
+--
+
+INSERT INTO `publisher_awards` (`publisher_id`, `award_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 4),
+(3, 5),
+(3, 6),
+(4, 7),
+(5, 8),
+(5, 9),
+(6, 10),
+(6, 11),
+(7, 12),
+(7, 13),
+(8, 16),
+(8, 17),
+(9, 14),
+(9, 15),
+(10, 18),
+(10, 19),
+(11, 20),
+(12, 21),
+(13, 22),
+(13, 23),
+(14, 24),
+(15, 25),
+(15, 26),
+(16, 27),
+(17, 16),
+(17, 17),
+(18, 14),
+(18, 15),
+(19, 24);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -587,49 +713,34 @@ ALTER TABLE `awards`
 -- A tábla indexei `datas`
 --
 ALTER TABLE `datas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `publisher_id` (`publisher_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- A tábla indexei `developers`
 --
 ALTER TABLE `developers`
   ADD PRIMARY KEY (`developer_id`),
-  ADD UNIQUE KEY `developer_name` (`developer_name`);
+  ADD KEY `fk_developer_publisher` (`publisher_id`);
 
 --
--- A tábla indexei `developers_awards`
+-- A tábla indexei `developer_awards`
 --
-ALTER TABLE `developers_awards`
+ALTER TABLE `developer_awards`
   ADD PRIMARY KEY (`developer_id`,`award_id`),
   ADD KEY `award_id` (`award_id`);
-
---
--- A tábla indexei `giftcard`
---
-ALTER TABLE `giftcard`
-  ADD PRIMARY KEY (`CardId`);
-
---
--- A tábla indexei `partnerships`
---
-ALTER TABLE `partnerships`
-  ADD PRIMARY KEY (`developer_id_1`,`developer_id_2`),
-  ADD KEY `developer_id_2` (`developer_id_2`);
 
 --
 -- A tábla indexei `publishers`
 --
 ALTER TABLE `publishers`
-  ADD PRIMARY KEY (`publisher_id`),
-  ADD UNIQUE KEY `publisher_name` (`publisher_name`);
+  ADD PRIMARY KEY (`publisher_id`);
 
 --
--- A tábla indexei `reviews`
+-- A tábla indexei `publisher_awards`
 --
-ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`review_id`),
-  ADD KEY `developer_id` (`developer_id`);
+ALTER TABLE `publisher_awards`
+  ADD PRIMARY KEY (`publisher_id`,`award_id`),
+  ADD KEY `award_id` (`award_id`);
 
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
@@ -639,7 +750,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT a táblához `awards`
 --
 ALTER TABLE `awards`
-  MODIFY `award_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `award_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT a táblához `datas`
@@ -651,49 +762,37 @@ ALTER TABLE `datas`
 -- AUTO_INCREMENT a táblához `developers`
 --
 ALTER TABLE `developers`
-  MODIFY `developer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `developer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT a táblához `publishers`
 --
 ALTER TABLE `publishers`
-  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT a táblához `reviews`
---
-ALTER TABLE `reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Megkötések a kiírt táblákhoz
 --
 
 --
--- Megkötések a táblához `datas`
+-- Megkötések a táblához `developers`
 --
-ALTER TABLE `datas`
-  ADD CONSTRAINT `datas_ibfk_1` FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`publisher_id`);
+ALTER TABLE `developers`
+  ADD CONSTRAINT `fk_developer_publisher` FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`publisher_id`);
 
 --
--- Megkötések a táblához `developers_awards`
+-- Megkötések a táblához `developer_awards`
 --
-ALTER TABLE `developers_awards`
-  ADD CONSTRAINT `developers_awards_ibfk_1` FOREIGN KEY (`developer_id`) REFERENCES `developers` (`developer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `developers_awards_ibfk_2` FOREIGN KEY (`award_id`) REFERENCES `awards` (`award_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `developer_awards`
+  ADD CONSTRAINT `developer_awards_ibfk_1` FOREIGN KEY (`developer_id`) REFERENCES `developers` (`developer_id`),
+  ADD CONSTRAINT `developer_awards_ibfk_2` FOREIGN KEY (`award_id`) REFERENCES `awards` (`award_id`);
 
 --
--- Megkötések a táblához `partnerships`
+-- Megkötések a táblához `publisher_awards`
 --
-ALTER TABLE `partnerships`
-  ADD CONSTRAINT `partnerships_ibfk_1` FOREIGN KEY (`developer_id_1`) REFERENCES `developers` (`developer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `partnerships_ibfk_2` FOREIGN KEY (`developer_id_2`) REFERENCES `developers` (`developer_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Megkötések a táblához `reviews`
---
-ALTER TABLE `reviews`
-  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`developer_id`) REFERENCES `developers` (`developer_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `publisher_awards`
+  ADD CONSTRAINT `publisher_awards_ibfk_1` FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`publisher_id`),
+  ADD CONSTRAINT `publisher_awards_ibfk_2` FOREIGN KEY (`award_id`) REFERENCES `awards` (`award_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
