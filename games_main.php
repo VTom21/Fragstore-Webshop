@@ -1,78 +1,56 @@
 <?php
 error_reporting(0); // suppress warnings/notices
 
-// --- Database Config ---
-$host = 'localhost';
-$db   = 'videogames';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
 // --- Firebase Config ---
 $firebaseBaseUrl = "https://stock-9bff5-default-rtdb.europe-west1.firebasedatabase.app/games.json";
 
-try {
-    $pdo = new PDO($dsn, $user, $pass);
+// --- Fetch current Firebase data ---
+$context = stream_context_create([
+    'http' => ['method' => 'GET'],
+    'ssl'  => [
+        'verify_peer'      => false,
+        'verify_peer_name' => false
+    ]
+]);
 
-    // --- Step 1: Check Firebase first ---
-    $context = stream_context_create([
-        'http' => ['method' => 'GET'],
-        'ssl'  => [
+$firebaseRaw = @file_get_contents($firebaseBaseUrl, false, $context);
+$firebaseData = json_decode($firebaseRaw, true);
+
+// --- Function to reset stock ---
+function resetStock($value, &$firebaseData){
+    foreach ($firebaseData as $gameId => &$game) {
+        $game['stock'] = $value;
+    }
+}
+
+// --- Reset stock to 500 ---
+if (!empty($firebaseData)) {
+    resetStock(500, $firebaseData);
+
+    // --- Push updated data back to Firebase ---
+    $options = [
+        'http' => [
+            'method'  => 'PUT',
+            'header'  => "Content-Type: application/json\r\n",
+            'content' => json_encode($firebaseData),
+            'ignore_errors' => true
+        ],
+        'ssl' => [
             'verify_peer'      => false,
             'verify_peer_name' => false
         ]
-    ]);
-    $firebaseRaw = @file_get_contents($firebaseBaseUrl, false, $context);
-    $firebaseData = json_decode($firebaseRaw, true);
+    ];
+    $context = stream_context_create($options);
+    $result = @file_get_contents($firebaseBaseUrl, false, $context);
 
-    // --- Step 2: If Firebase is empty, initialize from local DB ---
-    if (empty($firebaseData)) {
-        $stmt = $pdo->query("SELECT * FROM datas");
-        $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $firebaseData = [];
-        foreach ($games as $game) {
-            $id = $game['id'];
-            $firebaseData[$id] = [
-                "pics"       => $game['game_pic'],
-                "names"      => $game['name'],
-                "dates"      => $game['release_date'],
-                "genres"     => $game['genre'],
-                "platforms"  => $game['platforms'],
-                "prizes"     => $game['prize'],
-                "isDiscount" => $game['isDiscount'],
-                "stock"      => isset($game['stock']) ? (int)$game['stock'] : 0,
-            ];
-        }
-
-        // --- Push to Firebase only if empty ---
-        $options = [
-            'http' => [
-                'method'  => 'PUT',
-                'header'  => "Content-Type: application/json\r\n",
-                'content' => json_encode($firebaseData),
-                'ignore_errors' => true
-            ],
-            'ssl' => [
-                'verify_peer'      => false,
-                'verify_peer_name' => false
-            ]
-        ];
-        $context = stream_context_create($options);
-        $result = @file_get_contents($firebaseBaseUrl, false, $context);
-
-        if ($result === FALSE) {
-            $error = error_get_last();
-            echo "Error uploading to Firebase: " . $error['message'];
-        }
-    }
-
-} catch (PDOException $e) {
-    echo "Database error: " . $e->getMessage();
+    if ($result === FALSE) {
+        $error = error_get_last();
+        echo "Error updating Firebase: " . $error['message'];
+    } 
+} else {
+    echo "Firebase is empty. Nothing to reset.";
 }
 
-// --- Currency Fetch ---
 $apiUrl = "https://open.er-api.com/v6/latest/USD";
 $context = stream_context_create([
     "ssl" => [
@@ -322,7 +300,7 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                 <p><strong>Genre:</strong> {{game.genre}}</p>
                 <p><strong>Platform:</strong> {{game.platforms}}</p>
                 <p><strong>Release:</strong> {{game.release_date}}</p>
-                <p><strong>Stock:</strong> {{game.stock}}</p>
+                <p class="stock"><strong>Stock:</strong> {{game.stock}}</p>
             </div>
             <div class="price-wrapper">
                 <div class="status">

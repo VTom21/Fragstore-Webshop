@@ -22,14 +22,6 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
-
-foreach($cart_items as $item){
-    $id = $item['id'];
-    $qty = $item['quantity'];
-
-    $stmt = $pdo->prepare("UPDATE datas SET stock = stock - ? WHERE id = ?");
-    $stmt->execute([$qty, $id]);
-}
 ?>
 
 

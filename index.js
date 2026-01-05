@@ -131,7 +131,7 @@ $scope.openCart = function (game) {
   };
 
   $scope.increaseQty = function (item) {
-    const stockRef = db.ref('games/' + game.id + '/stock');
+    const stockRef = db.ref('games/' + item.gameRef.id + '/stock');
     $scope.count++;
     item.quantity++;
     item.gameRef.stock--;
@@ -140,7 +140,7 @@ $scope.openCart = function (game) {
   };
 
   $scope.decreaseQty = function (item) {
-    const stockRef = db.ref('games/' + game.id + '/stock');
+    const stockRef = db.ref('games/' + item.gameRef.id + '/stock');
     $scope.count--;
     if (item.quantity > 1) {
       item.quantity--;
