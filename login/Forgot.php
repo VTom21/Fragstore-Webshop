@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Log In.css">
-  <link rel="icon" type="image/x-icon" href="/icons/array.png">
+  <link rel="icon" type="image/x-icon" href="/icons/array.png"> 
   <title>Login | Fragstore</title>
 </head>
 

@@ -1,4 +1,66 @@
 <?php
+error_reporting(0); // suppress warnings/notices
+
+// --- Database Config ---
+$host = 'localhost';
+$db   = 'videogames';
+$user = 'root';
+$pass = '';
+$charset = 'utf8mb4';
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+
+// --- Firebase Config ---
+$firebaseBaseUrl = "https://stock-9bff5-default-rtdb.europe-west1.firebasedatabase.app/games.json";
+
+try {
+    $pdo = new PDO($dsn, $user, $pass);
+
+    // Fetch all game data
+    $stmt = $pdo->query("SELECT * FROM datas");
+    $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Reformat games to Firebase structure with ID keys
+    $firebaseData = [];
+    foreach ($games as $game) {
+        $id = $game['id'];
+        $firebaseData[$id] = [
+            "pics"       => $game['game_pic'],
+            "names"      => $game['name'],
+            "dates"      => $game['release_date'],
+            "genres"     => $game['genre'],
+            "platforms"  => $game['platforms'],
+            "prizes"     => $game['prize'],
+            "isDiscount" => $game['isDiscount'],
+            "stock"      => isset($game['stock']) ? (int)$game['stock'] : 0,
+        ];
+    }
+
+    // --- Push all data to Firebase in a single request ---
+    $options = [
+        'http' => [
+            'method'  => 'PUT',
+            'header'  => "Content-Type: application/json\r\n",
+            'content' => json_encode($firebaseData),
+            'ignore_errors' => true
+        ],
+        'ssl' => [
+            'verify_peer'      => false,
+            'verify_peer_name' => false
+        ]
+    ];
+
+    $context = stream_context_create($options);
+    $result = @file_get_contents($firebaseBaseUrl, false, $context);
+
+    if ($result === FALSE) {
+        $error = error_get_last();
+        echo "Error uploading to Firebase: " . $error['message'];
+    }
+
+} catch (PDOException $e) {
+    echo "Database error: " . $e->getMessage();
+}
+
 $apiUrl = "https://open.er-api.com/v6/latest/USD";
 
 $context = stream_context_create([
@@ -8,13 +70,12 @@ $context = stream_context_create([
     ]
 ]);
 
-$response = file_get_contents($apiUrl, false, $context);
-
+$response = @file_get_contents($apiUrl, false, $context);
 $data = json_decode($response, true);
-
-$currencies = array_keys($data["rates"]);
+$currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -27,6 +88,8 @@ $currencies = array_keys($data["rates"]);
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <link rel="icon" type="image/x-icon" href="/icons/array.png">
 </head>
 
@@ -249,6 +312,7 @@ $currencies = array_keys($data["rates"]);
                 <p><strong>Genre:</strong> {{game.genre}}</p>
                 <p><strong>Platform:</strong> {{game.platforms}}</p>
                 <p><strong>Release:</strong> {{game.release_date}}</p>
+                <p><strong>Stock:</strong> {{game.stock}}</p>
             </div>
             <div class="price-wrapper">
                 <div class="status">
@@ -384,11 +448,29 @@ $currencies = array_keys($data["rates"]);
     <script>
         window.exchangeRates = <?php echo json_encode($data["rates"]); ?>;
 
-
     </script>
 
     <script src="index.js"></script>
     <script src="autofill.js"></script>
+
+    <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyARV1o5YF4c17jMNBNRLC_54wCr0H1nA0E",
+        authDomain: "stock-9bff5.firebaseapp.com",
+        databaseURL: "https://stock-9bff5-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "stock-9bff5",
+        storageBucket: "stock-9bff5.firebasestorage.app",
+        messagingSenderId: "517000549452",
+        appId: "1:517000549452:web:d83c4d8f92738e188fd0e9",
+        measurementId: "G-EQDYMYTVJM"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+
+
+    </script>
 
 
 </body>

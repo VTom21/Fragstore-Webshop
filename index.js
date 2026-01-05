@@ -18,6 +18,8 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.games = [];
   $scope.filteredGames = [];
 
+  
+
   var platformNames = [
     "PC",
     "PS5",
@@ -48,8 +50,8 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.cartOpen = false;
   $scope.cartItems = [];
 
-    $scope.rates = window.exchangeRates;
-    $scope.select_currency = "USD";
+  $scope.rates = window.exchangeRates;
+  $scope.select_currency = "USD";
 
 
 $scope.convertPrice = function(game) {

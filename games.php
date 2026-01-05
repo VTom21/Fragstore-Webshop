@@ -55,6 +55,7 @@ try {
         $genreStats[$row['genre']] = (int)$row['count'];
     }
 
+ 
 
     //converts the associative array to json format
 
