@@ -394,6 +394,9 @@ body {
   .goty {
     font-size: 1.5rem !important;
   }
+  #awards_promo {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+  }
 }
 @media (max-width: 285px) {
   .cards_div .award-card h3 {
