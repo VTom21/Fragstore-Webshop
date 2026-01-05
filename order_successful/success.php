@@ -10,6 +10,8 @@ $total_num = json_decode($total_json, true);
 
 $currency_local = $_GET["currency"] ?? "$";
 
+
+
 ?>
 
 <!DOCTYPE html>

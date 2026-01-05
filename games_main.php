@@ -468,8 +468,6 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-
-
     </script>
 
 

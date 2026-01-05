@@ -95,6 +95,9 @@ $scope.openCart = function (game) {
         });
     }
 
+
+    game.stock -= 1;
+    firebase.database().ref('games/' + game.id).update({ stock: game.stock });
     $scope.cartOpen = true;
 
     // Store selected currency
