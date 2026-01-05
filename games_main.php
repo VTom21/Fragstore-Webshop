@@ -15,66 +15,76 @@ $firebaseBaseUrl = "https://stock-9bff5-default-rtdb.europe-west1.firebasedataba
 try {
     $pdo = new PDO($dsn, $user, $pass);
 
-    // Fetch all game data
-    $stmt = $pdo->query("SELECT * FROM datas");
-    $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // Reformat games to Firebase structure with ID keys
-    $firebaseData = [];
-    foreach ($games as $game) {
-        $id = $game['id'];
-        $firebaseData[$id] = [
-            "pics"       => $game['game_pic'],
-            "names"      => $game['name'],
-            "dates"      => $game['release_date'],
-            "genres"     => $game['genre'],
-            "platforms"  => $game['platforms'],
-            "prizes"     => $game['prize'],
-            "isDiscount" => $game['isDiscount'],
-            "stock"      => isset($game['stock']) ? (int)$game['stock'] : 0,
-        ];
-    }
-
-    // --- Push all data to Firebase in a single request ---
-    $options = [
-        'http' => [
-            'method'  => 'PUT',
-            'header'  => "Content-Type: application/json\r\n",
-            'content' => json_encode($firebaseData),
-            'ignore_errors' => true
-        ],
-        'ssl' => [
+    // --- Step 1: Check Firebase first ---
+    $context = stream_context_create([
+        'http' => ['method' => 'GET'],
+        'ssl'  => [
             'verify_peer'      => false,
             'verify_peer_name' => false
         ]
-    ];
+    ]);
+    $firebaseRaw = @file_get_contents($firebaseBaseUrl, false, $context);
+    $firebaseData = json_decode($firebaseRaw, true);
 
-    $context = stream_context_create($options);
-    $result = @file_get_contents($firebaseBaseUrl, false, $context);
+    // --- Step 2: If Firebase is empty, initialize from local DB ---
+    if (empty($firebaseData)) {
+        $stmt = $pdo->query("SELECT * FROM datas");
+        $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($result === FALSE) {
-        $error = error_get_last();
-        echo "Error uploading to Firebase: " . $error['message'];
+        $firebaseData = [];
+        foreach ($games as $game) {
+            $id = $game['id'];
+            $firebaseData[$id] = [
+                "pics"       => $game['game_pic'],
+                "names"      => $game['name'],
+                "dates"      => $game['release_date'],
+                "genres"     => $game['genre'],
+                "platforms"  => $game['platforms'],
+                "prizes"     => $game['prize'],
+                "isDiscount" => $game['isDiscount'],
+                "stock"      => isset($game['stock']) ? (int)$game['stock'] : 0,
+            ];
+        }
+
+        // --- Push to Firebase only if empty ---
+        $options = [
+            'http' => [
+                'method'  => 'PUT',
+                'header'  => "Content-Type: application/json\r\n",
+                'content' => json_encode($firebaseData),
+                'ignore_errors' => true
+            ],
+            'ssl' => [
+                'verify_peer'      => false,
+                'verify_peer_name' => false
+            ]
+        ];
+        $context = stream_context_create($options);
+        $result = @file_get_contents($firebaseBaseUrl, false, $context);
+
+        if ($result === FALSE) {
+            $error = error_get_last();
+            echo "Error uploading to Firebase: " . $error['message'];
+        }
     }
 
 } catch (PDOException $e) {
     echo "Database error: " . $e->getMessage();
 }
 
+// --- Currency Fetch ---
 $apiUrl = "https://open.er-api.com/v6/latest/USD";
-
 $context = stream_context_create([
     "ssl" => [
         "verify_peer"      => false,
         "verify_peer_name" => false
     ]
 ]);
-
 $response = @file_get_contents($apiUrl, false, $context);
 $data = json_decode($response, true);
 $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
-
 ?>
+
 
 
 

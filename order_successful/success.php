@@ -1,18 +1,37 @@
-<?php 
-
+<?php
 $cart_json = $_GET["cart"] ?? "[]";
-
 $total_json = $_GET["total"] ?? "";
-
 $cart_items = json_decode($cart_json, true);
-
 $total_num = json_decode($total_json, true);
-
 $currency_local = $_GET["currency"] ?? "$";
 
+// --- Connect to the database ---
+$host = 'localhost';
+$db = 'videogames';
+$user = 'root';
+$pass = '';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+
+try {
+    $pdo = new PDO($dsn, $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
 
 
+foreach($cart_items as $item){
+    $id = $item['id'];
+    $qty = $item['quantity'];
+
+    $stmt = $pdo->prepare("UPDATE datas SET stock = stock - ? WHERE id = ?");
+    $stmt->execute([$qty, $id]);
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

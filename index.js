@@ -14,11 +14,9 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.isDescChecked = false;
   $scope.count = 0;
 
-  //base variables for storing games, filtered games & platforms, Cart & Wish list items
   $scope.games = [];
   $scope.filteredGames = [];
 
-  
 
   var platformNames = [
     "PC",
@@ -71,6 +69,7 @@ $scope.convertPrice = function(game) {
 
 
 $scope.openCart = function (game) {
+    const stockRef = db.ref('games/' + game.id + '/stock');
     $scope.count++;
     let existingItem = $scope.cartItems.find((item) => item.id === game.id);
 
@@ -84,20 +83,23 @@ $scope.openCart = function (game) {
     if (existingItem) {
         existingItem.quantity += 1;
         existingItem.total_prize = parseFloat((existingItem.quantity * existingItem.prize).toFixed(2));
+        game.stock--;
+        stockRef.set(game.stock);
     } else {
         $scope.cartItems.push({
+            gameRef: game,
             id: game.id,
             name: game.name,
             prize: convertedPrice,
             game_pic: game.game_pic,
             quantity: 1,
-            total_prize: convertedPrice
+            total_prize: convertedPrice,
         });
+        game.stock--;
+        stockRef.set(game.stock);
     }
 
 
-    game.stock -= 1;
-    firebase.database().ref('games/' + game.id).update({ stock: game.stock });
     $scope.cartOpen = true;
 
     // Store selected currency
@@ -129,17 +131,25 @@ $scope.openCart = function (game) {
   };
 
   $scope.increaseQty = function (item) {
+    const stockRef = db.ref('games/' + game.id + '/stock');
     $scope.count++;
     item.quantity++;
+    item.gameRef.stock--;
+    stockRef.set(item.gameRef.stock);
     item.total_prize = item.prize * item.quantity;
   };
 
   $scope.decreaseQty = function (item) {
+    const stockRef = db.ref('games/' + game.id + '/stock');
     $scope.count--;
     if (item.quantity > 1) {
       item.quantity--;
+      item.gameRef.stock++;
+      stockRef.set(item.gameRef.stock);
       item.total_prize = item.prize * item.quantity;
     } else {
+      item.gameRef.stock++;
+      stockRef.set(item.gameRef.stock);
       let index = $scope.cartItems.indexOf(item);
       $scope.cartItems.splice(index, 1);
     }
@@ -171,6 +181,7 @@ $scope.openCart = function (game) {
       $scope.numberOfProducts = response.data.total;
       $scope.numberOfGenres = response.data.totalGenres;
       $scope.numberOfPlatforms = $scope.platforms.length;
+      
 
       function seededRandom(seed) {
         var x = Math.sin(seed) * 10000;
@@ -178,6 +189,13 @@ $scope.openCart = function (game) {
       }
 
       $scope.games.forEach(function (game) {
+
+        const stockRef = db.ref('games/' + game.id + '/stock');
+        stockRef.on('value', function(snapshot) {
+            game.stock = snapshot.val() || 0;
+            $scope.$apply();
+        });
+
         if (game.isDiscount == 1) {
           var seed = game.id || game.name.charCodeAt(0);
           var randomPercentage = 0.1 + 0.8 * seededRandom(seed);
