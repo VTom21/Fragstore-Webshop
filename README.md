@@ -576,7 +576,7 @@ A legendary puzzle game that challenges your speed, foresight, and spatial reaso
 
 ---
 <div align="left" id="database">
-<h3>Database Schema</h3><img  padding="0" margin="0" width="80" src="https://skillicons.dev/icons?i=mysql,php">
+<h3>Database Schema</h3><img  padding="0" margin="0" width="120" src="https://skillicons.dev/icons?i=mysql,php,firebase">
 </div>
 <br>
 
@@ -674,6 +674,13 @@ CREATE TABLE `datas` (
   `score` int(11) DEFAULT NULL
 ) 
 ```
+
+### 5. `stock`
+Stock DB is a Firebase Realtime Database that stores video game inventory data, including title, release date, genre, platforms, price, stock quantity, discount status, and image URLs for each game. 
+
+<img src="./pictures/firebase1.png" id="tetris"></img>
+<img src="./pictures/firebase2.png" id="tetris"></img>
+
 <br>
 
 ### 🔌 API Endpoints & Integrations
