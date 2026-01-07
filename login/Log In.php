@@ -35,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_regenerate_id(true);
         $_SESSION['user_id']  = (int)$user['id']; //stores user_id in the session
         $_SESSION['username'] = $user['username']; //stores username in the session
-        header('Location: OTP.php'); //loads OTP verification page
+        header("Location: OTP.php");
+        exit;
       } else {
         $message = 'Invalid email or password.';
       }
@@ -44,6 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
   }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Log In.css">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <link rel="icon" type="image/x-icon" href="/icons/array.png">
   <title>Login | Fragstore</title>
 </head>
@@ -65,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <?php if ($message): ?><div class="alert"><?= e($message) ?></div><?php endif; ?>
 
-      <form action="" method="POST" novalidate>
+      <form action="" id="loginForm" method="POST" novalidate>
         <div class="form-group">
           <input type="email" id="email" name="email" placeholder=" " required class="form-control" value="<?= e($email) ?>" />
           <label for="email">Email address</label>
@@ -77,7 +81,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <button type="button" class="clear-btn" onclick="document.getElementById('password').value=''; document.getElementById('password').focus();">&times;</button>
         </div>
         <button type="submit" class="btn-login login">Login</button>
+
+        <div class="cf-turnstile captcha" id="captcha" data-sitekey="0x4AAAAAACLE_NHQQP922tRh" data-callback="Captcha_Success"></div>
       </form>
+
 
       <div class="small-text mt-3">
         <a href="./Forgot.php">Forgot password?</a><br /><br>
@@ -89,13 +96,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <script>
 
+    let captcha_passed = false;
     document.querySelectorAll('.form-control').forEach(input => {
       const clearBtn = input.parentElement.querySelector('.clear-btn');
       const toggle = () => clearBtn.style.display = input.value ? 'block' : 'none';
       input.addEventListener('input', toggle);
       toggle();
     });
+
+    function Captcha_Success(){
+      captcha_passed = true;
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+  if (!captcha_passed){
+    e.preventDefault();
+    alert("Please complete the CAPTCHA first!");
+    return;
+  }
+  });
+
   </script>
+
 </body>
 
 </html>

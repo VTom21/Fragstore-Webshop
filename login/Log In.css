@@ -14,7 +14,7 @@
 html,
 body {
   height: 100%;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background: radial-gradient(ellipse at bottom, #274c6e 0%, #23241f 100%);
   overflow: hidden;
 }
@@ -23,7 +23,11 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(130deg, rgba(0, 191, 255, 0.05), rgba(255, 230, 0, 0.05));
+  background: linear-gradient(
+    130deg,
+    rgba(0, 191, 255, 0.05),
+    rgba(255, 230, 0, 0.05)
+  );
   pointer-events: none;
   animation: pulse 12s ease-in-out infinite alternate;
 }
@@ -76,7 +80,7 @@ body::before {
 }
 
 .title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 2rem;
@@ -135,8 +139,8 @@ label {
   transform: scale(1.02);
 }
 
-.form-control:focus+label,
-.form-control:not(:placeholder-shown)+label {
+.form-control:focus + label,
+.form-control:not(:placeholder-shown) + label {
   top: 0.2rem;
   font-size: 0.75rem;
   color: yellow;
@@ -145,12 +149,12 @@ label {
 /* alert */
 
 .alert {
-  background: rgba(0, 0, 0, .25);
-  border: 1px solid rgba(255, 255, 255, .2);
-  padding: .75rem 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1rem;
   border-radius: 10px;
   margin-bottom: 1rem;
-  text-align: center
+  text-align: center;
 }
 
 /* Underline animation */
@@ -166,8 +170,8 @@ label {
   border-radius: 2px;
 }
 
-.form-control:focus~.form-group::after,
-.form-control:focus+label~.form-group::after {
+.form-control:focus ~ .form-group::after,
+.form-control:focus + label ~ .form-group::after {
   width: 100%;
 }
 
@@ -187,7 +191,13 @@ label {
   user-select: none;
 }
 
-.form-control:not(:placeholder-shown)~.clear-btn {
+#captcha {
+  display: flex;
+  justify-content: center;
+  margin:18px 0px;
+}
+
+.form-control:not(:placeholder-shown) ~ .clear-btn {
   display: block;
 }
 
@@ -245,7 +255,11 @@ label {
   position: absolute;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(0, 191, 255, 0.1) 0%, transparent 70%),
+  background: radial-gradient(
+      circle,
+      rgba(0, 191, 255, 0.1) 0%,
+      transparent 70%
+    ),
     radial-gradient(circle, rgba(255, 230, 0, 0.08) 0%, transparent 70%);
   animation: moveParticles 30s linear infinite;
 }

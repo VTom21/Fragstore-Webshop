@@ -123,6 +123,7 @@
         opacity: 0.8;
     }
 
+
     input:not(:placeholder-shown)~.clear-btn {
         display: block;
     }
