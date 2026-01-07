@@ -15,10 +15,15 @@ function sendMail(e) {
 
     const params = {
         name: name,
+        title: "Contact Email",
+        introduction: "You have received a new contact form submission. Please respond at your earliest convenience.",
+        source: "From:",
         time: d.getFullYear(),
         user_email: "fragstore63@gmail.com",
         from_email:email,
         message: message,
+        system_type:"Contact",
+        content_subtitle: "Message"
     };
 
     const serviceID = "service_7grce58";

@@ -13,6 +13,7 @@ function e($s)
 $message = '';
 $email = '';
 $username = '';
+$success = false;
 
 //form uses post method -> waits for the user's submit
 
@@ -34,9 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $hash = password_hash($password, PASSWORD_DEFAULT);
       $stmt = $pdo->prepare("INSERT INTO users (email, username, password_hash) VALUES (?, ?, ?)"); //prepared placeholders with temporary ? values
       $stmt->execute([$email, $username, $hash]);
-
-      header('Location: ../login/Log%20In.php?registered=1'); //after successful sign in, redirect to log in page
-      exit;
+      $success = true;
     } catch (PDOException $e) {
       // Duplicate email/username -> SQLSTATE 23000
       if ($e->getCode() === '23000') {
@@ -56,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
   <title>Sign Up | Fragstore</title>
 
@@ -103,8 +103,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </div>
 
+
   <script>
-    //clear button logic
+
+    function Welcome() {
+      emailjs.init("2w8KrX-es6cBuW9Rt");
+
+      const params = {
+        title: "Welcome",
+        welcome: "Welcome to Fragstore — Game On!",
+        introduction: "Welcome to Fragstore, and thanks for joining our community! Your account has been successfully created, and you’re now ready to dive into a world packed with games, deals, and digital goodness.",
+        user_email: "<?= $email ?>",
+        message: `At Fragstore, we’re all about great games and smooth gameplay.`,
+        system_type: "sign up",
+        username: "<?= $username ?>",
+        email_heading: "What do we offer?",
+        logos: `<div style="display: flex; gap:12px; justify-content: center; align-items: center;">
+  <img src="https://cdn-icons-png.flaticon.com/512/3224/3224178.png" style="height:90px; width:90px;" alt="">
+  <img src="https://logoeps.com/wp-content/uploads/2013/04/pac-man-character-vector.png" style="height:90px; width:90px;" alt="">
+  <img src="https://purepng.com/public/uploads/thumbnail//purepng.com-mario-basedmariosuper-mariovideo-gamefictional-characternintendoshigeru-miyamotomario-franchise-1701528638226fbmbg.png" style="height:90px; width:90px;" alt="">
+</div>
+`
+      };
+
+      const serviceID = "service_7grce58";
+      const templateID = "template_sqmrmho";
+
+      emailjs.send(serviceID, templateID, params)
+      .then(() => {
+
+      window.location.href = "../login/Log In.php?registered=1";
+    })
+    .catch(err => console.error("EmailJS error:", err));
+    }
+
+
+    <?php if ($success): ?>
+      Welcome();
+    <?php endif; ?>
+
+
+        //clear button logic
     document.querySelectorAll('.form-control').forEach(input => {
       const clearBtn = input.querySelector('.clear-btn');
       const toggle = () => clearBtn.style.display = input.value ? 'block' : 'none';
