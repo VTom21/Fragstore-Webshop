@@ -105,7 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
   <script>
-
     function Welcome() {
       emailjs.init("2w8KrX-es6cBuW9Rt");
 
@@ -118,11 +117,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         system_type: "sign up",
         username: "<?= $username ?>",
         email_heading: "What do we offer?",
-        logos: `<div style="display: flex; gap:12px; justify-content: center; align-items: center;">
-  <img src="https://cdn-icons-png.flaticon.com/512/3224/3224178.png" style="height:90px; width:90px;" alt="">
-  <img src="https://logoeps.com/wp-content/uploads/2013/04/pac-man-character-vector.png" style="height:90px; width:90px;" alt="">
-  <img src="https://purepng.com/public/uploads/thumbnail//purepng.com-mario-basedmariosuper-mariovideo-gamefictional-characternintendoshigeru-miyamotomario-franchise-1701528638226fbmbg.png" style="height:90px; width:90px;" alt="">
-</div>
+        logos: `
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center">
+      <table role="presentation" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:0 12px;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3224/3224178.png" width="90" height="90" alt="">
+          </td>
+          <td style="padding:0 12px;">
+            <img src="https://logoeps.com/wp-content/uploads/2013/04/pac-man-character-vector.png" width="90" height="90" alt="">
+          </td>
+          <td style="padding:0 12px;">
+            <img src="https://purepng.com/public/uploads/thumbnail//purepng.com-mario-basedmariosuper-mariovideo-gamefictional-characternintendoshigeru-miyamotomario-franchise-1701528638226fbmbg.png" width="90" height="90" alt="">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
 `
       };
 
@@ -130,11 +144,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       const templateID = "template_sqmrmho";
 
       emailjs.send(serviceID, templateID, params)
-      .then(() => {
+        .then(() => {
 
-      window.location.href = "../login/Log In.php?registered=1";
-    })
-    .catch(err => console.error("EmailJS error:", err));
+          window.location.href = "../login/Log In.php?registered=1";
+        })
+        .catch(err => console.error("EmailJS error:", err));
     }
 
 
@@ -143,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
 
-        //clear button logic
+    //clear button logic
     document.querySelectorAll('.form-control').forEach(input => {
       const clearBtn = input.querySelector('.clear-btn');
       const toggle = () => clearBtn.style.display = input.value ? 'block' : 'none';
