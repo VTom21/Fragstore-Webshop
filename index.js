@@ -183,10 +183,6 @@ $scope.openCart = function (game) {
       $scope.numberOfPlatforms = $scope.platforms.length;
       
 
-      function seededRandom(seed) {
-        var x = Math.sin(seed) * 10000;
-        return x - Math.floor(x);
-      }
 
       $scope.games.forEach(function (game) {
 
@@ -196,12 +192,11 @@ $scope.openCart = function (game) {
             $scope.$apply();
         });
 
-        if (game.isDiscount == 1) {
-          var seed = game.id || game.name.charCodeAt(0);
-          var randomPercentage = 0.1 + 0.8 * seededRandom(seed);
-          game.discountedPrize = parseFloat(
-            (game.prize * randomPercentage).toFixed(2)
-          );
+        if (game.isDiscount == 1 &&game.discountPerc != null) {
+            game.discountedPrize = parseFloat(game.prize * (1 - game.discountPerc / 100)).toFixed(2);
+        }
+        else{
+          game.discountedPrize = null;
         }
       });
 
