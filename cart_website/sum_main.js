@@ -17,10 +17,17 @@ const cardSection = document.getElementById('card-section');
 
 const paypalSection = document.querySelector('.paypal-section');
 
+function isEmpty(value) {
+    return value === null || value === undefined || value.toString().trim() === '';
+}
 
+function fail(message) {
+    alert(message);
+    return false;
+}
 
-  function UpdateCurrency(){
-    
+function UpdateCurrency() {
+
 
     const tax = subtotal * taxRate;
     const total = subtotal + tax + currentShipping;
@@ -29,12 +36,83 @@ const paypalSection = document.querySelector('.paypal-section');
     document.getElementById('subtotal-amount').textContent = `${subtotal.toFixed(2)} ${currency_local}`;
     document.getElementById('tax-amount').textContent = `${tax.toFixed(2)} ${currency_local}`;
     document.getElementById('total-amount').textContent = `${total.toFixed(2)} ${currency_local}`;
-  } 
-  
+}
+
 document.querySelectorAll('.summary-item-price').forEach(el => {
     el.textContent = `${el.textContent} ${currency_local}`;
 });
 
+
+//Validator Functions
+
+function ValidateDelivery() {
+    const delivery = document.querySelector('input[name="delivery"]:checked');
+    if (!delivery) {
+        return fail('Please select a delivery method.');
+    }
+    return true;
+}
+
+function ValidateAddress() {
+    if (addressSection.classList.contains("hidden")) {
+        return true;
+    }
+
+    const fields = [
+        { id: 'full-name', name: 'Full Name' },
+        { id: 'street-address', name: 'Street Address' },
+        { id: 'city', name: 'City' },
+        { id: 'postal-code', name: 'Postal Code' },
+        { id: 'country', name: 'Country' },
+        { id: 'phone', name: 'Phone' }
+    ];
+
+    for (const field of fields) {
+        if (isEmpty(document.getElementById(field.id).value)) {
+            fail(`${field.name} is required!`);
+            return false;
+        }
+    }
+    return true;
+}
+
+function ValidatePayment() {
+    let payment = document.querySelector('input[name="payment"]:checked');
+    if (!payment) return fail('Please select a delivery method.');
+
+    const cardNumber = document.getElementById('card-number');
+    const cardName = document.getElementById('card-name');
+    const cardExpiry = document.getElementById('card-expiry');
+    const cardCvc = document.getElementById('card-cvc');
+    const cardEmail = document.getElementById('card-email');
+
+    const paypalNumber = document.getElementById('paypal-number');
+    const paypalEmail = document.getElementById('paypal-email');
+
+    switch (payment.value) {
+        case 'card':
+            if (cardSection.style.display !== 'block') break; // skip if hidden
+            if (isEmpty(cardNumber.value) || isEmpty(cardName.value) || isEmpty(cardExpiry.value) || isEmpty(cardCvc.value) || isEmpty(cardEmail.value)) {
+                return fail("Please fill in all card details.");
+            }
+            break;
+    
+        case 'paypal':
+            if (paypalSection.style.display !== 'block') break; // skip if hidden
+            if (isEmpty(paypalNumber.value) || isEmpty(paypalEmail.value)) {
+                return fail("Please fill in all PayPal details.");
+            }
+            break;
+    
+        case 'cash':
+            // nothing extra
+            break;
+    }
+    
+
+    return true;
+
+}
 
 let currentShipping = 0;
 
@@ -43,6 +121,8 @@ function updateShipping() {
     const selected = selectedRadio ? selectedRadio.value : 'digital';
 
     const cashOn = document.querySelector('input[name="payment"][value="cash"]');
+
+    
     const cashOnDiv = cashOn.closest('.radio-card');
 
     let shipping = 0;
@@ -106,6 +186,17 @@ UpdateCurrency();
 // Checkout button
 function processCheckout() {
 
+    if(!ValidateDelivery()){
+        return;
+    }
+
+    if(!ValidateAddress()){
+        return;
+    }
+
+    if(!ValidatePayment()){
+        return;
+    }
     const shipping = shippingCost.textContent === 'Free' ? 0 : parseFloat(shippingCost.textContent.replace(currency_local, '').trim());
 
     const tax = subtotal * taxRate;

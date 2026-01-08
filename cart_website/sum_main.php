@@ -77,23 +77,23 @@ $cart_items = json_decode($cart_json, true);
                     <div class="form-grid">
                         <div class="form-group full-width">
                             <label>Full Name</label>
-                            <input type="text" placeholder="John Doe" required>
+                            <input type="text" id="full-name" placeholder="John Doe" required>
                         </div>
                         <div class="form-group full-width">
                             <label>Street Address</label>
-                            <input type="text" placeholder="123 Main Street" required>
+                            <input type="text" id="street-address" placeholder="123 Main Street" required>
                         </div>
                         <div class="form-group">
                             <label>City</label>
-                            <input type="text" placeholder="Budapest" required>
+                            <input type="text" id="city" placeholder="Budapest" required>
                         </div>
                         <div class="form-group">
                             <label>Postal Code</label>
-                            <input type="text" placeholder="1011" required>
+                            <input type="text" id="postal-code" placeholder="1011" required>
                         </div>
                         <div class="form-group">
                             <label>Country</label>
-                            <select required>
+                            <select id="country" required>
                                 <option value="">Select Country</option>
                                 <option value="HU" selected>Hungary</option>
                                 <option value="AT">Austria</option>
@@ -103,7 +103,7 @@ $cart_items = json_decode($cart_json, true);
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="tel" placeholder="+36 30 123 4567" required>
+                            <input type="tel" id="phone" placeholder="+36 30 123 4567" required>
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@ $cart_items = json_decode($cart_json, true);
                         </label>
 
                         <label class="radio-card">
-                            <input type="radio" name="payment" value="paypal" id="paypal">
+                            <input type="radio" name="payment" value="paypal">
                             <div class="radio-content">
                                 <div class="radio-header">
                                     <span class="radio-icon">🅿️</span>
@@ -152,24 +152,24 @@ $cart_items = json_decode($cart_json, true);
                         <div class="form-grid">
                             <div class="form-group full-width">
                                 <label>Card Number</label>
-                                <input type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+                                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
                             </div>
                             <div class="form-group full-width">
                                 <label>Cardholder Name</label>
-                                <input type="text" placeholder="Name on card">
+                                <input type="text" id="card-name" placeholder="Name on card">
                             </div>
                             <div class="form-group">
                                 <label>Expiry Date</label>
-                                <input type="text" placeholder="MM/YY" maxlength="5">
+                                <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
                             </div>
                             <div class="form-group">
                                 <label>CVV</label>
-                                <input type="text" placeholder="123" maxlength="3">
+                                <input type="text" id="card-cvc" placeholder="123" maxlength="3">
                             </div>
 
                             <div class="form-group">
                                 <label>Email Address</label>
-                                <input type="text" placeholder="Email Address">
+                                <input type="email" id="card-email" placeholder="Email Address">
                             </div>
                         </div>
                     </div>
@@ -177,9 +177,9 @@ $cart_items = json_decode($cart_json, true);
                     <div class="paypal-section" style="display:none;">
                         <div class="form-group full-width">
                             <label>Paypal Number</label>
-                            <input type="text" placeholder="Number on paypal"><br>
+                            <input type="text" id="paypal-number" placeholder="Number on paypal"><br>
                             <label>Email Address</label>
-                            <input type="text" placeholder="Email Address">
+                            <input type="email" id="paypal-email" placeholder="Email Address">
                         </div>
                     </div>
 
@@ -244,7 +244,7 @@ $cart_items = json_decode($cart_json, true);
     </div>
 
     <script>
-        const subtotal = <?= floatval($subtotal) ?>;
+        const subtotal = <?= floatval($subtotal ?? 0) ?>;
         const taxRate = 0.08;
     </script>
 
