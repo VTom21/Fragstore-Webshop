@@ -58,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="Log In.css">
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <link rel="icon" type="image/x-icon" href="/icons/array.png">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <title>Login | Fragstore</title>
 </head>
 
@@ -91,6 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Don't have an account?
         <a href="../signup/Sign Up.php">Register here</a>
       </div>
+
     </div>
   </div>
 
