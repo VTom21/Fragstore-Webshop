@@ -6,6 +6,7 @@ console.log(decode);
 let orderContent = ``;
 let total = parseFloat(urlparams.get("total"));
 let currency = urlparams.get("currency");
+let user_email = urlparams.get("email");
 
 decode.forEach(item => {
   orderContent += `
@@ -40,7 +41,7 @@ const params = {
   title: "Order Summary",
   welcome: "Your Order has arrived",
   introduction:"Thanks for your purchase at Fragstore! We’re excited to let you know that your order was successful. Below you’ll find a summary of what you ordered, including quantities and pricing. If you have any questions or need help with your order, feel free to reply to this email — we’ve got your back.",
-  user_email: "tamas.visegradi@gmail.com",
+  user_email: user_email,
   message: orderContent,
   logos: `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
   <tr>

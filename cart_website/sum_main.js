@@ -185,25 +185,27 @@ UpdateCurrency();
 
 // Checkout button
 function processCheckout() {
+    // Get selected payment
+    const payment = document.querySelector('input[name="payment"]:checked')?.value;
 
-    if(!ValidateDelivery()){
-        return;
-    }
+    const cardEmail = document.getElementById('card-email');
+    const paypalEmail = document.getElementById('paypal-email');
 
-    if(!ValidateAddress()){
-        return;
-    }
+    if(!ValidateDelivery()) return;
+    if(!ValidateAddress()) return;
+    if(!ValidatePayment()) return;
 
-    if(!ValidatePayment()){
-        return;
-    }
     const shipping = shippingCost.textContent === 'Free' ? 0 : parseFloat(shippingCost.textContent.replace(currency_local, '').trim());
-
     const tax = subtotal * taxRate;
     const total = subtotal + tax + shipping;
 
     const cartItemsParams = encodeURIComponent(JSON.stringify(cart_items));
     const totalParams = encodeURIComponent(total.toFixed(2));
 
-    window.location.href = `../order_successful/success.php?cart=${cartItemsParams}&total=${totalParams}&currency=${currency_local}`;
+    let email = '';
+    if (payment === 'card' && cardEmail) email = cardEmail.value;
+    else if (payment === 'paypal' && paypalEmail) email = paypalEmail.value;
+
+    window.location.href = `../order_successful/success.php?cart=${cartItemsParams}&total=${totalParams}&currency=${currency_local}&email=${encodeURIComponent(email)}`;
 }
+
