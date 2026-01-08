@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Jan 07. 18:30
+-- Létrehozás ideje: 2026. Jan 08. 11:36
 -- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.0.30
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,9 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Tábla szerkezet ehhez a táblához `awards`
 --
-
-CREATE DATABASE IF NOT EXISTS videogames;
-USE videogames;
 
 CREATE TABLE `awards` (
   `award_id` int(11) NOT NULL,
@@ -111,7 +108,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (15, 'https://upload.wikimedia.org/wikipedia/en/a/ae/Tetris_Effect_cover.jpg', 'Tetris Effect', '2018-11-09', 'Puzzle', 'PC, PS4, Xbox, VR', 19.99, 0, 0),
 (16, 'https://media.printler.com/media/photo/187246.jpg?rmode=crop&width=638&height=900', 'Doom Eternal', '2020-03-20', 'FPS', 'PC, PS4, Xbox, Switch', 39.99, 0, 0),
 (17, 'https://media.wired.com/photos/65de6b587f1f5ec3f36a117e/3:2/w_2560%2Cc_limit/Stardew-Valley-Update-Announcement-Gear-Multiplayer_Screenshot2.jpg', 'Stardew Valley', '2016-02-26', 'Simulation', 'PC, Mobile, Console', 14.99, 0, 0),
-(18, 'https://assets-prd.ignimgs.com/2021/12/14/leagueoflegends-1639513774570.jpg', 'League of Legends', '2009-10-27', 'MOBA', 'PC', 0.00, 0, 0),
+(18, 'https://images.gamewatcherstatic.com/image/file/5/83/131635/LOLWall.jpg', 'League of Legends', '2009-10-27', 'MOBA', 'PC', 0.00, 0, 0),
 (19, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSznnWoYN2cmS-3P49_yvjpUeAToiRDPa7JZQ&s', 'Apex Legends', '2019-02-04', 'Battle Royale', 'PC, Console', 0.00, 0, 0),
 (20, 'https://upload.wikimedia.org/wikipedia/en/d/df/Resident_Evil_4_remake_cover_art.jpg', 'Resident Evil 4 Remake', '2023-03-24', 'Survival Horror', 'PC, PS5, Xbox', 59.99, 0, 0),
 (21, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2420110/capsule_616x353.jpg?t=1737564719', 'Horizon Forbidden West', '2022-02-18', 'Action RPG', 'PS4, PS5', 69.99, 0, 0),
@@ -388,7 +385,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (313, 'https://upload.wikimedia.org/wikipedia/en/8/86/The_Last_of_Us_Part_I_cover.jpg', 'The Last of Us Part I', '2022-09-02', 'Action-Adventure', 'PS5, PC', 69.99, 0, 0),
 (314, 'https://upload.wikimedia.org/wikipedia/en/4/4f/TLOU_P2_Box_Art_2.png', 'The Last of Us Part II Remastered', '2024-01-19', 'Action-Adventure', 'PS5', 49.99, 0, 0),
 (315, 'https://cdn.mobygames.com/covers/1762685-outlast-playstation-4-front-cover.jpg', 'Outlast', '2013-09-04', 'Horror', 'PC, PS4, Xbox One, Switch', 14.99, 0, 0),
-(316, 'https://www.gamechannel.hu/pictures/kifuto/outlast-2_1.jpg', 'Outlast 2', '2017-04-25', 'Horror', 'PC, PS4, Xbox One, Switch', 19.99, 0, 0),
+(316, 'https://gfn.ru/media/images/wide_art_image-outlast-2-d2b649d8.original.jpg', 'Outlast 2', '2017-04-25', 'Horror', 'PC, PS4, Xbox One, Switch', 19.99, 0, 0),
 (317, 'https://upload.wikimedia.org/wikipedia/en/8/81/The_Outlast_Trials_cover.jpg', 'The Outlast Trials', '2023-05-18', 'Horror', 'PC, PS5, Xbox Series X/S', 39.99, 0, 0),
 (318, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY83ZNMpxaNc3iKtiyyajp-JuonaFb0IIxdQ&s', 'Wolfenstein: The New Order', '2014-05-20', 'FPS', 'PC, PS4, Xbox One', 19.99, 0, 0),
 (319, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDhDCnma8Y27rfjO0-3ICOb0gIfqu1QlXY7w&s', 'Wolfenstein: The Old Blood', '2015-05-05', 'FPS', 'PC, PS4, Xbox One', 19.99, 0, 0),
@@ -521,7 +518,9 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (450, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $5', NULL, 'giftcards', 'Xbox', 5.00, 0, 0),
 (451, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $10', NULL, 'giftcards', 'Xbox', 10.00, 0, 0),
 (452, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $25', NULL, 'giftcards', 'Xbox', 25.00, 0, 0),
-(453, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $50', NULL, 'giftcards', 'Xbox', 50.00, 0, 0);
+(453, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $50', NULL, 'giftcards', 'Xbox', 50.00, 0, 0),
+(454, 'https://play-lh.googleusercontent.com/GTZLAsNg0oF2YQKK1sx0Sau0ZDQsOMl0MwZNuuGD0P5ps4MY3pd4lYgnk2Lqpw4pjxs', 'Snake', '1976-01-01', 'Arcade', 'Mobile, PC', 0.99, 0, 0),
+(455, 'https://i.guim.co.uk/img/media/8152f8ea7f06fd8ef5c68a3a594e6ac35dfd774b/0_342_800_480/master/800.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=42bb412858826e59cd33e40975ca3ee1', 'Pac-Man', '1980-05-22', 'Arcade', 'Arcade, PC, Console', 4.99, 1, 20);
 
 -- --------------------------------------------------------
 
@@ -760,7 +759,7 @@ ALTER TABLE `awards`
 -- AUTO_INCREMENT a táblához `datas`
 --
 ALTER TABLE `datas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=454;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=456;
 
 --
 -- AUTO_INCREMENT a táblához `developers`
