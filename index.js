@@ -109,6 +109,7 @@ $scope.openCart = function (game) {
 
   $scope.pacmanCounter = 0;
   $scope.snakeCounter = 0;
+  $scope.tetrisCounter = 0;
 
   $scope.easter_egg = function (game) {
     if (game.name.toLowerCase() === "pac-man") {
@@ -126,6 +127,15 @@ $scope.openCart = function (game) {
 
       if ($scope.snakeCounter >= 5) {
         window.location.href = "../redirect/redirect.php?destination=../snake/snake.php";
+      }
+    }
+
+    if (game.name.toLowerCase() === "tetris effect") {
+      // Use Angular's ng-click on the image
+      $scope.tetrisCounter++; // increment counter on each click
+
+      if ($scope.tetrisCounter >= 5) {
+        window.location.href = "http://localhost:4000/";
       }
     }
   };
