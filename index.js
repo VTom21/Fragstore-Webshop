@@ -199,7 +199,7 @@ $scope.openCart = function (game) {
         const stockRef = db.ref('games/' + game.id + '/stock');
         stockRef.on('value', function(snapshot) {
             game.stock = snapshot.val() || 0;
-            $scope.$apply();
+            $scope.$evalAsync();
         });
 
         if (game.isDiscount == 1 &&game.discountPerc != null) {

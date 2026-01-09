@@ -27,6 +27,7 @@ try {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +35,7 @@ try {
     <link rel="icon" type="image/x-icon" href="/icons/array.png">
     <title>Order Summary</title>
 </head>
+
 <body>
     <div class="container">
         <div class="success-banner">
@@ -54,42 +56,7 @@ try {
             </div>
         </div>
 
-        <?php if (!empty($cart_items)): ?>
-            <div class="summary-card">
-                <h2 class="section-title">Order Details</h2>
-                <div class="item-list">
-                    <?php 
-                    $subtotal = 0;
-                    foreach($cart_items as $item): 
-                        $item_total = $item["total_prize"] ?? 0;
-                        $subtotal += $item_total;
-                    ?>
-                        <div class="item-row">
-                            <div class="item-info">
-                                <div class="item-name"><?= htmlspecialchars($item["name"]) ?></div>
-                                <div class="item-quantity">Qty: <?= htmlspecialchars($item["quantity"]) ?></div>
-                            </div>
-                            <div class="item-price"><?= htmlspecialchars($currency_local) ?> <?= number_format($item_total, 2) ?></div>
-                        </div>
-                    <?php endforeach ?>
-                </div>
 
-                <div class="totals">
-                    <div class="total-row">
-                        <span>Subtotal</span>
-                        <span><?= htmlspecialchars($currency_local) ?> <?= number_format($subtotal, 2) ?></span>
-                    </div>
-                    <div class="total-row">
-                        <span>Tax</span>
-                        <span><?= htmlspecialchars($currency_local) ?> <?= number_format($subtotal * 0.08, 2) ?></span>
-                    </div>
-                    <div class="total-row grand-total">
-                        <span>Total Paid</span>
-                        <span class="value"><?= htmlspecialchars($currency_local) ?> <?= number_format($total_num, 2) ?></span>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>
 
         <div class="actions">
             <a href="../games_main.php" class="btn btn-secondary">Continue Shopping</a>
@@ -100,7 +67,27 @@ try {
         </div>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBnS-LKU-wG1f4WyUeGUTV8KYQsApoWvUc",
+            authDomain: "delivery-96dc7.firebaseapp.com",
+            projectId: "delivery-96dc7",
+            storageBucket: "delivery-96dc7.firebasestorage.app",
+            messagingSenderId: "1071368884734",
+            appId: "1:1071368884734:web:18bc322a07a34d959330af",
+            measurementId: "G-WVFVSRFGY6",
+            databaseURL: "https://delivery-96dc7-default-rtdb.europe-west1.firebasedatabase.app"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+
+        const database = firebase.database(app);
+    </script>
     <script src="success.js"></script>
 </body>
+
 </html>

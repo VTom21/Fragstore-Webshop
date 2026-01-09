@@ -4,18 +4,22 @@ const cart_items = JSON.parse(parameters.get("cart") || "[]");
 console.log(cart_items);
 sessionStorage.setItem('cart', JSON.stringify(cart_items));
 
+// subtotal and taxRate are already declared in the PHP page inline script
+// Just verify they exist
+if (typeof subtotal === 'undefined') {
+    console.error('Subtotal not defined from PHP');
+}
+if (typeof taxRate === 'undefined') {
+    console.error('taxRate not defined from PHP');
+}
+
 let currency_local = localStorage.getItem("currency");
 
 const deliveryRadios = document.querySelectorAll('input[name="delivery"]');
-
 const addressSection = document.getElementById('address-section');
-
 const shippingCost = document.getElementById('shipping-amount');
-
 const paymentRadios = document.querySelectorAll('input[name="payment"]');
-
 const cardSection = document.getElementById('card-section');
-
 const paypalSection = document.querySelector('.paypal-section');
 
 function isEmpty(value) {
@@ -28,11 +32,8 @@ function fail(message) {
 }
 
 function UpdateCurrency() {
-
-
     const tax = subtotal * taxRate;
     const total = subtotal + tax + currentShipping;
-
 
     document.getElementById('subtotal-amount').textContent = `${subtotal.toFixed(2)} ${currency_local}`;
     document.getElementById('tax-amount').textContent = `${tax.toFixed(2)} ${currency_local}`;
@@ -43,9 +44,7 @@ document.querySelectorAll('.summary-item-price').forEach(el => {
     el.textContent = `${el.textContent} ${currency_local}`;
 });
 
-
 //Validator Functions
-
 function ValidateDelivery() {
     const delivery = document.querySelector('input[name="delivery"]:checked');
     if (!delivery) {
@@ -79,7 +78,7 @@ function ValidateAddress() {
 
 function ValidatePayment() {
     let payment = document.querySelector('input[name="payment"]:checked');
-    if (!payment) return fail('Please select a delivery method.');
+    if (!payment) return fail('Please select a payment method.');
 
     const cardNumber = document.getElementById('card-number');
     const cardName = document.getElementById('card-name');
@@ -92,27 +91,24 @@ function ValidatePayment() {
 
     switch (payment.value) {
         case 'card':
-            if (cardSection.style.display !== 'block') break; // skip if hidden
+            if (cardSection.style.display !== 'block') break;
             if (isEmpty(cardNumber.value) || isEmpty(cardName.value) || isEmpty(cardExpiry.value) || isEmpty(cardCvc.value) || isEmpty(cardEmail.value)) {
                 return fail("Please fill in all card details.");
             }
             break;
     
         case 'paypal':
-            if (paypalSection.style.display !== 'block') break; // skip if hidden
+            if (paypalSection.style.display !== 'block') break;
             if (isEmpty(paypalNumber.value) || isEmpty(paypalEmail.value)) {
                 return fail("Please fill in all PayPal details.");
             }
             break;
     
         case 'cash':
-            // nothing extra
             break;
     }
-    
 
     return true;
-
 }
 
 let currentShipping = 0;
@@ -122,8 +118,6 @@ function updateShipping() {
     const selected = selectedRadio ? selectedRadio.value : 'digital';
 
     const cashOn = document.querySelector('input[name="payment"][value="cash"]');
-
-    
     const cashOnDiv = cashOn.closest('.radio-card');
 
     let shipping = 0;
@@ -141,15 +135,11 @@ function updateShipping() {
         shipping = 2.99;
     }
 
-    currentShipping = shipping; // store numeric value
+    currentShipping = shipping;
     shippingCost.textContent = shipping === 0 ? 'Free' : `${shipping.toFixed(2)} ${currency_local}`;
-
-    const tax = subtotal * taxRate;
-    const total = subtotal + tax + currentShipping;
 
     UpdateCurrency();
 }
-
 
 // Payment section toggle
 function updatePaymentSections() {
@@ -157,20 +147,13 @@ function updatePaymentSections() {
     if (!selectedRadio) return;
 
     if (selectedRadio.value === 'card') {
-
         cardSection.style.display = 'block';
-
         paypalSection.style.display = 'none';
-
     } else if (selectedRadio.value === 'paypal') {
-
         cardSection.style.display = 'none';
-
         paypalSection.style.display = 'block';
     } else {
-
         cardSection.style.display = 'none';
-
         paypalSection.style.display = 'none';
     }
 }
@@ -190,7 +173,12 @@ function processCheckout() {
     if(!ValidateAddress()) return;
     if(!ValidatePayment()) return;
 
-    // 2️⃣ Prepare payload
+    // 2️⃣ Calculate final amounts
+    const tax = subtotal * taxRate;
+    const finalTotal = subtotal + tax + currentShipping;
+    const userEmail = document.getElementById('card-email')?.value || document.getElementById('paypal-email')?.value || '';
+
+    // 3️⃣ Prepare payload
     const payload = {
         cart: cart_items.map(item => {
             const newItem = {...item};
@@ -218,36 +206,33 @@ function processCheckout() {
             number: document.getElementById('paypal-number')?.value || ''
         },
         subtotal: subtotal,
-        tax: subtotal * taxRate,
+        tax: tax,
         shipping: currentShipping,
-        total: subtotal + subtotal * taxRate + currentShipping,
+        total: finalTotal,
         timestamp: new Date().toISOString(),
         status: "pending"
     };
 
-    // 3️⃣ Store order info in sessionStorage for success page
+    // 4️⃣ Store order info in sessionStorage for success page
     sessionStorage.setItem('cart', JSON.stringify(payload.cart));
     sessionStorage.setItem('currency', payload.currency);
     sessionStorage.setItem('subtotal', payload.subtotal);
     sessionStorage.setItem('tax', payload.tax);
     sessionStorage.setItem('shipping', payload.shipping);
     sessionStorage.setItem('total', payload.total);
-    sessionStorage.setItem('user_email', payload.card.email || payload.paypal.email);
+    sessionStorage.setItem('user_email', userEmail);
 
-    // 4️⃣ Push to Firebase
+    // 5️⃣ Push to Firebase
     const ordersRef = firebase.database().ref('orders');
     const newOrderRef = ordersRef.push();
     newOrderRef.set(payload)
         .then(() => {
-            // 5️⃣ Redirect to success page
-            window.location.href = `../order_successful/success.php?order_id=${newOrderRef.key}`;
+            // 6️⃣ Redirect to success page with URL parameters
+            const cartEncoded = encodeURIComponent(JSON.stringify(payload.cart));
+            window.location.href = `../order_successful/success.php?order_id=${newOrderRef.key}&cart=${cartEncoded}&total=${finalTotal.toFixed(2)}&currency=${currency_local}&email=${userEmail}`;
         })
         .catch(err => {
             console.error(err);
             alert("An error occurred while saving your order.");
         });
 }
-
-
-
-
