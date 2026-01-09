@@ -25,7 +25,6 @@ function resetStock($value, &$firebaseData){
 
 // --- Reset stock to 500 ---
 if (!empty($firebaseData)) {
-
     // --- Push updated data back to Firebase ---
     $options = [
         'http' => [

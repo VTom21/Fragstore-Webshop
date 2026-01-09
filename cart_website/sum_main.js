@@ -167,6 +167,12 @@ updateShipping();
 updatePaymentSections();
 UpdateCurrency();
 
+function Clean(obj) {
+    return JSON.parse(JSON.stringify(obj, (key, value) => 
+        key === '$$hashKey' ? undefined : value
+    ));
+}
+
 function processCheckout() {
     // 1️⃣ Validation
     if(!ValidateDelivery()) return;
@@ -180,12 +186,7 @@ function processCheckout() {
 
     // 3️⃣ Prepare payload
     const payload = {
-        cart: cart_items.map(item => {
-            const newItem = {...item};
-            delete newItem.$$hashKey;
-            if(newItem.gameRef) delete newItem.gameRef.$$hashKey;
-            return newItem;
-        }),
+        cart: Clean(cart_items),
         delivery: document.querySelector('input[name="delivery"]:checked').value,
         payment: document.querySelector('input[name="payment"]:checked').value,
         currency: currency_local,
@@ -213,14 +214,6 @@ function processCheckout() {
         status: "pending"
     };
 
-    // 4️⃣ Store order info in sessionStorage for success page
-    sessionStorage.setItem('cart', JSON.stringify(payload.cart));
-    sessionStorage.setItem('currency', payload.currency);
-    sessionStorage.setItem('subtotal', payload.subtotal);
-    sessionStorage.setItem('tax', payload.tax);
-    sessionStorage.setItem('shipping', payload.shipping);
-    sessionStorage.setItem('total', payload.total);
-    sessionStorage.setItem('user_email', userEmail);
 
     // 5️⃣ Push to Firebase
     const ordersRef = firebase.database().ref('orders');
