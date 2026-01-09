@@ -3,6 +3,8 @@
 $cart_json = $_GET["cart"] ?? "[]";
 $cart_items = json_decode($cart_json, true);
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -242,10 +244,29 @@ $cart_items = json_decode($cart_json, true);
             </div>
         </div>
     </div>
-
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <script>
         const subtotal = <?= floatval($subtotal ?? 0) ?>;
         const taxRate = 0.08;
+
+        const firebaseConfig = {
+        apiKey: "AIzaSyBnS-LKU-wG1f4WyUeGUTV8KYQsApoWvUc",
+        authDomain: "delivery-96dc7.firebaseapp.com",
+        projectId: "delivery-96dc7",
+        storageBucket: "delivery-96dc7.firebasestorage.app",
+        messagingSenderId: "1071368884734",
+        appId: "1:1071368884734:web:18bc322a07a34d959330af",
+        measurementId: "G-WVFVSRFGY6",
+        databaseURL: "https://delivery-96dc7-default-rtdb.europe-west1.firebasedatabase.app"
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+
+// Use database in the correct region
+const database = firebase.database(app);
+
     </script>
 
     <script src="sum_main.js"></script>

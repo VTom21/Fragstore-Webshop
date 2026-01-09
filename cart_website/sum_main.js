@@ -2,6 +2,7 @@
 const parameters = new URLSearchParams(window.location.search);
 const cart_items = JSON.parse(parameters.get("cart") || "[]");
 console.log(cart_items);
+sessionStorage.setItem('cart', JSON.stringify(cart_items));
 
 let currency_local = localStorage.getItem("currency");
 
@@ -183,29 +184,70 @@ updateShipping();
 updatePaymentSections();
 UpdateCurrency();
 
-// Checkout button
 function processCheckout() {
-    // Get selected payment
-    const payment = document.querySelector('input[name="payment"]:checked')?.value;
-
-    const cardEmail = document.getElementById('card-email');
-    const paypalEmail = document.getElementById('paypal-email');
-
+    // 1️⃣ Validation
     if(!ValidateDelivery()) return;
     if(!ValidateAddress()) return;
     if(!ValidatePayment()) return;
 
-    const shipping = shippingCost.textContent === 'Free' ? 0 : parseFloat(shippingCost.textContent.replace(currency_local, '').trim());
-    const tax = subtotal * taxRate;
-    const total = subtotal + tax + shipping;
+    // 2️⃣ Prepare payload
+    const payload = {
+        cart: cart_items.map(item => {
+            const newItem = {...item};
+            delete newItem.$$hashKey;
+            if(newItem.gameRef) delete newItem.gameRef.$$hashKey;
+            return newItem;
+        }),
+        delivery: document.querySelector('input[name="delivery"]:checked').value,
+        payment: document.querySelector('input[name="payment"]:checked').value,
+        currency: currency_local,
+        address: {
+            full_name: document.getElementById('full-name')?.value || '',
+            street: document.getElementById('street-address')?.value || '',
+            city: document.getElementById('city')?.value || '',
+            postal: document.getElementById('postal-code')?.value || '',
+            country: document.getElementById('country')?.value || '',
+            phone: document.getElementById('phone')?.value || ''
+        },
+        card: {
+            name: document.getElementById('card-name')?.value || '',
+            email: document.getElementById('card-email')?.value || ''
+        },
+        paypal: {
+            email: document.getElementById('paypal-email')?.value || '',
+            number: document.getElementById('paypal-number')?.value || ''
+        },
+        subtotal: subtotal,
+        tax: subtotal * taxRate,
+        shipping: currentShipping,
+        total: subtotal + subtotal * taxRate + currentShipping,
+        timestamp: new Date().toISOString(),
+        status: "pending"
+    };
 
-    const cartItemsParams = encodeURIComponent(JSON.stringify(cart_items));
-    const totalParams = encodeURIComponent(total.toFixed(2));
+    // 3️⃣ Store order info in sessionStorage for success page
+    sessionStorage.setItem('cart', JSON.stringify(payload.cart));
+    sessionStorage.setItem('currency', payload.currency);
+    sessionStorage.setItem('subtotal', payload.subtotal);
+    sessionStorage.setItem('tax', payload.tax);
+    sessionStorage.setItem('shipping', payload.shipping);
+    sessionStorage.setItem('total', payload.total);
+    sessionStorage.setItem('user_email', payload.card.email || payload.paypal.email);
 
-    let email = '';
-    if (payment === 'card' && cardEmail) email = cardEmail.value;
-    else if (payment === 'paypal' && paypalEmail) email = paypalEmail.value;
-
-    window.location.href = `../order_successful/success.php?cart=${cartItemsParams}&total=${totalParams}&currency=${currency_local}&email=${encodeURIComponent(email)}`;
+    // 4️⃣ Push to Firebase
+    const ordersRef = firebase.database().ref('orders');
+    const newOrderRef = ordersRef.push();
+    newOrderRef.set(payload)
+        .then(() => {
+            // 5️⃣ Redirect to success page
+            window.location.href = `../order_successful/success.php?order_id=${newOrderRef.key}`;
+        })
+        .catch(err => {
+            console.error(err);
+            alert("An error occurred while saving your order.");
+        });
 }
+
+
+
 
