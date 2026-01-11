@@ -142,6 +142,7 @@ $limit = 12;
         <li><a href="#" class="fr" data-flag="https://flagsapi.com/FR/flat/32.png">French</a></li>
         <li><a href="#" class="ru" data-flag="https://flagsapi.com/RU/flat/32.png">Russian</a></li>
         <li><a href="#" class="in" data-flag="https://flagsapi.com/IN/flat/32.png">Hindi</a></li>
+        <li><a href="#" class="jp" data-flag="https://flagsapi.com/JP/flat/32.png">Japanese</a></li>
       </ul>
     </div>
 

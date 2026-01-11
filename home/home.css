@@ -1396,7 +1396,7 @@ main {
   border-radius: 5px;
   display: none;
   position: absolute;
-  top: 47px;
+  top: 45px;
   left: 0;
   width: 150px;
 }
@@ -1447,6 +1447,11 @@ main {
 
 .in:before{
     background-image: url("https://flagsapi.com/IN/flat/32.png");
+    background-size: cover;
+}
+
+.jp:before{
+    background-image: url("https://flagsapi.com/JP/flat/32.png");
     background-size: cover;
 }
 
