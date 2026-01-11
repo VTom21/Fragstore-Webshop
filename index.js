@@ -69,7 +69,6 @@ $scope.convertPrice = function(game) {
 
 
 $scope.openCart = function (game) {
-    const stockRef = db.ref('games/' + game.id + '/stock');
     $scope.count++;
     let existingItem = $scope.cartItems.find((item) => item.id === game.id);
 
@@ -83,8 +82,6 @@ $scope.openCart = function (game) {
     if (existingItem) {
         existingItem.quantity += 1;
         existingItem.total_prize = parseFloat((existingItem.quantity * existingItem.prize).toFixed(2));
-        game.stock--;
-        stockRef.set(game.stock);
     } else {
         $scope.cartItems.push({
             gameRef: game,
@@ -95,8 +92,6 @@ $scope.openCart = function (game) {
             quantity: 1,
             total_prize: convertedPrice,
         });
-        game.stock--;
-        stockRef.set(game.stock);
     }
 
 
@@ -141,25 +136,17 @@ $scope.openCart = function (game) {
   };
 
   $scope.increaseQty = function (item) {
-    const stockRef = db.ref('games/' + item.gameRef.id + '/stock');
     $scope.count++;
     item.quantity++;
-    item.gameRef.stock--;
-    stockRef.set(item.gameRef.stock);
     item.total_prize = item.prize * item.quantity;
   };
 
   $scope.decreaseQty = function (item) {
-    const stockRef = db.ref('games/' + item.gameRef.id + '/stock');
     $scope.count--;
     if (item.quantity > 1) {
       item.quantity--;
-      item.gameRef.stock++;
-      stockRef.set(item.gameRef.stock);
       item.total_prize = item.prize * item.quantity;
     } else {
-      item.gameRef.stock++;
-      stockRef.set(item.gameRef.stock);
       let index = $scope.cartItems.indexOf(item);
       $scope.cartItems.splice(index, 1);
     }

@@ -80,7 +80,7 @@ try {
             messagingSenderId: "1071368884734",
             appId: "1:1071368884734:web:18bc322a07a34d959330af",
             measurementId: "G-WVFVSRFGY6",
-            databaseURL: "https://delivery-96dc7-default-rtdb.europe-west1.firebasedatabase.app"
+            databaseURL: "https://stock-9bff5-default-rtdb.europe-west1.firebasedatabase.app/"
         };
 
         const app = firebase.initializeApp(firebaseConfig);

@@ -9,6 +9,22 @@ let currency = urlparams.get("currency");
 let user_email = urlparams.get("email");
 
 decode.forEach(item => {
+  const stockRef = firebase.database().ref('games/' + item.id + '/stock');
+  
+  stockRef.once('value', function(snapshot) {
+    console.log('Current stock from Firebase:', snapshot.val());
+    
+    const currentStock = parseInt(snapshot.val()) || 0;
+    const newStock = Math.max(currentStock - item.quantity, 0);
+    
+    console.log(`${item.name}: ${currentStock} - ${item.quantity} = ${newStock}`);
+    
+    // Update the stock in Firebase
+    stockRef.set(newStock.toString());
+  });
+});
+
+decode.forEach(item => {
   orderContent += `
   <div style="display:flex;align-items:flex-start;background:#020617;padding:20px;border-radius:14px;margin-bottom:20px;">
     <img src="${item.game_pic}" style="width:80px;height:80px;border-radius:10px;object-fit:cover;margin-right:20px;">
