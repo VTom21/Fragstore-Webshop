@@ -17,7 +17,8 @@ $firebaseRaw = @file_get_contents($firebaseBaseUrl, false, $context);
 $firebaseData = json_decode($firebaseRaw, true);
 
 // --- Function to reset stock ---
-function resetStock($value, &$firebaseData){
+function resetStock($value, &$firebaseData)
+{
     foreach ($firebaseData as $gameId => &$game) {
         $game['stock'] = $value;
     }
@@ -44,7 +45,7 @@ if (!empty($firebaseData)) {
     if ($result === FALSE) {
         $error = error_get_last();
         echo "Error updating Firebase: " . $error['message'];
-    } 
+    }
 } else {
     echo "Firebase is empty. Nothing to reset.";
 }
@@ -88,8 +89,6 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                 <path d="M4 21h4v-8H4v8zm6 0h4v-14h-4v14zm6 0h4v-5h-4v5z" />
             </svg>
         </button>
-
-
 
         <button class="shop-cart" ng-click="cartOpen = true" data-count={{count}}>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#37e6ec73" viewBox="0 0 24 24">
@@ -161,7 +160,6 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
         </button>
 
 
-
         <div class="modal-backdrop" ng-show="rankingOpen">
             <div class="modal">
                 <h2>Game Rankings</h2><br>
@@ -177,11 +175,79 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
 
         <div class="input-div">
             <input type="text" id="input" name="input" placeholder="Enter a game..." ng-model="searchText" autocomplete="off">
+            <div class="top-controls">
             <button class="filter-button" ng-click="modalOpen = true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00f7ff44" viewBox="0 0 24 24">
                     <path d="M3 5h18v2H3zm3 6h12v2H6zm3 6h6v2H9z" />
                 </svg>
             </button>
+            <button class="hamburger-btn mobile-only" ng-click="menuOpen = !menuOpen">
+                ☰
+            </button>
+            </div>
+        </div>
+
+
+
+        <div class="hamburger-menu" ng-class="{active: menuOpen}">
+
+            <!-- Wishlist -->
+            <button ng-click="wishlistOpen = true; menuOpen = false">
+                Wishlist
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    fill="#37e6ec73"
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22">
+                    <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                </svg>
+            </button>
+
+            <!-- Cart -->
+            <button ng-click="cartOpen = true; menuOpen = false">
+                Cart
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    fill="#37e6ec73"
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 
+            0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.16 
+            14h9.58c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 
+            21.25 5H6.21L5.27 2H2v2h2l3.6 7.59-1.35 
+            2.44C5.52 14.37 6.23 16 7.16 16H19v-2H7.16z" />
+                </svg>
+
+                <span class="badge" ng-show="count > 0">{{count}}</span>
+            </button>
+
+            <!-- Stats -->
+            <button ng-click="rankingOpen = true; menuOpen = false">
+                Statistics
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    fill="#37e6ec73"
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22">
+                    <path d="M4 21h4v-8H4v8zm6 0h4v-14h-4v14zm6 0h4v-5h-4v5z" />
+                </svg>
+            </button>
+
+            <button ng-click="menuOpen = false">
+                Go Back
+                <svg xmlns="http://www.w3.org/2000/svg" ,
+                    fill="#37e6ec73" ,
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22">
+                    <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z" />
+                    <path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z" />
+                </svg>
+            </button>
+
+        </div>
+
+        <div class="hamburger-overlay" ng-show="menuOpen" ng-click="menuOpen = false">
         </div>
 
     </div>
@@ -371,17 +437,17 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                             </li>
                         </ul>
                     </div>
-                <div>
-            <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white" data-i18n="legal">Community</h2>
-            <ul class="text-gray-500 dark:text-gray-400 font-medium">
-              <li class="mb-4 links">
-                <a href="../redirect/redirect.php?destination=../awards/awards.php" class="links" data-i18n="privacy_policy">Game Awards</a>
-              </li>
-              <li class="links">
-                <a href="../pdf/Terms and Conditions.pdf" class="links" data-i18n="terms_and_conditions">Work with us</a>
-              </li>
-            </ul>
-          </div>
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white" data-i18n="legal">Community</h2>
+                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                            <li class="mb-4 links">
+                                <a href="../redirect/redirect.php?destination=../awards/awards.php" class="links" data-i18n="privacy_policy">Game Awards</a>
+                            </li>
+                            <li class="links">
+                                <a href="../pdf/Terms and Conditions.pdf" class="links" data-i18n="terms_and_conditions">Work with us</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" style="border-color:rgb(88, 86, 86);" />
@@ -433,27 +499,25 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
 
     <script>
         window.exchangeRates = <?php echo json_encode($data["rates"]); ?>;
-
     </script>
 
     <script src="index.js"></script>
     <script src="autofill.js"></script>
 
     <script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyARV1o5YF4c17jMNBNRLC_54wCr0H1nA0E",
-        authDomain: "stock-9bff5.firebaseapp.com",
-        databaseURL: "https://stock-9bff5-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "stock-9bff5",
-        storageBucket: "stock-9bff5.firebasestorage.app",
-        messagingSenderId: "517000549452",
-        appId: "1:517000549452:web:d83c4d8f92738e188fd0e9",
-        measurementId: "G-EQDYMYTVJM"
+        const firebaseConfig = {
+            apiKey: "AIzaSyARV1o5YF4c17jMNBNRLC_54wCr0H1nA0E",
+            authDomain: "stock-9bff5.firebaseapp.com",
+            databaseURL: "https://stock-9bff5-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "stock-9bff5",
+            storageBucket: "stock-9bff5.firebasestorage.app",
+            messagingSenderId: "517000549452",
+            appId: "1:517000549452:web:d83c4d8f92738e188fd0e9",
+            measurementId: "G-EQDYMYTVJM"
         };
 
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
-
     </script>
 
 
