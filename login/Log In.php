@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn-login login">Login</button>
 
-        <div class="cf-turnstile captcha" id="captcha" data-sitekey="0x4AAAAAACLE_NHQQP922tRh" data-callback="Captcha_Success"></div>
+        <div class="cf-turnstile captcha" id="captcha" data-sitekey="0x4AAAAAACLE_NHQQP922tRh" data-callback="Captcha_Success" data-appearance="interaction-only"></div>
       </form>
 
 
