@@ -385,7 +385,7 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
 
                 </div>
                 <br>
-                <p id="stock_text" ng-style="{'color': game.stock < 0 ? 'var(--stock)' : 'var(--out_stock)'}">
+                <p id="stock_text" ng-style="{'color': game.stock > 0 ? 'var(--stock)' : 'var(--out_stock)'}">
                     {{ game.stock > 0 ? 'In Stock' : 'Out of Stock' }}
                 </p>
                 <div class="btns">
