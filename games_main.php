@@ -4,6 +4,7 @@ error_reporting(0); // suppress warnings/notices
 // --- Firebase Config ---
 $firebaseBaseUrl = "https://stock-9bff5-default-rtdb.europe-west1.firebasedatabase.app/games.json";
 
+
 // --- Fetch current Firebase data ---
 $context = stream_context_create([
     'http' => ['method' => 'GET'],
@@ -15,6 +16,8 @@ $context = stream_context_create([
 
 $firebaseRaw = @file_get_contents($firebaseBaseUrl, false, $context);
 $firebaseData = json_decode($firebaseRaw, true);
+
+
 
 // --- Function to reset stock ---
 function resetStock($value, &$firebaseData)
@@ -60,6 +63,7 @@ $context = stream_context_create([
 $response = @file_get_contents($apiUrl, false, $context);
 $data = json_decode($response, true);
 $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
+
 ?>
 
 
@@ -176,14 +180,14 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
         <div class="input-div">
             <input type="text" id="input" name="input" placeholder="Enter a game..." ng-model="searchText" autocomplete="off">
             <div class="top-controls">
-            <button class="filter-button" ng-click="modalOpen = true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00f7ff44" viewBox="0 0 24 24">
-                    <path d="M3 5h18v2H3zm3 6h12v2H6zm3 6h6v2H9z" />
-                </svg>
-            </button>
-            <button class="hamburger-btn mobile-only" ng-click="menuOpen = !menuOpen">
-                ☰
-            </button>
+                <button class="filter-button" ng-click="modalOpen = true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00f7ff44" viewBox="0 0 24 24">
+                        <path d="M3 5h18v2H3zm3 6h12v2H6zm3 6h6v2H9z" />
+                    </svg>
+                </button>
+                <button class="hamburger-btn mobile-only" ng-click="menuOpen = !menuOpen">
+                    ☰
+                </button>
             </div>
         </div>
 
@@ -378,10 +382,12 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                     <p class="discount" ng-if="game.isDiscount == 1">
                         {{ convertPrice({prize: game.discountedPrize || game.prize}) }} {{select_currency}}
                     </p>
+
                 </div>
-
                 <br>
-
+                <p id="stock_text" ng-style="{'color': game.stock < 0 ? 'var(--stock)' : 'var(--out_stock)'}">
+                    {{ game.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+                </p>
                 <div class="btns">
                     <button class="buy_btn">Buy Now</button>
                     <button class="shop_btn" ng-click="openCart(game)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

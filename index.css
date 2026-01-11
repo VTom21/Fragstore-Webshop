@@ -27,6 +27,9 @@
 
   --lightblue: #00f7ff;
   --discount-color: #ff4d4f;
+
+  --stock: rgb(70, 167, 70);
+  --out_stock: rgb(218, 84, 84);
 }
 
 .light {
@@ -820,6 +823,10 @@ input[type="range"]::-webkit-slider-thumb {
   align-items: center;
   padding: 12px 16px; /* optional spacing */
   gap: 122px;
+}
+
+#stock_text{
+    padding: 10px 0px;
 }
 
 .badge {
