@@ -157,6 +157,13 @@ $scope.openCart = function (game) {
     window.location.href = "http://localhost:3000/cart_website/sum_main.php?cart=" + $scope.cart_data;
   };
 
+  $scope.Content = function(name, genre){
+    if (genre.toLowerCase() === 'giftcards') {
+        return; 
+    }
+    window.location.href = "http://localhost:3000/Content/Content.php?name=" + encodeURIComponent(name);
+  }
+
   //puts every platform into the platforms array - stores dictionary values
   //platforms: {"PC", false}
   for (var i = 0; i < platformNames.length; i++) {

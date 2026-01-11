@@ -20,6 +20,9 @@ try {
     $countStmt = $pdo->query("SELECT MAX(id) AS total FROM datas");
     $countResult = $countStmt->fetch(PDO::FETCH_ASSOC);
 
+    $nameCountStmt = $pdo->query("SELECT name FROM datas");
+    $nameResult = $nameCountStmt->fetch(PDO::FETCH_ASSOC);
+
 
     //Count total genres (DISTINCT -> no duplicates allowed)
     $genreCountStmt = $pdo->query("SELECT COUNT(DISTINCT genre) AS totalGenres FROM datas");
@@ -61,6 +64,7 @@ try {
 
     echo json_encode([
         'games' => $games,
+        'names' => $nameResult['name'],
         'total' => $countResult['total'],
         'totalGenres' => $genreCount['totalGenres'],
         'totalPlatforms' => $totalPlatforms,
