@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Jan 08. 11:36
+-- Létrehozás ideje: 2026. Jan 12. 11:51
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -91,7 +91,7 @@ CREATE TABLE `datas` (
 --
 
 INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platforms`, `prize`, `isDiscount`, `discountPerc`) VALUES
-(1, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/capsule_616x353.jpg?t=1748630546', 'Elden Ring', '2022-02-25', 'Action RPG', 'PC, PS5, Xbox Series X', 59.99, 1, 20),
+(1, 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/capsule_616x353.jpg?t=1748630546', 'Elden Ring', '2022-02-25', 'Action RPG', 'PC, PS5, Xbox Series X', 59.99, 0, 0),
 (2, 'https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png', 'Grand Theft Auto V', '2013-09-17', 'Action-Adventure', 'PC, PS4, PS5, Xbox', 29.99, 0, 0),
 (3, 'https://media.wired.com/photos/633c95ef85e7a4cc2f802256/master/pass/Breath-of-the-Wild-Casual-Gamer-Culture.jpg', 'The Legend of Zelda: Breath of the Wild', '2017-03-03', 'Action-Adventure', 'Nintendo Switch', 59.99, 0, 0),
 (4, 'https://upload.wikimedia.org/wikipedia/en/9/9f/Cyberpunk_2077_box_art.jpg', 'Cyberpunk 2077', '2020-12-10', 'RPG', 'PC, PS4, PS5, Xbox', 49.99, 0, 0),
@@ -100,7 +100,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (7, 'https://portforward.com/call-of-duty-modern-warfare-ii/call-of-duty-modern-warfare-ii-header-small.webp', 'Call of Duty: Modern Warfare II', '2022-10-28', 'FPS', 'PC, PS5, Xbox', 69.99, 0, 0),
 (8, 'https://cdn2.unrealengine.com/hades-wallpaper-01-1920x1079-2edc605bbf52.jpg', 'Hades', '2020-09-17', 'Roguelike', 'PC, Switch, PS4, Xbox', 24.99, 0, 0),
 (9, 'https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg', 'Animal Crossing: New Horizons', '2020-03-20', 'Simulation', 'Nintendo Switch', 59.99, 0, 0),
-(10, 'https://images.squarespace-cdn.com/content/v1/606d159a953867291018f801/1619987722169-VV6ZASHHZNRBJW9X0PLK/Key_Art_02_layeredjpg.jpg?format=1500w', 'Hollow Knight', '2017-02-24', 'Metroidvania', 'PC, Switch, PS4, Xbox', 14.99, 1, 15),
+(10, 'https://images.squarespace-cdn.com/content/v1/606d159a953867291018f801/1619987722169-VV6ZASHHZNRBJW9X0PLK/Key_Art_02_layeredjpg.jpg?format=1500w', 'Hollow Knight', '2017-02-24', 'Metroidvania', 'PC, Switch, PS4, Xbox', 14.99, 0, 0),
 (11, 'https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg', 'Red dead Redemption 2', '2018-10-26', 'Action-Adventure', 'PC, PS4, Xbox', 39.99, 0, 0),
 (12, 'https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg', 'God of War', '2018-04-20', 'Action', 'PS4, PS5, PC', 49.99, 0, 0),
 (13, 'https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltdabc3782553659f1/6785b50a1970a9f14eb5ccd7/xboxshowcase.png', 'Overwatch 2', '2022-10-04', 'FPS', 'PC, Console', 0.00, 0, 0),
@@ -178,7 +178,7 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (86, 'https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Tom_Clancy%27s_Rainbow_Six_Siege_cover_art.jpg/250px-Tom_Clancy%27s_Rainbow_Six_Siege_cover_art.jpg', 'Rainbow Six Siege', '2015-12-01', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 19.99, 0, 0),
 (87, 'https://e.snmc.io/lk/lv/x/edd3c892d16df89d7dfea2a16f63c9a4/7740094', 'Tekken 7', '2017-06-02', 'Fighting', 'PC,PS4,Xbox One', 39.99, 0, 0),
 (88, 'https://upload.wikimedia.org/wikipedia/en/9/99/ACOdysseyCoverArt.png', 'Assassin’s Creed Odyssey', '2018-10-05', 'RPG', 'PC,PS4,Xbox One,Switch,Stadia', 39.99, 0, 0),
-(89, 'https://upload.wikimedia.org/wikipedia/en/3/31/BOCW_Cover_Art.jpg', 'Call of Duty: Black Ops Cold War', '2020-11-13', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0, 0),
+(89, 'https://upload.wikimedia.org/wikipedia/en/3/31/BOCW_Cover_Art.jpg', 'Call of Duty: Black Ops Cold War', '2020-11-13', 'Shooter', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 1, 42),
 (90, 'https://upload.wikimedia.org/wikipedia/en/c/cb/Devil_May_Cry_5.jpg', 'Devil May Cry 5', '2019-03-08', 'Action', 'PC,PS4,PS5,Xbox One,Xbox Series X', 39.99, 0, 0),
 (91, 'https://upload.wikimedia.org/wikipedia/en/5/54/Wolfenstein-ii-the-new-colossus-cover.jpeg', 'Wolfenstein II: The New Colossus', '2017-10-27', 'Shooter', 'PC,PS4,Xbox One,Switch', 39.99, 0, 0),
 (92, 'https://upload.wikimedia.org/wikipedia/en/thumb/8/86/F1_2021_cover_art.jpg/250px-F1_2021_cover_art.jpg', 'F1 2021', '2021-07-16', 'Racing', 'PC,PS4,PS5,Xbox One,Xbox Series X', 59.99, 0, 0),
@@ -224,7 +224,6 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (132, 'https://upload.wikimedia.org/wikipedia/en/d/d7/Until_Dawn_cover_art.jpg', 'Until Dawn', '2015-08-25', 'Horror', 'PS4', 39.99, 0, 0),
 (133, 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/10/alien-isolation-sequel-xenomorph.jpg', 'Alien: Isolation', '2014-10-07', 'Horror', 'PC,PS4,Xbox One,PS3,Xbox 360', 29.99, 0, 0),
 (134, 'https://www.arthipo.com/image/cache/catalog/poster/game/pgame15-battlefield-1-game-poster-2-1000x563.webp', 'Battlefield 1', '2016-10-21', 'Shooter', 'PC,PS4,Xbox One', 39.99, 0, 0),
-(135, 'https://store-images.s-microsoft.com/image/apps.997.70803643320167611.6d02d576-6cc3-42f8-8d47-36718b0154f8.dce9b715-083d-4dbf-b104-53a68a4fbe8a', 'BioShock Infinite', '2013-03-26', 'Shooter', 'PC,PS3,Xbox 360', 19.99, 0, 0),
 (136, 'https://upload.wikimedia.org/wikipedia/en/1/1f/Dead_cells_cover_art.png', 'Dead Cells', '2018-08-07', 'Roguelike', 'PC,PS4,Xbox One,Switch', 24.99, 0, 0),
 (137, 'https://upload.wikimedia.org/wikipedia/en/6/68/Halo_Guardians.png', 'Halo 5: Guardians', '2015-10-27', 'Shooter', 'Xbox One', 29.99, 0, 0),
 (138, 'https://hype.games/_next/image?url=https%3A%2F%2Fimg.hype.games%2Fcdn%2F4becd989-efd6-4bf2-8b59-4f7f143da7bcInjustice%202%20cover.jpg&w=3840&q=75', 'Injustice 2', '2017-05-16', 'Fighting', 'PC,PS4,Xbox One', 39.99, 0, 0),
@@ -361,14 +360,14 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (272, 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f6/MWIII_Cover_Art.png/250px-MWIII_Cover_Art.png', 'Call of Duty: Modern Warfare III', '2011-11-08', 'FPS', 'PC, Console', 39.99, 0, 0),
 (273, 'https://upload.wikimedia.org/wikipedia/en/0/05/Call_of_Duty_Black_Ops_II_box_artwork.png', 'Call of Duty: Black Ops II', '2012-11-13', 'FPS', 'PC, Console', 59.99, 0, 0),
 (274, 'https://upload.wikimedia.org/wikipedia/en/9/9c/Call_of_duty_ghosts_box_art.jpg', 'Call of Duty: Ghosts', '2013-11-05', 'FPS', 'PC, Console', 59.99, 0, 0),
-(275, 'https://upload.wikimedia.org/wikipedia/en/3/3b/Advanced_Warfare.jpg', 'Call of Duty: Advanced Warfare', '2014-11-04', 'FPS', 'PC, Console', 59.99, 0, 0),
-(276, 'https://upload.wikimedia.org/wikipedia/en/b/b1/Black_Ops_3.jpg', 'Call of Duty: Black Ops III', '2015-11-06', 'FPS', 'PC, Console', 59.99, 0, 0),
-(277, 'https://upload.wikimedia.org/wikipedia/en/8/87/Call_of_Duty_Infinite_Warfare_cover.jpg', 'Call of Duty: Infinite Warfare', '2016-11-04', 'FPS', 'PC, Console', 59.99, 0, 0),
-(278, 'https://upload.wikimedia.org/wikipedia/en/1/18/Call_of_Duty_WWII_Cover_Art.jpg', 'Call of Duty: WWII', '2017-11-03', 'FPS', 'PC, Console', 59.99, 0, 0),
-(279, 'https://upload.wikimedia.org/wikipedia/en/1/1c/Call_of_Duty_Black_Ops_4_official_box_art.jpg', 'Call of Duty: Black Ops 4', '2018-10-12', 'FPS', 'PC, Console', 59.99, 0, 0);
+(275, 'https://upload.wikimedia.org/wikipedia/en/3/3b/Advanced_Warfare.jpg', 'Call of Duty: Advanced Warfare', '2014-11-04', 'FPS', 'PC, Console', 59.99, 1, 60),
+(276, 'https://upload.wikimedia.org/wikipedia/en/b/b1/Black_Ops_3.jpg', 'Call of Duty: Black Ops III', '2015-11-06', 'FPS', 'PC, Console', 59.99, 1, 55),
+(277, 'https://upload.wikimedia.org/wikipedia/en/8/87/Call_of_Duty_Infinite_Warfare_cover.jpg', 'Call of Duty: Infinite Warfare', '2016-11-04', 'FPS', 'PC, Console', 59.99, 1, 70),
+(278, 'https://upload.wikimedia.org/wikipedia/en/1/18/Call_of_Duty_WWII_Cover_Art.jpg', 'Call of Duty: WWII', '2017-11-03', 'FPS', 'PC, Console', 59.99, 1, 70),
+(279, 'https://upload.wikimedia.org/wikipedia/en/1/1c/Call_of_Duty_Black_Ops_4_official_box_art.jpg', 'Call of Duty: Black Ops 4', '2018-10-12', 'FPS', 'PC, Console', 59.99, 1, 60),
+(280, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPEo_RnvLrhFIOi3DVBDQsPCLVjgbw64toag&s', 'Call of Duty: Modern Warfare', '2019-10-25', 'FPS', 'PC, Console', 59.99, 1, 75);
 INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platforms`, `prize`, `isDiscount`, `discountPerc`) VALUES
-(280, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPEo_RnvLrhFIOi3DVBDQsPCLVjgbw64toag&s', 'Call of Duty: Modern Warfare', '2019-10-25', 'FPS', 'PC, Console', 59.99, 0, 0),
-(281, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjSet4Ft3Y4J26WnQH-BStui44gbjzw1gsBQ&s', 'Call of Duty: Vanguard', '2021-11-05', 'FPS', 'PC, Console', 59.99, 0, 0),
+(281, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjSet4Ft3Y4J26WnQH-BStui44gbjzw1gsBQ&s', 'Call of Duty: Vanguard', '2021-11-05', 'FPS', 'PC, Console', 59.99, 1, 50),
 (282, 'https://upload.wikimedia.org/wikipedia/en/c/c9/Call_of_Duty_Black_Ops_6_Key_Art.png', 'Call of Duty: Black Ops 6', '2024-10-25', 'FPS', 'PC, Console', 79.99, 0, 0),
 (301, 'https://upload.wikimedia.org/wikipedia/en/a/a3/Call_of_Duty_Black_Ops_7_Key_Art.png', 'Call of Duty: Black Ops 7', '2025-11-14', 'FPS', 'PC, Console', 70.00, 0, 0),
 (302, 'https://upload.wikimedia.org/wikipedia/en/8/82/Gears_of_war_cover_art.jpg', 'Gears of War', '2006-11-07', 'TPS', 'Xbox 360, Windows', 0.00, 0, 0),
@@ -520,7 +519,72 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `genre`, `platfor
 (452, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $25', NULL, 'giftcards', 'Xbox', 25.00, 0, 0),
 (453, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $50', NULL, 'giftcards', 'Xbox', 50.00, 0, 0),
 (454, 'https://play-lh.googleusercontent.com/GTZLAsNg0oF2YQKK1sx0Sau0ZDQsOMl0MwZNuuGD0P5ps4MY3pd4lYgnk2Lqpw4pjxs', 'Snake', '1976-01-01', 'Arcade', 'Mobile, PC', 0.99, 0, 0),
-(455, 'https://i.guim.co.uk/img/media/8152f8ea7f06fd8ef5c68a3a594e6ac35dfd774b/0_342_800_480/master/800.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=42bb412858826e59cd33e40975ca3ee1', 'Pac-Man', '1980-05-22', 'Arcade', 'Arcade, PC, Console', 4.99, 1, 20);
+(455, 'https://i.guim.co.uk/img/media/8152f8ea7f06fd8ef5c68a3a594e6ac35dfd774b/0_342_800_480/master/800.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=42bb412858826e59cd33e40975ca3ee1', 'Pac-Man', '1980-05-22', 'Arcade', 'Arcade, PC, Console', 4.99, 0, 0),
+(456, 'https://m.media-amazon.com/images/I/71RKjZUwdRS._AC_SL1024_.jpg', 'Mega Man', '1987-12-17', 'Action-Platformer', 'NES', 19.99, 0, 0),
+(457, 'https://i.etsystatic.com/6824854/r/il/b28b90/6103193505/il_fullxfull.6103193505_1miy.jpg', 'Mega Man 2', '1988-12-24', 'Action-Platformer', 'NES', 19.99, 0, 0),
+(458, 'https://cdn.mobygames.com/81fddc0c-abb1-11ed-aecf-02420a000198.webp', 'Mega Man 3', '1990-09-30', 'Action-Platformer', 'NES', 19.99, 0, 0),
+(459, 'https://images.wallpapersden.com/image/download/john-madden-4k-madden-nfl-23_bWlmammUmZqaraWkpJRobWllrWdma2U.jpg', 'Madden NFL 23', '2022-08-19', 'Sports', 'PS4, Xbox, PC', 59.99, 0, 0),
+(460, 'https://store-images.s-microsoft.com/image/apps.35624.13918641613037022.bb7fbbfc-ad3b-4ed0-8af1-b9b474927fae.c82f71fa-558d-4264-9e3c-75d3234558ce?q=90&w=480&h=270', 'Madden NFL 24', '2023-08-18', 'Sports', 'PS4, PS5, Xbox, PC', 69.99, 0, 0),
+(461, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo4By9jdJJPTCALS_E0a5F9drtGcKW-SSpuA&s', 'Castlevania', '1986-09-26', 'Action', 'NES', 29.99, 0, 0),
+(462, 'https://f4.bcbits.com/img/a3955188387_16.jpg', 'Castlevania II: Simon\'s Quest', '1987-12-05', 'Action-Adventure', 'NES', 29.99, 0, 0),
+(463, 'https://i.scdn.co/image/ab67616d0000b27313e04e184973a57a66115390', 'Silent Hill', '1999-02-22', 'Survival Horror', 'PS1', 39.99, 0, 0),
+(464, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coavaf.jpg', 'Silent Hill 2', '2001-09-24', 'Survival Horror', 'PS2', 39.99, 0, 0),
+(465, 'https://cdn.mobygames.com/covers/5522421-the-sims-windows-front-cover.jpg', 'The Sims', '2000-02-04', 'Life Sim', 'PC', 39.99, 0, 0),
+(466, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4ja7.jpg', 'The Sims 2', '2004-09-14', 'Life Sim', 'PC', 39.99, 0, 0),
+(467, 'https://wallpapers.com/images/featured/the-sims-3-akvp0xziifs21rlg.jpg', 'The Sims 3', '2009-06-02', 'Life Sim', 'PC, PS3, Xbox 360', 49.99, 0, 0),
+(468, 'https://i.etsystatic.com/40271594/r/il/dac178/6143826289/il_fullxfull.6143826289_fibl.jpg', 'The Sims 4', '2014-09-02', 'Life Sim', 'PC, PS4, Xbox One', 59.99, 0, 0),
+(469, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co65yq.jpg', 'Dying Light', '2015-01-27', 'Action Horror', 'PS4, Xbox One, PC', 29.99, 0, 0),
+(470, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcaiogL1nXVk1gBpOIYYxiwjrcGMlr52tXeg&s', 'Dying Light 2', '2022-02-04', 'Action RPG', 'PS4, PS5, Xbox, PC', 49.99, 0, 0),
+(471, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3q8d.jpg', 'Notrium', '2003-01-01', 'Action-Adventure', 'PC', 9.99, 0, 0),
+(472, 'https://images.launchbox-app.com/5be4d322-827f-454d-acfb-082f03d5fed3.jpg', 'Among the Sleep', '2014-05-29', 'Adventure/Horror', 'PS4, Xbox One, PC', 14.99, 0, 0),
+(473, 'https://i.pinimg.com/originals/9f/0b/3a/9f0b3a1a34aaa8548612b7006be207f5.jpg', 'NBA 2K20', '2019-09-06', 'Sports', 'PS4, Xbox, PC', 59.99, 0, 0),
+(474, 'https://media.kgw.com/assets/KGW/images/390c85c2-3ed8-4e28-9087-9e2b282ed932/390c85c2-3ed8-4e28-9087-9e2b282ed932_750x422.jpg', 'NBA 2K21', '2020-09-04', 'Sports', 'PS4, PS5, Xbox, PC', 59.99, 0, 0),
+(475, 'https://cdn.mobygames.com/64c0cf20-aba5-11ed-aaf5-02420a00019c.webp', 'Prince of Persia: Sands of Time', '2003-10-07', 'Action-Adventure', 'PS2, Xbox, PC', 29.99, 0, 0),
+(476, 'https://cf.geekdo-images.com/G29rt1zm58bWp3z3gnezUQ__original/img/PEUoyqd6yHwZdaO0DrpnKCVTgfg=/0x0/filters:format(png)/pic8076574.png', 'Mass Effect', '2007-11-20', 'RPG', 'Xbox 360, PC', 59.99, 0, 0),
+(477, 'https://www.gamereactor.eu/media/85/masseffect2_188531.jpg', 'Mass Effect 2', '2010-01-26', 'RPG', 'Xbox 360, PC', 59.99, 0, 0),
+(478, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3ko7.jpg', 'Killzone', '2004-11-11', 'FPS', 'PS2', 49.99, 0, 0),
+(479, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3j9z.jpg', 'Killzone 2', '2009-02-25', 'FPS', 'PS3', 49.99, 0, 0),
+(480, 'https://cdn.mobygames.com/covers/20152110-the-crew-xbox-one-front-cover.png', 'The Crew', '2014-12-02', 'Racing', 'PS4, Xbox One, PC', 29.99, 0, 0),
+(481, 'https://cdn.mobygames.com/covers/9528417-the-crew-2-xbox-one-front-cover.jpg', 'The Crew 2', '2018-06-29', 'Racing', 'PS4, Xbox One, PC', 39.99, 0, 0),
+(482, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9blb.jpg', 'Dynasty Warriors', '1997-03-28', 'Hack & Slash', 'PS1, PC', 29.99, 0, 0),
+(483, 'https://m.media-amazon.com/images/M/MV5BM2Q2NzUyMTAtYWIzYi00YzNjLTkwYzYtMTU1YjAxOTRkYWE2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Dynasty Warriors 2', '2000-09-12', 'Hack & Slash', 'PS2, PC', 29.99, 0, 0),
+(484, 'https://fwcdn.pl/fpo/13/60/201360/7163820_3.3.jpg', 'Dragon Quest', '1986-05-27', 'RPG', 'NES', 60.00, 0, 0),
+(485, 'https://play-lh.googleusercontent.com/3m-_YW-VE_J3tICzqHwqmVwYWMwyIh9IO7h6Wh8bbLDvPKv1VOc2fpfIv0IZASVA1gNu=w526-h296-rw', 'Dragon Quest II: Luminaries of the Legendary Line', '1987-01-26', 'RPG', 'NES', 70.00, 0, 0),
+(486, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1xaj.jpg', 'Dragon Quest III: The Seeds of Salvation', '1988-02-10', 'RPG', 'NES', 80.00, 0, 0),
+(487, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQotUwwOpE0p2uWO7Dquz41SoQu-iffP6-Wdw&s', 'Dragon Quest IV: Chapters of the Chosen', '1990-02-11', 'RPG', 'NES', 90.00, 0, 0),
+(488, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz-KB8h7x0FhtUuNnDDzdJL1HIhcsL2yjdjA&s', 'Dragon Quest V: Hand of the Heavenly Bride', '1992-09-27', 'RPG', 'SNES', 100.00, 0, 0),
+(489, 'https://m.media-amazon.com/images/M/MV5BODRhZDJkZjctMThkOS00M2ZkLWE2OGQtODBiODdhMzQ5YjMwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Dragon Quest VI: Realms of Revelation', '1995-12-09', 'RPG', 'SNES', 120.00, 0, 0),
+(490, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1x9h.jpg', 'Dragon Quest VII: Fragments of the Forgotten Past', '2000-08-26', 'RPG', 'PS1', 50.00, 0, 0),
+(491, 'https://m.media-amazon.com/images/M/MV5BMTQ0OTkwOWUtYWQ5OS00NTA5LTg4N2EtZWMwMGYxYTY1YjJiXkEyXkFqcGc@._V1_.jpg', 'Dragon Quest VIII: Journey of the Cursed King', '2004-11-27', 'RPG', 'PS2', 25.00, 0, 0),
+(492, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQynMq_z3Lq0uNLXUw4Fmkux-RiGCU699jYfA&s', 'Dragon Quest IX: Sentinels of the Starry Skies', '2009-07-11', 'RPG', 'DS', 35.00, 0, 0),
+(493, 'https://www.keycense.com/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fkeycense.appspot.com%2Fo%2Fproducts%252F67d8273e10823f0c2b210127.jpg%3Falt%3Dmedia%26token%3D0e6deae5-0df9-42fd-ba89-2683e2c0c681&w=3840&q=60', 'Dragon Quest XI: Echoes of an Elusive Age', '2017-07-29', 'RPG', 'PS4, Switch, PC', 60.00, 0, 0),
+(494, 'https://civfanatics-data.community.forum/attachments/489/489902-ef99cb3c0adb40d7656c2b99b4c14f6b.jpg?hash=75nLPArbQN', 'Civilization I', '1991-09-30', 'Turn-Based Strategy', 'PC', 10.00, 0, 0),
+(495, 'https://cdn.mobygames.com/covers/4022192-sid-meiers-civilization-ii-windows-16-bit-front-cover.jpg', 'Civilization II', '1996-02-29', 'Turn-Based Strategy', 'PC', 15.00, 0, 0),
+(496, 'https://m.media-amazon.com/images/M/MV5BY2I4ZjEwNWEtNjljYi00MzVhLWI2OWMtYTc4NmEyZDI5MDk4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Civilization III', '2001-10-30', 'Turn-Based Strategy', 'PC', 20.00, 0, 0),
+(497, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGk9dH9IA9C_YJWiWXKxdvnL-3UrSKHepNJQ&s', 'Civilization IV', '2005-10-25', 'Turn-Based Strategy', 'PC', 25.00, 0, 0),
+(498, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-9TnXQbawpOHV-pkBP-trTMeSIk_OLv8SNA&s', 'Civilization V', '2010-09-21', 'Turn-Based Strategy', 'PC', 30.00, 0, 0),
+(499, 'https://sm.ign.com/t/ign_ap/cover/s/sid-meiers/sid-meiers-civilization-vi_h5wc.600.jpg', 'Civilization VI', '2016-10-21', 'Turn-Based Strategy', 'PC, Switch, PS4, Xbox One', 60.00, 0, 0),
+(500, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6uGPvPKThRJICZcqJcMtMoEPY5GJNoNTJsA&s', 'Civilization Revolution', '2008-02-26', 'Turn-Based Strategy', 'PS3, Xbox 360, DS', 15.00, 0, 0),
+(501, 'https://forums.civfanatics.com/media/civilization-revolution-2-japanese-cover.7059/full', 'Civilization Revolution 2', '2014-07-02', 'Turn-Based Strategy', 'iOS, Android', 10.00, 0, 0),
+(502, 'https://cdn.mobygames.com/covers/4146543-donkey-kong-game-boy-front-cover.jpg', 'Donkey Kong', '1981-07-09', 'Platformer', 'Arcade, NES', 100.00, 0, 0),
+(503, 'https://sm.ign.com/ign_ap/cover/d/donkey-kon/donkey-kong-jr_a27q.jpg', 'Donkey Kong Jr.', '1982-07-26', 'Platformer', 'Arcade, NES', 80.00, 0, 0),
+(504, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDFkXUBJIekyJMVfPIXVVk8GRR928YcvmOKQ&s', 'Donkey Kong 3', '1983-07-16', 'Shooter', 'Arcade, NES', 60.00, 0, 0),
+(505, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8d9n.jpg', 'Donkey Kong Country', '1994-11-21', 'Platformer', 'SNES', 150.00, 0, 0),
+(506, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_fowzppYAH_R-WYruLXr2sGgJOaZIUUtaEg&s', 'Donkey Kong Country 2: Diddy\'s Kong Quest', '1995-11-21', 'Platformer', 'SNES', 120.00, 0, 0),
+(507, 'https://m.media-amazon.com/images/M/MV5BY2I3MzdmN2UtYmZmYS00YzM2LWJkMDItNzBkNDM4YmVhMzI0XkEyXkFqcGc@._V1_.jpg', 'Donkey Kong Country 3: Dixie Kong\'s Double Trouble!', '1996-11-22', 'Platformer', 'SNES', 500.00, 0, 0),
+(508, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co289i.jpg', 'Donkey Kong 64', '1999-11-22', 'Platformer', 'N64', 50.00, 0, 0),
+(509, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScYy_QkbsTjjYhFt_LO8Lxs3ikQYDXrh16cQ&s', 'Donkey Kong Country Returns', '2010-11-21', 'Platformer', 'Wii, 3DS', 25.00, 0, 0),
+(510, 'https://upload.wikimedia.org/wikipedia/en/f/fb/DKC5_box_art.jpg', 'Donkey Kong Country: Tropical Freeze', '2014-02-21', 'Platformer', 'Wii U, Switch', 35.00, 0, 0),
+(511, 'https://cdn.mobygames.com/covers/3994202-mortal-kombat-dos-front-cover.jpg', 'Mortal Kombat', '1992-10-08', 'Fighting', 'Arcade, SNES, Genesis', 100.00, 0, 0),
+(512, 'https://upload.wikimedia.org/wikipedia/en/d/df/Mortal_Kombat_II_boxart.png', 'Mortal Kombat II', '1993-09-09', 'Fighting', 'Arcade, SNES, Genesis', 120.00, 0, 0),
+(513, 'https://m.media-amazon.com/images/M/MV5BYmM0ZjlmNDUtMDMwNS00MDA2LTkxMTEtNjFkYzMzYTVmOTlhXkEyXkFqcGc@._V1_.jpg', 'Mortal Kombat 3', '1995-04-15', 'Fighting', 'Arcade, SNES, Genesis', 80.00, 0, 0),
+(514, 'https://cdn.mobygames.com/covers/29741-mortal-kombat-4-windows-front-cover.jpg', 'Mortal Kombat 4', '1997-03-25', 'Fighting', 'Arcade, PS1, N64', 60.00, 0, 0),
+(515, 'https://upload.wikimedia.org/wikipedia/en/3/32/MK_Deadly_Alliance_Cover_Art.png', 'Mortal Kombat: Deadly Alliance', '2002-11-12', 'Fighting', 'PS2, Xbox, GC', 20.00, 0, 0),
+(516, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY3BwwpR22xIUd0ZGpjddYio0Cl6SMMDWbkQ&s', 'Mortal Kombat: Deception', '2004-10-04', 'Fighting', 'PS2, Xbox, GC', 20.00, 0, 0),
+(517, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPpQ340cuV-z9xTxPK3xddW-Oy7F_i022L4g&s', 'Mortal Kombat: Armageddon', '2006-10-11', 'Fighting', 'PS2, Xbox, Wii', 20.00, 0, 0),
+(518, 'https://images.igdb.com/igdb/image/upload/t_original/fj81en3hdlsrho1jpmst.jpg', 'Mortal Kombat vs. DC Universe', '2008-02-14', 'Fighting', 'PS3, Xbox 360', 15.00, 0, 0),
+(519, 'https://m.media-amazon.com/images/M/MV5BMDIyNDMwNWEtNzAwNC00YTcyLTk0NjEtNzc0NzYwNjJjM2YwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Mortal Kombat (2011)', '2011-04-19', 'Fighting', 'PS3, Xbox 360, PC', 30.00, 0, 0),
+(520, 'https://cdn.europosters.eu/image/750/24477.jpg', 'Mortal Kombat X', '2015-04-14', 'Fighting', 'PS4, Xbox One, PC', 40.00, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -759,7 +823,7 @@ ALTER TABLE `awards`
 -- AUTO_INCREMENT a táblához `datas`
 --
 ALTER TABLE `datas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=456;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=521;
 
 --
 -- AUTO_INCREMENT a táblához `developers`

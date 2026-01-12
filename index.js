@@ -20,29 +20,48 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
 
   var platformNames = [
     "PC",
+    "Windows",
     "PS5",
     "PS4",
     "PS3",
     "PS2",
     "PS1",
+    "PSP",
+    "PS Vita",
     "Xbox Series X",
     "Xbox One",
     "Xbox 360",
+    "Xbox",
     "Nintendo Switch",
-    "Nintendo Wii U",
-    "Nintendo Wii",
+    "Nintendo Switch Lite",
+    "Wii U",
+    "Wii",
+    "GameCube",
+    "Nintendo 64",
+    "SNES",
+    "NES",
     "Nintendo DS",
     "Nintendo 3DS",
+    "Game Boy",
+    "Game Boy Color",
+    "Game Boy Advance",
     "Mobile",
+    "iOS",
+    "Android",
     "Mac",
     "Linux",
-    "Indie",
+    "Steam Deck",
     "Arcade",
-    "VR",
+    "Genesis",
+    "Indie",
     "Point & Click",
     "Music",
+    "iTunes",
     "Gift Cards",
-  ];
+    "VR",
+    "PlayStation VR"
+];
+
   $scope.platforms = [];
 
   $scope.cartOpen = false;
@@ -192,9 +211,18 @@ $scope.openCart = function (game) {
 
         const stockRef = db.ref('games/' + game.id + '/stock');
         stockRef.on('value', function(snapshot) {
-            game.stock = snapshot.val() || 0;
+            let value = snapshot.val();
+        
+            if (value === null) {
+                value = 500;
+                stockRef.set(value);
+            }
+        
+            game.stock = value;
+            console.log(`${game.name} => ${game.stock}`);
             $scope.$applyAsync();
         });
+        
 
         if (game.isDiscount == 1 &&game.discountPerc != null) {
             game.discountedPrize = parseFloat(game.prize * (1 - game.discountPerc / 100)).toFixed(2);
