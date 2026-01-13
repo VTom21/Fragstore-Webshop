@@ -216,6 +216,25 @@ $limit = 12;
       </div>
     </section>
 
+<div class="py-24 sm:py-32" id="stats">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+      <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+        <dt class="text-base/7 text-gray-700">Orders completed</dt>
+        <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl"data-value="2300000">2.3M+</dd>
+      </div>
+      <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+        <dt class="text-base/7 text-gray-700">Items delivered</dt>
+        <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl"data-value="18000000">18M+</dd>
+      </div>
+      <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+        <dt class="text-base/7 text-gray-700">Daily purchases</dt>
+        <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl"data-value="12000">12,000+</dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
     <div class="marquee-container">
       <div class="marquee-mask-left"></div>
       <div class="marquee-mask-right"></div>
@@ -228,6 +247,7 @@ $limit = 12;
         </div>
       </div>
     </div>
+
 
     <section class="testimonials" id="testimonials">
       <h2 data-i18n="customers_title" class="customers_title">What Our Customers Say</h2>
@@ -479,9 +499,9 @@ $limit = 12;
   <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.0/dist/flowbite.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 
+
   <script src="gsap.js"></script>
-
-
+   
   <script>
     document.querySelectorAll('.show-all').forEach(button => {
       button.addEventListener('click', function() {
