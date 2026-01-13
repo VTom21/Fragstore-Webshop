@@ -34,8 +34,13 @@ $emojiKeywords = [
   'tps' => '🔫',
   'run' => '🏃',
   'roguelike' => '🌀',
-  'exploration' => '🧭'
+  'exploration' => '🧭',
+  'hack & slash' => '🪓',
+  'hack and slash' => '🪓',
+  'life sim' => '🏡',
+  'life simulation' => '🏡'
 ];
+
 
 // Function to pick emoji based on keywords
 function getAccurateEmoji($genre, $emojiKeywords)
