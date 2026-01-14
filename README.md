@@ -682,6 +682,17 @@ Stock DB is a Firebase Realtime Database that stores video game inventory data, 
 <img src="./pictures/firebase1.png" id="tetris"></img>
 <img src="./pictures/firebase2.png" id="tetris"></img>
 
+### 6. `delivery`
+The Stock database is a Firebase Realtime Database that stores video game inventory data. Each game entry includes title, release date, genre, platforms, price, stock quantity, discount status, and image URLs. This ensures that the webshop always shows up-to-date information on availability and pricing.
+
+<img src="./pictures/delivery1.png" id="tetris"></img>
+<img src="./pictures/delivery2.png" id="tetris"></img>
+
+### 7. `leaderboard`
+The Leaderboard database is a Firebase Realtime Database that stores player scores and achievements for video games. Each entry includes the player’s name, score, and other relevant details. This allows the game to display real-time rankings and track high scores efficiently.
+
+<img src="./pictures/leaderboard1.png" id="tetris"></img>
+
 <br>
 
 ### 🔌 API Endpoints & Integrations
@@ -759,11 +770,57 @@ fetch('https://open.er-api.com/v6/latest/USD')
 ```
 
 **Use Cases:**
-- Display prices in user's local currency
-- Multi-currency checkout
-- Real-time exchange rate updates
+- Populate the game catalog with real-time data
+- Filter games by genre, platform, release date, or rating
+- Show game images, ratings, and platform availability
+- Integrate with leaderboards or recommendations
 
 ---
+
+### <img height="50" id="currency" style="display:inline; align-items:center;" align="center" src="https://img.stackshare.io/stack/37303/default_657b34af1c7b9ea45750ae5720351d3735cf17d4.png"></img> RAWG API
+
+Access detailed video game information, including titles, genres, platforms, release dates, ratings, and images using the [RAWG API](https://rawg.io/apidocs)
+
+**Endpoint:**
+
+```
+GET https://api.rawg.io/api/games?key=YOUR_API_KEY
+```
+
+**Example Request:**
+
+```js
+fetch('https://api.rawg.io/api/games?key=YOUR_API_KEY')
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+**Response:**
+
+```json
+{
+  "count": 500000,
+  "next": "https://api.rawg.io/api/games?key=YOUR_API_KEY&page=2",
+  "previous": null,
+  "results": [
+    {
+      "id": 3498,
+      "name": "Grand Theft Auto V",
+      "released": "2013-09-17",
+      "background_image": "https://media.rawg.io/media/games/abc/abc123.jpg",
+      "rating": 4.48,
+      "platforms": [
+        { "platform": { "id": 4, "name": "PC" } },
+        { "platform": { "id": 1, "name": "PlayStation 4" } }
+      ],
+      "genres": [
+        { "id": 4, "name": "Action" },
+        { "id": 3, "name": "Adventure" }
+      ]
+    }
+  ]
+}
+
+```
 
 ### <img height="50" id="flags" style="display:inline; align-items:center;" align="center" src="https://apiverve.com/images/favicon.png"></img> Flags API
 Display country flags based on currency or user location.
