@@ -250,6 +250,11 @@ Fragstore-Webshop/
     │   ├── contactus.js
     │   └── contactus.php
     │
+    ├── Content
+    │   ├── Content.php
+    │   ├── content.js
+    │   └── content.scss
+    │
     ├── databases/
     │   ├── giftcard.sql
     │   ├── leaderboard.sql
