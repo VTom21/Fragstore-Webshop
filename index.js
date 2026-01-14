@@ -346,6 +346,17 @@ $scope.openCart = function (game) {
     });
   }
 
+  $scope.Discount = function(isDiscount){
+    switch(isDiscount){
+      case true:
+        $scope.filteredGames = $scope.games.filter(k => k.isDiscount == 1);
+        break;
+        case false:
+          $scope.filteredGames = $scope.games;
+        break;
+    }
+  }
+
   // Name sorting
   $scope.updateSortOrder = function (which) {
     if (which === "asc") {
