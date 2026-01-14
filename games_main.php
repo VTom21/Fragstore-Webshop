@@ -309,6 +309,11 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                             <span class="checkmark"></span>
                             <p class="label_p">Descending</p>
                         </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" ng-model="PrizeDiscount" ng-change="Discount(PrizeDiscount)" />
+                            <span class="checkmark"></span>
+                            <p class="label_p">Discount</p>
+                        </label>
                     </div>
                 </div>
 
