@@ -6,8 +6,8 @@
 <div align="center">
   <img src="https://img.shields.io/badge/Build-Passing-blue">
     <img src="https://img.shields.io/github/last-commit/Vtom21/Fragstore-Webshop?color=blue">
-  <img src="https://img.shields.io/badge/License-MIT-blue"><br>
-<img src="https://img.shields.io/github/v/release/VTom21/Fragstore-Webshop?label=version&color=ghostwhite" />
+<img src="https://img.shields.io/github/license/Vtom21/Fragstore-Webshop?color=blue" /> <br>
+<img src="https://img.shields.io/github/v/release/Vtom21/Fragstore-Webshop?label=version&color=ghostwhite" />
   <img src="https://img.shields.io/github/commit-activity/t/Vtom21/Fragstore-Webshop?color=white">
 <img src="https://img.shields.io/github/languages/count/Vtom21/Fragstore-Webshop?color=white">
 
