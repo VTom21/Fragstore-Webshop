@@ -1,46 +1,59 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "leaderboard";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+$name = $_POST["name"] ?? 'Guest';
+$score = (int)($_POST["score"] ?? 0);
 
-$name = $_POST['name'] ?? '';
-$score = $_POST['score'] ?? 0;
+$url = "https://leaderboard-20b10-default-rtdb.europe-west1.firebasedatabase.app/leaderboard.json";
 
-if (!empty($name) && is_numeric($score)) {
-  // check if name already exists
-  $check = $conn->prepare("SELECT score FROM datas WHERE name = ?");
-  $check->bind_param("s", $name);
-  $check->execute();
-  $result = $check->get_result();
 
-  if ($result->num_rows > 0) {
-    // player already exists
-    $row = $result->fetch_assoc();
-    if ($score > $row['score']) {
-      // update only if the new score is higher
-      $update = $conn->prepare("UPDATE datas SET score = ? WHERE name = ?");
-      $update->bind_param("is", $score, $name);
-      $update->execute();
-      $update->close();
-      echo "data refreshed!";
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+
+
+$leaderboard = json_decode($response, true) ?? [];
+
+
+$userKey = null;
+$currentScore = 0;
+
+foreach ($leaderboard as $key => $entry) {
+    if ($entry['name'] === $name) {
+        $userKey = $key;
+        $currentScore = (int)$entry['score'];
+        break;
     }
-  } else {
-    // insert new player
-    $insert = $conn->prepare("INSERT INTO datas (name, score) VALUES (?, ?)");
-    $insert->bind_param("si", $name, $score);
-    $insert->execute();
-    $insert->close();
-    echo "data added!";
-  }
-
-  $check->close();
 }
 
-$conn->close();
+if ($userKey !== null) {
 
+    if ($score > $currentScore) {
+        $updateData = json_encode(["score" => $score]);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://leaderboard-20b10-default-rtdb.europe-west1.firebasedatabase.app/leaderboard/$userKey.json");
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH"); // PATCH updates existing node
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $updateData);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_exec($ch);
+        echo "Score updated!";
+    } else {
+        echo "Existing score is higher or equal. No update.";
+    }
+} else {
+
+    $newData = json_encode([
+        "name" => $name,
+        "score" => $score
+    ]);
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $newData);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_exec($ch);
+    echo "New user added!";
+}

@@ -1,27 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "leaderboard";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$url = "https://leaderboard-20b10-default-rtdb.europe-west1.firebasedatabase.app/leaderboard.json";
 
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+$ch = curl_init($url);
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+$data = json_decode($response, true);
+
+foreach($data as $key => $entry){
+  echo "<li>" . htmlspecialchars($entry["name"]) . " - " . htmlspecialchars($entry["score"]) . "</li>";  
 }
-
-$sql = "SELECT name, score FROM datas ORDER BY score DESC LIMIT 100";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-  $i = 1;
-  while($row = $result->fetch_assoc()) {
-    echo "<li>" . htmlspecialchars($row["name"]) . " — " . $row["score"] . "</li>";
-    $i++;
-  }
-} else {
-  echo "<li>No scores yet!</li>";
-}
-
-$conn->close();
 

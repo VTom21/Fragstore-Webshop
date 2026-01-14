@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./assets/ghosts/redGhost.png">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     <link rel=" stylesheet" href="pacman.css">
     <title>Pac Man</title>
 </head>
@@ -77,10 +78,11 @@
 
 
     
-<form id="scoreForm" action="submit.php" method="POST" style="display:none;">
+<form id="scoreForm" method="POST" action="submit.php" style="display:none;">
   <input type="hidden" name="name" id="playerName" />
   <input type="hidden" name="score" id="playerScore" />
 </form>
+
 
   
 </body>
@@ -88,5 +90,7 @@
 <script src="pacman.js" type="module"></script>
 <script type="module" src="leaderboard.js"></script>
 <script src="achievement.js" type="module"></script>
+
+
 
 </html>
