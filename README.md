@@ -777,7 +777,7 @@ fetch('https://open.er-api.com/v6/latest/USD')
 
 ---
 
-### <img height="50" id="currency" style="display:inline; align-items:center;" align="center" src="https://img.stackshare.io/stack/37303/default_657b34af1c7b9ea45750ae5720351d3735cf17d4.png"></img> RAWG API
+### <img height="50" id="currency" style="display:inline; align-items:center;" align="center" src="https://rapidapi-prod-apis.s3.amazonaws.com/aa/5f399a9426449aac6954ffc8c0b481/ce9eeca1905fdb11890f3afc10724191.png"></img> RAWG API
 
 Access detailed video game information, including titles, genres, platforms, release dates, ratings, and images using the [RAWG API](https://rawg.io/apidocs)
 
