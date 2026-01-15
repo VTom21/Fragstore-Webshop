@@ -725,7 +725,7 @@ emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
 ```json
 {
   "status": 200,
-  "text": "OK"
+  "text": "OK" 
 }
 ```
 
