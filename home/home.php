@@ -2,6 +2,7 @@
 
 include 'genres.php';
 include 'giftcards.php';
+include '../config.php';
 
 $genres = json_encode($genreStats);
 $gift_img = $Img;
@@ -134,21 +135,21 @@ $limit = 12;
 
 
   <section class="hero">
-  <div class="dashboard">
-        <button class="close-btn" id="closeModal">&times;</button>
+    <div class="dashboard">
+      <button class="close-btn" id="closeModal">&times;</button>
 
-        <h2>Admin Dashboard</h2>
-        <h4>Tommy</h4>
-        <label class="pfp-frame">
-          <img
-            id="pfpPreview"
-            src="/images/default_pfp.png" />
-          <input
-            type="file"
-            id="pfpInput"
-            hidden />
-        </label>
-      </div>
+      <h2>Admin Dashboard</h2>
+      <h4>Tommy</h4>
+      <label class="pfp-frame">
+        <img
+          id="pfpPreview"
+          src="/images/default_pfp.png" />
+        <input
+          type="file"
+          id="pfpInput"
+          hidden />
+      </label>
+    </div>
     <div class="lang-menu">
       <div class="selected-lang" data-flag="https://flagsapi.com/US/flat/32.png">
         English
@@ -569,19 +570,17 @@ $limit = 12;
 
 
     const loginToggle = document.querySelector('.login_toggle');
-const dashboard = document.querySelector('.dashboard');
-const closeBtn = document.querySelector('.close-btn');
+    const dashboard = document.querySelector('.dashboard');
+    const closeBtn = document.querySelector('.close-btn');
 
-// Open sidebar on click
-loginToggle.addEventListener('click', () => {
-  dashboard.classList.add('active');
-});
 
-// Close sidebar
-closeBtn.addEventListener('click', () => {
-  dashboard.classList.remove('active');
-});
+    loginToggle.addEventListener('click', () => {
+      dashboard.classList.add('active');
+    });
 
+    closeBtn.addEventListener('click', () => {
+      dashboard.classList.remove('active');
+    });
   </script>
 </body>
 
