@@ -171,7 +171,7 @@ function updateProgressBar() {
 
 window.addEventListener("scroll", updateProgressBar);
 
-// Duplicate once
+
 const track = document.querySelector(".marquee-track");
 if (!track.dataset.duplicated) {
   track.innerHTML += track.innerHTML;

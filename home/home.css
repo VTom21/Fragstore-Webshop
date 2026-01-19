@@ -785,6 +785,143 @@ main {
     margin-bottom: 20px;
 }
 
+.dashboard {
+  position: fixed;
+  top: 0;
+  right: -540px;       
+  width: 360px;
+  height: 100vh;
+  background-color: var(--bg-main);
+  box-shadow: -4px 0 20px rgba(0,0,0,0.2);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  transition: right 0.3s ease;
+  z-index: 100;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Active state: slide in */
+.dashboard.active {
+  right: 0;
+}
+
+/* Overlay */
+.dashboard-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 90;
+}
+
+.dashboard-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.close-btn:hover {
+  color: #ff5555;
+}
+
+/* Dashboard title */
+.dashboard h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--white);
+  text-align: center;
+}
+
+/* Profile Picture Frame */
+.pfp-frame {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 2px dashed #bbb;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.pfp-frame:hover {
+  border-color: #666;
+}
+
+.pfp-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pfp-frame::after {
+  content: "Change";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 50%;
+  font-weight: 600;
+}
+
+.pfp-frame:hover::after {
+  opacity: 1;
+}
+
+.dashboard span {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Dashboard links */
+.dashboard-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
+}
+
+.dashboard-nav a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  background: #f0f0f0;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dashboard-nav a:hover {
+  background: #333;
+  color: #fff;
+}
+
+
 .card {
 
     background: var(--bg-main);
@@ -1344,6 +1481,7 @@ main {
   align-items: center;
   color: var(--text-muted);
   font-weight: 700;
+  cursor: pointer;
 }
 
 

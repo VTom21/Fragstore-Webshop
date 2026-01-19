@@ -74,66 +74,81 @@ $limit = 12;
 </head>
 
 <body ng-app="home" ng-controller="home_controller">
-    <a href="../redirect/redirect.php?destination=../games_main.php">
+  <a href="../redirect/redirect.php?destination=../games_main.php">
     <div class="discount-news-header">
-    <h1 class="title">Call of Duty Franchise Sale</h1>
-    <p class="subtitle">Grab the best cod games before they're gone!</p>
-</div>
-    </a>
+      <h1 class="title">Call of Duty Franchise Sale</h1>
+      <p class="subtitle">Grab the best cod games before they're gone!</p>
+    </div>
+  </a>
   <header id="header">
     <img id="logo" src="../icons/array.png" alt="Logo">
-    
-        <!-- Hamburger Button -->
+
+    <!-- Hamburger Button -->
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
     <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
 
-    
+
     <!-- Navbar (works for both desktop and mobile) -->
     <nav class="navbar" id="navbar">
-        <a href="#game" data-i18n="games">Games</a>
-        <a href="#giftcard" data-i18n="giftcards">Gift Cards</a>
-        <a href="#genre" data-i18n="genres">Genres</a>
-        <a href="../redirect/redirect.php?destination=../contact_us/contactus.php" data-i18n="contact">Contact</a>
-        <a href="#intro" data-i18n="about_us">About Us</a>
-        <p class="login_toggle"></p>
+
+      <a href="#game" data-i18n="games">Games</a>
+      <a href="#giftcard" data-i18n="giftcards">Gift Cards</a>
+      <a href="#genre" data-i18n="genres">Genres</a>
+      <a href="../redirect/redirect.php?destination=../contact_us/contactus.php" data-i18n="contact">Contact</a>
+      <a href="#intro" data-i18n="about_us">About Us</a>
+      <p class="login_toggle"></p>
     </nav>
 
     <div id="stuff">
-        <div id="sigin">
-            <a href="../redirect/redirect.php?destination=../login/Log In.php" data-i18n="log_in">Log in</a>
-        </div>
-        <div id="register">
-            <a href="../redirect/redirect.php?destination=../signup/Sign Up.php" data-i18n="sign_up">Sign up</a>
-        </div>
-        <div id="logout">
-            <a href="../home/home.php" data-i18n="log_out">Log out</a>
-        </div>
+      <div id="sigin">
+        <a href="../redirect/redirect.php?destination=../login/Log In.php" data-i18n="log_in">Log in</a>
+      </div>
+      <div id="register">
+        <a href="../redirect/redirect.php?destination=../signup/Sign Up.php" data-i18n="sign_up">Sign up</a>
+      </div>
+      <div id="logout">
+        <a href="../home/home.php" data-i18n="log_out">Log out</a>
+      </div>
     </div>
 
     <div class="progress-bar">
-        <div class="filled"></div>
+      <div class="filled"></div>
     </div>
-</header>
+  </header>
 
 
 
 
 
-<div id="preloader">
-  <div class="loader-circle"></div>
-</div>
+  <div id="preloader">
+    <div class="loader-circle"></div>
+  </div>
 
 
 
 
   <section class="hero">
+  <div class="dashboard">
+        <button class="close-btn" id="closeModal">&times;</button>
 
+        <h2>Admin Dashboard</h2>
+        <h4>Tommy</h4>
+        <label class="pfp-frame">
+          <img
+            id="pfpPreview"
+            src="/images/default_pfp.png" />
+          <input
+            type="file"
+            id="pfpInput"
+            hidden />
+        </label>
+      </div>
     <div class="lang-menu">
       <div class="selected-lang" data-flag="https://flagsapi.com/US/flat/32.png">
         English
@@ -160,7 +175,6 @@ $limit = 12;
       </div>
     </div>
   </section>
-
 
 
   <nav class="flex breadcrumbs" aria-label="Breadcrumb">
@@ -204,7 +218,7 @@ $limit = 12;
             <img src="../pictures/perfomance.png" alt="Collectibles Icon">
           </div>
           <div class="intro-content intro-content2">
-            <h3 data-i18n="intro_heading2" >Style Meets Performance</h3>
+            <h3 data-i18n="intro_heading2">Style Meets Performance</h3>
             <p data-i18n="intro_content2">Designed with precision and passion, each product blends function, form, and futuristic design — so your gear performs as good as it looks.</p>
           </div>
         </div>
@@ -221,24 +235,24 @@ $limit = 12;
       </div>
     </section>
 
-<div class="py-24 sm:py-32" id="stats">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
-      <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base/7 text-gray-700">Orders completed</dt>
-        <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl"data-value="2300000">2.3M+</dd>
+    <div class="py-24 sm:py-32" id="stats">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+          <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+            <dt class="text-base/7 text-gray-700">Orders completed</dt>
+            <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl" data-value="2300000">2.3M+</dd>
+          </div>
+          <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+            <dt class="text-base/7 text-gray-700">Items delivered</dt>
+            <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl" data-value="18000000">18M+</dd>
+          </div>
+          <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+            <dt class="text-base/7 text-gray-700">Daily purchases</dt>
+            <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl" data-value="12000">12,000+</dd>
+          </div>
+        </dl>
       </div>
-      <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base/7 text-gray-700">Items delivered</dt>
-        <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl"data-value="18000000">18M+</dd>
-      </div>
-      <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base/7 text-gray-700">Daily purchases</dt>
-        <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl"data-value="12000">12,000+</dd>
-      </div>
-    </dl>
-  </div>
-</div>
+    </div>
 
     <div class="marquee-container">
       <div class="marquee-mask-left"></div>
@@ -423,7 +437,7 @@ $limit = 12;
                 <a href="#intro" class="links" data-i18n="about_us">About Us</a>
               </li>
               <li class="links">
-                <a href="/contact_us/contactus.php"  data-i18n="contact">Contacts</a>
+                <a href="/contact_us/contactus.php" data-i18n="contact">Contacts</a>
               </li>
             </ul>
           </div>
@@ -506,7 +520,7 @@ $limit = 12;
 
 
   <script src="gsap.js"></script>
-   
+
   <script>
     document.querySelectorAll('.show-all').forEach(button => {
       button.addEventListener('click', function() {
@@ -529,7 +543,7 @@ $limit = 12;
 
     document.addEventListener('DOMContentLoaded', () => {
       const loginToggle = document.querySelector(".login_toggle");
-      const username = localStorage.getItem("name"); // use the same key
+      const username = localStorage.getItem("name");
 
       if (username) {
         loginToggle.style.display = "flex";
@@ -537,11 +551,37 @@ $limit = 12;
         loginToggle.textContent = `Welcome ${username}!`; // use textContent instead of innerHTML
         document.getElementById("sigin").style.display = "none";
         document.getElementById("register").style.display = "none";
+        document.querySelector(".dashboard").style.display = "flex";
       } else {
         loginToggle.style.display = "none"; // hide if not logged in
       }
 
     });
+
+    const input = document.getElementById("pfpInput");
+    const preview = document.getElementById("pfpPreview");
+
+
+    input.addEventListener("change", () => {
+      let item = input.files[0];
+      preview.src = URL.createObjectURL(item);
+    });
+
+
+    const loginToggle = document.querySelector('.login_toggle');
+const dashboard = document.querySelector('.dashboard');
+const closeBtn = document.querySelector('.close-btn');
+
+// Open sidebar on click
+loginToggle.addEventListener('click', () => {
+  dashboard.classList.add('active');
+});
+
+// Close sidebar
+closeBtn.addEventListener('click', () => {
+  dashboard.classList.remove('active');
+});
+
   </script>
 </body>
 

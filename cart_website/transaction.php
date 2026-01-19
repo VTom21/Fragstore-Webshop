@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-// Get JSON input
+
 $input = json_decode(file_get_contents('php://input'), true);
 
 $cart = $input['cart'];
@@ -13,11 +13,11 @@ $card = $input['card'];
 $paypal = $input['paypal'];
 
 
-// Firebase config
+
 $projectId = 'delivery-96dc7';
 $databaseUrl = "https://delivery-96dc7-default-rtdb.europe-west1.firebasedatabase.app ";
 
-// Calculate totals
+
 $subtotal = 0;
 foreach($cart as $item){
     $subtotal += $item['total_prize'] ?? 0;
@@ -49,12 +49,12 @@ $data = [
     ]
 ];
 
-// Make POST request to Firestore
+
 $ch = curl_init($databaseUrl);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
-    'Authorization: Bearer YOUR_FIREBASE_ID_TOKEN' // must be a server auth token
+    'Authorization: Bearer YOUR_FIREBASE_ID_TOKEN' 
 ]);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
@@ -67,8 +67,8 @@ if ($err) {
     echo json_encode(['success'=>false,'error'=>$err]);
 } else {
     $resJson = json_decode($response, true);
-    // Firestore auto-generates a document name
+
     $docName = $resJson['name'] ?? '';
-    $orderId = basename($docName); // last part of the path
+    $orderId = basename($docName); 
     echo json_encode(['success'=>true,'order_id'=>$orderId]);
 }

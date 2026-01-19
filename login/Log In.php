@@ -1,4 +1,5 @@
 <?php
+
 //starts a new session, initializes $_SESSION superglobal array -> used for retrieving data across multiple pages
 session_start();
 
@@ -56,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Log In.css">
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <link rel="icon" type="image/x-icon" href="/icons/array.png">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <title>Login | Fragstore</title>
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn-login login">Login</button>
 
-        <div class="cf-turnstile captcha" id="captcha" data-sitekey="0x4AAAAAACLE_NHQQP922tRh" data-callback="Captcha_Success" data-appearance="interaction-only"></div>
+        <div class="cf-turnstile captcha" id="captcha" data-sitekey="0x4AAAAAACLE_NHQQP922tRh" data-callback="Captcha_Success"></div>
       </form>
 
 
@@ -98,27 +98,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <script>
 
-    let captcha_passed = false;
-    document.querySelectorAll('.form-control').forEach(input => {
-      const clearBtn = input.parentElement.querySelector('.clear-btn');
-      const toggle = () => clearBtn.style.display = input.value ? 'block' : 'none';
-      input.addEventListener('input', toggle);
-      toggle();
-    });
+let captcha_passed = false;
 
-    function Captcha_Success(){
-      captcha_passed = true;
-    }
+function Captcha_Success(){
+  captcha_passed = true;
+}
 
-    document.getElementById("loginForm").addEventListener("submit", function(e){
+document.getElementById("loginForm").addEventListener("submit", function(e){
   if (!captcha_passed){
     e.preventDefault();
     alert("Please complete the CAPTCHA first!");
     return;
   }
-  });
+});
 
   </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 
 </body>
 

@@ -141,7 +141,7 @@ function updateShipping() {
     UpdateCurrency();
 }
 
-// Payment section toggle
+
 function updatePaymentSections() {
     const selectedRadio = document.querySelector('input[name="payment"]:checked');
     if (!selectedRadio) return;
