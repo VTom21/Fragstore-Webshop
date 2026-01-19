@@ -127,7 +127,7 @@ header {
 
 
     top: 0;
-    z-index: 1000;
+    z-index: 50;
 
     border-bottom: 1px solid var(--navbar-bg);
     transition: all .2s ease-in-out;
@@ -816,7 +816,7 @@ main {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 90;
+  z-index: 0;
 }
 
 .dashboard-overlay.active {
@@ -1957,7 +1957,7 @@ body.menu-open {
     width: 90%;
     padding: 14px 20px;
     font-size: 1rem;
-    color: var(--text-light);
+    justify-content: center;
     text-align: center;
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -1994,9 +1994,7 @@ body.menu-open {
   /* Login Toggle in Mobile Menu */
   .login_toggle {
     padding: 14px 20px;
-    background: rgba(0, 247, 255, 0.1);
     border-radius: 8px;
-    border: 1px solid var(--color-primary);
     margin-top: 8px;
   }
 

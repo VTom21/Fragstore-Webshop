@@ -84,18 +84,16 @@ $limit = 12;
   <header id="header">
     <img id="logo" src="../icons/array.png" alt="Logo">
 
-    <!-- Hamburger Button -->
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span>
       <span></span>
       <span></span>
     </button>
-    <!-- Mobile Overlay -->
+
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
 
 
-    <!-- Navbar (works for both desktop and mobile) -->
     <nav class="navbar" id="navbar">
 
       <a href="#game" data-i18n="games">Games</a>
@@ -572,10 +570,12 @@ $limit = 12;
     const loginToggle = document.querySelector('.login_toggle');
     const dashboard = document.querySelector('.dashboard');
     const closeBtn = document.querySelector('.close-btn');
+    const nav = document.querySelector(".navbar");
 
 
     loginToggle.addEventListener('click', () => {
       dashboard.classList.add('active');
+      nav.style.display = "none";
     });
 
     closeBtn.addEventListener('click', () => {
