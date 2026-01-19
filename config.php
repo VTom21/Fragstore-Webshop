@@ -13,3 +13,6 @@ $options = [
 ];
 
 $pdo = new PDO($dsn, $db_user, $db_pass, $options);
+
+$stmt = $pdo->query("SELECT username FROM users");
+$usernames = $stmt->fetchAll(PDO::FETCH_ASSOC);

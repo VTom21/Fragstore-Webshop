@@ -1,8 +1,20 @@
 <?php
-
+session_start();
 include 'genres.php';
 include 'giftcards.php';
 include '../config.php';
+
+
+
+$stmt = $pdo->prepare("SELECT profile_picture, username FROM users WHERE id = ?");
+$stmt->execute([$_SESSION['user_id']]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$image = $user ? $user['profile_picture'] : null;
+$username = $user ? $user['username'] : 'Guest';
+
+
+
 
 $genres = json_encode($genreStats);
 $gift_img = $Img;
@@ -101,7 +113,7 @@ $limit = 12;
       <a href="#genre" data-i18n="genres">Genres</a>
       <a href="../redirect/redirect.php?destination=../contact_us/contactus.php" data-i18n="contact">Contact</a>
       <a href="#intro" data-i18n="about_us">About Us</a>
-      <p class="login_toggle"></p>
+      <a href="" class="login_toggle"></a>
     </nav>
 
     <div id="stuff">
@@ -134,20 +146,17 @@ $limit = 12;
 
   <section class="hero">
     <div class="dashboard">
-      <button class="close-btn" id="closeModal">&times;</button>
+    <button class="close-btn" id="closeModal">&times;</button>
+    <h2>Admin Dashboard</h2>
+    <h4><?= htmlspecialchars($username) ?></h4>
 
-      <h2>Admin Dashboard</h2>
-      <h4>Tommy</h4>
-      <label class="pfp-frame">
+    <label class="pfp-frame">
         <img
-          id="pfpPreview"
-          src="/images/default_pfp.png" />
-        <input
-          type="file"
-          id="pfpInput"
-          hidden />
-      </label>
-    </div>
+            id="pfpPreview"
+            src="<?= $image ? 'data:image/jpeg;base64,' . base64_encode($image) : '../pictures/default.png' ?>">
+        <input type="file" id="pfpInput" name="profile_picture" hidden />
+    </label>
+</div>
     <div class="lang-menu">
       <div class="selected-lang" data-flag="https://flagsapi.com/US/flat/32.png">
         English
@@ -550,7 +559,6 @@ $limit = 12;
         loginToggle.textContent = `Welcome ${username}!`; // use textContent instead of innerHTML
         document.getElementById("sigin").style.display = "none";
         document.getElementById("register").style.display = "none";
-        document.querySelector(".dashboard").style.display = "flex";
       } else {
         loginToggle.style.display = "none"; // hide if not logged in
       }
@@ -561,10 +569,26 @@ $limit = 12;
     const preview = document.getElementById("pfpPreview");
 
 
-    input.addEventListener("change", () => {
-      let item = input.files[0];
-      preview.src = URL.createObjectURL(item);
-    });
+input.addEventListener("change", () => {
+    const file = input.files[0];
+    preview.src = URL.createObjectURL(file);
+
+    const formData = new FormData();
+    formData.append('profile_picture', file);
+
+fetch('dashboard.php', {
+  method: 'POST',
+  body: formData
+})
+.then(res => res.text())  // <-- first check text
+.then(text => {
+  console.log('RAW RESPONSE:', text);  // see exactly what PHP outputs
+  return JSON.parse(text);
+})
+.then(data => console.log('JSON:', data))
+.catch(err => console.error('Upload error:', err));
+
+});
 
 
     const loginToggle = document.querySelector('.login_toggle');
@@ -575,7 +599,6 @@ $limit = 12;
 
     loginToggle.addEventListener('click', () => {
       dashboard.classList.add('active');
-      nav.style.display = "none";
     });
 
     closeBtn.addEventListener('click', () => {

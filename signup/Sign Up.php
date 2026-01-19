@@ -14,6 +14,7 @@ $message = '';
 $email = '';
 $username = '';
 $success = false;
+$path = "";
 
 //form uses post method -> waits for the user's submit
 
@@ -21,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email    = trim($_POST['email'] ?? '');
   $username = trim($_POST['username'] ?? '');
   $password = $_POST['password'] ?? '';
+  $path = file_get_contents("../pictures/default.png");
 
   //checks if values are empty, otherwise it checks length of password and validates e-mail
 
@@ -33,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } else {
     try { //if all values are correct, it pushes the hash value to the pass into the database alongside the username and e-mail
       $hash = password_hash($password, PASSWORD_DEFAULT);
-      $stmt = $pdo->prepare("INSERT INTO users (email, username, password_hash) VALUES (?, ?, ?)"); //prepared placeholders with temporary ? values
-      $stmt->execute([$email, $username, $hash]);
+      $stmt = $pdo->prepare("INSERT INTO users (email, username, password_hash, profile_picture) VALUES (?, ?, ?, ?)"); //prepared placeholders with temporary ? values
+      $stmt->execute([$email, $username, $hash, $path]);
       $success = true;
     } catch (PDOException $e) {
       // Duplicate email/username -> SQLSTATE 23000
