@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__DIR__) . '/config.php'; //loads PDO from config.php
+include '../test.php';
 
 //helper function for removing special characters
 function e($s)
@@ -41,9 +42,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } catch (PDOException $e) {
       // Duplicate email/username -> SQLSTATE 23000
       if ($e->getCode() === '23000') {
-        $message = 'Email or username already exists.';
+        echo $twig->render('error.twig', [
+        'title' => 'Unexpected Error',
+        'message' => 'Something went wrong.',
+        'details' => "Email or username already exists",
+        'redirectUrl' => '../home/home.php',
+    ]);
+    exit;
       } else {
-        $message = 'Error: ' . e($e->getMessage());
+        echo $twig->render('error.twig', [
+          'title' => 'Unexpected Error',
+          'message' => 'Something went wrong.',
+          'details' => $e->getMessage(),
+          'redirectUrl' => '../home/home.php',
+      ]);
+      exit;
       }
     }
   }

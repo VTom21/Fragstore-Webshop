@@ -73,5 +73,10 @@ try {
     ]);
     
 } catch (PDOException $e) {
-    echo json_encode(['error' => $e->getMessage()]); //error handling
+    echo $twig->render('error.twig', [
+        'title' => 'Unexpected Error',
+        'message' => 'Something went wrong.',
+        'details' => $e->getMessage(),
+        'redirectUrl' => '../home/home.php'
+    ]);
 }

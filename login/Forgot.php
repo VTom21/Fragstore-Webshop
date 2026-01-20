@@ -1,12 +1,13 @@
 <?php
 require_once dirname(__DIR__) . '/config.php'; //loading PDO from condig.php
+include '../test.php';
 
 //base variables
 
 $email = '';
 $new_pass = '';
 $message = '';
-
+include '../test.php';
 if($_SERVER["REQUEST_METHOD"] === "POST"){
     $email = $_POST["email"];
     $new_pass = $_POST["password"];
@@ -20,9 +21,20 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             $stmt->execute([$email]);
             $user = $stmt->fetch();
 
+            if(!$user){
+              echo $twig->render('error.twig', [
+                'title' => 'Unexpected Error',
+                'message' => 'Something went wrong.',
+                'details' => "Email does not exists!",
+                'redirectUrl' => '../home/home.php'
+            ]);
+            exit;
+            }
+
             if(password_verify($new_pass, $user["password_hash"])){
                 die("Your new password cannot be the same as your current password!");
             }
+
 
             $new_hashed = password_hash($new_pass, PASSWORD_DEFAULT);
             $updateStmt = $pdo->prepare("UPDATE users SET password_hash  = ? WHERE email = ?");
@@ -32,7 +44,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             header("Location: Log In.php");
         }
         catch(PDOException $e){
-        $message =  'Database error';
+          echo $twig->render('error.twig', [
+            'title' => 'Unexpected Error',
+            'message' => 'Something went wrong.',
+            'details' => $e->getMessage(),
+            'redirectUrl' => '../home/home.php'
+        ]);
+        exit;
     }
     }
 

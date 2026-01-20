@@ -1,5 +1,5 @@
 <?php
-// genres_data.php
+include '../test.php';
 $host = 'localhost';
 $db = 'giftcards';
 $user = 'root';
@@ -16,6 +16,12 @@ try {
     $Img = $stmtImg->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    // In case of error, set $genreStats to empty array
+    echo $twig->render('error.twig', [
+        'title' => 'Unexpected Error',
+        'message' => 'Something went wrong.',
+        'details' => $e->getMessage(),
+        'redirectUrl' => 'home.php'
+    ]);
     $Img = [];
+    exit;
 }

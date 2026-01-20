@@ -1,5 +1,5 @@
 <?php
-// genres_data.php
+include '../test.php';
 $host = 'localhost';
 $db = 'videogames';
 $user = 'root';
@@ -20,6 +20,12 @@ try {
     }
 
 } catch (PDOException $e) {
-    // In case of error, set $genreStats to empty array
+    echo $twig->render('error.twig', [
+        'title' => 'Unexpected Error',
+        'message' => 'Something went wrong.',
+        'details' => $e->getMessage(),
+        'redirectUrl' => 'home.php'
+    ]);
     $genreStats = [];
+    exit;
 }

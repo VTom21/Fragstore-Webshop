@@ -1,4 +1,5 @@
 <?php
+include '../test.php';
 $cart_json = $_GET["cart"] ?? "[]";
 $total_json = $_GET["total"] ?? "";
 $cart_items = json_decode($cart_json, true);
@@ -19,7 +20,13 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    echo $twig->render('error.twig', [
+        'title' => 'Unexpected Error',
+        'message' => 'Something went wrong.',
+        'details' => $e->getMessage(),
+        'redirectUrl' => '../home/home.php'
+    ]);
+    exit;
 }
 
 ?>

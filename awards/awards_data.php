@@ -1,5 +1,5 @@
 <?php
-// all_data.php
+include '../test.php';
 $host = 'localhost';
 $db = 'videogames';
 $user = 'root';
@@ -36,5 +36,13 @@ try {
     $developers = [];
     $publisherAwards = [];
     $developerAwards = [];
+
+    echo $twig->render('error.twig', [
+        'title' => 'Unexpected Error',
+        'message' => 'Something went wrong.',
+        'details' => $e->getMessage(),
+        'redirectUrl' => '../home/home.php'
+    ]);
+    exit;
 }
 

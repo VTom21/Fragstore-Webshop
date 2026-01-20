@@ -4,6 +4,7 @@
 session_start();
 
 require_once dirname(__DIR__) . '/config.php'; //loads PDO from config.php
+include '../test.php';
 
 //helper function for removing special characters
 function e($s)
@@ -42,7 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = 'Invalid email or password.';
       }
     } catch (PDOException $e) {
-      $message = 'Database error.';
+      echo $twig->render('error.twig', [
+        'title' => 'Unexpected Error',
+        'message' => 'Something went wrong.',
+        'details' => $e->getMessage(),
+        'redirectUrl' => '../home/home.php'
+      ]);
+      exit;
     }
   }
 }

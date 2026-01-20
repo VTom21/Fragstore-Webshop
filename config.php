@@ -1,7 +1,5 @@
 <?php
-
-//users database for storing user data when logging or signing in
-
+include '../test.php';
 $dsn = "mysql:host=localhost;dbname=users;charset=utf8mb4";
 $db_user = "root";
 $db_pass = "";
@@ -12,7 +10,20 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 
-$pdo = new PDO($dsn, $db_user, $db_pass, $options);
+try {
+    $pdo = new PDO($dsn, $db_user, $db_pass, $options);
 
-$stmt = $pdo->query("SELECT username FROM users");
-$usernames = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $pdo->query("SELECT username FROM users");
+    $usernames = $stmt->fetchAll();
+
+} catch (PDOException $e) {
+    echo $twig->render('error.twig', [
+        'title' => 'Unexpected Error',
+        'message' => 'Something went wrong.',
+        'details' => $e->getMessage(),
+        'redirectUrl' => '/home/home.php'
+      ]);
+    $usernames = [];
+    exit;
+
+}

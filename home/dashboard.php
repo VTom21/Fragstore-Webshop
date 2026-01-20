@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../config.php';
+include '../test.php';
 
 header('Content-Type: application/json');
 
@@ -25,7 +26,12 @@ $allowed = ['image/jpeg', 'image/png', 'image/webp'];
 $mime = mime_content_type($file['tmp_name']);
 
 if (!in_array($mime, $allowed)) {
-    echo json_encode(['success' => false, 'error' => 'Invalid image type']);
+    echo $twig->render('error.twig', [
+        'title' => 'Unexpected Error',
+        'message' => 'Something went wrong.',
+        'details' => $e->getMessage(),
+        'redirectUrl' => 'home.php'
+    ]);
     exit;
 }
 
