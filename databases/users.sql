@@ -27,6 +27,9 @@ SET time_zone = "+00:00";
 -- Tábla szerkezet ehhez a táblához `users`
 --
 
+CREATE DATABASE IF NOT EXISTS users;
+USE users;
+
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,

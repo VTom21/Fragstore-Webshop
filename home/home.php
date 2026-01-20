@@ -146,17 +146,17 @@ $limit = 12;
 
   <section class="hero">
     <div class="dashboard">
-    <button class="close-btn" id="closeModal">&times;</button>
-    <h2>Admin Dashboard</h2>
-    <h4><?= htmlspecialchars($username) ?></h4>
+      <button class="close-btn" id="closeModal">&times;</button>
+      <h2>Admin Dashboard</h2>
+      <h4><?= htmlspecialchars($username) ?></h4>
 
-    <label class="pfp-frame">
+      <label class="pfp-frame">
         <img
-            id="pfpPreview"
-            src="<?= $image ? 'data:image/jpeg;base64,' . base64_encode($image) : '../pictures/default.png' ?>">
+          id="pfpPreview"
+          src="<?= $image ? 'data:image/jpeg;base64,' . base64_encode($image) : '../pictures/default.png' ?>">
         <input type="file" id="pfpInput" name="profile_picture" hidden />
-    </label>
-</div>
+      </label>
+    </div>
     <div class="lang-menu">
       <div class="selected-lang" data-flag="https://flagsapi.com/US/flat/32.png">
         English
@@ -569,26 +569,29 @@ $limit = 12;
     const preview = document.getElementById("pfpPreview");
 
 
-input.addEventListener("change", () => {
-    const file = input.files[0];
-    preview.src = URL.createObjectURL(file);
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      preview.src = URL.createObjectURL(file);
 
-    const formData = new FormData();
-    formData.append('profile_picture', file);
+      const formData = new FormData();
+      formData.append('profile_picture', file);
 
-fetch('dashboard.php', {
-  method: 'POST',
-  body: formData
-})
-.then(res => res.text())  // <-- first check text
-.then(text => {
-  console.log('RAW RESPONSE:', text);  // see exactly what PHP outputs
-  return JSON.parse(text);
-})
-.then(data => console.log('JSON:', data))
-.catch(err => console.error('Upload error:', err));
+      fetch('dashboard.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            console.log('Upload successful');
+          } else {
+            console.error(data.error);
+          }
+        })
+        .catch(err => console.error(err));
 
-});
+
+    });
 
 
     const loginToggle = document.querySelector('.login_toggle');
