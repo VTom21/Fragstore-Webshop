@@ -6,85 +6,149 @@
     <title>{{ title }}</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f2f2f2, #e0e0e0);
             color: #333;
+            margin: 0;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
         }
+
         .error-container {
             background-color: #fff;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            max-width: 600px;
+            border-radius: 16px;
+            padding: 60px 50px;
+            max-width: 900px;
+            width: 90%;
             text-align: center;
-            animation: fadeIn 0.5s ease-in-out;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            animation: fadeIn 0.7s ease-in-out;
+            position: relative;
         }
+
         h1 {
-            font-size: 48px;
+            font-size: 72px;
             color: #e74c3c;
             margin-bottom: 10px;
         }
+
         h2 {
-            font-size: 24px;
+            font-size: 32px;
             color: #555;
             margin-bottom: 20px;
         }
+
         p {
-            font-size: 16px;
-            line-height: 1.5;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
         }
+
         a.button {
             display: inline-block;
-            margin: 15px 10px 0;
-            padding: 12px 25px;
+            margin: 15px 12px 0;
+            padding: 15px 30px;
+            font-size: 18px;
             background-color: #3498db;
             color: white;
             text-decoration: none;
-            border-radius: 6px;
-            transition: 0.3s;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
+
         a.button:hover {
             background-color: #2980b9;
+            transform: translateY(-3px);
         }
+
         .links {
-            margin-top: 25px;
+            margin-top: 30px;
         }
+
+        .suggestions {
+            margin-top: 40px;
+        }
+
         .suggestions ul {
             list-style: none;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
         }
+
         .suggestions li {
-            margin: 5px 0;
+            margin: 8px 15px;
         }
+
+        .suggestions a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 17px;
+            transition: 0.3s;
+        }
+
+        .suggestions a:hover {
+            text-decoration: underline;
+            color: #2980b9;
+        }
+
         pre {
             background-color: #f2f2f2;
-            padding: 10px;
-            border-radius: 6px;
+            padding: 15px;
+            border-radius: 8px;
             overflow-x: auto;
-            font-size: 14px;
+            font-size: 15px;
+            margin-top: 25px;
+            text-align: left;
         }
+
+        .illustration {
+            margin-bottom: 30px;
+        }
+
+        .illustration img {
+            max-width: 250px;
+            opacity: 0.8;
+        }
+
         @keyframes fadeIn {
-            from {opacity: 0; transform: translateY(-10px);}
+            from {opacity: 0; transform: translateY(-15px);}
             to {opacity: 1; transform: translateY(0);}
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 48px; }
+            h2 { font-size: 24px; }
+            p { font-size: 16px; }
+            a.button { font-size: 16px; padding: 12px 25px; }
+            .illustration img { max-width: 180px; }
         }
     </style>
 </head>
 <body>
     <div class="error-container">
+        <!-- Optional Illustration -->
+        <div class="illustration">
+            <img src="/images/error-illustration.png" alt="Error Illustration">
+        </div>
+
+        <!-- Main Error Content -->
         <h1>{{ title }}</h1>
         {% if status_code is defined %}
             <h2>Error Code: {{ status_code }}</h2>
         {% endif %}
         <p>{{ message }}</p>
 
+        <!-- Suggestions Section -->
         {% if suggestions is defined %}
         <div class="suggestions">
-            <p>You might try:</p>
+            <p>You might try one of these:</p>
             <ul>
                 {% for suggestion in suggestions %}
                     <li><a href="{{ suggestion.url }}">{{ suggestion.text }}</a></li>
@@ -93,12 +157,15 @@
         </div>
         {% endif %}
 
+        <!-- Optional Debug Details -->
         {% if details is defined %}
             <pre>{{ details }}</pre>
         {% endif %}
 
+        <!-- Action Buttons -->
         <div class="links">
             <a href="/" class="button">Go to Homepage</a>
+            <a href="/products" class="button">View Products</a>
             <a href="/contact" class="button">Contact Support</a>
         </div>
     </div>
