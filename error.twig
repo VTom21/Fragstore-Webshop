@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .error-container {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        h1 {
+            font-size: 48px;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        a.button {
+            display: inline-block;
+            margin: 15px 10px 0;
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        a.button:hover {
+            background-color: #2980b9;
+        }
+        .links {
+            margin-top: 25px;
+        }
+        .suggestions ul {
+            list-style: none;
+            padding: 0;
+        }
+        .suggestions li {
+            margin: 5px 0;
+        }
+        pre {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(-10px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>{{ title }}</h1>
+        {% if status_code is defined %}
+            <h2>Error Code: {{ status_code }}</h2>
+        {% endif %}
+        <p>{{ message }}</p>
+
+        {% if suggestions is defined %}
+        <div class="suggestions">
+            <p>You might try:</p>
+            <ul>
+                {% for suggestion in suggestions %}
+                    <li><a href="{{ suggestion.url }}">{{ suggestion.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if details is defined %}
+            <pre>{{ details }}</pre>
+        {% endif %}
+
+        <div class="links">
+            <a href="/" class="button">Go to Homepage</a>
+            <a href="/contact" class="button">Contact Support</a>
+        </div>
+    </div>
+</body>
+</html>
