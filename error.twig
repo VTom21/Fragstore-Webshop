@@ -169,5 +169,81 @@
             <a href="/contact" class="button">Contact Support</a>
         </div>
     </div>
+
+        <div class="error-container">
+        <!-- Optional Illustration -->
+        <div class="illustration">
+            <img src="/images/error-illustration.png" alt="Error Illustration">
+        </div>
+
+        <!-- Main Error Content -->
+        <h1>{{ title }}</h1>
+        {% if status_code is defined %}
+            <h2>Error Code: {{ status_code }}</h2>
+        {% endif %}
+        <p>{{ message }}</p>
+
+        <!-- Suggestions Section -->
+        {% if suggestions is defined %}
+        <div class="suggestions">
+            <p>You might try one of these:</p>
+            <ul>
+                {% for suggestion in suggestions %}
+                    <li><a href="{{ suggestion.url }}">{{ suggestion.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <!-- Optional Debug Details -->
+        {% if details is defined %}
+            <pre>{{ details }}</pre>
+        {% endif %}
+
+        <!-- Action Buttons -->
+        <div class="links">
+            <a href="/" class="button">Go to Homepage</a>
+            <a href="/products" class="button">View Products</a>
+            <a href="/contact" class="button">Contact Support</a>
+        </div>
+    </div>
+
+        <div class="error-container">
+        <!-- Optional Illustration -->
+        <div class="illustration">
+            <img src="/images/error-illustration.png" alt="Error Illustration">
+        </div>
+
+        <!-- Main Error Content -->
+        <h1>{{ title }}</h1>
+        {% if status_code is defined %}
+            <h2>Error Code: {{ status_code }}</h2>
+        {% endif %}
+        <p>{{ message }}</p>
+
+        <!-- Suggestions Section -->
+        {% if suggestions is defined %}
+        <div class="suggestions">
+            <p>You might try one of these:</p>
+            <ul>
+                {% for suggestion in suggestions %}
+                    <li><a href="{{ suggestion.url }}">{{ suggestion.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <!-- Optional Debug Details -->
+        {% if details is defined %}
+            <pre>{{ details }}</pre>
+        {% endif %}
+
+        <!-- Action Buttons -->
+        <div class="links">
+            <a href="/" class="button">Go to Homepage</a>
+            <a href="/products" class="button">View Products</a>
+            <a href="/contact" class="button">Contact Support</a>
+        </div>
+    </div>
 </body>
 </html>
