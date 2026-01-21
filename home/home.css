@@ -816,7 +816,7 @@ main {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 0;
+  z-index: 99; /* one below dashboard (z-index: 100) */
 }
 
 .dashboard-overlay.active {
@@ -847,6 +847,7 @@ main {
   color: var(--white);
   text-align: center;
 }
+
 
 /* Profile Picture Frame */
 .pfp-frame {
@@ -1740,6 +1741,22 @@ main {
       order: 2;
       display: none;
   }
+
+  .dashboard {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    overflow-x: hidden;
+    display: flex;            /* use flex to center modal content */
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;     /* ensure clicks work */
+  }
+  
+  
 }
 
 @media (max-width: 768px) {

@@ -147,18 +147,23 @@ $limit = 12;
 
 
   <section class="hero">
-    <div class="dashboard">
-      <button class="close-btn" id="closeModal">&times;</button>
-      <h2>Admin Dashboard</h2>
-      <h4><?= htmlspecialchars($username) ?></h4>
+<!-- Overlay -->
+<div class="dashboard-overlay" id="dashboardOverlay"></div>
 
-      <label class="pfp-frame">
-        <img
-          id="pfpPreview"
-          src="<?= $image ? 'data:image/jpeg;base64,' . base64_encode($image) : '../pictures/default.png' ?>">
-        <input type="file" id="pfpInput" name="profile_picture" hidden />
-      </label>
-    </div>
+<!-- Dashboard sidebar -->
+<div class="dashboard" id="dashboard">
+  <button class="close-btn" id="closeModal">&times;</button>
+  <h2>Admin Dashboard</h2>
+  <h4><?= htmlspecialchars($username) ?></h4>
+
+  <label class="pfp-frame">
+    <img
+      id="pfpPreview"
+      src="<?= $image ? 'data:image/jpeg;base64,' . base64_encode($image) : '../pictures/default.png' ?>">
+    <input type="file" id="pfpInput" name="profile_picture" hidden />
+  </label>
+</div>
+
     <div class="lang-menu">
       <div class="selected-lang" data-flag="https://flagsapi.com/US/flat/32.png">
         English
@@ -600,6 +605,7 @@ $limit = 12;
     const dashboard = document.querySelector('.dashboard');
     const closeBtn = document.querySelector('.close-btn');
     const nav = document.querySelector(".navbar");
+    const overlay = document.getElementById('dashboardOverlay');
 
 
     loginToggle.addEventListener('click', () => {
@@ -608,7 +614,13 @@ $limit = 12;
 
     closeBtn.addEventListener('click', () => {
       dashboard.classList.remove('active');
+      overlay.classList.remove('active');
     });
+
+    overlay.addEventListener('click', () => {
+    dashboard.classList.remove('active');
+    overlay.classList.remove('active');
+  });
   </script>
 </body>
 
