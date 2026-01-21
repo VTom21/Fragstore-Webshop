@@ -14,36 +14,15 @@
 <img src="https://img.shields.io/github/languages/count/Vtom21/Fragstore-Webshop?color=white">
 
 </div><br>
-<div align="center" style="line-height: 0;">
-  <img
-    src="https://www.readmecodegen.com/api/social-icon?name=bulma"
-    style="margin: 6px;"
-  />
-  <img
-    src="https://www.readmecodegen.com/api/social-icon?name=angular"
-    style="margin: 6px;"
-  />
-  <img
-    src="https://www.readmecodegen.com/api/social-icon?name=alpinedotjs"
-    style="margin: 6px;"
-  />
-  <img
-    src="https://www.readmecodegen.com/api/social-icon?name=apache"
-    style="margin: 6px;"
-  />
-  <br />
-  <img
-    src="https://www.readmecodegen.com/api/social-icon?name=phpmyadmin"
-    style="margin: 6px;"
-  />
-  <img
-    src="https://www.readmecodegen.com/api/social-icon?name=firebase"
-    style="margin: 6px;"
-  />
-  <img
-    src="https://www.readmecodegen.com/api/social-icon?name=sass"
-    style="margin: 6px;"
-  />
+<div align="center">
+  <kbd><img src="https://www.readmecodegen.com/api/social-icon?name=bulma"></kbd>
+  <kbd><img src="https://www.readmecodegen.com/api/social-icon?name=angular"></kbd>
+  <kbd><img src="https://www.readmecodegen.com/api/social-icon?name=alpinedotjs"></kbd>
+  <kbd><img src="https://www.readmecodegen.com/api/social-icon?name=apache"></kbd>
+  <br>
+  <kbd><img src="https://www.readmecodegen.com/api/social-icon?name=phpmyadmin"></kbd>
+  <kbd><img src="https://www.readmecodegen.com/api/social-icon?name=firebase"></kbd>
+  <kbd><img src="https://www.readmecodegen.com/api/social-icon?name=sass"></kbd>
 </div>
 
 <br>
