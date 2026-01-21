@@ -3,12 +3,7 @@
   <h2><strong>Fragstore - Game Webshop</strong></h2>
 </div>
 
-</div>
-<div align="center">
-      <img src="https://www.readmecodegen.com/api/social-icon?name=bulma">
-      <img src="https://www.readmecodegen.com/api/social-icon?name=apache">
-      <img src="https://www.readmecodegen.com/api/social-icon?name=phpmyadmin">
-</div><br>
+
 
 <div align="center">
   <img src="https://img.shields.io/badge/Build-Passing-blue">
@@ -18,8 +13,13 @@
   <img src="https://img.shields.io/github/commit-activity/t/Vtom21/Fragstore-Webshop?color=white">
 <img src="https://img.shields.io/github/languages/count/Vtom21/Fragstore-Webshop?color=white">
 
+</div><br>
+<div align="center">
+      <img src="https://www.readmecodegen.com/api/social-icon?name=bulma">
+      <img src="https://www.readmecodegen.com/api/social-icon?name=apache">
+      <img src="https://www.readmecodegen.com/api/social-icon?name=phpmyadmin">
+</div><br>
 
-<br>
 <div align="center">
 <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white">
 <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
