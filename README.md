@@ -15,10 +15,16 @@
 
 </div><br>
 <div align="center">
-      <img src="https://www.readmecodegen.com/api/social-icon?name=bulma">
-      <img src="https://www.readmecodegen.com/api/social-icon?name=apache">
-      <img src="https://www.readmecodegen.com/api/social-icon?name=phpmyadmin">
-</div><br>
+  <img src="https://www.readmecodegen.com/api/social-icon?name=bulma">
+  <img src="https://www.readmecodegen.com/api/social-icon?name=angular">
+  <img src="https://www.readmecodegen.com/api/social-icon?name=alpinedotjs">
+  <img src="https://www.readmecodegen.com/api/social-icon?name=apache"><br>
+  <img src="https://www.readmecodegen.com/api/social-icon?name=phpmyadmin">
+  <img src="https://www.readmecodegen.com/api/social-icon?name=firebase">
+  <img src="https://www.readmecodegen.com/api/social-icon?name=sass">
+</div>
+<br>
+
 
 <div align="center">
 <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white">
