@@ -215,24 +215,24 @@ Will you uncover all three hidden treasures?
 ### 🖥️ Application Flow 
 
 ```
-                                     Home
-                              ┌───────┼───────┐
-                              ↓       ↓       ↓
-                      Main Website  Contacts  Login / Sign Up
-                              │
-               ┌──────────────┼──────────────┐
-               ↓                             ↓
-       Shopping Cart                   Read More / Info
-               │
-               ├─────────────┬─────────────┬─────────────┐
-               ↓             ↓             ↓             ↓
-           Summary       Secret Game Entry  Game Awards    Home
-               ↓             Points       Website
-           Checkout            ↓             ↓
-               ↓           Game Screen   Completion & Rewards
-           Payment                              ↓
-               ↓                               Home
-          Success/Failure
+                                           Home
+                                    ┌───────┼───────┐
+                                    ↓       ↓       ↓
+                            Main Website  Contacts  Login / Sign Up
+                                    │
+                     ┌──────────────┼──────────────┐
+                     ↓                             ↓
+             Shopping Cart                   Read More / Info
+                     │
+                     ├─────────────┬─────────────┬─────────────┐
+                     ↓             ↓             ↓             ↓
+                 Summary       Secret Game Entry  Game Awards    Home
+                     ↓             Points       Website
+                 Checkout            ↓             ↓
+                     ↓           Game Screen   Completion & Rewards
+                 Payment                              ↓
+                     ↓                               Home
+                Success/Failure
 
                       
 ```
