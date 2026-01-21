@@ -215,25 +215,25 @@ Will you uncover all three hidden treasures?
 ### 🖥️ Application Flow 
 
 ```
-
                                      Home
                               ┌───────┼───────┐
                               ↓       ↓       ↓
                       Main Website  Contacts  Login / Sign Up
                               │
-                              │
-                              ├─────────────┬─────────────┬─────────────┐
-                              ↓             ↓             ↓             ↓
-                      Shopping Cart  Secret Game Entry  Game Awards    Home
-                              │             Points       Website
-                              ↓             ↓             ↓
-                           Summary        Game Screen   Completion & Rewards
-                              ↓                           ↓
-                           Checkout                      Home
-                              ↓
-                            Payment
-                              ↓
-                         Success/Failure
+               ┌──────────────┼──────────────┐
+               ↓                             ↓
+       Shopping Cart                   Read More / Info
+               │
+               ├─────────────┬─────────────┬─────────────┐
+               ↓             ↓             ↓             ↓
+           Summary       Secret Game Entry  Game Awards    Home
+               ↓             Points       Website
+           Checkout            ↓             ↓
+               ↓           Game Screen   Completion & Rewards
+           Payment                              ↓
+               ↓                               Home
+          Success/Failure
+
                       
 ```
 <div id="file"></div>
@@ -361,6 +361,10 @@ Fragstore-Webshop/
     │   ├── snake.php
     │   └── snake.scss
     │
+    ├── templates
+    │   └── error.twig
+    │
+    │
     ├── tetris
     │   ├── public
     │   │   └── tetris.png
@@ -392,7 +396,8 @@ Fragstore-Webshop/
     ├── index.js
     ├── package-lock.json
     ├── package.json
-    └── README.md
+    ├── README.md
+    └── test.php
 
 
 ```
@@ -629,7 +634,8 @@ CREATE TABLE `datas` (
   `platforms` varchar(255) DEFAULT NULL,
   `prize` decimal(10,2) DEFAULT NULL,
   `publisher_id` int(11) DEFAULT NULL,
-  `isDiscount` tinyint(1) NOT NULL DEFAULT 0
+  `isDiscount` tinyint(1) NOT NULL DEFAULT 0,
+  `discountPerc` int(11) NOT NULL DEFAULT 0
 ) 
 ```
 Stores awards associated with games or developers, including award name and year.
@@ -674,36 +680,28 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `profile_picture` varchar(255) NOT NULL
 )
 
 ```
 <div id="leaderboard"></div>
 
-### 4. `leaderboard`
-Stores player scores for the arcade games.  
-This table is used to track high scores and display rankings across the platform.
-```sql
-CREATE TABLE `datas` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `score` int(11) DEFAULT NULL
-) 
-```
 
-### 5. `stock`
+
+### 4. `stock`
 Stock DB is a Firebase Realtime Database that stores video game inventory data, including title, release date, genre, platforms, price, stock quantity, discount status, and image URLs for each game. 
 
 <img src="./pictures/firebase1.png" id="tetris"></img>
 <img src="./pictures/firebase2.png" id="tetris"></img>
 
-### 6. `delivery`
+### 5. `delivery`
 The Stock database is a Firebase Realtime Database that stores video game inventory data. Each game entry includes title, release date, genre, platforms, price, stock quantity, discount status, and image URLs. This ensures that the webshop always shows up-to-date information on availability and pricing.
 
 <img src="./pictures/delivery1.png" id="tetris"></img>
 <img src="./pictures/delivery2.png" id="tetris"></img>
 
-### 7. `leaderboard`
+### 6. `leaderboard`
 The Leaderboard database is a Firebase Realtime Database that stores player scores and achievements for video games. Each entry includes the player’s name, score, and other relevant details. This allows the game to display real-time rankings and track high scores efficiently.
 
 <img src="./pictures/leaderboard1.png" id="tetris"></img>
