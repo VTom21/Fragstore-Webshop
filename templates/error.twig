@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>{{ title }}</title>
-        <link rel="icon" type="image/x-icon" href="/icons/array.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.4/css/bulma.css" integrity="sha512-eFsXLxlvEqjqSgTye2eGiO1DSwSEQLzPafvB1DVoqzxcBDq7R1kyveQBbeH9QQUnXx9V4zKZcvr1Ms6kxkLKjQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
 
-        <section class="section pt-6 pb-6 has-background-danger is-fullheight">
-            <div class="container">
+    <link rel="icon" type="image/x-icon" href="/icons/array.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.4/css/bulma.min.css"
+    >
+  </head>
 
-                <div class="has-text-centered mb-6">
-                    <h1 class="title is-2 mb-3">{{ title }}</h1>
-                    <p class="subtitle is-4">{{ message }}</p>
-                </div>
+  <body style="background-color: #0f0f14;color: #e8e8e8;">
 
-                {% if redirectUrl is defined %}
-                    <div class="has-text-centered mb-6">
-                        <a class="is-link is-medium" href="{{ redirectUrl }}">Reload Page</a>
-                    </div>
-                {% endif %}
+    <section class="section is-fullheight is-flex is-align-items-center"style="background-color:#0f0f14;">
+      <div class="container">
 
-                {% if details is defined %}
-                    <div class="box p-5">
-                        <pre>{{ details }}</pre>
-                    </div>
-                {% endif %}
-            </div>
-        </section>
-    </body>
+        <!-- Header -->
+        <div class="has-text-centered mb-6">
+          <h1 class="title is-2 mb-3"
+            style="color:#00f7ff;text-shadow:0 0 10px rgba(0,247,255,0.35);">
+            {{ title }}
+          </h1>
+
+          <p class="subtitle is-5"style="color:#a0a0a0;">
+            {{ message }}
+          </p>
+          <img src="../icons/array (2).png" style="width:150px;"></img>
+        </div>
+
+        <!-- Redirect Button -->
+        {% if redirectUrl is defined %}
+          <div class="has-text-centered mb-6">
+            <a href="{{ redirectUrl }}"
+              class="button is-medium"
+              style="background: linear-gradient(135deg,#00f7ff,#00d4d4);color:#000;border:none;font-weight:600;box-shadow:0 4px 25px rgba(0,247,255,0.15);">
+              Reload Page
+            </a>
+          </div>
+        {% endif %}
+
+        <!-- Details Box -->
+        {% if details is defined %}
+          <div class="box"
+            style="background-color:#1a1b26;border:1px solid rgba(0,247,255,0.2);box-shadow:0 4px 25px rgba(0,247,255,0.1);">
+            <pre
+              style="background-color:#202231;color:#c7c2c2;padding:1.25rem;border-radius:8px;overflow:auto;">{{ details }}</pre>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+
+  </body>
 </html>
