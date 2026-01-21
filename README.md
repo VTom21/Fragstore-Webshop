@@ -15,31 +15,14 @@
 
 </div><br>
 <div align="center">
-  <kbd style="padding: 5px; border-radius: 6px; background: #f3f3f3; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); margin: 3px;">
-    <img src="https://www.readmecodegen.com/api/social-icon?name=bulma">
-  </kbd>
-  <kbd style="padding: 5px; border-radius: 6px; background: #f3f3f3; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); margin: 3px;">
-    <img src="https://www.readmecodegen.com/api/social-icon?name=angular">
-  </kbd>
-  <kbd style="padding: 5px; border-radius: 6px; background: #f3f3f3; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); margin: 3px;">
-    <img src="https://www.readmecodegen.com/api/social-icon?name=alpinedotjs">
-  </kbd>
-  <kbd style="padding: 5px; border-radius: 6px; background: #f3f3f3; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); margin: 3px;">
-    <img src="https://www.readmecodegen.com/api/social-icon?name=apache">
-  </kbd>
-  <br><br>
-  <kbd style="padding: 5px; border-radius: 6px; background: #f3f3f3; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); margin: 3px;">
-    <img src="https://www.readmecodegen.com/api/social-icon?name=phpmyadmin">
-  </kbd>
-  <kbd style="padding: 5px; border-radius: 6px; background: #f3f3f3; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); margin: 3px;">
-    <img src="https://www.readmecodegen.com/api/social-icon?name=firebase">
-  </kbd>
-  <kbd style="padding: 5px; border-radius: 6px; background: #f3f3f3; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); margin: 3px;">
-    <img src="https://www.readmecodegen.com/api/social-icon?name=sass">
-  </kbd>
+  <img src="https://www.readmecodegen.com/api/social-icon?name=bulma">
+  <img src="https://www.readmecodegen.com/api/social-icon?name=angular">
+  <img src="https://www.readmecodegen.com/api/social-icon?name=alpinedotjs">
+  <img src="https://www.readmecodegen.com/api/social-icon?name=apache"><br>
+  <img src="https://www.readmecodegen.com/api/social-icon?name=phpmyadmin">
+  <img src="https://www.readmecodegen.com/api/social-icon?name=firebase">
+  <img src="https://www.readmecodegen.com/api/social-icon?name=sass">
 </div>
-
-
 <br>
 
 
