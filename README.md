@@ -14,15 +14,38 @@
 <img src="https://img.shields.io/github/languages/count/Vtom21/Fragstore-Webshop?color=white">
 
 </div><br>
-<div align="center">
-  <img src="https://www.readmecodegen.com/api/social-icon?name=bulma">
-  <img src="https://www.readmecodegen.com/api/social-icon?name=angular">
-  <img src="https://www.readmecodegen.com/api/social-icon?name=alpinedotjs">
-  <img src="https://www.readmecodegen.com/api/social-icon?name=apache"><br>
-  <img src="https://www.readmecodegen.com/api/social-icon?name=phpmyadmin">
-  <img src="https://www.readmecodegen.com/api/social-icon?name=firebase">
-  <img src="https://www.readmecodegen.com/api/social-icon?name=sass">
+<div align="center" style="line-height: 0;">
+  <img
+    src="https://www.readmecodegen.com/api/social-icon?name=bulma"
+    style="margin: 6px;"
+  />
+  <img
+    src="https://www.readmecodegen.com/api/social-icon?name=angular"
+    style="margin: 6px;"
+  />
+  <img
+    src="https://www.readmecodegen.com/api/social-icon?name=alpinedotjs"
+    style="margin: 6px;"
+  />
+  <img
+    src="https://www.readmecodegen.com/api/social-icon?name=apache"
+    style="margin: 6px;"
+  />
+  <br />
+  <img
+    src="https://www.readmecodegen.com/api/social-icon?name=phpmyadmin"
+    style="margin: 6px;"
+  />
+  <img
+    src="https://www.readmecodegen.com/api/social-icon?name=firebase"
+    style="margin: 6px;"
+  />
+  <img
+    src="https://www.readmecodegen.com/api/social-icon?name=sass"
+    style="margin: 6px;"
+  />
 </div>
+
 <br>
 
 
