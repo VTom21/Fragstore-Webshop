@@ -4,14 +4,16 @@ include 'genres.php';
 include 'giftcards.php';
 include '../config.php';
 
+if(isset($_SESSION['user_id'])){
+  $stmt = $pdo->prepare("SELECT profile_picture, username FROM users WHERE id = ?");
+  $stmt->execute([$_SESSION['user_id']]);
+  $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-$stmt = $pdo->prepare("SELECT profile_picture, username FROM users WHERE id = ?");
-$stmt->execute([$_SESSION['user_id']]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-$image = $user ? $user['profile_picture'] : null;
+  $image = $user ? $user['profile_picture'] : null;
 $username = $user ? $user['username'] : 'Guest';
+}
+
+
 
 
 
