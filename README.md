@@ -91,6 +91,7 @@
 - [API Endpoints & Integrations](#api)
   - [EmailJS](#api)
   - [Currency Exchange API](#currency)
+  - [RAWG API](#rawg)
   - [Flags API](#flags)
   - [Chart.js](#chart)
 - [Contributing](#contribute)
@@ -211,6 +212,8 @@ Click on **any game card 5 times** to unlock one of three nostalgic surprises:
 
 
 Will you uncover all three hidden treasures?
+
+<div id="app-flow"></div>
 
 ### 🖥️ Application Flow 
 
@@ -685,7 +688,7 @@ CREATE TABLE `users` (
 )
 
 ```
-<div id="leaderboard"></div>
+
 
 
 
@@ -700,6 +703,7 @@ The Stock database is a Firebase Realtime Database that stores video game invent
 
 <img src="./pictures/delivery1.png" id="tetris"></img>
 <img src="./pictures/delivery2.png" id="tetris"></img>
+<div id="leaderboard"></div>
 
 ### 6. `leaderboard`
 The Leaderboard database is a Firebase Realtime Database that stores player scores and achievements for video games. Each entry includes the player’s name, score, and other relevant details. This allows the game to display real-time rankings and track high scores efficiently.
@@ -790,7 +794,7 @@ fetch('https://open.er-api.com/v6/latest/USD')
 
 ---
 
-### <img height="50" id="currency" style="display:inline; align-items:center;" align="center" src="https://rapidapi-prod-apis.s3.amazonaws.com/aa/5f399a9426449aac6954ffc8c0b481/ce9eeca1905fdb11890f3afc10724191.png"></img> RAWG API
+### <img height="50" id="rawg" style="display:inline; align-items:center;" align="center" src="https://rapidapi-prod-apis.s3.amazonaws.com/aa/5f399a9426449aac6954ffc8c0b481/ce9eeca1905fdb11890f3afc10724191.png"></img> RAWG API
 
 Access detailed video game information, including titles, genres, platforms, release dates, ratings, and images using the [RAWG API](https://rawg.io/apidocs)
 
