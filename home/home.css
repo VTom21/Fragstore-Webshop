@@ -1507,6 +1507,7 @@ main {
   z-index: 20;
 }
 
+
 .selected-lang {
   display: flex;
   align-items: center;
@@ -1591,18 +1592,50 @@ main {
     background-size: cover;
 }
 
-.in:before{
+.hi:before{
     background-image: url("https://flagsapi.com/IN/flat/32.png");
     background-size: cover;
 }
 
-.jp:before{
+.ja:before{
     background-image: url("https://flagsapi.com/JP/flat/32.png");
     background-size: cover;
 }
 
+.pl:before{
+  background-image: url("https://flagsapi.com/PL/flat/32.png");
+  background-size: cover;
+}
 
+.tr:before{
+  background-image: url("https://flagsapi.com/TR/flat/32.png");
+  background-size: cover;
+}
 
+.ko:before{
+  background-image: url("https://flagsapi.com/KR/flat/32.png");
+  background-size: cover;
+}
+
+.fi:before{
+  background-image: url("https://flagsapi.com/FI/flat/32.png");
+  background-size: cover;
+}
+
+.hu:before{
+  background-image: url("https://flagsapi.com/HU/flat/32.png");
+  background-size: cover;
+}
+
+.he:before{
+  background-image: url("https://flagsapi.com/IL/flat/32.png");
+  background-size: cover;
+}
+
+.sv:before{
+  background-image: url("https://flagsapi.com/SE/flat/32.png");
+  background-size: cover;
+}
 
 .lang-menu ul li a:hover {
   background-color: var(--header-border);
@@ -1614,7 +1647,6 @@ main {
   width: 32px;
   height: 32px;
 }
-
 
 
 .progress-bar {

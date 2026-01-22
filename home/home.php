@@ -202,8 +202,15 @@ $limit = 12;
         <li><a href="#" class="es" data-flag="https://flagsapi.com/ES/flat/32.png">Spanish</a></li>
         <li><a href="#" class="fr" data-flag="https://flagsapi.com/FR/flat/32.png">French</a></li>
         <li><a href="#" class="ru" data-flag="https://flagsapi.com/RU/flat/32.png">Russian</a></li>
-        <li><a href="#" class="in" data-flag="https://flagsapi.com/IN/flat/32.png">Hindi</a></li>
-        <li><a href="#" class="jp" data-flag="https://flagsapi.com/JP/flat/32.png">Japanese</a></li>
+        <li><a href="#" class="hi" data-flag="https://flagsapi.com/IN/flat/32.png">Hindi</a></li>
+        <li><a href="#" class="ja" data-flag="https://flagsapi.com/JP/flat/32.png">Japanese</a></li>
+        <li><a href="#" class="pl" data-flag="https://flagsapi.com/PL/flat/32.png">Polish</a></li>
+        <li><a href="#" class="tr" data-flag="https://flagsapi.com/TR/flat/32.png">Turkish</a></li>
+        <li><a href="#" class="ko" data-flag="https://flagsapi.com/KR/flat/32.png">Korean</a></li>
+        <li><a href="#" class="fi" data-flag="https://flagsapi.com/FI/flat/32.png">Finnish</a></li>
+        <li><a href="#" class="hu" data-flag="https://flagsapi.com/HU/flat/32.png">Hungarian</a></li>
+        <li><a href="#" class="he" data-flag="https://flagsapi.com/IL/flat/32.png">Hebrew</a></li>
+        <li><a href="#" class="sv" data-flag="https://flagsapi.com/SE/flat/32.png">Sweden</a></li>
       </ul>
     </div>
 
