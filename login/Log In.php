@@ -4,7 +4,7 @@
 session_start();
 
 require_once dirname(__DIR__) . '/config.php'; //loads PDO from config.php
-include '../test.php';
+
 
 //helper function for removing special characters
 function e($s)
@@ -37,6 +37,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_regenerate_id(true);
         $_SESSION['user_id']  = (int)$user['id']; //stores user_id in the session
         $_SESSION['username'] = $user['username']; //stores username in the session
+
+        $token = bin2hex(random_bytes(32)); // generate secure token
+        $stmt = $pdo->prepare("UPDATE users SET remember_token = ? WHERE id = ?");
+        $stmt->execute([$token, $user['id']]);
+
+      setcookie(
+        'remember_me', 
+        $token, 
+        time() + 60*60*24*30, // valid for 30 days
+        '/', 
+        '', 
+        true, // secure, only over HTTPS
+        true  // HttpOnly
+      );
+      
         header("Location: OTP.php");
         exit;
       } else {

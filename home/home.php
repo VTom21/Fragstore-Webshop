@@ -4,14 +4,40 @@ include 'genres.php';
 include 'giftcards.php';
 include '../config.php';
 
-if(isset($_SESSION['user_id'])){
-  $stmt = $pdo->prepare("SELECT profile_picture, username FROM users WHERE id = ?");
-  $stmt->execute([$_SESSION['user_id']]);
-  $user = $stmt->fetch(PDO::FETCH_ASSOC);
+$username = 'Guest';
+$image = null;
 
-  $image = $user ? $user['profile_picture'] : null;
-$username = $user ? $user['username'] : 'Guest';
+// 1. Try session first
+if (isset($_SESSION['user_id'])) {
+    $stmt = $pdo->prepare("SELECT id, username, profile_picture FROM users WHERE id = ? LIMIT 1");
+    $stmt->execute([$_SESSION['user_id']]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        $username = $user['username'];
+        $image = $user['profile_picture'];
+    }
+} 
+// 2. If session not set, try remember_me cookie
+elseif (isset($_COOKIE['remember_me'])) {
+    $token = $_COOKIE['remember_me'];
+    $stmt = $pdo->prepare("SELECT id, username, profile_picture FROM users WHERE remember_token = ? LIMIT 1");
+    $stmt->execute([$token]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        $username = $user['username'];
+        $image = $user['profile_picture'];
+
+        // Rebuild session
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+    } else {
+        // Invalid token, delete cookie
+        setcookie('remember_me', '', time() - 3600, '/', '', true, true);
+    }
 }
+
 
 
 
@@ -554,7 +580,9 @@ $limit = 12;
         this.style.display = 'none';
       });
     });
-
+    function deleteCookie(){
+      document.cookie = name + "=; Max-Age=0; path=/;";
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
       const loginToggle = document.querySelector(".login_toggle");
@@ -566,8 +594,10 @@ $limit = 12;
         loginToggle.textContent = `Welcome ${username}!`; // use textContent instead of innerHTML
         document.getElementById("sigin").style.display = "none";
         document.getElementById("register").style.display = "none";
+        deleteCookie('remember_me');
       } else {
         loginToggle.style.display = "none"; // hide if not logged in
+        deleteCookie('remember_me');
       }
 
     });
