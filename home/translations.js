@@ -1,5 +1,9 @@
 function translate(text, from = "en", to = "auto") {
 
+  if (from === to) {
+    return Promise.resolve(text);
+  }
+
   if (!("Translator" in window)) {
     return Promise.resolve(text);
   }
@@ -19,6 +23,7 @@ function translateContent(lang) {
     if (!el.dataset.original) {
       el.dataset.original = el.textContent;
     }
+
     
     translate(el.dataset.original, "en", lang)
       .then(function(translated) {

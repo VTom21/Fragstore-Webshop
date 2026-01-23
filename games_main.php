@@ -341,6 +341,22 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                     </div>
                 </div>
 
+                <div class="filter-group">
+                    <strong>Stock:</strong>
+                    <div class="checkbox-list">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" ng-model="stockBool" ng-change="inStock()">
+                            <span class="checkmark"></span>
+                            <p class="label_p">Items in stock</p>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" ng-model="stockBool2" ng-change="inStock()">
+                            <span class="checkmark"></span>
+                            <p class="label_p">Items not in stock</p>
+                        </label>
+                    </div>
+                </div>
+
             </div>
 
             <button ng-click="modalOpen = false">Close</button>

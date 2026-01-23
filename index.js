@@ -8,6 +8,8 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.isPrizeAscChecked = false;
   $scope.isPrizeDescChecked = false;
   $scope.prizeSortOrder = "";
+  $scope.stockBool = null;
+  $scope.stockBool2 = null;
 
   $scope.sortOrder = "";
   $scope.isAscChecked = false;
@@ -407,6 +409,35 @@ $scope.openCart = function (game) {
       $scope.applyAdvancedFilters();
     }
   };
+
+  $scope.inStock = function() {
+    let filtered = $scope.games; 
+  
+
+    switch ($scope.stockBool) {
+      case true:
+        filtered = filtered.filter(game => game.stock !== 0);
+        break;
+      case false:
+        break;
+    }
+  
+    switch ($scope.stockBool2) {
+      case true:
+        filtered = filtered.filter(game => game.stock === 0);
+        break;
+      case false:
+        break;
+    }
+  
+    if (!$scope.stockBool && !$scope.stockBool2) {
+      filtered = $scope.games;
+    }
+  
+    $scope.filteredGames = filtered;
+  };
+  
+  
 
 
   $scope.applySorting = function () { // => Prototype Sorting

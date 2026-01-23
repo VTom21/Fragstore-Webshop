@@ -211,7 +211,7 @@ $limit = 12;
       </div>
 
       <ul>
-        <li><a href="#" class="us" data-flag="https://flagsapi.com/US/flat/32.png">English</a></li>
+        <li><a href="#" class="en" data-flag="https://flagsapi.com/US/flat/32.png">English</a></li>
         <li><a href="#" class="de" data-flag="https://flagsapi.com/DE/flat/32.png">German</a></li>
         <li><a href="#" class="it" data-flag="https://flagsapi.com/IT/flat/32.png">Italian</a></li>
         <li><a href="#" class="es" data-flag="https://flagsapi.com/ES/flat/32.png">Spanish</a></li>
@@ -677,14 +677,30 @@ $limit = 12;
 const language = navigator.language.split('-')[0]; 
 const region = navigator.language.split('-')[1] || 'US';
 const flagImg = document.getElementById("lang"); 
-const date = new Date();
-const years = date.getFullYear();
-const hours = date.getHours();
-const mins = date.getMinutes();
-const secs = date.getSeconds();
-const pad = n => n.toString().padStart(2, '0');
 
-const time = `${years}-${pad(hours)}:${pad(mins)}:${pad(secs)}`;
+
+function updateTime() {
+  const date = new Date();
+  const years = date.getFullYear();
+  const hours = date.getHours();
+  const mins = date.getMinutes();
+  const secs = date.getSeconds();
+
+  const pad = n => n.toString().padStart(2, '0');
+
+  const time = `${years}-${pad(hours)}:${pad(mins)}:${pad(secs)}`;
+
+  document.getElementById("time").textContent = time;
+
+
+  document.cookie = `time=${time}; path=/`;
+}
+
+
+updateTime();
+
+
+setInterval(updateTime, 1000);
 
 
 document.cookie = `language=${language}; path=/`;

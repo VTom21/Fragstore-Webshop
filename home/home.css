@@ -1577,7 +1577,7 @@ main {
   background-size: cover;
 }
 
-.us:before{
+.en:before{
     background-image: url("https://flagsapi.com/US/flat/32.png");
     background-size: cover;
 }
