@@ -1648,7 +1648,28 @@ main {
   height: 32px;
 }
 
+.datas{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  align-content: center;
+  gap: 20px;
+}
+#lang{
+position: absolute;
+bottom: 10px;
+left: 10px;
+}
 
+#time{
+position: absolute;
+bottom: -17px;
+right: 10px;
+}
+
+.datas .stats-grid{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+}
 .progress-bar {
   position: absolute;
   bottom: 0; /* stick to the bottom of navbar */
@@ -1792,6 +1813,12 @@ main {
   .dashboard.active {
     right: 0;
   } 
+
+  #lang{
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1900,7 +1927,7 @@ main {
     flex-wrap: wrap;
   }
   .dashboard{
-    overflow-x: auto;
+    overflow-x: hidden;
   }
 }
 /* ========== HAMBURGER BUTTON ========== */
@@ -2130,5 +2157,12 @@ body.menu-open {
 
   .navbar a:hover::after {
     width: 100%;
+  }
+}
+
+@media(max-width:300px){
+  .datas .stats-grid #time{
+    display: flex;
+    flex-wrap: wrap;
   }
 }
