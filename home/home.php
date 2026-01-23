@@ -7,6 +7,13 @@ include '../config.php';
 $username = 'Guest';
 $image = null;
 
+$language = $_COOKIE['language'] ?? '';
+$region   = $_COOKIE['region'] ?? '';
+$time = $_COOKIE['time'] ?? '';
+
+
+
+
 // 1. Try session first
 if (isset($_SESSION['user_id'])) {
     $stmt = $pdo->prepare("SELECT id, username, profile_picture FROM users WHERE id = ? LIMIT 1");
@@ -117,8 +124,8 @@ $limit = 12;
 <body ng-app="home" ng-controller="home_controller">
   <a href="../redirect/redirect.php?destination=../games_main.php">
     <div class="discount-news-header">
-      <h1 class="title">Call of Duty Franchise Sale</h1>
-      <p class="subtitle">Grab the best cod games before they're gone!</p>
+      <h1 class="title" data-i18n>Call of Duty Franchise Sale</h1>
+      <p class="subtitle" data-i18n="">Grab the best cod games before they're gone!</p>
     </div>
   </a>
   <header id="header">
@@ -179,7 +186,7 @@ $limit = 12;
 <!-- Dashboard sidebar -->
 <div class="dashboard" id="dashboard">
   <button class="close-btn" id="closeModal">&times;</button>
-  <h2>Admin Dashboard</h2>
+  <h2 data-i18n>Admin Dashboard</h2>
   <h4><?= htmlspecialchars($username) ?></h4>
 
   <label class="pfp-frame">
@@ -188,6 +195,14 @@ $limit = 12;
       src="<?= $image ? 'data:image/jpeg;base64,' . base64_encode($image) : '../pictures/default.png' ?>">
     <input type="file" id="pfpInput" name="profile_picture" hidden />
   </label>
+  <div class="datas">
+  <p>Region: <?php echo $region?></p>
+  <p>Language: <?php echo $language?></p>
+  <div class="stats-grid">
+  <img src="" class="hu" id="lang" alt="">
+  <p id="time"><?php echo $time?></p>
+  </div>
+  </div>
 </div>
 
     <div class="lang-menu">
@@ -287,15 +302,15 @@ $limit = 12;
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
           <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-            <dt class="text-base/7 text-gray-700">Orders completed</dt>
+            <dt class="text-base/7 text-gray-700" data-i18n>Orders completed</dt>
             <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl" data-value="2300000">2.3M+</dd>
           </div>
           <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-            <dt class="text-base/7 text-gray-700">Items delivered</dt>
+            <dt class="text-base/7 text-gray-700" data-i18n>Items delivered</dt>
             <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl" data-value="18000000">18M+</dd>
           </div>
           <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-            <dt class="text-base/7 text-gray-700">Daily purchases</dt>
+            <dt class="text-base/7 text-gray-700" data-i18n>Daily purchases</dt>
             <dd class="order-first text-3xl font-semibold tracking-tight text-cyan-900 sm:text-5xl" data-value="12000">12,000+</dd>
           </div>
         </dl>
@@ -658,6 +673,26 @@ $limit = 12;
     dashboard.classList.remove('active');
     overlay.classList.remove('active');
   });
+
+const language = navigator.language.split('-')[0]; 
+const region = navigator.language.split('-')[1] || 'US';
+const flagImg = document.getElementById("lang"); 
+const date = new Date();
+const years = date.getFullYear();
+const hours = date.getHours();
+const mins = date.getMinutes();
+const secs = date.getSeconds();
+const pad = n => n.toString().padStart(2, '0');
+
+const time = `${years}-${pad(hours)}:${pad(mins)}:${pad(secs)}`;
+
+
+document.cookie = `language=${language}; path=/`;
+document.cookie = `region=${region}; path=/`;
+document.cookie = `time=${time}; path=/`;
+flagImg.src = `https://flagsapi.com/${region}/flat/32.png`;
+flagImg.dataset.flag = flagImg.src;
+
   </script>
 </body>
 
