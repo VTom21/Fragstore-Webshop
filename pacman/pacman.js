@@ -160,6 +160,8 @@ function Load() {
   context = canva.getContext("2d"); //Defines drawing context, rendering for the canvas through an object
 
   load_images();
+  const chosen = MAPS[Math.floor(Math.random() * MAPS.length)];
+  activeMap = chosen.map(r => r.slice());
   load_map();
   update();
 
@@ -264,6 +266,37 @@ const map = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
+const map2 = [
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 2, 1],
+  [1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 2, 1],
+  [1, 8, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 11, 1],
+  [1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 2, 1],
+  [1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1],
+  [1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1],
+  [0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0],
+  [1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1],
+  [12, 2, 2, 2, 2, 1, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 1, 2, 2, 2, 2, 12],
+  [1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 1, 2, 1, 1, 1, 1],
+  [0, 0, 0, 1, 2, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 2, 1, 0, 0, 0],
+  [1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 0, 0, 0, 0, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1],
+  [0, 0, 0, 0, 0, 2, 2, 1, 2, 2, 2, 1, 9, 9, 9, 9, 1, 2, 2, 2, 1, 2, 2, 0, 0, 0, 0, 0],
+  [1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 3, 6, 5, 4, 1, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1],
+  [1, 10, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 7, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 10, 1],
+  [1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1],
+  [1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+];
+
+const MAPS = [map, map2];
+let activeMap = map;
+
 
 //Map Sets and variables
 //Sets dont allow duplicates, better element accessing <-> lists are ordered, slower searching, requires indexing
@@ -295,18 +328,15 @@ function load_map() {
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < columns; col++) {
-      let tile = map[row][col]; //current tile (exp. 0,0)
+      let tile = activeMap[row][col]; //current tile (exp. 0,0)
 
       let x = col * tile_size; // X coordinate => column value * tilesize => scalingX
       let y = row * tile_size; // Y coordinate => row value * tilesize => scalingY
 
-      if(row == 4 && col == 26){
-        map[row][col] = RANDOM_ORB[Math.floor(Math.random() * RANDOM_ORB.length)];
+      if (row == 4 && col == 26) {
+        activeMap[row][col] = RANDOM_ORB[Math.floor(Math.random() * RANDOM_ORB.length)];
       }
-
-      tile = map[row][col]; 
-      x = col * tile_size;
-      y = row * tile_size;
+      tile = activeMap[row][col];
 
       //we use the constant variables for conditioning, sets for storing and a generate class for generating blocks
 
@@ -994,7 +1024,9 @@ function Warp(){
   let random_x = Math.floor(Math.random() * (rows - 6)) + 5;
   let random_y = Math.floor(Math.random() * (columns - 1));
 
-  if(map[random_x][random_y] !== 1 && map[random_x][random_y] !== 3 && map[random_x][random_y] !== 4 && map[random_x][random_y] !== 5 && map[random_x][random_y] !== 6){
+  const t = activeMap[random_x][random_y];
+
+  if(t !== WALL_TILE && t !== TILE_BLUE_GHOST && t !== TILE_RED_GHOST  && t !== TILE_ORANGE_GHOST  && t !== TILE_PINK_GHOST){
     pacman.x = random_y * tile_size;
     pacman.y = random_x * tile_size;
   }
