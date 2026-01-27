@@ -29,8 +29,14 @@ else
     echo "PHP is NOT installed."
 fi
 
+# --- Check Composer ---
+if type composer >/dev/null 2>&1; then
+    COMPOSER_VERSION=$(composer --version)
+    echo "Composer is installed: $COMPOSER_VERSION"
+else
+    echo "Composer is NOT installed."
+fi
+
 echo "======================================="
 echo "Version check completed."
 echo "======================================="
-
-

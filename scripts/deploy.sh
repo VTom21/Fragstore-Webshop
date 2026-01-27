@@ -3,7 +3,7 @@ set -e
 
 # =========================================
 # Pure Shell Deployment Script (Windows/WSL-friendly)
-# Guides installation of Node.js, PHP, npm, and project dependencies
+# Guides installation of Node.js, PHP, npm, Composer, and project dependencies
 # =========================================
 
 echo "======================================="
@@ -52,14 +52,42 @@ check_php() {
     echo "---------------------------------------"
 }
 
-# --- Function to install project dependencies ---
-install_dependencies() {
+# --- Function to check Composer ---
+check_composer() {
+    if command_exists composer; then
+        echo "Composer is installed: $(composer --version)"
+    else
+        echo "Composer is NOT installed."
+        echo "Please install Composer manually from https://getcomposer.org/download/"
+    fi
+    echo "---------------------------------------"
+}
+
+# --- Function to install Node.js project dependencies ---
+install_npm_dependencies() {
     if command_exists npm; then
         echo "Installing Node.js project dependencies..."
         npm install || { echo "npm install failed!"; exit 1; }
-        echo "Dependencies installed successfully."
+        echo "Node.js dependencies installed successfully."
     else
-        echo "npm not found. Skipping project dependencies installation."
+        echo "npm not found. Skipping Node.js dependencies installation."
+    fi
+    echo "---------------------------------------"
+}
+
+# --- Function to install PHP dependencies via Composer ---
+install_composer_dependencies() {
+    if command_exists composer; then
+        # Only install if vendor/ is missing
+        if [ ! -d "vendor" ]; then
+            echo "Installing PHP dependencies with Composer..."
+            composer install || { echo "composer install failed!"; exit 1; }
+            echo "PHP dependencies installed successfully."
+        else
+            echo "PHP dependencies already exist (vendor/ directory found). Skipping composer install."
+        fi
+    else
+        echo "Composer not found. Skipping PHP dependencies installation."
     fi
     echo "---------------------------------------"
 }
@@ -71,12 +99,12 @@ install_dependencies() {
 check_node
 check_npm
 check_php
-install_dependencies
+check_composer
+
+install_npm_dependencies
+install_composer_dependencies
 
 echo "======================================="
 echo "Deployment guidance completed!"
 echo "Please follow instructions above for missing tools."
 echo "======================================="
-
-
-
