@@ -91,7 +91,7 @@ if ($userKey !== null) {
       width: 20vw;
       min-width: 260px;
       max-width: 360px;
-      max-height: 60vh;
+      max-height: 70vh;
       padding-bottom: 25vh;
       padding-top: 25vh;
       background-color: #000;
