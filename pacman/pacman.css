@@ -161,11 +161,14 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-#achievement_list li:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 204, 0, 0.4);
-  box-shadow: 0 4px 12px rgba(255, 204, 0, 0.15);
+#achievement_list li.gold {
+  background: linear-gradient(135deg, #FFD700 0%, #e79e16 50%, #cfb626 100%);
+  color: #2C1810;
+  transform: scale(1.02);
+  border: 2px solid #FFA500;
 }
+
+
 
 /* Scrollbar */
 #achievement_list::-webkit-scrollbar {
