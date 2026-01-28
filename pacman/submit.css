@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* "Frame" / középső panel */
+.frame {
+    width: 20vw;
+    min-width: 260px;
+    max-width: 360px;
+    max-height: 70vh;
+    padding-bottom: 25vh;
+    padding-top: 25vh;
+    background-color: #000;
+    border: 3px solid #ffd800;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+}
+
+.logo {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+}
+
+.message {
+    font-size: 18px;
+    margin-bottom: 24px;
+    color: #ffd800;
+}
+
+.play-again {
+    display: inline-block;
+    padding: 14px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    background-color: #ffd800;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.play-again:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px #ffd800;
+}
+
+@media (max-width:768px) {
+    .frame {
+        width: 50vw !important; 
+        height: auto !important; 
+        min-width: none;
+        max-width: none;
+    }
+}
