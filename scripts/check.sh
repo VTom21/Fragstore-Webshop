@@ -29,41 +29,45 @@ else
     echo "PHP is NOT installed."
 fi
 
-# --- Check Composer ---
-if type composer >/dev/null 2>&1; then
-    COMPOSER_VERSION=$(composer --version)
-    echo "Composer is installed: $COMPOSER_VERSION"
-else
-    echo "Composer is NOT installed."
-fi
-
 echo "======================================="
 echo "Version check completed."
 echo "======================================="
 
 
 # =========================================
-# Separate Composer installation section
+# Composer installation (always fresh)
 # =========================================
 install_composer() {
-    if type composer >/dev/null 2>&1; then
-        echo "Composer is already installed: $(composer --version)"
-        return
+    echo "======================================="
+    echo "Downloading and installing Composer..."
+    echo "======================================="
+
+    # Download installer
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+
+    # Install globally if possible, otherwise locally
+    if [ -w "/usr/local/bin" ]; then
+        php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+    else
+        echo "No write access to /usr/local/bin, installing to current directory..."
+        php composer-setup.php --install-dir=. --filename=composer
     fi
 
-    echo "Installing Composer..."
-    # Download and install globally (Linux/WSL/macOS example)
-    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-    php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-    php -r "unlink('composer-setup.php');"
+    # Remove installer
+    rm -f composer-setup.php
 
-    if type composer >/dev/null 2>&1; then
+    # Show version
+    if command -v composer >/dev/null 2>&1; then
         echo "Composer installed successfully: $(composer --version)"
     else
-        echo "Composer installation failed!"
-        exit 1
+        echo "Composer installed in current directory: ./composer"
+        ./composer --version
     fi
+
+    echo "======================================="
+    echo "Composer installation completed."
+    echo "======================================="
 }
 
-# Uncomment the following line to run the Composer install separately
-# install_composer
+# Run Composer installation
+install_composer
