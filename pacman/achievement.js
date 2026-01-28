@@ -7,14 +7,12 @@ angular.module('pacmanApp', [])
 
     $scope.datas = [];
 
+
     console.log("Pellet count:", $scope.pellet_count);
     console.log("Ghost count:", $scope.ghost_count);
     console.log("Fruit count:", $scope.fruit_count);
 
     $scope.checkAchievements = function() {
-
-
-
 
         $scope.datas.forEach(achievement => {
             

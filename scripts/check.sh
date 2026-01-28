@@ -40,3 +40,30 @@ fi
 echo "======================================="
 echo "Version check completed."
 echo "======================================="
+
+
+# =========================================
+# Separate Composer installation section
+# =========================================
+install_composer() {
+    if type composer >/dev/null 2>&1; then
+        echo "Composer is already installed: $(composer --version)"
+        return
+    fi
+
+    echo "Installing Composer..."
+    # Download and install globally (Linux/WSL/macOS example)
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+    php -r "unlink('composer-setup.php');"
+
+    if type composer >/dev/null 2>&1; then
+        echo "Composer installed successfully: $(composer --version)"
+    else
+        echo "Composer installation failed!"
+        exit 1
+    fi
+}
+
+# Uncomment the following line to run the Composer install separately
+# install_composer

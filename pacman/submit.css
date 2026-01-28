@@ -67,11 +67,13 @@ main {
     box-shadow: 0 0 12px #ffd800;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .frame {
-        width: 50vw !important; 
-        height: auto !important; 
-        min-width: none;
-        max-width: none;
+      width: 90vw;        
+      max-width: 420px;    
+      min-width: 280px;    
+      height: auto;
+      aspect-ratio: 4 / 3; 
     }
-}
+  }
+  
