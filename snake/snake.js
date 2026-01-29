@@ -40,8 +40,8 @@ class Snake {
     //generating random X and Y positions for the food
     // (width - hitbox) and (height - hitbox) makes sure the food or its hitbox doesnt go beyond the game canvas border
 
-    this.foodX = Math.floor(Math.random() * (width - hitbox));
-    this.foodY = Math.floor(Math.random() * (height - hitbox));
+    this.foodX = Math.floor(Math.random() * (canvasWidth - hitbox));
+    this.foodY = Math.floor(Math.random() * (canvasHeight - hitbox));
 
     //Update calculate the snakes new position based on where the head moves
     //exp.  60 + 1 * 20 => 60 + 20 = 80 (x), 40 + 0 * 20 = 40 (y)
@@ -54,7 +54,7 @@ class Snake {
       this.body.push(body_part); //new head appears at (80,40)
 
       //Constrain Logic
-      if (body_part.x >= width || body_part.y >= height || body_part.x < 0 || body_part.y < 0) {
+      if (body_part.x >= canvasWidth || body_part.y >= canvasHeight || body_part.x < 0 || body_part.y < 0) {
         this.x = 200;
         this.y = 200;
         this.body = [{ x: 200, y: 200 }]; //defaults back to starting position 
@@ -77,8 +77,8 @@ class Snake {
 
       if (body_part.x >= this.foodX - (hitbox - cell) / 2 && body_part.x < this.foodX + hitbox - (hitbox - cell) / 2 && body_part.y >= this.foodY - (hitbox - cell) / 2 && body_part.y < this.foodY + hitbox - (hitbox - cell) / 2) {
         //Random Food generation again
-        this.foodX = Math.floor(Math.random() * (width - hitbox));
-        this.foodY = Math.floor(Math.random() * (height - hitbox));
+        this.foodX = Math.floor(Math.random() * (canvasWidth - hitbox));
+        this.foodY = Math.floor(Math.random() * (canvasHeight - hitbox));
         score++; //increases current score
         scoreDiv = document.querySelector(".score_heading");
         scoreDiv.innerHTML = `Score: ${score}`;
@@ -119,10 +119,19 @@ let snake;
 function setup() {
   gamePanelDiv = document.querySelector(".start-div");
   gamePanelDiv.classList.add("show");
-  createCanvas(width, height);
+  canvasWidth = Math.min(windowWidth * 0.9, 800);  // 90% of window width, max 800
+  canvasHeight = Math.min(windowHeight * 0.7, 700); // 70% of window height, max 700
+  createCanvas(canvasWidth, canvasHeight);
   Controls();
   frameRate(10);
 }
+
+function windowResized(){
+  canvasWidth = Math.min(windowWidth * 0.9, 800); 
+  canvasHeight = Math.min(windowHeight * 0.7, 700);
+  resizeCanvas(canvasWidth, canvasHeight);
+}
+
 
 //draw() p5.js function => sets background color, draws out snake image assets, updates snake's head position 
 

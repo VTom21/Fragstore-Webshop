@@ -48,16 +48,6 @@ body::before {
   }
 }
 
-canvas {
-  border: 8px solid #00ff88;
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.3), inset 0 0 60px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
-  border-radius: 4px;
-  display: block;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-}
-
 .menu-div,
 .start-div {
   display: none;
@@ -181,4 +171,40 @@ canvas {
   background-color: #4CAF50;
   color: #fff;
   border-color: #45B649;
+}
+
+/* Small screens */
+@media (max-width: 450px) {
+  .start-div {
+    width: 90%; /* Let it scale nicely */
+    padding: 30px 20px; /* reduce padding for small screens */
+  }
+  .difficulty {
+    flex-wrap: wrap; /* Wrap radio buttons to next line if needed */
+    justify-content: center;
+    gap: 1rem;
+  }
+  .scores {
+    flex-wrap: wrap;
+    font-size: 13px;
+    justify-content: center;
+  }
+}
+/* Extra small screens */
+@media (max-width: 370px) {
+  .start-div {
+    width: 95%; /* slightly larger than 450px case */
+    padding: 25px 15px;
+  }
+  .difficulty {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
+    justify-items: center; /* center each radio button block */
+  }
+}
+@media (max-width: 340px) {
+  .start-div {
+    width: 90%;
+  }
 }/*# sourceMappingURL=snake.css.map */
