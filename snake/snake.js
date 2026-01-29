@@ -184,14 +184,23 @@ function Freeze() {
 //restart is called when clicking 'Play Again'
 function Restart() {
   score = 0;
-  scoreDiv.innerHTML = `Score: ${score}`;
-  HighScoreDiv.innerHTML = `High Score: ${high_score}`;
-  document.querySelector(".score_heading").innerHTML = `Score: ${score}`;
-  gameOverDiv = document.querySelector(".menu-div");
-  gameOverDiv.style.display = "none";
+
+  const scoreDiv = document.querySelector(".score_heading");
+  const highScoreDiv = document.querySelector(".high_score");
+
+  if (scoreDiv) {
+    scoreDiv.innerHTML = `Score: ${score}`;
+  }
+
+  if (highScoreDiv) {
+    highScoreDiv.innerHTML = `High Score: ${high_score}`;
+  }
+
   snake = new Snake(200, 200, 1, 0);
+  gameOverDiv.style.display = "none";
   loop();
 }
+
 
 //Start is called when clicking 'Play' at the beginning
 function Start() {
