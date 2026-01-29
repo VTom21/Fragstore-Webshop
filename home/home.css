@@ -2165,4 +2165,7 @@ body.menu-open {
     display: flex;
     flex-wrap: wrap;
   }
+  body{
+    overflow-x: hidden;
+  }
 }
