@@ -45,6 +45,8 @@ function App() {
     function Draw() {
       ctx.fillStyle = "#000";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "rgba(0,0,0,0.35)"; // vagy "white", "#111", stb.
 
       //loops through placedTetromino array, draws them out with their individual color (getTetrominoColor)
       placedTetrominos.current.forEach((tetro) => {
@@ -60,6 +62,8 @@ function App() {
                 BLOCK_SIZE, //width
                 BLOCK_SIZE //height
               );
+
+              ctx.strokeRect((tetro.x + x) * BLOCK_SIZE, (tetro.y + y) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
             }
           });
         });
@@ -73,6 +77,9 @@ function App() {
       if (!tetromino) return;
       ctx.fillStyle = getTetrominoColor(tetromino.type); //fill Tetromino according to it's color
 
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "rgba(0,0,0,0.35)";
+
       tetromino.shape.forEach((row, y) => {
         //loops through rows and their index (y)
         row.forEach((cell, x) => {
@@ -85,6 +92,8 @@ function App() {
               BLOCK_SIZE, //width
               BLOCK_SIZE //height
             );
+
+            ctx.strokeRect((tetromino.x + x) * BLOCK_SIZE, (tetromino.y + y) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
           }
         });
       });
