@@ -114,6 +114,9 @@ function App() {
 
       sidebar_ctx.fillStyle = getTetrominoColor(tetromino.type); //chooses the color that applies to the tetromino
 
+      sidebar_ctx.lineWidth = 2;
+      sidebar_ctx.strokeStyle = "rgba(0,0,0,0.35)"; // vagy "white", "#111", stb.
+
       tetromino.shape.forEach((row, y) => { //we go through tetromino
         row.forEach((cell, x) => {
           if (cell) {
@@ -123,6 +126,7 @@ function App() {
               BLOCK_SIZE,
               BLOCK_SIZE
             );
+            sidebar_ctx.strokeRect(x * BLOCK_SIZE + 25, y * BLOCK_SIZE + 20, BLOCK_SIZE, BLOCK_SIZE);
           }
         });
       });
@@ -377,18 +381,24 @@ function App() {
       //switch statements for movements
       switch (e.key) {
         case "ArrowLeft":
+          case "a":
+          case "A":
           if (!isBottom.current && !LeftCollision(tetro)) {
             tetro.x -= 1; //Moving Tetris to the left. If x is -1, Math.max doesn't let the Tetromino go too far left as it chooses the bigger value (a, b)
           }
           break;
 
         case "ArrowRight":
+          case "d":
+          case "D":
           if (!isBottom.current && !RightCollision(tetro)) {
             tetro.x += 1; //Moving Tetris to the right. If x is more than column count, Math.min doesn't let the Tetromino go too far right as it the smaller bigger value (a, b)
           }
           break;
 
         case "ArrowDown":
+          case "s":
+          case "S":
           if (BottomCollision(tetro)) {
             //uses BottomCollision Function that checks bottom collision of Tetromino & and ensures stacking of Tetrominos
             isBottom.current = true;
@@ -398,6 +408,8 @@ function App() {
           break;
 
         case "ArrowUp":
+          case "w":
+          case "W":
           Rotation();
           break;
       }
