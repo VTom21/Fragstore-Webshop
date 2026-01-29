@@ -49,7 +49,7 @@ body {
 .canvas {
   border: 10px solid $dark;
   border-radius: 12px;
-  box-shadow: 
+  box-shadow:
     0 25px 70px rgba(0, 0, 0, 0.6),
     inset 0 0 0 1px rgba(158, 158, 158, 0.15),
     0 0 40px rgba(158, 158, 158, 0.2);
@@ -66,7 +66,7 @@ body {
   gap: 0;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 
+  box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.7),
     inset 0 0 0 1px rgba(158, 158, 158, 0.1);
   border: 1px solid rgba(158, 158, 158, 0.05);
@@ -105,7 +105,8 @@ body {
 
   }
 
-  .score, .high_score{
+  .score,
+  .high_score {
     display: flex;
     padding: 12px;
     justify-content: center;
@@ -193,5 +194,52 @@ body {
         text-align: right;
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .game-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .canvas {
+    width: min(92vw, 420px);
+    height: 60vh; // fontos: ne nyújtsd CSS-ben ha nem muszáj
+  }
+
+  .sidebar {
+    width: min(92vw, 420px);
+    height: auto; // <-- NE 35vh
+    min-height: unset;
+    display: grid; // <-- a lényeg
+    grid-template-rows: 1fr auto; // top kitölt, bottom csak amennyi kell
+  }
+
+  .sidebar-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    min-height: 160px; // previewnek legyen helye
+  }
+
+  .next-canvas {
+    width: 160px; // mobilon fix preview méret
+    height: 160px;
+  }
+
+  .sidebar-bottom {
+    padding: 12px 14px;
+    border-top: 1px solid rgba(158, 158, 158, 0.1);
+  }
+
+  .score,
+  .high_score {
+    padding: 6px 0;
+    justify-content: flex-start; // középre igazítás mobilon sokszor fura
   }
 }

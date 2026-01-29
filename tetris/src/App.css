@@ -77,7 +77,8 @@ body {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(158, 158, 158, 0.3), transparent);
 }
-.sidebar .score, .sidebar .high_score {
+.sidebar .score,
+.sidebar .high_score {
   display: flex;
   padding: 12px;
   justify-content: center;
@@ -152,4 +153,45 @@ body {
   font-size: 0.85rem;
   flex-grow: 1;
   text-align: right;
+}
+
+@media (max-width: 768px) {
+  .game-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 12px;
+    padding: 12px;
+  }
+  .canvas {
+    width: min(92vw, 420px);
+    height: 60vh;
+  }
+  .sidebar {
+    width: min(92vw, 420px);
+    height: auto;
+    min-height: unset;
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+  .sidebar-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    min-height: 160px;
+  }
+  .next-canvas {
+    width: 160px;
+    height: 160px;
+  }
+  .sidebar-bottom {
+    padding: 12px 14px;
+    border-top: 1px solid rgba(158, 158, 158, 0.1);
+  }
+  .score,
+  .high_score {
+    padding: 6px 0;
+    justify-content: flex-start;
+  }
 }/*# sourceMappingURL=App.css.map */
