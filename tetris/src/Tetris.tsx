@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState } from "react";
 import { generateTetromino, getTetrominoColor, SHAPES, SHAPE_COLORS, } from "./Tetromino"; //imports functions from Tetromino.tsx
-import { text } from "node:stream/consumers";
 
 function App() {
   //In React, we have to talk about rendering => React only renders state changes (useState), property and context changes
@@ -480,7 +479,7 @@ function App() {
     <div className="game-container">
       <canvas ref={canvasRef} className="canvas" />
       <div className="sidebar">
-        <canvas ref={NextcanvasRef} width={120} />
+        <canvas ref={NextcanvasRef} width={110} />
         <h3 className="score" ref={scoreUI}>Score: {score}</h3>
         <h3 className="high_score" ref={highScoreUI}>Score: {score}</h3>
       </div>
