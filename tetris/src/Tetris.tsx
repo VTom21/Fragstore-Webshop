@@ -18,6 +18,7 @@ function App() {
   const scoreUI = useRef<HTMLHeadingElement | null>(null);
   const high_score = localStorage.getItem("highScore") || "";
   const highScoreUI = useRef<HTMLHeadingElement | null>(null);
+  let speed = 1;
 
 
   useEffect(() => {
@@ -257,6 +258,7 @@ function App() {
       for (let y = 0; y < ROWS; y++) {
         if (board[y].every((cell) => cell == 1)) { //we filter out every cell that has the value of 1
           complete_lines.push(y); //push it inside array
+          speed *= 1.05;
         }
       }
       //we use setter to increase score by 10 at every full row
@@ -436,7 +438,7 @@ function App() {
     //Move function -> called every frame
     function Move() {
       if (!tetrominoRef.current) return;
-
+      for( let i = 0; i < speed; i++){
       //checks if theres bottom collision made by the Tetromino
       if (BottomCollision(tetrominoRef.current)) {
         placedTetrominos.current.push(tetrominoRef.current); //pushes Tetromino values to array
@@ -460,9 +462,10 @@ function App() {
 
         NextTetrominoRef.current = generateTetromino();
         isBottom.current = false; //sets boolean to false
+        break
       } else {
         tetrominoRef.current.y += 1; //continues moving it downwards
-      }
+      }}
 
       //calls draw functions
       Draw();
