@@ -427,6 +427,7 @@ function App() {
         case "ArrowUp":
           case "w":
           case "W":
+          if (e.repeat) return;
           Rotation();
           break;
       }
