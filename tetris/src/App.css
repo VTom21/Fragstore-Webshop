@@ -208,6 +208,14 @@ body {
     width: 350px;
     height: auto;
   }
+  .GameOverUI {
+    top: 200px;
+  }
+}
+@media (max-width: 440px) {
+  .GameOverUI {
+    width: 85%;
+  }
 }
 @media (max-width: 335px) {
   canvas {
@@ -215,6 +223,13 @@ body {
     height: auto;
   }
   .score, .high_score {
+    font-size: 14px;
+  }
+  .GameOverUI h1 {
+    font-size: 22px !important;
+  }
+  .GameOverUI button {
+    padding: 4px 4px !important;
     font-size: 14px;
   }
 }
@@ -225,6 +240,12 @@ body {
   }
   .score, .high_score {
     font-size: 10px;
+  }
+  .GameOverUI {
+    width: 85%;
+  }
+  .GameOverUI h1 {
+    font-size: 20px !important;
   }
 }
 @media (max-width: 227px) {

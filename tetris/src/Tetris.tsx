@@ -19,8 +19,9 @@ function App() {
   const high_score = localStorage.getItem("highScore") || "";
   const highScoreUI = useRef<HTMLHeadingElement | null>(null);
 
+
   useEffect(() => {
-    const canvas = canvasRef.current!; //We access the Cnavas object
+    const canvas = canvasRef.current!; //We access the Canvas object
     const ctx = canvas.getContext("2d")!; //Set the Context to 2D
     ctx.fillStyle = "#000";
 
@@ -62,7 +63,6 @@ function App() {
                 BLOCK_SIZE, //width
                 BLOCK_SIZE //height
               );
-
               ctx.strokeRect((tetro.x + x) * BLOCK_SIZE, (tetro.y + y) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
             }
           });
@@ -203,6 +203,21 @@ function App() {
       return { minC, maxC }; //returns the smallest and biggest column
     }
 
+    function TopCollision(tetro: typeof tetrominoRef.current){
+      if(!tetro) return;
+      for(let y = 0 ; y < tetro.shape.length; y++){
+        for(let x = 0; x < tetro.shape[y].length; x++){
+          if(tetro.shape[y][x]){
+            if(tetro.y + y < 1){
+              return true;
+            }
+          }
+        }
+      }
+      return false;
+    }
+
+    
 
     //Clearlines function for clearing full rows
     function ClearLines() {
@@ -431,6 +446,12 @@ function App() {
           NextTetrominoRef.current = generateTetromino();
         }
 
+        if (TopCollision(tetrominoRef.current)) {
+          const GameOverDiv = document.querySelector(".GameOverUI") as HTMLDivElement | null;
+          if (GameOverDiv) GameOverDiv.style.display = "block";
+          return;
+        }
+
         tetrominoRef.current = NextTetrominoRef.current;
         if (tetrominoRef.current) {
           tetrominoRef.current.x = 3;
@@ -477,12 +498,16 @@ function App() {
     //this is where our UI elements are
     //by using the Ref variables, we create the base UI elements
     <div className="game-container">
-      <canvas ref={canvasRef} className="canvas" />
+      <canvas ref={canvasRef} className="canvas" style={{position:"relative"}} />
+      <div style={{backgroundColor: "#111", display:"none", padding: "40px 50px", borderRadius: 20, textAlign: "center", position:"absolute", left:"6.5%", boxShadow: "0 0 30px rgba(0,0,0,0.8)"}} className="GameOverUI">
+        <h1 style={{margin: 0, color: "#ff4444", fontSize: 48}}>GAME OVER</h1>
+        <button onClick={()=> window.location.reload()} style={{marginTop: 20,padding: "14px 36px",fontSize: 18,fontWeight: "bold",letterSpacing: 1,color: "white",background: "linear-gradient(180deg, #ff4d4d, #c62828)",border: "2px solid #ff7777",borderRadius: 12,cursor: "pointer",boxShadow:"0 6px 0 #7f1d1d, 0 12px 25px rgba(0,0,0,0.6)",transition: "all 0.15s ease"}}>Try Again</button>
+      </div>
       <div className="sidebar">
         <canvas ref={NextcanvasRef} width={110} />
         <h3 className="score" ref={scoreUI}>Score: {score}</h3>
         <h3 className="high_score" ref={highScoreUI}>Score: {score}</h3>
-      </div>
+      </div>  
     </div>
   );
 }
