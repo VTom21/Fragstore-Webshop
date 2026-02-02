@@ -449,7 +449,7 @@ This Pacman remake emphasizes both nostalgia and new gameplay mechanics, offerin
 ### 🐍 Snake
 A timeless arcade classic reimagined with smooth controls and scalable difficulty.
 
-<img src="pictures\snake1.png" id="snake"></img>
+<img src="pictures\snake2.png" id="snake"></img>
 
 Control the snake as it moves across the screen, eating food to grow longer while avoiding collisions with walls and your own tail. As the game progresses, the challenge increases, testing your reflexes and strategic movement.
 
