@@ -40,13 +40,13 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="success.css">
     <link rel="icon" type="image/x-icon" href="/icons/array.png">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <title>Order Summary</title>
 </head>
 
 <body>
     <div class="container">
         <div class="success-banner">
-            <div class="success-icon">✅</div>
             <h1>Order Confirmed!</h1>
             <p style="color: var(--gray1); font-size: 1.1rem;">Thank you for your purchase</p>
             <p class="order-number">Order #<span><?= strtoupper(uniqid()) ?></span></p>

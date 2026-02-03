@@ -7,12 +7,12 @@
     --h2: #37e6ec73;
     --p: #d0d0d0;
     --green: #00f7ff44;
-    --box-shadow-green: rgba(0, 247, 255, 0.2);
+    --box-shadow-green: rgba(0, 247, 255, 0.0); /* glow removed */
     --dark-green: #25f5fc44;
     --gray1: #b1b1b1;
     --thumb-hover: #333333;
     --card-bg: #2b2d42;
-    --card-hover: rgba(0, 247, 255, 0.15);
+    --card-hover: rgba(0, 247, 255, 0.08); /* toned down */
     --card-strong: #37e6ec73;
     --shop_btn_bg: #ebd84c;
     --cyan: #00d0d0;
@@ -50,7 +50,7 @@ body {
     color: var(--lightblue);
     font-size: 2.5rem;
     margin-bottom: 10px;
-    text-shadow: 0 0 20px var(--box-shadow-green);
+    text-shadow: none; /* glow removed */
 }
 
 .subtitle {
@@ -76,7 +76,7 @@ body {
     border-radius: 12px;
     padding: 30px;
     border: 1px solid var(--green);
-    box-shadow: 0 4px 20px var(--box-shadow-green);
+    box-shadow: none; /* glow removed */
 }
 
 .form-section.hidden {
@@ -143,7 +143,7 @@ display: none !important;
 .radio-card input[type="radio"]:checked + .radio-content {
     border-color: var(--lightblue);
     background: var(--card-hover);
-    box-shadow: 0 0 15px var(--box-shadow-green);
+    box-shadow: none; /* glow removed */
 }
 
 .radio-header {
@@ -211,7 +211,7 @@ display: none !important;
 .form-group select:focus {
     outline: none;
     border-color: var(--lightblue);
-    box-shadow: 0 0 10px var(--box-shadow-green);
+    box-shadow: none; /* glow removed */
 }
 
 .form-group input::placeholder {
@@ -285,7 +285,7 @@ display: none !important;
     border-radius: 12px;
     padding: 25px;
     border: 1px solid var(--green);
-    box-shadow: 0 4px 20px var(--box-shadow-green);
+    box-shadow: none; /* glow removed */
 }
 
 .summary-title {
@@ -372,13 +372,12 @@ display: none !important;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(180, 166, 54, 0.3);
+    box-shadow: none; /* glow removed */
 }
 
 .btn-checkout:hover {
     background: #d4c44a;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(180, 166, 54, 0.5);
 }
 
 .security-note {
