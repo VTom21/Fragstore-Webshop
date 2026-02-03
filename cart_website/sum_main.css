@@ -19,6 +19,13 @@
     --black1: #252539;
     --black2: #1e1e2f;
     --lightblue: #00f7ff;
+    --surface: #161618;
+    --border:  #2a2a2e;
+    --accent:  #37e6ec73;
+    --text:    #c8c8cc;
+    --dim:     #5c5c62;
+    --white:   #f0f0f2;
+    --step-bg: #272626;
 }
 
 * {
@@ -64,6 +71,106 @@ body {
     gap: 30px;
     align-items: start;
 }
+
+.stepper {
+    display: flex;
+    width: 100%;
+    margin-bottom: 64px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--step-bg);
+  }
+
+  .step {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 20px 20px 28px;
+    cursor: pointer;
+    transition: background .25s;
+    z-index: 1;
+  }
+
+  /* chevron divider between steps — clipped polygon on each step's right edge */
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-left: 10px solid var(--accent);
+    z-index: 3;
+  }
+  .step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 9px solid var(--step-bg);
+    z-index: 4;
+  }
+
+  /* ── circle badge ── */
+  .step .badge {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: .72rem;
+    font-weight: 500;
+    color: var(--dim);
+    transition: border-color .25s, color .25s, background .25s;
+  }
+
+  .step .badge svg {
+    display: none;
+    width: 14px; height: 14px;
+    stroke: var(--bg);
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ── label ── */
+  .step .lbl {
+    font-size: .78rem;
+    color: var(--dim);
+    letter-spacing: .04em;
+    transition: color .25s;
+  }
+
+  /* ── DONE state ── */
+  .step.done .badge {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .step.done .badge .num { display: none; }
+  .step.done .badge svg { display: block; }
+  .step.done .lbl { color: var(--text); }
+
+  /* ── ACTIVE state ── */
+  .step.active .badge {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .step.active .lbl { color: var(--accent); }
+
+  /* ── chevron fill for done segments ── */
+  .step.done:not(:last-child)::before {
+    border-left-color: var(--step-bg);
+  }
 
 .checkout-forms {
     display: flex;
@@ -136,12 +243,10 @@ display: none !important;
 }
 
 .radio-card:hover .radio-content {
-    border-color: var(--lightblue);
     background: var(--card-hover);
 }
 
 .radio-card input[type="radio"]:checked + .radio-content {
-    border-color: var(--lightblue);
     background: var(--card-hover);
     box-shadow: none; /* glow removed */
 }

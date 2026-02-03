@@ -47,8 +47,9 @@ try {
 <body>
     <div class="container">
         <div class="success-banner">
+            <img src="../icons/array.png" alt="" style="width: 100px;">
             <h1>Order Confirmed!</h1>
-            <p style="color: var(--gray1); font-size: 1.1rem;">Thank you for your purchase</p>
+            <p style="color: var(--gray1); font-size: 1.1rem;padding:8px;">Thank you for your purchase</p>
             <p class="order-number">Order #<span><?= strtoupper(uniqid()) ?></span></p>
         </div>
 

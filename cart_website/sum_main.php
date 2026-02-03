@@ -26,6 +26,35 @@ $cart_items = json_decode($cart_json, true);
             <p class="subtitle">Complete your purchase</p>
         </header>
 
+        <!-- ─── STEPPER ─── -->
+  <div class="stepper" id="stepper">
+
+<div class="step done" data-step="0">
+  <div class="badge">
+    <span class="num">01</span>
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <span class="lbl">Details</span>
+</div>
+
+<div class="step done" data-step="1">
+  <div class="badge">
+    <span class="num">02</span>
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <span class="lbl">Payment</span>
+</div>
+
+<div class="step active" data-step="2">
+  <div class="badge">
+    <span class="num">03</span>
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <span class="lbl">Confirmed</span>
+</div>
+
+</div>
+
         <div class="checkout-grid">
             <!-- Left Column - Forms -->
             <div class="checkout-forms">
