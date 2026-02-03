@@ -14,6 +14,7 @@ $cart_items = json_decode($cart_json, true);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="sum_main.css">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/icons/array.png">
     <title>Checkout</title>
 </head>

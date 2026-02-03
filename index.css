@@ -260,8 +260,11 @@ html {
 }
 
 .redirect_btn {
-  margin: 12px 0px;
+  margin: 12px auto;
   padding: 12px 12px;
+  width: 300px;
+  border-radius: 15px;
+  
   color: white;
 }
 
@@ -554,21 +557,45 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /* Sidebar */
-.cart-sidebar,
-.wishlist-sidebar {
+
+.wishlist-sidebar,
+.cart-sidebar {
   position: fixed;
   top: 0;
-  right: -350px;
-  width: 350px;
+  right: 0; /* always aligned to screen edge */
+  width: 350px; /* can be changed for mobile with media query */
   height: 100%;
   background: #111;
   color: #fff;
-  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.4);
-  transition: right 0.35s ease;
-  z-index: 2000;
+  box-shadow: -3px 0 10px rgba(0,0,0,0.4);
   display: flex;
   flex-direction: column;
+  z-index: 2000;
+  
+  transform: translateX(100%); /* hidden by default */
+  transition: transform 0.35s ease;
 }
+
+.wishlist-sidebar.active,
+.cart-sidebar.active {
+  transform: translateX(0); /* slide in */
+}
+
+.cart-item {
+  display: grid;
+  flex-direction: row;      /* horizontal layout */
+  justify-content: space-between; /* more natural spacing */
+  align-items: center;      /* vertical alignment */
+  gap: 1rem;                /* optional, adds spacing between items */
+  padding: 0.5rem 0;    
+  grid-template-columns: repeat(2,1fr);   /* optional, padding for breathing room */
+  border-bottom: 2px solid #222;
+  width: 300px;
+}
+
+
+
+
 
 /* Open states */
 .overlay.active {
@@ -610,10 +637,23 @@ input[type="range"]::-webkit-slider-thumb {
 .wishlist-data {
   margin: 12px 12px;
 }
-.cart-item img,
+
 .wishlist-item img {
   width: 370px; /* fixed visual size */
   height: 370px; /* keeps layout consistent */
+  object-fit: cover; /* crops edges, keeps proportions */
+  border-radius: 6px; /* optional, looks clean */
+  flex-shrink: 0; /* prevents the image from shrinking */
+  display: block;
+}
+
+#hr{
+  background-color: var(--black1);
+}
+
+.cart-item img{
+  width: 100px; /* fixed visual size */
+  height: 100px; /* keeps layout consistent */
   object-fit: cover; /* crops edges, keeps proportions */
   border-radius: 6px; /* optional, looks clean */
   flex-shrink: 0; /* prevents the image from shrinking */
@@ -630,7 +670,8 @@ input[type="range"]::-webkit-slider-thumb {
   align-items: center;
   gap: 8px;
   margin-top: 10px;
-  justify-content: center;
+  padding-left: 5px;
+  margin-bottom: 5px;
 }
 
 .qty-controls button {

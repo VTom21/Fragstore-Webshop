@@ -109,25 +109,22 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                 <h2>Your Cart</h2>
                 <button class="close-btn" ng-click="cartOpen = false">×</button>
             </div>
-
             <div class="cart-content">
                 <div ng-if="cartItems.length === 0">Your cart is empty.</div>
-
                 <div class="cart-item" ng-repeat="item in cartItems">
                     <img ng-src="{{item.game_pic}}">
                     <div class="cart-data">
                         <h4>{{item.name}}</h4>
                         <p>{{item.total_prize | number:2 }} {{select_currency}}</p>
                     </div>
-
                     <div class="qty-controls">
                         <button ng-click="decreaseQty(item)">−</button>
                         <span>{{item.quantity}}</span>
                         <button ng-click="increaseQty(item)">+</button>
                     </div>
                 </div>
-                <button class="redirect_btn" ng-click="checkout()" ng-show="cartItems.length > 0">Buy Now</button>
             </div>
+            <button class="redirect_btn" ng-click="checkout()" ng-show="cartItems.length > 0">Buy Now</button>
         </div>
 
         <div class="overlay" ng-class="{'active': cartOpen}" ng-click="cartOpen = false"></div>
