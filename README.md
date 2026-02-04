@@ -111,6 +111,8 @@
 - MySQL or MariaDB
 - Code Editor (Visual Studio, WebStorm..)
 - Database Client (phpMyAdmin, DBeaver..)
+- Composer & Symfony (v3.6.0)
+- Vite (latest) 
 
 ### Setup
 
@@ -123,6 +125,8 @@ cd Fragstore-Webshop
 2. Install dependencies:
 ```sh
 npm install
+composer install
+npm install -D vite
 ```
 
 3. Install PHP and Node.js:
@@ -172,11 +176,10 @@ and finally
 bash deploy.sh
 ```
 
-4. Import all databases from ```databases``` folder:
+4. Import databases from ```databases``` folder:
 ```
 📁 databases/
 ├── 🛢️ giftcard.sql
-├── 🛢️ leaderboard.sql
 ├── 🛢️ users.sql
 └── 🛢️ videogames.sql
 ```
