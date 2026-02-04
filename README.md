@@ -111,7 +111,8 @@
 - MySQL or MariaDB
 - Code Editor (Visual Studio, WebStorm..)
 - Database Client (phpMyAdmin, DBeaver..)
-- Composer & Symfony (v3.6.0)
+- Composer & Symfony (v3.6.0+)
+- Twig (v3.22.2+)
 - Vite (latest) 
 
 ### Setup
