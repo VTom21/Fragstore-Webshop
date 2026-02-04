@@ -19,18 +19,7 @@ body {
   overflow: hidden;
 }
 
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    130deg,
-    rgba(0, 191, 255, 0.05),
-    rgba(255, 230, 0, 0.05)
-  );
-  pointer-events: none;
-  animation: pulse 12s ease-in-out infinite alternate;
-}
+
 
 @keyframes pulse {
   0% {
@@ -64,20 +53,9 @@ body::before {
   max-width: 420px;
   width: 100%;
   color: var(--white);
-  animation: fadeIn 1s ease-in-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .title {
   font-family: "Orbitron", sans-serif;
@@ -132,12 +110,7 @@ label {
 }
 
 /* When input is focused or has text */
-.form-control:focus,
-.form-control:not(:placeholder-shown) {
-  border-color: var(--yellow);
-  box-shadow: 0 0 8px var(--blue);
-  transform: scale(1.02);
-}
+
 
 .form-control:focus + label,
 .form-control:not(:placeholder-shown) + label {
@@ -239,44 +212,6 @@ label {
   color: var(--blue);
 }
 
-.glow-particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.glow-particles::before,
-.glow-particles::after {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-      circle,
-      rgba(0, 191, 255, 0.1) 0%,
-      transparent 70%
-    ),
-    radial-gradient(circle, rgba(255, 230, 0, 0.08) 0%, transparent 70%);
-  animation: moveParticles 30s linear infinite;
-}
-
-.glow-particles::after {
-  animation-delay: -15s;
-}
-
-@keyframes moveParticles {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
 
 @media (max-width: 480px) {
   .title {
