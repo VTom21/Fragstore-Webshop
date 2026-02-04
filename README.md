@@ -126,6 +126,7 @@ cd Fragstore-Webshop
 ```sh
 npm install
 composer install
+npm install -D vite
 ```
 
 3. Install PHP and Node.js:
