@@ -136,8 +136,9 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                 <button class="close-btn" ng-click="wishlistOpen = false">×</button>
             </div>
 
+
             <div class="wishlist-content">
-                <div ng-if="wishlistItems.length === 0">Your wishlist is empty.</div>
+                <div ng-if="wishlistItems.length === 0" style="  grid-column: 1/ span 3; text-align: center;">Your wishlist is empty.</div>
 
                 <div class="wishlist-item" ng-repeat="item in wishlistItems track by item.id">
                     <img ng-src="{{item.game_pic}}">
@@ -146,8 +147,8 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                     </div>
 
                 </div>
-                <button class="redirect_btn" ng-click="wishlistOpen = false" ng-hide="wishlistItems.length > 0">Add Now</button>
             </div>
+            <button class="redirect_btn" ng-click="wishlistOpen = false" ng-hide="wishlistItems.length > 0">Add Now</button>
         </div>
 
         <!-- Wishlist Overlay -->
