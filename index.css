@@ -1062,6 +1062,10 @@ input[type="range"]::-webkit-slider-thumb {
   .input-div {
     flex-wrap: wrap;
   }
+
+  .redirect_btn{
+    width: 60%;
+  }
 }
 
 @media (max-width: 300px) {
@@ -1088,16 +1092,15 @@ input[type="range"]::-webkit-slider-thumb {
       height: 350px;
     }
 
-    .cart-item{
-      gap: 10px;
-      padding: 0%;
-      margin: 0%;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      font-size: small;
-      justify-self: center;
+    .cart-item {
+      display: grid;
+      justify-items: center;
+      grid-template-columns: repeat(1,1fr);
+      margin: auto;
+      align-content: center;
+      width: 90%;
     }
+    
 
     .cart-item h4{
       width: 70vw;
