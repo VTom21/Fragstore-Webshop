@@ -54,7 +54,7 @@
 <div id="leaderboard_modal" class="modal">
   <div class="modal_content">
     <span id="close_modal" class="close_btn">&times;</span>
-    <h2>🏆 Best Scores</h2>
+    <h2>Best Scores</h2>
     <ul id="leaderboard_list">
         <?php include 'leaderboard.php'; ?>
     </ul>
@@ -64,7 +64,7 @@
 <div id="achievement_modal" class="modal" ng-app="pacmanApp" ng-controller="AchievementsController">
   <div class="modal_content">
     <span id="close_achievement_modal" class="close_btn">&times;</span>
-    <h2>🏅 Achievements</h2>
+    <h2>Achievements</h2> 
     <ul id="achievement_list">
       <li ng-repeat="achievement in datas"  class="{{achievement.id}}" ng-class="{'gold': achievement.obtained}">
         <img ng-src="{{achievement.img}}" alt="{{achievement.name}}" width="40" style="vertical-align: middle; margin-right: 10px;">

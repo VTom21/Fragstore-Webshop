@@ -67,6 +67,7 @@ if ($userKey !== null) {
     <meta charset="UTF-8">
     <link rel="stylesheet" href="submit.css">
     <title>Pac-Man – Game Over</title>
+    <link rel="icon" type="image/x-icon" href="./assets/ghosts/scaredGhost.png">
 </head>
 
 <body>

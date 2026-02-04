@@ -63,8 +63,8 @@ main {
 }
 
 .play-again:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 12px #ffd800;
+    transform: scale(1.1);
+    box-shadow: 0 0 6px #ffd800;
 }
 
 @media (max-width: 768px) {
