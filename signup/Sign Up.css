@@ -3,6 +3,7 @@
         --orange: rgb(235, 235, 85);
         --white: #f9f9f9;
         --bg-dark: #10141a;
+        --yellow: #9e9e9c;
     }
 
     * {
@@ -20,15 +21,6 @@
         color: var(--white);
     }
 
-    body::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(130deg, rgba(0, 191, 165, .05), rgba(255, 140, 0, .05));
-        pointer-events: none;
-        animation: pulse 14s ease-in-out infinite alternate;
-        z-index: 0;
-    }
 
     @keyframes pulse {
         0% {
@@ -62,20 +54,9 @@
         max-width: 420px;
         width: 100%;
         color: var(--white);
-        animation: fadeIn 1s ease-in-out;
     }
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(25px);
-        }
 
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
 
     .title {
         font-family: 'Orbitron', sans-serif;
@@ -103,7 +84,6 @@
         font-size: 1.05rem;
         border: none;
         border-bottom: 2.5px solid rgba(255, 255, 255, .18);
-        border-radius: 6px;
         background: transparent;
         color: var(--white);
         transition: border-color .25s ease, box-shadow .3s ease, transform .25s ease;
@@ -126,18 +106,13 @@
         font-weight: 600;
     }
 
-    .form-control:focus,
-    .form-control:not(:placeholder-shown) {
-        border-color: var(--orange);
-        box-shadow: 0 0 7px rgba(255, 140, 0, .5);
-        transform: scale(1.03);
-    }
+
 
     .form-control:focus+label,
     .form-control:not(:placeholder-shown)+label {
         top: .25rem;
         font-size: .8rem;
-        color: var(--teal);
+        color: yellow;
     }
 
     .form-group::after {
@@ -214,39 +189,6 @@
         color: var(--teal);
     }
 
-    .glow-particles {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    .glow-particles::before,
-    .glow-particles::after {
-        content: "";
-        position: absolute;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(0, 191, 165, .09) 0%, transparent 75%), radial-gradient(circle, rgba(255, 140, 0, .07) 0%, transparent 75%);
-        animation: moveParticles 28s linear infinite;
-    }
-
-    .glow-particles::after {
-        animation-delay: -14s;
-    }
-
-    @keyframes moveParticles {
-        0% {
-            transform: translate(-48%, -52%) rotate(0deg);
-        }
-
-        100% {
-            transform: translate(-48%, -52%) rotate(360deg);
-        }
-    }
 
     @media (max-width:480px) {
         .title {
