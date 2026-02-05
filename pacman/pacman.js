@@ -59,6 +59,7 @@ const TILE_BLUE_GHOST = 3;
 const TILE_RED_GHOST = 4;
 const TILE_ORANGE_GHOST = 5;
 const TILE_PINK_GHOST = 6;
+const TILE_GREEN_GHOST = 14;
 const PELLET = 2;
 const CHERRY = 8;
 const GHOST_GATE = 9;
@@ -83,7 +84,7 @@ let vulnerability_period = 1000; // 1000 milliseconds = 1 second
 
 //image variables and arrays
 
-let blue_ghost_img, red_ghost_img, orange_ghost_img, pink_ghost_img;
+let blue_ghost_img, red_ghost_img, orange_ghost_img, pink_ghost_img, green_ghost_img;
 let pacman_down_img, pacman_up_img, pacman_left_img, pacman_right_img;
 let wall_img, cherry_img,  frozen_orb_img, strawberry_img, portal_img, heart_img;
 
@@ -103,7 +104,8 @@ const image_paths = [
   "custom_assets/foods/ice_cube.png",
   "custom_assets/foods/strawberry.png",
   "custom_assets/foods/portal.png",
-  "custom_assets/foods/heart.png"
+  "custom_assets/foods/heart.png",
+  "custom_assets/ghosts/greenGhost.png"
 ];
 
 //Preload every images here from the array above
@@ -231,6 +233,7 @@ function load_images() {
   strawberry_img = images[11];
   portal_img = images[12];
   heart_img = images[13];
+  green_ghost_img = images[14];
 
   scared_ghost_img = new Image();
   scared_ghost_img.src = "assets/ghosts/scaredGhost.png";
@@ -253,7 +256,7 @@ const map = [
   [1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1],
   [1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1],
-  [0, 0, 0, 0, 0, 2, 2, 1, 2, 2, 2, 1, 9, 9, 9, 9, 1, 2, 2, 2, 1, 2, 2, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 2, 2, 1, 2, 2, 2, 1, 14, 9, 9, 9, 1, 2, 2, 2, 1, 2, 2, 0, 0, 0, 0, 0],
   [1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 3, 6, 5, 4, 1, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1],
   [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
   [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1],
@@ -281,7 +284,7 @@ const map2 = [
   [1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 1, 2, 1, 1, 1, 1],
   [0, 0, 0, 1, 2, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 2, 1, 0, 0, 0],
   [1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 0, 0, 0, 0, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1],
-  [0, 0, 0, 0, 0, 2, 1, 1, 2, 2, 2, 1, 9, 9, 9, 9, 1, 2, 2, 2, 1, 1, 2, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 2, 1, 1, 2, 2, 2, 1, 14, 9, 9, 9, 1, 2, 2, 2, 1, 1, 2, 0, 0, 0, 0, 0],
   [1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 3, 6, 5, 4, 1, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1],
   [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
   [1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1],
@@ -309,7 +312,7 @@ const map3 = [
   [1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1, 1, 1, 1, 1],
   [0, 0, 0, 0, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1, 0, 0, 0, 0],
   [1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 0, 0, 0, 0, 1, 2, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1],
-  [0, 0, 0, 0, 0, 2, 2, 1, 2, 2, 2, 1, 9, 9, 9, 9, 1, 2, 2, 2, 1, 2, 2, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 2, 2, 1, 2, 2, 2, 1, 14, 9, 9, 9, 1, 2, 2, 2, 1, 2, 2, 0, 0, 0, 0, 0],
   [1, 1, 1, 2, 1, 2, 2, 1, 2, 2, 2, 1, 3, 6, 5, 4, 1, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1],
   [1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
   [1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1],
@@ -337,7 +340,7 @@ const map4 = [
   [1, 2, 2, 2, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1, 2, 2, 2, 1],
   [0, 0, 0, 0, 1, 2, 1, 1, 2, 1, 2, 1, 0, 1, 1, 0, 1, 2, 1, 2, 1, 1, 2, 1, 0, 0, 0, 0],
   [1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 3, 6, 5, 4, 1, 2, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1],
-  [0, 0, 0, 0, 0, 2, 2, 1, 2, 1, 2, 1, 9, 9, 9, 9, 1, 2, 1, 2, 1, 2, 2, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 2, 2, 1, 2, 1, 2, 1, 14, 9, 9, 9, 1, 2, 1, 2, 1, 2, 2, 0, 0, 0, 0, 0],
   [1, 1, 2, 1, 1, 2, 2, 1, 2, 1, 2, 1, 0, 1, 1, 0, 1, 2, 1, 2, 1, 2, 2, 1, 1, 2, 1, 1],
   [1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1],
   [1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1],
@@ -435,6 +438,11 @@ function load_map() {
           const pink_ghost = new Generate(pink_ghost_img, x, y, tile_size, tile_size, true);
           ghosts.add(pink_ghost);
           break;
+
+        case TILE_GREEN_GHOST:
+            const green_ghost = new Generate(green_ghost_img, x, y, tile_size, tile_size, true);
+            ghosts.add(green_ghost);
+            break;
 
         case TILE_PACMAN:
           pacman = new Generate(pacman_up_img, x, y, tile_size, tile_size);
@@ -801,6 +809,9 @@ function Controls() {
       switch (ghost.img) {
         case red_ghost_img: //Blinky's (red) job to target pac man's position. By default it breaks out the switch cuz target values are already defined
           break;
+        
+        case green_ghost_img: //Blinky's (red) job to target pac man's position. By default it breaks out the switch cuz target values are already defined
+          break;
 
         case pink_ghost_img: //Pinky's (pink) job to get ahead of pac man based on which direction it moves, offset is 32px
           switch (pacman.direction) {
@@ -912,7 +923,7 @@ function Controls() {
 
   if (pellets.size === 0) { //if no pellets are left, you have won: lives, score reset, level increases
     gameoverUI.style.display = "block";
-    display_value.innerHTML = "You Win!";
+    display_value.innerHTML = `You Win!`;
     score_multiplier += 10;
     level++;
     levelUI.innerText = level;

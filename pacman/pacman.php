@@ -39,6 +39,7 @@
     </canvas>
     <div class="gameoverbox">
             <h1 class="display_value"></h1>
+            <img src="custom_assets\level.png" width="100px" height="100px" alt="star">
     </div>
     <div class="content">
         <p id="title">Pac Man</p>
