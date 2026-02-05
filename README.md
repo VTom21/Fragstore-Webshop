@@ -125,9 +125,9 @@ cd Fragstore-Webshop
 
 2. Install dependencies:
 ```sh
-npm install
 composer install
-npm install -D vite
+npm install
+npm install -D vite typescript
 ```
 
 3. Install PHP and Node.js:
@@ -233,14 +233,14 @@ Will you uncover all three hidden treasures?
                      ↓                             ↓
              Shopping Cart                   Read More / Info
                      │
-                     ├─────────────┬─────────────┬─────────────┐
-                     ↓             ↓             ↓             ↓
-                 Summary       Secret Game Entry  Game Awards    Home
-                     ↓             Points       Website
-                 Checkout            ↓             ↓
+                     ├─────────────┬─────────────────┬──────────────┐
+                     ↓             ↓                 ↓              ↓
+                 Summary       Secret Game Entry  Game Awards      Home
+                     ↓             Points          Website
+                 Checkout            ↓               ↓
                      ↓           Game Screen   Completion & Rewards
-                 Payment                              ↓
-                     ↓                               Home
+                  Payment                            ↓
+                     ↓                              Home
                 Success/Failure
 
                       

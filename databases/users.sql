@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS users;
 USE users;
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(50) NOT NULL,
