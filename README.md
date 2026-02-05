@@ -235,10 +235,10 @@ Will you uncover all three hidden treasures?
                      │
                      ├─────────────┬─────────────────┬──────────────┐
                      ↓             ↓                 ↓              ↓
-                 Summary       Secret Game Entry  Game Awards      Home
-                     ↓             Points          Website
-                 Checkout            ↓               ↓
-                     ↓           Game Screen   Completion & Rewards
+                 Summary     Secret Game Entry   Game Awards       Home
+                     ↓            Points           Website
+                 Checkout          ↓                 ↓
+                     ↓          Game Screen   Completion & Rewards
                   Payment                            ↓
                      ↓                              Home
                 Success/Failure
