@@ -519,7 +519,34 @@ input[type="range"]::-webkit-slider-thumb {
   z-index: 1000;
 }
 
+.modal-backdropchart{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
 .modal {
+  background: var(--black2);
+  color: #f0f0f0;
+  padding: 24px;
+  border-radius: 12px;
+  width: 650px;
+  max-width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 247, 255, 0.3);
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 75vh;
+  max-height: 80vh;
+}
+
+.modalchart{
   background: var(--black2);
   color: #f0f0f0;
   padding: 24px;
@@ -533,13 +560,27 @@ input[type="range"]::-webkit-slider-thumb {
   max-height: 80vh;
 }
 
+
+
 .filter-columns {
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 24px;
+  padding: 5px;
   gap: 24px;
   margin-bottom: 24px;
   align-items: stretch;
+}
+
+#platforms{
+  margin-top: 2.6px;
+  margin-bottom: 2.6px;
+}
+
+#Range{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .parameter1,
@@ -1022,6 +1063,19 @@ input[type="range"]::-webkit-slider-thumb {
     max-height: 75vh;
   }
 
+  .custom-checkbox {
+    padding-left: auto;
+    padding-right: auto;
+    width: 100%;
+  }
+
+  #range2{
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+
+  
+
   .modal canvas {
     max-height: 70vh !important;
     display: grid;
@@ -1030,6 +1084,7 @@ input[type="range"]::-webkit-slider-thumb {
 
   .filter-columns {
     gap: 16px;
+    grid-template-columns: 1fr;
   }
 
   /* Sidebars full width */
@@ -1049,9 +1104,33 @@ input[type="range"]::-webkit-slider-thumb {
   }
 }
 
+@media(max-width:600px){
+  #range2{
+    margin-left: 11%;
+    margin-right: 11%;
+  }
+}
+
+
+
 @media(max-width:480px){
     .top-controls {
         gap: 30px;
+    }
+
+    .modal{
+      margin-left: 2vw;
+      margin-right: 2vw;
+      width: auto;
+    }
+
+    #Range{
+      width: 100%;
+    }
+
+    #range2{
+      margin-left: 0%;
+      margin-right: 0%;
     }
 }
 
