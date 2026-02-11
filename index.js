@@ -240,10 +240,14 @@ $scope.openCart = function (game) {
       for (var i = 0; i < $scope.games.length; i++) {
         var genre = $scope.games[i].genre;
         var exists = false;
-
+        
+        if($scope.games[i].available != 1){
+          continue;
+        }
         for (var j = 0; j < allGenres.length; j++) {
           if (allGenres[j] === genre) {
             exists = true;
+            break;
           }
         }
 
@@ -499,6 +503,10 @@ $scope.openCart = function (game) {
     var filtered = [];
     for (var i = 0; i < $scope.games.length; i++) {
       var game = $scope.games[i]; //stores all games
+
+      if(game.available != 1){
+        continue;
+      }
 
       var gameGenres = game.genre.toLowerCase(); //stores all their genres
 

@@ -210,7 +210,7 @@ header {
 
 #sigin,
 #register,
-#logout {
+#logout{
     display: block;
     padding: 8px 15px;
     border-radius: 8px;
@@ -220,6 +220,22 @@ header {
     background-color: var(--header-border);
     transition: none !important;
 }
+
+.admin-panel {
+  display: flex;           /* makes children flexible */
+  justify-content: center; /* centers button horizontally */
+  grid-column: 1 / -1;    /* optional: vertical centering */
+}
+  
+.admin-panel button {
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  background-color: var(--header-border);
+  transition: all 0.3s ease;
+}
+
 
 #logout{
   display: none;

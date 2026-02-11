@@ -64,7 +64,6 @@ function Verify() {
 
   if (otpEntered === currentOTP.toString()) {
     alert("OTP Verified successfully!");
-    sessionStorage.setItem("login", "true");
     window.location.replace("../home/home.php"); //redirection if successful verification
     clearOTPInputs();
   } else {

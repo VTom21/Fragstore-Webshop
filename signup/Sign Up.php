@@ -16,6 +16,7 @@ $email = '';
 $username = '';
 $success = false;
 $path = "";
+$role = 1;
 
 //form uses post method -> waits for the user's submit
 
@@ -36,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } else {
     try { //if all values are correct, it pushes the hash value to the pass into the database alongside the username and e-mail
       $hash = password_hash($password, PASSWORD_DEFAULT);
-      $stmt = $pdo->prepare("INSERT INTO users (email, username, password_hash, profile_picture) VALUES (?, ?, ?, ?)"); //prepared placeholders with temporary ? values
-      $stmt->execute([$email, $username, $hash, $path]);
+      $stmt = $pdo->prepare("INSERT INTO users (email, username, password_hash, profile_picture, role) VALUES (?, ?, ?, ?, ?)"); //prepared placeholders with temporary ? values
+      $stmt->execute([$email, $username, $hash, $path, $role]);
       $success = true;
     } catch (PDOException $e) {
       // Duplicate email/username -> SQLSTATE 23000

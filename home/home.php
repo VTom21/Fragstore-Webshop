@@ -6,6 +6,7 @@ include '../config.php';
 
 $username = 'Guest';
 $image = null;
+$role = null;
 
 $language = $_COOKIE['language'] ?? '';
 $region   = $_COOKIE['region'] ?? '';
@@ -13,16 +14,16 @@ $time = $_COOKIE['time'] ?? '';
 
 
 
-
 // 1. Try session first
 if (isset($_SESSION['user_id'])) {
-    $stmt = $pdo->prepare("SELECT id, username, profile_picture FROM users WHERE id = ? LIMIT 1");
+    $stmt = $pdo->prepare("SELECT id, username, profile_picture, role FROM users WHERE id = ? LIMIT 1");
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
         $username = $user['username'];
         $image = $user['profile_picture'];
+        $role = $user['role'];
     }
 } 
 // 2. If session not set, try remember_me cookie
@@ -118,7 +119,7 @@ $limit = 12;
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <link rel="icon" type="image/x-icon" href="/icons/array.png">
-  <title>Fragstore - Home</title>
+  <title>Home</title>
 </head>
 
 <body ng-app="home" ng-controller="home_controller">
@@ -186,7 +187,7 @@ $limit = 12;
 <!-- Dashboard sidebar -->
 <div class="dashboard" id="dashboard">
   <button class="close-btn" id="closeModal">&times;</button>
-  <h2 data-i18n>Admin Dashboard</h2>
+  <h2 data-i18n><?php echo $role == 1 ? "User" : "Admin"?> Dashboard</h2>
   <h4><?= htmlspecialchars($username) ?></h4>
 
   <label class="pfp-frame">
@@ -197,7 +198,13 @@ $limit = 12;
   </label>
   <div class="datas">
   <p>Region: <?php echo $region?></p>
-  <p>Language: <?php echo $language?></p>
+  <p>Language: <?php echo $language?></p> 
+
+  <?php if($role == 2): ?>
+    <div class="admin-panel">
+      <button>Admin panel</button>
+    </div>
+  <?php endif; ?>
   <div class="stats-grid">
   <img src="" class="hu" id="lang" alt="">
   <p id="time"><?php echo $time?></p>
