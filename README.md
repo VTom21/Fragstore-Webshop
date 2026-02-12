@@ -20,6 +20,7 @@
   <img src="https://www.readmecodegen.com/api/social-icon?name=alpinedotjs">
   <img src="https://www.readmecodegen.com/api/social-icon?name=gnubash"><br>
   <img src="https://www.readmecodegen.com/api/social-icon?name=phpmyadmin">
+  <img src="./icons/butterfly.png" width="50px">
   <img src="https://www.readmecodegen.com/api/social-icon?name=firebase">
   <img src="https://www.readmecodegen.com/api/social-icon?name=sass">
 </div>
