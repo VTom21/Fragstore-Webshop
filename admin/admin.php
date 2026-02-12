@@ -120,9 +120,7 @@ switch ($action) {
 
     <style>
 
-        
-
-
+    
 
         /* Date input calendar icon */
         input[type="date"]::-webkit-calendar-picker-indicator {
@@ -146,28 +144,6 @@ switch ($action) {
             margin-bottom: 20px !important;
         }
 
-
-
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Title styling */
-        h2 {
-            color: #2dd4bf !important;
-            text-align: center !important;
-            font-size: 20px !important;
-            font-weight: 600 !important;
-            margin-bottom: 30px !important;
-        }
     </style>
 </head>
 
