@@ -202,7 +202,7 @@ $limit = 12;
 
   <?php if($role == 2): ?>
     <div class="admin-panel">
-      <button>Admin panel</button>
+      <button><a href="../redirect/redirect.php?destination=../admin/admin.php">Admin panel</a></button>
     </div>
   <?php endif; ?>
   <div class="stats-grid">
