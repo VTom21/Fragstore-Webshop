@@ -95,7 +95,7 @@ switch ($action) {
         $stmt = $conn->prepare("UPDATE datas SET available = 0 WHERE id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        echo $stmt->affected_rows > 0 ? $message = "Game deleted successfully!" : $message = "No game found with that ID.";
+        $stmt->affected_rows > 0 ? $message = "Game deleted successfully!" : $message = "No game found with that ID.";
         $type = "danger";
         break;
 
@@ -218,14 +218,20 @@ switch ($action) {
             <button type="submit" name="action" value="update" class="btn btn-outline-success white br-2 update">Update Game</button>
             <button type="submit" name="action" value="delete" class="btn btn-outline-danger white br-2 delete">Delete Game</button>
         </div>
+
+        <a href="../home/home.php" class="btn btn-info br-2 py-3 white w-perc-90">Go back</a>
+
     </form>
 
 </body>
 
 <script>
-document.querySelector(".alert-close").addEventListener("click", () => {
+
+
+document.querySelector(".alert-close")?.addEventListener("click", () => {
     document.querySelector(".message_div").style.display = "none";
 });
+
 
 </script>
 
