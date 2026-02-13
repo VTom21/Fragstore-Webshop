@@ -20,8 +20,14 @@ try {
     $publisherStmt = $pdo->query("SELECT * FROM publishers ORDER BY publisher_id ASC");
     $publishers = $publisherStmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $developerStmt = $pdo->query("SELECT * FROM developers ORDER BY developer_id ASC");
-    $developers = $developerStmt->fetchAll(PDO::FETCH_ASSOC);
+    $developerStmt = $pdo->query("
+    SELECT developers.*, roles.role_name
+    FROM developers
+    LEFT JOIN roles ON developers.role_id = roles.role_id
+    ORDER BY developers.developer_id ASC
+");
+$developers = $developerStmt->fetchAll(PDO::FETCH_ASSOC);
+
 
     $publisherAwardsStmt = $pdo->query("SELECT * FROM publisher_awards ORDER BY award_id ASC");
     $publisherAwards = $publisherAwardsStmt->fetchAll(PDO::FETCH_ASSOC);

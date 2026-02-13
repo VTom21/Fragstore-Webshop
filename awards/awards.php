@@ -384,9 +384,7 @@ foreach ($awards as $award) {
             <div class="grid grid1">
                 <?php foreach ($publishers as $publisher): ?>
                     <div class="developer-card">
-                        <h3><?php echo htmlspecialchars($publisher['person_name']); ?></h3>
                         <p><?php echo htmlspecialchars($publisher['company_name']); ?></p>
-                        <p class="role"><?php echo htmlspecialchars($publisher['role']); ?></p>
 
                         <h4>Awards:</h4>
                         <ul>
@@ -450,13 +448,7 @@ foreach ($awards as $award) {
             </h2>
             <div class="flex justify-center video_div">
                 <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                    <iframe width="800" height="450"
-                        src="https://www.youtube.com/embed/_1dyS-bi1oo?si=55_7KuPQ8h0eCcx0"
-                        title="Game Awards Video" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                        class="rounded-2xl">
-                    </iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/GxUUJ-CQpmg?si=72sfXuRHllWUqKO3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
 
