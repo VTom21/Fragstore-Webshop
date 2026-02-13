@@ -414,7 +414,7 @@ foreach ($awards as $award) {
                     <div class="developer-card">
                         <h3><?php echo htmlspecialchars($developer['person_name']); ?></h3>
                         <p><?php echo htmlspecialchars($developer['company_name']); ?></p>
-                        <p class="role"><?php echo htmlspecialchars($developer['role']); ?></p>
+                        <p class="role"><?php echo htmlspecialchars($developer['role_name']); ?></p>
 
                         <h4>Awards:</h4>
                         <ul>
