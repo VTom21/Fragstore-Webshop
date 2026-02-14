@@ -196,17 +196,16 @@ switch ($action) {
             <input type="number" id="discountPerc" name="discountPerc" min="0" max="100" placeholder="0-100"
                 class="show-flex vertical-self-cent w-perc-100 secondary bg-text-10 b b-info-40 br-2 p-3 fw-thick"><br><br>
 
-            <div class="buttons show-flex space-16 jc-cent">
-                <button type="submit" name="action" value="add" class="btn btn-outline-info white br-2 add">Add
+            <div class="buttons show-flex space-50 py-4 jc-cent px-5">
+                <button type="submit" name="action" value="add" class="btn btn-outline-info white br-2 add w-perc-100">Add
                     Game</button>
                 <button type="submit" name="action" value="update"
-                    class="btn btn-outline-success white br-2 update">Update Game</button>
+                    class="btn btn-outline-success white br-2 update w-perc-100">Update Game</button>
                 <button type="submit" name="action" value="delete"
-                    class="btn btn-outline-danger white br-2 delete">Delete Game</button>
+                    class="btn btn-outline-danger white br-2 delete w-perc-100">Delete Game</button>
             </div>
-
-            <a href="../home/home.php" class="btn btn-info br-2 py-3 white w-perc-90">Go back</a>
         </div>
+        <a href="../home/home.php" class="btn btn-info br-2 py-3 white w-perc-100 go_back">Go back</a>
 </body>
 
 <script>

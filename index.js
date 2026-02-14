@@ -1,7 +1,5 @@
 var app = angular.module("videogameApp", []);
 
-
-
 app.controller("GameController", function ($scope, $http, $window, $location) {
   //boolean values to check prize & name sorting
 
@@ -19,51 +17,6 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.games = [];
   $scope.filteredGames = [];
 
-
-  var platformNames = [
-    "PC",
-    "Windows",
-    "PS5",
-    "PS4",
-    "PS3",
-    "PS2",
-    "PS1",
-    "PSP",
-    "PS Vita",
-    "Xbox Series X",
-    "Xbox One",
-    "Xbox 360",
-    "Xbox",
-    "Nintendo Switch",
-    "Nintendo Switch Lite",
-    "Wii U",
-    "Wii",
-    "GameCube",
-    "Nintendo 64",
-    "SNES",
-    "NES",
-    "Nintendo DS",
-    "Nintendo 3DS",
-    "Game Boy",
-    "Game Boy Color",
-    "Game Boy Advance",
-    "Mobile",
-    "iOS",
-    "Android",
-    "Mac",
-    "Linux",
-    "Steam Deck",
-    "Arcade",
-    "Genesis",
-    "Indie",
-    "Point & Click",
-    "Music",
-    "iTunes",
-    "Gift Cards",
-    "VR",
-    "PlayStation VR"
-];
-
   $scope.platforms = [];
 
   $scope.cartOpen = false;
@@ -72,56 +25,57 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.rates = window.exchangeRates;
   $scope.select_currency = "USD";
 
-
-$scope.convertPrice = function(game) {
+  $scope.convertPrice = function (game) {
     let price = game.isDiscount == 1 ? game.discountedPrize : game.prize;
     let rate = $scope.rates[$scope.select_currency] || 1;
     return (price * rate).toFixed(2);
-};
-
-
+  };
 
   $scope.isInWishlist = function (gameId) {
     return $scope.wishlistItems.some((item) => item.id === gameId);
   };
 
-  $scope.wishlistItems = JSON.parse(localStorage.getItem("wishlistItems") || "[]");
-  $scope.count2 =  $scope.wishlistItems.length || 0;
+  $scope.wishlistItems = JSON.parse(
+    localStorage.getItem("wishlistItems") || "[]",
+  );
+  $scope.count2 = $scope.wishlistItems.length || 0;
 
-
-$scope.openCart = function (game) {
+  $scope.openCart = function (game) {
     $scope.count++;
     let existingItem = $scope.cartItems.find((item) => item.id === game.id);
 
     // Get base price (considering discount)
-    let basePrice = game.isDiscount == 1 && game.discountedPrize ? game.discountedPrize : game.prize;
+    let basePrice =
+      game.isDiscount == 1 && game.discountedPrize
+        ? game.discountedPrize
+        : game.prize;
 
     // Get current exchange rate
     let rate = $scope.rates[$scope.select_currency] || 1;
     let convertedPrice = parseFloat((basePrice * rate).toFixed(2));
 
     if (existingItem) {
-        existingItem.quantity += 1;
-        existingItem.total_prize = parseFloat((existingItem.quantity * existingItem.prize).toFixed(2));
+      existingItem.quantity += 1;
+      existingItem.total_prize = parseFloat(
+        (existingItem.quantity * existingItem.prize).toFixed(2),
+      );
     } else {
-        $scope.cartItems.push({
-            gameRef: game,
-            id: game.id,
-            name: game.name,
-            prize: convertedPrice,
-            game_pic: game.game_pic,
-            quantity: 1,
-            total_prize: convertedPrice,
-        });
+      $scope.cartItems.push({
+        gameRef: game,
+        id: game.id,
+        name: game.name,
+        prize: convertedPrice,
+        game_pic: game.game_pic,
+        quantity: 1,
+        total_prize: convertedPrice,
+      });
     }
-
 
     $scope.cartOpen = true;
 
     // Store selected currency
     localStorage.setItem("currency", $scope.select_currency);
-};
-
+  };
 
   $scope.pacmanCounter = 0;
   $scope.snakeCounter = 0;
@@ -133,7 +87,8 @@ $scope.openCart = function (game) {
       $scope.pacmanCounter++; // increment counter on each click
 
       if ($scope.pacmanCounter >= 5) {
-        window.location.href = "../redirect/redirect.php?destination=../pacman/pacman.php";
+        window.location.href =
+          "../redirect/redirect.php?destination=../pacman/pacman.php";
       }
     }
 
@@ -142,7 +97,8 @@ $scope.openCart = function (game) {
       $scope.snakeCounter++; // increment counter on each click
 
       if ($scope.snakeCounter >= 5) {
-        window.location.href = "../redirect/redirect.php?destination=../snake/snake.php";
+        window.location.href =
+          "../redirect/redirect.php?destination=../snake/snake.php";
       }
     }
 
@@ -175,21 +131,22 @@ $scope.openCart = function (game) {
 
   $scope.checkout = function () {
     $scope.cart_data = encodeURIComponent(JSON.stringify($scope.cartItems));
-    window.location.href = "http://localhost:3000/cart_website/sum_main.php?cart=" + $scope.cart_data;
+    window.location.href =
+      "http://localhost:3000/cart_website/sum_main.php?cart=" +
+      $scope.cart_data;
   };
 
-  $scope.Content = function(name, genre){
-    if (genre.toLowerCase() === 'giftcards') {
-        return; 
+  $scope.Content = function (name, genre) {
+    if (genre.toLowerCase() === "giftcards") {
+      return;
     }
-    window.location.href = "http://localhost:3000/Content/Content.php?name=" + encodeURIComponent(name);
-  }
+    window.location.href =
+      "http://localhost:3000/Content/Content.php?name=" +
+      encodeURIComponent(name);
+  };
 
   //puts every platform into the platforms array - stores dictionary values
   //platforms: {"PC", false}
-  for (var i = 0; i < platformNames.length; i++) {
-    $scope.platforms.push({ name: platformNames[i], selected: false });
-  }
 
   //variables storing current page, items shown per page, and minimum year that can be chosen when filtering by release date
 
@@ -206,30 +163,45 @@ $scope.openCart = function (game) {
       $scope.numberOfProducts = response.data.total;
       $scope.numberOfGenres = response.data.totalGenres;
       $scope.numberOfPlatforms = $scope.platforms.length;
-      
 
+      var allPlatforms = [];
 
       $scope.games.forEach(function (game) {
-
-        const stockRef = db.ref('games/' + game.id + '/stock');
-        stockRef.on('value', function(snapshot) {
-            let value = snapshot.val();
-        
-            if (value === null) {
-                value = 500;
-                stockRef.set(value);
-            }
-        
-            game.stock = value;
-            console.log(`${game.name} => ${game.stock}`);
-            $scope.$applyAsync();
+        if (!game.platforms) return; // skip if undefined
+        // platforms might be a comma-separated string like "PC, PS5"
+        game.platforms.split(",").forEach(function (p) {
+          var plat = p.trim();
+          if (plat && allPlatforms.indexOf(plat) === -1) {
+            allPlatforms.push(plat);
+          }
         });
-        
+      });
 
-        if (game.isDiscount == 1 &&game.discountPerc != null) {
-            game.discountedPrize = parseFloat(game.prize * (1 - game.discountPerc / 100)).toFixed(2);
-        }
-        else{
+      // now put them in $scope.platforms for ng-repeat
+      $scope.platforms = allPlatforms.map(function (p) {
+        return { name: p, selected: false };
+      });
+
+      $scope.games.forEach(function (game) {
+        const stockRef = db.ref("games/" + game.id + "/stock");
+        stockRef.on("value", function (snapshot) {
+          let value = snapshot.val();
+
+          if (value === null) {
+            value = 500;
+            stockRef.set(value);
+          }
+
+          game.stock = value;
+          console.log(`${game.name} => ${game.stock}`);
+          $scope.$applyAsync();
+        });
+
+        if (game.isDiscount == 1 && game.discountPerc != null) {
+          game.discountedPrize = parseFloat(
+            game.prize * (1 - game.discountPerc / 100),
+          ).toFixed(2);
+        } else {
           game.discountedPrize = null;
         }
       });
@@ -240,8 +212,8 @@ $scope.openCart = function (game) {
       for (var i = 0; i < $scope.games.length; i++) {
         var genre = $scope.games[i].genre;
         var exists = false;
-        
-        if($scope.games[i].available != 1){
+
+        if ($scope.games[i].available != 1) {
           continue;
         }
         for (var j = 0; j < allGenres.length; j++) {
@@ -291,7 +263,7 @@ $scope.openCart = function (game) {
           $location.search("genres", csv);
           $scope.applyAdvancedFilters();
         },
-        true
+        true,
       );
 
       //If a user selects a platform, that platform now becomes selected
@@ -309,7 +281,7 @@ $scope.openCart = function (game) {
           $location.search("platforms", csv);
           $scope.applyAdvancedFilters();
         },
-        true
+        true,
       );
 
       //$location.search makes the URL be like: http://localhost:3000/games_main.php#!?genres={value}&platforms={value}
@@ -318,14 +290,18 @@ $scope.openCart = function (game) {
     },
     function (error) {
       console.error("Failed to load game data:", error);
-    }
+    },
   );
 
   //function for creating pie chart
   //uses Chart.js API
   function createChart() {
     var xValues = ["Games", "Genres", "Platforms"];
-    var yValues = [$scope.numberOfProducts, $scope.numberOfGenres, $scope.numberOfPlatforms];
+    var yValues = [
+      $scope.numberOfProducts,
+      $scope.numberOfGenres,
+      $scope.numberOfPlatforms,
+    ];
     var barColors = ["#b91d47", "#00aba9", "#2b5797"];
 
     new Chart("myChart", {
@@ -352,16 +328,16 @@ $scope.openCart = function (game) {
     });
   }
 
-  $scope.Discount = function(isDiscount){
-    switch(isDiscount){
+  $scope.Discount = function (isDiscount) {
+    switch (isDiscount) {
       case true:
-        $scope.filteredGames = $scope.games.filter(k => k.isDiscount == 1);
+        $scope.filteredGames = $scope.games.filter((k) => k.isDiscount == 1);
         break;
-        case false:
-          $scope.filteredGames = $scope.games;
+      case false:
+        $scope.filteredGames = $scope.games;
         break;
     }
-  }
+  };
 
   // Name sorting
   $scope.updateSortOrder = function (which) {
@@ -414,50 +390,47 @@ $scope.openCart = function (game) {
     }
   };
 
-  $scope.inStock = function() {
-    let filtered = $scope.games; 
-  
+  $scope.inStock = function () {
+    let filtered = $scope.games;
 
     switch ($scope.stockBool) {
       case true:
-        filtered = filtered.filter(game => game.stock !== 0);
+        filtered = filtered.filter((game) => game.stock !== 0);
         break;
       case false:
         break;
     }
-  
+
     switch ($scope.stockBool2) {
       case true:
-        filtered = filtered.filter(game => game.stock === 0);
+        filtered = filtered.filter((game) => game.stock === 0);
         break;
       case false:
         break;
     }
-  
+
     if (!$scope.stockBool && !$scope.stockBool2) {
       filtered = $scope.games;
     }
-  
+
     $scope.filteredGames = filtered;
   };
-  
-  
 
-
-  $scope.applySorting = function () { // => Prototype Sorting
+  $scope.applySorting = function () {
+    // => Prototype Sorting
     // Sort by price
     //exp. a.prize - 59.99, b.prize - 49.99
 
     if ($scope.prizeSortOrder == "asc") {
       $scope.filteredGames.sort(function (a, b) {
-        const PrizeA = a.isDiscount == 1 ? a.discountedPrize : a.prize; 
-        const PrizeB = b.isDiscount == 1 ? b.discountedPrize : b.prize;  
+        const PrizeA = a.isDiscount == 1 ? a.discountedPrize : a.prize;
+        const PrizeB = b.isDiscount == 1 ? b.discountedPrize : b.prize;
         return PrizeA - PrizeB; //if substraction gives minues value, a comes first, otherwise b
       });
     } else if ($scope.prizeSortOrder == "desc") {
       $scope.filteredGames.sort(function (a, b) {
-        const PrizeA = a.isDiscount == 1 ? a.discountedPrize : a.prize; 
-        const PrizeB = b.isDiscount == 1 ? b.discountedPrize : b.prize;  
+        const PrizeA = a.isDiscount == 1 ? a.discountedPrize : a.prize;
+        const PrizeB = b.isDiscount == 1 ? b.discountedPrize : b.prize;
         return PrizeB - PrizeA; //same logic inverted
       });
     }
@@ -504,7 +477,7 @@ $scope.openCart = function (game) {
     for (var i = 0; i < $scope.games.length; i++) {
       var game = $scope.games[i]; //stores all games
 
-      if(game.available != 1){
+      if (game.available != 1) {
         continue;
       }
 
@@ -527,7 +500,9 @@ $scope.openCart = function (game) {
       //platform filtering
       //checks if platforms variable stores an array, if yes it separates all values with commas, else it leaves them in lowercase
 
-      var gamePlatforms = Array.isArray(game.platforms) ? game.platforms.join(",").toLowerCase() : game.platforms.toLowerCase();
+      var gamePlatforms = Array.isArray(game.platforms)
+        ? game.platforms.join(",").toLowerCase()
+        : game.platforms.toLowerCase();
       var platformMatch = false;
       if (selectedPlatforms.length === 0) {
         platformMatch = true; //if user chooses no platforms, genre match will still apply
@@ -580,7 +555,9 @@ $scope.openCart = function (game) {
     for (var i = 0; i < $scope.games.length; i++) {
       var game = $scope.games[i];
       var price = game.prize * rate;
-      var discountedPrice = game.discountedPrize ? game.discountedPrize * rate : null;
+      var discountedPrice = game.discountedPrize
+        ? game.discountedPrize * rate
+        : null;
 
       if (game.isDiscount == 1) {
         if (discountedPrice >= min && discountedPrice <= max) {
@@ -612,7 +589,6 @@ $scope.openCart = function (game) {
   };
 
   $scope.Wishlist = function (game, event) {
-
     var wish_btn = event.currentTarget;
     wish_btn.classList.toggle("off");
     wish_btn.classList.toggle("active");
@@ -627,16 +603,17 @@ $scope.openCart = function (game) {
         game_pic: game.game_pic,
       });
     } else {
-      $scope.wishlistItems = $scope.wishlistItems.filter((item) => item.id !== game.id);
+      $scope.wishlistItems = $scope.wishlistItems.filter(
+        (item) => item.id !== game.id,
+      );
     }
 
     $scope.count2 = $scope.wishlistItems.length;
     localStorage.setItem("wishlistItems", JSON.stringify($scope.wishlistItems));
-    
   };
 
-  $scope.changeCurrency = function(newCurrency) {
+  $scope.changeCurrency = function (newCurrency) {
     $scope.select_currency = newCurrency;
-    localStorage.setItem("currency", newCurrency); 
-};
+    localStorage.setItem("currency", newCurrency);
+  };
 });
