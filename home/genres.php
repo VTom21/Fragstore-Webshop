@@ -13,10 +13,10 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Get genres and their counts
-    $genreStatsStmt = $pdo->query("SELECT genre, COUNT(*) AS count FROM datas GROUP BY genre");
+    $genreStatsStmt = $pdo->query("SELECT genre_name, COUNT(*) AS count FROM genres GROUP BY genre_name");
     $genreStats = [];
     while ($row = $genreStatsStmt->fetch(PDO::FETCH_ASSOC)) {
-        $genreStats[$row['genre']] = (int)$row['count'];
+        $genreStats[$row['genre_name']] = (int)$row['count'];
     }
 
 } catch (PDOException $e) {

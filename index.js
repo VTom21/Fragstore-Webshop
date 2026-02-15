@@ -164,18 +164,18 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
       $scope.numberOfGenres = response.data.totalGenres;
       $scope.numberOfPlatforms = $scope.platforms.length;
 
-      var allPlatforms = [];
+var allPlatforms = [];
 
-      $scope.games.forEach(function (game) {
-        if (!game.platforms) return; // skip if undefined
-        // platforms might be a comma-separated string like "PC, PS5"
-        game.platforms.split(",").forEach(function (p) {
-          var plat = p.trim();
-          if (plat && allPlatforms.indexOf(plat) === -1) {
-            allPlatforms.push(plat);
-          }
-        });
-      });
+$scope.games.forEach(function (game) {
+  if (!game.platforms || !Array.isArray(game.platforms)) return; // skip if undefined
+  game.platforms.forEach(function (p) {
+    var plat = p.trim();
+    if (plat && allPlatforms.indexOf(plat) === -1) {
+      allPlatforms.push(plat);
+    }
+  });
+});
+
 
       // now put them in $scope.platforms for ng-repeat
       $scope.platforms = allPlatforms.map(function (p) {
@@ -502,7 +502,7 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
 
       var gamePlatforms = Array.isArray(game.platforms)
         ? game.platforms.join(",").toLowerCase()
-        : game.platforms.toLowerCase();
+        : [game.platforms.toLowerCase()];
       var platformMatch = false;
       if (selectedPlatforms.length === 0) {
         platformMatch = true; //if user chooses no platforms, genre match will still apply

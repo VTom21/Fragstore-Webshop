@@ -11,72 +11,85 @@ $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
 try {
     $pdo = new PDO($dsn, $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Fetch all game data
-    $stmt = $pdo->query("SELECT * FROM datas");
-    $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // 1️⃣ Fetch all games with genre name aliased as 'genre'
+    $stmt = $pdo->query("
+        SELECT d.*, g.genre_name AS genre
+        FROM datas d
+        LEFT JOIN genres g ON d.genre_id = g.genre_id
+    ");
+    $gamesRaw = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Count total games (rows)
-    $countStmt = $pdo->query("SELECT MAX(id) AS total FROM datas");
-    $countResult = $countStmt->fetch(PDO::FETCH_ASSOC);
+    // 2️⃣ Fetch all platforms per game (via junction table)
+    $gameIds = array_column($gamesRaw, 'id'); // collect all game IDs
+    if (count($gameIds) > 0) {
+        $placeholders = implode(',', array_fill(0, count($gameIds), '?'));
 
-    $nameCountStmt = $pdo->query("SELECT name FROM datas");
-    $nameResult = $nameCountStmt->fetch(PDO::FETCH_ASSOC);
-
-
-    //Count total genres (DISTINCT -> no duplicates allowed)
-    $genreCountStmt = $pdo->query("SELECT COUNT(DISTINCT genre) AS totalGenres FROM datas");
-    $genreCount = $genreCountStmt->fetch(PDO::FETCH_ASSOC);
-
-
-    //Count total platforms
-    $platformsResult = $pdo->query("SELECT platforms FROM datas");
-    $allPlatforms = [];
-
-    //goes through each game's platforms, removes whitespaces, sets them to uppercase
-    //stores the values to $allPlatforms
-
-    while ($row = $platformsResult->fetch(PDO::FETCH_ASSOC)) {
-        $platformList = explode(',', $row['platforms']);
-        foreach ($platformList as $platform) {
-            $platform = trim($platform);
-            $platform = strtoupper($platform);
-            if ($platform !== '') {
-                $allPlatforms[] = $platform;
-            }
-        }
+        $stmtPlatforms = $pdo->prepare("
+            SELECT gp.game_id, p.platform_name AS platform
+            FROM game_platforms gp
+            INNER JOIN platforms p ON gp.platform_id = p.platform_id
+            WHERE gp.game_id IN ($placeholders)
+        ");
+        $stmtPlatforms->execute($gameIds);
+        $platformsRaw = $stmtPlatforms->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        $platformsRaw = [];
     }
 
-    //removes duplicates values from the platforms and also counts them
+    // Map platforms by game_id
+    $platformMap = [];
+    foreach ($platformsRaw as $row) {
+        $platformMap[$row['game_id']][] = $row['platform'];
+    }
 
-    $uniquePlatforms = array_unique($allPlatforms);
-    $totalPlatforms = count($uniquePlatforms);
+    // 3️⃣ Combine platform data into each game
+    $games = [];
+    foreach ($gamesRaw as $game) {
+        $game['platforms'] = $platformMap[$game['id']] ?? [];
+        $games[] = $game;
+    }
 
-    $genreStatsStmt = $pdo->query("SELECT genre, COUNT(*) AS count FROM datas GROUP BY genre");
+    // 4️⃣ Count totals
+    $countStmt = $pdo->query("SELECT COUNT(*) AS total FROM datas");
+    $countResult = $countStmt->fetch(PDO::FETCH_ASSOC);
+
+    $genreCountStmt = $pdo->query("SELECT COUNT(*) AS totalGenres FROM genres");
+    $genreCount = $genreCountStmt->fetch(PDO::FETCH_ASSOC);
+
+    $platformCountStmt = $pdo->query("SELECT COUNT(*) AS totalPlatforms FROM platforms");
+    $platformCount = $platformCountStmt->fetch(PDO::FETCH_ASSOC);
+
+    // 5️⃣ Genre stats (number of games per genre)
+    $genreStatsStmt = $pdo->query("
+        SELECT g.genre_name AS genre, COUNT(d.id) AS count
+        FROM datas d
+        LEFT JOIN genres g ON d.genre_id = g.genre_id
+        GROUP BY g.genre_name
+    ");
     $genreStats = [];
     while ($row = $genreStatsStmt->fetch(PDO::FETCH_ASSOC)) {
         $genreStats[$row['genre']] = (int)$row['count'];
     }
 
- 
+    // 6️⃣ Unique platforms
+    $uniquePlatformsStmt = $pdo->query("SELECT platform_name AS platform FROM platforms");
+    $uniquePlatforms = $uniquePlatformsStmt->fetchAll(PDO::FETCH_COLUMN);
 
-    //converts the associative array to json format
-
+    // 7️⃣ Return JSON
     echo json_encode([
         'games' => $games,
-        'names' => $nameResult['name'],
         'total' => $countResult['total'],
         'totalGenres' => $genreCount['totalGenres'],
-        'totalPlatforms' => $totalPlatforms,
-        'Unique' => $uniquePlatforms,
+        'totalPlatforms' => $platformCount['totalPlatforms'],
+        'uniquePlatforms' => $uniquePlatforms,
         'genreStats' => $genreStats
     ]);
-    
+
 } catch (PDOException $e) {
-    echo $twig->render('error.twig', [
-        'title' => 'Unexpected Error',
-        'message' => 'Something went wrong.',
-        'details' => $e->getMessage(),
-        'redirectUrl' => '../home/home.php'
+    echo json_encode([
+        'error' => 'Database error',
+        'message' => $e->getMessage()
     ]);
 }

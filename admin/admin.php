@@ -1,113 +1,98 @@
 <?php
+require '../games_raw.php';
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "videogames";
+$message = '';
+$type = '';
 
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// Load genres
+$genresStmt = $pdo->query("SELECT genre_id, genre_name FROM genres ORDER BY genre_name");
+$genres = $genresStmt->fetchAll(PDO::FETCH_ASSOC);
 
-$id = $_POST["id"] ?? "";
-$name = $_POST["name"] ?? "";
-$game_pic = $_POST["game_pic"] ?? "";
-$release_date = $_POST["release_date"] ?? "";
-$genre = $_POST["genre"] ?? "";
-$platforms = $_POST["platforms"] ?? "";
-$prize = $_POST["prize"] ?? null;
-$isDiscount = $_POST["isDiscount"] ?? null;
-$discountPerc = $_POST["discountPerc"] ?? null;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-$action = $_POST["action"] ?? "";
-$message = "";
-$type = "";
+    $id = $_POST['id'] ?? null;
+    $name = $_POST['name'] ?? '';
+    $game_pic = $_POST['game_pic'] ?? '';
+    $release_date = $_POST['release_date'] ?? '';
+    $genre = $_POST['genre'] ?? null; // genre_id
+    $platforms = $_POST['platforms'] ?? '';
+    $prize = $_POST['prize'] ?? null;
+    $isDiscount = $_POST['isDiscount'] ?? 0;
+    $discountPerc = $_POST['discountPerc'] ?? 0;
+    $action = $_POST['action'] ?? '';
 
-switch ($action) {
-    case 'add':
-        $stmt = $conn->prepare("INSERT INTO datas (name, game_pic, release_date, genre, platforms, prize, isDiscount, discountPerc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        if (!$stmt)
-            die("Prepare failed: " . $conn->error);
+    try {
+        switch ($action) {
 
-        $stmt->bind_param("sssssdii", $name, $game_pic, $release_date, $genre, $platforms, $prize, $isDiscount, $discountPerc);
+            case 'add':
 
-        if ($stmt->execute()) {
-            $message = "Game added successfully!";
-            $type = "info";
-        } else {
-            die("Execute failed: " . $stmt->error);
-        }
-        break;
+                // Insert game first
+                $stmt = $pdo->prepare("
+        INSERT INTO datas (name, game_pic, release_date, genre_id, prize, isDiscount, discountPerc)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    ");
+                $stmt->execute([$name, $game_pic, $release_date, $genre, $prize, $isDiscount, $discountPerc]);
 
-    case 'update':
-        if (empty($id)) {
-            die("ID is required for updating a game.");
-        }
+                // Get new game ID
+                $game_id = $pdo->lastInsertId();
 
-        $id = intval($id);
+                // Platforms array from form (checkboxes)
+                $platform_ids = $_POST['platforms'] ?? [];
 
-        // Create an associative array of column => value
-        $data = [
-            'name' => $name,
-            'game_pic' => $game_pic,
-            'release_date' => $release_date,
-            'genre' => $genre,
-            'platforms' => $platforms,
-            'prize' => $prize,
-            'isDiscount' => $isDiscount,
-            'discountPerc' => $discountPerc
-        ];
+                // Insert platforms into junction table
+                $stmtPlat = $pdo->prepare("INSERT INTO game_platforms (game_id, platform_id) VALUES (?, ?)");
 
-        // Remove empty values
-        foreach ($data as $key => $value) {
-            if ($value === "" || $value === null) {
-
-                if (!is_numeric($value)) {
-                    unset($data[$key]);
+                foreach ($platform_ids as $pid) {
+                    $stmtPlat->execute([$game_id, $pid]);
                 }
-            }
-        }
 
-        if (!empty($data)) {
-            $sql_parts = [];
-            foreach ($data as $key => $value) {
-                // If numeric, no quotes; else escape string
-                if (is_numeric($value)) {
-                    $sql_parts[] = "$key=$value";
-                } else {
-                    $sql_parts[] = "$key='" . $conn->real_escape_string($value) . "'";
-                }
-            }
+                $message = "Game added with platforms!";
+                $type = "success";
+                break;
 
-            $sql = "UPDATE datas SET " . implode(", ", $sql_parts) . " WHERE id=$id";
-            $conn->query($sql);
-            $message = "Game updated!";
-            $type = "success";
-        } else {
-            echo "Nothing to update!";
-        }
-        break;
 
-    case 'delete':
-        if (empty($id)) {
-            die("ID is required to delete a game.");
+            case 'update':
+                if (!$id) throw new Exception("ID required");
+
+                $stmtCurrent = $pdo->prepare("SELECT * FROM datas WHERE id = ?");
+                $stmtCurrent->execute([$id]);
+                $currentGame = $stmtCurrent->fetch(PDO::FETCH_ASSOC);
+                if (!$currentGame) throw new Exception("Game not found");
+
+                $name = !empty($name) ? $name : $currentGame['name'];
+                $game_pic = !empty($game_pic) ? $game_pic : $currentGame['game_pic'];
+                $release_date = !empty($release_date) ? $release_date : $currentGame['release_date'];
+                $genre = !empty($genre) ? $genre : $currentGame['genre_id'];
+                $prize = !empty($prize) ? $prize : $currentGame['prize'];
+                $isDiscount = isset($_POST['isDiscount']) ? $isDiscount : $currentGame['isDiscount'];
+                $discountPerc = isset($_POST['discountPerc']) ? $discountPerc : $currentGame['discountPerc'];
+
+                $stmt = $pdo->prepare("UPDATE datas SET name=?, game_pic=?, release_date=?, genre_id=?, prize=?, isDiscount=?, discountPerc=? WHERE id=?");
+                $stmt->execute([$name, $game_pic, $release_date, $genre, $prize, $isDiscount, $discountPerc, $id]);
+
+                $message = "Game updated!";
+                $type = "info";
+                break;
+
+
+
+            case 'delete':
+                if (!$id) throw new Exception("ID required");
+
+                $stmt = $pdo->prepare("UPDATE datas SET available = 0 WHERE id=?");
+                $stmt->execute([$id]);
+
+                $message = "Game deleted!";
+                $type = "danger";
+                break;
         }
-        $stmt = $conn->prepare("UPDATE datas SET available = 0 WHERE id = ?");
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->affected_rows > 0 ? $message = "Game deleted successfully!" : $message = "No game found with that ID.";
+    } catch (Exception $e) {
+        $message = $e->getMessage();
         $type = "danger";
-        break;
-
-    default:
-        if ($action !== '') {
-            echo "Invalid Action";
-        }
-        break;
+    }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,12 +162,29 @@ switch ($action) {
                 class="show-flex vertical-self-cent w-perc-100 bg-text-10 secondary b b-info-40 br-2 p-3 fw-thick"><br><br>
 
             <label for="genre" class="t-middle white-70">Genre:</label>
-            <input type="text" id="genre" name="genre" placeholder="Action, RPG, etc."
-                class="show-flex vertical-self-cent w-perc-100 secondary bg-text-10 b b-info-40 br-2 p-3 fw-thick"><br><br>
+            <select id="genre" name="genre"
+                class="show-flex vertical-self-cent w-perc-100 secondary bg-text-10 b b-info-40 br-2 p-3 fw-thick">
+                <option value="">-- Select Genre --</option>
+                <?php foreach ($genres as $g): ?>
+                    <option value="<?= $g['genre_id'] ?>">
+                        <?= htmlspecialchars($g['genre_name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select><br><br>
 
-            <label for="platforms" class="t-middle white-70">Platforms:</label>
-            <input type="text" id="platforms" name="platforms" placeholder="PC, PS5, Xbox"
-                class="show-flex vertical-self-cent w-perc-100 secondary bg-text-10 b b-info-40 br-2 p-3 fw-thick"><br><br>
+            <label class="t-middle white-70">Platforms:</label>
+            <div style="max-height: 200px; overflow-y: auto; border: 1px solid #444; padding: 10px; border-radius: 4px;">
+                <?php
+                $platformsStmt = $pdo->query("SELECT platform_id, platform_name FROM platforms ORDER BY platform_name");
+                $platformsList = $platformsStmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($platformsList as $p):
+                ?>
+                    <label class="white-70" style="display: block; margin-bottom: 5px;">
+                        <input type="checkbox" name="platforms[]" value="<?= $p['platform_id'] ?>">
+                        <?= htmlspecialchars($p['platform_name']) ?>
+                    </label>
+                <?php endforeach; ?>
+            </div><br><br>
 
             <label for="prize" class="t-middle white-70">Price ($):</label>
             <input type="number" step="0.01" id="prize" name="prize" placeholder="59.99"
@@ -209,13 +211,9 @@ switch ($action) {
 </body>
 
 <script>
-
-
     document.querySelector(".alert-close")?.addEventListener("click", () => {
         document.querySelector(".message_div").style.display = "none";
     });
-
-
 </script>
 
 </html>

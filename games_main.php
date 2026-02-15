@@ -380,7 +380,7 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                         </svg>
                     </button></h2>
                 <p><strong>Genre:</strong> {{game.genre}}</p>
-                <p><strong>Platform:</strong> {{game.platforms}}</p>
+                <p><strong>Platform:</strong> {{game.platforms.join(', ')}}</p>
                 <p><strong>Release:</strong> {{game.release_date}}</p>
                 <p class="stock"><strong>Stock:</strong> {{game.stock}}</p>
             </div>
