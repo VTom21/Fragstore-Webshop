@@ -183,28 +183,37 @@ $scope.games.forEach(function (game) {
       });
 
       $scope.games.forEach(function (game) {
-        const stockRef = db.ref("games/" + game.id + "/stock");
-        stockRef.on("value", function (snapshot) {
-          let value = snapshot.val();
 
-          if (value === null) {
-            value = 500;
-            stockRef.set(value);
-          }
-
-          game.stock = value;
-          console.log(`${game.name} => ${game.stock}`);
-          $scope.$applyAsync();
-        });
-
-        if (game.isDiscount == 1 && game.discountPerc != null) {
-          game.discountedPrize = parseFloat(
-            game.prize * (1 - game.discountPerc / 100),
-          ).toFixed(2);
-        } else {
-          game.discountedPrize = null;
-        }
-      });
+        const stockUrl = `https://stock-9bff5-default-rtdb.europe-west1.firebasedatabase.app/games/${game.id}/stock.json`;
+    
+        fetch(stockUrl)
+            .then(response => response.json())
+            .then(value => {
+                if (value === null) {
+                    value = 500;
+                    fetch(stockUrl, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(value)
+                    }).catch(err => console.error("Error setting initial stock:", err));
+                }
+    
+                game.stock = value;
+    
+                if (game.isDiscount == 1 && game.discountPerc != null) {
+                    game.discountedPrize = parseFloat(
+                        game.prize * (1 - game.discountPerc / 100)
+                    ).toFixed(2);
+                } else {
+                    game.discountedPrize = null;
+                }
+    
+                console.log(`${game.name} => ${game.stock}`);
+                $scope.$applyAsync(); // update AngularJS UI
+            })
+            .catch(err => console.error("Error fetching stock:", err));
+    });
+    
 
       // checks if the genre chosen by the user, exists. Doesnt allow duplicates.
 
