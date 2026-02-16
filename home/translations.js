@@ -1,56 +1,53 @@
 function translate(text, from = "en", to = "auto") {
+  if (from === to) return Promise.resolve(text);
+  if (!("Translator" in window)) return Promise.resolve(text);
 
-  if (from === to) {
-    return Promise.resolve(text);
-  }
-
-  if (!("Translator" in window)) {
-    return Promise.resolve(text);
-  }
-
+  // Create the translator immediately on user gesture
   return Translator.create({ sourceLanguage: from, targetLanguage: to })
     .then(translator => translator.translate(text))
     .catch(err => {
       console.error("Translation failed:", err);
-      return text; 
+      return text;
     });
 }
 
 function translateContent(lang) {
-  var elements = document.querySelectorAll("[data-i18n]");
+  const elements = document.querySelectorAll("[data-i18n]");
 
-  elements.forEach(function(el) {
-    if (!el.dataset.original) {
-      el.dataset.original = el.textContent;
-    }
+  // Trigger translation for all elements immediately (concurrently)
+  elements.forEach(el => {
+    if (!el.dataset.original) el.dataset.original = el.textContent;
 
-    
+    // Each call happens directly inside the click handler
     translate(el.dataset.original, "en", lang)
-      .then(function(translated) {
+      .then(translated => {
         el.textContent = translated;
       })
-      .catch(function(err) {
+      .catch(err => {
         console.error("Translation error:", err);
       });
   });
 }
 
-var selected = document.querySelector(".selected-lang");
+// Language selection
+const selected = document.querySelector(".selected-lang");
 
-document.querySelectorAll(".lang-menu a").forEach(function(link) {
+document.querySelectorAll(".lang-menu a").forEach(link => {
   link.addEventListener("click", function(e) {
     e.preventDefault();
-    var lang = link.className;
+    const lang = link.className;
 
+    // Update UI immediately
     selected.textContent = link.textContent;
-    selected.style.setProperty("--flag", "url(" + link.dataset.flag + ")");
+    selected.style.setProperty("--flag", `url(${link.dataset.flag})`);
     document.querySelector(".lang-menu ul").style.display = "none";
 
-    translateContent(lang); 
+    // ⚡ Trigger all translations immediately here
+    translateContent(lang);
   });
 });
 
 selected.addEventListener("click", function() {
-  var menu = document.querySelector(".lang-menu ul");
+  const menu = document.querySelector(".lang-menu ul");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 });

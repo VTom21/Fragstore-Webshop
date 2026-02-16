@@ -16,14 +16,14 @@ $time = $_COOKIE['time'] ?? '';
 
 // 1. Try session first
 if (isset($_SESSION['user_id'])) {
-    $stmt = $pdo->prepare("SELECT id, username, profile_picture FROM users WHERE id = ? LIMIT 1");
+    $stmt = $pdo->prepare("SELECT id, username, profile_picture, role FROM users WHERE id = ? LIMIT 1");
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
         $username = $user['username'];
         $image = $user['profile_picture'];
-        //$role = $user['role'];
+        $role = $user['role'];
     }
 } 
 // 2. If session not set, try remember_me cookie

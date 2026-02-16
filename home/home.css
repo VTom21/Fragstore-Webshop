@@ -1755,12 +1755,19 @@ right: 10px;
 }
 
 
+
 @media (max-width: 1200px) {
     .card-grid {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
     .navbar a, .navbar p{
       font-size: 0.8rem;
+    }
+    .navbar{
+      gap: 12px !important;
+    }
+    #sigin, #register{
+      font-size: 0.8rem !important;
     }
 }
 
