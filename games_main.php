@@ -247,8 +247,8 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
     <div class="modal-backdrop" ng-show="modalOpen">
         <div class="modal">
             <div class="filter-columns">
-                <div class="filter-group"id="genres">
-                    <strong>Genres:</strong>
+                <div class="filter-group" id="genres">
+                    <div class="filter-title">Genres:</div>
                     <div class="checkbox-list upperfilter">
                         <label class="custom-checkbox" ng-repeat="genre in uniqueGenres">
                             <input type="checkbox" ng-model="genre.selected" ng-change="save()">
@@ -260,7 +260,7 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                 </div>
 
                 <div class="filter-group">
-                    <h1><strong>Platforms:</strong></h1>
+                    <div class="filter-title">Platforms:</div>
                     <div class="checkbox-list upperfilter">
                         <label class="custom-checkbox " ng-repeat="platform in platforms">
                             <input type="checkbox" ng-model="platform.selected" />
@@ -313,10 +313,10 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                     <strong style="width: 50%; margin: auto;">Prize Range:</strong>
                     <div class="checkbox-list" id="Range">
                         <label class="custom-checkbox">
-                            <input id="range2" type="text" ng-model="parameter1" ng-change="PrizeRange()" class="parameter1"
-                                placeholder="Min" /> -
-                            <input id="range2" type="text" ng-model="parameter2" ng-change="PrizeRange()" class="parameter2"
-                                placeholder="Max" />
+                            <input id="range2" type="text" ng-model="parameter1" ng-change="PrizeRange()"
+                                class="parameter1" placeholder="Min" /> -
+                            <input id="range2" type="text" ng-model="parameter2" ng-change="PrizeRange()"
+                                class="parameter2" placeholder="Max" />
                         </label>
                     </div>
                 </div>

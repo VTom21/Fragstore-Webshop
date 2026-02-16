@@ -751,10 +751,19 @@ input[type="range"]::-webkit-slider-thumb {
   color: var(--lightblue);
 }
 
+.filter-title{
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
 .upperfilter{
-  max-height: 850px;
+  max-height: 500px;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: hidden;   
+}
+
+.label_p{
+  margin: 0;
 }
 
 .upperfilter::-webkit-scrollbar {
@@ -777,12 +786,12 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 
-.checkbox-list {
+.checkbox-list{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; 
   gap: 8px;
-  text-align: center;
+  text-align: left; 
 }
 
 .checkbox-list label {
