@@ -247,9 +247,9 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
     <div class="modal-backdrop" ng-show="modalOpen">
         <div class="modal">
             <div class="filter-columns">
-                <div class="filter-group">
+                <div class="filter-group"id="genres">
                     <strong>Genres:</strong>
-                    <div class="checkbox-list">
+                    <div class="checkbox-list upperfilter">
                         <label class="custom-checkbox" ng-repeat="genre in uniqueGenres">
                             <input type="checkbox" ng-model="genre.selected" ng-change="save()">
                             <span class="checkmark"></span>
@@ -261,8 +261,8 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
 
                 <div class="filter-group">
                     <h1><strong>Platforms:</strong></h1>
-                    <div class="checkbox-list">
-                        <label id="platforms" class="custom-checkbox" ng-repeat="platform in platforms">
+                    <div class="checkbox-list upperfilter">
+                        <label class="custom-checkbox " ng-repeat="platform in platforms">
                             <input type="checkbox" ng-model="platform.selected" />
                             <span class="checkmark"></span>
                             <p class="label_p">{{ platform.name }}</p>
