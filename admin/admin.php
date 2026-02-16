@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmtPlat->execute([$game_id, $pid]);
                 }
 
-                $message = "Game added with platforms!";
+                $message = "Game added!";
                 $type = "success";
                 break;
 
