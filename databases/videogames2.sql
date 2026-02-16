@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Feb 14. 16:40
+-- Létrehozás ideje: 2026. Feb 16. 11:45
 -- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.0.30
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -585,7 +585,13 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `prize`, `isDisco
 (518, 'https://images.igdb.com/igdb/image/upload/t_original/fj81en3hdlsrho1jpmst.jpg', 'Mortal Kombat vs. DC Universe', '2008-02-14', 15.00, 0, 0, 1, 30),
 (519, 'https://m.media-amazon.com/images/M/MV5BMDIyNDMwNWEtNzAwNC00YTcyLTk0NjEtNzc0NzYwNjJjM2YwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Mortal Kombat (2011)', '2011-04-19', 30.00, 0, 0, 0, 30),
 (520, 'https://cdn.europosters.eu/image/750/24477.jpg', 'Mortal Kombat X', '2015-04-14', 40.00, 0, 0, 1, 30),
-(527, 'https://p1.akcdn.net/full/740356665.sega-p4g-persona-4-golden-pc.jpg', 'Persona 4: Golden', '2026-02-04', 39.99, 0, 0, 1, 5);
+(521, 'https://sm.ign.com/ign_fr/cover/g/god-of-war/god-of-war-2005_kgwn.jpg', 'God of War (2005)', '2005-03-22', 49.99, 0, 0, 1, 2),
+(522, 'https://images.launchbox-app.com/f08a070e-8ea3-47e9-907d-fb2598711ee1.jpg', 'God of War II (2007)', '2007-03-17', 49.99, 0, 0, 1, 2),
+(523, 'https://m.media-amazon.com/images/M/MV5BNWQ3OWRmMzMtZGU0NC00YzI0LWI3ODEtMzc0YWJiNzZmOTkyXkEyXkFqcGc@._V1_.jpg', 'God of War: Chains of Olympus', '2008-03-04', 39.99, 0, 0, 1, 2),
+(524, 'https://m.media-amazon.com/images/M/MV5BM2QxNjZlYTEtOWVkNC00OGUxLTgwNjMtN2Y4Y2ZjMzcwZjIxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'God of War III', '2010-03-16', 49.99, 0, 0, 1, 2),
+(525, 'https://static0.polygonimages.com/wordpress/wp-content/uploads/sharedimages/2024/04/god-of-war-ghost-of-sparta.jpg?w=1200&h=1200&fit=crop', 'God of War: Ghost of Sparta', '2010-11-02', 39.99, 0, 0, 1, 2),
+(526, 'https://i.etsystatic.com/40271594/r/il/e869eb/6044263738/il_340x270.6044263738_nnba.jpg', 'God of War: Ascension', '2013-03-12', 39.99, 0, 0, 1, 2),
+(527, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd6tiaE8-n4Akk33oSSWt8-73VlMTRthn9tw&s', 'God of War Ragnarök', '2022-11-09', 59.99, 0, 0, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -1937,9 +1943,17 @@ INSERT INTO `game_platforms` (`game_id`, `platform_id`) VALUES
 (520, 1),
 (520, 4),
 (520, 11),
+(521, 23),
+(522, 23),
+(523, 13),
+(523, 21),
+(524, 4),
+(524, 13),
+(525, 21),
+(526, 13),
 (527, 1),
-(527, 19),
-(527, 46);
+(527, 2),
+(527, 4);
 
 -- --------------------------------------------------------
 
