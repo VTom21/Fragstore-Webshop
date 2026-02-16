@@ -162,7 +162,7 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
       $scope.filteredGames = $scope.games;
       $scope.numberOfProducts = response.data.total;
       $scope.numberOfGenres = response.data.totalGenres;
-      $scope.numberOfPlatforms = $scope.platforms.length;
+      $scope.numberOfPlatforms = response.data.totalPlatforms;
 
 var allPlatforms = [];
 
