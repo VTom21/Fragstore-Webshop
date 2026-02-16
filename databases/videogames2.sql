@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Feb 16. 11:45
+-- Létrehozás ideje: 2026. Feb 16. 12:12
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -591,7 +591,13 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `prize`, `isDisco
 (524, 'https://m.media-amazon.com/images/M/MV5BM2QxNjZlYTEtOWVkNC00OGUxLTgwNjMtN2Y4Y2ZjMzcwZjIxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'God of War III', '2010-03-16', 49.99, 0, 0, 1, 2),
 (525, 'https://static0.polygonimages.com/wordpress/wp-content/uploads/sharedimages/2024/04/god-of-war-ghost-of-sparta.jpg?w=1200&h=1200&fit=crop', 'God of War: Ghost of Sparta', '2010-11-02', 39.99, 0, 0, 1, 2),
 (526, 'https://i.etsystatic.com/40271594/r/il/e869eb/6044263738/il_340x270.6044263738_nnba.jpg', 'God of War: Ascension', '2013-03-12', 39.99, 0, 0, 1, 2),
-(527, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd6tiaE8-n4Akk33oSSWt8-73VlMTRthn9tw&s', 'God of War Ragnarök', '2022-11-09', 59.99, 0, 0, 1, 2);
+(527, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd6tiaE8-n4Akk33oSSWt8-73VlMTRthn9tw&s', 'God of War Ragnarök', '2022-11-09', 59.99, 0, 0, 1, 2),
+(528, 'https://i.ebayimg.com/images/g/SZEAAOSwa35nSnek/s-l1200.jpg', 'Persona 4: Golden', '2023-01-18', 19.99, 0, 0, 1, 64),
+(529, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa828rjNH4Qe5VzvJoHp4308E-UeE17gShVg&s', 'Fallout 3', '2008-10-28', 19.99, 0, 0, 1, 10),
+(530, 'https://i.ebayimg.com/images/g/Jj8AAOSwGg5eXdVF/s-l1200.jpg', 'Fallout 76', '2018-11-14', 29.99, 0, 0, 1, 10),
+(531, 'https://m.media-amazon.com/images/M/MV5BMjQ3YmE0NGItNDIwMS00MWY4LTlmMDItMzc5MDIzYjk0YTUzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'EarthBound', '1994-08-27', 9.99, 0, 0, 1, 64),
+(532, 'https://i.etsystatic.com/6824854/r/il/a890b1/1460373818/il_570xN.1460373818_j5vh.jpg', 'Quake', '1998-03-24', 9.99, 0, 0, 1, 6),
+(533, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG4UAEk2DS7TGFKtD2St5FaXkNtt4d3PSfvw&s', 'Deus Ex', '2000-06-21', 4.99, 0, 0, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -1953,7 +1959,25 @@ INSERT INTO `game_platforms` (`game_id`, `platform_id`) VALUES
 (526, 13),
 (527, 1),
 (527, 2),
-(527, 4);
+(527, 4),
+(528, 1),
+(528, 4),
+(528, 9),
+(528, 22),
+(529, 1),
+(529, 12),
+(529, 13),
+(530, 1),
+(530, 4),
+(530, 11),
+(531, 55),
+(532, 1),
+(532, 31),
+(532, 32),
+(532, 34),
+(533, 1),
+(533, 32),
+(533, 34);
 
 -- --------------------------------------------------------
 
@@ -2005,6 +2029,7 @@ INSERT INTO `genres` (`genre_id`, `genre_name`) VALUES
 (38, 'Rhythm'),
 (7, 'Roguelike'),
 (20, 'Roguelike Shooter'),
+(64, 'Role‑playing'),
 (3, 'RPG'),
 (18, 'Run and Gun'),
 (4, 'Sandbox'),
@@ -2303,7 +2328,7 @@ ALTER TABLE `awards`
 -- AUTO_INCREMENT a táblához `datas`
 --
 ALTER TABLE `datas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=528;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=534;
 
 --
 -- AUTO_INCREMENT a táblához `developers`
@@ -2315,7 +2340,7 @@ ALTER TABLE `developers`
 -- AUTO_INCREMENT a táblához `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT a táblához `platforms`
