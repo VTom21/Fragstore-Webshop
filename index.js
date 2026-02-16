@@ -337,16 +337,11 @@ $scope.games.forEach(function (game) {
     });
   }
 
-  $scope.Discount = function (isDiscount) {
-    switch (isDiscount) {
-      case true:
-        $scope.filteredGames = $scope.games.filter((k) => k.isDiscount == 1);
-        break;
-      case false:
-        $scope.filteredGames = $scope.games;
-        break;
-    }
-  };
+$scope.Discount = function(isDiscount) {
+  $scope.discountOnly = isDiscount;
+  $scope.applyAdvancedFilters();
+};
+
 
   // Name sorting
   $scope.updateSortOrder = function (which) {
@@ -399,31 +394,10 @@ $scope.games.forEach(function (game) {
     }
   };
 
-  $scope.inStock = function () {
-    let filtered = $scope.games;
+$scope.inStock = function() {
+  $scope.applyAdvancedFilters();
+};
 
-    switch ($scope.stockBool) {
-      case true:
-        filtered = filtered.filter((game) => game.stock !== 0);
-        break;
-      case false:
-        break;
-    }
-
-    switch ($scope.stockBool2) {
-      case true:
-        filtered = filtered.filter((game) => game.stock === 0);
-        break;
-      case false:
-        break;
-    }
-
-    if (!$scope.stockBool && !$scope.stockBool2) {
-      filtered = $scope.games;
-    }
-
-    $scope.filteredGames = filtered;
-  };
 
   $scope.applySorting = function () {
     // => Prototype Sorting
@@ -463,92 +437,60 @@ $scope.games.forEach(function (game) {
 
   // Advanced filters
 
-  $scope.applyAdvancedFilters = function () {
-    //pushes every genre and platform picked by the user and stores them
+$scope.applyAdvancedFilters = function () {
+  let filtered = $scope.games;
 
-    var selectedGenres = [];
-    for (var i = 0; i < $scope.uniqueGenres.length; i++) {
-      if ($scope.uniqueGenres[i].selected) {
-        selectedGenres.push($scope.uniqueGenres[i].name.toLowerCase());
-      }
-    }
+  let selectedGenres = $scope.uniqueGenres
+    .filter(g => g.selected)
+    .map(g => g.name.toLowerCase());
+  if (selectedGenres.length) {
+    filtered = filtered.filter(game =>
+      game.genre && selectedGenres.some(g => game.genre.toLowerCase().includes(g))
+    );
+  }
 
-    var selectedPlatforms = [];
-    for (var i = 0; i < $scope.platforms.length; i++) {
-      if ($scope.platforms[i].selected) {
-        selectedPlatforms.push($scope.platforms[i].name.toLowerCase());
-      }
-    }
+  let selectedPlatforms = $scope.platforms
+    .filter(p => p.selected)
+    .map(p => p.name.toLowerCase());
+  if (selectedPlatforms.length) {
+    filtered = filtered.filter(game =>
+      game.platforms &&
+      selectedPlatforms.some(p =>
+        game.platforms.join(",").toLowerCase().includes(p)
+      )
+    );
+  }
 
-    // Filter games accordingly
+  if ($scope.stockBool) filtered = filtered.filter(g => g.stock > 0);
+  if ($scope.stockBool2) filtered = filtered.filter(g => g.stock === 0);
 
-    var filtered = [];
-    for (var i = 0; i < $scope.games.length; i++) {
-      var game = $scope.games[i]; //stores all games
+  // DISCOUNT
+  if ($scope.discountOnly) filtered = filtered.filter(g => g.isDiscount == 1);
 
-      if (game.available != 1) {
-        continue;
-      }
+  // YEAR
+  let minYear = $scope.releaseYear || 1900;
+  filtered = filtered.filter(g =>
+    !g.release_date || parseInt(g.release_date.substring(0, 4)) >= minYear
+  );
 
-      var gameGenres = game.genre.toLowerCase(); //stores all their genres
+  // PRICE
+  let min = parseFloat($scope.parameter1) || 0;
+  let max = parseFloat($scope.parameter2) || Infinity;
+  let rate = $scope.rates[$scope.select_currency] || 1;
+  filtered = filtered.filter(g => {
+    let price = g.isDiscount == 1 ? g.discountedPrize : g.prize;
+    return price * rate >= min && price * rate <= max;
+  });
 
-      var genreMatch = false; //checks if theres a match in genres
+  $scope.filteredGames = filtered;
+  $scope.applySorting();
+};
 
-      if (selectedGenres.length === 0) {
-        genreMatch = true; //if user chooses no genres, genre match will still apply
-      } else {
-        for (var j = 0; j < selectedGenres.length; j++) {
-          if (gameGenres.includes(selectedGenres[j])) {
-            //checks from all existing genres if there really is one
-            genreMatch = true;
-            break;
-          }
-        }
-      }
-
-      //platform filtering
-      //checks if platforms variable stores an array, if yes it separates all values with commas, else it leaves them in lowercase
-
-      var gamePlatforms = Array.isArray(game.platforms)
-        ? game.platforms.join(",").toLowerCase()
-        : [game.platforms.toLowerCase()];
-      var platformMatch = false;
-      if (selectedPlatforms.length === 0) {
-        platformMatch = true; //if user chooses no platforms, genre match will still apply
-      } else {
-        for (var j = 0; j < selectedPlatforms.length; j++) {
-          if (gamePlatforms.includes(selectedPlatforms[j])) {
-            platformMatch = true;
-            break;
-          }
-        }
-      }
-
-      // Include game if both genre and platform match
-      if (genreMatch && platformMatch) {
-        filtered.push(game);
-      }
-    }
-
-    $scope.filteredGames = filtered;
-
-    $scope.applySorting();
-  };
 
   //checks if current game's release date isnt below the minimum
   //filters game according to their exact release date
   $scope.advancedRange = function () {
-    var minYear = $scope.releaseYear || 1900;
-
-    $scope.filteredGames = [];
-    for (var i = 0; i < $scope.games.length; i++) {
-      var game = $scope.games[i];
-      var current_year = game.release_date;
-      var year = parseInt(current_year.substring(0, 4));
-      if (year >= minYear) {
-        $scope.filteredGames.push(game);
-      }
-    }
+      $scope.applyAdvancedFilters()
   };
 
   // Prize range filter
@@ -556,30 +498,7 @@ $scope.games.forEach(function (game) {
   //filters those games that fit into this prize range
 
   $scope.PrizeRange = function () {
-    var min = parseFloat($scope.parameter1) || 0;
-    var max = parseFloat($scope.parameter2) || Infinity;
-    var rate = $scope.rates[$scope.select_currency] || 1;
-
-    $scope.filteredGames = [];
-    for (var i = 0; i < $scope.games.length; i++) {
-      var game = $scope.games[i];
-      var price = game.prize * rate;
-      var discountedPrice = game.discountedPrize
-        ? game.discountedPrize * rate
-        : null;
-
-      if (game.isDiscount == 1) {
-        if (discountedPrice >= min && discountedPrice <= max) {
-          $scope.filteredGames.push(game);
-        }
-      } else {
-        if (price >= min && price <= max) {
-          $scope.filteredGames.push(game);
-        }
-      }
-    }
-
-    $scope.applySorting();
+    $scope.applyAdvancedFilters()
   };
 
   // Pagination

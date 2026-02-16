@@ -344,6 +344,10 @@ html {
   align-items: baseline;
 }
 
+#input2{
+  text-align: center;
+}
+
 #vol {
   -webkit-appearance: none;
   appearance: none;
