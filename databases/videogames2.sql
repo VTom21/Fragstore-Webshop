@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Feb 16. 12:12
+-- Létrehozás ideje: 2026. Feb 16. 19:40
 -- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
+-- PHP verzió: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,9 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Tábla szerkezet ehhez a táblához `awards`
 --
-
-CREATE DATABASE IF NOT EXISTS videogames;
-USE videogames;
 
 CREATE TABLE `awards` (
   `award_id` int(11) NOT NULL,
@@ -555,8 +552,8 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `prize`, `isDisco
 (485, 'https://play-lh.googleusercontent.com/3m-_YW-VE_J3tICzqHwqmVwYWMwyIh9IO7h6Wh8bbLDvPKv1VOc2fpfIv0IZASVA1gNu=w526-h296-rw', 'Dragon Quest II: Luminaries of the Legendary Line', '1987-01-26', 70.00, 0, 0, 1, 3),
 (486, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1xaj.jpg', 'Dragon Quest III: The Seeds of Salvation', '1988-02-10', 80.00, 0, 0, 1, 3),
 (487, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQotUwwOpE0p2uWO7Dquz41SoQu-iffP6-Wdw&s', 'Dragon Quest IV: Chapters of the Chosen', '1990-02-11', 90.00, 0, 0, 1, 3),
-(488, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz-KB8h7x0FhtUuNnDDzdJL1HIhcsL2yjdjA&s', 'Dragon Quest V: Hand of the Heavenly Bride', '1992-09-27', 100.00, 0, 0, 1, 3),
-(489, 'https://m.media-amazon.com/images/M/MV5BODRhZDJkZjctMThkOS00M2ZkLWE2OGQtODBiODdhMzQ5YjMwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Dragon Quest VI: Realms of Revelation', '1995-12-09', 120.00, 0, 0, 1, 3),
+(488, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz-KB8h7x0FhtUuNnDDzdJL1HIhcsL2yjdjA&s', 'Dragon Quest V: Hand of the Heavenly Bride', '1992-09-27', 49.99, 0, 0, 1, 3),
+(489, 'https://m.media-amazon.com/images/M/MV5BODRhZDJkZjctMThkOS00M2ZkLWE2OGQtODBiODdhMzQ5YjMwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Dragon Quest VI: Realms of Revelation', '1995-12-09', 49.99, 0, 0, 1, 3),
 (490, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1x9h.jpg', 'Dragon Quest VII: Fragments of the Forgotten Past', '2000-08-26', 50.00, 0, 0, 1, 3),
 (491, 'https://m.media-amazon.com/images/M/MV5BMTQ0OTkwOWUtYWQ5OS00NTA5LTg4N2EtZWMwMGYxYTY1YjJiXkEyXkFqcGc@._V1_.jpg', 'Dragon Quest VIII: Journey of the Cursed King', '2004-11-27', 25.00, 0, 0, 1, 3),
 (492, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQynMq_z3Lq0uNLXUw4Fmkux-RiGCU699jYfA&s', 'Dragon Quest IX: Sentinels of the Starry Skies', '2009-07-11', 35.00, 0, 0, 1, 3),
@@ -566,20 +563,20 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `prize`, `isDisco
 (496, 'https://m.media-amazon.com/images/M/MV5BY2I4ZjEwNWEtNjljYi00MzVhLWI2OWMtYTc4NmEyZDI5MDk4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'Civilization III', '2001-10-30', 20.00, 0, 0, 1, 49),
 (497, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGk9dH9IA9C_YJWiWXKxdvnL-3UrSKHepNJQ&s', 'Civilization IV', '2005-10-25', 25.00, 0, 0, 1, 49),
 (498, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-9TnXQbawpOHV-pkBP-trTMeSIk_OLv8SNA&s', 'Civilization V', '2010-09-21', 30.00, 0, 0, 1, 49),
-(499, 'https://sm.ign.com/t/ign_ap/cover/s/sid-meiers/sid-meiers-civilization-vi_h5wc.600.jpg', 'Civilization VI', '2016-10-21', 60.00, 0, 0, 1, 49),
+(499, 'https://sm.ign.com/t/ign_ap/cover/s/sid-meiers/sid-meiers-civilization-vi_h5wc.600.jpg', 'Civilization VI', '2016-10-21', 49.99, 0, 0, 1, 49),
 (500, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6uGPvPKThRJICZcqJcMtMoEPY5GJNoNTJsA&s', 'Civilization Revolution', '2008-02-26', 15.00, 0, 0, 1, 49),
 (501, 'https://forums.civfanatics.com/media/civilization-revolution-2-japanese-cover.7059/full', 'Civilization Revolution 2', '2014-07-02', 10.00, 0, 0, 1, 49),
-(502, 'https://cdn.mobygames.com/covers/4146543-donkey-kong-game-boy-front-cover.jpg', 'Donkey Kong', '1981-07-09', 100.00, 0, 0, 1, 14),
+(502, 'https://cdn.mobygames.com/covers/4146543-donkey-kong-game-boy-front-cover.jpg', 'Donkey Kong', '1981-07-09', 49.99, 0, 0, 1, 14),
 (503, 'https://sm.ign.com/ign_ap/cover/d/donkey-kon/donkey-kong-jr_a27q.jpg', 'Donkey Kong Jr.', '1982-07-26', 80.00, 0, 0, 1, 14),
 (504, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDFkXUBJIekyJMVfPIXVVk8GRR928YcvmOKQ&s', 'Donkey Kong 3', '1983-07-16', 60.00, 0, 0, 1, 22),
-(505, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8d9n.jpg', 'Donkey Kong Country', '1994-11-21', 150.00, 0, 0, 1, 14),
-(506, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_fowzppYAH_R-WYruLXr2sGgJOaZIUUtaEg&s', 'Donkey Kong Country 2: Diddy\'s Kong Quest', '1995-11-21', 120.00, 0, 0, 1, 14),
-(507, 'https://m.media-amazon.com/images/M/MV5BY2I3MzdmN2UtYmZmYS00YzM2LWJkMDItNzBkNDM4YmVhMzI0XkEyXkFqcGc@._V1_.jpg', 'Donkey Kong Country 3: Dixie Kong\'s Double Trouble!', '1996-11-22', 500.00, 0, 0, 1, 14),
+(505, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8d9n.jpg', 'Donkey Kong Country', '1994-11-21', 49.99, 0, 0, 1, 14),
+(506, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_fowzppYAH_R-WYruLXr2sGgJOaZIUUtaEg&s', 'Donkey Kong Country 2: Diddy\'s Kong Quest', '1995-11-21', 49.99, 0, 0, 1, 14),
+(507, 'https://m.media-amazon.com/images/M/MV5BY2I3MzdmN2UtYmZmYS00YzM2LWJkMDItNzBkNDM4YmVhMzI0XkEyXkFqcGc@._V1_.jpg', 'Donkey Kong Country 3: Dixie Kong\'s Double Trouble!', '1996-11-22', 49.99, 0, 0, 1, 14),
 (508, 'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co289i.jpg', 'Donkey Kong 64', '1999-11-22', 50.00, 0, 0, 1, 14),
 (509, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScYy_QkbsTjjYhFt_LO8Lxs3ikQYDXrh16cQ&s', 'Donkey Kong Country Returns', '2010-11-21', 25.00, 0, 0, 1, 14),
 (510, 'https://upload.wikimedia.org/wikipedia/en/f/fb/DKC5_box_art.jpg', 'Donkey Kong Country: Tropical Freeze', '2014-02-21', 35.00, 0, 0, 1, 14),
-(511, 'https://cdn.mobygames.com/covers/3994202-mortal-kombat-dos-front-cover.jpg', 'Mortal Kombat', '1992-10-08', 100.00, 0, 0, 1, 30),
-(512, 'https://upload.wikimedia.org/wikipedia/en/d/df/Mortal_Kombat_II_boxart.png', 'Mortal Kombat II', '1993-09-09', 120.00, 0, 0, 1, 30),
+(511, 'https://cdn.mobygames.com/covers/3994202-mortal-kombat-dos-front-cover.jpg', 'Mortal Kombat', '1992-10-08', 49.99, 0, 0, 1, 30),
+(512, 'https://upload.wikimedia.org/wikipedia/en/d/df/Mortal_Kombat_II_boxart.png', 'Mortal Kombat II', '1993-09-09', 49.99, 0, 0, 1, 30),
 (513, 'https://m.media-amazon.com/images/M/MV5BYmM0ZjlmNDUtMDMwNS00MDA2LTkxMTEtNjFkYzMzYTVmOTlhXkEyXkFqcGc@._V1_.jpg', 'Mortal Kombat 3', '1995-04-15', 80.00, 0, 0, 1, 30),
 (514, 'https://cdn.mobygames.com/covers/29741-mortal-kombat-4-windows-front-cover.jpg', 'Mortal Kombat 4', '1997-03-25', 60.00, 0, 0, 1, 30),
 (515, 'https://upload.wikimedia.org/wikipedia/en/3/32/MK_Deadly_Alliance_Cover_Art.png', 'Mortal Kombat: Deadly Alliance', '2002-11-12', 20.00, 0, 0, 1, 30),
@@ -600,7 +597,17 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `prize`, `isDisco
 (530, 'https://i.ebayimg.com/images/g/Jj8AAOSwGg5eXdVF/s-l1200.jpg', 'Fallout 76', '2018-11-14', 29.99, 0, 0, 1, 10),
 (531, 'https://m.media-amazon.com/images/M/MV5BMjQ3YmE0NGItNDIwMS00MWY4LTlmMDItMzc5MDIzYjk0YTUzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'EarthBound', '1994-08-27', 9.99, 0, 0, 1, 64),
 (532, 'https://i.etsystatic.com/6824854/r/il/a890b1/1460373818/il_570xN.1460373818_j5vh.jpg', 'Quake', '1998-03-24', 9.99, 0, 0, 1, 6),
-(533, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG4UAEk2DS7TGFKtD2St5FaXkNtt4d3PSfvw&s', 'Deus Ex', '2000-06-21', 4.99, 0, 0, 1, 6);
+(533, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG4UAEk2DS7TGFKtD2St5FaXkNtt4d3PSfvw&s', 'Deus Ex', '2000-06-21', 4.99, 0, 0, 1, 6),
+(534, 'https://cdn.wikimg.net/en/hkwiki/images/thumb/1/13/Silksong_cover.jpg/640px-Silksong_cover.jpg', 'Hollow Knight: Silksong', '2025-09-04', 19.99, 0, 0, 1, 9),
+(535, 'https://i1.sndcdn.com/artworks-VSH1NlITRzeb1zTF-e0ly8Q-t500x500.jpg', 'Deltarune', '2025-06-04', 24.99, 0, 0, 1, 3),
+(536, 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/01/hades2coverart.jpg', 'Hades II', '2025-09-25', 49.99, 0, 0, 1, 7),
+(537, 'https://media.titanbooks.com/catalog/products/6549/H4_front_cover-4.jpg', 'Halo 4', '2012-11-06', 29.99, 0, 0, 1, 6),
+(538, 'https://images.nintendolife.com/62ab30e8856ed/ori-and-the-blind-forest-definitive-edition-cover.cover_large.jpg', 'Ori and the Blind Forest', '2015-03-11', 19.99, 0, 0, 1, 14),
+(539, 'https://cdn.mobygames.com/covers/2833228-hotline-miami-hotline-miami-2-wrong-number-nintendo-switch-front.jpg', 'Hotline Miami', '2012-10-23', 9.99, 0, 0, 1, 10),
+(540, 'https://cdn.wallpapersafari.com/19/24/ouswEy.jpg', 'Amnesia: The Dark Descent', '2010-09-08', 9.99, 0, 0, 1, 13),
+(541, 'https://sm.ign.com/t/ign_ap/cover/p/pathologic/pathologic-2_ndt1.1200.jpg', 'Pathologic 2', '2019-05-23', 9.99, 0, 0, 1, 13),
+(542, 'https://image.jeuxvideo.com/medias-sm/165539/1655390768-4969-jaquette-avant.png', 'Cuphead: The Delicious Last Course', '2022-06-30', 29.99, 0, 0, 1, 65),
+(543, 'https://tse4.mm.bing.net/th/id/OIP.zBL1RGZm9cm1sycS6KLpswHaEK?pid=Api&P=0&h=220', 'Visage', '2020-10-30', 19.99, 0, 0, 1, 65);
 
 -- --------------------------------------------------------
 
@@ -1980,7 +1987,46 @@ INSERT INTO `game_platforms` (`game_id`, `platform_id`) VALUES
 (532, 34),
 (533, 1),
 (533, 32),
-(533, 34);
+(533, 34),
+(534, 1),
+(534, 2),
+(534, 4),
+(534, 6),
+(534, 11),
+(534, 17),
+(534, 32),
+(534, 34),
+(535, 2),
+(535, 4),
+(535, 6),
+(535, 32),
+(535, 34),
+(536, 6),
+(536, 32),
+(536, 34),
+(537, 1),
+(537, 12),
+(538, 1),
+(538, 6),
+(538, 11),
+(538, 32),
+(539, 2),
+(539, 4),
+(539, 6),
+(539, 32),
+(539, 34),
+(540, 32),
+(540, 34),
+(541, 32),
+(541, 34),
+(542, 1),
+(542, 4),
+(542, 11),
+(543, 1),
+(543, 2),
+(543, 4),
+(543, 11),
+(543, 17);
 
 -- --------------------------------------------------------
 
@@ -2023,6 +2069,7 @@ INSERT INTO `genres` (`genre_id`, `genre_name`) VALUES
 (21, 'Party'),
 (14, 'Platformer'),
 (40, 'Platformer / Creation'),
+(65, 'Psychological horror'),
 (11, 'Puzzle'),
 (15, 'Puzzle Adventure'),
 (19, 'Puzzle Platformer'),
@@ -2331,7 +2378,7 @@ ALTER TABLE `awards`
 -- AUTO_INCREMENT a táblához `datas`
 --
 ALTER TABLE `datas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=534;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=544;
 
 --
 -- AUTO_INCREMENT a táblához `developers`
@@ -2343,7 +2390,7 @@ ALTER TABLE `developers`
 -- AUTO_INCREMENT a táblához `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT a táblához `platforms`
