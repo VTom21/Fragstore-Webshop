@@ -126,7 +126,7 @@ $limit = 12;
   <a href="../redirect/redirect.php?destination=../games_main.php">
     <div class="discount-news-header">
       <h1 class="title" data-i18n>Call of Duty Franchise Sale</h1>
-      <p class="subtitle" data-i18n="">Grab the best cod games before they're gone!</p>
+      <p class="subtitle" data-i18n>Grab the best cod games before they're gone!</p>
     </div>
   </a>
   <header id="header">

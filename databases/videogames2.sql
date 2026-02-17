@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Feb 16. 19:40
+-- Létrehozás ideje: 2026. Feb 17. 13:14
 -- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.0.30
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -618,11 +618,9 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `prize`, `isDisco
 CREATE TABLE `developers` (
   `developer_id` int(11) NOT NULL,
   `person_name` varchar(100) NOT NULL,
-  `company_name` varchar(100) NOT NULL,
   `role` varchar(100) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date DEFAULT NULL,
-  `publisher_id` int(11) DEFAULT NULL,
   `role_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -630,27 +628,27 @@ CREATE TABLE `developers` (
 -- A tábla adatainak kiíratása `developers`
 --
 
-INSERT INTO `developers` (`developer_id`, `person_name`, `company_name`, `role`, `start_date`, `end_date`, `publisher_id`, `role_id`) VALUES
-(1, 'Tom Green', 'Maxis', 'Lead Developer', '1999-06-01', NULL, 1, 1),
-(2, 'Anna White', 'DMA Design', 'Gameplay Programmer', '2000-06-01', NULL, 2, 2),
-(3, 'Mark Black', 'Retro Studios', 'Game Designer', '2001-06-01', NULL, 3, 3),
-(4, 'Lucy King', 'BioWare', 'Game Designer', '2002-06-01', NULL, 4, 3),
-(5, 'Peter Young', 'Valve', 'Lead Programmer', '2003-06-01', NULL, 5, 4),
-(6, 'Sarah Hall', 'Team Ico', 'Level Designer', '2004-06-01', NULL, 6, 5),
-(7, 'Daniel Allen', 'Epic Games', 'Gameplay Engineer', '2005-06-01', NULL, 7, 6),
-(8, 'Brian Lewis', 'FromSoftware', 'Quest Designer', '2022-06-01', NULL, 9, 7),
-(9, 'Karen Walker', 'CD Projekt', 'Game Designer', '2015-06-01', NULL, 7, 3),
-(10, 'Jessica Scott', 'Larian Studios', 'Game Designer', '2023-06-01', NULL, 8, 3),
-(11, 'Ethan Parker', 'Santa Monica Studio', 'Lead Designer', '2023-01-15', NULL, 10, 8),
-(12, 'Olivia Martinez', 'Naughty Dog', 'Level Designer', '2023-03-01', NULL, 11, 5),
-(13, 'Liam Thompson', 'Guerrilla Games', 'Gameplay Programmer', '2023-04-10', NULL, 12, 2),
-(14, 'Sophia Johnson', 'Rockstar North', 'Art Director', '2024-02-20', NULL, 13, 9),
-(15, 'Noah Brown', 'Bethesda Game Studios', 'Quest Designer', '2024-05-05', NULL, 14, 7),
-(16, 'Emma Davis', 'CD Projekt', 'Narrative Designer', '2024-06-15', NULL, 7, 10),
-(17, 'James Wilson', 'FromSoftware', 'Combat Designer', '2025-01-10', NULL, 9, 11),
-(18, 'Ava Moore', 'BioWare', 'Senior Game Designer', '2025-03-25', NULL, 4, 12),
-(19, 'Mason Taylor', 'Valve', 'Lead Programmer', '2025-04-01', NULL, 5, 4),
-(20, 'Isabella Anderson', 'Larian Studios', 'Gameplay Engineer', '2025-06-01', NULL, 8, 6);
+INSERT INTO `developers` (`developer_id`, `person_name`, `role`, `start_date`, `end_date`, `role_id`) VALUES
+(1, 'Tom Green', 'Lead Developer', '1999-06-01', NULL, 1),
+(2, 'Anna White', 'Gameplay Programmer', '2000-06-01', NULL, 2),
+(3, 'Mark Black', 'Game Designer', '2001-06-01', NULL, 3),
+(4, 'Lucy King', 'Game Designer', '2002-06-01', NULL, 3),
+(5, 'Peter Young', 'Lead Programmer', '2003-06-01', NULL, 4),
+(6, 'Sarah Hall', 'Level Designer', '2004-06-01', NULL, 5),
+(7, 'Daniel Allen', 'Gameplay Engineer', '2005-06-01', NULL, 6),
+(8, 'Brian Lewis', 'Quest Designer', '2022-06-01', NULL, 7),
+(9, 'Karen Walker', 'Game Designer', '2015-06-01', NULL, 3),
+(10, 'Jessica Scott', 'Game Designer', '2023-06-01', NULL, 3),
+(11, 'Ethan Parker', 'Lead Designer', '2023-01-15', NULL, 8),
+(12, 'Olivia Martinez', 'Level Designer', '2023-03-01', NULL, 5),
+(13, 'Liam Thompson', 'Gameplay Programmer', '2023-04-10', NULL, 2),
+(14, 'Sophia Johnson', 'Art Director', '2024-02-20', NULL, 9),
+(15, 'Noah Brown', 'Quest Designer', '2024-05-05', NULL, 7),
+(16, 'Emma Davis', 'Narrative Designer', '2024-06-15', NULL, 10),
+(17, 'James Wilson', 'Combat Designer', '2025-01-10', NULL, 11),
+(18, 'Ava Moore', 'Senior Game Designer', '2025-03-25', NULL, 12),
+(19, 'Mason Taylor', 'Lead Programmer', '2025-04-01', NULL, 4),
+(20, 'Isabella Anderson', 'Gameplay Engineer', '2025-06-01', NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -700,6 +698,45 @@ INSERT INTO `developer_awards` (`developer_id`, `award_id`) VALUES
 (19, 14),
 (19, 15),
 (20, 24);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `developer_publisher`
+--
+
+CREATE TABLE `developer_publisher` (
+  `developer_id` int(11) NOT NULL,
+  `publisher_id` int(11) NOT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `developer_publisher`
+--
+
+INSERT INTO `developer_publisher` (`developer_id`, `publisher_id`, `start_date`, `end_date`) VALUES
+(1, 1, '1999-06-01', NULL),
+(2, 2, '2000-06-01', NULL),
+(3, 3, '2001-06-01', NULL),
+(4, 4, '2002-06-01', NULL),
+(5, 5, '2003-06-01', NULL),
+(6, 6, '2004-06-01', NULL),
+(7, 7, '2005-06-01', NULL),
+(8, 9, '2022-06-01', NULL),
+(9, 7, '2015-06-01', NULL),
+(10, 8, '2023-06-01', NULL),
+(11, 10, '2023-01-15', NULL),
+(12, 11, '2023-03-01', NULL),
+(13, 12, '2023-04-10', NULL),
+(14, 13, '2024-02-20', NULL),
+(15, 14, '2024-05-05', NULL),
+(16, 7, '2024-06-15', NULL),
+(17, 9, '2025-01-10', NULL),
+(18, 4, '2025-03-25', NULL),
+(19, 5, '2025-04-01', NULL),
+(20, 8, '2025-06-01', NULL);
 
 -- --------------------------------------------------------
 
@@ -2313,7 +2350,6 @@ ALTER TABLE `datas`
 --
 ALTER TABLE `developers`
   ADD PRIMARY KEY (`developer_id`),
-  ADD KEY `fk_developer_publisher` (`publisher_id`),
   ADD KEY `fk_developers_roles` (`role_id`);
 
 --
@@ -2322,6 +2358,13 @@ ALTER TABLE `developers`
 ALTER TABLE `developer_awards`
   ADD PRIMARY KEY (`developer_id`,`award_id`),
   ADD KEY `award_id` (`award_id`);
+
+--
+-- A tábla indexei `developer_publisher`
+--
+ALTER TABLE `developer_publisher`
+  ADD PRIMARY KEY (`developer_id`,`publisher_id`),
+  ADD KEY `publisher_id` (`publisher_id`);
 
 --
 -- A tábla indexei `game_platforms`
@@ -2424,7 +2467,6 @@ ALTER TABLE `datas`
 -- Megkötések a táblához `developers`
 --
 ALTER TABLE `developers`
-  ADD CONSTRAINT `fk_developer_publisher` FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`publisher_id`),
   ADD CONSTRAINT `fk_developers_roles` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`);
 
 --
@@ -2433,6 +2475,13 @@ ALTER TABLE `developers`
 ALTER TABLE `developer_awards`
   ADD CONSTRAINT `developer_awards_ibfk_1` FOREIGN KEY (`developer_id`) REFERENCES `developers` (`developer_id`),
   ADD CONSTRAINT `developer_awards_ibfk_2` FOREIGN KEY (`award_id`) REFERENCES `awards` (`award_id`);
+
+--
+-- Megkötések a táblához `developer_publisher`
+--
+ALTER TABLE `developer_publisher`
+  ADD CONSTRAINT `developer_publisher_ibfk_1` FOREIGN KEY (`developer_id`) REFERENCES `developers` (`developer_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `developer_publisher_ibfk_2` FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`publisher_id`) ON DELETE CASCADE;
 
 --
 -- Megkötések a táblához `game_platforms`

@@ -21,10 +21,20 @@ try {
     $publishers = $publisherStmt->fetchAll(PDO::FETCH_ASSOC);
 
     $developerStmt = $pdo->query("
-    SELECT developers.*, roles.role_name
-    FROM developers
-    LEFT JOIN roles ON developers.role_id = roles.role_id
-    ORDER BY developers.developer_id ASC
+    SELECT 
+        d.developer_id,
+        d.person_name,
+        d.start_date AS dev_start_date,
+        r.role_name,
+        p.publisher_id,
+        p.company_name,
+        dp.start_date AS pub_start_date,
+        dp.end_date AS pub_end_date
+    FROM developers d
+    LEFT JOIN roles r ON d.role_id = r.role_id
+    LEFT JOIN developer_publisher dp ON d.developer_id = dp.developer_id
+    LEFT JOIN publishers p ON dp.publisher_id = p.publisher_id
+    ORDER BY d.developer_id ASC
 ");
 $developers = $developerStmt->fetchAll(PDO::FETCH_ASSOC);
 
