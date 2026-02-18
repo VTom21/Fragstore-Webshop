@@ -26,7 +26,7 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
   $scope.select_currency = "USD";
 
   $scope.convertPrice = function (game) {
-    let price = game.isDiscount == 1 ? game.discountedPrize : game.prize;
+    let price = game.discountPerc > 0 ? game.discountedPrize : game.prize;
     let rate = $scope.rates[$scope.select_currency] || 1;
     return (price * rate).toFixed(2);
   };
@@ -46,7 +46,7 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
 
     // Get base price (considering discount)
     let basePrice =
-      game.isDiscount == 1 && game.discountedPrize
+    game.discountPerc > 0 && game.discountedPrize
         ? game.discountedPrize
         : game.prize;
 
@@ -184,6 +184,14 @@ $scope.games.forEach(function (game) {
 
       $scope.games.forEach(function (game) {
 
+        if (game.discountPerc > 0) {
+          game.discountedPrize = parseFloat(
+              game.prize * (1 - game.discountPerc / 100)
+          ).toFixed(2);
+      } else {
+          game.discountedPrize = null;
+      }
+
         const stockUrl = `https://stock-9bff5-default-rtdb.europe-west1.firebasedatabase.app/games/${game.id}/stock.json`;
     
         fetch(stockUrl)
@@ -200,13 +208,6 @@ $scope.games.forEach(function (game) {
     
                 game.stock = value;
     
-                if (game.isDiscount == 1 && game.discountPerc != null) {
-                    game.discountedPrize = parseFloat(
-                        game.prize * (1 - game.discountPerc / 100)
-                    ).toFixed(2);
-                } else {
-                    game.discountedPrize = null;
-                }
     
                 console.log(`${game.name} => ${game.stock}`);
                 $scope.$applyAsync(); // update AngularJS UI
@@ -406,14 +407,14 @@ $scope.inStock = function() {
 
     if ($scope.prizeSortOrder == "asc") {
       $scope.filteredGames.sort(function (a, b) {
-        const PrizeA = a.isDiscount == 1 ? a.discountedPrize : a.prize;
-        const PrizeB = b.isDiscount == 1 ? b.discountedPrize : b.prize;
+        const PrizeA = a.discountPerc > 0 ? a.discountedPrize : a.prize;
+        const PrizeB = b.discountPerc > 0 ? b.discountedPrize : b.prize;
         return PrizeA - PrizeB; //if substraction gives minues value, a comes first, otherwise b
       });
     } else if ($scope.prizeSortOrder == "desc") {
       $scope.filteredGames.sort(function (a, b) {
-        const PrizeA = a.isDiscount == 1 ? a.discountedPrize : a.prize;
-        const PrizeB = b.isDiscount == 1 ? b.discountedPrize : b.prize;
+        const PrizeA = a.discountPerc > 0 ? a.discountedPrize : a.prize;
+        const PrizeB = b.discountPerc > 0 ? b.discountedPrize : b.prize;
         return PrizeB - PrizeA; //same logic inverted
       });
     }
@@ -438,6 +439,7 @@ $scope.inStock = function() {
   // Advanced filters
 
 $scope.applyAdvancedFilters = function () {
+  if (!$scope.games || !$scope.uniqueGenres || !$scope.platforms) return;
   let filtered = $scope.games;
 
   let selectedGenres = $scope.uniqueGenres
@@ -465,7 +467,7 @@ $scope.applyAdvancedFilters = function () {
   if ($scope.stockBool2) filtered = filtered.filter(g => g.stock === 0);
 
   // DISCOUNT
-  if ($scope.discountOnly) filtered = filtered.filter(g => g.isDiscount == 1);
+  if ($scope.discountOnly) filtered = filtered.filter(g => g.discountPerc > 0);
 
   // YEAR
   let minYear = $scope.releaseYear || 1900;
@@ -478,7 +480,7 @@ $scope.applyAdvancedFilters = function () {
   let max = parseFloat($scope.parameter2) || Infinity;
   let rate = $scope.rates[$scope.select_currency] || 1;
   filtered = filtered.filter(g => {
-    let price = g.isDiscount == 1 ? g.discountedPrize : g.prize;
+    let price = g.discountPerc > 0 ? g.discountedPrize : g.prize;
     return price * rate >= min && price * rate <= max;
   });
 

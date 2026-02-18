@@ -28,10 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 // Insert game first
                 $stmt = $pdo->prepare("
-        INSERT INTO datas (name, game_pic, release_date, genre_id, prize, isDiscount, discountPerc)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO datas (name, game_pic, release_date, genre_id, prize, discountPerc)
+        VALUES (?, ?, ?, ?, ?, ?)
     ");
-                $stmt->execute([$name, $game_pic, $release_date, $genre, $prize, $isDiscount, $discountPerc]);
+                $stmt->execute([$name, $game_pic, $release_date, $genre, $prize, $discountPerc]);
 
                 // Get new game ID
                 $game_id = $pdo->lastInsertId();
@@ -64,11 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $release_date = !empty($release_date) ? $release_date : $currentGame['release_date'];
                 $genre = !empty($genre) ? $genre : $currentGame['genre_id'];
                 $prize = !empty($prize) ? $prize : $currentGame['prize'];
-                $isDiscount = isset($_POST['isDiscount']) ? $isDiscount : $currentGame['isDiscount'];
                 $discountPerc = isset($_POST['discountPerc']) ? $discountPerc : $currentGame['discountPerc'];
 
-                $stmt = $pdo->prepare("UPDATE datas SET name=?, game_pic=?, release_date=?, genre_id=?, prize=?, isDiscount=?, discountPerc=? WHERE id=?");
-                $stmt->execute([$name, $game_pic, $release_date, $genre, $prize, $isDiscount, $discountPerc, $id]);
+                $stmt = $pdo->prepare("UPDATE datas SET name=?, game_pic=?, release_date=?, genre_id=?, prize=?, discountPerc=? WHERE id=?");
+                $stmt->execute([$name, $game_pic, $release_date, $genre, $prize, $discountPerc, $id]);
 
                 $message = "Game updated!";
                 $type = "info";
@@ -190,9 +189,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="number" step="0.01" id="prize" name="prize" placeholder="59.99"
                 class="show-flex vertical-self-cent w-perc-100 secondary bg-text-10 b b-info-40 br-2 p-3 fw-thick"><br><br>
 
-            <label for="isDiscount" class="t-middle white-70">Discount (0/1):</label>
-            <input type="number" id="isDiscount" name="isDiscount" min="0" max="1" placeholder="0 or 1"
-                class="show-flex vertical-self-cent secondary w-perc-100 bg-text-10 b b-info-40 br-2 p-3 fw-thick"><br><br>
 
             <label for="discountPerc" class="t-middle white-70">Discount %:</label>
             <input type="number" id="discountPerc" name="discountPerc" min="0" max="100" placeholder="0-100"

@@ -366,7 +366,7 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
         <div class="card"
             ng-repeat="game in filteredGames | filter:{name: searchText} | limitTo:itemsPerPage:((currentPage - 1) * itemsPerPage)">
             <img ng-src="{{game.game_pic}}" alt="{{game.name}}" ng-click="easter_egg(game)">
-            <p class="discount-badge" ng-if="game.isDiscount == 1">
+            <p class="discount-badge" ng-if="game.discountPerc > 0">
                 {{ (((game.prize - game.discountedPrize) / game.prize * 100)) * (-1) | number:0 }}%
             </p>
             <div class="card-content">
@@ -389,12 +389,12 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                     <h3 class="status_text"></h3>
                 </div>
                 <div class="price-box">
-                    <p class="price" ng-style="{'text-decoration': game.isDiscount == 1 ? 'line-through' : 'none'}">
-                        {{ (game.isDiscount == 1 ? convertPrice({prize: game.prize}) : convertPrice({prize:
+                    <p class="price" ng-style="{'text-decoration': game.discountPerc > 0 ? 'line-through' : 'none'}">
+                        {{ (game.discountPerc > 0 ? convertPrice({prize: game.prize}) : convertPrice({prize:
                         game.prize})) }} {{select_currency}}
                     </p>
 
-                    <p class="discount" ng-if="game.isDiscount == 1">
+                    <p class="discount" ng-if="game.discountPerc > 0">
                         {{ convertPrice({prize: game.discountedPrize || game.prize}) }} {{select_currency}}
                     </p>
 
