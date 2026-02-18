@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Feb 17. 13:14
+-- Létrehozás ideje: 2026. Feb 18. 09:04
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -618,9 +618,6 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `prize`, `isDisco
 CREATE TABLE `developers` (
   `developer_id` int(11) NOT NULL,
   `person_name` varchar(100) NOT NULL,
-  `role` varchar(100) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date DEFAULT NULL,
   `role_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -628,27 +625,27 @@ CREATE TABLE `developers` (
 -- A tábla adatainak kiíratása `developers`
 --
 
-INSERT INTO `developers` (`developer_id`, `person_name`, `role`, `start_date`, `end_date`, `role_id`) VALUES
-(1, 'Tom Green', 'Lead Developer', '1999-06-01', NULL, 1),
-(2, 'Anna White', 'Gameplay Programmer', '2000-06-01', NULL, 2),
-(3, 'Mark Black', 'Game Designer', '2001-06-01', NULL, 3),
-(4, 'Lucy King', 'Game Designer', '2002-06-01', NULL, 3),
-(5, 'Peter Young', 'Lead Programmer', '2003-06-01', NULL, 4),
-(6, 'Sarah Hall', 'Level Designer', '2004-06-01', NULL, 5),
-(7, 'Daniel Allen', 'Gameplay Engineer', '2005-06-01', NULL, 6),
-(8, 'Brian Lewis', 'Quest Designer', '2022-06-01', NULL, 7),
-(9, 'Karen Walker', 'Game Designer', '2015-06-01', NULL, 3),
-(10, 'Jessica Scott', 'Game Designer', '2023-06-01', NULL, 3),
-(11, 'Ethan Parker', 'Lead Designer', '2023-01-15', NULL, 8),
-(12, 'Olivia Martinez', 'Level Designer', '2023-03-01', NULL, 5),
-(13, 'Liam Thompson', 'Gameplay Programmer', '2023-04-10', NULL, 2),
-(14, 'Sophia Johnson', 'Art Director', '2024-02-20', NULL, 9),
-(15, 'Noah Brown', 'Quest Designer', '2024-05-05', NULL, 7),
-(16, 'Emma Davis', 'Narrative Designer', '2024-06-15', NULL, 10),
-(17, 'James Wilson', 'Combat Designer', '2025-01-10', NULL, 11),
-(18, 'Ava Moore', 'Senior Game Designer', '2025-03-25', NULL, 12),
-(19, 'Mason Taylor', 'Lead Programmer', '2025-04-01', NULL, 4),
-(20, 'Isabella Anderson', 'Gameplay Engineer', '2025-06-01', NULL, 6);
+INSERT INTO `developers` (`developer_id`, `person_name`, `role_id`) VALUES
+(1, 'Tom Green', 1),
+(2, 'Anna White', 2),
+(3, 'Mark Black', 3),
+(4, 'Lucy King', 3),
+(5, 'Peter Young', 4),
+(6, 'Sarah Hall', 5),
+(7, 'Daniel Allen', 6),
+(8, 'Brian Lewis', 7),
+(9, 'Karen Walker', 3),
+(10, 'Jessica Scott', 3),
+(11, 'Ethan Parker', 8),
+(12, 'Olivia Martinez', 5),
+(13, 'Liam Thompson', 2),
+(14, 'Sophia Johnson', 9),
+(15, 'Noah Brown', 7),
+(16, 'Emma Davis', 10),
+(17, 'James Wilson', 11),
+(18, 'Ava Moore', 12),
+(19, 'Mason Taylor', 4),
+(20, 'Isabella Anderson', 6);
 
 -- --------------------------------------------------------
 
@@ -2220,35 +2217,33 @@ INSERT INTO `platforms` (`platform_id`, `platform_name`) VALUES
 
 CREATE TABLE `publishers` (
   `publisher_id` int(11) NOT NULL,
-  `company_name` varchar(100) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date DEFAULT NULL
+  `company_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `publishers`
 --
 
-INSERT INTO `publishers` (`publisher_id`, `company_name`, `start_date`, `end_date`) VALUES
-(1, 'Electronic Arts', '2000-01-01', NULL),
-(2, 'Rockstar Games', '2001-01-01', NULL),
-(3, 'Nintendo', '2002-01-01', NULL),
-(4, 'LucasArts', '2003-01-01', NULL),
-(5, 'Valve', '2004-01-01', NULL),
-(6, 'Sony Interactive Entertainment', '2005-01-01', NULL),
-(7, 'CD Projekt', '2015-01-01', NULL),
-(8, 'Larian Studios', '2023-01-01', NULL),
-(9, 'FromSoftware', '2022-01-01', NULL),
-(10, 'Santa Monica Studio', '2023-06-01', NULL),
-(11, 'Guerrilla Games', '2023-07-15', NULL),
-(12, 'Naughty Dog', '2023-08-01', NULL),
-(13, 'Rockstar North', '2024-01-10', NULL),
-(14, 'Bethesda Game Studios', '2024-02-20', NULL),
-(15, 'BioWare', '2024-03-05', NULL),
-(16, 'CD Projekt', '2025-01-01', NULL),
-(17, 'FromSoftware', '2025-02-15', NULL),
-(18, 'Larian Studios', '2025-03-01', NULL),
-(19, 'Epic Games', '2025-04-10', NULL);
+INSERT INTO `publishers` (`publisher_id`, `company_name`) VALUES
+(1, 'Electronic Arts'),
+(2, 'Rockstar Games'),
+(3, 'Nintendo'),
+(4, 'LucasArts'),
+(5, 'Valve'),
+(6, 'Sony Interactive Entertainment'),
+(7, 'CD Projekt'),
+(8, 'Larian Studios'),
+(9, 'FromSoftware'),
+(10, 'Santa Monica Studio'),
+(11, 'Guerrilla Games'),
+(12, 'Naughty Dog'),
+(13, 'Rockstar North'),
+(14, 'Bethesda Game Studios'),
+(15, 'BioWare'),
+(16, 'CD Projekt'),
+(17, 'FromSoftware'),
+(18, 'Larian Studios'),
+(19, 'Epic Games');
 
 -- --------------------------------------------------------
 
