@@ -24,7 +24,6 @@ try {
     SELECT 
         d.developer_id,
         d.person_name,
-        d.start_date AS dev_start_date,
         r.role_name,
         p.publisher_id,
         p.company_name,
@@ -37,6 +36,7 @@ try {
     ORDER BY d.developer_id ASC
 ");
 $developers = $developerStmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 
     $publisherAwardsStmt = $pdo->query("SELECT * FROM publisher_awards ORDER BY award_id ASC");
