@@ -174,7 +174,6 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                 <p>Total Genres: {{ numberOfGenres }}</p>
                 <p>Total Platforms: {{ numberOfPlatforms }}</p><br>
                 <button ng-click="rankingOpen = false">Close</button>
-
             </div>
         </div>
 

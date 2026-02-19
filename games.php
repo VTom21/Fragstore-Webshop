@@ -52,7 +52,7 @@ try {
     }
 
     // 4️⃣ Count totals
-    $countStmt = $pdo->query("SELECT COUNT(*) AS total FROM datas");
+    $countStmt = $pdo->query("SELECT MAX(id) AS total FROM datas");
     $countResult = $countStmt->fetch(PDO::FETCH_ASSOC);
 
     $genreCountStmt = $pdo->query("SELECT COUNT(*) AS totalGenres FROM genres");

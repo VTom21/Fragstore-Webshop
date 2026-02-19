@@ -1561,16 +1561,21 @@ main {
   position: absolute;
   top: 45px;
   left: 0;
-  width: 150px;
 }
+
 
 /* SHOW ON HOVER */
 .lang-menu:hover ul {
-  display: block;
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  z-index: 9999;
 }
 
+
+
 .lang-menu ul li a {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   gap: 10px;
   padding: 8px 10px;
@@ -1653,6 +1658,52 @@ main {
   background-size: cover;
 }
 
+.zh:before{
+  background-image: url("https://flagsapi.com/CN/flat/32.png");
+  background-size: cover;
+}
+
+.el:before{
+  background-image: url("https://flagsapi.com/GR/flat/32.png");
+  background-size: cover;
+}
+
+.no:before{
+  background-image: url("https://flagsapi.com/NO/flat/32.png");
+  background-size: cover;
+}
+
+.ro:before{
+  background-image: url("https://flagsapi.com/RO/flat/32.png");
+  background-size: cover;
+}
+
+.bg:before{
+  background-image: url("https://flagsapi.com/BG/flat/32.png");
+  background-size: cover;
+}
+
+.hr:before{
+  background-image: url("https://flagsapi.com/HR/flat/32.png");
+  background-size: cover;
+}
+
+.pt:before{
+  background-image: url("https://flagsapi.com/PT/flat/32.png");
+  background-size: cover;
+}
+
+.id:before{
+  background-image: url("https://flagsapi.com/ID/flat/32.png");
+  background-size: cover;
+}
+
+.cs:before{
+  background-image: url("https://flagsapi.com/CZ/flat/32.png");
+  background-size: cover;
+}
+
+
 .lang-menu ul li a:hover {
   background-color: var(--header-border);
 }
@@ -1662,6 +1713,10 @@ main {
   display: inline-block;
   width: 32px;
   height: 32px;
+}
+
+.lang-menu ul li a:focus{
+  display: none !important;
 }
 
 .datas{
@@ -1933,6 +1988,11 @@ right: 10px;
       left: -50%;
       z-index: 0;
     }
+    .lang-menu:hover ul {
+      grid-template-columns: repeat(2, 1fr) !important;
+      display: grid !important;
+    }
+
 }
 
 @media (max-width: 400px){
@@ -2112,12 +2172,26 @@ body.menu-open {
   }
 }
 
+@media (max-width: 915PX) {
+  .lang-menu:hover ul {
+    grid-template-columns: repeat(4, 1fr) !important;
+    display: grid !important;
+  }
+}
+
 /* ========== TABLET STYLES ========== */
 @media (max-width: 768px) {
   .navbar a,
   .navbar .login_toggle {
     font-size: 0.95rem;
     padding: 12px 18px;
+  }
+}
+
+@media (max-width: 630px) {
+  .lang-menu:hover ul {
+    grid-template-columns: repeat(3, 1fr) !important;
+    display: grid !important;
   }
 }
 
@@ -2137,6 +2211,10 @@ body.menu-open {
     font-size: 0.9rem;
     padding: 12px 16px;
     width: 95%;
+  }
+  .lang-menu:hover ul {
+    grid-template-columns: repeat(2, 1fr) !important;
+    display: grid !important;
   }
 }
 
@@ -2183,6 +2261,27 @@ body.menu-open {
   }
 }
 
+@media(max-width: 345px){
+  .lang-menu, .lang-menu ul{
+    width: 100% !important;
+    margin: 0;
+  }
+  .lang-menu ul li a{
+    font-size: 12px !important;
+  }
+  .selected-lang{
+    text-align: center !important;
+    justify-content: center !important;
+    border-radius: 0px !important;
+  }
+  .lang-menu:hover ul{
+    border-radius: 0px !important;
+  }
+  .lang-menu ul{
+    top: 42px !important;
+  }
+}
+
 @media(max-width:300px){
   .datas .stats-grid #time{
     display: flex;
@@ -2192,3 +2291,17 @@ body.menu-open {
     overflow-x: hidden;
   }
 }
+
+@media (max-width: 270px) {
+  .lang-menu:hover ul {
+    display: flex !important;
+    flex-direction: column !important;
+
+
+    max-height: 500px;
+    overflow-y: auto;         
+    overscroll-behavior: contain;
+
+  }
+}
+

@@ -12,13 +12,11 @@ function translate(text, from = "en", to = "auto") {
 }
 
 function translateContent(lang) {
-  const elements = document.querySelectorAll("[data-i18n]");
+  const elements = document.querySelectorAll("[data-translate]");
 
-  // Trigger translation for all elements immediately (concurrently)
   elements.forEach(el => {
     if (!el.dataset.original) el.dataset.original = el.textContent;
 
-    // Each call happens directly inside the click handler
     translate(el.dataset.original, "en", lang)
       .then(translated => {
         el.textContent = translated;
@@ -29,7 +27,6 @@ function translateContent(lang) {
   });
 }
 
-// Language selection
 const selected = document.querySelector(".selected-lang");
 
 document.querySelectorAll(".lang-menu a").forEach(link => {
@@ -37,12 +34,10 @@ document.querySelectorAll(".lang-menu a").forEach(link => {
     e.preventDefault();
     const lang = link.className;
 
-    // Update UI immediately
     selected.textContent = link.textContent;
     selected.style.setProperty("--flag", `url(${link.dataset.flag})`);
     document.querySelector(".lang-menu ul").style.display = "none";
 
-    // ⚡ Trigger all translations immediately here
     translateContent(lang);
   });
 });
