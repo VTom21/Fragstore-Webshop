@@ -1,48 +1,61 @@
-function translate(text, from = "en", to = "auto") {
-  if (from === to) return Promise.resolve(text);
-  if (!("Translator" in window)) return Promise.resolve(text);
+var translatorCache = {};
+var currentLang = "en"; 
 
-  // Create the translator immediately on user gesture
-  return Translator.create({ sourceLanguage: from, targetLanguage: to })
-    .then(translator => translator.translate(text))
-    .catch(err => {
-      console.error("Translation failed:", err);
-      return text;
-    });
-}
+function translateContent(targetLang) {
+  var elements = document.querySelectorAll("[data-translate]");
+  var key = currentLang + "_" + targetLang;
 
-function translateContent(lang) {
-  const elements = document.querySelectorAll("[data-translate]");
+  if (currentLang === targetLang) return;
 
-  elements.forEach(el => {
-    if (!el.dataset.original) el.dataset.original = el.textContent;
+  if (translatorCache[key]) {
 
-    translate(el.dataset.original, "en", lang)
-      .then(translated => {
-        el.textContent = translated;
+    for (var i = 0; i < elements.length; i++) {
+      var el = elements[i];
+      if (!el.dataset.original) el.dataset.original = el.textContent;
+
+      translatorCache[key].translate(el.dataset.original)
+        .then((function(el){ return function(t){ el.textContent = t; }; })(el))
+        .catch(function(err){ console.error(err); });
+    }
+    currentLang = targetLang; 
+  } else {
+
+    Translator.create({ sourceLanguage: currentLang, targetLanguage: targetLang })
+      .then(function(translator){
+        translatorCache[key] = translator;
+
+        for (var i = 0; i < elements.length; i++) {
+          var el = elements[i];
+          if (!el.dataset.original) el.dataset.original = el.textContent;
+
+          translator.translate(el.dataset.original)
+            .then((function(el){ return function(t){ el.textContent = t; }; })(el))
+            .catch(function(err){ console.error(err); });
+        }
+
+        currentLang = targetLang;
       })
-      .catch(err => {
-        console.error("Translation error:", err);
-      });
-  });
+      .catch(function(err){ console.error("Translation failed:", err); });
+  }
 }
 
-const selected = document.querySelector(".selected-lang");
+var selected = document.querySelector(".selected-lang");
 
-document.querySelectorAll(".lang-menu a").forEach(link => {
-  link.addEventListener("click", function(e) {
+var langLinks = document.querySelectorAll(".lang-menu a");
+for (var i = 0; i < langLinks.length; i++) {
+  langLinks[i].addEventListener("click", function(e){
     e.preventDefault();
-    const lang = link.className;
+    var targetLang = this.className;
 
-    selected.textContent = link.textContent;
-    selected.style.setProperty("--flag", `url(${link.dataset.flag})`);
+    selected.textContent = this.textContent;
+    selected.style.setProperty("--flag", "url(" + this.dataset.flag + ")");
     document.querySelector(".lang-menu ul").style.display = "none";
 
-    translateContent(lang);
+    translateContent(targetLang);
   });
-});
+}
 
-selected.addEventListener("click", function() {
-  const menu = document.querySelector(".lang-menu ul");
+selected.addEventListener("click", function(){
+  var menu = document.querySelector(".lang-menu ul");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 });
