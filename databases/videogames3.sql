@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Tábla szerkezet ehhez a táblához `awards`
 --
+CREATE DATABASE IF NOT EXISTS `videogames` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `videogames`;
 
 CREATE TABLE `awards` (
   `award_id` int(11) NOT NULL,
