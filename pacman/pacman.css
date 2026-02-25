@@ -53,7 +53,30 @@ body {
     margin: 0px 0px;
 }
 
+.difficulty_form {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    color: var(--white-regular) !important;
+}
 
+.difficulty_form input[type="radio"] {
+    display: none;
+}
+
+.difficulty_form label {
+    background: var(--black-regular);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.difficulty_form input[type="radio"]:checked + label {
+    background: var(--yellow_regular);
+    color: var(--black-regular);
+}
 
 #x,#high_score_value{
     color: var(--yellow_regular);

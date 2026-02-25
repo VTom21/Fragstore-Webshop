@@ -44,6 +44,14 @@
     <div class="content">
         <p id="title">Pac Man</p>
         <h2 class="start_text">Press <span id="f">F</span> to start</h2>
+        <form class="difficulty_form">
+            <input type="radio" name="difficulty" id="easy" value="easy">
+            <label for="easy">Easy</label>
+            <input type="radio" name="difficulty" id="medium" value="medium">
+            <label for="medium">Medium</label>
+            <input type="radio" name="difficulty" id="hard" value="hard">
+            <label for="hard">Hard</label>
+        </form>
         <div class="flex">
         <h4 id="high_score"></h4>
         <h4 id="leaderboard_ui">Press <span id="x">X</span> for Leaderboard</h4>

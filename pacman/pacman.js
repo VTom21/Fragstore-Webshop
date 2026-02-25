@@ -2,6 +2,36 @@
 
 import { Munch, Intro, Death, Fruit_Munch, Ghost_Eat, Frightened, Stop_Frightened } from "./sfx.js";
 
+let easy = document.getElementById("easy");
+let medium = document.getElementById("medium");
+let hard = document.getElementById("hard");
+
+// difficulty state
+let difficulty = "medium";
+let desiredGhostCount = 4;
+
+function setDifficulty(mode) {
+  difficulty = mode;
+  switch (mode) {
+    case "easy": 
+      desiredGhostCount = 3; 
+      break;
+    case "medium": 
+      desiredGhostCount = 4; 
+      break;
+    case "hard": 
+      desiredGhostCount = 5; 
+      break;
+  }
+  easy?.classList.toggle("active", mode == "easy");
+  medium?.classList.toggle("active", mode == "medium");
+  hard?.classList.toggle("active", mode == "hard");
+}
+
+// UI buttons set difficulty for next Load()
+easy?.addEventListener("click", () => setDifficulty("easy"));
+medium?.addEventListener("click", () => setDifficulty("medium"));
+hard?.addEventListener("click", () => setDifficulty("hard"));
 //base variables
 let canva = document.querySelector(".game_canvas");
 let rows = 25;
@@ -385,6 +415,9 @@ function load_map() {
   portals.clear();
   hearts_set.clear();
 
+  // limit spawning according to difficulty
+  let ghostSpawned = 0;
+
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < columns; col++) {
       let tile = activeMap[row][col]; //current tile (exp. 0,0)
@@ -419,30 +452,30 @@ function load_map() {
           pellets.add(pellet);
           break;
 
+        // we check the tile type against all ghost types, if it matches and we havent spawned enough ghosts yet, we spawn the corresponding ghost
         case TILE_BLUE_GHOST:
-          const blue_ghost = new Generate(blue_ghost_img, x, y, tile_size, tile_size, true);
-          ghosts.add(blue_ghost);
-          break;
-
         case TILE_RED_GHOST:
-          const red_ghost = new Generate(red_ghost_img, x, y, tile_size, tile_size, true);
-          ghosts.add(red_ghost);
-          break;
-
         case TILE_ORANGE_GHOST:
-          const orange_ghost = new Generate(orange_ghost_img, x, y, tile_size, tile_size, true);
-          ghosts.add(orange_ghost);
-          break;
-
         case TILE_PINK_GHOST:
-          const pink_ghost = new Generate(pink_ghost_img, x, y, tile_size, tile_size, true);
-          ghosts.add(pink_ghost);
-          break;
-
         case TILE_GREEN_GHOST:
-            const green_ghost = new Generate(green_ghost_img, x, y, tile_size, tile_size, true);
-            ghosts.add(green_ghost);
-            break;
+          if (ghostSpawned < desiredGhostCount) {
+            let img = blue_ghost_img;
+            if (tile == TILE_RED_GHOST) img = red_ghost_img;
+            else if (tile == TILE_ORANGE_GHOST) img = orange_ghost_img;
+            else if (tile == TILE_PINK_GHOST) img = pink_ghost_img;
+            else if (tile == TILE_GREEN_GHOST) img = green_ghost_img;
+
+            const g = new Generate(img, x, y, tile_size, tile_size, true);
+            ghosts.add(g);
+            ghostSpawned++;
+          } else {
+            // If we exceed the desired ghost count, place a pellet there instead (so the pellet count doesn't decrease)
+            const extraPellet = new Generate(null, x + 14, y + 14, 4, 4);
+            pellets.add(extraPellet);
+            // we also clear the tile on the map to prevent future spawns on reload, since we are replacing the ghost with a pellet
+            activeMap[row][col] = TILE_EMPTY;
+          }
+          break;
 
         case TILE_PACMAN:
           pacman = new Generate(pacman_up_img, x, y, tile_size, tile_size);
