@@ -348,7 +348,7 @@ $limit = 12;
 
 
     <section class="testimonials" id="testimonials">
-      <h2 data-translate" class="customers_title">What Our Customers Say</h2>
+      <h2 data-translate class="customers_title">What Our Customers Say</h2>
       <p class="section-desc" data-translate>Real feedback from gamers and collectors around the world.</p>
 
       <div class="testimonial-grid">
@@ -404,7 +404,7 @@ $limit = 12;
           <img ng-src="{{game.img}}" alt="Game 1" class="w-full h-48 object-cover rounded-t-xl">
           <p class="title">{{game.name}}</p>
           <p class="price">{{game.prize}}</p>
-          <p class="body-text">{{game.desc}}</p>
+          <p class="body-text"data-translate>{{game.desc}}</p>
         </div>
       </div>
       <br>
@@ -418,7 +418,7 @@ $limit = 12;
           <img ng-src="{{game.img}}" alt="Upcoming Game 1" class="w-full h-48 object-cover rounded-t-xl">
           <p class="title">{{game.name}}</p>
           <p class="price text-gray-400">Coming Soon</p>
-          <p class="body-text">{{game.desc}}</p>
+          <p class="body-text"data-translate>{{game.desc}}</p>
         </div>
       </div>
       <br>
@@ -461,11 +461,11 @@ $limit = 12;
 
     <div class="faq-item" ng-repeat="content in faq_contents">
       <input type="checkbox" id="faq{{content.id}}" class="faq-checkbox">
-      <label for="faq{{content.id}}" class="faq-question">
+      <label for="faq{{content.id}}" class="faq-question"data-translate>
         {{content.query}}
         <span class="faq-icon">+</span>
       </label>
-      <div class="faq-answer">
+      <div class="faq-answer"data-translate>
         {{content.answer}}
       </div>
     </div>
@@ -479,7 +479,7 @@ $limit = 12;
 
       <div class="testimonial-grid">
         <div class="testimonial-card" ng-repeat="content in testimonial_content">
-          <div class="testimonial-content">
+          <div class="testimonial-content"data-translate>
             <p>{{content.title}}</p>
             <div class="testimonial-author">
               <span>{{content.author}}</span>
@@ -546,7 +546,7 @@ $limit = 12;
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" style="border-color:rgb(88, 86, 86);" />
       <div class="sm:flex sm:items-center sm:justify-between">
-        <span class="text-sm sm:text-center copyright_text">© 2025 <a href="https://flowbite.com/" class="hover:underline">Fragstore™</a>. All Rights Reserved.
+        <span class="text-sm sm:text-center copyright_text"data-translate>© 2025 <a href="https://flowbite.com/" class="hover:underline">Fragstore™</a>. All Rights Reserved.
         </span>
         <div class="flex mt-4 sm:justify-center sm:mt-0">
           <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
@@ -631,10 +631,8 @@ $limit = 12;
         loginToggle.textContent = `Welcome ${username}!`; 
         document.getElementById("sigin").style.display = "none";
         document.getElementById("register").style.display = "none";
-        deleteCookie('remember_me');
       } else {
         loginToggle.style.display = "none"; 
-        deleteCookie('remember_me');
       }
 
     });
