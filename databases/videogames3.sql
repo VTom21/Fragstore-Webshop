@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Feb 23. 18:21
+-- Létrehozás ideje: 2026. Már 01. 09:25
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.0.30
 
@@ -26,8 +26,9 @@ SET time_zone = "+00:00";
 --
 -- Tábla szerkezet ehhez a táblához `awards`
 --
-CREATE DATABASE IF NOT EXISTS `videogames` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `videogames`;
+
+CREATE DATABASE IF NOT EXISTS videogames;
+USE videogames;
 
 CREATE TABLE `awards` (
   `award_id` int(11) NOT NULL,
@@ -552,8 +553,6 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `prize`, `discoun
 (451, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $10', NULL, 10.00, 0, 1, 42),
 (452, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $25', NULL, 25.00, 0, 1, 42),
 (453, 'https://i.pinimg.com/736x/02/49/33/0249336d161e09956d2b25f0730c9cd7.jpg', 'Xbox Gift Card $50', NULL, 50.00, 0, 1, 42),
-(454, 'https://play-lh.googleusercontent.com/GTZLAsNg0oF2YQKK1sx0Sau0ZDQsOMl0MwZNuuGD0P5ps4MY3pd4lYgnk2Lqpw4pjxs', 'Snake', '1976-01-01', 0.99, 0, 1, 43),
-(455, 'https://i.guim.co.uk/img/media/8152f8ea7f06fd8ef5c68a3a594e6ac35dfd774b/0_342_800_480/master/800.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=42bb412858826e59cd33e40975ca3ee1', 'Pac-Man', '1980-05-22', 4.99, 0, 1, 43),
 (456, 'https://m.media-amazon.com/images/I/71RKjZUwdRS._AC_SL1024_.jpg', 'Mega Man', '1987-12-17', 19.99, 0, 1, 44),
 (457, 'https://i.etsystatic.com/6824854/r/il/b28b90/6103193505/il_fullxfull.6103193505_1miy.jpg', 'Mega Man 2', '1988-12-24', 19.99, 0, 1, 44),
 (458, 'https://cdn.mobygames.com/81fddc0c-abb1-11ed-aecf-02420a000198.webp', 'Mega Man 3', '1990-09-30', 19.99, 0, 1, 44),
@@ -641,7 +640,9 @@ INSERT INTO `datas` (`id`, `game_pic`, `name`, `release_date`, `prize`, `discoun
 (540, 'https://cdn.wallpapersafari.com/19/24/ouswEy.jpg', 'Amnesia: The Dark Descent', '2010-09-08', 9.99, 0, 1, 13),
 (541, 'https://sm.ign.com/t/ign_ap/cover/p/pathologic/pathologic-2_ndt1.1200.jpg', 'Pathologic 2', '2019-05-23', 9.99, 0, 1, 13),
 (542, 'https://image.jeuxvideo.com/medias-sm/165539/1655390768-4969-jaquette-avant.png', 'Cuphead: The Delicious Last Course', '2022-06-30', 29.99, 0, 1, 65),
-(543, 'https://tse4.mm.bing.net/th/id/OIP.zBL1RGZm9cm1sycS6KLpswHaEK?pid=Api&P=0&h=220', 'Visage', '2020-10-30', 19.99, 0, 1, 65);
+(543, 'https://tse4.mm.bing.net/th/id/OIP.zBL1RGZm9cm1sycS6KLpswHaEK?pid=Api&P=0&h=220', 'Visage', '2020-10-30', 19.99, 0, 1, 65),
+(545, 'https://fotos.perfil.com/2025/08/21/trim/900/900/pac-man-2084089.png', 'Pac-Man', '1980-05-22', 9.99, 0, 1, 43),
+(546, 'https://lh6.googleusercontent.com/proxy/BKfR-TkPqovkeDIVub4L8ollvzeJdHpgKm5IHAvfFpnfvt6feQoVwJerYixlxctPhLMD3Irn1zwHk9shdnU9sAWAcZLNyChA8mEDO-rZmZU', 'Snake', '1976-07-08', 9.99, 0, 1, 43);
 
 -- --------------------------------------------------------
 
@@ -1930,11 +1931,6 @@ INSERT INTO `game_platforms` (`game_id`, `platform_id`) VALUES
 (451, 5),
 (452, 5),
 (453, 5),
-(454, 1),
-(454, 8),
-(455, 1),
-(455, 7),
-(455, 18),
 (456, 54),
 (457, 54),
 (458, 54),
@@ -2130,7 +2126,13 @@ INSERT INTO `game_platforms` (`game_id`, `platform_id`) VALUES
 (543, 2),
 (543, 4),
 (543, 11),
-(543, 17);
+(543, 17),
+(545, 12),
+(545, 18),
+(545, 19),
+(545, 27),
+(546, 1),
+(546, 34);
 
 -- --------------------------------------------------------
 
@@ -2505,7 +2507,7 @@ ALTER TABLE `award_games`
 -- AUTO_INCREMENT a táblához `datas`
 --
 ALTER TABLE `datas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=545;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=547;
 
 --
 -- AUTO_INCREMENT a táblához `developers`

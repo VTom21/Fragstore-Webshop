@@ -323,7 +323,7 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                 <div class="filter-group special1">
                     <strong>Release Date:</strong>
                     <div class="checkbox-list">
-                        <input type="range" min="2000" max="2025" ng-model="releaseYear" ng-change="advancedRange()"
+                        <input type="range" min="1950" max="2025" ng-model="releaseYear" ng-change="advancedRange()"
                             id="vol">
 
                         <span id="input2">{{ releaseYear }}</span>

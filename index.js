@@ -107,7 +107,7 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
       $scope.tetrisCounter++; // increment counter on each click
 
       if ($scope.tetrisCounter >= 5) {
-        window.location.href = "http://localhost:4000/";
+        window.location.href = "../redirect/redirect.php?destination=http://localhost:4000/";
       }
     }
   };
@@ -152,7 +152,7 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
 
   $scope.currentPage = 1;
   $scope.itemsPerPage = 54;
-  $scope.releaseYear = 1900;
+  $scope.releaseYear = 1950;
 
   $http.get("games.php").then(
     function (response) {
@@ -163,6 +163,7 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
       $scope.numberOfProducts = response.data.total;
       $scope.numberOfGenres = response.data.totalGenres;
       $scope.numberOfPlatforms = response.data.totalPlatforms;
+      console.log("Pac-Man loaded?", $scope.games.find(g => g.name === 'Pac-Man'));
 
 var allPlatforms = [];
 
@@ -440,7 +441,7 @@ $scope.inStock = function() {
 
 $scope.applyAdvancedFilters = function () {
   if (!$scope.games || !$scope.uniqueGenres || !$scope.platforms) return;
-  let filtered = $scope.games;
+  let filtered = $scope.games.filter(g => g.available == 1);
 
   let selectedGenres = $scope.uniqueGenres
     .filter(g => g.selected)

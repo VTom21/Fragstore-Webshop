@@ -1,6 +1,8 @@
 var translatorCache = {};
 var currentLang = "en"; 
 
+
+
 function translateContent(targetLang) {
   var elements = document.querySelectorAll("[data-translate]");
   var key = currentLang + "_" + targetLang;
