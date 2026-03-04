@@ -958,7 +958,7 @@ Translator.create(options)
 ```
 
 **Options:**
-```json
+```js
 {
   sourceLanguage: "en",     // Source language code
   targetLanguage: "es"      // Target language code
