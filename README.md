@@ -949,7 +949,7 @@ function createChart() {
 - Products Data Visualization
 
 ---
-### <img height="50" id="flags" style="display:inline; align-items:center;" align="center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbYDP2bKIi01t7vBa2-4Z97Kjy8xRDiY7n7w&s"></img> Web Translator API
+### <img height="50" id="flags" style="display:inline; align-items:center;" align="center" src="./pictures/translator.png"></img> Web Translator API
 Translate text directly in the browser using the built-in Web Translator API.
 
 **Create Translator Instance:**
