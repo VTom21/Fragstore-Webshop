@@ -436,7 +436,8 @@ A classic arcade game where you navigate Pacman through a maze, eating pellets a
 - Basic and custom power-ups 
 - Sound effects (SFX) for actions and events  
 - Score and high score system  
-- Leaderboard to track top players  
+- Leaderboard to track top players 
+- Multiple maps and difficulties 
 
 ---
 <div align="left">
@@ -946,7 +947,64 @@ function createChart() {
 
 **Use Cases:**
 - Products Data Visualization
+
 ---
+### <img height="50" id="flags" style="display:inline; align-items:center;" align="center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbYDP2bKIi01t7vBa2-4Z97Kjy8xRDiY7n7w&s"></img> Web Translator API
+Translate text directly in the browser using the built-in Web Translator API.
+
+**Create Translator Instance:**
+```javascript
+Translator.create(options)
+```
+
+**Options:**
+```json
+{
+  sourceLanguage: "en",     // Source language code
+  targetLanguage: "es"      // Target language code
+}
+```
+
+**Example Request:**
+```javascript
+// Create translator (English → Hungarian)
+const translator = await Translator.create({
+  sourceLanguage: "en",
+  targetLanguage: "hu"
+});
+
+// Translate text
+const result = await translator.translate("Hello world");
+
+console.log(result); // "Helló világ"
+```
+
+**Example Implementation:**
+```javascript
+var selected = document.querySelector(".selected-lang");
+
+var langLinks = document.querySelectorAll(".lang-menu a");
+
+for (var i = 0; i < langLinks.length; i++) {
+  langLinks[i].addEventListener("click", function (e) {
+    e.preventDefault();
+    var targetLang = this.className;
+
+    selected.textContent = this.textContent;
+
+    selected.style.setProperty("--flag", "url(" + this.dataset.flag + ")");
+    
+    document.querySelector(".lang-menu ul").style.display = "none";
+
+    translateContent(targetLang);
+  });
+}
+
+```
+
+---
+
+
 
 <div id="contribute"></div>
 
