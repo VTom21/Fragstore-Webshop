@@ -71,7 +71,7 @@
 - **Real-time Updates** – Stay informed about new releases, deals, and latest game awards  
 - **Responsive Design** – Optimized for mobile and desktop devices  
 - **Enhanced Filtering & Sorting** – Quickly find products by category, price and so on
-- **Language Selection** - For up to 6+ available languages
+- **Language Selection** - For up to 24 available languages
 
 ### 📑 Table of Contents
 
@@ -549,14 +549,15 @@ A legendary puzzle game that challenges your speed, foresight, and spatial reaso
 [0, 1, 0]
     │
     ↓
-[0, 1, 0]
-[0, 1, 0] => 180°
-[1, 1, 0]
+[0, 0, 0]
+[1, 1, 1] => 180°
+[0, 0, 1]
     │
     ↓
-[0, 0, 0]
-[1, 1, 1] => 270°
-[0, 0, 1]
+[0, 1, 0]
+[0, 1, 0] => 270°
+[1, 1, 0]
+
     │
     ↓
 [1, 0, 0]
