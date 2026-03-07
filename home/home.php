@@ -8,8 +8,8 @@ $username = 'Guest';
 $image = null;
 $role = null;
 
-$language = $_COOKIE['language'] ?? '';
-$region   = $_COOKIE['region'] ?? '';
+$language = $_COOKIE['language'] ?? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+$region   = $_COOKIE['region'] ?? 'US';
 $time = $_COOKIE['time'] ?? '';
 
 
@@ -461,11 +461,11 @@ $limit = 12;
 
     <div class="faq-item" ng-repeat="content in faq_contents">
       <input type="checkbox" id="faq{{content.id}}" class="faq-checkbox">
-      <label for="faq{{content.id}}" class="faq-question"data-translate>
+      <label for="faq{{content.id}}" class="faq-question" data-translate>
         {{content.query}}
         <span class="faq-icon">+</span>
       </label>
-      <div class="faq-answer"data-translate>
+      <div class="faq-answer" data-translate>
         {{content.answer}}
       </div>
     </div>
@@ -479,7 +479,7 @@ $limit = 12;
 
       <div class="testimonial-grid">
         <div class="testimonial-card" ng-repeat="content in testimonial_content">
-          <div class="testimonial-content"data-translate>
+          <div class="testimonial-content" data-translate>
             <p>{{content.title}}</p>
             <div class="testimonial-author">
               <span>{{content.author}}</span>
