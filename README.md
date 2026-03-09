@@ -854,11 +854,11 @@ The Leaderboard database is a Firebase Realtime Database that stores player scor
         │    ┌──────┐                    ┌──────────┐               ┌──────────┐    │
         │    │games │                    │scores    │               │ orders   │    │
         │    └──┬───┘                    └───┬──────┘               └───┬──────┘    │
-        │       │                            │                           │          │
-        │       │ (No direct                 │ (No direct                │          │
-        │       │  connection)               │  connection)              │          │
-        │       │                            │                           │          │
-        │       ▼                            ▼                           ▼          │
+        │       │                            │                          │           │
+        │       │ (No direct                 │ (No direct               │           │
+        │       │  connection)               │  connection)             │           │
+        │       │                            │                          │           │
+        │       ▼                            ▼                          ▼           │
         │    ┌─────────────────────────────────────────────────────────────────┐    │
         │    │                    INDEPENDENT DATABASES                        │    │
         │    │            Each serves a different business function            │    │
