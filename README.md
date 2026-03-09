@@ -617,6 +617,50 @@ A legendary puzzle game that challenges your speed, foresight, and spatial reaso
 This section outlines the structure of all the databases used throughout this project.  
 Each table is described to provide clarity about its purpose and relationships.
 
+##### `Entity-Relationship Diagram`
+
+```
+┌───────────┐         ┌──────────────┐         ┌───────────┐
+│  datas    │───────▶│ game_platforms│◀──── ──│ platforms │
+│ (games)   │         └──────────────┘         └───────────┘
+└─────┬─────┘                 │
+      │                       │
+      ▼                       ▼
+┌───────────┐         ┌──────────────┐
+│  genres   │         │    awards    │
+└───────────┘         └──────┬───────┘
+                             │
+              ┌──────────────┼──────────────┐
+              ▼              ▼              ▼
+    ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
+    │award_games  │  │developer_   │  │publisher_   │
+    └─────────────┘  │awards       │  │awards       │
+                     └─────────────┘  └─────────────┝
+                           │                  │
+                           ▼                  ▼
+                    ┌─────────────┐     ┌─────────────┐
+                    │ developers  │     │ publishers  │
+                    └──────┬──────┘     └──────┬──────┘
+                           │                   │
+                           └─────────┬─────────┘
+                                     ▼
+                           ┌─────────────────┐
+                           │developer_       │
+                           │publisher        │
+                           └─────────────────┘
+                                    │
+                                    ▼
+                           ┌─────────────────┐
+                           │ developer_roles │
+                           └────────┬────────┘
+                                    │
+                                    ▼
+                              ┌───────────┐
+                              │   roles   │
+                              └───────────┘
+
+```
+
 <div id="giftcard"></div>
 
 ### 1. `giftcard`
