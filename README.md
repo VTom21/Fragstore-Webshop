@@ -617,6 +617,8 @@ A legendary puzzle game that challenges your speed, foresight, and spatial reaso
 This section outlines the structure of all the databases used throughout this project.  
 Each table is described to provide clarity about its purpose and relationships.
 
+<img src="./pictures/db.png"></img>
+
 ##### `Entity-Relationship Diagram`
 
 ```
