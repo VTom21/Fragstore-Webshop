@@ -812,11 +812,11 @@ The Leaderboard database is a Firebase Realtime Database that stores player scor
         │  ├── currency: "USD"          └── "pending"                 │    1        │
         │  ├── delivery: "digital"                                    └── game_pic  │
         │  ├── payment: "paypal"                                         │  ...     │
-        │  ├── shipping: 0                                               └──────────┘
-        │  ├── subtotal: 29.99          
-        │  └── total_prize: 29.99        ▼ PAYPAL                       
-        │                                ├── email: "vt20050827@gmail.com"
-        │                                └── number: "53635635"          
+        │  ├── shipping: 0                                               └──────────┤
+        │  ├── subtotal: 29.99                                                      │
+        │  └── total_prize: 29.99        ▼ PAYPAL                                   │
+        │                                ├── email: "vt20050827@gmail.com"          │
+        │                                └── number: "53635635"                     │
         └───────────────────────────────────────────────────────────────────────────┘
 
         ╔═══════════════════════════════════════════════════════════════════════════╗
