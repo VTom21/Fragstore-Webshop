@@ -687,45 +687,35 @@ CREATE TABLE `datas` (
   `game_pic` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `release_date` date DEFAULT NULL,
-  `genre` varchar(255) DEFAULT NULL,
-  `platforms` varchar(255) DEFAULT NULL,
   `prize` decimal(10,2) DEFAULT NULL,
-  `publisher_id` int(11) DEFAULT NULL,
-  `isDiscount` tinyint(1) NOT NULL DEFAULT 0,
-  `discountPerc` int(11) NOT NULL DEFAULT 0
-) 
+  `discountPerc` int(11) DEFAULT 0,
+  `available` tinyint(1) DEFAULT 1,
+  `genre_id` int(11) DEFAULT NULL
+)
 ```
 Stores awards associated with games or developers, including award name and year.
 ```sql
 CREATE TABLE `awards` (
   `award_id` int(11) NOT NULL,
-  `award_name` varchar(255) NOT NULL,
-  `award_year` int(11) DEFAULT NULL
-) 
+  `award_name` varchar(100) NOT NULL,
+  `award_year` int(11) NOT NULL,
+  `game_id` int(11) NOT NULL
+)
 
 ```
 Contains information about developers, including their personal/company details, role, start and end dates, and associated publisher.
 ```sql
 CREATE TABLE `developers` (
   `developer_id` int(11) NOT NULL,
-  `person_name` varchar(100) NOT NULL,
-  `company_name` varchar(100) NOT NULL,
-  `role` varchar(100) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date DEFAULT NULL,
-  `publisher_id` int(11) DEFAULT NULL
+  `person_name` varchar(100) NOT NULL
 ) 
 ```
 Stores information about publishers, including contact person, company, role, and tenure.
 ```sql
 CREATE TABLE `publishers` (
   `publisher_id` int(11) NOT NULL,
-  `person_name` varchar(100) NOT NULL,
-  `company_name` varchar(100) NOT NULL,
-  `role` varchar(100) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date DEFAULT NULL
-) 
+  `company_name` varchar(100) NOT NULL
+)
 ```
 <div id="users"></div>
 
@@ -738,7 +728,9 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `profile_picture` varchar(255) NOT NULL
+  `profile_picture` longblob DEFAULT NULL,
+  `remember_token` varchar(64) DEFAULT NULL,
+  `role` tinyint(4) DEFAULT NULL
 )
 
 ```
