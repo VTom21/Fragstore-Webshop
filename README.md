@@ -769,7 +769,7 @@ The Leaderboard database is a Firebase Realtime Database that stores player scor
         ║                        FIREBASE RTDB ARCHITECTURE                         ║
         ║                      Three Independent Instances                          ║
         ╚═══════════════════════════════════════════════════════════════════════════╝
-        
+
                                             │
                     ┌───────────────────────┼───────────────────────┐
                     ▼                       ▼                       ▼
@@ -798,11 +798,11 @@ The Leaderboard database is a Firebase Realtime Database that stores player scor
             │  Game ID: "11"  │
             │  └── null       │
             └─────────────────┘
-        
+
         ╔═══════════════════════════════════════════════════════════════════════════╗
         ║                           ORDER DETAIL EXPANDED                           ║
         ╚═══════════════════════════════════════════════════════════════════════════╝
-        
+
         ┌───────────────────────────────────────────────────────────────────────────┐
         │  ORDER: -OigLXPte2tXGppCZxr_                                              │
         ├───────────────────────────────────────────────────────────────────────────┤
@@ -824,30 +824,30 @@ The Leaderboard database is a Firebase Realtime Database that stores player scor
         │                                ├── email: "vt20050827@gmail.com"
         │                                └── number: "53635635"          
         └───────────────────────────────────────────────────────────────────────────┘
-        
+
         ╔═══════════════════════════════════════════════════════════════════════════╗
         ║                           SECURITY STATUS                                 ║
         ╚═══════════════════════════════════════════════════════════════════════════╝
-        
-        ┌───────────────────────────────────────────────────────────────────────────┐                          
+
+        ┌───────────────────────────────────────────────────────────────────────────┐                      
         │                                                                           │
         │  ┌─────────────────────────────────────────────────────────────────────┐  │
         │  │  ALL THREE DATABASES ARE PUBLICLY ACCESSIBLE                        │  │
         │  │                                                                     │  │
         │  │  RISKS:                        │  ACTION REQUIRED:                  │  │
         │  │  ┌─────────────────────────┐   │  ┌─────────────────────────────┐   │  │ 
-        │  │  │ • Data theft           │    │  │ 1. Add authentication       │   │  │ 
-        │  │  │ • Unauthorized edits   │    │  │ 2. Implement security rules │   │  │ 
-        │  │  │ • Data deletion        │    │  │ 3. Validate user permissions│   │  │ 
-        │  │  │ • Privacy breach       │    │  │ 4. Encrypt sensitive data   │   │  │ 
+        │  │  │ • Data theft            │   │  │ 1. Add authentication       │   │  │ 
+        │  │  │ • Unauthorized edits    │   │  │ 2. Implement security rules │   │  │ 
+        │  │  │ • Data deletion         │   │  │ 3. Validate user permissions│   │  │ 
+        │  │  │ • Privacy breach        │   │  │ 4. Encrypt sensitive data   │   │  │ 
         │  │  └─────────────────────────┘   │  └─────────────────────────────┘   │  │ 
         │  └─────────────────────────────────────────────────────────────────────┘  │
         └───────────────────────────────────────────────────────────────────────────┘
-        
+
         ╔═══════════════════════════════════════════════════════════════════════════╗
         ║                           DATA RELATIONSHIPS                              ║
         ╚═══════════════════════════════════════════════════════════════════════════╝
-        
+
         ┌───────────────────────────────────────────────────────────────────────────┐
         │                                                                           │
         │    STOCK DB                    LEADERBOARD DB              DELIVERY DB    │
@@ -860,8 +860,8 @@ The Leaderboard database is a Firebase Realtime Database that stores player scor
         │       │                            │                           │          │
         │       ▼                            ▼                           ▼          │
         │    ┌─────────────────────────────────────────────────────────────────┐    │
-        │    │                    INDEPENDENT DATABASES                         │   │
-        │    │            Each serves a different business function             │   │
+        │    │                    INDEPENDENT DATABASES                        │    │
+        │    │            Each serves a different business function            │    │
         │    └─────────────────────────────────────────────────────────────────┘    │
         │                                                                           │
         │   • Game IDs in DELIVERY could reference STOCK inventory                  │
