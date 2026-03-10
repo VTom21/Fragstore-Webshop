@@ -71,7 +71,7 @@
 - **Real-time Updates** – Stay informed about new releases, deals, and latest game awards  
 - **Responsive Design** – Optimized for mobile and desktop devices  
 - **Enhanced Filtering & Sorting** – Quickly find products by category, price and so on
-- **Language Selection** - For up to 6+ available languages
+- **Language Selection** - For up to 24 available languages
 
 ### 📑 Table of Contents
 
@@ -97,6 +97,7 @@
   - [RAWG API](#rawg)
   - [Flags API](#flags)
   - [Chart.js](#chart)
+  - [Web Translator API](#translation)
 - [Contributing](#contribute)
 - [License](#license)
 
@@ -436,7 +437,8 @@ A classic arcade game where you navigate Pacman through a maze, eating pellets a
 - Basic and custom power-ups 
 - Sound effects (SFX) for actions and events  
 - Score and high score system  
-- Leaderboard to track top players  
+- Leaderboard to track top players 
+- Multiple maps and difficulties 
 
 ---
 <div align="left">
@@ -547,14 +549,15 @@ A legendary puzzle game that challenges your speed, foresight, and spatial reaso
 [0, 1, 0]
     │
     ↓
-[0, 1, 0]
-[0, 1, 0] => 180°
-[1, 1, 0]
+[0, 0, 0]
+[1, 1, 1] => 180°
+[0, 0, 1]
     │
     ↓
-[0, 0, 0]
-[1, 1, 1] => 270°
-[0, 0, 1]
+[0, 1, 0]
+[0, 1, 0] => 270°
+[1, 1, 0]
+
     │
     ↓
 [1, 0, 0]
@@ -614,6 +617,52 @@ A legendary puzzle game that challenges your speed, foresight, and spatial reaso
 This section outlines the structure of all the databases used throughout this project.  
 Each table is described to provide clarity about its purpose and relationships.
 
+<img src="./pictures/db.png"></img>
+
+##### `Entity-Relationship Diagram`
+
+```
+┌───────────┐         ┌──────────────┐         ┌───────────┐
+│  datas    │───────▶│ game_platforms│◀──── ──│ platforms │
+│ (games)   │         └──────────────┘         └───────────┘
+└─────┬─────┘                 │
+      │                       │
+      ▼                       ▼
+┌───────────┐         ┌──────────────┐
+│  genres   │         │    awards    │
+└───────────┘         └──────┬───────┘
+                             │
+              ┌──────────────┼──────────────┐
+              ▼              ▼              ▼
+    ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
+    │award_games  │  │developer_   │  │publisher_   │
+    └─────────────┘  │awards       │  │awards       │
+                     └─────────────┘  └─────────────┝
+                           │                  │
+                           ▼                  ▼
+                    ┌─────────────┐     ┌─────────────┐
+                    │ developers  │     │ publishers  │
+                    └──────┬──────┘     └──────┬──────┘
+                           │                   │
+                           └─────────┬─────────┘
+                                     ▼
+                           ┌─────────────────┐
+                           │developer_       │
+                           │publisher        │
+                           └─────────────────┘
+                                    │
+                                    ▼
+                           ┌─────────────────┐
+                           │ developer_roles │
+                           └────────┬────────┘
+                                    │
+                                    ▼
+                              ┌───────────┐
+                              │   roles   │
+                              └───────────┘
+
+```
+
 <div id="giftcard"></div>
 
 ### 1. `giftcard`
@@ -640,45 +689,35 @@ CREATE TABLE `datas` (
   `game_pic` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `release_date` date DEFAULT NULL,
-  `genre` varchar(255) DEFAULT NULL,
-  `platforms` varchar(255) DEFAULT NULL,
   `prize` decimal(10,2) DEFAULT NULL,
-  `publisher_id` int(11) DEFAULT NULL,
-  `isDiscount` tinyint(1) NOT NULL DEFAULT 0,
-  `discountPerc` int(11) NOT NULL DEFAULT 0
-) 
+  `discountPerc` int(11) DEFAULT 0,
+  `available` tinyint(1) DEFAULT 1,
+  `genre_id` int(11) DEFAULT NULL
+)
 ```
 Stores awards associated with games or developers, including award name and year.
 ```sql
 CREATE TABLE `awards` (
   `award_id` int(11) NOT NULL,
-  `award_name` varchar(255) NOT NULL,
-  `award_year` int(11) DEFAULT NULL
-) 
+  `award_name` varchar(100) NOT NULL,
+  `award_year` int(11) NOT NULL,
+  `game_id` int(11) NOT NULL
+)
 
 ```
 Contains information about developers, including their personal/company details, role, start and end dates, and associated publisher.
 ```sql
 CREATE TABLE `developers` (
   `developer_id` int(11) NOT NULL,
-  `person_name` varchar(100) NOT NULL,
-  `company_name` varchar(100) NOT NULL,
-  `role` varchar(100) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date DEFAULT NULL,
-  `publisher_id` int(11) DEFAULT NULL
+  `person_name` varchar(100) NOT NULL
 ) 
 ```
 Stores information about publishers, including contact person, company, role, and tenure.
 ```sql
 CREATE TABLE `publishers` (
   `publisher_id` int(11) NOT NULL,
-  `person_name` varchar(100) NOT NULL,
-  `company_name` varchar(100) NOT NULL,
-  `role` varchar(100) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date DEFAULT NULL
-) 
+  `company_name` varchar(100) NOT NULL
+)
 ```
 <div id="users"></div>
 
@@ -691,7 +730,9 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `profile_picture` varchar(255) NOT NULL
+  `profile_picture` longblob DEFAULT NULL,
+  `remember_token` varchar(64) DEFAULT NULL,
+  `role` tinyint(4) DEFAULT NULL
 )
 
 ```
@@ -716,6 +757,112 @@ The Stock database is a Firebase Realtime Database that stores video game invent
 The Leaderboard database is a Firebase Realtime Database that stores player scores and achievements for video games. Each entry includes the player’s name, score, and other relevant details. This allows the game to display real-time rankings and track high scores efficiently.
 
 <img src="./pictures/leaderboard1.png" id="tetris"></img>
+
+```
+        ╔═══════════════════════════════════════════════════════════════════════════╗
+        ║                        FIREBASE RTDB ARCHITECTURE                         ║
+        ║                      Three Independent Instances                          ║
+        ╚═══════════════════════════════════════════════════════════════════════════╝
+
+                                            │
+                    ┌───────────────────────┼───────────────────────┐
+                    ▼                       ▼                       ▼
+            ╔══════════════════╗    ╔══════════════════╗    ╔══════════════════╗
+            ║    STOCK DB      ║    ║  LEADERBOARD DB  ║    ║   DELIVERY DB    ║
+            ║  stock-9bff5     ║    ║ leaderboard-20b10║    ║  delivery-96dc7  ║
+            ╚══════════════════╝    ╚══════════════════╝    ╚══════════════════╝
+                    │                       │                       │
+                    ▼                       ▼                       ▼
+            ╔══════════════════╗    ╔══════════════════╗    ╔══════════════════╗
+            ║    /games        ║    ║  /leaderboard    ║    ║    /orders       ║
+            ╚══════════════════╝    ╚══════════════════╝    ╚══════════════════╝
+                    │                       │                       │
+                    ▼                       ▼                       ▼
+            ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+            │  Game ID: "0"   │    │  -Ojz6NRt...    │    │  -OigLXPte...   │
+            │  └── stock: 500 │    │  ├── name: Tommy│    │  ├── address    │
+            ├─────────────────┤    │  └── score: 50  │    │  ├── card       │
+            │  Game ID: "1"   │    ├─────────────────┤    │  ├── cart[]     │
+            │  └── null       │    │  -OjzMWAt...    │    │  ├── paypal     │
+            ├─────────────────┤    │  ├── name: Gabby│    │  └── status     │
+            │  Game ID: "2"   │    │  └── score: 60  │    └─────────────────┘
+            │  └── null       │    └─────────────────┘
+            ├─────────────────┤
+            │  ... through    │
+            │  Game ID: "11"  │
+            │  └── null       │
+            └─────────────────┘
+
+        ╔═══════════════════════════════════════════════════════════════════════════╗
+        ║                           ORDER DETAIL EXPANDED                           ║
+        ╚═══════════════════════════════════════════════════════════════════════════╝
+
+        ┌───────────────────────────────────────────────────────────────────────────┐
+        │  ORDER: -OigLXPte2tXGppCZxr_                                              │
+        ├───────────────────────────────────────────────────────────────────────────┤
+        │  ▼ ADDRESS                    ▼ CARD                     ▼ CART           │
+        │  ├── city: ""                 ├── email: ""              └── [0]          │
+        │  ├── country: "HU"            └── name: ""                   └── gameRef  │
+        │  ├── full_name: ""                                          ├── id: 2     │
+        │  ├── phone: ""                                              ├── name:     │
+        │  ├── postal: ""                                             │    "GTA V"  │
+        │  └── street: ""                                             ├── prize:    │
+        │                                                             │    29.99    │
+        │  ▼ PAYMENT                    ▼ STATUS                      ├── quantity: │
+        │  ├── currency: "USD"          └── "pending"                 │    1        │
+        │  ├── delivery: "digital"                                    └── game_pic  │
+        │  ├── payment: "paypal"                                         │  ...     │
+        │  ├── shipping: 0                                               └──────────┤
+        │  ├── subtotal: 29.99                                                      │
+        │  └── total_prize: 29.99        ▼ PAYPAL                                   │
+        │                                ├── email: "vt20050827@gmail.com"          │
+        │                                └── number: "53635635"                     │
+        └───────────────────────────────────────────────────────────────────────────┘
+
+        ╔═══════════════════════════════════════════════════════════════════════════╗
+        ║                           SECURITY STATUS                                 ║
+        ╚═══════════════════════════════════════════════════════════════════════════╝
+
+        ┌───────────────────────────────────────────────────────────────────────────┐                      
+        │                                                                           │
+        │  ┌─────────────────────────────────────────────────────────────────────┐  │
+        │  │  ALL THREE DATABASES ARE PUBLICLY ACCESSIBLE                        │  │
+        │  │                                                                     │  │
+        │  │  RISKS:                        │  ACTION REQUIRED:                  │  │
+        │  │  ┌─────────────────────────┐   │  ┌─────────────────────────────┐   │  │ 
+        │  │  │ • Data theft            │   │  │ 1. Add authentication       │   │  │ 
+        │  │  │ • Unauthorized edits    │   │  │ 2. Implement security rules │   │  │ 
+        │  │  │ • Data deletion         │   │  │ 3. Validate user permissions│   │  │ 
+        │  │  │ • Privacy breach        │   │  │ 4. Encrypt sensitive data   │   │  │ 
+        │  │  └─────────────────────────┘   │  └─────────────────────────────┘   │  │ 
+        │  └─────────────────────────────────────────────────────────────────────┘  │
+        └───────────────────────────────────────────────────────────────────────────┘
+
+        ╔═══════════════════════════════════════════════════════════════════════════╗
+        ║                           DATA RELATIONSHIPS                              ║
+        ╚═══════════════════════════════════════════════════════════════════════════╝
+
+        ┌───────────────────────────────────────────────────────────────────────────┐
+        │                                                                           │
+        │    STOCK DB                    LEADERBOARD DB              DELIVERY DB    │
+        │    ┌──────┐                    ┌──────────┐               ┌──────────┐    │
+        │    │games │                    │scores    │               │ orders   │    │
+        │    └──┬───┘                    └───┬──────┘               └───┬──────┘    │
+        │       │                            │                          │           │
+        │       │ (No direct                 │ (No direct               │           │
+        │       │  connection)               │  connection)             │           │
+        │       │                            │                          │           │
+        │       ▼                            ▼                          ▼           │
+        │    ┌─────────────────────────────────────────────────────────────────┐    │
+        │    │                    INDEPENDENT DATABASES                        │    │
+        │    │            Each serves a different business function            │    │
+        │    └─────────────────────────────────────────────────────────────────┘    │
+        │                                                                           │
+        │   • Game IDs in DELIVERY could reference STOCK inventory                  │
+        │   • User scores in LEADERBOARD could link to DELIVERY customers           │
+        │                                                                           │
+        └───────────────────────────────────────────────────────────────────────────┘
+```
 
 <br>
 
@@ -946,7 +1093,64 @@ function createChart() {
 
 **Use Cases:**
 - Products Data Visualization
+
 ---
+### <img height="50" style="display:inline; align-items:center;" align="center" id="translation" src="./pictures/translator.png"></img> Web Translator API
+Translate text directly in the browser using the built-in Web Translator API.
+
+**Create Translator Instance:**
+```javascript
+Translator.create(options)
+```
+
+**Options:**
+```js
+{
+  sourceLanguage: "en",     // Source language code
+  targetLanguage: "es"      // Target language code
+}
+```
+
+**Example Request:**
+```javascript
+// Create translator (English → Hungarian)
+const translator = await Translator.create({
+  sourceLanguage: "en",
+  targetLanguage: "hu"
+});
+
+// Translate text
+const result = await translator.translate("Hello world");
+
+console.log(result); // "Helló világ"
+```
+
+**Example Implementation:**
+```javascript
+var selected = document.querySelector(".selected-lang");
+
+var langLinks = document.querySelectorAll(".lang-menu a");
+
+for (var i = 0; i < langLinks.length; i++) {
+  langLinks[i].addEventListener("click", function (e) {
+    e.preventDefault();
+    var targetLang = this.className;
+
+    selected.textContent = this.textContent;
+
+    selected.style.setProperty("--flag", "url(" + this.dataset.flag + ")");
+    
+    document.querySelector(".lang-menu ul").style.display = "none";
+
+    translateContent(targetLang);
+  });
+}
+
+```
+
+---
+
+
 
 <div id="contribute"></div>
 

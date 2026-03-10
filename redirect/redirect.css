@@ -1,5 +1,5 @@
 :root {
-    --bg: #1e1e1e;
+    --bg: #272626;
     --cyan: #00f7ff;
     --cyan-soft: #37e6ec73;
     --gray: #d0d0d0;
@@ -33,7 +33,6 @@ body {
 .particle {
     position: absolute;
     border-radius: 50%;
-    background: radial-gradient(circle, var(--cyan) 0%, transparent 80%);
     filter: blur(55px);
     opacity: 0.08;
     animation: float 10s infinite ease-in-out;
@@ -90,7 +89,6 @@ body {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);
     opacity: 0.15;
     filter: blur(40px);
     animation: pulse 2.2s infinite ease-in-out;
@@ -105,7 +103,6 @@ body {
     width: 110px;
     height: 110px;
     object-fit: contain;
-    filter: drop-shadow(0 0 20px rgba(0, 247, 255, 0.4));
     animation: bounce 2.2s infinite ease-in-out;
 }
 
