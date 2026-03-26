@@ -51,7 +51,6 @@ elseif (isset($_COOKIE['remember_me'])) {
 
 
 
-
 $genres = json_encode($genreStats);
 $gift_img = $Img;
 

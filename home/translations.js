@@ -1,37 +1,42 @@
-let translatorCache = {};
 let currentLang = "en";
+const translationsCache = {};
+const selected = document.querySelector(".selected-lang");
+const elements = document.querySelectorAll("[data-translate]");
 
 function translateContent(targetLang) {
   if (currentLang === targetLang) return;
 
-  const elements = document.querySelectorAll("[data-translate]");
   const key = `${currentLang}_${targetLang}`;
 
-  const translateElements = (translation_key) => {
+  if (translationsCache[key]) {
+    // Apply cached translations immediately
+    elements.forEach(el => el.textContent = translationsCache[key][el.dataset.original]);
+    currentLang = targetLang;
+  } else {
+    // Prepare original text if missing
     elements.forEach(el => {
       if (!el.dataset.original) el.dataset.original = el.textContent;
-      translator.translate(el.dataset.original)
-        .then(t => el.textContent = t)
-        .catch(err => console.error(err));
     });
-    currentLang = targetLang;
-  };
 
-  if (translatorCache[key]) {
-    translateElements(translatorCache[key]);
-  } else {
+    // Create translator and translate all elements
     Translator.create({ sourceLanguage: currentLang, targetLanguage: targetLang })
-      .then(translation_key => {
-        translatorCache[key] = translation_key;
-        translateElements(translation_key);
+      .then(translator => {
+        translationsCache[key] = {};
+        elements.forEach(el => {
+          translator.translate(el.dataset.original)
+            .then(translated => {
+              translationsCache[key][el.dataset.original] = translated;
+              el.textContent = translated;
+            })
+            .catch(err => console.error(err));
+        });
+        currentLang = targetLang;
       })
       .catch(err => console.error("Translation failed:", err));
   }
 }
 
 // Language switcher
-const selected = document.querySelector(".selected-lang");
-
 document.querySelectorAll(".lang-menu a").forEach(link => {
   link.addEventListener("click", e => {
     e.preventDefault();
