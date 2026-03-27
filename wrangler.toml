@@ -1,3 +1,12 @@
+name = "tetris-worker"                # Name of your worker
+compatibility_date = "2026-03-27"    # Today's date or any date you want
+
+type = "javascript"                   # or "webpack" if using bundler
+
+[site]
+bucket = "./tetris/dist"              # Where Vite outputs built files
+entry-point = "workers-site"          # Required for Worker Sites
+
 [build]
-command = "npm run build"  # or whatever your build command is
-cwd = "./tetris"
+command = "npm install && npm run build"  # Build command
+cwd = "./tetris"                           # Run build in tetris/ folder
