@@ -1,0 +1,3 @@
+[build]
+command = "npm run build"  # or whatever your build command is
+cwd = "./tetris"
