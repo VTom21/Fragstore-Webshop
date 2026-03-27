@@ -8,45 +8,45 @@ $username = 'Guest';
 $image = null;
 $role = null;
 
+// Default language/region/time
 $language = $_COOKIE['language'] ?? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 $region   = $_COOKIE['region'] ?? 'US';
-$time = $_COOKIE['time'] ?? '';
+$time     = $_COOKIE['time'] ?? '';
 
-
-
-// 1. Try session first
-if (isset($_SESSION['user_id'])) {
+// Check session first
+if (!empty($_SESSION['user_id'])) {
     $stmt = $pdo->prepare("SELECT id, username, profile_picture, role FROM users WHERE id = ? LIMIT 1");
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
+}
 
-    if ($user) {
-        $username = $user['username'];
-        $image = $user['profile_picture'];
-        $role = $user['role'];
-    }
-} 
-// 2. If session not set, try remember_me cookie
-elseif (isset($_COOKIE['remember_me'])) {
+// If session missing, try remember_me
+elseif (!empty($_COOKIE['remember_me'])) {
     $token = $_COOKIE['remember_me'];
-    $stmt = $pdo->prepare("SELECT id, username, profile_picture FROM users WHERE remember_token = ? LIMIT 1");
+    $stmt = $pdo->prepare("SELECT id, username, profile_picture, role FROM users WHERE remember_token = ? LIMIT 1");
     $stmt->execute([$token]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        $username = $user['username'];
-        $image = $user['profile_picture'];
-
         // Rebuild session
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
+        $_SESSION['role'] = $user['role'];
+
+        // Optional: refresh remember_me cookie for another 30 days
+        setcookie('remember_me', $token, time() + (86400 * 365), '/', '', true, true);
     } else {
-        // Invalid token, delete cookie
+        // Invalid token: remove cookie
         setcookie('remember_me', '', time() - 3600, '/', '', true, true);
     }
 }
 
-
+// Assign values if user exists
+if (!empty($user)) {
+    $username = $user['username'];
+    $image = $user['profile_picture'] ?? null;
+    $role  = $user['role'] ?? null;
+}
 
 
 
