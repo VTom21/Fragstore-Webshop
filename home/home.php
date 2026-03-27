@@ -34,7 +34,7 @@ elseif (!empty($_COOKIE['remember_me'])) {
         $_SESSION['role'] = $user['role'];
 
         // Optional: refresh remember_me cookie for another 30 days
-        setcookie('remember_me', $token, time() + (86400 * 30), '/', '', true, true);
+        setcookie('remember_me', $token, time() + (86400 * 365), '/', '', true, true);
     } else {
         // Invalid token: remove cookie
         setcookie('remember_me', '', time() - 3600, '/', '', true, true);
