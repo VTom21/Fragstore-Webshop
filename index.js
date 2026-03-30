@@ -1,6 +1,6 @@
 var app = angular.module("videogameApp", []);
 
-app.controller("GameController", function ($scope, $http, $window, $location) {
+app.controller("GameController", function ($scope, $http, $window, $location, $filter) {
   //boolean values to check prize & name sorting
 
   $scope.isPrizeAscChecked = false;
@@ -143,6 +143,10 @@ app.controller("GameController", function ($scope, $http, $window, $location) {
     window.location.href =
       "http://localhost:3000/Content/Content.php?name=" +
       encodeURIComponent(name);
+  };
+
+  $scope.goHome = function () {
+    $window.location.href = "../home/home.php";
   };
 
   //puts every platform into the platforms array - stores dictionary values
@@ -450,6 +454,7 @@ $scope.applyAdvancedFilters = function () {
     filtered = filtered.filter(game =>
       game.genre && selectedGenres.some(g => game.genre.toLowerCase().includes(g))
     );
+    $scope.totalPages
   }
 
   let selectedPlatforms = $scope.platforms
@@ -506,11 +511,12 @@ $scope.applyAdvancedFilters = function () {
 
   // Pagination
   $scope.totalPages = function () {
-    return Math.ceil($scope.filteredGames.length / $scope.itemsPerPage);
+    var list = $filter('filter')($scope.filteredGames, { name: $scope.searchText});
+    return Math.ceil(list.length / $scope.itemsPerPage);
   };
 
   // Sets current page
-  $scope.$watch("searchText", function () {
+  $scope.$watch(['searchText', 'filteredGames'], function (newVals, oldVals) {
     $scope.currentPage = 1;
   });
 
