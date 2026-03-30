@@ -15,37 +15,41 @@ $time     = $_COOKIE['time'] ?? '';
 
 // Check session first
 if (!empty($_SESSION['user_id'])) {
-    $stmt = $pdo->prepare("SELECT id, username, profile_picture, role FROM users WHERE id = ? LIMIT 1");
-    $stmt->execute([$_SESSION['user_id']]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+  $stmt = $pdo->prepare("SELECT id, username, profile_picture, role FROM users WHERE id = ? LIMIT 1");
+  $stmt->execute([$_SESSION['user_id']]);
+  $fetchedUser = $stmt->fetch(PDO::FETCH_ASSOC);
+  if ($fetchedUser && is_array($fetchedUser)) {
+      $user = $fetchedUser;
+  }
 }
 
 // If session missing, try remember_me
 elseif (!empty($_COOKIE['remember_me'])) {
-    $token = $_COOKIE['remember_me'];
-    $stmt = $pdo->prepare("SELECT id, username, profile_picture, role FROM users WHERE remember_token = ? LIMIT 1");
-    $stmt->execute([$token]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+  $token = $_COOKIE['remember_me'];
+  $stmt = $pdo->prepare("SELECT id, username, profile_picture, role FROM users WHERE remember_token = ? LIMIT 1");
+  $stmt->execute([$token]);
+  $fetchedUser = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user) {
-        // Rebuild session
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['role'] = $user['role'];
+  if ($fetchedUser && is_array($fetchedUser)) {
+      $user = $fetchedUser;
+      // Rebuild session
+      $_SESSION['user_id'] = $user['id'];
+      $_SESSION['username'] = $user['username'];
+      $_SESSION['role'] = $user['role'];
 
-        // Optional: refresh remember_me cookie for another 30 days
-        setcookie('remember_me', $token, time() + (86400 * 365), '/', '', true, true);
-    } else {
-        // Invalid token: remove cookie
-        setcookie('remember_me', '', time() - 3600, '/', '', true, true);
-    }
+      // Optional: refresh remember_me cookie for another 30 days
+      setcookie('remember_me', $token, time() + (86400 * 365), '/', '', true, true);
+  } else {
+      // Invalid token: remove cookie
+      setcookie('remember_me', '', time() - 3600, '/', '', true, true);
+  }
 }
 
 // Assign values if user exists
-if (!empty($user)) {
-    $username = $user['username'];
-    $image = $user['profile_picture'] ?? null;
-    $role  = $user['role'] ?? null;
+if (!empty($user) && is_array($user)) {
+  $username = $user['username'];
+  $image = $user['profile_picture'] ?? null;
+  $role  = $user['role'] ?? null;
 }
 
 
