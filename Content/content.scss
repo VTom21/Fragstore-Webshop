@@ -273,7 +273,31 @@ body {
     }
 }
 
+@media (max-width: 1600px) {
+    .description-section p{
+        font-size: 23px;
+    }
+    .platform-tags{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+}
 
+@media(max-width: 1100px){
+        .platform-tags{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+    .platform-tag{
+        font-size: 22px !important;
+    }
+
+    .info-label, .info-value, .addition-name, .achievement-name, .achievement-desc{
+        font-size: 25px !important;
+    }
+}
 
 // Utility classes
 .game-title {

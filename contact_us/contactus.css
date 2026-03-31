@@ -71,7 +71,7 @@ header {
 
 .navbar a {
   font-weight: bold;
-  padding: 5px 0;
+  padding: 5px 7px;
   position: relative;
   color: var(--text-muted);
   transition: none !important;
@@ -115,6 +115,23 @@ header {
     background-color: var(--header-border);
     transition: none !important;
 }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+
+    span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+
+    }
+  }
 
 #logout{
   display: none;
@@ -251,5 +268,53 @@ main {
     .contactbox {
         padding: 1.5rem;
         width: 90%;
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .contactbox {
+        margin: 12px 12px;
+    }
+
+    .navbar a {
+        display: none;
+    }
+
+    .navbar .nav-links a {
+        display: block; 
+    }
+
+    .navbar {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    /* show hamburger */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        z-index: 1000;
+    }
+
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 70px;      
+        right: 0;
+        background-color: var(--footer-bg);
+        width: 200px;
+        padding: 10px;
+        border-radius: 8px;
+        z-index: 999;
+        gap: 5px;
+    }
+
+    .nav-links.open {
+        display: flex;
     }
 }

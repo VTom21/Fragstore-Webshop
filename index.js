@@ -310,38 +310,46 @@ $scope.games.forEach(function (game) {
 
   //function for creating pie chart
   //uses Chart.js API
-  function createChart() {
-    var xValues = ["Games", "Genres", "Platforms"];
-    var yValues = [
-      $scope.numberOfProducts,
-      $scope.numberOfGenres,
-      $scope.numberOfPlatforms,
-    ];
-    var barColors = ["#b91d47", "#00aba9", "#2b5797"];
 
-    new Chart("myChart", {
-      type: "pie",
-      data: {
-        labels: xValues,
-        datasets: [
-          {
-            backgroundColor: barColors,
-            data: yValues,
-          },
-        ],
+
+  function createChart() {
+  var xValues = ["Games", "Genres", "Platforms"];
+  var yValues = [
+    $scope.numberOfProducts,
+    $scope.numberOfGenres,
+    $scope.numberOfPlatforms,
+  ];
+  var barColors = ["#b91d47", "#00aba9", "#2b5797"];
+
+  new Chart("myChart", {
+    type: "pie",
+    data: {
+      labels: xValues,
+      datasets: [
+        {
+          backgroundColor: barColors,
+          data: yValues,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: {              // 👈 in v2, legend is NOT inside plugins
+        labels: {
+          fontSize: 40,      // 👈 v2 uses fontSize, NOT font: { size }
+          fontColor: "#ffffff"
+        }
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          title: {
-            display: true,
-            text: "Products Info",
-          },
+      plugins: {
+        title: {
+          display: true,
+          text: "Products Info",
         },
       },
-    });
-  }
+    },
+  });
+}
 
 $scope.Discount = function(isDiscount) {
   $scope.discountOnly = isDiscount;

@@ -13,12 +13,20 @@
 </head>
 <header id="header">
     <img id="logo" src="../icons/array.png"></img>
-    <div class="navbar">
-      <a href="/home/home.php#game" data-i18n="games">Games</a>
-      <a href="/home/home.php#giftcard" data-i18n="giftcards">Gift Cards</a>
-      <a href="/home/home.php#genre" data-i18n="genres">Genres</a>
-      <a href="/home/home.php#intro" data-i18n="about_us">About Us</a>
-    </div>
+    
+<div class="navbar">
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="/home/home.php#game" data-i18n="games">Games</a>
+    <a href="/home/home.php#giftcard" data-i18n="giftcards">Gift Cards</a>
+    <a href="/home/home.php#genre" data-i18n="genres">Genres</a>
+    <a href="/home/home.php#intro" data-i18n="about_us">About Us</a>
+  </div>
+</div>
 
     <div class="progress-bar">
       <div class="filled">

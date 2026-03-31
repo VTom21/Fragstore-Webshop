@@ -1035,6 +1035,192 @@ input[type="range"]::-webkit-slider-thumb {
   .hamburger-overlay {
     display: none;
   }
+  .game-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-content: center;
+  }
+
+  .card{
+    width: 50vw;
+  }
+
+  .card-content h2, .card-content p, .price-box .price, .buy_btn, .shop-btn, .Close-btn, .modalchart h2{
+    font-size: 27px;
+  }
+
+  .modalchart{
+    width: 100%;
+  }
+
+#myChart {
+  width: 100% !important;
+  max-width: 700px !important;
+  height: 1350px !important;
+
+  display: block;
+  margin: 0 auto; /* centers horizontally */
+  ont-size: 30px;
+
+}
+
+.ng-binding{
+  font-size: 30px;
+}
+
+#currency-select option{
+  font-size: 18px !important;
+}
+
+.filter-ranking,
+  .shop-cart,
+  .wish-btn {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
+    justify-self: center;
+    font-size: 26px;
+    background: none;
+    border: none;
+    color: #37e6ec;
+    cursor: pointer;
+    z-index: 0;
+    position: absolute;
+    right:100px;
+  }
+
+  /* Hamburger menu */
+  .hamburger-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 98.4vw;
+    height: 100vh;
+    background: #0b0f1a;
+    border-left: 1px solid #37e6ec44;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+    transition: right 0.3s ease;
+    z-index: 2000;
+    justify-content: center; /* vertical centering */
+    align-items: stretch;    /* buttons full width */
+  }
+
+  .hamburger-menu.active {
+    right: 0;
+  }
+
+  /* Menu buttons */
+  .hamburger-menu button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 6px;
+  }
+
+  .hamburger-menu button:hover {
+    background: #37e6ec22;
+  }
+
+  /* Badge */
+  .hamburger-menu .badge {
+    background: crimson;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 12px;
+    margin-left: 6px;
+  }
+
+  /* Overlay */
+  .hamburger-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+  }
+
+  /* Modal adjustments */
+  .modal {
+    width: 80%;
+    padding: 16px;
+    max-height: 75vh;
+  }
+
+  .wishlist-sidebar,
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0; /* always aligned to screen edge */
+  width: 100vw; /* can be changed for mobile with media query */
+  height: 100%;
+  background: #111;
+  color: #fff;
+  box-shadow: -3px 0 10px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  z-index: 2000;
+  
+  transform: translateX(100%); /* hidden by default */
+  transition: transform 0.35s ease;
+}
+
+.cart-content div, .cart-header h2, .wishlist-header h2, .wishlist-content div{
+  font-size: 30px;
+}
+
+.label_p{
+  font-size: 21px !important;
+}
+
+.filter-group strong, .filter-title{
+  font-size: 24px;
+}
+
+.hamburger-menu button{
+  font-size: 30px;
+}
+
+.modal button{
+  font-size: 24px;
+  margin:12px 12px;
+}
+
+.prev, .next, #pagination_count{
+  font-size: 24px;
+}
+
+.footer a{
+  font-size: 22px;
+}
+
+.cart-item{
+  width: 80vw;
+}
+
+.cart-item img, .wishlist-item img{
+  width: 300px;
+  height: 300px;
+}
+
+.qty-controls{
+  margin-left: 90px;
+}
+
+.redirect_btn{
+  font-size: 24px;
+}
 }
 
 /* -----------------------------

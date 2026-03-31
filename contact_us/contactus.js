@@ -41,3 +41,19 @@ function sendMail(e) {
             alert("Failed to send Email. Please try again later.");
         });
 }
+
+function toggleMenu() {
+  const navLinks = document.getElementById('navLinks');
+  const hamburger = document.querySelector('.hamburger');
+  
+  navLinks.classList.toggle('open');
+  hamburger.classList.toggle('active'); 
+}
+
+// Close menu when a link is clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+    document.querySelector('.hamburger').classList.remove('active');
+  });
+});
