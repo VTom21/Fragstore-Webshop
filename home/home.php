@@ -8,48 +8,42 @@ $username = 'Guest';
 $image = null;
 $role = null;
 
-// Default language/region/time
-$language = $_COOKIE['language'] ?? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-$region   = $_COOKIE['region'] ?? 'US';
-$time     = $_COOKIE['time'] ?? '';
+$language = $_COOKIE['language'] ?? '';
+$region   = $_COOKIE['region'] ?? '';
+$time = $_COOKIE['time'] ?? '';
 
-// Check session first
-if (!empty($_SESSION['user_id'])) {
-  $stmt = $pdo->prepare("SELECT id, username, profile_picture, role FROM users WHERE id = ? LIMIT 1");
-  $stmt->execute([$_SESSION['user_id']]);
-  $fetchedUser = $stmt->fetch(PDO::FETCH_ASSOC);
-  if ($fetchedUser && is_array($fetchedUser)) {
-      $user = $fetchedUser;
-  }
-}
 
-// If session missing, try remember_me
-elseif (!empty($_COOKIE['remember_me'])) {
-  $token = $_COOKIE['remember_me'];
-  $stmt = $pdo->prepare("SELECT id, username, profile_picture, role FROM users WHERE remember_token = ? LIMIT 1");
-  $stmt->execute([$token]);
-  $fetchedUser = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  if ($fetchedUser && is_array($fetchedUser)) {
-      $user = $fetchedUser;
-      // Rebuild session
-      $_SESSION['user_id'] = $user['id'];
-      $_SESSION['username'] = $user['username'];
-      $_SESSION['role'] = $user['role'];
+// 1. Try session first
+if (isset($_SESSION['user_id'])) {
+    $stmt = $pdo->prepare("SELECT id, username, profile_picture, role FROM users WHERE id = ? LIMIT 1");
+    $stmt->execute([$_SESSION['user_id']]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-      // Optional: refresh remember_me cookie for another 30 days
-      setcookie('remember_me', $token, time() + (86400 * 365), '/', '', true, true);
-  } else {
-      // Invalid token: remove cookie
-      setcookie('remember_me', '', time() - 3600, '/', '', true, true);
-  }
-}
+    if ($user) {
+        $username = $user['username'];
+        $image = $user['profile_picture'];
+        $role = $user['role'];
+    }
+} 
+// 2. If session not set, try remember_me cookie
+elseif (isset($_COOKIE['remember_me'])) {
+    $token = $_COOKIE['remember_me'];
+    $stmt = $pdo->prepare("SELECT id, username, profile_picture FROM users WHERE remember_token = ? LIMIT 1");
+    $stmt->execute([$token]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Assign values if user exists
-if (!empty($user) && is_array($user)) {
-  $username = $user['username'];
-  $image = $user['profile_picture'] ?? null;
-  $role  = $user['role'] ?? null;
+    if ($user) {
+        $username = $user['username'];
+        $image = $user['profile_picture'];
+
+        // Rebuild session
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+    } else {
+        // Invalid token, delete cookie
+        setcookie('remember_me', '', time() - 3600, '/', '', true, true);
+    }
 }
 
 
@@ -113,6 +107,7 @@ $limit = 12;
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -191,13 +186,19 @@ $limit = 12;
 <!-- Dashboard sidebar -->
 <div class="dashboard" id="dashboard">
   <button class="close-btn" id="closeModal">&times;</button>
-  <h2 data-translate><?php echo $role == 1 ? "User" : "Admin"?> Dashboard</h2>
+  <h2 data-i18n><?php echo $role == 1 ? "User" : "Admin"?> Dashboard</h2>
   <h4><?= htmlspecialchars($username) ?></h4>
 
   <label class="pfp-frame">
-    <img
-      id="pfpPreview"
-      src="<?= $image ? 'data:image/jpeg;base64,' . base64_encode($image) : '../pictures/default.png' ?>">
+    <?php
+    $imgSrc = '../pictures/default.png';
+    if ($image) {
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+        $mime = $finfo->buffer($image);
+        $imgSrc = "data:{$mime};base64," . base64_encode($image);
+    }
+    ?>
+    <img id="pfpPreview" src="<?= $imgSrc ?>">
     <input type="file" id="pfpInput" name="profile_picture" hidden />
   </label>
   <div class="datas">

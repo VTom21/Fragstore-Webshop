@@ -1,7 +1,6 @@
 <?php
 session_start();
 require '../config.php';
-include '../test.php';
 
 header('Content-Type: application/json');
 
@@ -19,19 +18,6 @@ $file = $_FILES['profile_picture'];
 
 if ($file['error'] !== UPLOAD_ERR_OK) {
     echo json_encode(['success' => false, 'error' => 'Upload error']);
-    exit;
-}
-
-$allowed = ['image/jpeg', 'image/png', 'image/webp'];
-$mime = mime_content_type($file['tmp_name']);
-
-if (!in_array($mime, $allowed)) {
-    echo $twig->render('error.twig', [
-        'title' => 'Unexpected Error',
-        'message' => 'Something went wrong.',
-        'details' => $e->getMessage(),
-        'redirectUrl' => 'home.php'
-    ]);
     exit;
 }
 
