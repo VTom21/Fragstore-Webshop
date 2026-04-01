@@ -2,6 +2,7 @@ let currentLang = "en";
 const translationsCache = {};
 const selected = document.querySelector(".selected-lang");
 const elements = document.querySelectorAll("[data-translate]");
+const events = ["click", "touchstart"];
 
 // Main translate function
 function translateContent(targetLang) {
@@ -40,14 +41,17 @@ function translateContent(targetLang) {
 
 // Language switcher
 document.querySelectorAll(".lang-menu a").forEach(link => {
-  link.addEventListener("click", e => {
-    e.preventDefault();
-    const targetLang = link.className;
+  events.forEach(eventType => {
+    link.addEventListener(eventType, e => {
+      e.preventDefault();
 
-    selected.textContent = link.textContent;
-    selected.style.setProperty("--flag", `url(${link.dataset.flag})`);
-    document.querySelector(".lang-menu ul").style.display = "none";
+      const targetLang = link.className;
 
-    translateContent(targetLang);
+      selected.textContent = link.textContent;
+      selected.style.setProperty("--flag", `url(${link.dataset.flag})`);
+      document.querySelector(".lang-menu ul").style.display = "none";
+
+      translateContent(targetLang);
+    });
   });
 });

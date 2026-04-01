@@ -511,6 +511,10 @@ display: none !important;
         position: relative;
         top: 0;
     }
+    .stepper{
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
 
 @media (max-width: 768px) {

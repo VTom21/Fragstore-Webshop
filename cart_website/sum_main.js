@@ -22,6 +22,8 @@ const paymentRadios = document.querySelectorAll('input[name="payment"]');
 const cardSection = document.getElementById('card-section');
 const paypalSection = document.querySelector('.paypal-section');
 
+const inputs = ["change", "touchstart"];
+
 function isEmpty(value) {
     return value === null || value === undefined || value.toString().trim() === '';
 }
@@ -159,8 +161,17 @@ function updatePaymentSections() {
 }
 
 // Event listeners
-deliveryRadios.forEach(radio => radio.addEventListener('change', updateShipping));
-paymentRadios.forEach(radio => radio.addEventListener('change', updatePaymentSections));
+deliveryRadios.forEach(radio => {
+    inputs.forEach(evt => {
+        radio.addEventListener(evt, updateShipping);
+    });
+});
+
+paymentRadios.forEach(radio => {
+    inputs.forEach(evt => {
+        radio.addEventListener(evt, updatePaymentSections);
+    });
+});
 
 // Initial call on page load
 updateShipping();

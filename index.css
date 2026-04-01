@@ -1153,9 +1153,15 @@ input[type="range"]::-webkit-slider-thumb {
 
   /* Modal adjustments */
   .modal {
-    width: 80%;
+    width: 100%;
     padding: 16px;
-    max-height: 75vh;
+    max-height: 100vh;
+    height:60%;
+  }
+
+  .prize_range{
+    justify-content: center;
+    padding-left: 0 !important;
   }
 
   .wishlist-sidebar,
@@ -1221,6 +1227,7 @@ input[type="range"]::-webkit-slider-thumb {
 .redirect_btn{
   font-size: 24px;
 }
+
 }
 
 /* -----------------------------

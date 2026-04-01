@@ -318,7 +318,7 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
                 <div class="filter-group special1">
                     <strong style="width: 50%; margin: auto;">Prize Range:</strong>
                     <div class="checkbox-list" id="Range">
-                        <label class="custom-checkbox">
+                        <label class="custom-checkbox prize_range">
                             <input id="range2" type="text" ng-model="parameter1" ng-change="PrizeRange()"
                                 class="parameter1" placeholder="Min" /> -
                             <input id="range2" type="text" ng-model="parameter2" ng-change="PrizeRange()"
