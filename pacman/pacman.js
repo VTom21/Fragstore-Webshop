@@ -670,10 +670,6 @@ function Controls() {
           document.getElementById("scoreForm").submit();
         }
 
-        // wait 3 seconds, then reload
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
       }
       Reset();
     }

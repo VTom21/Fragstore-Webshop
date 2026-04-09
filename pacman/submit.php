@@ -10,6 +10,8 @@ $url = "https://leaderboard-20b10-default-rtdb.europe-west1.firebasedatabase.app
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 $response = curl_exec($ch);
 
 
@@ -32,6 +34,8 @@ if ($userKey !== null) {
     if ($score > $currentScore) {
         $updateData = json_encode(["score" => $score]);
         $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($ch, CURLOPT_URL, "https://leaderboard-20b10-default-rtdb.europe-west1.firebasedatabase.app/leaderboard/$userKey.json");
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH"); // PATCH updates existing node
         curl_setopt($ch, CURLOPT_POSTFIELDS, $updateData);
@@ -50,6 +54,8 @@ if ($userKey !== null) {
     ]);
 
     $ch = curl_init();
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $newData);
@@ -57,6 +63,13 @@ if ($userKey !== null) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_exec($ch);
     $usermes = "New user added!";
+}
+if ($response === false) {
+    die("Curl error: " . curl_error($ch));
+}
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+if ($httpCode !== 200) {
+    die("HTTP error: " . $httpCode . " Response: " . $response);
 }
 ?>
 

@@ -370,7 +370,7 @@ $currencies = isset($data["rates"]) ? array_keys($data["rates"]) : [];
 
     <div class="game-container">
         <div class="card"
-            ng-repeat="game in filteredGames | filter:{name: searchText} | limitTo:itemsPerPage:((currentPage - 1) * itemsPerPage)">
+            ng-repeat="game in filteredGames | limitTo:itemsPerPage:((currentPage - 1) * itemsPerPage)">
             <img ng-src="{{game.game_pic}}" alt="{{game.name}}" ng-click="easter_egg(game)">
             <p class="discount-badge" ng-if="game.discountPerc > 0">
                 {{ (((game.prize - game.discountedPrize) / game.prize * 100)) * (-1) | number:0 }}%

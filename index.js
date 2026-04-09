@@ -132,7 +132,7 @@ app.controller("GameController", function ($scope, $http, $window, $location, $f
   $scope.checkout = function () {
     $scope.cart_data = encodeURIComponent(JSON.stringify($scope.cartItems));
     window.location.href =
-      "http://localhost:3000/cart_website/sum_main.php?cart=" +
+      "../cart_website/sum_main.php?cart=" +
       $scope.cart_data;
   };
 
@@ -141,7 +141,7 @@ app.controller("GameController", function ($scope, $http, $window, $location, $f
       return;
     }
     window.location.href =
-      "http://localhost:3000/Content/Content.php?name=" +
+      "../Content/Content.php?name=" +
       encodeURIComponent(name);
   };
 
@@ -180,6 +180,10 @@ $scope.games.forEach(function (game) {
     }
   });
 });
+
+  if ($scope.searchText) {
+    filtered = $filter('filter')(filtered, $scope.searchText);
+  }
 
 
       // now put them in $scope.platforms for ng-repeat
@@ -335,9 +339,9 @@ $scope.games.forEach(function (game) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      legend: {              // 👈 in v2, legend is NOT inside plugins
+      legend: { 
         labels: {
-          fontSize: 40,      // 👈 v2 uses fontSize, NOT font: { size }
+          fontSize: 26, 
           fontColor: "#ffffff"
         }
       },
@@ -455,6 +459,13 @@ $scope.applyAdvancedFilters = function () {
   if (!$scope.games || !$scope.uniqueGenres || !$scope.platforms) return;
   let filtered = $scope.games.filter(g => g.available == 1);
 
+  if ($scope.searchText) {
+    let search = $scope.searchText.toLowerCase();
+    filtered = filtered.filter(g =>
+      g.name && g.name.toLowerCase().includes(search)
+    );
+  }
+
   let selectedGenres = $scope.uniqueGenres
     .filter(g => g.selected)
     .map(g => g.name.toLowerCase());
@@ -498,8 +509,15 @@ $scope.applyAdvancedFilters = function () {
     return price * rate >= min && price * rate <= max;
   });
 
+
   $scope.filteredGames = filtered;
   $scope.applySorting();
+
+  const totalPages = Math.ceil($scope.filteredGames.length / $scope.itemsPerPage);
+  if ($scope.currentPage > totalPages) {
+    $scope.currentPage = totalPages || 1;
+  }
+
 };
 
 
@@ -519,13 +537,12 @@ $scope.applyAdvancedFilters = function () {
 
   // Pagination
   $scope.totalPages = function () {
-    var list = $filter('filter')($scope.filteredGames, { name: $scope.searchText});
-    return Math.ceil(list.length / $scope.itemsPerPage);
+    return Math.ceil($scope.filteredGames.length / $scope.itemsPerPage) || 1;
   };
-
   // Sets current page
-  $scope.$watch(['searchText', 'filteredGames'], function (newVals, oldVals) {
+  $scope.$watch('searchText', function () {
     $scope.currentPage = 1;
+    $scope.applyAdvancedFilters();
   });
 
   //Scrolls back to top at a new page
