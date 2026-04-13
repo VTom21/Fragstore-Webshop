@@ -23,7 +23,9 @@ $firebaseData = json_decode($firebaseRaw, true);
 function resetStock($value, &$firebaseData)
 {
     foreach ($firebaseData as $gameId => &$game) {
-        $game['stock'] = $value;
+        $game['stock'] = (int)$value;
+        unset($game['prize']);
+        unset($game['discountPerc']);
     }
 }
 
